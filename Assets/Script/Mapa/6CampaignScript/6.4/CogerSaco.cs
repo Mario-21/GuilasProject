@@ -7,7 +7,8 @@ public class CogerSaco : MonoBehaviour
     bool catchBag;
     [Header ("Soldier Info")]
     [SerializeField] SoldierLife vidaSoldier;
-    [SerializeField] GameObject itemToCatch;
+    [SerializeField] List<GameObject> itemToCatch;
+    int indexItemCatch;
     public string nameSoldier;
     [Header("Time to take an action")]
     public float timeToCatchLimit;
@@ -21,10 +22,6 @@ public class CogerSaco : MonoBehaviour
     }
     [Header("What action")]
     public ActionBags soldierAction;
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -38,18 +35,24 @@ public class CogerSaco : MonoBehaviour
             if (catchBag)
             {
                 timeToCatch += Time.deltaTime;
-                if (timeToCatch >= timeToCatchLimit)
+                if (timeToCatch >= timeToCatchLimit && indexItemCatch < itemToCatch.Count)
                 {
                     switch (soldierAction)
                     {
                         case ActionBags.Leave_bag:
-                            itemToCatch.SetActive(false);
+                            itemToCatch[indexItemCatch].SetActive(false);
                             break;
                         case ActionBags.Put_bag:
-                            itemToCatch.SetActive(true);
+                            itemToCatch[indexItemCatch].SetActive(true);
                             break;
                     }
+                    indexItemCatch++;
+                    timeToCatch = 0;
+                }
+                else if  (indexItemCatch >= itemToCatch.Count)
+                {
                     catchBag = false;
+                    indexItemCatch = 0;
                 }
             }
             else timeToCatch = 0;
@@ -61,7 +64,6 @@ public class CogerSaco : MonoBehaviour
         if (collision.gameObject.name == nameSoldier)
         {
             catchBag = true;
-            Debug.Log("Guillem the Golem");
             vidaSoldier.GetComponent<SoldadoNormal>().maxTiempoUbi = timeToTakeBag;
         }
     }

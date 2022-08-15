@@ -33,13 +33,18 @@ public class PlatformEnCarga : MonoBehaviour
     //First Condition: one of the soldier is knock out and the other is waiting
     void DesactivarSacos()
     {
+        //cargo = cargar
+        //!cargo = descargar
         if (cargo)
         {
+            //Finish the carga and change to descarga
             if (resetTime)
             {
                 timeDesactiveCargarSacos = 0;
                 resetTime = false;
             }
+            //You kill someone and exceed the limit time that soldier wait to descargar or cargar Boxes.
+            //When this happen disable all trigger that carga and try call all to active berserkerMode
             timeDesactiveCargarSacos += Time.deltaTime;
             if(timeDesactiveCargarSacos >= 90)
             {
@@ -53,6 +58,7 @@ public class PlatformEnCarga : MonoBehaviour
         }
         else
         {
+            //The same previously, but with descarga
             if (!resetTime)
             {
                 timeDesactiveCargarSacos = 0;
@@ -73,6 +79,7 @@ public class PlatformEnCarga : MonoBehaviour
     //Second Condition
     void DesactivarSacos2()
     {
+        //If one of the soldier died, disable his action
         if(soldierCarga.GetComponent<SoldierLife>().vida <= 0)
         {
             plataforma.enabled = true;

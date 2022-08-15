@@ -11,8 +11,9 @@ public class DescargarSacos : MonoBehaviour
 
     [Header ("Soldier Info")]
     [SerializeField] SoldadoNormal descargaSoldier;
-    [SerializeField] GameObject sacoSoldier;
-    [SerializeField] GameObject sacoPlatform;
+    [SerializeField] List <GameObject> itemFromSoldierD;
+    [SerializeField] List <GameObject> itemInPlatformD;
+    int indexItemDescarga;
 
     [Header ("Time realize action")]
     public float timeCargarLimite;
@@ -60,18 +61,35 @@ public class DescargarSacos : MonoBehaviour
         if (descargaActive && platform.transform.position == platform.destinos[indexPosPlatform].position)
         {
             timeCargar += Time.deltaTime;
-            if (timeCargar >= timeCargarLimite)
+            //Start Descarga
+            if (timeCargar >= timeCargarLimite && indexItemDescarga < itemInPlatformD.Count)
             {
-                //Descargo
-                platformInCharge.cargo = false;
-                sacoPlatform.SetActive(false);
-                sacoSoldier.SetActive(true);
-                descargaActive = false;
-                platform.enabled = true;
+                //Put item in platform
+                itemInPlatformD[indexItemDescarga].SetActive(false);
+                itemFromSoldierD[indexItemDescarga].SetActive(true);
+                //Time that take put one box reset
                 timeCargar = 0;
-                oneAction++;
-                descargaSoldier.maxTiempoUbi = timeDefaultWaitSoldier;
+                //Next box 
+                indexItemDescarga++;
 
+            }
+            //Finish Descarga
+            else if (indexItemDescarga >= itemInPlatformD.Count)
+            {
+                //Active platform when finish descarga, to transport a SoldierCarga
+                platformInCharge.cargo = false;
+                //I finish to descargar
+                descargaActive = false;
+                //The platform can move
+                platform.enabled = true;
+                //Reset Time 
+                timeCargar = 0;
+                //Made only one time
+                oneAction++;
+                //Return her default time
+                descargaSoldier.maxTiempoUbi = timeDefaultWaitSoldier;
+                //Reset the index, because you don't have boxes to descargar
+                indexItemDescarga = 0;
             }
         }
 

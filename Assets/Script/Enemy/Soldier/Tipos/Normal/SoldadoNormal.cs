@@ -763,7 +763,7 @@ public class SoldadoNormal : MonoBehaviour
     void AnimacionCaminar(float destino)
     {
         if (destino != transform.position.x) { anim.SetBool("WalkSoldier", true); }
-        else if (destino == transform.position.x) { anim.SetBool("WalkSoldier", false); Debug.Log("LLegue a weska"); }
+        else if (destino == transform.position.x) { anim.SetBool("WalkSoldier", false);}
     }
     void CancelarAnimacionCaminar()
     {

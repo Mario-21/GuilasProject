@@ -144,6 +144,7 @@ public class ArmaController : MonoBehaviour
     void Ataque()
     {
         GameObject balaClon = Instantiate(bullet, raySpawn.position, raySpawn.rotation);
+        //Drawray() detect the collision To the object you aim and prevent that Detectar_Echar breaks
         DrawRay();
     }
     void DrawRay()

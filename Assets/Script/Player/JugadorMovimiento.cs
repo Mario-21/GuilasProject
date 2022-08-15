@@ -169,7 +169,6 @@ public class JugadorMovimiento : MonoBehaviour
         {
             if (!pistol.activarDisparo)
             {
-                Debug.Log("WEpon Base");
                 if (horizontalMov == 1) transform.localScale = new Vector3(1, 1, 1);
                 if (horizontalMov == -1) transform.localScale = new Vector3(-1, 1, 1);
             }

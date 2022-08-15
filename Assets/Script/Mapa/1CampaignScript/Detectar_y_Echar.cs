@@ -14,19 +14,19 @@ public class Detectar_y_Echar : MonoBehaviour
     public int sceneReload;
     public int spawn;
 
-    public bool evento;
-    public bool balaInside;
+    bool evento;
+    bool balaInside;
 
     ObjetoInteractivo objInter;
 
-    public enum SecuenceDetect
+    enum SecuenceDetect
     {
         girarSoldado,
         showDialogo,
         resetScene
 
     }
-    public SecuenceDetect detectScene;
+    SecuenceDetect detectScene;
 
 
     float timeDialogo;

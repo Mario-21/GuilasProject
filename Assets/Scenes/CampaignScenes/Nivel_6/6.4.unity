@@ -9275,7 +9275,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &99000765
 GameObject:
@@ -9307,7 +9307,7 @@ Transform:
   - {fileID: 1724329636}
   - {fileID: 923818382}
   m_Father: {fileID: 1300099189}
-  m_RootOrder: 15
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &116679215
 GameObject:
@@ -9318,8 +9318,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 116679218}
-  - component: {fileID: 116679217}
   - component: {fileID: 116679216}
+  - component: {fileID: 116679217}
   m_Layer: 0
   m_Name: LeaveBag
   m_TagString: Untagged
@@ -9366,7 +9366,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vidaSoldier: {fileID: 52870785}
-  itemToCatch: {fileID: 2012690847}
+  itemToCatch:
+  - {fileID: 2012690847}
   nameSoldier: Casco Red
   timeToCatchLimit: 3
   timeToTakeBag: 13
@@ -9379,11 +9380,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 116679215}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.57, y: 3.6499999, z: 0}
+  m_LocalPosition: {x: 12.25, y: 3.9899998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1300099189}
-  m_RootOrder: 7
+  m_Father: {fileID: 741615916}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &130762152
 PrefabInstance:
@@ -10664,7 +10665,7 @@ PrefabInstance:
     - target: {fileID: 4546593624630477158, guid: d3b125bb0975b25438acae4530db2ade,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4546593624630477158, guid: d3b125bb0975b25438acae4530db2ade,
         type: 3}
@@ -10781,10 +10782,13 @@ MonoBehaviour:
   platformInCharge: {fileID: 150074126}
   indexPosPlatform: 0
   cargaSoldier: {fileID: 1637592944}
-  sacoSoldier: {fileID: 731541178}
-  sacoPlatform: {fileID: 932096383}
+  itemFromSoldierC:
+  - {fileID: 731541178}
+  itemInPlatformC:
+  - {fileID: 932096383}
   timeCargarLimite: 1
   timeDefaultWaitSoldier: 5
+  timeCargar: 0
 --- !u!61 &396146244
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10819,11 +10823,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 396146242}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -27.060001, y: -2.8600001, z: 0}
+  m_LocalPosition: {x: -0.24000168, y: -2.52, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1300099189}
-  m_RootOrder: 4
+  m_Father: {fileID: 741615916}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &398542926
 PrefabInstance:
@@ -11047,7 +11051,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vidaSoldier: {fileID: 780921763}
-  itemToCatch: {fileID: 731541178}
+  itemToCatch:
+  - {fileID: 731541178}
   nameSoldier: Casco Minero Carga
   timeToCatchLimit: 3
   timeToTakeBag: 5
@@ -11060,11 +11065,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 464800490}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -37.81, y: -2.9, z: 0}
+  m_LocalPosition: {x: -10.990002, y: -2.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1300099189}
-  m_RootOrder: 6
+  m_Father: {fileID: 741615916}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &464800493
 BoxCollider2D:
@@ -11447,7 +11452,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1300099189}
-  m_RootOrder: 18
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 70.135, y: 0, z: 0}
 --- !u!4 &502065723 stripped
 Transform:
@@ -11550,7 +11555,7 @@ PrefabInstance:
     - target: {fileID: 145327416825373275, guid: 67ca249cf552d4642b6ec2b9ed7384b8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 145327416825373275, guid: 67ca249cf552d4642b6ec2b9ed7384b8,
         type: 3}
@@ -18208,7 +18213,7 @@ Transform:
   - {fileID: 1890393064}
   - {fileID: 699011846}
   m_Father: {fileID: 1300099189}
-  m_RootOrder: 21
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &620235884
 GameObject:
@@ -18614,7 +18619,7 @@ PrefabInstance:
     - target: {fileID: 4546593624630477158, guid: d3b125bb0975b25438acae4530db2ade,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4546593624630477158, guid: d3b125bb0975b25438acae4530db2ade,
         type: 3}
@@ -18878,7 +18883,7 @@ PrefabInstance:
     - target: {fileID: 712974983090223454, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 712974983090223454, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
         type: 3}
@@ -19230,6 +19235,40 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 740762152}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &741615915
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 741615916}
+  m_Layer: 0
+  m_Name: Triggers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &741615916
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741615915}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -36.32, y: -0.92, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 396146245}
+  - {fileID: 1386852798}
+  - {fileID: 464800492}
+  - {fileID: 116679218}
+  m_Father: {fileID: 0}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &760504327 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 145327417081255175, guid: 67ca249cf552d4642b6ec2b9ed7384b8,
@@ -19546,7 +19585,7 @@ Transform:
   - {fileID: 1451590818}
   - {fileID: 24778276}
   m_Father: {fileID: 1300099189}
-  m_RootOrder: 14
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &923818380
 GameObject:
@@ -19708,7 +19747,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1189315731}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &940794293
 GameObject:
@@ -20372,7 +20411,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1082957483
 PrefabInstance:
@@ -20951,7 +20990,7 @@ Transform:
   - {fileID: 993186436}
   - {fileID: 740762153}
   m_Father: {fileID: 1300099189}
-  m_RootOrder: 16
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1204211407
 GameObject:
@@ -21210,10 +21249,6 @@ Transform:
   - {fileID: 490629744}
   - {fileID: 480913444}
   - {fileID: 1189315733}
-  - {fileID: 396146245}
-  - {fileID: 1386852798}
-  - {fileID: 464800492}
-  - {fileID: 116679218}
   - {fileID: 1769311164}
   - {fileID: 348427174}
   - {fileID: 532208126}
@@ -21662,8 +21697,10 @@ MonoBehaviour:
   platformInCharge: {fileID: 150074126}
   indexPosPlatform: 1
   descargaSoldier: {fileID: 52870787}
-  sacoSoldier: {fileID: 2012690847}
-  sacoPlatform: {fileID: 932096383}
+  itemFromSoldierD:
+  - {fileID: 2012690847}
+  itemInPlatformD:
+  - {fileID: 932096383}
   timeCargarLimite: 1
   timeDefaultWaitSoldier: 6
 --- !u!61 &1386852797
@@ -21700,11 +21737,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386852795}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -24.119999, y: 3.24, z: 0}
+  m_LocalPosition: {x: 2.7000008, y: 3.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1300099189}
-  m_RootOrder: 5
+  m_Father: {fileID: 741615916}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1392402509
 PrefabInstance:
@@ -22112,7 +22149,7 @@ PrefabInstance:
     - target: {fileID: 263334860196465797, guid: 4b12ca46e9605c942aceaf5049a770b0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 263334860196465797, guid: 4b12ca46e9605c942aceaf5049a770b0,
         type: 3}
@@ -23367,7 +23404,7 @@ PrefabInstance:
     - target: {fileID: 4546593624630477158, guid: d3b125bb0975b25438acae4530db2ade,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4546593624630477158, guid: d3b125bb0975b25438acae4530db2ade,
         type: 3}
@@ -23836,7 +23873,7 @@ Transform:
   m_Children:
   - {fileID: 359635691}
   m_Father: {fileID: 1300099189}
-  m_RootOrder: 13
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1823533500
 GameObject:
@@ -23912,7 +23949,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1300099189}
-  m_RootOrder: 11
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1848089510 stripped
 MonoBehaviour:
@@ -24762,7 +24799,7 @@ PrefabInstance:
     - target: {fileID: 263334860196465797, guid: 4b12ca46e9605c942aceaf5049a770b0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 263334860196465797, guid: 4b12ca46e9605c942aceaf5049a770b0,
         type: 3}

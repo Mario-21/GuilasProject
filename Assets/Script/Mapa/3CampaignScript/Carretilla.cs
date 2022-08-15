@@ -7,33 +7,27 @@ public class Carretilla : MonoBehaviour
     [SerializeField] Transform player;
     [SerializeField] SoldierLife soldadoVida;
 
-    int vidaActual;
-    bool screenshot;
+    public int vidaActual;
     private void Awake()
     {
         soldadoVida = GetComponentInParent<SoldierLife>();
     }
     void Start()
     {
-        screenshot = true;
+        vidaActual = soldadoVida.vida;
     }
 
     // Update is called once per frame
     void Update()
     {
         AnularParent();
-        VidaActual();
     }
     void AnularParent()
     {
-        if (soldadoVida.vida != vidaActual|| soldadoVida.GetComponent<SoldadoNormal>().berserker || soldadoVida.GetComponent<SoldadoNormal>().seeCadaverWarning) { Debug.Log("Ya no hijo"); transform.parent = null; }
-    }
-    void VidaActual()
-    {
-        if (screenshot)
-        {
-            vidaActual = soldadoVida.vida;
-            screenshot = false;
-        }
+        if (soldadoVida.vida != vidaActual ||
+            soldadoVida.GetComponent<SoldadoNormal>().berserker ||
+            soldadoVida.GetComponent<SoldadoNormal>().seeCadaverWarning ||
+            soldadoVida.vida <= 0) 
+        { Debug.Log("Ya no hijo"); transform.parent = null; }
     }
 }

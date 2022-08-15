@@ -11,13 +11,14 @@ public class CargarSacos : MonoBehaviour
 
     [Header("Soldier Info")]
     [SerializeField] SoldadoNormal cargaSoldier;
-    [SerializeField] GameObject sacoSoldier;
-    [SerializeField] GameObject sacoPlatform;
+    [SerializeField] List<GameObject> itemFromSoldierC;
+    [SerializeField] List<GameObject> itemInPlatformC;
+    int indexItemCargar;
 
     [Header("Time realize action")]
     public float timeCargarLimite;
     public float timeDefaultWaitSoldier;
-    float timeCargar;
+    public float timeCargar;
 
     int oneAction;
     bool cargaAcive;
@@ -59,26 +60,41 @@ public class CargarSacos : MonoBehaviour
         if(cargaAcive && platform.transform.position == platform.destinos[indexPosPlatform].position)
         {
             timeCargar += Time.deltaTime;
-            if(timeCargar >= timeCargarLimite)
+            if(timeCargar >= timeCargarLimite && indexItemCargar < itemInPlatformC.Count)
             {
-                platformInCharge.cargo = true;
-                sacoPlatform.SetActive(true);
-                sacoSoldier.SetActive(false);
-                cargaAcive = false;
-                platform.enabled = true;
+                //Put item in platform
+                itemInPlatformC[indexItemCargar].SetActive(true);
+                itemFromSoldierC[indexItemCargar].SetActive(false);
+                //Reset Time 
                 timeCargar = 0;
+                //Next box
+                indexItemCargar++;
+                
+            }
+            else if(indexItemCargar >= itemInPlatformC.Count)
+            {
+                //Active platform when finish carga, to transport a SoldierDescarga
+                platformInCharge.cargo = true;
+                //I finish to cargar
+                cargaAcive = false;
+                //the platform can move
+                platform.enabled = true;
+                //Reset Time 
+                timeCargar = 0;
+                //Made only one time
                 oneAction++;
+                //Return her default time
                 cargaSoldier.maxTiempoUbi = timeDefaultWaitSoldier;
-
-
+                //Reset the index, because you don't have boxes to cargar
+                indexItemCargar = 0;
             }
         }
         
     }
     void PlatformActive()
     {
+        //if The platform reaches the destiny and is descargada, disable the platform to the soldier can cargar
         if (platform.transform.position == platform.destinos[indexPosPlatform].position && !platformInCharge.cargo) platform.enabled = false;
-        //Make a number that change when the enemy enter and active the platform again if soldiers are life 
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -87,7 +103,9 @@ public class CargarSacos : MonoBehaviour
             //I need know the state of chage if one of the enemy died 
             cargaAcive = true;
             oneAction = 0;
-            
+
+            Debug.Log("TOcallo");
+
             if(!cargaSoldier.berserker)cargaSoldier.maxTiempoUbi = 90;
 
 
