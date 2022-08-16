@@ -13,8 +13,6 @@ public class SpawnTrasDerrumbar : MonoBehaviour
     public int spawnA;
     public int spawnB;
     int siguientePuntoSpawn;
-    [Header("Item Catch")]
-    public bool youWantItem;
     void Update()
     {
         if(StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)DistanciaConPlayer();
@@ -34,6 +32,5 @@ public class SpawnTrasDerrumbar : MonoBehaviour
     {
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) CheckPointController.numeroCheckPoint = siguientePuntoSpawn;
         //Catch key in 3.2
-        if(youWantItem)SaveScene.instancia.listaItemsNivelGuardar[0].objetoObtenido = true;
     }
 }

@@ -7989,7 +7989,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 812753779}
+      objectReference: {fileID: 812753780}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76997908ada58b04fadfd58457619a1e, type: 3}
 --- !u!4 &598570921 stripped
@@ -8418,7 +8418,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 812753772}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aeacf88f946f76c4a844ffba4c841a38, type: 3}
   m_Name: 
@@ -8647,6 +8647,16 @@ PrefabInstance:
       propertyPath: isVisible
       value: 
       objectReference: {fileID: 1503822512}
+    - target: {fileID: 2691870885741423122, guid: 0b6ae8e3895c24a4683486071f2fa82d,
+        type: 3}
+      propertyPath: cooldownUI
+      value: 
+      objectReference: {fileID: 1306224149}
+    - target: {fileID: 2691870885741423122, guid: 0b6ae8e3895c24a4683486071f2fa82d,
+        type: 3}
+      propertyPath: isVisible
+      value: 
+      objectReference: {fileID: 1503822512}
     - target: {fileID: 2814581329114688856, guid: 0b6ae8e3895c24a4683486071f2fa82d,
         type: 3}
       propertyPath: m_Enabled
@@ -8785,6 +8795,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97c648a7a95c5534c966bbe6503ddaa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &812753780 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2691870885741423122, guid: 0b6ae8e3895c24a4683486071f2fa82d,
+    type: 3}
+  m_PrefabInstance: {fileID: 812753772}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e5ae2a8ae0c6184dba8287db20f4d9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &849438770
@@ -11839,10 +11861,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexMod: 2
   activador: {fileID: 1259336695}
-  objetoDesenterrar:
-  - {fileID: 1259336693}
-  objetoEnTierra:
-  - {fileID: 507317981}
+  itemEarth: []
+  itemDownEarth: []
   evento: {fileID: 391637485}
   playerHere: {fileID: 1259336697}
   ap_Des_Obj: {fileID: 558966734}

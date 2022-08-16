@@ -6,6 +6,7 @@ public class SoyMinero : MonoBehaviour
 {
     [SerializeField] PutGasMask haveMask;
     [SerializeField] List<Detectar_y_Echar> detectoresEnemys;
+    [SerializeField] List<BoxCollider2D> colliderDetectores;
     int breakloop;
     void Start()
     {
@@ -28,6 +29,7 @@ public class SoyMinero : MonoBehaviour
                 for (int i = 0; i < detectoresEnemys.Count; i++)
                 {
                     detectoresEnemys[i].enabled = false;
+                    colliderDetectores[i].enabled = false;
                     Debug.Log("NiGGAAAAAA" + i);
                     breakloop++;
                 }

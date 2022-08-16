@@ -11,8 +11,12 @@ public class BloquearMovimientoPlayer : MonoBehaviour
     public B8Arma b8;
     public ChangeWeapon conditionToChangeWeapon;
 
+    float vidaActual;
+
     public void BloquearMovPlayer()
     {
+        //Don't loss your life when you are blocked
+        //vidaActual = vidaPlayer.vidaActual;
         //Deactive LifePlayer; Note: Keep the live when bloq is active
         vidaPlayer.enabled = false;
         //Deactive Player
@@ -32,6 +36,7 @@ public class BloquearMovimientoPlayer : MonoBehaviour
     }
     public void HabilitarMovPlayer()
     {
+        //vidaPlayer.vidaActual = vidaActual;
         vidaPlayer.enabled = true;
         player.enabled = true;
         pistol.enabled = true;
