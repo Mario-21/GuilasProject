@@ -21,7 +21,7 @@ public class CargarSacos : MonoBehaviour
     public float timeCargar;
 
     int oneAction;
-    bool cargaAcive;
+    public bool cargaAcive;
     void Start()
     {
         //Faltaria hacer los otros dos triggers que te ponen el saco
@@ -103,8 +103,6 @@ public class CargarSacos : MonoBehaviour
             //I need know the state of chage if one of the enemy died 
             cargaAcive = true;
             oneAction = 0;
-
-            Debug.Log("TOcallo");
 
             if(!cargaSoldier.berserker)cargaSoldier.maxTiempoUbi = 90;
 
