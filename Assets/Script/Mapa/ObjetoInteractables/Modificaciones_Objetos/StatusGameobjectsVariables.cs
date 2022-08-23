@@ -6,14 +6,7 @@ public class StatusGameobjectsVariables : MonoBehaviour
 {
     //Esto almacenara el estado de un objeto, haciendo que un objeto sea guardado si ha sido modificado por el Player
     public static StatusGameobjectsVariables statusGameobject;
-
-
     public List<ListaModificaciones> modificacion;
-
-
-
-
-
     private void Awake()
     {
 

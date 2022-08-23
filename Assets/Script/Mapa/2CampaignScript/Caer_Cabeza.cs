@@ -25,17 +25,7 @@ public class Caer_Cabeza : MonoBehaviour
             rb.bodyType = RigidbodyType2D.Dynamic;
             rb.gravityScale = 1;
             Destroy(collision.gameObject);
-        }
-        if (collision.gameObject.CompareTag("Ground")) 
-        {
-            //Cuando choca contra el suelo tambien deberia modificarse
             StatusGameobjectsVariables.statusGameobject.modificacion[indexModificar].modificacion = true;
-            caidaObjeto.ObjetoInGround();
-        }
-        if (collision.gameObject.CompareTag("RangoEnemy"))
-        {
-            StatusGameobjectsVariables.statusGameobject.modificacion[indexModificar].modificacion = true;
-            caidaObjeto.ObjetoInGround();
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -49,7 +39,7 @@ public class Caer_Cabeza : MonoBehaviour
                 rb.gravityScale = 1;
             }
         }
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Enemy"))
         {
             //Cuando choca contra el suelo tambien deberia modificarse
             StatusGameobjectsVariables.statusGameobject.modificacion[indexModificar].modificacion = true;

@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class SaveScene : MonoBehaviour
 {
+    public float timeNoviceDeath;
     public static SaveScene instancia;
-
-
 
     #region ListaItemsNivel
     public List<ListaTodosObjetos> listaItemsNivelGuardar;
@@ -41,6 +40,7 @@ public class SaveScene : MonoBehaviour
     //1 bo haber recogido la bola, 2 no haber usado la bola, 3
     //Es inversamente proporcional, si yo ya no tengo el objeto es porque lo he usado y se ha roto; si sigo teniendo el objeto es porque he usado municion. teniendo en cuenta que previamente la recogida es +1
     #endregion
+
 
     //Quiero que ocurra en contadas escenas
     private void Awake()

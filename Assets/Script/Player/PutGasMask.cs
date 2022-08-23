@@ -7,7 +7,7 @@ public class PutGasMask : MonoBehaviour
 {
     [SerializeField] GameObject gas_Mask;
     [SerializeField] SaveButton mascaraButton;
-    public string tagName;
+    public string tagName = "Mascara";
     bool canPut;
     [HideInInspector] public bool putMask;
 
