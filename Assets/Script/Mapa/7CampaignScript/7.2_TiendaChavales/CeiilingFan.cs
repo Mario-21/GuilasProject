@@ -5,9 +5,15 @@ using UnityEngine;
 public class CeiilingFan : MonoBehaviour
 {
     public int indexMod;
+    [Header("Velocidad")]
     public float speed;
     public  bool onCeilingFan;
+    [Header("On Ceiling Fan")]
     [SerializeField] Transform ceilingFan;
+    [Header("Soldier Switch")]
+    [SerializeField] SoldierLife soldierSwitchLife;
+    bool enemyHere;
+    float timeOnCeiling;
 
     PlayerHere player;
     void Start()
@@ -22,6 +28,7 @@ public class CeiilingFan : MonoBehaviour
         {
             ActiveCeilingFan();
             CeilingFan();
+            SoldierOnCeiling();
         }
     }
     void ActiveCeilingFan()
@@ -44,6 +51,36 @@ public class CeiilingFan : MonoBehaviour
         else
         {
             ceilingFan.Rotate(0f, 0f, 0f);
+        }
+    }
+    void SoldierOnCeiling()
+    {
+        //On Ceiling Pan
+        if (enemyHere && soldierSwitchLife.vida > 0)
+        {
+            timeOnCeiling += Time.deltaTime;
+            if (timeOnCeiling >= 1.5f)
+            {
+                onCeilingFan = true;
+                timeOnCeiling = 0;
+                enemyHere = false;
+            }
+        }
+        else
+        {
+            timeOnCeiling = 0;
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy")) enemyHere = true;
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy")) 
+        {
+            enemyHere = false;
+            timeOnCeiling = 0;
         }
     }
 }

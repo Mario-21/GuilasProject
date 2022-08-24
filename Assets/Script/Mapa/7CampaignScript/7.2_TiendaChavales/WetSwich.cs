@@ -5,10 +5,15 @@ using UnityEngine;
 public class WetSwich : MonoBehaviour
 {
     public int indexMod;
+    [Header("Water")]
     public GameObject water;
     ActivarModificador activar;
     CeiilingFan ceiiling;
-    
+    [Header("Soldier Switch")]
+    [SerializeField] SoldierLife soldierSwitchLife;
+    bool enemyHere;
+    float timeOnCeiling;
+
     void Start()
     {
         activar = GetComponent<ActivarModificador>();
@@ -18,6 +23,11 @@ public class WetSwich : MonoBehaviour
     void Update()
     {
         if (activar.modificacion) SwitchWet();
+        //The switch is wet
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion && enemyHere)
+        {
+            SoldierTakeDamageWet();
+        }
     }
     void SwitchWet()
     {
@@ -25,5 +35,24 @@ public class WetSwich : MonoBehaviour
         StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
         ceiiling.onCeilingFan = false;
         ceiiling.enabled = false;
+    }
+    void SoldierTakeDamageWet()
+    {
+        if (enemyHere && soldierSwitchLife.vida > 0)
+        {
+            timeOnCeiling += Time.deltaTime;
+            if (timeOnCeiling > 1)
+            {
+                soldierSwitchLife.Daño(3);
+            }
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy")) enemyHere = true;
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy")) enemyHere = false;
     }
 }

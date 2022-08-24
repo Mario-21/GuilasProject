@@ -1,0 +1,19 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class TriggerRecoveryRoom : MonoBehaviour
+{
+    public int cinematicScene;
+    [SerializeField] BloquearMovimientoPlayer playerBloq;
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            playerBloq.BloquearMovPlayer();
+            EstructuraNiveles.nivel = cinematicScene;
+            AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
+        }
+        
+    }
+}
