@@ -7,30 +7,27 @@ public class EscaleraMano : MonoBehaviour
     [Header("Escalar Data")]
     public float velocidadSubir;
     Rigidbody2D rb;
-    public bool zonaEscalada;
+    [HideInInspector] public bool zonaEscalada;
     bool escalar;
     float vertical;
-
-
-    bool canHidden = false;
     [Header("Icono Hidden")]
-    public GameObject iconoOcultacion;
-    GameObject childIcono;
-    public Transform crearIcono;
-    int numIconos = 0;
+    public GameObject iconoZone;
+    public SpriteRenderer iconeZoneSprite;
+    public Sprite hiddenIcon;
+    [HideInInspector] public bool imHidden;
+    bool canHidden = false;
+    [Header("Layer Hidden")]
     public int layerDesocultacion;
-
-    JugadorMovimiento mov;
+    [Header("Stop Hidden Player")]
     public ArmaController arma;
+    JugadorMovimiento mov;
 
     [Header("Efecto Particles")]
     public Transform cuerpoPlayer;
     public GameObject ParticulaEsconderse;
 
     SoundManager soundManager;
-    int w;
-
-    public bool imHidden ;
+    int soundPlayOne;
 
     private void Start()
     {
@@ -41,12 +38,6 @@ public class EscaleraMano : MonoBehaviour
     }
     void Update()
     {
-
-        
-        if(childIcono != null && !imHidden)
-        {
-            childIcono.transform.parent = crearIcono;
-        }
 
         //Subir escalera 
         Up_Down_Stairs();
@@ -67,8 +58,7 @@ public class EscaleraMano : MonoBehaviour
                     //Icono
                     Instantiate(ParticulaEsconderse, cuerpoPlayer.position, Quaternion.identity);
                     soundManager.SeleccionAudio(soundManager.audiosAmbiente, 0, 1f, 0);
-                    Destroy(childIcono);
-
+                    iconoZone.SetActive(false);
                    
                     imHidden = !imHidden;
                    
@@ -86,8 +76,8 @@ public class EscaleraMano : MonoBehaviour
                     }
                     else
                     {
-                        
-                        childIcono = Instantiate(iconoOcultacion, crearIcono.position, Quaternion.identity);
+
+                        iconoZone.SetActive(true);
                         arma.enabled = true;
                         mov.enabled = true;
 
@@ -113,19 +103,19 @@ public class EscaleraMano : MonoBehaviour
         {
             escalar = true;
 
-            if (w < 1)
+            if (soundPlayOne < 1)
             {
                 soundManager.controlAudio[1].Pause();
                 soundManager.controlAudio[2].Play();
                 
-                w++;
+                soundPlayOne++;
             }
             //Poner sonido escalera
         }
         else if (vertical == 0)
         {
             soundManager.controlAudio[2].Pause();
-            w = 0;
+            soundPlayOne = 0;
         }
     }
     private void FixedUpdate()
@@ -145,13 +135,9 @@ public class EscaleraMano : MonoBehaviour
         }
         if (collision.gameObject.tag == "Escondite")
         {
-            if(numIconos < 1 && !imHidden)
-            {
-                childIcono = Instantiate(iconoOcultacion, crearIcono.position, Quaternion.identity);
-                
-                numIconos++;
-            }
-            
+            iconoZone.SetActive(true);
+            iconeZoneSprite.sprite = hiddenIcon;
+
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
@@ -173,14 +159,14 @@ public class EscaleraMano : MonoBehaviour
             zonaEscalada = false;
             escalar = false;
             soundManager.controlAudio[2].Stop();
-            w = 0;
+            soundPlayOne = 0;
             //Usar el WalkSource porque necesito pararlo y con PlayOneShot no se puede parar
         }
         if (collision.gameObject.tag == "Escondite")
         {
-            Destroy(childIcono);
+            iconoZone.SetActive(false);
             canHidden = false;
-            numIconos = 0;
+            
         }
     }
 }
