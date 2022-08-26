@@ -31,6 +31,7 @@ public class CompletarNivel : MonoBehaviour
             Destroy(StatusGameobjectsVariables.statusGameobject.gameObject);
             Destroy(TotalTerminales.terminalesTotales.gameObject);
             Destroy(ListaAttackSoldado.modeSoldiers.gameObject);
+            Destroy(ListaItemsUI.listaItemsUI.gameObject);
         }
 
     }

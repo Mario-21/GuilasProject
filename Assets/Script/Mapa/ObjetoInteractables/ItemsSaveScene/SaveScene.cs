@@ -34,11 +34,6 @@ public class SaveScene : MonoBehaviour
     public bool b8;
     [HideInInspector] public int b8Reogida;
     [HideInInspector] public bool izqEscombrosB8;
-    //condiciones para que aparezca la bola rota:
-    //1 tener la bola, 2 usar en el rumbling
-    //no aparicion:
-    //1 bo haber recogido la bola, 2 no haber usado la bola, 3
-    //Es inversamente proporcional, si yo ya no tengo el objeto es porque lo he usado y se ha roto; si sigo teniendo el objeto es porque he usado municion. teniendo en cuenta que previamente la recogida es +1
     #endregion
 
 

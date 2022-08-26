@@ -5,10 +5,15 @@ using UnityEngine;
 public class DespertarSoldiers : MonoBehaviour
 {
     [SerializeField] KillAllEnemy conditions;
-    
+    PlayerHere player;
+
+    private void Start()
+    {
+        player = GetComponent<PlayerHere>();
+    }
     void Update()
     {
-        WakeUpSoldiers();
+       if(player.playerImHere)WakeUpSoldiers();
     }
     void WakeUpSoldiers()
     {
@@ -16,6 +21,7 @@ public class DespertarSoldiers : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.O))
             {
+                Debug.Log("Gol");
                 for (int i = 0; i < conditions.soldiersDeath.Count; i++)
                 {
                     conditions.soldiersDeath[i].GetComponent<SoldierLife>().vida = 1;

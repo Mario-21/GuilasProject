@@ -1,0 +1,31 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+public class CogerItemUI : MonoBehaviour
+{
+    public int indexUIMod;
+    PlayerHere player;
+    public GameObject itemUI;
+    void Start()
+    {
+        player = GetComponent<PlayerHere>();
+        if(ListaItemsUI.listaItemsUI.listaAllItemUI[indexUIMod].itemUICatch) this.gameObject.SetActive(false);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (player.playerImHere) PickItemUI();
+    }
+    void PickItemUI()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            itemUI.SetActive(true);
+            ListaItemsUI.listaItemsUI.listaAllItemUI[indexUIMod].itemUICatch = true;
+            this.gameObject.SetActive(false);
+        }
+    }
+}
