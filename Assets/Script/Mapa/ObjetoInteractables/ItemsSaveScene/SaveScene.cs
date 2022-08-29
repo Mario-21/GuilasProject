@@ -36,11 +36,14 @@ public class SaveScene : MonoBehaviour
     [HideInInspector] public bool izqEscombrosB8;
     #endregion
 
+    #region WakeUpDoctor(Nivel 7.4/Enfermeria)
+    [HideInInspector]public int wakeUpDoctorSwitch;
+    [HideInInspector]public int wakeUpDoctorNovice;
+    #endregion
 
     //Quiero que ocurra en contadas escenas
     private void Awake()
     {
-
         if (SaveScene.instancia == null)
         {
             SaveScene.instancia = this;

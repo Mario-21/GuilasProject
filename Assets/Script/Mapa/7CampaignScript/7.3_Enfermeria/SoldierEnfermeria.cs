@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class SoldierEnfermeria : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public int indexMod;
+    [SerializeField] SoldierLife soldadoDoctor;
     void Start()
     {
-        
+        if (SaveScene.instancia.wakeUpDoctorSwitch < 1) WakeUpDoctorSwitchSoldier();
     }
-
-    // Update is called once per frame
-    void Update()
+    void WakeUpDoctorSwitchSoldier()
     {
-        
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
+        {
+            soldadoDoctor.vida = 1;
+            SaveScene.instancia.wakeUpDoctorSwitch++;
+        }
     }
 }
