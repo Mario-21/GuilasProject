@@ -12,6 +12,7 @@ public class Caer_Cabeza : MonoBehaviour
     [SerializeField] JugadorMovimiento playerAltura;
 
     int vecesSaltadas;
+    public int LimitevecesSaltadas = 3;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -33,7 +34,7 @@ public class Caer_Cabeza : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             vecesSaltadas++;
-            if(vecesSaltadas >= 3)
+            if(vecesSaltadas >= LimitevecesSaltadas)
             {
                 rb.bodyType = RigidbodyType2D.Dynamic;
                 rb.gravityScale = 1;

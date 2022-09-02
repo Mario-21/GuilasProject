@@ -13,9 +13,14 @@ public class SaveBox : MonoBehaviour
     [SerializeField] Text textSaveBox;
     [SerializeField] Image fondoTextSaveBox;
     [SerializeField] GameObject saveBoxPanel;
+    [Header("SaveBox Abierta")]
+    [SerializeField] Sprite saveBoxAbierta;
+    [SerializeField] GameObject reliquia;
+    SpriteRenderer saveBoxSprite;
     //Color Change SaveBox
     bool changeColor;
     float timaCambiarColor;
+
     //Player
     [Header("Player")]
     [SerializeField] GameObject iconeZone;
@@ -25,10 +30,17 @@ public class SaveBox : MonoBehaviour
     bool onSaveBox;
 
     // Update is called once per frame
+    private void Awake()
+    {
+        player = GetComponent<PlayerHere>();
+        saveBoxSprite = GetComponent<SpriteRenderer>();
+    }
     private void Start()
     {
-        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) this.enabled = false;
-        player = GetComponent<PlayerHere>();
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) 
+        {
+            SaveBoxOpen();
+        }
     }
     void Update()
     {
@@ -59,12 +71,6 @@ public class SaveBox : MonoBehaviour
                 iconeZoneSprite.sprite = interactiveIcon;
             }
         }
-        else
-        {
-            onSaveBox = false;
-            iconeZone.SetActive(false);
-            saveBoxPanel.SetActive(false);
-        }
     }
     public void DeleteNum()
     {
@@ -76,7 +82,7 @@ public class SaveBox : MonoBehaviour
         if (textSaveBox.text == saveBoxPassword.ToString()) 
         {
             Debug.Log("Correcto");
-            this.enabled = false;
+            SaveBoxOpen();
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
             onSaveBox = false;
             iconeZone.SetActive(false);
@@ -124,6 +130,22 @@ public class SaveBox : MonoBehaviour
         else
         {
             timaCambiarColor = 0;
+        }
+    }
+    void SaveBoxOpen()
+    {
+        saveBoxSprite.sprite = saveBoxAbierta;
+        reliquia.SetActive(true);
+        this.enabled = false;
+
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            onSaveBox = false;
+            iconeZone.SetActive(false);
+            saveBoxPanel.SetActive(false);
         }
     }
 }

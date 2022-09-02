@@ -5,7 +5,7 @@ using UnityEngine;
 public class OnCinematic : MonoBehaviour
 {
     PlayerHere player;
-    [SerializeField] EscaleraMano playerHiddenComp;
+    [SerializeField] Stairs_Hidden playerHiddenComp;
 
     public int sceneCatching;
     bool enabledEscaleraMano;

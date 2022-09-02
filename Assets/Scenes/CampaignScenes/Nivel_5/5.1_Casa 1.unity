@@ -6745,6 +6745,7 @@ MonoBehaviour:
   indexModificar: 0
   caidaObjeto: {fileID: 1919857130}
   playerAltura: {fileID: 812753777}
+  LimitevecesSaltadas: 3
 --- !u!1001 &598570920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8201,9 +8202,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 812753772}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &812753775 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6245063822465096535, guid: 0b6ae8e3895c24a4683486071f2fa82d,
+--- !u!212 &812753775 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5780431153459322321, guid: 0b6ae8e3895c24a4683486071f2fa82d,
     type: 3}
   m_PrefabInstance: {fileID: 812753772}
   m_PrefabAsset: {fileID: 0}
@@ -8307,6 +8308,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b9f934e3899a04c82de0a3860be230, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &812753785 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5780431153459322327, guid: 0b6ae8e3895c24a4683486071f2fa82d,
+    type: 3}
+  m_PrefabInstance: {fileID: 812753772}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &813701604
 GameObject:
   m_ObjectHideFlags: 0
@@ -8502,9 +8509,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   siguienteEscena: 11
   checkpointSpanwScene: 1
-  crearIcono: {fileID: 812753775}
-  iconoFlecha: {fileID: 8114054472744679240, guid: ad0481341cc1731438369f4f541502c9,
-    type: 3}
+  iconoZone: {fileID: 812753785}
+  iconeZoneSprite: {fileID: 812753775}
+  iconoArrow: {fileID: 21300000, guid: 47cc322370def12428f67ca7278ac589, type: 3}
 --- !u!61 &925100905
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12213,9 +12220,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1795973108}
   - component: {fileID: 1795973107}
-  - component: {fileID: 1795973106}
   - component: {fileID: 1795973105}
+  - component: {fileID: 1795973106}
   - component: {fileID: 1795973109}
+  - component: {fileID: 1795973110}
   m_Layer: 0
   m_Name: Vaso
   m_TagString: Untagged
@@ -12342,6 +12350,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerImHere: 0
+--- !u!114 &1795973110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795973104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e637f6b31ca4a42b3a2b4e7d76cff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indexModJar: 4
 --- !u!1 &1845523146
 GameObject:
   m_ObjectHideFlags: 0

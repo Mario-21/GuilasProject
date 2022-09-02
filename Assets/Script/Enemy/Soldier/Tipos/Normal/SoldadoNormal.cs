@@ -301,7 +301,7 @@ public class SoldadoNormal : MonoBehaviour
 
         //Disparar bala cada "x" segundos
         cooldownDisparo += Time.deltaTime;
-        if (cooldownDisparo >= dispara && !player.GetComponent<EscaleraMano>().imHidden)
+        if (cooldownDisparo >= dispara && !player.GetComponent<Stairs_Hidden>().imHidden)
         {
             GameObject balaEnemigo = Instantiate(bala, spawnBala.position,Quaternion.identity);
             balaEnemigo.GetComponent<Rigidbody2D>().AddForce(spawnBala.right * velocidadBala,ForceMode2D.Impulse);

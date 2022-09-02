@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EscaleraMano : MonoBehaviour
+public class Stairs_Hidden : MonoBehaviour
 {
     [Header("Escalar Data")]
     public float velocidadSubir;
@@ -10,6 +10,9 @@ public class EscaleraMano : MonoBehaviour
     [HideInInspector] public bool zonaEscalada;
     bool escalar;
     float vertical;
+    [Header("Hidden Data")]
+    OcultacionByWeapon weaponHidden;
+
     [Header("Icono Hidden")]
     public GameObject iconoZone;
     public SpriteRenderer iconeZoneSprite;
@@ -20,6 +23,7 @@ public class EscaleraMano : MonoBehaviour
     public int layerDesocultacion;
     [Header("Stop Hidden Player")]
     public ArmaController arma;
+    public GameObject mira;
     JugadorMovimiento mov;
 
     [Header("Efecto Particles")]
@@ -31,6 +35,7 @@ public class EscaleraMano : MonoBehaviour
 
     private void Start()
     {
+        weaponHidden = GetComponent<OcultacionByWeapon>();
         soundManager = FindObjectOfType<SoundManager>();
         rb = GetComponent<Rigidbody2D>();
         mov = GetComponent<JugadorMovimiento>();
@@ -52,6 +57,7 @@ public class EscaleraMano : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.O))
                 {
                     //Parar Movimiento
+                    weaponHidden.tiempoVisible += 99;
                     mov.horizontalMov = 0;
                     mov.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
 
@@ -64,7 +70,12 @@ public class EscaleraMano : MonoBehaviour
                    
                     if (imHidden)
                     {
-                        
+                        //disable OcultacionByWeapon for tags don't get problems 
+                        weaponHidden.enabled = false;
+                        weaponHidden.cooldownUI.enabled = false;
+                        //If you hide meanwhile you aim, mira disappear
+                        mira.SetActive(false);
+                        //can't move and shoot
                         arma.enabled = false;
                         mov.enabled = false;
                         
@@ -76,8 +87,14 @@ public class EscaleraMano : MonoBehaviour
                     }
                     else
                     {
-
+                        //enabled OcultacionByWeapon 
+                        weaponHidden.enabled = true;
+                        weaponHidden.cooldownUI.enabled = true;
+                        //If you hide meanwhile you aim, mira appear
+                        mira.SetActive(true);
+                        //you can see again the icon
                         iconoZone.SetActive(true);
+                        //can move and shoot
                         arma.enabled = true;
                         mov.enabled = true;
 

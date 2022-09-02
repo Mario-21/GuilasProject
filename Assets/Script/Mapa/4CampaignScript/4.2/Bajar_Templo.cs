@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Bajar_Templo : MonoBehaviour
 {
     bool estoyHere;
-    EscaleraMano hidden;
+    Stairs_Hidden hidden;
 
     [SerializeField] Image arrow;
     [SerializeField] Transform direction;
@@ -18,7 +18,7 @@ public class Bajar_Templo : MonoBehaviour
     private void Awake()
     {
         active = GetComponent<ActivarModificador>();
-        hidden = FindObjectOfType<EscaleraMano>();
+        hidden = FindObjectOfType<Stairs_Hidden>();
     }
 
     // Update is called once per frame

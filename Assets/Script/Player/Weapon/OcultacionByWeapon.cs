@@ -6,7 +6,7 @@ public class OcultacionByWeapon : MonoBehaviour
 {
     [Header("Visible Duration")]
     public float tiempoLimiteVisible;
-    float tiempoVisible;
+    [HideInInspector] public float tiempoVisible;
     [HideInInspector] public float defaultTiempoLimiteVisible;
     [Header("Player Data")]
     public int layerPlayer;

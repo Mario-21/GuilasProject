@@ -50,7 +50,7 @@ public class JugadorMovimiento : MonoBehaviour
 
 
     [Header("Escaleras")]
-    public EscaleraMano subirEscalera;
+    public Stairs_Hidden subirEscalera;
 
     [Header("Animacion")]
     public Animator anim;

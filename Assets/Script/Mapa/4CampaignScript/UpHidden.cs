@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UpHidden : MonoBehaviour
 {
-    EscaleraMano hidden;
+    Stairs_Hidden hidden;
     bool imHere;
 
     [Header("Where do you want to go")]
@@ -13,7 +13,7 @@ public class UpHidden : MonoBehaviour
     [SerializeField] Image up_DownHidden;
     private void Awake()
     {
-        hidden = FindObjectOfType<EscaleraMano>();
+        hidden = FindObjectOfType<Stairs_Hidden>();
     }
 
     // Update is called once per frame

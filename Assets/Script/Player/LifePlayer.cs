@@ -10,14 +10,14 @@ public class LifePlayer : MonoBehaviour
     public Image barraDeVida;
     public CambiarEscalaConMira centroPersonaje;
     JugadorMovimiento jugadorMov;
-    EscaleraMano escaleraMano;
+    Stairs_Hidden escaleraMano;
     Animator player;
 
     SoundManager soundManager;
     private void Start()
     {
         player = GetComponent<Animator>();
-        escaleraMano = GetComponent<EscaleraMano>();
+        escaleraMano = GetComponent<Stairs_Hidden>();
         jugadorMov = GetComponent<JugadorMovimiento>();
         soundManager = FindObjectOfType<SoundManager>();
     }
