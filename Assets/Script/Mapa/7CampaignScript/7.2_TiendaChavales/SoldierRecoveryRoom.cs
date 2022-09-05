@@ -14,9 +14,8 @@ public class SoldierRecoveryRoom : MonoBehaviour
     public float timeWaitToGoLimit;
     public float timeWaitToGo;
     [Header("Trigger Recovery Room")]
-    [SerializeField] BoxCollider2D recoveryRoom;
+    [SerializeField] TriggerInfarmary infarmaryTrigger;
 
-    // Update is called once per frame
     void Update()
     {
         ConditionsGoSwitch();
@@ -25,23 +24,12 @@ public class SoldierRecoveryRoom : MonoBehaviour
     {
         if(soldierSwitch.vida <= 0)
         {
-            RecoveryRoom();
+            infarmaryTrigger.RecoveryRoomTrigger();
             timeWaitToGo += Time.deltaTime;
             if(timeWaitToGo >= timeWaitToGoLimit)
             {
                 soldadoNormal.ubicacionesDirigir[0] = soldadoNormalSP;
             }
-        }
-    }
-    void RecoveryRoom()
-    {
-        if(!soldadoNormal.berserker && !soldadoNormal.busquedaMode && soldadoNormal.GetComponent<SoldierLife>().vida > 0)
-        {
-            recoveryRoom.enabled = true;
-        }
-        else if(soldadoNormal.berserker || soldadoNormal.busquedaMode || soldadoNormal.GetComponent<SoldierLife>().vida <= 0)
-        {
-            recoveryRoom.enabled = false;
         }
     }
 }

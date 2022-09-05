@@ -2161,7 +2161,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 113017698}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.01, y: -4.79, z: 0}
+  m_LocalPosition: {x: -1.65, y: -4.79, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 868272443}
@@ -2897,7 +2897,7 @@ GameObject:
   - component: {fileID: 214614783}
   - component: {fileID: 214614784}
   m_Layer: 0
-  m_Name: Soldado Normal Phase 2
+  m_Name: Soldadier Recovery Room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2935,7 +2935,7 @@ MonoBehaviour:
   soldadoNormalSP: {fileID: 612135557}
   timeWaitToGoLimit: 4
   timeWaitToGo: 0
-  recoveryRoom: {fileID: 254907812}
+  infarmaryTrigger: {fileID: 929198628}
 --- !u!1 &232472313
 GameObject:
   m_ObjectHideFlags: 0
@@ -3180,7 +3180,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 254907811}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -3207,7 +3207,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 254907811}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.25, y: -4.9300003, z: 0}
+  m_LocalPosition: {x: 1.91, y: -4.9300003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 868272443}
@@ -3228,7 +3228,6 @@ MonoBehaviour:
   nameSoldier: Placa
   cinematicScene: 31
   playerBloq: {fileID: 1791219285}
-  soldado: {fileID: 552374876}
 --- !u!1 &258290648
 GameObject:
   m_ObjectHideFlags: 0
@@ -6109,6 +6108,54 @@ Transform:
   m_Father: {fileID: 936037678}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!1 &929198627
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 929198629}
+  - component: {fileID: 929198628}
+  m_Layer: 0
+  m_Name: ActivateTriggerInfarmary
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &929198628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929198627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea5725242aed05a4d80001dce883caff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soldadoNormal: {fileID: 552374876}
+  soldadoSwitch: {fileID: 941648222}
+  triggerInfarmary_1: {fileID: 254907812}
+  triggerInfarmary_2: {fileID: 1028993388}
+  triggerPlace: 0
+--- !u!4 &929198629
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929198627}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.08, y: -2.6300004, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 29
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &936037677
 GameObject:
   m_ObjectHideFlags: 0
@@ -6462,7 +6509,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1028993385}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3, y: -4.9300003, z: 0}
+  m_LocalPosition: {x: -1.514, y: -4.9300003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 868272443}
@@ -6483,7 +6530,6 @@ MonoBehaviour:
   nameSoldier: Placa
   cinematicScene: 31
   playerBloq: {fileID: 1791219285}
-  soldado: {fileID: 552374876}
 --- !u!61 &1028993388
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6491,13 +6537,13 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1028993385}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.9451673}
+  m_Offset: {x: 0.32533848, y: 0.6839006}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -6508,7 +6554,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2.8903346}
+  m_Size: {x: 0.26366162, y: 2.3678012}
   m_EdgeRadius: 0
 --- !u!1 &1040159343
 GameObject:
