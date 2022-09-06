@@ -5,8 +5,6 @@ using UnityEngine;
 public class DesactivarPuertas : MonoBehaviour
 {
     SpriteRenderer verde;
-    public Electrocutar agua1;
-    public Electrocutar agua2;
     private void Start()
     {
         verde = GetComponent<SpriteRenderer>();
@@ -21,8 +19,6 @@ public class DesactivarPuertas : MonoBehaviour
             {
                 GameObject.Destroy(target);
             }
-            agua1.enabled = false;
-            agua2.enabled = false;
         }
     }
 }
