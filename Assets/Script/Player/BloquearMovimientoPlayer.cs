@@ -34,6 +34,24 @@ public class BloquearMovimientoPlayer : MonoBehaviour
         //Deactivate ChangeWeapon
         conditionToChangeWeapon.enabled = false;
     }
+    public void BloquearMovConDaño()
+    {
+        //La vida se elimina. Este se hace para que la bajada de vida no vaya a destiempo con el golpe que recibes
+        //Deactive Player
+        player.enabled = false;
+        player.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+        player.GetComponent<Animator>().SetBool("Walk", false);
+        //Deactivate Pistol
+        pistol.activarDisparo = false;
+        pistol.enabled = false;
+        pistol.mira.gameObject.SetActive(false);
+        //Deactivate B8
+        b8.activarB8 = false;
+        b8.enabled = false;
+        b8.mira.gameObject.SetActive(false);
+        //Deactivate ChangeWeapon
+        conditionToChangeWeapon.enabled = false;
+    }
     public void HabilitarMovPlayer()
     {
         //vidaPlayer.vidaActual = vidaActual;

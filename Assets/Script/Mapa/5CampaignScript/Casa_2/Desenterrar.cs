@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(ActivarModificador))]
+[RequireComponent(typeof(PlayerHere))]
 public class Desenterrar : MonoBehaviour
 {
     [Header("Modificador")]

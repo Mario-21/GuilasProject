@@ -41,9 +41,9 @@ public class Electrificacion : MonoBehaviour
             repeatDamage += Time.deltaTime;
             if (repeatDamage >= timeOnPlayerLimit + 0.1)
             {
-                playerVida.Daño(20);
+                playerVida.Daño(25);
                 //No inhabilitar llamar al bloqueoPlayer
-                playerBlock.BloquearMovPlayer();
+                playerBlock.BloquearMovConDaño();
                 enabledMov = true;
                 repeatDamage = 0;
             }
@@ -55,7 +55,7 @@ public class Electrificacion : MonoBehaviour
         {
             playerVida.Daño(20);
             Debug.Log("Capela");
-            playerBlock.BloquearMovPlayer();
+            playerBlock.BloquearMovConDaño();
             enabledMov = true;
             canRepeat = true;
 

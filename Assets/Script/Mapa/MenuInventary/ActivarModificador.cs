@@ -1,11 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class ActivarModificador : MonoBehaviour
 {
-
-
     public string tagName;
     public bool modificacion;
     bool youCanChange;
