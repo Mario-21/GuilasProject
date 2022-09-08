@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class SoldadoNormal : MonoBehaviour
 {
+    //Mirar dirigir player
     Rigidbody2D rb;
 
     [Header("Objetivo")]
@@ -29,6 +30,7 @@ public class SoldadoNormal : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float groundLinearDrag;
     public float limiteDireccion;
+    public float distanceStopAnim; //0.3f
     public float horizontalMov; //0.6f
     public float rayDistancePlayer = 15f;
 
@@ -179,6 +181,7 @@ public class SoldadoNormal : MonoBehaviour
 
     void Update()
     {
+     
         CancelarAnimacionCaminar();
 
         if (wantTeleport) Teletransportar();
@@ -439,10 +442,21 @@ public class SoldadoNormal : MonoBehaviour
         Vector3 movePosition = transform.position;
         movePosition.x = Mathf.MoveTowards(transform.position.x, player.position.x + limiteDireccion, horizontalMov * aceleracion * Time.fixedDeltaTime);
         rb.MovePosition(movePosition);
-        
+
         //Animaciones
-        if (player.position.x + limiteDireccion != transform.position.x) anim.SetBool("WalkSoldier", true);
-        else if (player.position.x + limiteDireccion == transform.position.x) anim.SetBool("WalkSoldier", false);
+
+        //CAmbiar esto para dejar margen
+        //if (player.position.x + limiteDireccion != transform.position.x) anim.SetBool("WalkSoldier", true);
+        if (transform.position.x < player.position.x + limiteDireccion - distanceStopAnim || transform.position.x > player.position.x + limiteDireccion + distanceStopAnim) 
+        {
+            anim.SetBool("WalkSoldier", true);
+            Debug.Log("MArgen Me");
+        } 
+        else if (transform.position.x >= player.position.x + limiteDireccion - distanceStopAnim && transform.position.x <= player.position.x + limiteDireccion + distanceStopAnim) 
+        {
+            anim.SetBool("WalkSoldier", false);
+            Debug.Log("MArgen");
+        }
 
         //Sino estas en la ubicacion walk true
 
