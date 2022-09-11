@@ -9,15 +9,7 @@ public class Cambiar_Area: MonoBehaviour
     public int checkPoint;
     public bool usarCheckpoint;
     bool entrarCamino;
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            entrarCamino = true;
 
-        }
-
-    }
     private void Update()
     {
         if (entrarCamino) { CambiarNivel(); }
@@ -27,5 +19,12 @@ public class Cambiar_Area: MonoBehaviour
         EstructuraNiveles.nivel = siguienteEscena;
         AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
         if (usarCheckpoint) CheckPointController.numeroCheckPoint = checkPoint;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            entrarCamino = true;
+        }
     }
 }

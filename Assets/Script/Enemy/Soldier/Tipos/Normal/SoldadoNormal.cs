@@ -531,11 +531,24 @@ public class SoldadoNormal : MonoBehaviour
     void EscalaAtaque()
     {
         //Se dirige a la derecha
-        if (DistancenPlayer().x > 0) { transform.localScale = new Vector3(1f, transform.localScale.y, transform.localScale.z); limiteDireccion = Mathf.Abs(limiteDireccion) * -1; velocidadBala = Mathf.Abs(velocidadBala) * 1; }
+        if (DistancenPlayer().x > 0)
+        {
+            transform.localScale = new Vector3(1f, transform.localScale.y, transform.localScale.z);
+            limiteDireccion = Mathf.Abs(limiteDireccion) * -1;
+            velocidadBala = Mathf.Abs(velocidadBala) * 1;
+        }
         //Se dirige izquierda
-        else if (DistancenPlayer().x < 0) {transform.localScale = new Vector3(-1f, transform.localScale.y, transform.localScale.z); limiteDireccion = Mathf.Abs(limiteDireccion) * 1; velocidadBala = Mathf.Abs(velocidadBala) * -1; }
+        else if (DistancenPlayer().x < 0)
+        {
+            transform.localScale = new Vector3(-1f, transform.localScale.y, transform.localScale.z);
+            limiteDireccion = Mathf.Abs(limiteDireccion) * 1;
+            velocidadBala = Mathf.Abs(velocidadBala) * -1;
+        }
         //Llega a su destino
-        else transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z); 
+        else 
+        { 
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        } 
 
     }
     void EscalaPatrulla()
@@ -776,8 +789,14 @@ public class SoldadoNormal : MonoBehaviour
     }
     void AnimacionCaminar(float destino)
     {
-        if (destino != transform.position.x) { anim.SetBool("WalkSoldier", true); }
-        else if (destino == transform.position.x) { anim.SetBool("WalkSoldier", false);}
+        if (transform.position.x < destino - distanceStopAnim || transform.position.x > destino + distanceStopAnim) 
+        { 
+            anim.SetBool("WalkSoldier", true);
+        }
+        else if (transform.position.x >= destino - distanceStopAnim || transform.position.x <= destino + distanceStopAnim) 
+        { 
+            anim.SetBool("WalkSoldier", false);
+        }
     }
     void CancelarAnimacionCaminar()
     {
