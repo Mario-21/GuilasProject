@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SoldadoNormal : MonoBehaviour
 {
-    //Mirar dirigir player
+    //Mirar Animacion
     Rigidbody2D rb;
 
     [Header("Objetivo")]
@@ -605,7 +605,12 @@ public class SoldadoNormal : MonoBehaviour
         else if (transform.localScale == new Vector3(-1f, transform.localScale.y, transform.localScale.z)) derecha = false;
 
         //Bloquear ubicacion actual
-        if (block <= 0) { lockUbi = transform.position; block++; direccionFinalizada = 0; }
+        if (block <= 0) 
+        { 
+            lockUbi = transform.position;
+            block++; 
+            direccionFinalizada = 0;
+        }
 
         //Registrar ubicacion del las direcciones a las que dirigirse
         Vector3 movePositionPlus = lockUbi + new Vector3(10f, 0f, 0f); //DIstance
@@ -624,7 +629,7 @@ public class SoldadoNormal : MonoBehaviour
                 sumaDirigirse = direccionFinalizada;
 
                 //Animacion
-                AnimacionCaminar(movePosition.x);
+                AnimacionCaminar(movePositionPlus.x);
 
                 //Al llegar a tu destino cambias la direccion
                 if (transform.position.x == movePositionPlus.x)
@@ -649,8 +654,8 @@ public class SoldadoNormal : MonoBehaviour
                 sumaDirigirse = direccionFinalizada;
 
                 //Animacion
-                AnimacionCaminar(movePosition.x);
-
+                AnimacionCaminar(movePositionMinus.x);
+                
                 //Al llegar a tu destino cambias la direccion
                 if (transform.position.x == movePositionMinus.x)
                 {
@@ -722,7 +727,10 @@ public class SoldadoNormal : MonoBehaviour
 
             //Animacion
             //Ajustar Layer Idl + Sleep Para que solo se active una vez muerto
-            if (indexUbi < ubicacionesDirigir.Count) AnimacionCaminar(ubicacionesDirigir[indexUbi].position.x);
+            if (indexUbi < ubicacionesDirigir.Count) 
+            {
+                AnimacionCaminar(ubicacionesDirigir[indexUbi].position.x);
+            } 
 
             
         }
@@ -789,13 +797,16 @@ public class SoldadoNormal : MonoBehaviour
     }
     void AnimacionCaminar(float destino)
     {
+        //Probar calculo con la busqueda
         if (transform.position.x < destino - distanceStopAnim || transform.position.x > destino + distanceStopAnim) 
         { 
             anim.SetBool("WalkSoldier", true);
+            Debug.Log("Mover");
         }
-        else if (transform.position.x >= destino - distanceStopAnim || transform.position.x <= destino + distanceStopAnim) 
+        else if (transform.position.x >= destino - distanceStopAnim && transform.position.x <= destino + distanceStopAnim) 
         { 
             anim.SetBool("WalkSoldier", false);
+            Debug.Log("Parar");
         }
     }
     void CancelarAnimacionCaminar()

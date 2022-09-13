@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(ActivarModificador))]
 public class AbrirCofre : MonoBehaviour
 {
-    public int identity;
+    public int indexMod;
     [SerializeField] ActivarModificador activar;
     SpriteRenderer spriteActual;
     [SerializeField] Sprite chestOpen;
+    [SerializeField] GameObject itemTake;
+
+    int once;
     private void Awake()
     {
         activar = GetComponent<ActivarModificador>();
@@ -15,22 +19,26 @@ public class AbrirCofre : MonoBehaviour
     }
     void Start()
     {
-        LoadEstado();
+        if(StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) 
+        {
+            spriteActual.sprite = chestOpen;
+            itemTake.SetActive(true);
+        }
     }
 
     void Update()
     {
         //Cambia el Sprite para simular que algo se ha abierto  
-        if (activar.modificacion) { spriteActual.sprite = chestOpen; }
-    }
-    private void OnDestroy()
-    {
-        Modificacion.SaveEstado(identity, activar.modificacion);
-    }
-    public void LoadEstado()
-    {
-        //no Coge el bool
-        
-        activar.modificacion = StatusGameobjectsVariables.statusGameobject.modificacion[identity].modificacion;
+        if (activar.modificacion) 
+        {
+            spriteActual.sprite = chestOpen;
+            if (once < 1) 
+            {
+                itemTake.SetActive(true);
+                once++;
+            }
+            Debug.Log("Lolete");
+            StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+        }
     }
 }

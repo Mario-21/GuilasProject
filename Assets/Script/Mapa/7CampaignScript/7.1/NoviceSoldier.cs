@@ -28,7 +28,7 @@ public class NoviceSoldier : MonoBehaviour
         }
         else
         {
-            Debug.Log("Dolencia");
+
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMinusTime].modificacion = true;
             StatusGameobjectsVariables.statusGameobject.modificacion[indexExceedTime].modificacion = false;
         }
