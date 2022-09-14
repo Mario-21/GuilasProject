@@ -7,6 +7,9 @@ public class OnFallRocks : MonoBehaviour
     [SerializeField] RocksFall desprendimiento;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player")) desprendimiento.enabled = true;
+        if (collision.gameObject.CompareTag("Player")) 
+        {
+            desprendimiento.enabled = true;
+        } 
     }
 }
