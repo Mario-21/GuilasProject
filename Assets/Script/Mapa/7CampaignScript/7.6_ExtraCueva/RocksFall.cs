@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
+
 
 public class RocksFall : MonoBehaviour
 {
@@ -22,6 +24,8 @@ public class RocksFall : MonoBehaviour
     [Header("Duration RocksFall")]
     public float timeRocksFall;
     public float timeRocksFallEnds;
+    [Header("Camera Shake")]
+    [SerializeField] CinemachineVirtualCamera cmCamera_1;
 
     //Transform randomSpawn;
 
@@ -31,6 +35,7 @@ public class RocksFall : MonoBehaviour
     void Start()
     {
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) this.enabled = false;
+        
     }
 
     // Update is called once per frame
@@ -42,6 +47,8 @@ public class RocksFall : MonoBehaviour
     {
         if(timeRocksFall < timeRocksFallEnds)
         {
+            //ShaKe Camera
+            cmCamera_1.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 1;
             //Time Duration
             timeRocksFall += Time.deltaTime;
             //Time Spawn
@@ -68,6 +75,7 @@ public class RocksFall : MonoBehaviour
         }
         else 
         {
+            cmCamera_1.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0;
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
         }
     }

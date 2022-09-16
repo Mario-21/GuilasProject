@@ -31,7 +31,6 @@ public class Derrumbamiento : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("B8"))
         {
-            
             Rumbling();
         }
     }
