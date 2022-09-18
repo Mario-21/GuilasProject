@@ -4,9 +4,27 @@ using UnityEngine;
 
 public class CallAll : MonoBehaviour
 {
+    public int indexModOpenDoor;
+
     public int indexCeilingPan;
     public int indexRecoveryRoom;
     public List<SoldadoNormal> soldados;
+
+    BoxCollider2D box;
+
+
+    private void Start()
+    {
+        box = GetComponent<BoxCollider2D>();
+    }
+    private void Update()
+    {
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexModOpenDoor].modificacion)
+        {
+            box.enabled = true;
+        }
+        else box.enabled = false;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

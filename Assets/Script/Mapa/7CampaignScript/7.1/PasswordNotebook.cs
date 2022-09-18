@@ -8,7 +8,9 @@ public class PasswordNotebook : MonoBehaviour
     PlayerHere player;
     ActivarModificador activar;
     public int indexMod;
+    [Header("Reveal Password")]
     public Image notebook;
+    public Text password;
     public Sprite notebookRevealPass;
     bool seeNote;
     void Start()
@@ -16,6 +18,7 @@ public class PasswordNotebook : MonoBehaviour
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
             notebook.sprite = notebookRevealPass;
+            password.enabled = true;
         }
         activar = GetComponent<ActivarModificador>();
         player = GetComponent<PlayerHere>();
@@ -55,6 +58,7 @@ public class PasswordNotebook : MonoBehaviour
         {
             notebook.sprite = notebookRevealPass;
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+            password.enabled = true;
         }
     }
 }
