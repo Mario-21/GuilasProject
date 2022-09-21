@@ -126,7 +126,8 @@ public class ArmaController : MonoBehaviour
             mira.localPosition = new Vector2(0f, mira.localPosition.y);
             mira.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             brazo.transform.rotation = Quaternion.identity;
-            theySeeYou.VisibleOff();
+            //Si has disparado antes de ocultarte y aun te queda tiempo no vas a poder volver a ser invisible hasta que se acabe el tiempo
+            if(!theySeeYou.visible) theySeeYou.VisibleOff();
             if (!ListaAttackSoldado.modeSoldiers.activeAllAttackSoldiers) theySeeYou.isVisible.enabled = false;
         }
     }

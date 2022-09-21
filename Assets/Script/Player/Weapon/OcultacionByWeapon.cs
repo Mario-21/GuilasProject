@@ -6,7 +6,7 @@ public class OcultacionByWeapon : MonoBehaviour
 {
     [Header("Visible Duration")]
     public float tiempoLimiteVisible;
-    [HideInInspector] public float tiempoVisible;
+    public float tiempoVisible;
     [HideInInspector] public float defaultTiempoLimiteVisible;
     [Header("Player Data")]
     public int layerPlayer;
@@ -32,7 +32,6 @@ public class OcultacionByWeapon : MonoBehaviour
     void OcultacionLost()
     {
         //Si disparas puedes ser visto 
-
         //Llamar a la lista soldado una vez antes ya que el primer golpe no lo registra;
         if (!ListaAttackSoldado.modeSoldiers.activeAllAttackSoldiers)
         {
@@ -46,6 +45,8 @@ public class OcultacionByWeapon : MonoBehaviour
 
                 //Layer Player;
                 playerTorso.layer = layerPlayer;
+
+                Debug.Log("Tortuga");
 
                 //default se utiliza para cuando te han pillado en modo busqueda, restablece el valor original para que no se quede con el incrementado
                 if (tiempoVisible >= tiempoLimiteVisible)

@@ -41,6 +41,10 @@ public class SaveScene : MonoBehaviour
     [HideInInspector]public int wakeUpDoctorNovice;
     #endregion
 
+    #region Type Of Drink (8.5_Bar)
+    public int drink;
+    #endregion
+
     //Quiero que ocurra en contadas escenas
     private void Awake()
     {

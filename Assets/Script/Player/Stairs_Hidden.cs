@@ -57,7 +57,7 @@ public class Stairs_Hidden : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.O))
                 {
                     //Parar Movimiento
-                    weaponHidden.tiempoVisible += 99;
+                    //weaponHidden.tiempoVisible += 99;
                     mov.horizontalMov = 0;
                     mov.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
 
@@ -67,49 +67,53 @@ public class Stairs_Hidden : MonoBehaviour
                     iconoZone.SetActive(false);
                    
                     imHidden = !imHidden;
-                   
-                    if (imHidden)
-                    {
-                        //disable OcultacionByWeapon for tags don't get problems 
-                        weaponHidden.enabled = false;
-                        weaponHidden.cooldownUI.enabled = false;
-                        //If you hide meanwhile you aim, mira disappear
-                        mira.SetActive(false);
-                        //can't move and shoot
-                        arma.enabled = false;
-                        mov.enabled = false;
-                        
 
-                        //Cambiar Layer y tag, para ocultarte
-                        mov.torso.layer = 31;
-                        cuerpoPlayer.tag = "Escondite";
-
-                    }
-                    else
-                    {
-                        //enabled OcultacionByWeapon 
-                        weaponHidden.enabled = true;
-                        weaponHidden.cooldownUI.enabled = true;
-                        //If you hide meanwhile you aim, mira appear
-                        mira.SetActive(true);
-                        //you can see again the icon
-                        iconoZone.SetActive(true);
-                        //can move and shoot
-                        arma.enabled = true;
-                        mov.enabled = true;
-
-
-                        ////Cambiar Layer y tag, para desocultarte
-                        mov.torso.layer = layerDesocultacion;
-                        cuerpoPlayer.tag = "Player";
-
-
-                    }
+                    Hidden();
 
                 }
             }
         }
 
+    }
+
+    void Hidden()
+    {
+        if (imHidden)
+        {
+            //disable OcultacionByWeapon for tags don't get problems 
+            weaponHidden.enabled = false;
+
+            //If you hide meanwhile you aim, mira disappear
+            mira.SetActive(false);
+            //can't move and shoot
+            arma.enabled = false;
+            mov.enabled = false;
+
+
+            //Cambiar Layer y tag, para ocultarte
+            mov.torso.layer = 31;
+            cuerpoPlayer.tag = "Escondite";
+
+        }
+        else
+        {
+            //enabled OcultacionByWeapon 
+            weaponHidden.enabled = true;
+
+            //If you hide meanwhile you aim, mira appear
+            mira.SetActive(true);
+            //you can see again the icon
+            iconoZone.SetActive(true);
+            //can move and shoot
+            arma.enabled = true;
+            mov.enabled = true;
+
+            ////Cambiar Layer y tag, para desocultarte
+            mov.torso.layer = layerDesocultacion;
+            cuerpoPlayer.tag = "Player";
+
+
+        }
     }
 
 
