@@ -25,6 +25,8 @@ public class Camino_CambiarZona : MonoBehaviour
     {
         if (camino)
         {
+            iconeZoneSprite.sprite = iconoArrow;
+            iconoZone.SetActive(true);
             if (Input.GetKeyDown(KeyCode.Z))
             {
                 CheckPointController.numeroCheckPoint = checkpointSpanwScene;
@@ -33,17 +35,17 @@ public class Camino_CambiarZona : MonoBehaviour
                 iconoZone.SetActive(false);
             }
         }
+        else
+        {
+            iconoZone.SetActive(false);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             camino = true;
-            iconeZoneSprite.sprite = iconoArrow;
-            iconoZone.SetActive(true);
         }
-        
-        
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -56,7 +58,6 @@ public class Camino_CambiarZona : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player")) 
         {
-            iconoZone.SetActive(false);
             camino = false; 
         } 
     }

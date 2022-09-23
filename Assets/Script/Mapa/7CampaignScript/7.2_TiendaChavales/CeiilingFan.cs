@@ -14,14 +14,13 @@ public class CeiilingFan : MonoBehaviour
     [SerializeField] SoldierLife soldierSwitchLife;
     bool enemyHere;
     float timeOnCeiling;
+    public float timeOnCeilingLimit = 1.5f;
 
     PlayerHere player;
     void Start()
     {
         player = GetComponent<PlayerHere>();
     }
-
-    // Update is called once per frame
     void Update()
     {
         if (!StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
@@ -59,7 +58,7 @@ public class CeiilingFan : MonoBehaviour
         if (enemyHere && soldierSwitchLife.vida > 0)
         {
             timeOnCeiling += Time.deltaTime;
-            if (timeOnCeiling >= 1.5f)
+            if (timeOnCeiling >= timeOnCeilingLimit)
             {
                 onCeilingFan = true;
                 timeOnCeiling = 0;
