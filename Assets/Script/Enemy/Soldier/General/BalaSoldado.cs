@@ -18,7 +18,16 @@ public class BalaSoldado : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player")) {Debug.Log("Player golpeado"); Destroy(this.gameObject); }
-        if (collision.gameObject.CompareTag("Ground")) Destroy(this.gameObject);
+        if (collision.gameObject.CompareTag("Player")) 
+        {
+            Debug.Log("Player golpeado"); 
+            Destroy(this.gameObject);
+        }
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Faker")) 
+        {
+            Debug.Log("Ground golpeado");
+            Destroy(this.gameObject);
+        }
+        
     }
 }

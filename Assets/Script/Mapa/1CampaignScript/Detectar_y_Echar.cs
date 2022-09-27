@@ -53,6 +53,28 @@ public class Detectar_y_Echar : MonoBehaviour
         }
         
     }
+    void Secuence()
+    {
+        switch (detectScene)
+        {
+            case SecuenceDetect.girarSoldado:
+                //El enemigo se gire
+                if (movPlayer.transform.localScale.x == 1) soldier.transform.localScale = new Vector3(-1f, 1f, 1f);
+                else if (movPlayer.transform.localScale.x == -1) soldier.transform.localScale = new Vector3(1f, 1f, 1f);
+                EstructuraNiveles.nivel = sceneReload;
+                if (!balaInside) detectScene = SecuenceDetect.showDialogo;
+                break;
+            case SecuenceDetect.showDialogo:
+                timeDialogo += Time.deltaTime;
+                if (timeDialogo >= 1) objInter.DetenerDialogo();
+                if (timeDialogo >= 2) detectScene = SecuenceDetect.resetScene;
+                break;
+            case SecuenceDetect.resetScene:
+                AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
+                CheckPointController.numeroCheckPoint = spawn;
+                break;
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("BalaPlayer")) balaInside = true;
@@ -69,28 +91,5 @@ public class Detectar_y_Echar : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("BalaPlayer")) balaInside = false;
-    }
-
-    void Secuence()
-    {
-        switch (detectScene)
-        {
-            case SecuenceDetect.girarSoldado:
-                //El enemigo se gire
-                if (movPlayer.transform.localScale.x == 1) soldier.transform.localScale = new Vector3(-1f, 1f, 1f);
-                else if (movPlayer.transform.localScale.x == -1) soldier.transform.localScale = new Vector3(1f, 1f, 1f);
-                EstructuraNiveles.nivel = sceneReload;
-                if(!balaInside)detectScene = SecuenceDetect.showDialogo;
-                break;
-            case SecuenceDetect.showDialogo:
-                timeDialogo += Time.deltaTime;
-                if(timeDialogo >= 1) objInter.DetenerDialogo();
-                if (timeDialogo >= 2) detectScene = SecuenceDetect.resetScene;
-                break;
-            case SecuenceDetect.resetScene:
-                AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
-                CheckPointController.numeroCheckPoint = spawn;
-                break;
-        }
     }
 }

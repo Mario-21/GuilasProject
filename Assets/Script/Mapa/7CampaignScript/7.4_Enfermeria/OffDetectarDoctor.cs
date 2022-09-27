@@ -6,7 +6,7 @@ public class OffDetectarDoctor : MonoBehaviour
 {
     [Header("Detector Info")]
     [SerializeField] BoxCollider2D colliderDetector;
-    bool offDetector;
+    [SerializeField] bool offDetector;
     [Header("Doctor Info")]
     [SerializeField] SoldadoNormal doctor;
     [SerializeField] SoldierLife doctorLife;

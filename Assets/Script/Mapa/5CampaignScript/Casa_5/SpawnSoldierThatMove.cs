@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnSoldierThatMove : MonoBehaviour
 {
     [SerializeField] Transform spawnStart;
+    [Header("Soldier Info")]
     [SerializeField] Transform soldadoMove;
     [SerializeField] SoldierLife soldadoMoveLife;
 

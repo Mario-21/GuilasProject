@@ -35,10 +35,6 @@ public class Camino_CambiarZona : MonoBehaviour
                 iconoZone.SetActive(false);
             }
         }
-        else
-        {
-            iconoZone.SetActive(false);
-        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -58,7 +54,8 @@ public class Camino_CambiarZona : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player")) 
         {
-            camino = false; 
+            camino = false;
+            iconoZone.SetActive(false);
         } 
     }
 }
