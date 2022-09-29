@@ -19,14 +19,15 @@ public class DirtyClothe : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        TakeDirtyClothe(); 
     }
     void TakeDirtyClothe()
     {
         if (player.playerImHere)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetKeyDown(KeyCode.T))
             {
+                StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
                 CatchClothes();
             }
         }

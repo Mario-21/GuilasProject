@@ -53,14 +53,16 @@ public class Detectar_y_Echar : MonoBehaviour
         }
         
     }
-    void Secuence()
+    public void Secuence()
     {
         switch (detectScene)
         {
             case SecuenceDetect.girarSoldado:
-                //El enemigo se gire
-                if (movPlayer.transform.localScale.x == 1) soldier.transform.localScale = new Vector3(-1f, 1f, 1f);
-                else if (movPlayer.transform.localScale.x == -1) soldier.transform.localScale = new Vector3(1f, 1f, 1f);
+                //El enemigo se gire izq.
+                if (ScaleWithDistance().x < 0) soldier.transform.localScale = new Vector3(-1f, 1f, 1f);
+                //El enemigo gire drcha.
+                else if (ScaleWithDistance().x > 0) soldier.transform.localScale = new Vector3(1f, 1f, 1f);
+                //Colocar Nivel
                 EstructuraNiveles.nivel = sceneReload;
                 if (!balaInside) detectScene = SecuenceDetect.showDialogo;
                 break;
@@ -91,5 +93,12 @@ public class Detectar_y_Echar : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("BalaPlayer")) balaInside = false;
+    }
+
+    Vector2 ScaleWithDistance()
+    {
+        Vector2 distancePlayerSoldier;
+        return distancePlayerSoldier = movPlayer.transform.position - soldier.transform.position;
+        
     }
 }

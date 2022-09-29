@@ -34,6 +34,7 @@ public class BloquearMovimientoPlayer : MonoBehaviour
         //Deactivate ChangeWeapon
         conditionToChangeWeapon.enabled = false;
     }
+    //Electricidad (7.7) Paralizar
     public void BloquearMovConDaño()
     {
         //La vida se elimina. Este se hace para que la bajada de vida no vaya a destiempo con el golpe que recibes
