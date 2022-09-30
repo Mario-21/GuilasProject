@@ -13,6 +13,7 @@ public class JarCondition : MonoBehaviour
         if (SaveScene.instancia.listaItemsNivelGuardar[indexModJar].objetoObtenido) 
         {
             jarra.enabled = false;
+            jarra.gameObject.SetActive(false);
             this.gameObject.SetActive(false);
         }
     }

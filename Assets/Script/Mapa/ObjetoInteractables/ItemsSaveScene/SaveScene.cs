@@ -16,6 +16,8 @@ public class SaveScene : MonoBehaviour
     #endregion
 
     //Probar sei estos datos al cambiar se mantionen o no
+
+    //Limpiar datos en cada nivel, sino se van a conservar
     #region ViajeRapido(Nivel_ 4)
     [HideInInspector] public int usosViajeRapido = 1;
     #endregion
@@ -43,6 +45,9 @@ public class SaveScene : MonoBehaviour
 
     #region Type Of Drink (8.5_Bar)
     public int drink;
+    #endregion
+    #region Collect Clothes (8.6_Dormitorio)
+    [HideInInspector] public int numClothes;
     #endregion
 
     //Quiero que ocurra en contadas escenas

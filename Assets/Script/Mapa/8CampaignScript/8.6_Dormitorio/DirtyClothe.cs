@@ -7,6 +7,9 @@ public class DirtyClothe : MonoBehaviour
     public int indexMod;
 
     PlayerHere player;
+    [Header("Clothes Info")]
+    public int totalClothes;
+    public int indexAllClothes;
     void Start()
     {
         player = GetComponent<PlayerHere>();
@@ -29,6 +32,9 @@ public class DirtyClothe : MonoBehaviour
             {
                 StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
                 CatchClothes();
+                //Recogiendo ropa
+                SaveScene.instancia.numClothes++;
+                if (SaveScene.instancia.numClothes >= totalClothes) StatusGameobjectsVariables.statusGameobject.modificacion[indexAllClothes].modificacion = true;
             }
         }
     }
