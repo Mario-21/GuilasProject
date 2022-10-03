@@ -15,6 +15,8 @@ public class SaveButton : MonoBehaviour
     Button button;
     Text textButton;
 
+    int onceButton;
+
     private void Awake()
     {
         imageButton = GetComponent<Image>();
@@ -26,7 +28,7 @@ public class SaveButton : MonoBehaviour
         CallButtonAppear();
         LimitarUsos();
     }
-    void CallButtonAppear()
+    public void CallButtonAppear()
     {
 
         if (SaveScene.instancia.listaItemsNivelGuardar[indexButton].objetoObtenido) 

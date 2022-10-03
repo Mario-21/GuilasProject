@@ -49,6 +49,9 @@ public class SaveScene : MonoBehaviour
     #region Collect Clothes (8.6_Dormitorio)
     [HideInInspector] public int numClothes;
     #endregion
+    #region Consumption (8.7_Laundry)
+    [HideInInspector] public int consumption;
+    #endregion
 
     //Quiero que ocurra en contadas escenas
     private void Awake()

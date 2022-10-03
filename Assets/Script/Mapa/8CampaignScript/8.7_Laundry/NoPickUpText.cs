@@ -5,15 +5,17 @@ using UnityEngine.UI;
 
 public class NoPickUpText : MonoBehaviour
 {
+    [Header("Text No Pick")]
     public CanvasGroup text;
-    public bool seeText;
-
     [Header("Conditions See Text")]
     [SerializeField] SoldierLife soldadoLaundry;
     public int indexAllergy;
     public int indexBath;
 
     PlayerHere player;
+
+    float timeSeeText;
+    bool seeText;
     void Start()
     {
         player = GetComponent<PlayerHere>();
@@ -23,11 +25,15 @@ public class NoPickUpText : MonoBehaviour
     void Update()
     {
         OutText();
+        ConditionsText();
+        TextHide();
+
         if (player.playerImHere)
         {
             if (Input.GetKeyDown(KeyCode.T))
             {
-                ConditionsText();
+                timeSeeText = 0;
+                seeText = true;
             }
         }
     }
@@ -49,6 +55,18 @@ public class NoPickUpText : MonoBehaviour
         else
         {
             text.alpha -= 0.01f;
+        }
+    }
+    void TextHide() 
+    {
+        if (seeText)
+        {
+            timeSeeText += Time.deltaTime;
+            if(timeSeeText >= 5)
+            {
+                seeText = false;
+                timeSeeText = 0;
+            }
         }
     }
     void OutText()
