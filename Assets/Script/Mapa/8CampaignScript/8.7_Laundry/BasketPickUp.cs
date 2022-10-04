@@ -12,7 +12,7 @@ public class BasketPickUp : MonoBehaviour
     //3 Condiciones
     //Si el soldado esta Muerto
     //Con Alergia o en el baño
-    void Update()
+    void Start()
     {
         CanPickBasket();
     }

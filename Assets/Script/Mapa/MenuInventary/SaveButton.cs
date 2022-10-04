@@ -15,8 +15,6 @@ public class SaveButton : MonoBehaviour
     Button button;
     Text textButton;
 
-    int onceButton;
-
     private void Awake()
     {
         imageButton = GetComponent<Image>();

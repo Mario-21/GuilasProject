@@ -32,12 +32,11 @@ public class ThinkDrink : MonoBehaviour
     {
         if (canSeeThink) SeeThink();
 
-        if(StatusGameobjectsVariables.statusGameobject.modificacion[indexAllergy].modificacion ||
-           StatusGameobjectsVariables.statusGameobject.modificacion[indexBath].modificacion || 
-           soldadoLife.vida <= 0 || soldado.berserker)
+        if(soldadoLife.vida <= 0 || soldado.berserker)
         {
             canSeeThink = false;
             thinkGlobo.SetBool("ThinkSee", false);
+            this.enabled = false;
         }
     }
     void SeeThink()

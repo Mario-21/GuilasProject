@@ -11,7 +11,9 @@ public class NoPickUpText : MonoBehaviour
     [SerializeField] SoldierLife soldadoLaundry;
     public int indexAllergy;
     public int indexBath;
-
+    [Header("BasketItem")]
+    [SerializeField] CogerObjeto basketItem;
+     
     PlayerHere player;
 
     float timeSeeText;
@@ -19,6 +21,12 @@ public class NoPickUpText : MonoBehaviour
     void Start()
     {
         player = GetComponent<PlayerHere>();
+
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexBath].modificacion)
+        {
+            this.enabled = false;
+            text.alpha = 0f;
+        }
     }
 
     // Update is called once per frame
@@ -40,8 +48,7 @@ public class NoPickUpText : MonoBehaviour
     void ConditionsText()
     {
         if (soldadoLaundry.vida > 0
-            && !StatusGameobjectsVariables.statusGameobject.modificacion[indexAllergy].modificacion
-            && !StatusGameobjectsVariables.statusGameobject.modificacion[indexBath].modificacion)
+            && !StatusGameobjectsVariables.statusGameobject.modificacion[indexAllergy].modificacion)
         {
             TextSee();
         }
@@ -71,10 +78,9 @@ public class NoPickUpText : MonoBehaviour
     }
     void OutText()
     {
-        if (soldadoLaundry.vida <= 0
-            || StatusGameobjectsVariables.statusGameobject.modificacion[indexAllergy].modificacion
-            || StatusGameobjectsVariables.statusGameobject.modificacion[indexBath].modificacion)
+        if (soldadoLaundry.vida <= 0)
         {
+            basketItem.enabled = true;
             this.enabled = false;
             text.alpha = 0f;
 

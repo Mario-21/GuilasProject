@@ -6,10 +6,12 @@ public class Allergy_Or_Bath : MonoBehaviour
 {
     [Header("Allergy")]
     public int indexModAllergy;
+    [SerializeField] UseAllergyButton allergyLimit;
     [Header("Bath")]
     public int indexModBath;
+    [SerializeField] ParticleSystem beberEffect;
     [Header("Change Vaso")]
-    public GameObject buttonJarraLlena;
+    public SaveButton buttonJarraLlena;
     public int vasoLleno;
     public SaveButton buttonJarraVacia;
     public int vasoVacio;
@@ -36,6 +38,7 @@ public class Allergy_Or_Bath : MonoBehaviour
             if (typeDrink.selectedDrink == 1 || typeDrink.selectedDrink == 2)
             {
                 SaveScene.instancia.consumption++;
+                beberEffect.Play();
                 once++;
                 ChangeGlass();
                 Bath();
@@ -43,6 +46,8 @@ public class Allergy_Or_Bath : MonoBehaviour
             if(typeDrink.selectedDrink == 0)
             {
                 AllergyDrink();
+                allergyLimit.LimitUse();
+                buttonJarraLlena.LimitarUsos();
                 once++;
                 this.enabled = false;
             }
@@ -67,7 +72,8 @@ public class Allergy_Or_Bath : MonoBehaviour
         SaveScene.instancia.listaItemsNivelGuardar[vasoVacio].objetoObtenido = true;
         buttonJarraVacia.gameObject.SetActive(true);
         buttonJarraVacia.CallButtonAppear();
+
         SaveScene.instancia.listaItemsNivelGuardar[vasoLleno].objetoObtenido = false;
-        buttonJarraLlena.SetActive(false);
+        buttonJarraLlena.gameObject.SetActive(false);
     }
 }
