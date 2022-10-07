@@ -25,6 +25,7 @@ public class GoBoneCin : MonoBehaviour
     void Update()
     {
         ActivateCine();
+        OffModificador();
     }
     void ActivateCine()
     {
@@ -34,6 +35,13 @@ public class GoBoneCin : MonoBehaviour
             EstructuraNiveles.nivel = cinematicLevel;
             AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+        }
+    }
+    void OffModificador()
+    {
+        if(boneSoldier.vida <= 0)
+        {
+            activador.enabled = false;
         }
     }
 }
