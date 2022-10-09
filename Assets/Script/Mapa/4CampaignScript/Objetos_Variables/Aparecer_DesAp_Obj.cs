@@ -40,7 +40,20 @@ public class Aparecer_DesAp_Obj : MonoBehaviour
         }
        
     }
-
+    public void DesAppear()
+    {
+        foreach (GameObject objeto in objetosDesaparecer)
+        {
+            objeto.SetActive(false);
+        }
+    }
+    public void Appear()
+    {
+        foreach (GameObject objeto in objetosAparecer)
+        {
+            objeto.SetActive(true);
+        }
+    }
     public void DesaparacerObjetos(List<GameObject> objectWantDis)
     {
         //Hace desparacer ciertos objetos de escena, para simular que se han cambiado de sitio

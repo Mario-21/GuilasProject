@@ -9,7 +9,7 @@ public class PozoEnter : MonoBehaviour
     [Header("Pozo Características")]
     public GameObject cuerdaRota;
     public GameObject cuerdaArreglada;
-    [SerializeField] Cambiar_Area pozoZone;
+    [SerializeField] Camino_CambiarZona pozoZone;
     void Start()
     {
         activador = GetComponent<ActivarModificador>();
