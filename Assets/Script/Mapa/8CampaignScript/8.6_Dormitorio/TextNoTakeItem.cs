@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class TextNoTakeItem : MonoBehaviour
 {
-    float timeText;
+    [Header("Conditions See Text")]
+    public int indexSleep;
     [SerializeField] PutGasMask basketMask;
     [SerializeField] SoldierLife diarySoldier;
     [SerializeField] CanvasGroup text;
 
+    float timeText;
     PlayerHere player;
     bool showT;
     void Start()
     {
         player = GetComponent<PlayerHere>();
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexSleep].modificacion) this.enabled = false;
     }
     void Update()
     {

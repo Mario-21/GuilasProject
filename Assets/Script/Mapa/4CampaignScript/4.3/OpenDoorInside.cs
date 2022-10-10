@@ -7,8 +7,10 @@ public class OpenDoorInside : MonoBehaviour
     public int indexModificador;
     [SerializeField] SpriteRenderer door;
     [SerializeField] Sprite doorOpen;
+    BoxCollider2D openCollider;
     private void Start()
     {
+        openCollider = GetComponent<BoxCollider2D>();
         if(StatusGameobjectsVariables.statusGameobject.modificacion[indexModificador].modificacion) AbrirPuertaInside();
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -23,6 +25,7 @@ public class OpenDoorInside : MonoBehaviour
     {
         door.sprite = doorOpen;
         door.GetComponent<BoxCollider2D>().enabled = false;
+        openCollider.enabled = false;
         StatusGameobjectsVariables.statusGameobject.modificacion[indexModificador].modificacion = true;
     }
 }

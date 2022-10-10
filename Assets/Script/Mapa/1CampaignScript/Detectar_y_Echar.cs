@@ -58,6 +58,8 @@ public class Detectar_y_Echar : MonoBehaviour
         switch (detectScene)
         {
             case SecuenceDetect.girarSoldado:
+                soldier.enabled = false;
+                soldier.OutAnimation();
                 //El enemigo se gire izq.
                 if (ScaleWithDistance().x < 0) soldier.transform.localScale = new Vector3(-1f, 1f, 1f);
                 //El enemigo gire drcha.

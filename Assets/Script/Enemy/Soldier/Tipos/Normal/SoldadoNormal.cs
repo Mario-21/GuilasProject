@@ -855,6 +855,11 @@ public class SoldadoNormal : MonoBehaviour
         }
         else canTeleport = false;
     }
+    //Cuando la accion se vea interrupida de golpe
+    public void OutAnimation()
+    {
+        anim.SetBool("WalkSoldier", false);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

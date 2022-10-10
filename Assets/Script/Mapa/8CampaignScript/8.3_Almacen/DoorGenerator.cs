@@ -12,6 +12,7 @@ public class DoorGenerator : MonoBehaviour
     [SerializeField] SpriteRenderer door;
     [SerializeField] Sprite doorOpen;
     [SerializeField] BoxCollider2D colliderDoor;
+    [SerializeField] BoxCollider2D triggerB8;
 
     PlayerHere player;
 
@@ -42,6 +43,7 @@ public class DoorGenerator : MonoBehaviour
     {
         if (onDoor)
         {
+            triggerB8.enabled = false;
             //On Light
             luzDoor.color = Color.green;
             luzGenerator.color = Color.green;
