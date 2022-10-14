@@ -12,8 +12,6 @@ public class AscensorMinero : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-
-    // Update is called once per frame
     void FixedUpdate()
     {
         Ascendor();
@@ -37,6 +35,7 @@ public class AscensorMinero : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //Esto es el sticker, quiza cambiar 
         if (collision.gameObject.CompareTag("Player")) { Debug.Log("Player ha subido al ascensor"); collision.gameObject.transform.parent = transform; };
     }
     private void OnCollisionExit2D(Collision2D collision)

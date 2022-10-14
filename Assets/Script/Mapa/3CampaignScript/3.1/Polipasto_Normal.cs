@@ -32,10 +32,6 @@ public class Polipasto_Normal : MonoBehaviour
 
         bajar = true;
     }
-    private void Update()
-    {
-        
-    }
     void FixedUpdate()
     {
         Ascensor_Normal();
