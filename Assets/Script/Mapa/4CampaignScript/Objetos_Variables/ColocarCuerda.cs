@@ -5,32 +5,31 @@ using UnityEngine;
 public class ColocarCuerda : MonoBehaviour
 {
     [Tooltip("Identity is number of modification")]
-    public int identity;
+    public int indexMod;
     ActivarModificador activar;
-    [SerializeField] GameObject cuerda;
-
-    private void Awake()
-    {
-        activar = GetComponent<ActivarModificador>();
-    }
+    [SerializeField] GameObject colocarItem;
     void Start()
     {
-        LoadEstado();
+        activar = GetComponent<ActivarModificador>();
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
+        {
+            ColocarItem();
+        }
     }
 
     void Update()
     {
         //Simula que colocas un objeto,activando uno ya presente en escena
-        if (activar.modificacion) { cuerda.SetActive(true); }
+        ColocarItem();
     }
-    private void OnDestroy()
+    void ColocarItem()
     {
-        Modificacion.SaveEstado(identity, activar.modificacion);
-    }
-    public void LoadEstado()
-    {
-        //no Coge el bool
-
-        activar.modificacion = StatusGameobjectsVariables.statusGameobject.modificacion[identity].modificacion;
+        if (activar.modificacion)
+        {
+            StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+            colocarItem.SetActive(true);
+            //Se desactiva para que no puedas a volver a realizar la acción y no te quite uses a los objetos si tienen más de un uso
+            this.enabled = false;
+        }
     }
 }

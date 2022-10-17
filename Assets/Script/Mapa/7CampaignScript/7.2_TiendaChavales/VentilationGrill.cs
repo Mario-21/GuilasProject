@@ -12,7 +12,10 @@ public class VentilationGrill : MonoBehaviour
     {
         activar = GetComponent<ActivarModificador>();
 
-        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) RemoveVentilationGrille();
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) 
+        {
+            RemoveVentilationGrille();
+        }
     }
 
     // Update is called once per frame
@@ -24,5 +27,7 @@ public class VentilationGrill : MonoBehaviour
     {
         ventilation.SetActive(false);
         StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+        //Se desactiva para que no puedas a volver a realizar la acción y no te quite uses a los objetos si tienen más de un uso
+        this.enabled = false;
     }
 }
