@@ -45,6 +45,8 @@ public class Caer_Cabeza : MonoBehaviour
             //Cuando choca contra el suelo tambien deberia modificarse
             StatusGameobjectsVariables.statusGameobject.modificacion[indexModificar].modificacion = true;
             caidaObjeto.ObjetoInGround();
+            //Quiza cambiar
+            Destroy(this.gameObject);
         }
     }
     private void OnCollisionStay2D(Collision2D collision)
