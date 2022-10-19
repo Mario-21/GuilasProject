@@ -24,6 +24,7 @@ public class ElevatorCoche : MonoBehaviour
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
             this.enabled = false;
+            elevador.position = ubiElevator[0].position;
         }
     }
 
@@ -37,12 +38,13 @@ public class ElevatorCoche : MonoBehaviour
     {
         if (player.playerImHere)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetKeyDown(KeyCode.Z) && !StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
             {
                 onElevator = true;
                 boss.enabled = false;
                 fallItem.SetActive(true);
-                
+                StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+
             }
         }
     }

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CogerObjetoSoldado : MonoBehaviour
 {
-    ListaItem listaItemNivel;
-
     SoldierLife soldadoVida;
 
     public int objetoARecoger;
@@ -18,8 +16,6 @@ public class CogerObjetoSoldado : MonoBehaviour
     private void Awake()
     {
         zona = GetComponent<PlayerHere>();
-
-        listaItemNivel = FindObjectOfType<ListaItem>();
 
         soldadoVida = GetComponentInParent<SoldierLife>();
     }
@@ -45,7 +41,7 @@ public class CogerObjetoSoldado : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T) && !SaveScene.instancia.listaItemsNivelGuardar[objetoARecoger].objetoObtenido)
         {
-            listaItemNivel.listaItemsNivel[objetoARecoger].objetoObtenido = true;
+            SaveScene.instancia.listaItemsNivelGuardar[objetoARecoger].objetoObtenido = true;
 
             buttonObjectInventory.GetComponent<RectTransform>().localPosition = InventoryManager.instanciaInventory.inventoryPosition[InventoryManager.instanciaInventory.indexInventoryPosition];
             SaveScene.instancia.listaItemsNivelGuardar[objetoARecoger].ubiPosButton = InventoryManager.instanciaInventory.indexInventoryPosition;

@@ -6,6 +6,7 @@ public class RecoveryRoomCinematic : MonoBehaviour
 {
     public int indexMod;
     public int returnScene;
+    public int checkpoint;
     [Header("Soldado Normal Spawn")]
     //que el soldado normal aparezca a cierta distancia, para que se adapte el soldado, dependiendo del switch muera 
     [SerializeField] Transform soldierNormal;
@@ -52,6 +53,7 @@ public class RecoveryRoomCinematic : MonoBehaviour
                 StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
                 if (timeBetweenScene <= 0)
                 {
+                    CheckPointController.numeroCheckPoint = checkpoint;
                     EstructuraNiveles.nivel = returnScene;
                     AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
                 }
