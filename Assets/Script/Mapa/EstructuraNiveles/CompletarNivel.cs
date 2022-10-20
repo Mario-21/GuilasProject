@@ -21,10 +21,10 @@ public class CompletarNivel : MonoBehaviour
             blockPlayer.BloquearMovPlayer();
             EstructuraNiveles.nivel = siguienteNivel;
             AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
-            if(SaveScene.instancia != null)
+            /*if(SaveScene.instancia != null)
             {
                 SaveScene.instancia.ClearListIteams();
-            }
+            }*/
             //if (TotalTerminales.terminalesTotales != null) TotalTerminales.terminalesTotales.PortatilValueReset();
             CheckPointController.numeroCheckPoint = 0;
             Destroy(SoldierActiveInScene.instancia.gameObject);
@@ -32,6 +32,8 @@ public class CompletarNivel : MonoBehaviour
             Destroy(TotalTerminales.terminalesTotales.gameObject);
             Destroy(ListaAttackSoldado.modeSoldiers.gameObject);
             Destroy(ListaItemsUI.listaItemsUI.gameObject);
+            Destroy(SaveScene.instancia.gameObject);
+            Destroy(ExtraVariable.extras.gameObject);
         }
 
     }

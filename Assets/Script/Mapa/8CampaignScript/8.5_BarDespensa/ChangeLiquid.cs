@@ -21,7 +21,7 @@ public class ChangeLiquid : MonoBehaviour
             {
                 Debug.Log("Liquid Change");
                 colorLiquid.selectedDrink = typeDrink;
-                SaveScene.instancia.drink = typeDrink;
+                ExtraVariable.extras.drink = typeDrink;
             }
         }
     }

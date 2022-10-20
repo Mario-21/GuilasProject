@@ -932,7 +932,7 @@ public class SoldadoNormal : MonoBehaviour
 
 
     //Distancia entre el enemigo y el Player
-    Vector2 DistancenPlayer()
+    public Vector2 DistancenPlayer()
     {
         Vector2 distanciaPlayer;
         return distanciaPlayer = player.position - enemigo_FOV.position;

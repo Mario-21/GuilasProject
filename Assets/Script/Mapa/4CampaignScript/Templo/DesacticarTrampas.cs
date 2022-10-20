@@ -10,9 +10,9 @@ public class DesacticarTrampas : MonoBehaviour
     {
         if (SaveScene.instancia.listaItemsNivelGuardar[objetoAObtener].objetoObtenido)
         {
-            SaveScene.instancia.activarTrampasTemplo = false;
+            ExtraVariable.extras.activarTrampasTemplo = false;
         }
-        if (!SaveScene.instancia.activarTrampasTemplo)
+        if (!ExtraVariable.extras.activarTrampasTemplo)
         {
             if (here)
             {

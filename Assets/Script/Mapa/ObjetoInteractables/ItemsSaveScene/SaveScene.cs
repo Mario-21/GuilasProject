@@ -4,53 +4,11 @@ using UnityEngine;
 
 public class SaveScene : MonoBehaviour
 {
-    public float timeNoviceDeath;
+    public bool b8;
     public static SaveScene instancia;
 
     #region ListaItemsNivel
     public List<ListaTodosObjetos> listaItemsNivelGuardar;
-    #endregion
-
-    #region EndLoop(Nivel_4)
-    [HideInInspector] public bool finalLoop;
-    #endregion
-
-    //Probar sei estos datos al cambiar se mantionen o no
-
-    //Limpiar datos en cada nivel, sino se van a conservar
-    #region ViajeRapido(Nivel_ 4)
-    [HideInInspector] public int usosViajeRapido = 1;
-    #endregion
-
-    #region Templo(Nivel_4)
-    [HideInInspector] public bool activarTrampasTemplo;
-    #endregion
-
-    #region TheLastSoldiersFloor0(Nivel_6.3)
-    [HideInInspector] public float xLastDeath;
-    [HideInInspector] public float yLastDeath;
-    [HideInInspector] public int onlyOne;
-    #endregion
-
-    #region B8(Best Weapon)(6.5)
-    public bool b8;
-    [HideInInspector] public int b8Reogida;
-    [HideInInspector] public bool izqEscombrosB8;
-    #endregion
-
-    #region WakeUpDoctor(Nivel 7.4/Enfermeria)
-    [HideInInspector]public int wakeUpDoctorSwitch;
-    [HideInInspector]public int wakeUpDoctorNovice;
-    #endregion
-
-    #region Type Of Drink (8.5_Bar)
-    public int drink;
-    #endregion
-    #region Collect Clothes (8.6_Dormitorio)
-    [HideInInspector] public int numClothes;
-    #endregion
-    #region Consumption (8.7_Laundry)
-    [HideInInspector] public int consumption;
     #endregion
 
     //Quiero que ocurra en contadas escenas

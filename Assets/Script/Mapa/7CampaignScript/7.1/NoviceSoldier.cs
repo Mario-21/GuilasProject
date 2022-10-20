@@ -21,7 +21,7 @@ public class NoviceSoldier : MonoBehaviour
     }
     void OptionsTime()
     {
-        if (SaveScene.instancia.timeNoviceDeath > limitTimeDeathNovice)
+        if (ExtraVariable.extras.timeNoviceDeath > limitTimeDeathNovice)
         {
             StatusGameobjectsVariables.statusGameobject.modificacion[indexExceedTime].modificacion = true;
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMinusTime].modificacion = false;
@@ -37,7 +37,7 @@ public class NoviceSoldier : MonoBehaviour
     {
         if (!StatusGameobjectsVariables.statusGameobject.modificacion[indexStop].modificacion)
         {
-            SaveScene.instancia.timeNoviceDeath += Time.deltaTime;
+            ExtraVariable.extras.timeNoviceDeath += Time.deltaTime;
         }
     }
 }

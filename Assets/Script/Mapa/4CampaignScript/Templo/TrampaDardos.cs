@@ -15,7 +15,7 @@ public class TrampaDardos : MonoBehaviour
     [SerializeField] bool rapido;
     void Update()
     {
-        if (SaveScene.instancia.activarTrampasTemplo)
+        if (ExtraVariable.extras.activarTrampasTemplo)
         {
             DispararDardo();
         }

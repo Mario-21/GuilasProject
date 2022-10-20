@@ -8,14 +8,14 @@ public class SoldierEnfermeria : MonoBehaviour
     [SerializeField] SoldierLife soldadoDoctor;
     void Start()
     {
-        if (SaveScene.instancia.wakeUpDoctorSwitch < 1) WakeUpDoctorSwitchSoldier();
+        if (ExtraVariable.extras.wakeUpDoctorSwitch < 1) WakeUpDoctorSwitchSoldier();
     }
     void WakeUpDoctorSwitchSoldier()
     {
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
             soldadoDoctor.vida = 1;
-            SaveScene.instancia.wakeUpDoctorSwitch++;
+            ExtraVariable.extras.wakeUpDoctorSwitch++;
         }
     }
 }

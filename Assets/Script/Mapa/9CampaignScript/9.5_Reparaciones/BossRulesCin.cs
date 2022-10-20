@@ -4,21 +4,14 @@ using UnityEngine;
 
 public class BossRulesCin : MonoBehaviour
 {
-    [Header("Items Variables Rules")]
-    public int indexBoss;
-    public int indexAsistente;
     [Header ("Soldier Rules")]
-    [SerializeField] SoldierLife asitente;
-    [SerializeField] SoldierLife boss;
+    [SerializeField] SoldierLife asitenteLife;
+    [SerializeField] SoldadoNormal asistente;
+    [SerializeField] SoldierLife bossLife;
+    [SerializeField] SoldadoNormal boss;
     [Header("Cinematics")]
     [SerializeField] FallCinematic fallCinematicAsistance;
     [SerializeField] FallCinematic fallCinematicBoss;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         //Solo salta la cinemática si se cumple una condición especifica para ello en el caso del Asistente que se le caíga la lámpara,
@@ -27,9 +20,8 @@ public class BossRulesCin : MonoBehaviour
     }
     void ConditionsBossCin()
     {
-        if(asitente.vida <= 0 || boss.vida <= 0 ||
-           StatusGameobjectsVariables.statusGameobject.modificacion[indexBoss].modificacion ||
-           StatusGameobjectsVariables.statusGameobject.modificacion[indexAsistente].modificacion)
+        if(asitenteLife.vida <= 0 || bossLife.vida <= 0 ||
+            asistente.berserker || boss.berserker)
         {
             Destroy(fallCinematicAsistance);
             Destroy(fallCinematicBoss);

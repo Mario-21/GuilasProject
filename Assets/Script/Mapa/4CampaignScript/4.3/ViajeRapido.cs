@@ -39,7 +39,7 @@ public class ViajeRapido : MonoBehaviour
     {
         if (TotalTerminales.terminalesTotales.terminalesActivados >= TotalTerminales.terminalesTotales.terminalesActivos.Count)
         {
-            if(SaveScene.instancia.usosViajeRapido >= 1)
+            if(ExtraVariable.extras.usosViajeRapido >= 1)
             {
                 caminoBoton.checkpointSpanwScene = checkpointDeViajeRapido;
                 caminoBoton.siguienteEscena = escenaDeViajeRapido;
@@ -51,7 +51,7 @@ public class ViajeRapido : MonoBehaviour
     {
         if (TotalTerminales.terminalesTotales.terminalesActivados >= TotalTerminales.terminalesTotales.terminalesActivos.Count)
         {
-            if (SaveScene.instancia.usosViajeRapido >= 1)
+            if (ExtraVariable.extras.usosViajeRapido >= 1)
             {
                 caminoAtravesar.enabled = true;
                 caminoAtravesarLoop.enabled = false;

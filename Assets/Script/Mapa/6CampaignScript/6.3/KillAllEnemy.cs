@@ -32,16 +32,16 @@ public class KillAllEnemy : MonoBehaviour
         {
             //when you kill all soldiers the last soldier transform change when you enter in the scene, because you cant establish the same order when they died,
             //so you register the LastPositionOfDeath only once 
-            if(SaveScene.instancia.onlyOne < 1)
+            if(ExtraVariable.extras.onlyOne < 1)
             {
-                SaveScene.instancia.xLastDeath = soldiersDeath[soldiersDeath.Count - 1].transform.position.x;
-                SaveScene.instancia.yLastDeath = soldiersDeath[soldiersDeath.Count - 1].transform.position.y;
-                SaveScene.instancia.onlyOne++;
+                ExtraVariable.extras.xLastDeath = soldiersDeath[soldiersDeath.Count - 1].transform.position.x;
+                ExtraVariable.extras.yLastDeath = soldiersDeath[soldiersDeath.Count - 1].transform.position.y;
+                ExtraVariable.extras.onlyOne++;
             }
             Debug.Log("Task Complete");
             cinematic.enabled = false;
             wakeUpAll.enabled = false;
-            GameObject itemDropClon = Instantiate(itemDrop, new Vector3(SaveScene.instancia.xLastDeath, SaveScene.instancia.yLastDeath, 0), Quaternion.identity);
+            GameObject itemDropClon = Instantiate(itemDrop, new Vector3(ExtraVariable.extras.xLastDeath, ExtraVariable.extras.yLastDeath, 0), Quaternion.identity);
             limitSpawn++;
 
         }

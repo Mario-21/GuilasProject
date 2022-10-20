@@ -19,14 +19,14 @@ public class LostB8 : MonoBehaviour
     {
         //Previously pick up the object
         //no puedes hacerlo en base al spawn dado que cuendo entres de nuevo ya no sera 1 o 2
-        if(!SaveScene.instancia.b8 && SaveScene.instancia.b8Reogida >= 1)
+        if(!SaveScene.instancia.b8 && ExtraVariable.extras.b8Reogida >= 1)
         {
             escombrosB8.SetActive(true);
         }
     }
     void IdentificarPosB8()
     {
-        if (SaveScene.instancia.izqEscombrosB8)
+        if (ExtraVariable.extras.izqEscombrosB8)
         {
             //si tu personaje lo lanzo desde la derecha
             escombrosB8.transform.position = left.position;
@@ -41,11 +41,11 @@ public class LostB8 : MonoBehaviour
     {
         if(CheckPointController.numeroCheckPoint == 1)
         {
-            SaveScene.instancia.izqEscombrosB8 = true;
+            ExtraVariable.extras.izqEscombrosB8 = true;
         }
         else if (CheckPointController.numeroCheckPoint == 2)
         {
-            SaveScene.instancia.izqEscombrosB8 = false;
+            ExtraVariable.extras.izqEscombrosB8 = false;
         }
     }
 }

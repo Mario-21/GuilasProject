@@ -37,7 +37,7 @@ public class Allergy_Or_Bath : MonoBehaviour
         {
             if (typeDrink.selectedDrink == 1 || typeDrink.selectedDrink == 2)
             {
-                SaveScene.instancia.consumption++;
+                ExtraVariable.extras.consumption++;
                 beberEffect.Play();
                 once++;
                 ChangeGlass();
@@ -56,7 +56,7 @@ public class Allergy_Or_Bath : MonoBehaviour
     }
     void Bath()
     {
-        if(SaveScene.instancia.consumption >= 3) 
+        if(ExtraVariable.extras.consumption >= 3) 
         {
             StatusGameobjectsVariables.statusGameobject.modificacion[indexModBath].modificacion = true;
             this.enabled = false;

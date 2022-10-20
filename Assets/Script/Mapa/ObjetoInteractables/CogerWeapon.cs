@@ -24,7 +24,7 @@ public class CogerWeapon : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T))
         {
             SaveScene.instancia.b8 = true;
-            SaveScene.instancia.b8Reogida++;
+            ExtraVariable.extras.b8Reogida++;
             this.gameObject.SetActive(false);
         }
     }

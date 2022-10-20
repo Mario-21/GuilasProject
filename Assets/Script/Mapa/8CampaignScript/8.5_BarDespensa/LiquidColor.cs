@@ -9,6 +9,6 @@ public class LiquidColor : MonoBehaviour
     private void Start()
     {
         //Establece el tipo de bebida que has seleccionado
-        selectedDrink = SaveScene.instancia.drink;
+        selectedDrink = ExtraVariable.extras.drink;
     }
 }

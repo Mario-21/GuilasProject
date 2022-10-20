@@ -14,7 +14,7 @@ public class ChangeLoop : MonoBehaviour
     }
     void End_Loop()
     {
-        if (SaveScene.instancia.finalLoop)
+        if (ExtraVariable.extras.finalLoop)
         {
             loopArea.SetActive(false);
             normalRoad.SetActive(true);

@@ -8,7 +8,7 @@ public class AccionarTrampas : MonoBehaviour
 
     private void Update()
     {
-        if(SaveScene.instancia.activarTrampasTemplo) cogerObjetoOrbe.enabled = true;
+        if(ExtraVariable.extras.activarTrampasTemplo) cogerObjetoOrbe.enabled = true;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -16,7 +16,7 @@ public class AccionarTrampas : MonoBehaviour
         {
             if (!SaveScene.instancia.listaItemsNivelGuardar[2].objetoObtenido)
             {
-                SaveScene.instancia.activarTrampasTemplo = true;
+                ExtraVariable.extras.activarTrampasTemplo = true;
                 
             }
             

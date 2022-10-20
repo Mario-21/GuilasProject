@@ -37,7 +37,7 @@ public class BeginCinematic_1 : MonoBehaviour
         {
             case CinematicPhases.scene_1:
                 CheckPointController.numeroCheckPoint = 1;
-                SaveScene.instancia.finalLoop = true;
+                ExtraVariable.extras.finalLoop = true;
                 StatusGameobjectsVariables.statusGameobject.modificacion[indexModi].modificacion = true;
                 timeToStartCinematic += Time.deltaTime;
                 if (timeToStartCinematic >= 2) { AnimationHud.detectar_echar.SetBool("Transicion", true); cinematicScenes = CinematicPhases.scene_2;}

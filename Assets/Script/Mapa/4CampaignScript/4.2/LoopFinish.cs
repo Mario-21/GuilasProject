@@ -38,7 +38,7 @@ public class LoopFinish : MonoBehaviour
     }
     void SaveStatusLoop() 
     {
-        SaveScene.instancia.finalLoop = end;
+        ExtraVariable.extras.finalLoop = end;
     }
     
 }

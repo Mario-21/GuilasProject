@@ -26,7 +26,7 @@ public class TrampaLanzas : MonoBehaviour
 
     void Update()
     {
-        if (SaveScene.instancia.activarTrampasTemplo)
+        if (ExtraVariable.extras.activarTrampasTemplo)
         {
             switch (fasesTrampaLanzas)
             {

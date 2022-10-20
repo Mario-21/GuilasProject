@@ -34,7 +34,7 @@ public class Usos_ViajeRapido : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {
-                SaveScene.instancia.usosViajeRapido--;
+                ExtraVariable.extras.usosViajeRapido--;
             }
         }
     }
@@ -44,7 +44,7 @@ public class Usos_ViajeRapido : MonoBehaviour
         {
             if(atravesarUnaVez < 1)
             {
-                SaveScene.instancia.usosViajeRapido--;
+                ExtraVariable.extras.usosViajeRapido--;
             }
         }
     }

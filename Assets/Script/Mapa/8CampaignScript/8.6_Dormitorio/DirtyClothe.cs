@@ -33,8 +33,8 @@ public class DirtyClothe : MonoBehaviour
                 StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
                 CatchClothes();
                 //Recogiendo ropa
-                SaveScene.instancia.numClothes++;
-                if (SaveScene.instancia.numClothes >= totalClothes) StatusGameobjectsVariables.statusGameobject.modificacion[indexAllClothes].modificacion = true;
+                ExtraVariable.extras.numClothes++;
+                if (ExtraVariable.extras.numClothes >= totalClothes) StatusGameobjectsVariables.statusGameobject.modificacion[indexAllClothes].modificacion = true;
             }
         }
     }
