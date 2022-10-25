@@ -14,12 +14,14 @@ public class PressCube : MonoBehaviour
         boton = GetComponent<Button>();
         botonImage = GetComponent<Image>();
     }
-    private void Update()
+
+    void Update()
     {
-        if (!cubeLamentos.inCubo) 
+        if (!cubeLamentos.inCubo)
         {
+            Debug.Log("Cometa");
             botonImage.color = new Color(1f, 1f, 1f, 1f);
-            botonIcon.color = new Color(1f, 1f, 1f,1f);
+            botonIcon.color = new Color(1f, 1f, 1f, 1f);
             boton.enabled = true;
         }
     }

@@ -32,7 +32,7 @@ public class ThinkDrink : MonoBehaviour
     {
         if (canSeeThink) SeeThink();
 
-        if(soldadoLife.vida <= 0 || soldado.berserker)
+        if(soldadoLife.vida <= 0 || soldado.berserker || soldado.busquedaMode)
         {
             canSeeThink = false;
             thinkGlobo.SetBool("ThinkSee", false);

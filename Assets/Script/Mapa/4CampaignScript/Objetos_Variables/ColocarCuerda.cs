@@ -20,16 +20,13 @@ public class ColocarCuerda : MonoBehaviour
     void Update()
     {
         //Simula que colocas un objeto,activando uno ya presente en escena
-        ColocarItem();
+        if (activar.modificacion) ColocarItem();
     }
     void ColocarItem()
     {
-        if (activar.modificacion)
-        {
-            StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
-            colocarItem.SetActive(true);
-            //Se desactiva para que no puedas a volver a realizar la acción y no te quite uses a los objetos si tienen más de un uso
-            this.enabled = false;
-        }
+        StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+        colocarItem.SetActive(true);
+        //Se desactiva para que no puedas a volver a realizar la acción y no te quite uses a los objetos si tienen más de un uso
+        this.enabled = false;
     }
 }

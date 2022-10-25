@@ -26,7 +26,7 @@ public class PasswordNotebook : MonoBehaviour
     void Update()
     {
         SeePapers();
-        if(!StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)SeePassword();
+        if(!StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) SeePassword();
     }
     void SeePapers()
     {

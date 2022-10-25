@@ -5,10 +5,14 @@ using UnityEngine.UI;
 
 public class CuboLamentos : MonoBehaviour
 {
+    public int indexMod;
     [Header("Password")]
     public string password;
-    [SerializeField] GameObject cuboLamentos;
+    [Header("Cubo")]
+    [SerializeField] Image cuboLamentos;
+    [SerializeField] Image[] botones;
     [HideInInspector] public string passwordComplete;
+    public GameObject reliquia;
     [Header("Icon Player")]
     public GameObject iconPlayer;
     public SpriteRenderer iconSpritePlayer;
@@ -16,20 +20,28 @@ public class CuboLamentos : MonoBehaviour
 
     PlayerHere player;
     [HideInInspector] public bool inCubo;
+
+    bool onIcon;
     void Start()
     {
         player = GetComponent<PlayerHere>();
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
+        {
+            reliquia.SetActive(true);
+            this.enabled = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        //PassWord
         ClearPassword();
         CompletePassword();
         //Activar el cubo
         UseCube();
-        //Ver el cubo
-        SeeCube();
+        //Ver Icono
+        IconSee();
     }
 
     void ClearPassword()
@@ -43,10 +55,19 @@ public class CuboLamentos : MonoBehaviour
     {
         if(password == passwordComplete)
         {
+            //Aparece Reliquia
+            reliquia.SetActive(true);
+            //Interfaz del cubo se va fuera
+            OffCubo();
+            //Activa el modificador
+            StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+            //Desactivas el cubo y el icono
             this.enabled = false;
-            //IndexCubo
-            //ActivarCinematica
-            //
+            onIcon = false;
+        }
+        else
+        {
+            SeeCube();
         }
     }
     void UseCube()
@@ -76,11 +97,36 @@ public class CuboLamentos : MonoBehaviour
     {
         if (inCubo)
         {
-            cuboLamentos.SetActive(true);
+            cuboLamentos.enabled = true;
+            foreach (Image boton in botones)
+            {
+                boton.enabled = true;
+            }
         }
         else
         {
-            cuboLamentos.SetActive(false);
+            OffCubo();
+        }
+
+    }
+    void OffCubo()
+    {
+        cuboLamentos.enabled = false;
+        foreach (Image boton in botones)
+        {
+            boton.enabled = false;
+        }
+    }
+    void IconSee()
+    {
+        if (onIcon)
+        {
+            iconPlayer.SetActive(true);
+            iconSpritePlayer.sprite = icon;
+        }
+        else
+        {
+            iconPlayer.SetActive(false);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -88,15 +134,15 @@ public class CuboLamentos : MonoBehaviour
         //Script aparte para que aparezcan los iconos
         if (collision.gameObject.CompareTag("Player"))
         {
-            iconPlayer.SetActive(true);
-            iconSpritePlayer.sprite = icon;
+            onIcon = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            iconPlayer.SetActive(false);
+            inCubo = false;
+            onIcon = false;
         }
     }
     
