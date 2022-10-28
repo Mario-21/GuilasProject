@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerHere))]
 public class ScientificRoomOpen : MonoBehaviour
 {
     public int indexMod;

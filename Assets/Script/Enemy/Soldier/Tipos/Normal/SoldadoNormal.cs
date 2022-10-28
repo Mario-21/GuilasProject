@@ -94,7 +94,7 @@ public class SoldadoNormal : MonoBehaviour
 
     [Header("Busqueda Data")]
     public float esperarModoBusquedaLimite;
-    float esperarModoBusqueda;
+    public float esperarModoBusqueda;
     [SerializeField]public bool busquedaMode;
     Vector3 lockUbi;
     int block;
@@ -630,9 +630,11 @@ public class SoldadoNormal : MonoBehaviour
 
                 //Animacion
                 AnimacionCaminar(movePositionPlus.x);
-
+                //Transform en Vector
+                //Vector2 positionEnemy = new Vector2(transform.position.x, transform.position.y);
+                //if (Vector2.Distance(ubicacionesDirigir[indexUbi].position, transform.position) < distanciaComienzaNextPatrulla) 
                 //Al llegar a tu destino cambias la direccion
-                if (transform.position.x == movePositionPlus.x)
+                if (Vector2.Distance(movePositionPlus, transform.position) < 0.5f)
                 {
                     esperarModoBusqueda += Time.deltaTime;
                     if (esperarModoBusqueda >= esperarModoBusquedaLimite)
@@ -657,7 +659,7 @@ public class SoldadoNormal : MonoBehaviour
                 AnimacionCaminar(movePositionMinus.x);
                 
                 //Al llegar a tu destino cambias la direccion
-                if (transform.position.x == movePositionMinus.x)
+                if (Vector2.Distance(movePositionMinus, transform.position) < 0.5f)
                 {
                     esperarModoBusqueda += Time.deltaTime;
                     if (esperarModoBusqueda >= esperarModoBusquedaLimite)

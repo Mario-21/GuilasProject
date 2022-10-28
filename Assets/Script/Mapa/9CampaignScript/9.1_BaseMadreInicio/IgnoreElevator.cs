@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class IgnoreElevator : MonoBehaviour
 {
+    public string ignoreTag;
     BoxCollider2D caja;
     private void Start()
     {
@@ -11,7 +12,7 @@ public class IgnoreElevator : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag(ignoreTag))
         {
             Physics2D.IgnoreCollision(collision.collider, caja);
         }

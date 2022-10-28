@@ -32,12 +32,12 @@ public class AbrirCofre : MonoBehaviour
         if (activar.modificacion) 
         {
             spriteActual.sprite = chestOpen;
+            //Para que esta acción de aparecer no predomine sobre la del item
             if (once < 1) 
             {
                 itemTake.SetActive(true);
                 once++;
             }
-            Debug.Log("Lolete");
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
         }
     }

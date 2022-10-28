@@ -4,28 +4,18 @@ using UnityEngine;
 
 public class CogerObjeto : MonoBehaviour
 {
-    ListaItem listaItemNivel;
-
+    [Header("Index del Objeto")]
     public int objetoARecoger;
+    [Header("Item en Escena")]
     public GameObject objectCatch;
-
-    ActivarModificador objetoUsado;
+    [Header("Inventory Button")]
+    public GameObject objetcButtonInventory;
 
     PlayerHere dentroDeZona;
-
-    public GameObject objetcButtonInventory;
-    public enum EstadoObjeto 
-    {
-        abierto,
-        cerrado
-    }
-    public EstadoObjeto estadoObjeto;
     private void Awake()
     {
         dentroDeZona = GetComponent<PlayerHere>();
         //Only when object is close
-        objetoUsado = GetComponent<ActivarModificador>();
-        listaItemNivel = FindObjectOfType<ListaItem>();
 
     }
     private void Start()
@@ -34,39 +24,15 @@ public class CogerObjeto : MonoBehaviour
     }
     private void Update()
     {
-        if (dentroDeZona.playerImHere) EstadoDelObjeto();
-    }
-    void EstadoDelObjeto()
-    {
-
-        switch (estadoObjeto)
-        {
-            
-            case EstadoObjeto.abierto:
-                Debug.Log("Puedes coger el Objeto con T");
-                PickUpObject();
-                break;
-            case EstadoObjeto.cerrado:
-
-                //SI has usado el objeto Correspondiente
-                if (objetoUsado.modificacion)
-                {
-                    Debug.Log("Puedes coger el Objeto con T");
-                    PickUpObject();
-                }
-                else { Debug.Log("Necesitas una llave"); }
-                break;
-        }
-
-
-
+        if (dentroDeZona.playerImHere) PickUpObject();
     }
     void PickUpObject()
     {
         if (Input.GetKeyDown(KeyCode.T) && !SaveScene.instancia.listaItemsNivelGuardar[objetoARecoger].objetoObtenido)
         {
             //Take The object
-            listaItemNivel.listaItemsNivel[objetoARecoger].objetoObtenido = true;
+            //listaItemNivel.listaItemsNivel[objetoARecoger].objetoObtenido = true;
+            SaveScene.instancia.listaItemsNivelGuardar[objetoARecoger].objetoObtenido = true;
             //Set the button position and active
             objetcButtonInventory.GetComponent<RectTransform>().localPosition = InventoryManager.instanciaInventory.inventoryPosition[InventoryManager.instanciaInventory.indexInventoryPosition];
             SaveScene.instancia.listaItemsNivelGuardar[objetoARecoger].ubiPosButton = InventoryManager.instanciaInventory.indexInventoryPosition;

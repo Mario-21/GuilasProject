@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 8482332161389112926}
   - component: {fileID: 8145903024568734567}
   - component: {fileID: 846281731211076768}
+  - component: {fileID: 6102485058176858231}
   m_Layer: 0
   m_Name: Caja
   m_TagString: Untagged
@@ -149,7 +150,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 6f8346e1d5012d348bb4ecbffc6bdbe8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -172,7 +173,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -187,6 +188,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
+--- !u!251 &6102485058176858231
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3346637252479891060}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &4823945812498904326
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,9 +405,9 @@ MonoBehaviour:
   stickyCollider: {fileID: 719456987571225883}
   caja: {fileID: 8145903024568734567}
   cajaGancho: {fileID: 846281731211076768}
+  tengoCaja: 0
   ubicaciones:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  indexUbi: 0
   timeInUbiLimit: 4

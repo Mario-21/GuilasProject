@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class GetUpScience : MonoBehaviour
 {
-    public int indexMod;
+    //public int indexMod;
 
-    [SerializeField] List<SoldierLife> vidaSoldiers;
+    //[SerializeField] List<SoldierLife> vidaSoldiers;
+    public List<int> indexSoldados;
     void Start()
     {
         if(ExtraVariable.extras.actionOne >= 1)
@@ -18,18 +19,16 @@ public class GetUpScience : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Lo hago en el update porque establecerlo en el start hace que establezca esta antes que el ActualStatus (quien conserve la vida anterior), por tanto los soldados acabarían muertos
-        if(StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion && ExtraVariable.extras.actionOne < 1)
-        {
-            GetUpScientific();
-            ExtraVariable.extras.actionOne++;
-        }
+        //Esto se colocara en las cinemáticas, ya que las cinemáticas solo ocurren una vez por nivel, a no ser que repitas el nivel.
+        GetUpScientific();
     }
     void GetUpScientific()
     {
-        for (int i = 0; i < vidaSoldiers.Count; i++)
+        for (int i = 0; i < indexSoldados.Count; i++)
         {
-            vidaSoldiers[i].vida = 1;
+            Debug.Log( i + " " + "Soldao");
+            SoldierActiveInScene.instancia.soldiersStatus[indexSoldados[i]].statusVida = 1;
+            SoldierActiveInScene.instancia.soldiersStatus[indexSoldados[i]].modeSoldier = false;
         }
     }
 }

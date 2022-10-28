@@ -5,6 +5,7 @@ using UnityEngine;
 public class ConfirmCard : MonoBehaviour
 {
     public int indexMod;
+    [SerializeField] OpenReforcedDoor reforcedDoor;
     [SerializeField] ActivarModificador confirm; //Separar Los activadores y pooner cada uno en su respectiva tarjeta
     SpriteRenderer confirmButton;
 
@@ -14,8 +15,7 @@ public class ConfirmCard : MonoBehaviour
      }
     void Start()
     {
-        //You made de LoadStatus for not increase in OpenReforcedDoor Totalkeys once again when you change in scene
-        LoadStatus();
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) KeyUse();
     }
 
     // Update is called once per frame
@@ -27,16 +27,20 @@ public class ConfirmCard : MonoBehaviour
     {
         if (confirm.modificacion)
         {
-            StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
-            confirmButton.color = Color.green;
+            KeyUse();
         }
     }
-    private void OnDestroy()
+    void KeyUse()
     {
-        Modificacion.SaveEstado(indexMod, confirm.modificacion);   
-    }
-    void LoadStatus()
-    {
-        confirm.modificacion = StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion;
+        //Variable
+        StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+        //Feedback 
+        confirmButton.color = Color.green;
+        //Incrementar el numero de keys
+        reforcedDoor.keys++;
+        //Desactivar para no poder usar más una key aquí
+        confirm.enabled = false;
+        //Desactivar el mismo script para que no aumente la Key todo el rato
+        this.enabled = false;
     }
 }

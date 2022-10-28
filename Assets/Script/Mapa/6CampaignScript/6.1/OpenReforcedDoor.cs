@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class OpenReforcedDoor : MonoBehaviour
 {
-    [SerializeField] List<ActivarModificador> keysRequired;
+    public int indexMod;
+
     [SerializeField] Camino_CambiarZona doorClose;
 
-    int keys;
+    [HideInInspector] public int keys;
     public int totalKeys;
     
 
     void Start()
     {
-        
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) doorClose.enabled = true;
     }
 
     // Update is called once per frame
@@ -24,21 +25,11 @@ public class OpenReforcedDoor : MonoBehaviour
 
     void ConfirmedOpenDoor()
     {
-        if(keysRequired.Count > 0)
-        {
-            for (int i = 0; i < keysRequired.Count; i++)
-            {
-                //If I try use the statusGameObjectList TotalKeys increase always
-                if (keysRequired[i].modificacion)
-                {
-                    keys++;
-                    keysRequired.Remove(keysRequired[i]);
-                }
-            }
-        }
+
         if(keys == totalKeys)
         {
             doorClose.enabled = true;
+            StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
         }
 
     }
