@@ -34,7 +34,6 @@ public class HookPlatform : MonoBehaviour
     void HookMove()
     {
         //Se dirige a las ubicaciones
-        Vector2 movePosition = transform.position;
         transform.position = Vector2.MoveTowards(transform.position, ubicaciones[indexUbi].position, velocidad * Time.deltaTime);
 
         if(Vector2.Distance(ubicaciones[indexUbi].position,transform.position) < 1)
