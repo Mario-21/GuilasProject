@@ -5,7 +5,7 @@ using UnityEngine;
 public class Detectar_Echar_Deep : MonoBehaviour
 {
     [Header("Player Data")]
-    JugadorMovimiento movPlayer;
+    [SerializeField] JugadorMovimiento movPlayer;
     [SerializeField] BloquearMovimientoPlayer player;
     [Header("Enemy Data")]
     [SerializeField] SoldadoProfundo soldadoDeep;

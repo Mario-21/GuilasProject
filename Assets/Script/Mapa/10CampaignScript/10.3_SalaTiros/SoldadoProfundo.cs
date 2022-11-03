@@ -4,22 +4,26 @@ using UnityEngine;
 
 public class SoldadoProfundo : MonoBehaviour
 {
+    [Header("Data Soldado Sprite")]
     [SerializeField] SpriteRenderer soldado;
     [SerializeField] Sprite[] perspectiva;
-
+    [Header("Ubicaciones Mover Soldado")]
     [SerializeField] Transform[] ubicaciones;
-    public int indexUbi;
-
-    float timeWait;
+    int indexUbi;
+    [Header("Time Espera Soldado")]
     public float timeWaitLimite;
-
+    float timeWait;
+    [Header("Velocidad Soldado")]
     public float velocidad;
+    [Header("Size Soldado al Alejarse/Acercarse")]
     public float size;
     public float sizeLimit;
 
     public float distancia;
 
     bool frente;
+
+    [SerializeField] BoxCollider2D detector;
     void Start()
     {
         PerspectivaSoldado();
@@ -66,12 +70,14 @@ public class SoldadoProfundo : MonoBehaviour
             {
                 //Colocar Animacion de giro
                 //De frente 
+                detector.enabled = true;
                 soldado.sprite = perspectiva[0];
                 frente = true;
             }
             else
             {
                 //De espalda
+                detector.enabled = false;
                 soldado.sprite = perspectiva[1];
                 frente = false;
             }
