@@ -5,6 +5,7 @@ using UnityEngine;
 public class SoldadoProfundo : MonoBehaviour
 {
     [Header("Data Soldado Sprite")]
+    SoldierDeepLife vidaSoldier;
     [SerializeField] SpriteRenderer soldado;
     [SerializeField] Sprite[] perspectiva;
     [Header("Ubicaciones Mover Soldado")]
@@ -24,9 +25,13 @@ public class SoldadoProfundo : MonoBehaviour
     bool frente;
 
     [SerializeField] BoxCollider2D detector;
+    private void Awake()
+    {
+        vidaSoldier = GetComponent<SoldierDeepLife>();
+    }
     void Start()
     {
-        PerspectivaSoldado();
+        if(vidaSoldier.vida > 0) PerspectivaSoldado();
     }
 
     // Update is called once per frame

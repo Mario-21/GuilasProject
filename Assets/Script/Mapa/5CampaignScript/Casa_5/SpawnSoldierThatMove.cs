@@ -19,7 +19,6 @@ public class SpawnSoldierThatMove : MonoBehaviour
             //The main reason: Gameplay and not broken the scene
             if (soldadoMoveLife.vida > 0) soldadoMove.position = spawnStart.position;
             oneTime++;
-            Debug.Log("Say my name" + " " + soldadoMoveLife.gameObject.name);
         }
     }
 }

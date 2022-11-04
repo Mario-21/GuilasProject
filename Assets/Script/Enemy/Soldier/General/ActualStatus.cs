@@ -72,7 +72,6 @@ public class ActualStatus : MonoBehaviour
         if (Mathf.Abs(SoldierActiveInScene.instancia.soldiersStatus[iD].position_x) > 0 && Mathf.Abs(SoldierActiveInScene.instancia.soldiersStatus[iD].position_y) > 0)
         {
             //SoldierActiveInScene.instancia.soldiersStatus[0].lastPositionInScene.position = transform.position;
-            Debug.Log("Me he transportado");
 
             Vector3 lastPosition;
             lastPosition = new Vector3(SoldierActiveInScene.instancia.soldiersStatus[iD].position_x, SoldierActiveInScene.instancia.soldiersStatus[iD].position_y + 1, 0f);

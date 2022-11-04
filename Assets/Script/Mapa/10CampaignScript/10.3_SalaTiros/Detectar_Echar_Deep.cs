@@ -28,6 +28,11 @@ public class Detectar_Echar_Deep : MonoBehaviour
 
     }
     SecuenceDetect detectScene;
+    private void Awake()
+    {
+        movPlayer = FindObjectOfType<JugadorMovimiento>();
+        objInter = GetComponent<ObjetoInteractivo>();
+    }
     private void Update()
     {
         if(soldadoDeepLife.vida > 0 && evento && !balaInside)

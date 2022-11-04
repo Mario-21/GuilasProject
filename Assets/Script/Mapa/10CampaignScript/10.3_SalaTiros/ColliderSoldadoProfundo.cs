@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class ColliderSoldadoProfundo : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] CapsuleCollider2D colliderSoldado;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.gameObject.CompareTag("DeepEnemy")) 
+        {
+            colliderSoldado.enabled = true;
+            Debug.Log("Deep True;");
+        } 
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("DeepEnemy")) 
+        {
+            colliderSoldado.enabled = false;
+            Debug.Log("Deep False;");
+        } 
     }
 }
