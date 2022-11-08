@@ -155,7 +155,6 @@ public class ArmaController : MonoBehaviour
         if (rayPistol)
         {
             preCollisionObject = true;
-            Debug.Log("Gorgoncela");
         }
     }
     Vector2 DistanceMiraPistol()

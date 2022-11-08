@@ -450,12 +450,10 @@ public class SoldadoNormal : MonoBehaviour
         if (transform.position.x < player.position.x + limiteDireccion - distanceStopAnim || transform.position.x > player.position.x + limiteDireccion + distanceStopAnim) 
         {
             anim.SetBool("WalkSoldier", true);
-            Debug.Log("MArgen Me");
         } 
         else if (transform.position.x >= player.position.x + limiteDireccion - distanceStopAnim && transform.position.x <= player.position.x + limiteDireccion + distanceStopAnim) 
         {
             anim.SetBool("WalkSoldier", false);
-            Debug.Log("MArgen");
         }
 
         //Sino estas en la ubicacion walk true
@@ -803,12 +801,10 @@ public class SoldadoNormal : MonoBehaviour
         if (transform.position.x < destino - distanceStopAnim || transform.position.x > destino + distanceStopAnim) 
         { 
             anim.SetBool("WalkSoldier", true);
-            Debug.Log("Mover");
         }
         else if (transform.position.x >= destino - distanceStopAnim && transform.position.x <= destino + distanceStopAnim) 
         { 
             anim.SetBool("WalkSoldier", false);
-            Debug.Log("Parar");
         }
     }
     void CancelarAnimacionCaminar()

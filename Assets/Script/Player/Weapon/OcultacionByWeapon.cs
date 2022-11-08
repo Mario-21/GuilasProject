@@ -46,8 +46,6 @@ public class OcultacionByWeapon : MonoBehaviour
                 //Layer Player;
                 playerTorso.layer = layerPlayer;
 
-                Debug.Log("Tortuga");
-
                 //default se utiliza para cuando te han pillado en modo busqueda, restablece el valor original para que no se quede con el incrementado
                 if (tiempoVisible >= tiempoLimiteVisible)
                 {
