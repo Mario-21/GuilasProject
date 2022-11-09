@@ -5,16 +5,37 @@ using Cinemachine;
 
 public class AngryChef : MonoBehaviour
 {
+    public int indexMod;
+
     [Header("Camera Data")]
     [SerializeField] CinemachineVirtualCamera mainCamera;
+    [SerializeField] float orthographicSize;
 
     [Header("Player Data")]
     [SerializeField] Transform player;
 
+    [Header("Dialogo Data")]
+    [SerializeField] GameObject globoDialogo;
+    [SerializeField] Transform ubiDialogo;
+
+    [Header("Duration Scene")]
+    public float timeDialogoLimit;
+    public float timeEndLimit;
+    float timeScene;
+    [SerializeField] UseCin endScene;
+
     bool angry;
+    int once;
+
+    enum Secuencia
+    {
+        Dialogo,
+        End
+    }
+    Secuencia scena;
     void Start()
     {
-        
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) this.enabled = false;
     }
 
     // Update is called once per frame
@@ -28,8 +49,40 @@ public class AngryChef : MonoBehaviour
         {
             //Camara se dirige al player;
             mainCamera.Follow = player;
-            mainCamera.m_Lens.OrthographicSize = 4;
+            mainCamera.m_Lens.OrthographicSize = orthographicSize;
             AnimationHud.detectar_echar.SetBool("Transicion", false);
+
+            switch (scena)
+            {
+                case Secuencia.Dialogo:
+                    {
+                        if (timeScene >= timeDialogoLimit)
+                        {
+                            if (once < 1)
+                            {
+                                Instantiate(globoDialogo, ubiDialogo.position, ubiDialogo.rotation);
+                                timeScene = 0;
+                                scena = Secuencia.End;
+                            }
+                        }
+                        else
+                        {
+                            timeScene += Time.deltaTime;
+                        }
+                    }
+                    break;
+                case Secuencia.End:
+                    if (timeScene >= timeEndLimit)
+                    {
+                        endScene.UseCinematic();
+                        StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+                    }
+                    else
+                    {
+                        timeScene += Time.deltaTime;
+                    }
+                    break;
+            }
 
         }
     }

@@ -47,6 +47,15 @@ public class ExtraVariable : MonoBehaviour
     #region GetUpScientific (9.4_SalaCientifico)
     [HideInInspector] public int actionOne;
     #endregion
+
+    #region CinematicSelection (10.5_Comedor)
+    public enum CinematicComedor105
+    {
+        Aspersor,
+        Veneno
+    }
+    public CinematicComedor105 comedorScene;
+    #endregion
     private void Awake()
     {
         if (ExtraVariable.extras == null)

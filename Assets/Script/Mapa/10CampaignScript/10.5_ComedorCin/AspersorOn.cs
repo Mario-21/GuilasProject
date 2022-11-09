@@ -17,10 +17,13 @@ public class AspersorOn : MonoBehaviour
     [Header("Chef")]
     public int indexChef;
     [SerializeField] SoldadoNormal chef;
+    [Header("End Scene")]
+    [Tooltip("Solo ocurrira si el soldado a muerto anteriormente")]
+    [SerializeField] UseCin end;
 
     void Start()
     {
-        
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) this.enabled = false;
     }
     void Update()
     {
@@ -31,14 +34,27 @@ public class AspersorOn : MonoBehaviour
         timeChangeCamera += Time.deltaTime;
         if(timeChangeCamera >= timeChangeCameraLimit)
         {
+            //Enciende el aspersor
             luzAspersor.color = Color.green;
+
+            //Corte para cambiar de camara
             AnimationHud.detectar_echar.SetBool("Transicion", true);
+
+            //Si continua vivo la escena se ejecutara como normalmente lo hace
             if(SoldierActiveInScene.instancia.soldiersStatus[indexChef].statusVida > 0)
             {
                 chef.enabled = true;
             }
+            // Si el enemigo ha muerto previamente solo aparecera esta escena
+            else
+            {
+                end.UseCinematic();
+                StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+            }
+
             this.enabled = false;
             //Destroy(humo);
         }
     }
+
 }
