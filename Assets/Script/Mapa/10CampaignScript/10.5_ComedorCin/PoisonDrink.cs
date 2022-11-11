@@ -58,6 +58,7 @@ public class PoisonDrink : MonoBehaviour
         switch (poisonScene)
         {
             case SecuenciaPoison.DrinkPoison:
+                StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
                 //Bebe el veneno
                 DrinkPoison();
                 timeScene += Time.deltaTime;

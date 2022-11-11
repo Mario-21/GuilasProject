@@ -49,6 +49,8 @@ public class ExtraVariable : MonoBehaviour
     #endregion
 
     #region CinematicSelection (10.5_Comedor)
+    public bool soldadosDeathComedor;
+    public bool helpSoldados;
     public enum CinematicComedor105
     {
         Aspersor,

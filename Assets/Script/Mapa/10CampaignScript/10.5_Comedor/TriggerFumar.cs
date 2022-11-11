@@ -8,6 +8,7 @@ public class TriggerFumar : MonoBehaviour
     [Header("Player Mask")]
     [SerializeField] PutGasMask colocarCigarro;
     [SerializeField] PutGasMask encenderCigarro;
+    [SerializeField] BloquearMovimientoPlayer playerBloq;
 
     [Header("Cinematic Fumar")]
     public int indexMod;
@@ -37,28 +38,39 @@ public class TriggerFumar : MonoBehaviour
         {
             ConditionsCinematicFumar();
         }
-        else
+        else if (chefLife.vida <= 0)
         {
-            Destroy(this.gameObject);
+            ConditionsCinematicFumarNoEnemy();
         }
+
     }
     void ConditionsCinematicFumar()
     {
         //Tienes que entrar en la sala ya fumando 
         if(colocarCigarro.putMask && encenderCigarro.putMask && fumarArea)
         {
-            GoCinematic();
+            fumarCin.UseCinematic();
+            ExtraVariable.extras.comedorScene = ExtraVariable.CinematicComedor105.Aspersor;
         }
-        //Si entras a la sala solo con el cigarro sin encender
+        //Si entras a la sala solo con el cigarro sin encender, te echan 
         else if (colocarCigarro.putMask && !encenderCigarro.putMask && fumarArea)
         {
+            //bloquear Movimiento y bloquaer menu
+            playerBloq.BloquearMovPlayer();
             sacarFumador.Secuence();
         }
     }
-    void GoCinematic()
+    void ConditionsCinematicFumarNoEnemy()
     {
-        fumarCin.UseCinematic();
-        StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+        //Tienes que entrar en la sala ya fumando 
+        if (colocarCigarro.putMask && encenderCigarro.putMask && fumarArea)
+        {
+            fumarCin.UseCinematic();
+            ExtraVariable.extras.comedorScene = ExtraVariable.CinematicComedor105.Aspersor;
+        }
+        Debug.Log("Garma");
+
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

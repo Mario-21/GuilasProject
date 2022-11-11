@@ -8,10 +8,12 @@ public class UseSleep : MonoBehaviour
     ActivarModificador activador;
 
     public int cinematicDormitorio;
+    public int spawn;
     public SoldierLife soldadoDiary;
     void Start()
     {
         activador = GetComponent<ActivarModificador>();
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) this.enabled = false;
     }
 
     // Update is called once per frame
@@ -24,8 +26,8 @@ public class UseSleep : MonoBehaviour
     {
         if (activador.modificacion)
         {
-            StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
             EstructuraNiveles.nivel = cinematicDormitorio;
+            CheckPointController.numeroCheckPoint = spawn;
             AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
         }
     }

@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Detectar_y_Echar : MonoBehaviour
 {
+    [Header("Menu Player")]
+    [SerializeField] Inventory menuPlayer;
     [Header("Player Data")]
     JugadorMovimiento movPlayer;
     [SerializeField] BloquearMovimientoPlayer player;
@@ -58,6 +60,10 @@ public class Detectar_y_Echar : MonoBehaviour
         switch (detectScene)
         {
             case SecuenceDetect.girarSoldado:
+                //Inhabilita mi inventario
+                menuPlayer.enabled = false;
+                menuPlayer.inventory.SetActive(false);
+                //Desactiva animacion y IA del Enmeigo 
                 soldier.enabled = false;
                 soldier.OutAnimation();
                 //El enemigo se gire izq.

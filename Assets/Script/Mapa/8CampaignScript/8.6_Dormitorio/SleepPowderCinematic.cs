@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SleepPowderCinematic : MonoBehaviour
 {
+    public int indexMod;
     [Header("Regresar Nivel Anterior")]
     public int regretScene;
     public int checkpoint;
@@ -20,6 +21,10 @@ public class SleepPowderCinematic : MonoBehaviour
     SceneSleepPowder sleepScene;
     float timeBetweenScene;
 
+    private void Start()
+    {
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) this.enabled = false;
+    }
     void Update()
     {
         SleepPowder();
@@ -35,6 +40,7 @@ public class SleepPowderCinematic : MonoBehaviour
         else
         {
             sleepScene = SceneSleepPowder.Second;
+            StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
         }
     }
     void SleepPowder()

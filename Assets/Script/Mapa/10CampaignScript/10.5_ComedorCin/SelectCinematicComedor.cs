@@ -10,6 +10,7 @@ public class SelectCinematicComedor : MonoBehaviour
 
     [Header("Aspersor Cinematic")]
     [SerializeField] Transform ubiAspersor;
+    [SerializeField] ReviveChef reviveChef;
     [SerializeField] AngryChef angryChef;
     [SerializeField] AspersorOn aspersorOn;
     [SerializeField] List<GameObject> listEnemyAsp;
@@ -20,7 +21,7 @@ public class SelectCinematicComedor : MonoBehaviour
     [SerializeField] PoisonDrink poisonDrink;
     [SerializeField] AngryChef helpSoldier;
     [SerializeField] List<GameObject> listEnemyVen;
-    void Start()
+    void Awake()
     {
         switch (ExtraVariable.extras.comedorScene)
         {
@@ -34,6 +35,7 @@ public class SelectCinematicComedor : MonoBehaviour
                     soldadoCin.SetActive(true);
                 }
                 //Activa los script pertenecientes a la cinematica Aspersores
+                reviveChef.enabled = true;
                 aspersorOn.enabled = true;
                 angryChef.enabled = true;
                 break;
