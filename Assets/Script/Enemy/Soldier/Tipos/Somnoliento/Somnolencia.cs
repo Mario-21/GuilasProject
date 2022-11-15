@@ -44,9 +44,18 @@ public class Somnolencia : MonoBehaviour
         //Dormido
         else { tiempoSomnoliento += Time.deltaTime; tiempoDespierto = 0; }
 
-        if (tiempoDespierto >= tiempoLimiteDespierto) { particulasDormido.Play(); soldado.enabled = false; despierto = false; }
+        //Te duermes
+        if (tiempoDespierto >= tiempoLimiteDespierto) 
+        { 
+            particulasDormido.Play();
+            //Apaga la animacion de caminar
+            soldado.OutAnimation();
+            //Desactiva al soldado
+            soldado.enabled = false; 
+            despierto = false;
+        }
 
-
+        //Te despiertas
         if (tiempoSomnoliento >= tiempoLimiteSomnoliento) { particulasDormido.Stop(); soldado.enabled = true; despierto = true; }
     }
     void ChangePatrolMov()

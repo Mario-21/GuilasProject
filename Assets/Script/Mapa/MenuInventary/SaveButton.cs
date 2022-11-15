@@ -11,9 +11,10 @@ public class SaveButton : MonoBehaviour
     [Header("Usos del objeto")]
     public int usosLimitados;
     [HideInInspector] public int usos;
-    Image imageButton;
-    Button button;
-    Text textButton;
+    [Header("Boton Data")]
+    public Image imageButton;
+    public Button button;
+    public Text textButton;
 
     private void Awake()
     {
@@ -53,6 +54,20 @@ public class SaveButton : MonoBehaviour
         imageButton.color = new Color(1f, 1f, 1f, 0.25f);
         textButton.color = new Color(0f, 0f, 0f, 0.5f);
         button.enabled = false;
+    }
+    public void HabilitarUsos()
+    {
+        //Restablecer el objeto sin haber abierto el inventario
+        if(imageButton == null)
+        {
+            imageButton = GetComponent<Image>();
+            button = GetComponent<Button>();
+            textButton = GetComponentInChildren<Text>();
+        }
+        //Habilitar boton
+        imageButton.color = new Color(1f, 1f, 1f, 1f);
+        textButton.color = new Color(0f, 0f, 0f, 1f);
+        button.enabled = true;
     }
     
 

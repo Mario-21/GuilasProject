@@ -24,6 +24,7 @@ public class OpenDoorInside : MonoBehaviour
     void AbrirPuertaInside()
     {
         door.sprite = doorOpen;
+        //Coge el collider de la puerta cerrada
         door.GetComponent<BoxCollider2D>().enabled = false;
         openCollider.enabled = false;
         StatusGameobjectsVariables.statusGameobject.modificacion[indexModificador].modificacion = true;

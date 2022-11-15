@@ -4,25 +4,33 @@ using UnityEngine;
 
 public class GunpowderUse : MonoBehaviour
 {
+    //Si este index no esta activo significa que no se ha realizado la accion por parte del enemigo
     public int indexMod;
     [Tooltip("Se necesita una accion previa para activarlo")]
     public int indexGunpowder;
+    [Header("FeedBack")]
+    [SerializeField] GameObject suciedad;
     [Header("Item")]
     [SerializeField] GameObject item;
     [Header("Tiempo Dejar Huellas")]
     public float timeHuellasLimit;
-    float timeHuellas;
+    public float timeHuellas;
 
-    PlayerHere player;
+
+    ActivarModificador activador;
     bool huellas;
 
     void Start()
     {
-        player = GetComponent<PlayerHere>();
+        activador = GetComponent<ActivarModificador>();
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) 
         {
             item.SetActive(true);
             this.enabled = false;
+        }
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexGunpowder].modificacion)
+        {
+            suciedad.SetActive(true);
         }
         
     }
@@ -30,7 +38,13 @@ public class GunpowderUse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player.playerImHere)FingerPrints();
+        //Saber si la mesa esta sucia
+        if (activador.modificacion || StatusGameobjectsVariables.statusGameobject.modificacion[indexGunpowder].modificacion) 
+        {
+            FingerPrints();
+            StatusGameobjectsVariables.statusGameobject.modificacion[indexGunpowder].modificacion = true;
+            suciedad.SetActive(true);
+        }
     }
     void FingerPrints()
     {
