@@ -1358,6 +1358,12 @@ SpriteRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 194165281}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &194165297 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1890022397570294078, guid: 0b6ae8e3895c24a4683486071f2fa82d,
+    type: 3}
+  m_PrefabInstance: {fileID: 194165281}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &207366267
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1445,6 +1451,7 @@ GameObject:
   - component: {fileID: 217863338}
   - component: {fileID: 217863340}
   - component: {fileID: 217863341}
+  - component: {fileID: 217863342}
   m_Layer: 0
   m_Name: Arandanos
   m_TagString: Untagged
@@ -1542,6 +1549,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mineroCasco: {fileID: 194165288}
+--- !u!114 &217863342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217863336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52fa5d42873ff443afff29891cf4628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconItem: {fileID: 8653158090913095385, guid: 9709c1c9f1f43bd4bb3b87dd7292e524,
+    type: 3}
+  iconPickUp: {fileID: 21300000, guid: afc643dbecc5f564e8806bafd8b27db8, type: 3}
+  iconeZone: {fileID: 194165297}
 --- !u!1 &245842954
 GameObject:
   m_ObjectHideFlags: 0
@@ -20738,6 +20761,8 @@ MonoBehaviour:
   iconoZone: {fileID: 194165295}
   iconeZoneSprite: {fileID: 194165296}
   iconoArrow: {fileID: 21300000, guid: 47cc322370def12428f67ca7278ac589, type: 3}
+  playerCuerpo: {fileID: 194165286}
+  bloqPlayer: {fileID: 1791219285}
 --- !u!61 &1880019858
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21056,6 +21081,9 @@ MonoBehaviour:
   indexPos: 0
   usosLimitados: 1
   usos: 0
+  imageButton: {fileID: 0}
+  button: {fileID: 0}
+  textButton: {fileID: 0}
 --- !u!114 &1936368030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22082,6 +22110,16 @@ PrefabInstance:
       propertyPath: siguienteEscena
       value: 28
       objectReference: {fileID: 0}
+    - target: {fileID: 3101848404209977776, guid: 080ad4097765db64c9c400370b38f64a,
+        type: 3}
+      propertyPath: playerCuerpo
+      value: 
+      objectReference: {fileID: 194165286}
+    - target: {fileID: 3101848404209977776, guid: 080ad4097765db64c9c400370b38f64a,
+        type: 3}
+      propertyPath: bloqPlayer
+      value: 
+      objectReference: {fileID: 1791219285}
     - target: {fileID: 3101848404209977778, guid: 080ad4097765db64c9c400370b38f64a,
         type: 3}
       propertyPath: m_LocalPosition.x

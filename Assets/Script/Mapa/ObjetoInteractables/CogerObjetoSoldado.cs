@@ -13,8 +13,14 @@ public class CogerObjetoSoldado : MonoBehaviour
 
     public GameObject buttonObjectInventory;
 
+    SpawnItemIcon iconItem;
+
+
+
     private void Awake()
     {
+        iconItem = GetComponent<SpawnItemIcon>();
+
         zona = GetComponent<PlayerHere>();
 
         soldadoVida = GetComponentInParent<SoldierLife>();
@@ -41,6 +47,8 @@ public class CogerObjetoSoldado : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T) && !SaveScene.instancia.listaItemsNivelGuardar[objetoARecoger].objetoObtenido)
         {
+            iconItem.SpawnIcon();
+
             SaveScene.instancia.listaItemsNivelGuardar[objetoARecoger].objetoObtenido = true;
 
             buttonObjectInventory.GetComponent<RectTransform>().localPosition = InventoryManager.instanciaInventory.inventoryPosition[InventoryManager.instanciaInventory.indexInventoryPosition];

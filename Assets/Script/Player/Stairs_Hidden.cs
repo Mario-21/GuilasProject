@@ -156,9 +156,12 @@ public class Stairs_Hidden : MonoBehaviour
         }
         if (collision.gameObject.tag == "Escondite")
         {
-            iconoZone.SetActive(true);
-            iconeZoneSprite.sprite = hiddenIcon;
-
+            //Aparece el icono, si no estoy escondido
+            if (!imHidden)
+            {
+                iconoZone.SetActive(true);
+                iconeZoneSprite.sprite = hiddenIcon;
+            }
         }
     }
     private void OnTriggerStay2D(Collider2D collision)

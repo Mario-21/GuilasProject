@@ -346,7 +346,7 @@ public class SoldadoNormal : MonoBehaviour
                 //Si tu estas a menos de 10m ira a dispararte, si estas alejado vuelve a patrullar
                 if (DistancenPlayer().magnitude < leaveOutPlayer && seePlayer)
                 {
-                   
+                    Debug.Log(DistancenPlayer().magnitude);
 
                     //Si no estas en el borde de una zona te diriges al Player
                     if (onGroundDrcha && onGroundIzq && !canWall && !canWall2) DirigirPlayer(); 

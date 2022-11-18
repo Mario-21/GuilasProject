@@ -8383,6 +8383,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 812753772}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &812753786 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1890022397570294078, guid: 0b6ae8e3895c24a4683486071f2fa82d,
+    type: 3}
+  m_PrefabInstance: {fileID: 812753772}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &813701604
 GameObject:
   m_ObjectHideFlags: 0
@@ -8581,6 +8587,8 @@ MonoBehaviour:
   iconoZone: {fileID: 812753785}
   iconeZoneSprite: {fileID: 812753775}
   iconoArrow: {fileID: 21300000, guid: 47cc322370def12428f67ca7278ac589, type: 3}
+  playerCuerpo: {fileID: 812753779}
+  bloqPlayer: {fileID: 1846455457}
 --- !u!61 &925100905
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12293,6 +12301,7 @@ GameObject:
   - component: {fileID: 1795973106}
   - component: {fileID: 1795973109}
   - component: {fileID: 1795973110}
+  - component: {fileID: 1795973111}
   m_Layer: 0
   m_Name: Vaso
   m_TagString: Untagged
@@ -12341,7 +12350,6 @@ MonoBehaviour:
   objetoARecoger: 3
   objectCatch: {fileID: 1795973104}
   objetcButtonInventory: {fileID: 49320271}
-  estadoObjeto: 0
 --- !u!212 &1795973107
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12432,7 +12440,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   indexModJar: 4
-  jarra: {fileID: 0}
+  jarra: {fileID: 1795973106}
+--- !u!114 &1795973111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795973104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52fa5d42873ff443afff29891cf4628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconItem: {fileID: 8653158090913095385, guid: 9709c1c9f1f43bd4bb3b87dd7292e524,
+    type: 3}
+  iconPickUp: {fileID: 21300000, guid: 57c915c0c1c33c84fb1043aac13bd905, type: 3}
+  iconeZone: {fileID: 812753786}
 --- !u!1 &1845523146
 GameObject:
   m_ObjectHideFlags: 0

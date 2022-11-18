@@ -1510,6 +1510,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3833487112913680984, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
+        type: 3}
+      propertyPath: iconPickUp
+      value: 
+      objectReference: {fileID: 21300000, guid: fcabc19693987dc47911778fbb36690b,
+        type: 3}
+    - target: {fileID: 3833487112913680984, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
+        type: 3}
+      propertyPath: iconeZone
+      value: 
+      objectReference: {fileID: 168334928}
     - target: {fileID: 4157322816508488713, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
         type: 3}
       propertyPath: objectCatch
@@ -2182,6 +2193,18 @@ GameObject:
 --- !u!212 &168334926 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5780431153459322321, guid: 0b6ae8e3895c24a4683486071f2fa82d,
+    type: 3}
+  m_PrefabInstance: {fileID: 168334917}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &168334927 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1425663039361588081, guid: 0b6ae8e3895c24a4683486071f2fa82d,
+    type: 3}
+  m_PrefabInstance: {fileID: 168334917}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &168334928 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1890022397570294078, guid: 0b6ae8e3895c24a4683486071f2fa82d,
     type: 3}
   m_PrefabInstance: {fileID: 168334917}
   m_PrefabAsset: {fileID: 0}
@@ -3092,6 +3115,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerImHere: 0
+--- !u!114 &458447739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458447736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52fa5d42873ff443afff29891cf4628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconItem: {fileID: 8653158090913095385, guid: 9709c1c9f1f43bd4bb3b87dd7292e524,
+    type: 3}
+  iconPickUp: {fileID: 21300000, guid: d4657d6e8997c3e4c9f58173cde5860a, type: 3}
+  iconeZone: {fileID: 168334928}
 --- !u!1001 &482511729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3264,7 +3303,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 484265117}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4, z: 0}
+  m_LocalPosition: {x: 0, y: 0.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1372026941}
@@ -5932,6 +5971,8 @@ MonoBehaviour:
   iconoZone: {fileID: 168334925}
   iconeZoneSprite: {fileID: 168334926}
   iconoArrow: {fileID: 21300000, guid: 47cc322370def12428f67ca7278ac589, type: 3}
+  playerCuerpo: {fileID: 168334927}
+  bloqPlayer: {fileID: 1903309144}
 --- !u!1001 &1404224027
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -15,9 +15,11 @@ public class CameraFollow : MonoBehaviour
 
     void FixedUpdate ()
     {
-
+        FollowCamera();
+    }
+    void FollowCamera()
+    {
         transform.position = new Vector3(cmVCam1.transform.position.x, cmVCam1.transform.position.y, transform.position.z);
-
     }
         
 }

@@ -1951,6 +1951,12 @@ SpriteRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 438359634}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &438359643 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1425663039361588081, guid: 0b6ae8e3895c24a4683486071f2fa82d,
+    type: 3}
+  m_PrefabInstance: {fileID: 438359634}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &452534604
 GameObject:
   m_ObjectHideFlags: 0
@@ -2348,6 +2354,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f5a3dc4032f8c64baa656d92dfc1f7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
+  player: {fileID: 0}
+  puertaTransporte: {fileID: 0}
   direction: {fileID: 1429971378}
   up_DownHidden: {fileID: 618827802}
 --- !u!1001 &600909963
@@ -3685,6 +3694,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f5a3dc4032f8c64baa656d92dfc1f7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
+  player: {fileID: 0}
+  puertaTransporte: {fileID: 0}
   direction: {fileID: 586188558}
   up_DownHidden: {fileID: 618827802}
 --- !u!82 &930643163 stripped
@@ -9990,7 +10002,6 @@ Transform:
   - {fileID: 1434962317}
   - {fileID: 1501719761}
   - {fileID: 846728183}
-  - {fileID: 1951338485}
   - {fileID: 1367219601}
   m_Father: {fileID: 0}
   m_RootOrder: 18
@@ -11125,7 +11136,7 @@ PrefabInstance:
     - target: {fileID: 530440053289109071, guid: e1aaee888d5f3f7449905849631f3b7e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 530440053289109071, guid: e1aaee888d5f3f7449905849631f3b7e,
         type: 3}
@@ -12827,11 +12838,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1951338484}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -41.850006, y: -4.85, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.034714743, y: 0.85, z: 0}
+  m_LocalScale: {x: 0.6999125, y: 1.1975187, z: 1}
   m_Children: []
-  m_Father: {fileID: 1129213735}
-  m_RootOrder: 8
+  m_Father: {fileID: 1987991091}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1952857592
 GameObject:
@@ -12893,7 +12904,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -41.800407, y: -5.003863, z: 0}
   m_LocalScale: {x: 1.4287499, y: 0.83506, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1951338485}
   m_Father: {fileID: 1129213735}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12914,6 +12926,8 @@ MonoBehaviour:
   iconoZone: {fileID: 438359641}
   iconeZoneSprite: {fileID: 438359642}
   iconoArrow: {fileID: 21300000, guid: 47cc322370def12428f67ca7278ac589, type: 3}
+  playerCuerpo: {fileID: 438359643}
+  bloqPlayer: {fileID: 600909964}
 --- !u!212 &1987991093
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -12,6 +12,9 @@ public class Camino_CambiarZona : MonoBehaviour
     [SerializeField] GameObject iconoZone;
     [SerializeField] SpriteRenderer iconeZoneSprite;
     [SerializeField] Sprite iconoArrow;
+    [Header("Player")]
+    [SerializeField]  GameObject playerCuerpo;
+    [SerializeField] BloquearMovimientoPlayer bloqPlayer;
 
     bool camino;
 
@@ -29,6 +32,11 @@ public class Camino_CambiarZona : MonoBehaviour
             iconoZone.SetActive(true);
             if (Input.GetKeyDown(KeyCode.Z))
             {
+                //Para que no que los enemigos si te ven, no te ataquen al cambiar de zona
+                playerCuerpo.layer = 0;
+                //Parar el Movimiento del Player
+                bloqPlayer.BloquearMovPlayer();
+                //Cambiar Zona
                 CheckPointController.numeroCheckPoint = checkpointSpanwScene;
                 EstructuraNiveles.nivel = siguienteEscena;
                 AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");

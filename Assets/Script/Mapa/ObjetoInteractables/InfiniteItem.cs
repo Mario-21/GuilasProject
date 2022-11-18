@@ -6,10 +6,12 @@ public class InfiniteItem : MonoBehaviour
 {
     [SerializeField] SaveButton itemButton;
     public int indexButton;
+    SpawnItemIcon iconItemSpawn;
 
     PlayerHere player;
     void Start()
     {
+        iconItemSpawn = GetComponent<SpawnItemIcon>();
         player = GetComponent<PlayerHere>();
     }
 
@@ -27,6 +29,10 @@ public class InfiniteItem : MonoBehaviour
         {
             SaveScene.instancia.listaItemsNivelGuardar[indexButton].vecesUsadoObjeto = 0;
             itemButton.HabilitarUsos();
+            if(SaveScene.instancia.listaItemsNivelGuardar[indexButton].vecesUsadoObjeto >= 1)
+            {
+                iconItemSpawn.SpawnIcon();
+            }
         }
     }
 }

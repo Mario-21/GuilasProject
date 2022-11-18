@@ -8003,6 +8003,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb8af1764773fe841a410278df93a30e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &194165293 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1890022397570294078, guid: 0b6ae8e3895c24a4683486071f2fa82d,
+    type: 3}
+  m_PrefabInstance: {fileID: 194165281}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &199472717
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8990,6 +8996,9 @@ MonoBehaviour:
   indexPos: 0
   usosLimitados: 1
   usos: 0
+  imageButton: {fileID: 0}
+  button: {fileID: 0}
+  textButton: {fileID: 0}
 --- !u!114 &273387035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20245,8 +20254,9 @@ GameObject:
   - component: {fileID: 663557900}
   - component: {fileID: 663557902}
   - component: {fileID: 663557903}
+  - component: {fileID: 663557904}
   m_Layer: 0
-  m_Name: Llave
+  m_Name: Llave Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20370,6 +20380,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerImHere: 0
+--- !u!114 &663557904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663557898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52fa5d42873ff443afff29891cf4628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconItem: {fileID: 8653158090913095385, guid: 9709c1c9f1f43bd4bb3b87dd7292e524,
+    type: 3}
+  iconPickUp: {fileID: 21300000, guid: d4657d6e8997c3e4c9f58173cde5860a, type: 3}
+  iconeZone: {fileID: 194165293}
 --- !u!1 &666326325
 GameObject:
   m_ObjectHideFlags: 0
@@ -33109,9 +33135,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   siguienteEscena: 20
   checkpointSpanwScene: 2
-  iconoZone: {fileID: 0}
-  iconeZoneSprite: {fileID: 0}
-  iconoArrow: {fileID: 0}
+  iconoZone: {fileID: 1913351809}
+  iconeZoneSprite: {fileID: 1913351812}
+  iconoArrow: {fileID: 21300000, guid: 47cc322370def12428f67ca7278ac589, type: 3}
+  playerCuerpo: {fileID: 194165287}
+  bloqPlayer: {fileID: 1791219285}
 --- !u!212 &962962723
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -33736,13 +33764,24 @@ PrefabInstance:
     - target: {fileID: 3626397807857042633, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
         type: 3}
       propertyPath: m_Name
-      value: Llave ScientificRoom
+      value: Llave ScientificRoom Item
       objectReference: {fileID: 0}
     - target: {fileID: 3626397807857042633, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
         type: 3}
       propertyPath: m_TagString
       value: Cuerda
       objectReference: {fileID: 0}
+    - target: {fileID: 3833487112913680984, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
+        type: 3}
+      propertyPath: iconPickUp
+      value: 
+      objectReference: {fileID: 21300000, guid: d4657d6e8997c3e4c9f58173cde5860a,
+        type: 3}
+    - target: {fileID: 3833487112913680984, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
+        type: 3}
+      propertyPath: iconeZone
+      value: 
+      objectReference: {fileID: 194165293}
     - target: {fileID: 4157322816508488713, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
         type: 3}
       propertyPath: objetoARecoger
@@ -37075,6 +37114,16 @@ PrefabInstance:
       propertyPath: iconeZoneSprite
       value: 
       objectReference: {fileID: 1913351812}
+    - target: {fileID: 4546593624630477157, guid: d3b125bb0975b25438acae4530db2ade,
+        type: 3}
+      propertyPath: playerCuerpo
+      value: 
+      objectReference: {fileID: 194165287}
+    - target: {fileID: 4546593624630477157, guid: d3b125bb0975b25438acae4530db2ade,
+        type: 3}
+      propertyPath: bloqPlayer
+      value: 
+      objectReference: {fileID: 1791219285}
     - target: {fileID: 4546593624630477158, guid: d3b125bb0975b25438acae4530db2ade,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -43806,8 +43855,19 @@ PrefabInstance:
     - target: {fileID: 3626397807857042633, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
         type: 3}
       propertyPath: m_Name
-      value: Tarjeta Amarilla
+      value: Tarjeta Amarilla Item
       objectReference: {fileID: 0}
+    - target: {fileID: 3833487112913680984, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
+        type: 3}
+      propertyPath: iconPickUp
+      value: 
+      objectReference: {fileID: 21300000, guid: d4657d6e8997c3e4c9f58173cde5860a,
+        type: 3}
+    - target: {fileID: 3833487112913680984, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
+        type: 3}
+      propertyPath: iconeZone
+      value: 
+      objectReference: {fileID: 194165293}
     - target: {fileID: 4157322816508488713, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
         type: 3}
       propertyPath: objetoARecoger

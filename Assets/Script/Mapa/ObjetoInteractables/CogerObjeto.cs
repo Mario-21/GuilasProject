@@ -10,10 +10,14 @@ public class CogerObjeto : MonoBehaviour
     public GameObject objectCatch;
     [Header("Inventory Button")]
     public GameObject objetcButtonInventory;
+    [Header("FeedBack Pick Item")]
+    SpawnItemIcon feedbackItem;
+
 
     PlayerHere dentroDeZona;
     private void Awake()
     {
+        feedbackItem = GetComponent<SpawnItemIcon>();
         dentroDeZona = GetComponent<PlayerHere>();
         //Only when object is close
 
@@ -30,6 +34,7 @@ public class CogerObjeto : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T) && !SaveScene.instancia.listaItemsNivelGuardar[objetoARecoger].objetoObtenido)
         {
+            feedbackItem.SpawnIcon();
             //Take The object
             //listaItemNivel.listaItemsNivel[objetoARecoger].objetoObtenido = true;
             SaveScene.instancia.listaItemsNivelGuardar[objetoARecoger].objetoObtenido = true;

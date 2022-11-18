@@ -7165,6 +7165,16 @@ PrefabInstance:
       propertyPath: siguienteEscena
       value: 44
       objectReference: {fileID: 0}
+    - target: {fileID: 4546593624630477157, guid: d3b125bb0975b25438acae4530db2ade,
+        type: 3}
+      propertyPath: playerCuerpo
+      value: 
+      objectReference: {fileID: 194165290}
+    - target: {fileID: 4546593624630477157, guid: d3b125bb0975b25438acae4530db2ade,
+        type: 3}
+      propertyPath: bloqPlayer
+      value: 
+      objectReference: {fileID: 1791219285}
     - target: {fileID: 4546593624630477158, guid: d3b125bb0975b25438acae4530db2ade,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8028,6 +8038,12 @@ SpriteRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 194165281}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &194165295 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1890022397570294078, guid: 0b6ae8e3895c24a4683486071f2fa82d,
+    type: 3}
+  m_PrefabInstance: {fileID: 194165281}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &195090179
 GameObject:
   m_ObjectHideFlags: 0
@@ -8275,6 +8291,7 @@ GameObject:
   - component: {fileID: 214260488}
   - component: {fileID: 214260487}
   - component: {fileID: 214260490}
+  - component: {fileID: 214260491}
   m_Layer: 0
   m_Name: Llave item
   m_TagString: Untagged
@@ -8374,7 +8391,6 @@ MonoBehaviour:
   objetoARecoger: 0
   objectCatch: {fileID: 214260484}
   objetcButtonInventory: {fileID: 1778032750}
-  estadoObjeto: 0
 --- !u!61 &214260489
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8417,6 +8433,22 @@ MonoBehaviour:
   basketMask: {fileID: 194165292}
   diarySoldier: {fileID: 951476355}
   text: {fileID: 1198015167}
+--- !u!114 &214260491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214260484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52fa5d42873ff443afff29891cf4628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconItem: {fileID: 8653158090913095385, guid: 9709c1c9f1f43bd4bb3b87dd7292e524,
+    type: 3}
+  iconPickUp: {fileID: 21300000, guid: d4657d6e8997c3e4c9f58173cde5860a, type: 3}
+  iconeZone: {fileID: 194165295}
 --- !u!1 &215104547
 GameObject:
   m_ObjectHideFlags: 0
@@ -12027,6 +12059,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3833487112913680984, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
+        type: 3}
+      propertyPath: iconeZone
+      value: 
+      objectReference: {fileID: 194165295}
+    - target: {fileID: 3833487112913680984, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
+        type: 3}
+      propertyPath: iconPickUp
+      value: 
+      objectReference: {fileID: 21300000, guid: f5ddd618e35d9a54e9af75e0c82e72a2,
+        type: 3}
     - target: {fileID: 4157322816508488713, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
         type: 3}
       propertyPath: objectCatch
@@ -21934,6 +21977,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexMod: 4
   cinematicDormitorio: 51
+  spawn: 0
   soldadoDiary: {fileID: 951476355}
 --- !u!1001 &1082957483
 PrefabInstance:
@@ -26976,7 +27020,6 @@ MonoBehaviour:
   objetoARecoger: 0
   objectCatch: {fileID: 214260484}
   objetcButtonInventory: {fileID: 1778032750}
-  estadoObjeto: 0
 --- !u!114 &1666845740
 MonoBehaviour:
   m_ObjectHideFlags: 0
