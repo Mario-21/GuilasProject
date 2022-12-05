@@ -14,6 +14,7 @@ public class RegretScene : MonoBehaviour
     }
     void GetBack()
     {
+        
         if (regret)
         {
             CheckPointController.numeroCheckPoint = spawn;

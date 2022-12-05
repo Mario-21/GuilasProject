@@ -14,6 +14,5 @@ public class CheckPointController : MonoBehaviour
     {
         player.position = checkpoints[numeroCheckPoint].position;
     }
-    
 
 }
