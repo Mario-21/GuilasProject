@@ -6,7 +6,7 @@ public class ChooseFloorAscensor : MonoBehaviour
 {
     Rigidbody2D rb;
     int actualFloor;
-    [HideInInspector] public int nextFloor;
+    public int nextFloor;
     [HideInInspector] public bool elevatorActive;
 
     [Header("Velocity")]
@@ -20,7 +20,6 @@ public class ChooseFloorAscensor : MonoBehaviour
     float cuerda_Size;
     private void Awake()
     {
-        nextFloor = 1;
         actualFloor = nextFloor;
         rb = GetComponent<Rigidbody2D>();
         cuerda_Size = speed / 10;

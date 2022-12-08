@@ -12,9 +12,9 @@ public class SaveButton : MonoBehaviour
     public int usosLimitados;
     [HideInInspector] public int usos;
     [Header("Boton Data")]
-    public Image imageButton;
-    public Button button;
-    public Text textButton;
+    Image imageButton;
+    Button button;
+    Text textButton;
 
     private void Awake()
     {
