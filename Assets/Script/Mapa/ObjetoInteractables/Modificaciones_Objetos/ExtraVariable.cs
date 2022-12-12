@@ -58,6 +58,10 @@ public class ExtraVariable : MonoBehaviour
     }
     public CinematicComedor105 comedorScene;
     #endregion
+
+    #region SaveUbiSoldadoCodigo (11.14_ZonaExtra) 
+    public int ubiSave;
+    #endregion
     private void Awake()
     {
         if (ExtraVariable.extras == null)

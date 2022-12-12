@@ -15,6 +15,14 @@ public class CogerObjetoSoldado : MonoBehaviour
 
     SpawnItemIcon iconItem;
 
+    public enum TypeItem
+    {
+
+        NormalItem,
+        UiItem
+    }
+    public TypeItem typeItem; 
+
 
 
     private void Awake()
@@ -27,7 +35,7 @@ public class CogerObjetoSoldado : MonoBehaviour
     }
     private void Start()
     {
-        if(SaveScene.instancia.listaItemsNivelGuardar[objetoARecoger].objetoObtenido) objectToPickUp.SetActive(false);
+        ConfirmItem();
     }
     private void Update()
     {
@@ -39,11 +47,10 @@ public class CogerObjetoSoldado : MonoBehaviour
         {
             Debug.Log("Puedes coger el Objeto con T");
             //Si todavia no has recogido el objeto puedes cogerlo
-            CatchObject();
-
+            ItemType();
         }
     }
-    void CatchObject()
+    void CatchObjectNormal()
     {
         if (Input.GetKeyDown(KeyCode.T) && !SaveScene.instancia.listaItemsNivelGuardar[objetoARecoger].objetoObtenido)
         {
@@ -57,6 +64,48 @@ public class CogerObjetoSoldado : MonoBehaviour
             InventoryManager.instanciaInventory.indexInventoryPosition++;
             Debug.Log("Has cogido la llave");
             objectToPickUp.SetActive(false);
+        }
+    }
+    void CatchItemUI()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            buttonObjectInventory.SetActive(true);
+            objectToPickUp.SetActive(false);
+            ListaItemsUI.listaItemsUI.listaAllItemUI[objetoARecoger].itemUICatch = true;
+            this.gameObject.SetActive(false);
+        }
+    }
+    void ItemType()
+    {
+        switch (typeItem)
+        {
+            case TypeItem.NormalItem:
+                CatchObjectNormal();
+                break;
+            case TypeItem.UiItem:
+                CatchItemUI();
+                break;
+        }
+    }
+    void ConfirmItem()
+    {
+        switch (typeItem)
+        {
+            case TypeItem.NormalItem:
+                if (SaveScene.instancia.listaItemsNivelGuardar[objetoARecoger].objetoObtenido)
+                {
+                    objectToPickUp.SetActive(false);
+                    this.enabled = false;
+                }
+                break;
+            case TypeItem.UiItem:
+                if (ListaItemsUI.listaItemsUI.listaAllItemUI[objetoARecoger].itemUICatch)
+                {
+                    objectToPickUp.SetActive(false);
+                    this.enabled = false;
+                }
+                break;
         }
     }
 
