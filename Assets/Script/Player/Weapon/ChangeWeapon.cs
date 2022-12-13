@@ -26,7 +26,7 @@ public class ChangeWeapon : MonoBehaviour
     }
     void Update()
     {
-        if (SaveScene.instancia.b8) Weapons();
+        if (SpecialWeapons.specialW.b8) Weapons();
 
     }
     void Weapons()

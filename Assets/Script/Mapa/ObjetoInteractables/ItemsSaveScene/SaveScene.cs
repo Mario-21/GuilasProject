@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class SaveScene : MonoBehaviour
 {
-    //B8 se tiene que colocar en otra parte dado que esta lista tambien se destruye
-    public bool b8;
+
     public static SaveScene instancia;
 
     #region ListaItemsNivel

@@ -11,7 +11,7 @@ public class CogerWeapon : MonoBehaviour
     }
     void Start()
     {
-        if (SaveScene.instancia.b8) this.gameObject.SetActive(false);
+        if (SpecialWeapons.specialW.b8) this.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class CogerWeapon : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            SaveScene.instancia.b8 = true;
+            SpecialWeapons.specialW.b8 = true;
             ExtraVariable.extras.b8Reogida++;
             this.gameObject.SetActive(false);
         }

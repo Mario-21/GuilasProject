@@ -19,7 +19,7 @@ public class LostB8 : MonoBehaviour
     {
         //Previously pick up the object
         //no puedes hacerlo en base al spawn dado que cuendo entres de nuevo ya no sera 1 o 2
-        if(!SaveScene.instancia.b8 && ExtraVariable.extras.b8Reogida >= 1)
+        if(!SpecialWeapons.specialW.b8 && ExtraVariable.extras.b8Reogida >= 1)
         {
             escombrosB8.SetActive(true);
         }

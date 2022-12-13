@@ -9,7 +9,7 @@ public class ByeB8 : MonoBehaviour
         if (collision.gameObject.CompareTag("B8")) 
         {
             Debug.Log("Hey you B8");
-            SaveScene.instancia.b8 = false;
+            SpecialWeapons.specialW.b8 = false;
         }
     }
 }

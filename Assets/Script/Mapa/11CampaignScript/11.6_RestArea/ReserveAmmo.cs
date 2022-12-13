@@ -10,7 +10,7 @@ public class ReserveAmmo : MonoBehaviour
     public GameObject ammo;
     void Start()
     {
-        if(arma.municionTotal <= 0 && StatusGameobjectsVariables.statusGameobject.modificacion[indexRejillaAscensor].modificacion)
+        if(arma.municionTotal <= 0 && !StatusGameobjectsVariables.statusGameobject.modificacion[indexRejillaAscensor].modificacion && !SpecialWeapons.specialW.b8)
         {
             //Colocar si no tienes el B8
             //Esto se hace por si te quedas sin municion y no has roto la rejilla del ascensor.

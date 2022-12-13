@@ -44,7 +44,7 @@ public class VidaPlayer : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("B8"))
         {
-            if (SaveScene.instancia.b8)
+            if (SpecialWeapons.specialW.b8)
             {
                 b8Weapon.municionTotal++;
                 Destroy(collision.gameObject);

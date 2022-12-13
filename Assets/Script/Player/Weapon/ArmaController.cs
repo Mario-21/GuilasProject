@@ -89,6 +89,7 @@ public class ArmaController : MonoBehaviour
                 
                 if (municionTotal > 0)
                 {
+                    municionText.color = Color.white;
                     //Añadir cooldown;
                     if (cooldown <= 0)
                     {
