@@ -62,6 +62,10 @@ public class ExtraVariable : MonoBehaviour
     #region SaveUbiSoldadoCodigo (11.14_ZonaExtra) 
     public int ubiSave;
     #endregion
+
+    #region ConservarPeluca (11.15_SalaJefe)
+    public bool preserveWig;
+    #endregion
     private void Awake()
     {
         if (ExtraVariable.extras == null)

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PutGasMask : MonoBehaviour
 {
-    [SerializeField] GameObject gas_Mask;
+    public GameObject gas_Mask;
     [SerializeField] SaveButton mascaraButton;
     public string tagName = "Mascara";
     bool canPut;

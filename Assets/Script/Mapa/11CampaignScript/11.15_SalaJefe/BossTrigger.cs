@@ -8,10 +8,12 @@ public class BossTrigger : MonoBehaviour
 
     [Header("Time Scene Boss")]
     public float waitBossLimit;
-    float waitBoss;
+    public float waitBoss;
     [Header("Scena Boss")]
     public int scenaBoss;
-    public int spawnBoss; 
+    public int spawnBoss;
+    [Header("Ascensor")]
+    [SerializeField] Camino_CambiarZona ascensor;
 
     bool bossWait;
     void Start()
@@ -35,8 +37,10 @@ public class BossTrigger : MonoBehaviour
             if(waitBoss >= waitBossLimit)
             {
                 StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+                ascensor.enabled = false;
                 CheckPointController.numeroCheckPoint = spawnBoss;
                 EstructuraNiveles.nivel = scenaBoss;
+                AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
             }
         }
     }
