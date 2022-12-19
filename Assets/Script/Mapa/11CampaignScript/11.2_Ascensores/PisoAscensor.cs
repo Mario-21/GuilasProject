@@ -92,7 +92,6 @@ public class PisoAscensor : MonoBehaviour
         {
             pisos.SetActive(false);
             cifras.SetActive(true);
-            onPass.color = Color.green;
         }
         else
         {
@@ -118,12 +117,14 @@ public class PisoAscensor : MonoBehaviour
         {
             AscensorCorrect();
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+            onPass.color = Color.green;
             passwordOn = false;
         }
         else
         {
             textAscensor.text = "";
             cifrasAscensor = 0;
+            onPass.color = Color.red;
         }
     }
     void AscensorCorrect()

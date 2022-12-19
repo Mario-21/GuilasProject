@@ -19,8 +19,8 @@ public class UseSleep : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (soldadoDiary.vida > 0) UseSleepPowder();
-        else if (soldadoDiary.vida <= 0) activador.enabled = false;
+        if (soldadoDiary.vida > 0 && !soldadoDiary.GetComponent<SoldadoNormal>().berserker) UseSleepPowder();
+        else if (soldadoDiary.vida <= 0 || soldadoDiary.GetComponent<SoldadoNormal>().berserker) activador.enabled = false;
     }
     void UseSleepPowder()
     {
