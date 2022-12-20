@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    //NOTA: Esto es un inventario, no el menu de pausa (quiza colocar)
     public static bool gameIsPause = false;
 
     public GameObject inventory;
@@ -47,7 +48,7 @@ public class Inventory : MonoBehaviour
     {
         inventory.SetActive(true);
     }
-    void CloseInventory()
+    public void CloseInventory()
     {
         inventory.SetActive(false);
     }

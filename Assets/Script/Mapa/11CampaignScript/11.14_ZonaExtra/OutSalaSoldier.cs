@@ -8,6 +8,7 @@ public class OutSalaSoldier : MonoBehaviour
     [Header("Soldado Data")]
     [SerializeField] SoldadoNormal soldadoCode;
     [SerializeField] SoldierLife soldadoCodeLife;
+    [SerializeField] GameObject triggerSoldadoCode;
     [Header("Time Out Sala")]
     public float timeOutSalaLimit;
     float timeOutSala;
@@ -18,6 +19,7 @@ public class OutSalaSoldier : MonoBehaviour
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
             soldadoCodeLife.gameObject.SetActive(false);
+            triggerSoldadoCode.SetActive(false);
         }
     }
 
@@ -46,6 +48,7 @@ public class OutSalaSoldier : MonoBehaviour
             if(timeOutSala >= timeOutSalaLimit)
             {
                 soldadoCodeLife.gameObject.SetActive(false);
+                triggerSoldadoCode.SetActive(false);
                 StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
             }
         }

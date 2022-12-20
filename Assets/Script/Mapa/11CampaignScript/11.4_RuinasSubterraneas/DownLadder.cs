@@ -19,6 +19,10 @@ public class DownLadder : MonoBehaviour
     void Start()
     {
         player = GetComponent<PlayerHere>();
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
+        {
+            DownEscaleras();
+        }
     }
 
     // Update is called once per frame
