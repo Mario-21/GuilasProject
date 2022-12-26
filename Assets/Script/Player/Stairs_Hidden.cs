@@ -46,9 +46,7 @@ public class Stairs_Hidden : MonoBehaviour
 
         //Subir escalera 
         Up_Down_Stairs();
-
-
-
+        //Poder Esconderte
         if (mov.onGround)
         {
             if (canHidden)
@@ -65,7 +63,7 @@ public class Stairs_Hidden : MonoBehaviour
                     Instantiate(ParticulaEsconderse, cuerpoPlayer.position, Quaternion.identity);
                     soundManager.SeleccionAudio(soundManager.audiosAmbiente, 0, 1f, 0);
                     iconoZone.SetActive(false);
-                   
+
                     imHidden = !imHidden;
 
                     Hidden();
@@ -115,8 +113,6 @@ public class Stairs_Hidden : MonoBehaviour
 
         }
     }
-
-
     void Up_Down_Stairs()
     {
         vertical = Input.GetAxisRaw("Vertical");
@@ -182,6 +178,7 @@ public class Stairs_Hidden : MonoBehaviour
         {
             zonaEscalada = false;
             escalar = false;
+            rb.gravityScale = 1;
             soundManager.controlAudio[2].Stop();
             soundPlayOne = 0;
             //Usar el WalkSource porque necesito pararlo y con PlayOneShot no se puede parar

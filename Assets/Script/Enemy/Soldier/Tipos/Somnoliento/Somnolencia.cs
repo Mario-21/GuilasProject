@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Somnolencia : MonoBehaviour
 {
-    [SerializeField]ParticleSystem particulasDormido;
+    public ParticleSystem particulasDormido;
     SoldadoNormal soldado;
 
     [Header ("Time Sleep")]
@@ -16,6 +16,13 @@ public class Somnolencia : MonoBehaviour
     [Header("ChangePatrol")]
     public List<Transform> ubis;
     
+    [Header("Sleep Mode")]
+    public SleepMode sleepMode;
+    public enum SleepMode
+    {
+        Somnolent,
+        Sleep
+    }
 
     bool despierto;
 
@@ -27,13 +34,24 @@ public class Somnolencia : MonoBehaviour
     
     void Update()
     {
-        if (!soldado.berserker && !soldado.busquedaMode) Somnoliento();
+        if (!soldado.berserker && !soldado.busquedaMode) 
+        {
+            switch (sleepMode)
+            {
+                case SleepMode.Somnolent:
+                    Somnoliento();
+                    break;
+                case SleepMode.Sleep:
+                    Dormido();
+                    break;
+            }
+        }
         else if(soldado.berserker)
         {
             ChangePatrolMov();
-            this.enabled = false;
+            particulasDormido.Stop();
             soldado.enabled = true;
-            particulasDormido.Stop(); 
+            this.enabled = false;
         }
     }
 
@@ -56,12 +74,22 @@ public class Somnolencia : MonoBehaviour
         }
 
         //Te despiertas
-        if (tiempoSomnoliento >= tiempoLimiteSomnoliento) { particulasDormido.Stop(); soldado.enabled = true; despierto = true; }
+        if (tiempoSomnoliento >= tiempoLimiteSomnoliento) 
+        { 
+            particulasDormido.Stop();
+            soldado.enabled = true;
+            despierto = true;
+        }
+    }
+    void Dormido()
+    {
+        particulasDormido.Play();
+        soldado.OutAnimation();
+        soldado.enabled = false;
     }
     void ChangePatrolMov()
     {
         soldado.ubicacionesDirigir.Clear();
-
         for (int i = 0; i < ubis.Count; i++)
         {
             soldado.ubicacionesDirigir.Add(ubis[i]);

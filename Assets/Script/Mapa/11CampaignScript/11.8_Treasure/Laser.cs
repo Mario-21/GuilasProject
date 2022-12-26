@@ -33,6 +33,7 @@ public class Laser : MonoBehaviour
     }
     void WakeUpSoldier()
     {
+        soldadoLaser.particulasDormido.Stop();
         soldadoLaser.enabled = false;
         soldado.enabled = true;
         StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
