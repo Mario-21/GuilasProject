@@ -60,11 +60,15 @@ public class ExtraVariable : MonoBehaviour
     #endregion
 
     #region SaveUbiSoldadoCodigo (11.14_ZonaExtra) 
-    public int ubiSave;
+    [HideInInspector] public int ubiSave;
     #endregion
 
     #region ConservarPeluca (11.15_SalaJefe)
-    public bool preserveWig;
+    [HideInInspector] public bool preserveWig;
+    #endregion
+
+    #region Nivel 12 Turnos
+    public int turnosWork;
     #endregion
     private void Awake()
     {

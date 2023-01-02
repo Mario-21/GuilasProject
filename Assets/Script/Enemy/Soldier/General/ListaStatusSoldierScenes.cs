@@ -12,4 +12,6 @@ public class ListaStatusSoldierScenes
     [HideInInspector]public bool warningSoldier;
     [HideInInspector] public float position_x;
     [HideInInspector] public float position_y;
+    public int deathScene;
+    public bool imDead;
 }

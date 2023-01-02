@@ -20,11 +20,11 @@ public class ActualStatus : MonoBehaviour
     {
         soldierLife = GetComponent<SoldierLife>();
         soldadoMode = GetComponent<SoldadoNormal>();
-        
+        LoadStatus();
     }
     void Start()
     {
-        LoadStatus();
+        //LoadStatus();
         EstablishLifeBegin();
         
     }
@@ -46,11 +46,8 @@ public class ActualStatus : MonoBehaviour
     }
     private void OnDestroy()
     {
-        SaveStatus();
-        
+        SaveStatus();   
     }
-
-   
     void SaveStatus()
     {
         //Necesitas algo para identificar el array

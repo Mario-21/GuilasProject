@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerHere : MonoBehaviour
 {
-    [HideInInspector] public bool playerImHere;
+     public bool playerImHere;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
