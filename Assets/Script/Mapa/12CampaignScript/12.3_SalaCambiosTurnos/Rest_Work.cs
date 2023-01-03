@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Zona_12 : MonoBehaviour
+public class Rest_Work : MonoBehaviour
 {
     public List<SoldierLife> lista_Soldados;
 

@@ -16,7 +16,7 @@ public class PlayerHere : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player")) playerImHere = false;
+        if (collision.gameObject.CompareTag("Player")) { playerImHere = false; Debug.Log("El player ha salido del trigger"); }
     }
 
 }
