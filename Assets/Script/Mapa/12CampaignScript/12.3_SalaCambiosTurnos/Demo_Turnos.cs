@@ -28,14 +28,17 @@ public class Demo_Turnos
         {
             case 0:
                 turnoActual = TurnosTrabajo.AB;
+                //AB pasa a VErde los demas Rojo
                 Debug.Log("Turno Actual " + turnoActual);
                 break;
             case 1:
                 turnoActual = TurnosTrabajo.AC;
+                //AC VERDE
                 Debug.Log("Turno Actual " + turnoActual);
                 break;
             case 2:
                 turnoActual = TurnosTrabajo.CB;
+                //CB VERDE
                 Debug.Log("Turno Actual " + turnoActual);
                 break;
         }

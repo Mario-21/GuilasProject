@@ -28,7 +28,8 @@ public class CraftingTable : MonoBehaviour
     [Header("Items En Mesa")]
     public GameObject itemCrafteado;
     public List<GameObject> itemsEnMesa;
-
+    [Header("Particulas Crafting")]
+    public GameObject estelaHumo;
     private void Awake()
     {
         player = GetComponent<PlayerHere>();
@@ -90,6 +91,8 @@ public class CraftingTable : MonoBehaviour
             //Al terminar el crafteo
             if (timeCraft >= timeCraftLimit)
             {
+                //Aparece una estela de humo para que no se vea como crea el objeto
+                Instantiate(estelaHumo, transform.position, Quaternion.identity);
                 //Desapaarecen los items en mesa
                 for (int e = 0; e < itemsEnMesa.Count; e++)
                 {
@@ -104,16 +107,9 @@ public class CraftingTable : MonoBehaviour
                 this.enabled = false;
                 //Icono fuera ya que has acabado de craftear
                 iconoZone.SetActive(false);
-
+                //Aparece el objeto crafteado
                 itemCrafteado.SetActive(true);
                 Debug.Log("Crafteo completado");
-
-                /* 
-                (Spawnear)Particulas de Humo.
-                Aparecera el objeto creado.
-                */
-
-                //Cuando dejes de pulsar se resetea a 0
             }
         }
         else
