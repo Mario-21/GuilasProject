@@ -22,6 +22,22 @@ public class Demo_Turnos
             }
         }
     }
+    /// <summary>
+    /// Confimar si hay un soldado vivo para poder apagar los motores
+    /// </summary>
+    /// <param name="soldadosIndex"> Numero total de soldados relacionas a un dispositivo</param>
+    /// <param name="vivo"> Confirma que se puede apagar un apararo</param>
+    public virtual void OffAparatosTurnos (List<int> soldadosIndex, ref bool vivo)
+    {
+        for (int i = 0; i < soldadosIndex.Count; i++)
+        {
+            if (SoldierActiveInScene.instancia.soldiersStatus[soldadosIndex[i]].statusVida > 0)
+            {
+                vivo = true;
+                break;
+            }
+        }
+    }
     public void ChangeTurnos (int indexTurno)
     {
         switch (indexTurno)
@@ -30,16 +46,19 @@ public class Demo_Turnos
                 turnoActual = TurnosTrabajo.AB;
                 //AB pasa a VErde los demas Rojo
                 Debug.Log("Turno Actual " + turnoActual);
+                //Aqui se daria la explosion
                 break;
             case 1:
                 turnoActual = TurnosTrabajo.AC;
                 //AC VERDE
                 Debug.Log("Turno Actual " + turnoActual);
+                //Aqui se daria el tanque
                 break;
             case 2:
                 turnoActual = TurnosTrabajo.CB;
                 //CB VERDE
                 Debug.Log("Turno Actual " + turnoActual);
+                //Aqui la sobreCarga
                 break;
         }
     }

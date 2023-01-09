@@ -70,6 +70,9 @@ public class ExtraVariable : MonoBehaviour
     #region Nivel 12 Turnos
     public int turnosWork;
     #endregion
+    #region Sobrecarga (12.10_Excavacion_B)
+    public int valorGenerador;
+    #endregion
     private void Awake()
     {
         if (ExtraVariable.extras == null)
@@ -81,11 +84,5 @@ public class ExtraVariable : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
