@@ -16,28 +16,43 @@ public class TriggerEvento_12 : MonoBehaviour
     [Header("Explosion Info")]
     public CinemachineVirtualCamera mainCamera;
     public float shakeForce;
+    float durationShake;
+    public float durationShakeLimit;
     [Header("Overcharge Info")]
     public GameObject luz;
-    public float timeBlink;
+    float timeBlink;
     public float timeBlinkLimit;
-    public int countBlink;
+    int countBlink;
     public int countBlinkLimit;
     [Header("TanqueAgua Info")]
     public GameObject gotas;
 
-    public bool prueba;
+    PlayerHere player;
+    bool eventOn;
+    private void Awake()
+    {
+        player = GetComponent<PlayerHere>();
+    }
     void Start()
     {
-        
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
+        {
+            this.enabled = false; 
+        }
     }
-
-    // Update is called once per frame
     void Update()
     {
-        //int total = numero_A % 2;
-
-        //Debug.Log("El resto de la division es " + total);
-        if(prueba) SelectEvento();
+        if (player.playerImHere) 
+        {
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                eventOn = true;
+            }
+        }
+        if (eventOn)
+        {
+            SelectEvento();
+        }
     }
     void SelectEvento()
     {
@@ -47,26 +62,25 @@ public class TriggerEvento_12 : MonoBehaviour
         {
             case evento_12.Explosion:
                 Explosion explosion = new Explosion();
-                explosion.ShakeExplosion(mainCamera, shakeForce);
+                explosion.ShakeExplosion(mainCamera, ref shakeForce, ref durationShake, durationShakeLimit);
+                if(shakeForce <= 0)
+                {
+                    shakeForce = 0;
+                    this.enabled = false;
+                }
                 break;
             case evento_12.Overcharge:
                 Overcharge overcharge = new Overcharge();
-
-                overcharge.BlinkLight(luz, ref countBlink, ref timeBlink);
-                /*
-                if (countBlink < countBlinkLimit)
+                overcharge.BlinkLight(luz, ref timeBlink, timeBlinkLimit, ref countBlink, countBlinkLimit);
+                if(countBlink >= countBlinkLimit)
                 {
-                    timeBlink += Time.deltaTime;
-                    if(timeBlink >= timeBlinkLimit)
-                    {
-                        timeBlink = 0;
-                        //countBlink++;
-                    }
-                }*/
+                    this.enabled = false;
+                }
                 break;
             case evento_12.TanqueAgua:
                 TanqueAgua waterTank = new TanqueAgua();
                 waterTank.WaterBreakTank(gotas);
+                this.enabled = false;
                 break;
         }
     }

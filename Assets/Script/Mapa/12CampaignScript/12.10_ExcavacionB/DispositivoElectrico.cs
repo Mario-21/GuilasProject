@@ -5,13 +5,31 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerHere))]
 public class DispositivoElectrico : MonoBehaviour
 {
-    public int indexMod;
 
+    //Hacer un enum para especificar el tipo de dispositivo
+    //Quiza incluso integrarle la resta en TipoDispositivo
+    public int indexMod;
+    public enum AparatoElectrico
+    {
+        Taladro,
+        Ventilador,
+        Foco
+    }
+    [Header("Tipo Aparato")]
+    public AparatoElectrico aparato;
+
+    [Header("Consumo Electrico")]
     public int gastoElectrico;
+
+    [Header("Componentes Aparato")]
+    public GameObject baseAparato;
+    public float velocidad;
+    public GameObject particles;
 
     int once;
     bool luzOn;
     PlayerHere player;
+
     void Start()
     {
         player = GetComponent<PlayerHere>();
@@ -22,7 +40,11 @@ public class DispositivoElectrico : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PressLuz();
+        ImDispositivo();
+        if (player.playerImHere)
+        {
+            PressLuz();
+        }
     }
     void PressLuz()
     {
@@ -31,6 +53,27 @@ public class DispositivoElectrico : MonoBehaviour
             luzOn = !luzOn;
             once = 0;
             SwitchLuz();
+
+            TipoDispositivo dispositivo = new TipoDispositivo();
+            dispositivo.GastoElectrico(ref ExtraVariable.extras.valorGenerador, gastoElectrico,  ref luzOn, ref once);
+        }
+    }
+    void ImDispositivo()
+    {
+        switch (aparato)
+        {
+            case AparatoElectrico.Taladro:
+                Taladro taladro = new Taladro();
+                taladro.UseTaladro(ref luzOn, baseAparato, velocidad, particles);
+                break;
+            case AparatoElectrico.Ventilador:
+                Ventilador ventilador = new Ventilador();
+                ventilador.UseVentilador(ref luzOn, baseAparato, velocidad);
+                break;
+            case AparatoElectrico.Foco:
+                Foco foco = new Foco();
+                foco.UseFoco(ref luzOn, baseAparato);
+                break;
         }
     }
     void SwitchLuz()
@@ -38,20 +81,10 @@ public class DispositivoElectrico : MonoBehaviour
         if (luzOn)
         {
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
-            if (once < 1)
-            {
-                ExtraVariable.extras.valorGenerador += gastoElectrico;
-                once++;
-            }
         }
         else 
         {
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = false;
-            if (once < 1) 
-            {
-                ExtraVariable.extras.valorGenerador -= gastoElectrico;
-                once++;
-            }
         }
     }
 }

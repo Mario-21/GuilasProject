@@ -12,49 +12,30 @@ public class EventosLevel12
         TanqueAgua
     }
     public TypeEvent tipoEvento;
-    public void ConfirmEvent(int index) 
-    {
-        StatusGameobjectsVariables.statusGameobject.modificacion[index].modificacion = true;
-    }
-    //Nota pedir a cada uno un numero para saber cual de todos los eventos es
-    //Una lista con cada uno de los index correspondiente a cada evento
-    //Compara el index pedido con el de la las lista y cuando llegue a uno que se igual, le dice este mi evento
-    public virtual void SelectEvent(List<int> listEvent, int indexEvent, TypeEvent type)
-    {
-        for (int i = 0; i < listEvent.Count; i++)
-        {
-            if(listEvent[i] == indexEvent)
-            {
-                Debug.Log("Soy el evento" + type);
-            }
-        }
-    }
-    public void ChooseEvent(int numEvent)
-    {
-        switch (numEvent)
-        {
-            case 0:
-                tipoEvento = TypeEvent.Explosion;
-                break;
-            case 1:
-                tipoEvento = TypeEvent.Overcharge;
-                break;
-            case 2:
-                tipoEvento = TypeEvent.TanqueAgua;
-                break;
-        }
-    }
+
 }
 class Explosion : EventosLevel12
 {
-    public override void SelectEvent(List<int> listEvent, int indexEvent, TypeEvent tipoEvento)
+    public void ShakeExplosion(CinemachineVirtualCamera mainCamera, ref float magnitudShake, ref float timeShake, float timeShakeLimit)
     {
-        base.SelectEvent(listEvent, indexEvent, tipoEvento);
-       
-    }
-    public void ShakeExplosion(CinemachineVirtualCamera mainCamera, float magnitudShake)
-    {
+        //Una vez endShake termine, si se da el caso de querer agitar otra vez la camara, puedes hacerlo
         mainCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = magnitudShake;
+        if (timeShake < timeShakeLimit)
+        {
+            timeShake += Time.deltaTime;
+        }
+        else
+        {
+            if (magnitudShake <= 0)
+            {
+                magnitudShake = 0;
+            }
+            else
+            {
+                magnitudShake -= 0.01f;
+            }
+        }
+
     }
         
 }
@@ -63,34 +44,29 @@ class Overcharge : EventosLevel12
     /// <summary>
     /// Parpadeara la luz para indicar que el evento se realizado
     /// </summary>
-    /// <param name="light"> Luz que parpadea</param>
-    /// <param name="timeBlink"> Tiempo actual del parpadeo</param>
-    /// <param name="timeBlinkLimit"> Tiempo máximo de cada parpadeo</param>
-    /// <param name="countBlink"> Conteo del parpadeo</param>
-    /// <param name="countBlinkLimit"> Cuantos parpadeos máximos da</param>
-    /// 
-
-    //Probar esto con un public override, porque es la unica diferencia que hay con el Demoturnos
-    public void BlinkLight(GameObject light, ref int countBlink, ref float tiempo)
+    /// <param name="objeto"> aparecer desaparecer algo</param>
+    /// <param name="tiempo"> Tiempo actual de la accion</param>
+    /// <param name="maxTiempo"> Tiempo máximo de la accion</param>
+    /// <param name="conteo"> Conteo del numero de veces que se repite la accion</param>
+    /// <param name="conteoMaximo"> Cuantas veces quieres que se repita como máximos</param>
+    public void BlinkLight(GameObject objeto, ref float tiempo, float maxTiempo,  ref int conteo, int conteoMaximo)
     {
-        tiempo += Time.deltaTime;
-        for(countBlink = 0; countBlink < 9; countBlink++)
+        if(tiempo < maxTiempo) tiempo += Time.deltaTime;
+        for (int i = 0; conteo < conteoMaximo && tiempo >= maxTiempo; conteo++)
         {
-            Debug.Log("Lost and Them " + countBlink);
+            int total = conteo % 2;
+            tiempo = 0;
+            Debug.Log("Soy el conteo y es de " + conteo);
+            if (total == 0)
+            {
+                objeto.SetActive(false);
+            }
+            else
+            {
+                i++;
+                objeto.SetActive(true);
+            }
         }
-        //El numero de conteoBlink debe ser par, para dejar encendida la luz.
-        //Contara en un bucle cuantos parpadeos debe dar en <<X>> tiempo
-        /*int total = countBlink % 2;
-        Debug.Log("El resto del total " + total);
-
-        if (total == 0)
-        {
-            light.SetActive(false);
-        }
-        else
-        {
-            light.SetActive(true);
-        }*/
     }
 }
 class TanqueAgua : EventosLevel12
