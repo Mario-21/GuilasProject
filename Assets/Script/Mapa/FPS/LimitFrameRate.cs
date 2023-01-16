@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LimitFrameRate : MonoBehaviour
 {
@@ -8,15 +6,9 @@ public class LimitFrameRate : MonoBehaviour
 
     public int target = 60;
 
-    void Awake()
+    void Start()
     {
-        QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = target;
-    }
-
-    void Update()
-    {
-        if (Application.targetFrameRate != target)
-            Application.targetFrameRate = target;
+        //QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = Screen.currentResolution.refreshRate;
     }
 }

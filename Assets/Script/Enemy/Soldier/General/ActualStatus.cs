@@ -20,11 +20,11 @@ public class ActualStatus : MonoBehaviour
     {
         soldierLife = GetComponent<SoldierLife>();
         soldadoMode = GetComponent<SoldadoNormal>();
-        LoadStatus();
+        //LoadStatus();
     }
     void Start()
     {
-        //LoadStatus();
+        LoadStatus();
         EstablishLifeBegin();
         
     }

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class ItemCrafting : MonoBehaviour
 {
+    [Tooltip("Representa la variable de colocar el item en la mesa")]
     public int myIndexItem;
+    [Tooltip("Representa la variable del crafteo de ambos objetos")]
     public int indexModCrafteo;
 
     ActivarModificador activador;

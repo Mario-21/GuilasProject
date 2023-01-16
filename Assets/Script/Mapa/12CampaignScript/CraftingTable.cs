@@ -62,11 +62,6 @@ public class CraftingTable : MonoBehaviour
             //Puedo Craftear
             CanCraft();
         }
-        else
-        {
-            //Al salir ya no aparece el icono
-            iconoZone.SetActive(false);
-        }
     }
     void CanCraft()
     {
@@ -116,6 +111,13 @@ public class CraftingTable : MonoBehaviour
         {
             timeCraft = 0;
             iconCrafteoUI.fillAmount = 0;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            iconoZone.SetActive(false);
         }
     }
 }

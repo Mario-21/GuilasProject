@@ -22,6 +22,8 @@ public class Demo_Turnos
             }
         }
     }
+
+
     /// <summary>
     /// Confimar si hay un soldado vivo para poder apagar los motores
     /// </summary>
@@ -78,7 +80,6 @@ class Turno_Zona : Demo_Turnos
 }
 class Turno_Excavacion : Demo_Turnos
 {
-
     public override void TurnosDemo(List<SoldierLife> soldados, TurnosTrabajo trabajo, TurnosTrabajo turnoZona)
     {
         //Si no es mi turno de descanso, trabajo
@@ -86,6 +87,30 @@ class Turno_Excavacion : Demo_Turnos
         {
             base.TurnosDemo(soldados, trabajo, turnoZona);
             Debug.Log("Estoy en turno Excavacion " + turnoZona);
+        }
+    }
+}
+class ItemsTurnos : Demo_Turnos
+{
+    public void ItemsTurno(List<GameObject> itemsSameTurn, List<GameObject> itemsDifTurn, TurnosTrabajo trabajo, TurnosTrabajo turnoZona)
+    {
+        if(trabajo != turnoZona)
+        {
+            Debug.Log("Soy un turno de Trabajo, remunerado como el culo");
+            ItemsOut(itemsDifTurn);
+            
+        }
+        else
+        {
+            ItemsOut(itemsSameTurn);
+            Debug.Log("Soy un turno de Descanso, de 2 segundo, AAAAAAAAAAAAAAAH!");
+        }
+    }
+    void ItemsOut(List<GameObject> items)
+    {
+        for(int i = 0; i < items.Count; i++)
+        {
+            items[i].SetActive(false);
         }
     }
 }
