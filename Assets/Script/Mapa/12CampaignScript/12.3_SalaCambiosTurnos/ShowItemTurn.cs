@@ -12,8 +12,10 @@ public class ShowItemTurn : MonoBehaviour
     }
     public ZonaItems zoneItem;
     [Header("Items Same Turn")]
+    [Tooltip("En el mismo turno el objeto desaparece")]
     public List<GameObject> itemsSame;
     [Header("Items Diferent Turn")]
+    [Tooltip("En un turno diferente el objeto desaparece")]
     public List<GameObject> itemsDifferent;
     void Start()
     {
