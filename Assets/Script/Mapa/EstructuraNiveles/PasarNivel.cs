@@ -15,7 +15,7 @@ public class PasarNivel : MonoBehaviour
     public void CambiarZona()
     {
         cambiarZona.PasarNivelAnimacion(nivelDirigir);
-        Debug.Log("NivelDirigir es" + " " + nivelDirigir);
+        //Debug.Log("NivelDirigir es" + " " + nivelDirigir);
     }
 
 }

@@ -26,15 +26,13 @@ public class DispositivoElectrico : MonoBehaviour
     public float velocidad;
     public GameObject particles;
 
-    int once;
-    bool luzOn;
+    [HideInInspector] public bool luzOn;
     PlayerHere player;
 
     void Start()
     {
         player = GetComponent<PlayerHere>();
         luzOn = StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion;
-        once = 1;
     }
 
     // Update is called once per frame
@@ -51,11 +49,10 @@ public class DispositivoElectrico : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z)) 
         {
             luzOn = !luzOn;
-            once = 0;
             SwitchLuz();
 
             TipoDispositivo dispositivo = new TipoDispositivo();
-            dispositivo.GastoElectrico(ref ExtraVariable.extras.valorGenerador, gastoElectrico,  ref luzOn, ref once);
+            dispositivo.GastoElectrico(ref ExtraVariable.extras.valorGenerador, gastoElectrico,  ref luzOn);
         }
     }
     void ImDispositivo()

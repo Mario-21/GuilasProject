@@ -18,7 +18,7 @@ public class Demo_Turnos
             if (soldados[i].vida > 0)
             {
                 soldados[i].gameObject.SetActive(false);
-                Debug.Log("Este Soldado esta vivo " + soldados[i].name);
+                //Debug.Log("Este Soldado esta vivo " + soldados[i].name);
             }
         }
     }

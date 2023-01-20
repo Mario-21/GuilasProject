@@ -23,7 +23,7 @@ public class PanelElevator : MonoBehaviour
         if (player.playerImHere)
         {
             panel.SetActive(true);
-            Debug.Log("PLaer in Elevator");
+            //Debug.Log("PLaer in Elevator");
         }
         if (elevator.elevatorActive)
         {
@@ -40,7 +40,7 @@ public class PanelElevator : MonoBehaviour
         if (collision.gameObject.CompareTag("Player")) 
         {
             panel.SetActive(false);
-            Debug.Log("PLaer in Elevator");
+            //Debug.Log("PLaer in Elevator");
         }
         
     }

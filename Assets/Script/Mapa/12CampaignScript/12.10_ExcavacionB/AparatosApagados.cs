@@ -49,9 +49,13 @@ public class AparatosApagados : MonoBehaviour
             !StatusGameobjectsVariables.statusGameobject.modificacion[indexGenerador].modificacion &&
             StatusGameobjectsVariables.statusGameobject.modificacion[indexAparato].modificacion)
         {
-            //Se apaga el aparato, se resta la cantidad de energia e inhabilitas el script
+            //Se apaga el aparato, se resta la cantidad de energia
             StatusGameobjectsVariables.statusGameobject.modificacion[indexAparato].modificacion = false;
             ExtraVariable.extras.valorGenerador -= cargaElectrica;
+            //Se resta en el fillAmount para que visualmente se vea que se ha restado
+            float decrementoElect = (float)cargaElectrica / 100;
+            GeneradorEscavacion_B.DecrementoGenerador(decrementoElect);
+            //Inhabilitas el script
             this.enabled = false;
         }
     }

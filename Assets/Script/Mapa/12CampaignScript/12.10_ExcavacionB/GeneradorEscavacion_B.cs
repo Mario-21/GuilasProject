@@ -15,6 +15,7 @@ public class GeneradorEscavacion_B : MonoBehaviour
     void Update()
     {
         barraGenerador.fillAmount = barraGenNumber;
+        Debug.Log("El fill Amount es " + barraGenNumber);   
 
         ColorGenerador();
 
@@ -54,5 +55,6 @@ public class GeneradorEscavacion_B : MonoBehaviour
     public static void DecrementoGenerador(float decremento)
     {
         barraGenNumber -= decremento;
+
     }
 }

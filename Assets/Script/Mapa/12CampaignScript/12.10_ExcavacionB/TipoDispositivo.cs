@@ -4,26 +4,21 @@ using UnityEngine;
 
 public class TipoDispositivo
 {
-    public void GastoElectrico(ref int valorTotal, int valorGasto, ref bool deviceStatus, ref int once)
+    public void GastoElectrico(ref int valorTotal, int valorGasto, ref bool deviceStatus) //ref int once
     {
-        if(once < 1)
+        if (deviceStatus)
         {
-            if (deviceStatus)
-            {
-                valorTotal += valorGasto;
-                float incremento = (float)valorGasto / 100;
-                GeneradorEscavacion_B.IncrementoGenerador(incremento);
-                once++;
-            }
-            else
-            {
-                valorTotal -= valorGasto;
-                float decremento = (float)valorGasto / 100;
-                GeneradorEscavacion_B.DecrementoGenerador(decremento);
-                once++;
-            }
+            valorTotal += valorGasto;
+            float incremento = (float)valorGasto / 100;
+            GeneradorEscavacion_B.IncrementoGenerador(incremento);
         }
-        
+        else
+        {
+            valorTotal -= valorGasto;
+            float decremento = (float)valorGasto / 100;
+            GeneradorEscavacion_B.DecrementoGenerador(decremento);
+        }
+
     }
 }
 class Taladro : TipoDispositivo
