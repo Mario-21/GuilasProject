@@ -71,7 +71,7 @@ public class ActualStatus : MonoBehaviour
             //SoldierActiveInScene.instancia.soldiersStatus[0].lastPositionInScene.position = transform.position;
 
             Vector3 lastPosition;
-            lastPosition = new Vector3(SoldierActiveInScene.instancia.soldiersStatus[iD].position_x, SoldierActiveInScene.instancia.soldiersStatus[iD].position_y + 1, 0f);
+            lastPosition = new Vector3(SoldierActiveInScene.instancia.soldiersStatus[iD].position_x, SoldierActiveInScene.instancia.soldiersStatus[iD].position_y + 0.5f, 0f);
 
             transform.position = lastPosition;
 

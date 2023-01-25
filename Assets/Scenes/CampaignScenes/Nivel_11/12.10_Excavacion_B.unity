@@ -151,7 +151,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 804906791}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &12021795
 MonoBehaviour:
@@ -458,7 +458,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1839678683626655606, guid: 2dda93573c3ef18438ce3629668f3d10,
+      objectReference: {fileID: 1839678683626655606, guid: dbbcd994f6df0d04aa1f4f7aad900a7e,
         type: 3}
     - target: {fileID: 3682625691363763996, guid: a714d9ac7ea43494aa5f7d0db98e02d7,
         type: 3}
@@ -13334,6 +13334,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1031915264}
   - {fileID: 1466536624}
   - {fileID: 12021794}
   - {fileID: 2011292736}
@@ -14555,6 +14556,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1031915263
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1031915264}
+  - component: {fileID: 1031915265}
+  m_Layer: 0
+  m_Name: Spawn Soldado Minero_1 (12.10) Sobrecarga
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1031915264
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031915263}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 804906791}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1031915265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031915263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ad3e56554c33840880b5d2c7844d36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnStart: {fileID: 1935066097}
+  soldadoMove: {fileID: 1548666239}
+  soldadoMoveLife: {fileID: 1548666240}
 --- !u!1 &1035048016
 GameObject:
   m_ObjectHideFlags: 0
@@ -14640,6 +14687,11 @@ PrefabInstance:
         type: 3}
       propertyPath: indexMod
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 907187400828817914, guid: e08d1e009261df741ae92f2cb485f4e9,
+        type: 3}
+      propertyPath: gastoElectrico
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 907187400828817915, guid: e08d1e009261df741ae92f2cb485f4e9,
         type: 3}
@@ -16153,7 +16205,7 @@ GameObject:
   m_Layer: 14
   m_Name: 'Ubi 1 Soldado Minero_3 Sobrecarga (12.10) '
   m_TagString: Untagged
-  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -16204,7 +16256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexMod: 11
   aparato: 2
-  gastoElectrico: 25
+  gastoElectrico: 15
   baseAparato: {fileID: 1013235149}
   velocidad: 0
   particles: {fileID: 1013235149}
@@ -16966,7 +17018,7 @@ GameObject:
   m_Layer: 14
   m_Name: Ubi 1 Soldado Minero_2 Sobrecarga (12.10)
   m_TagString: Untagged
-  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -17983,7 +18035,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 804906791}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1466536625
 MonoBehaviour:
@@ -31022,7 +31074,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 804906791}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2011292737
 MonoBehaviour:
@@ -31273,7 +31325,7 @@ GameObject:
   m_Layer: 14
   m_Name: 'Ubi 1 Soldado Minero_4 Sobrecarga (12.10) '
   m_TagString: Untagged
-  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -31285,7 +31337,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2105700802}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -47.7, y: 4.75, z: 0}
+  m_LocalPosition: {x: -46.13, y: 4.75, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1379853641}
