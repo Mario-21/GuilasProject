@@ -7,7 +7,7 @@ public class CondicionsBossesZone : MonoBehaviour
     public int indexSoldierBoss;
 
     public GameObject soldierBoss;
-    void Awake()
+    void Start()
     {
         if (SoldierActiveInScene.instancia.soldiersStatus[indexSoldierBoss].statusVida > 0)
         {

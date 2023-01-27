@@ -26,6 +26,9 @@ public class DispositivoElectrico : MonoBehaviour
     public float velocidad;
     public GameObject particles;
 
+    [Header("Boton Color")]
+    [SerializeField] SpriteRenderer colorButton;
+
     [HideInInspector] public bool luzOn;
     PlayerHere player;
 
@@ -39,6 +42,7 @@ public class DispositivoElectrico : MonoBehaviour
     void Update()
     {
         ImDispositivo();
+        ColorButton();
         if (player.playerImHere)
         {
             PressLuz();
@@ -82,6 +86,17 @@ public class DispositivoElectrico : MonoBehaviour
         else 
         {
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = false;
+        }
+    }
+    void ColorButton()
+    {
+        if (luzOn)
+        {
+            colorButton.color = Color.green;
+        }
+        else
+        {
+            colorButton.color = Color.red;
         }
     }
 }

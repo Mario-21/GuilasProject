@@ -26,14 +26,16 @@ public class ConservarMuerte : MonoBehaviour
             vidaSoldado.gameObject.SetActive(false);
             Debug.Log("El " + vidaSoldado.gameObject.name + "no ha muerto en esta zona");
         }
+        if (SoldierActiveInScene.instancia.soldiersStatus[actualStatus.iD].imDead)
+        {
+            vidaSoldado.vida = 0;
+        }
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Mi escena postMorten " + SoldierActiveInScene.instancia.soldiersStatus[actualStatus.iD].deathScene);
-        Debug.Log("La escena en la que me encuentro es " + SceneManager.GetActiveScene().buildIndex);
     }
     private void OnDestroy()
     {

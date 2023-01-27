@@ -10,11 +10,13 @@ public class CogerReliquias : MonoBehaviour
     //Cuando coges la reliquia desaparece para siempre no al cogerlo
     private void Start()
     {
-        if (ListaReliquias.listaReliquiasTotal[numeroReliquia].reliquiaObtenida) this.gameObject.SetActive(false);
+        //if (ListaReliquias.listaReliquiasTotal[numeroReliquia].reliquiaObtenida) this.gameObject.SetActive(false);
     }
     private void Update()
     {
         if (estoyEnLaReliquia) PickReliquia();
+
+        if (ListaReliquias.listaReliquiasTotal[numeroReliquia].reliquiaObtenida) this.gameObject.SetActive(false);
     }
     void PickReliquia()
     {
