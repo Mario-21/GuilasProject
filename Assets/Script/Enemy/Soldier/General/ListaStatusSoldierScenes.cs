@@ -10,8 +10,8 @@ public class ListaStatusSoldierScenes
     public int statusVida;
     [HideInInspector]public bool modeSoldier;
     [HideInInspector]public bool warningSoldier;
-    [HideInInspector] public float position_x;
-    [HideInInspector] public float position_y;
+    [HideInInspector]public float position_x;
+    [HideInInspector]public float position_y;
     public int deathScene;
     public bool imDead;
 }

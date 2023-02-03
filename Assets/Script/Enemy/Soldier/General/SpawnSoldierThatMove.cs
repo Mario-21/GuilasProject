@@ -10,7 +10,6 @@ public class SpawnSoldierThatMove : MonoBehaviour
     [SerializeField] SoldierLife soldadoMoveLife;
 
     int oneTime;
-
     private void Update()
     {
         if(oneTime < 1)
