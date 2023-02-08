@@ -73,6 +73,8 @@ public class ExtraVariable : MonoBehaviour
     #region Sobrecarga (12.10_Excavacion_B)
     public int valorGenerador;
     #endregion
+
+
     private void Awake()
     {
         if (ExtraVariable.extras == null)

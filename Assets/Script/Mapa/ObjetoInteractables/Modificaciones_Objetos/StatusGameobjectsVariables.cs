@@ -9,8 +9,6 @@ public class StatusGameobjectsVariables : MonoBehaviour
     public List<ListaModificaciones> modificacion;
     private void Awake()
     {
-
-
         if (StatusGameobjectsVariables.statusGameobject == null)
         {
             StatusGameobjectsVariables.statusGameobject = this;
@@ -19,7 +17,6 @@ public class StatusGameobjectsVariables : MonoBehaviour
         else
         {
             Destroy(gameObject);
-
         }
     }
 }
