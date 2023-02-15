@@ -16,6 +16,11 @@ public class JugadorMovimiento : MonoBehaviour
     [Header("LayerMask")]
     [SerializeField] LayerMask groundMask;
 
+    [Header("Base Player Data")]
+    public float velocidadBase;
+    [SerializeField] private float aceleracionBase;
+    [SerializeField] private float speedBase;
+
     [Header("Datos Movimiento")]
     public float velocidad;
     [SerializeField] private float aceleracion;
@@ -24,7 +29,6 @@ public class JugadorMovimiento : MonoBehaviour
     public float horizontalMov;
 
     bool cambiarDireccion => (rb.velocity.x > 0 && horizontalMov < 0) || (rb.velocity.x < 0 && horizontalMov > 0);
-
 
     [Header("Jump Data")]
     [SerializeField] float jumpForce = 12f;
@@ -48,6 +52,11 @@ public class JugadorMovimiento : MonoBehaviour
     public bool onGround;
     [SerializeField] float tiempoEnAire;
 
+    [Header("Water Collision Data")]
+    public float velocidadWater;
+    public float aceleracionWater;
+    public float speedWater;
+    public bool onWater;
 
     [Header("Escaleras")]
     public Stairs_Hidden subirEscalera;
@@ -97,8 +106,6 @@ public class JugadorMovimiento : MonoBehaviour
 
     void Update()
     {
-        
-
         horizontalMov = GetInput().x;
 
         if (canJump && extraJump < 1) Jump();
@@ -107,16 +114,6 @@ public class JugadorMovimiento : MonoBehaviour
         if (almacenBotonJump.Count < 1) if (Input.GetButtonDown("Jump")) { almacenBotonJump.Enqueue(KeyCode.Space); Invoke("QuitarJump", 0.1f); };
 
         CambiarDireccionDisparo();
-
-        //Escala Disparo
-        if (myTransform.localScale.x == 1)
-        {
-            municionTexto.transform.localScale = new Vector3(0.1f, 0.1f, 1f);
-        }
-        if (myTransform.localScale.x == -1)
-        {
-            municionTexto.transform.localScale = new Vector3(-0.1f, 0.1f, 1f);
-        }
 
     }
     private void LateUpdate()
@@ -127,12 +124,13 @@ public class JugadorMovimiento : MonoBehaviour
     private void FixedUpdate()
     {
         CheckCollisionGround();
+        CheckCollisionWater();
         MoveCharacter();
         if (onGround)
         {
             ApplyLinearGroundDrag();
         }
-        else
+        else if (!onGround && !onWater)
         {
             ApplyLinearAirDrag();
             FallMultiplier();
@@ -203,10 +201,7 @@ public class JugadorMovimiento : MonoBehaviour
     {
         rb.velocity = new Vector2(rb.velocity.x, 0f);
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        
-
     }
-
     void CheckCollisionGround()
     {
         //dorada = transform.position
@@ -224,6 +219,21 @@ public class JugadorMovimiento : MonoBehaviour
             if (registrarAlturaAire < 1) { alturaAire = transform.position.y; registrarAlturaAire++; }
             tiempoEnAire += Time.deltaTime;
             if(tiempoEnAire > 0.25f) extraJump++;
+        }
+    }
+    void CheckCollisionWater()
+    {
+        if (onWater) 
+        {
+            velocidad = velocidadWater;
+            speed = speedWater;
+            aceleracion = aceleracionWater;
+        }
+        else
+        {
+            velocidad = velocidadBase;
+            speed = speedBase;
+            aceleracion = aceleracionBase;
         }
     }
     void FallMultiplier()
@@ -246,16 +256,20 @@ public class JugadorMovimiento : MonoBehaviour
             if(!subirEscalera.zonaEscalada) rb.gravityScale = 1f;
         }
     }
-    void CambiarDireccionDisparo()
+    public void CambiarDireccionDisparo()
     {
         if(myTransform.localScale.x == 1)
         {
             direccionBala = true;
-            
+            //Escala Disparo
+            municionTexto.transform.localScale = new Vector3(0.1f, 0.1f, 1f);
+
         }
         if (myTransform.localScale.x == -1)
         {
             direccionBala = false;
+            //Escala Disparo
+            municionTexto.transform.localScale = new Vector3(-0.1f, 0.1f, 1f);
         }
     }
     void QuitarJump()
@@ -298,8 +312,24 @@ public class JugadorMovimiento : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + Vector3.down * groundRaycastLegth);
 
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Water"))
+        {
+            onWater = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Water"))
+        {
+            onWater = false;
+        }
+    }
 
-    
+
+
+
 
 
 

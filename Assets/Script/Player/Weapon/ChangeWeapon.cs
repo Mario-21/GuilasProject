@@ -39,9 +39,11 @@ public class ChangeWeapon : MonoBehaviour
             //!changeWeapon = weaponBase
             if (changeWeapon)
             {
+                //Te quitas la pistola
                 weaponBase.gameObject.SetActive(false);
                 weaponBase.municionText.enabled = false;
-
+                weaponBase.activarDisparo = false;
+                ///Sacas el B8
                 b8.gameObject.SetActive(true);
                 //You can't draw B8 if you don't have ammo
                 if(b8.municionTotal > 0)
@@ -63,9 +65,11 @@ public class ChangeWeapon : MonoBehaviour
             }
             else
             {
+                //Te quitas el B8
                 b8.gameObject.SetActive(false);
+                b8.activarB8 = false;
                 weaponBase.gameObject.SetActive(true);
-
+                //Sacas la psitola
                 weaponBase.activarDisparo = b8.activarB8;
 
                 ocultacion.tiempoLimiteVisible = timeHiddenB8;

@@ -27,8 +27,7 @@ public class ArmaController : MonoBehaviour
     SoundManager soundManager;
 
     [Header("Weapon Sprite")]
-    public SpriteRenderer weapon;
-    public Sprite pistolaSprite;
+    SpriteRenderer weaponSprite;
     public GameObject bullet;
     //Cambiar Layer
     [Header("Infiltración Data")]
@@ -39,6 +38,7 @@ public class ArmaController : MonoBehaviour
     Camera pruebaCamera;
     private void Awake()
     {
+        weaponSprite = GetComponent<SpriteRenderer>();
         pruebaCamera = GameObject.FindGameObjectWithTag("CameraDisparo").GetComponent<Camera>();
     }
     void Start()
@@ -80,6 +80,8 @@ public class ArmaController : MonoBehaviour
         if (activarDisparo)
         {
             {
+                //Saca el arma
+                weaponSprite.enabled = true;
                 //They can see you
                 theySeeYou.VisibleOn();
                 //You aim with the gun
@@ -123,6 +125,8 @@ public class ArmaController : MonoBehaviour
         //Keep your Weapon
         else
         {
+            //Guarda el arma
+            weaponSprite.enabled = false;
             municionText.enabled = false;
             mira.localPosition = new Vector2(0f, mira.localPosition.y);
             mira.gameObject.GetComponent<SpriteRenderer>().enabled = false;

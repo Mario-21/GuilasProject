@@ -8,3 +8,9 @@ public class ListaModificaciones
     public string ObjetoQueSeVaModificar;
     public bool modificacion;
 }
+[System.Serializable]
+public class PorcentajesAguas
+{
+    public float indexLevelWater;
+    public int porcentajeAgua;
+}

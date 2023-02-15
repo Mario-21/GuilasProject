@@ -13,6 +13,7 @@ public class DamageWaterPosion : MonoBehaviour
     public float damagePoison;
 
     int countDaño;
+    bool dañoPoison;
     void Start()
     {
         
@@ -22,6 +23,12 @@ public class DamageWaterPosion : MonoBehaviour
     void Update()
     {
         ResetPoisonDamage();
+        if (dañoPoison) DamagePoison();
+        else
+        {
+            countDaño = 0;
+            coldownDamage = 0;
+        }
     }
     void DamagePoison()
     {
@@ -47,14 +54,28 @@ public class DamageWaterPosion : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            DamagePoison();
+            dañoPoison = true;
         }
     }
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            DamagePoison();
+            dañoPoison = false;
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            dañoPoison = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            dañoPoison = false;
         }
     }
 }

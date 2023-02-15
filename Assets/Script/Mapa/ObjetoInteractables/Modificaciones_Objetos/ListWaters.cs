@@ -5,7 +5,7 @@ using UnityEngine;
 public class ListWaters : MonoBehaviour
 {
     public static ListWaters listWaters;
-    public List<float> indexLevelWater;
+    public List<PorcentajesAguas> infoAguas;
     private void Awake()
     {
         if (ListWaters.listWaters == null)

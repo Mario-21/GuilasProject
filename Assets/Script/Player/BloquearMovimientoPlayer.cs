@@ -61,7 +61,25 @@ public class BloquearMovimientoPlayer : MonoBehaviour
         pistol.enabled = true;
         pistol.mira.gameObject.SetActive(true);
         b8.mira.gameObject.SetActive(true);
-        b8.enabled = false;
-        conditionToChangeWeapon.enabled = false;
+        if (SpecialWeapons.specialW.b8)
+        {
+            b8.enabled = true;
+        }
+        conditionToChangeWeapon.enabled = true;
+    }
+    public void HabilitarPlayerBarco()
+    {
+        //Habilitar las miras y las armas
+        conditionToChangeWeapon.enabled = true;
+        //Activa la mira y el arma
+        pistol.enabled = true;
+        pistol.mira.gameObject.SetActive(true);
+        //Activa el B8
+        b8.enabled = true;
+        //Activa ChangeWeapon
+        conditionToChangeWeapon.enabled = true;
+        //Reactiva la vida
+        vidaPlayer.enabled = true;
+
     }
 }

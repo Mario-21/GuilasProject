@@ -7,6 +7,7 @@ public class CambiarEscalaConMira : MonoBehaviour
     public Transform miraVersion2;
     public Transform centroDelPersonaje;
     public static Vector2 calculo;
+    public float calculoX;
     public GameObject player;
     void Start()
     {
@@ -25,5 +26,6 @@ public class CambiarEscalaConMira : MonoBehaviour
         {
             player.transform.localScale = new Vector3(1, 1, 1);
         }
+        calculoX = calculo.x;
     }
 }
