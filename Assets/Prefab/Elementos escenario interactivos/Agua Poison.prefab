@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1624503495814544235}
   - component: {fileID: 1624503495814544236}
   - component: {fileID: 1624503495814544237}
+  - component: {fileID: 9112213859903209700}
   m_Layer: 4
   m_Name: Agua Poison
   m_TagString: Water
@@ -31,9 +32,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 6.5, y: 2.5, z: 1}
-  m_Children:
-  - {fileID: 1624503497516282630}
-  - {fileID: 1624503496319655350}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -75,9 +74,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 15
+  m_SortingOrder: 12
   m_Sprite: {fileID: 21300000, guid: 178e8bcfb3220db448ffc1ca0b4dbcda, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.6117647}
+  m_Color: {r: 0.9056604, g: 0.089711644, b: 0.4833035, a: 0.6117647}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -166,237 +165,24 @@ BuoyancyEffector2D:
   m_FlowAngle: 0
   m_FlowMagnitude: 0
   m_FlowVariation: 0
---- !u!1 &1624503496248088973
-GameObject:
+--- !u!50 &9112213859903209700
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1624503496248088972}
-  m_Layer: 0
-  m_Name: Spawn Desembarcar
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1624503496248088972
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1624503496248088973}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.67, y: 1.756988, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1624503496319655350}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1624503496319655305
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1624503496319655350}
-  - component: {fileID: 1624503496319655351}
-  - component: {fileID: 1624503496319655304}
-  m_Layer: 0
-  m_Name: Trigger Desembarcar
-  m_TagString: Untagged
-  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1624503496319655350
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1624503496319655305}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.943077, y: 1.32, z: 0}
-  m_LocalScale: {x: 0.15384613, y: 0.4, z: 1}
-  m_Children:
-  - {fileID: 1624503496248088972}
-  m_Father: {fileID: 1624503495814544239}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1624503496319655351
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1624503496319655305}
-  m_Enabled: 1
-  m_Density: 1
+  m_GameObject: {fileID: 1624503495814544225}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.6117496, y: 0.15748}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.223499, y: 1.31496}
-  m_EdgeRadius: 0
---- !u!114 &1624503496319655304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1624503496319655305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d7ffccda106f444c859c111c384274b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeDesembarcarLimit: 2
-  habPlayer: {fileID: 0}
-  player: {fileID: 0}
-  playerSpawnDesembarco: {fileID: 1624503496248088972}
-  playerRb2d: {fileID: 0}
-  followBarcaPlayer: {fileID: 0}
-  movimientoPlayer: {fileID: 0}
-  stairsPlayer: {fileID: 0}
-  palaPlayer: {fileID: 0}
-  barca: {fileID: 0}
-  barcaButton: {fileID: 0}
-  barcoScript: {fileID: 0}
-  waterPoison: {fileID: 1624503495814544235}
-  mainCamera: {fileID: 0}
-  iconoZone: {fileID: 0}
-  iconeZoneSprite: {fileID: 0}
-  iconoDesembar: {fileID: 21300000, guid: ed4b7fc443b4f3b429a07803f5f9da90, type: 3}
---- !u!1 &1624503496998819366
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1624503496998819365}
-  m_Layer: 0
-  m_Name: Spawn Barca 1
-  m_TagString: Untagged
-  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1624503496998819365
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1624503496998819366}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.6900004, y: -0.03000021, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1624503497516282630}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1624503497516282650
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1624503497516282630}
-  - component: {fileID: 1624503497516282631}
-  - component: {fileID: 1624503497516282648}
-  m_Layer: 0
-  m_Name: Trigger Embarcar
-  m_TagString: Untagged
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1624503497516282630
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1624503497516282650}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.943077, y: 1.32, z: 0}
-  m_LocalScale: {x: 0.15384614, y: 0.4, z: 1}
-  m_Children:
-  - {fileID: 1624503496998819365}
-  m_Father: {fileID: 1624503495814544239}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1624503497516282631
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1624503497516282650}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.61174965, y: 0.15748}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.2234993, y: 1.31496}
-  m_EdgeRadius: 0
---- !u!114 &1624503497516282648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1624503497516282650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a2b4459cf5483043b5697cd285135f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bloqPlayer: {fileID: 0}
-  player: {fileID: 0}
-  playerRb2d: {fileID: 0}
-  followBarcaPlayer: {fileID: 0}
-  movimientoPlayer: {fileID: 0}
-  stairsPlayer: {fileID: 0}
-  waterInfo: {fileID: 1624503495814544238}
-  waterPoison: {fileID: 1624503495814544235}
-  tagName: Mascara
-  barca: {fileID: 0}
-  barcaSpawn: {fileID: 1624503496998819365}
-  buttonBarco: {fileID: 0}
-  horientacionBarco: -1
-  timeEmbarcarLimit: 2
-  mainCamera: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

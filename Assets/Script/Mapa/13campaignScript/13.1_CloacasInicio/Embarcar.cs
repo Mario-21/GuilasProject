@@ -29,6 +29,7 @@ public class Embarcar : MonoBehaviour
 
     bool useBarco;
     bool playerRange;
+    public bool waterRange;
     bool putBarco;
     BoxCollider2D colliderEmbarcar;
 
@@ -40,7 +41,7 @@ public class Embarcar : MonoBehaviour
     {
         EmbarcarTrigger();
 
-        if (useBarco && playerRange && bloqPlayer.player.onGround)
+        if (useBarco && playerRange && waterRange && bloqPlayer.player.onGround && !bloqPlayer.player.onWater)
         {
             if (Input.GetButtonDown("Fire1"))
             {
@@ -109,15 +110,18 @@ public class Embarcar : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(tagName)) useBarco = true;
         if (collision.gameObject.CompareTag("Player")) playerRange = true;
+        if (collision.gameObject.CompareTag("Water")) waterRange = true;
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag(tagName)) useBarco = true;
         if (collision.gameObject.CompareTag("Player")) playerRange = true;
+        if (collision.gameObject.CompareTag("Water")) waterRange = true;
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag(tagName)) useBarco = false;
         if (collision.gameObject.CompareTag("Player")) playerRange = false;
+        if (collision.gameObject.CompareTag("Water")) waterRange = false;
     }
 }

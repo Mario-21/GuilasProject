@@ -78,4 +78,11 @@ public class DamageWaterPosion : MonoBehaviour
             dañoPoison = false;
         }
     }
+    private void OnDisable()
+    {
+        //Esto se hace para no recibir daño al colocarte en el agua
+        dañoPoison = false;
+        countDaño = 1;
+
+    }
 }
