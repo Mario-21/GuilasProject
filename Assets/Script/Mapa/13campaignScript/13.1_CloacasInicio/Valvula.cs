@@ -16,7 +16,7 @@ public class Valvula : MonoBehaviour
     [SerializeField] GameObject cascada;
     [Header("Time Valvula")]
     public float timeLimitValvula;
-    float timeValvula;
+    public float timeValvula;
 
     PlayerHere player;
 

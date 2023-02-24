@@ -14,6 +14,7 @@ public class WaterData : MonoBehaviour
     public GameObject chapoteoParticle;
 
     public float alturaTotal;
+    float aguaRestar;
     void Awake()
     {
         alturaTotal = alturaMax.position.y - alturaMin.position.y;
@@ -43,13 +44,22 @@ public class WaterData : MonoBehaviour
     }
     void SaveWater()
     {
-        ListWaters.listWaters.infoAguas[indexWater].indexLevelWater = transform.position.y;
+        //ListWaters.listWaters.infoAguas[indexWater].alturaMinima = transform.position.y;
         ListWaters.listWaters.infoAguas[indexWater].porcentajeAgua = porcentajeAgua;
     }
     void LoadWater()
     {
-        transform.position = new Vector3 (transform.position.x,ListWaters.listWaters.infoAguas[indexWater].indexLevelWater, transform.position.z);
+        //aguaRestar = (porcentajeAgua * waterAltTotal.alturaTotal) / 100;
         porcentajeAgua = ListWaters.listWaters.infoAguas[indexWater].porcentajeAgua;
+
+
+        //Quiza se puede quitar la altura minima 
+        aguaRestar = (ListWaters.listWaters.infoAguas[indexWater].porcentajeAgua * alturaTotal) / 100;
+        float alturaWater;
+        alturaWater = alturaMin.position.y + aguaRestar;
+        transform.position = new Vector3(transform.position.x, alturaWater, transform.position.z);
+        //Minimo del Agua = -18.47
+        //10.216 = Altura ==> 4.0864
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

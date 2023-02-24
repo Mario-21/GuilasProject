@@ -22,13 +22,13 @@ public class BotonDrenaje : MonoBehaviour
     //Añadir el habilitar la valvula 
     //Pero solo si se ha dado previamente a la palanca de mantenimiento de su respectiva zona
     //ademas de 
-    bool drenar;
+    //bool drenar;
     bool timeDrenar;
     PlayerHere player;
 
     void Start()
     {
-        drenar = StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion;
+        //drenar = StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion;
 
         player = GetComponent<PlayerHere>();
     }
@@ -36,7 +36,7 @@ public class BotonDrenaje : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = drenar;
+        //StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = drenar;
 
         if (player.playerImHere)
         {
@@ -48,7 +48,8 @@ public class BotonDrenaje : MonoBehaviour
                 }
                 else if(waterInfo.porcentajeAgua <= 0)
                 {
-                    drenar = !drenar;
+                    //drenar = !drenar;
+                    StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = !StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion;
                 } 
 
             }
@@ -59,7 +60,7 @@ public class BotonDrenaje : MonoBehaviour
     void Drenaje()
     {
         //Rejilla Abierta
-        if (drenar)
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
             waterInfo.transform.position = waterInfo.alturaMin.position;
             waterInfo.porcentajeAgua = 0;
@@ -91,7 +92,7 @@ public class BotonDrenaje : MonoBehaviour
         {
             //Añadir sonido agua siendo drenada
             AnimationHud.detectar_echar.SetBool("Transicion", false);
-            drenar = true;
+            StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
             timeDrenaje = 0;
             timeDrenar = false;
             bloqPlayer.HabilitarMovPlayer();

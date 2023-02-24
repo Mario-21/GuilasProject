@@ -5,11 +5,13 @@ using UnityEngine;
 public class TrasladarAgua : MonoBehaviour
 {
     [Header("Agua want Trasladar")]
-    public int indexAgua_1;
+    public WaterData waterInfo;
     [Header("Agua Trasladada")]
     public int indexAgua_2;
     [Header("Data Drenaje Zona")]
     public int indexDrenaje;
+
+    int countSuma;
     void Start()
     {
         
@@ -21,7 +23,19 @@ public class TrasladarAgua : MonoBehaviour
         //Si se ha encendido el drenaje
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexDrenaje].modificacion)
         {
-            ListWaters.listWaters.infoAguas[indexAgua_1].porcentajeAgua = ListWaters.listWaters.infoAguas[indexAgua_2].porcentajeAgua;
+            if(countSuma < 1 && ListWaters.listWaters.infoAguas[indexAgua_2].porcentajeAgua < 100)
+            {
+                ListWaters.listWaters.infoAguas[indexAgua_2].porcentajeAgua += waterInfo.porcentajeAgua;
+                countSuma++;
+            }
+            else if (ListWaters.listWaters.infoAguas[indexAgua_2].porcentajeAgua >= 100)
+            {
+                ListWaters.listWaters.infoAguas[indexAgua_2].porcentajeAgua = 100;
+            }
+        }
+        else
+        {
+            countSuma = 0;
         }
     }
 }
