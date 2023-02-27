@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BotonDrenaje : MonoBehaviour
 {
+    public int indexMantinance;
     public int indexMod;
     [Header("Player Data")]
     [SerializeField] BloquearMovimientoPlayer bloqPlayer;
@@ -24,6 +25,7 @@ public class BotonDrenaje : MonoBehaviour
     //ademas de 
     //bool drenar;
     bool timeDrenar;
+    bool timeLoadAgua;
     PlayerHere player;
 
     void Start()
@@ -48,22 +50,34 @@ public class BotonDrenaje : MonoBehaviour
                 }
                 else if(waterInfo.porcentajeAgua <= 0)
                 {
-                    //drenar = !drenar;
+                    timeLoadAgua = true;
                     StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = !StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion;
                 } 
 
             }
         }
         Drenaje();
-        if (timeDrenar) DrenajeTransition();
+        if (timeDrenar) 
+        {
+            DrenajeTransition();
+            StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+        }
+        if (timeLoadAgua)
+        {
+            LlenarWaterAgain();
+        }
     }
     void Drenaje()
     {
         //Rejilla Abierta
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
-            waterInfo.transform.position = waterInfo.alturaMin.position;
-            waterInfo.porcentajeAgua = 0;
+            //Por esto ya no llega a funcionar el trasladar agua, el boton de drenaje absorbe constantemente el agua, si activas una de las valvulas ya no se efectua por el timing de 1.5
+            if(timeDrenaje >= 1.5)
+            {
+                waterInfo.transform.position = waterInfo.alturaMin.position;
+                waterInfo.porcentajeAgua = 0;
+            }
             BloquearValvulas();
             foreach(SpriteRenderer rejilla in rejillas)
             {
@@ -92,9 +106,9 @@ public class BotonDrenaje : MonoBehaviour
         {
             //Añadir sonido agua siendo drenada
             AnimationHud.detectar_echar.SetBool("Transicion", false);
-            StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
             timeDrenaje = 0;
             timeDrenar = false;
+            timeLoadAgua = false;
             bloqPlayer.HabilitarMovPlayer();
         }
         else
@@ -102,6 +116,19 @@ public class BotonDrenaje : MonoBehaviour
             timeDrenaje += Time.deltaTime;
             AnimationHud.detectar_echar.SetBool("Transicion", true);
             bloqPlayer.BloquearMovPlayer();
+        }
+    }
+    void LlenarWaterAgain()
+    {
+        //Si no has activado la palanca de mantenimiento y has cerrado el drenaje
+        if(!StatusGameobjectsVariables.statusGameobject.modificacion[indexMantinance].modificacion && !StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
+        {
+            DrenajeTransition();
+            if (timeDrenaje >= 1.5)
+            {
+                waterInfo.transform.position = waterInfo.alturaMax.position;
+                waterInfo.porcentajeAgua = 100;
+            }
         }
     }
 }

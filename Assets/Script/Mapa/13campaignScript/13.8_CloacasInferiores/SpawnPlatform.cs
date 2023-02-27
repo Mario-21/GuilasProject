@@ -5,15 +5,19 @@ using UnityEngine;
 public class SpawnPlatform : MonoBehaviour
 {
     public Transform spawn;
-    int count;
+    [HideInInspector] public int count;
     void Update()
     {
+        //Se hace en el update para asegurarte de que va a Spawnear bien, sin ningun problema a la hora de calcular la posicion de agua
         if (count < 1)
         {
-            transform.position = spawn.position;
-            count++;
-            Debug.Log("White Snake"); 
+            RepositionPlatform();
+            count++; 
         }
+    }
+    public void RepositionPlatform()
+    {
+        transform.position = spawn.position;
     }
 
 }
