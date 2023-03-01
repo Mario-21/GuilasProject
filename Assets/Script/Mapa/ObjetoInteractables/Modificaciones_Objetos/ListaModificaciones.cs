@@ -11,6 +11,6 @@ public class ListaModificaciones
 [System.Serializable]
 public class PorcentajesAguas
 {
-    public float alturaMinima;
+    //public float alturaMinima;
     public int porcentajeAgua;
 }

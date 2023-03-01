@@ -5,6 +5,7 @@ using UnityEngine;
 public class Valvula : MonoBehaviour
 {
     public int indexMod;
+    public int indexDrenar;
     [Header("Player Data")]
     [SerializeField] BloquearMovimientoPlayer bloqPlayer;
     [Header("Water Info")]
@@ -83,10 +84,11 @@ public class Valvula : MonoBehaviour
             cascada.SetActive(false);
             //Resetea el timing
             timeValvula = 0;
-            //Calcula cuanto sube el agua
-            CalculoDeAguas();
+            //Calcula cuanto sube el agua si el drenaje esta cerrado
+            if (!StatusGameobjectsVariables.statusGameobject.modificacion[indexDrenar].modificacion) CalculoDeAguas();
             //Puedes volver a moverte
             bloqPlayer.HabilitarMovPlayer();
+
 
         }
         else

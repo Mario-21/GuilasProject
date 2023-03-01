@@ -31,8 +31,15 @@ public class BotonDrenaje : MonoBehaviour
     void Start()
     {
         //drenar = StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion;
-
         player = GetComponent<PlayerHere>();
+        //Si dejas abierto 
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
+        {
+            Debug.Log("el Drenaje " + indexMod + " en esta zona esta abierto");
+            waterInfo.transform.position = waterInfo.alturaMin.position;
+            waterInfo.porcentajeAgua = 0;
+            ListWaters.listWaters.infoAguas[waterInfo.indexWater].porcentajeAgua = 0;
+        }
     }
 
     // Update is called once per frame
@@ -73,7 +80,8 @@ public class BotonDrenaje : MonoBehaviour
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
             //Por esto ya no llega a funcionar el trasladar agua, el boton de drenaje absorbe constantemente el agua, si activas una de las valvulas ya no se efectua por el timing de 1.5
-            if(timeDrenaje >= 1.5)
+            //Hay que eliminar el tiempo, hacerlo aparte o algo.
+            if (timeDrenaje >= 1.5)
             {
                 waterInfo.transform.position = waterInfo.alturaMin.position;
                 waterInfo.porcentajeAgua = 0;

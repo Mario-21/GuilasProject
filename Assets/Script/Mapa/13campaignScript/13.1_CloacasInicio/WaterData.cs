@@ -44,7 +44,6 @@ public class WaterData : MonoBehaviour
     }
     void SaveWater()
     {
-        //ListWaters.listWaters.infoAguas[indexWater].alturaMinima = transform.position.y;
         ListWaters.listWaters.infoAguas[indexWater].porcentajeAgua = porcentajeAgua;
     }
     void LoadWater()
