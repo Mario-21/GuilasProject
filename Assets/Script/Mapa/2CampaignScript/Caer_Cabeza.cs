@@ -45,7 +45,7 @@ public class Caer_Cabeza : MonoBehaviour
             //Cuando choca contra el suelo tambien deberia modificarse
             StatusGameobjectsVariables.statusGameobject.modificacion[indexModificar].modificacion = true;
             caidaObjeto.ObjetoInGround();
-            //Quiza cambiar
+            //Quiza cambiar 
             Destroy(this.gameObject);
         }
     }
@@ -53,13 +53,15 @@ public class Caer_Cabeza : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            //O lo quito y simplemente lo mantengo con darle 3 veces encima o colocas el FallDamage, lo que con lleva que tenga que reasignarlo en todos los niveles :(
+            /*
             if (Mathf.Abs(playerAltura.diferenciaAltura) > 5)
             {
                 Debug.Log("FD");
                 rb.bodyType = RigidbodyType2D.Dynamic;
                 rb.gravityScale = 1;
                 rb.AddForce(new Vector2(0f, -1f),ForceMode2D.Impulse);
-            }
+            }*/
         }
     }
 }

@@ -109,8 +109,6 @@ MonoBehaviour:
   municionText: {fileID: 7088808354135713845}
   shootAnim: {fileID: 5750129213846619141}
   refreshWeapon: 0.5
-  weapon: {fileID: 925129653379958337}
-  pistolaSprite: {fileID: 21300000, guid: 4304dd6c23d182e4f813cbb5abaa89b7, type: 3}
   bullet: {fileID: 4807674687017979912, guid: 5eb8ddb7851788c418c30b4c314a2da1, type: 3}
   theySeeYou: {fileID: 2691870885741423122}
 --- !u!1 &1065910357261844661
@@ -493,6 +491,7 @@ GameObject:
   - component: {fileID: 4155024354318721114}
   - component: {fileID: 8004836998412987235}
   - component: {fileID: 2691870885741423122}
+  - component: {fileID: 7630229161105204462}
   m_Layer: 20
   m_Name: Player 1
   m_TagString: Player
@@ -621,6 +620,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidadSubir: 5
   zonaEscalada: 0
+  escalar: 0
   iconoZone: {fileID: 5780431153459322327}
   iconeZoneSprite: {fileID: 5780431153459322321}
   hiddenIcon: {fileID: 294785315827399991, guid: c87476b525db3d740b0c04da29db31fb,
@@ -676,6 +676,21 @@ MonoBehaviour:
   isVisible: {fileID: 0}
   layerEnemigo: 16
   visible: 0
+--- !u!114 &7630229161105204462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425663039846246151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6c286fe7a317954cbb35f91d73909c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vidaTotalBase: 100
+  alturaDeath: 22
+  "alturaStartDa\xF1o": 2.9
 --- !u!1 &1425663039986608501
 GameObject:
   m_ObjectHideFlags: 0
@@ -11143,6 +11158,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad0481341cc1731438369f4f541502c9, type: 3}
+--- !u!1 &5780431153459322327 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8114054472744679240, guid: ad0481341cc1731438369f4f541502c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 2351686113704733343}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5780431153459322320 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8114054472744679247, guid: ad0481341cc1731438369f4f541502c9,
@@ -11152,12 +11173,6 @@ Transform:
 --- !u!212 &5780431153459322321 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8114054472744679246, guid: ad0481341cc1731438369f4f541502c9,
-    type: 3}
-  m_PrefabInstance: {fileID: 2351686113704733343}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5780431153459322327 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8114054472744679240, guid: ad0481341cc1731438369f4f541502c9,
     type: 3}
   m_PrefabInstance: {fileID: 2351686113704733343}
   m_PrefabAsset: {fileID: 0}

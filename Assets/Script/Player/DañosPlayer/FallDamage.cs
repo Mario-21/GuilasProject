@@ -5,30 +5,37 @@ using UnityEngine;
 public class FallDamage : MonoBehaviour
 {
     [Header("Player Vida")]
-    public VidaPlayer vida;
     public int vidaTotalBase;
     [Header("Altura Limite")]
     public int alturaDeath;
+    public float alturaStartDaño;
     [Header("Registro Antiguo Altura")]
-    public float registroLastAltura;
-    public int registroLast;
+    float registroAireAltura;
+    int registroAire;
     [Header("Registro Nuevio Altura")]
-    public float registroNewAltura;
-    public int registroNew;
+    float registroSueloAltura;
+    int registroSuelo;
     [Header("Altura Total")]
-    public float alturaTotalCalculo;
+    float alturaTotalCalculo;
     [Header("Porcentaje Daño")]
-    public float porcentajeDaño;
+    float porcentajeDaño;
     [Header("Daño ")]
-    public int daño;
+    int daño;
+    int registroDaño;
 
+    VidaPlayer vida;
     JugadorMovimiento playerMov;
+    Rigidbody2D rg2DPlayer;
+    Stairs_Hidden stairsPlayer;
 
     
 
     private void Awake()
     {
+        stairsPlayer = GetComponent<Stairs_Hidden>();
+        rg2DPlayer = GetComponent<Rigidbody2D>();
         playerMov = GetComponent<JugadorMovimiento>();
+        vida = GetComponent<VidaPlayer>();
     }
     void Start()
     {
@@ -38,46 +45,66 @@ public class FallDamage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RegistrarAlturas();
-        CalcularAlturaTotal();
-        CalcularDaño();
+        //Si yo no he tocado el agua y además no estoy usando una escalera, se puede calcular el registro de la altura y el daño del mismo
+        if (!stairsPlayer.escalar && !playerMov.onWater) 
+        {
+            RegistrarAlturas();
+        }
+        //Si una de estas acciones se da no puedes calcular el daño, debido a que si usas las escaleras no se considera que te estas cayendo si lo estas usando. A su vez si caes al agua,
+        //esta misma te frena por lo que no te hara daño
+        else
+        {
+            //Resetea el registroAire para que vuelva a calcular el daño, ya que las escaleras te frenan
+            //Cuando toco el agua tambien debe resetea el aire
+            registroAire = 0;
+        }
     }
     void RegistrarAlturas()
     {
         if (playerMov.onGround)
         {
-            registroNewAltura = transform.position.y;
+            registroSueloAltura = transform.position.y;
             CalcularAlturaTotal();
-            registroLast = 0;
+            registroAire = 0;
+            if(registroDaño < 1)
+            {
+                CalcularDaño();
+                registroDaño++;
+            }
         }
         else
         {
-            //almacenara la al
-            if (registroLast < 1)
+            //Deberia almacenar la altura una vez el personaje comience a caer, ya que es la altura máxima que ha llegado
+            if (registroAire < 1)
             {
-                registroLastAltura = transform.position.y;
-                registroLast++;
+                //Si la velocidad es negativa, significa que estas cayendo
+                if(rg2DPlayer.velocity.y < 0)
+                {
+                    registroAireAltura = transform.position.y;
+                    //valor para volver a calcular el daño se resetea aqui
+                    registroDaño = 0;
+                    registroAire++;
+                }
             }
 
         }
     }
     void CalcularAlturaTotal()
     {
-        alturaTotalCalculo = registroLastAltura - registroNewAltura;
+        alturaTotalCalculo = registroAireAltura - registroSueloAltura;
     }
     void CalcularDaño()
     {
-        if(alturaTotalCalculo > 5)
+        //5 metros es demasiado
+        if(alturaTotalCalculo > alturaStartDaño)
         {
             Debug.Log("Damage por altura");
+            //Primero calcula el porcentaje del daño que te va hacer la caída
             porcentajeDaño = (alturaTotalCalculo * 100) / alturaDeath;
-
+            //Segundo te calcula el daño de dicho porcentaje
             daño = ((int)porcentajeDaño * vidaTotalBase) / 100;
-
+            //Tercero te hace el daño
             vida.Daño(daño);
-
-            alturaTotalCalculo = 0;
-
         }
     }
 }

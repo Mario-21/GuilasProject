@@ -8,7 +8,7 @@ public class Stairs_Hidden : MonoBehaviour
     public float velocidadSubir;
     Rigidbody2D rb;
     [HideInInspector] public bool zonaEscalada;
-    bool escalar;
+    public bool escalar;
     float vertical;
     [Header("Hidden Data")]
     OcultacionByWeapon weaponHidden;

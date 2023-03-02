@@ -39,14 +39,6 @@ public class JugadorMovimiento : MonoBehaviour
     Queue<KeyCode> almacenBotonJump;
     bool canJump => Input.GetButtonDown("Jump") && onGround || Input.GetButtonDown("Jump") && tiempoEnAire <= 0.25f && !onGround;
 
-    [Header("Registro Altura")]
-    float alturaAire;
-    float alturaGround;
-    int registrarAlturaGround;
-    int registrarAlturaAire;
-    public float diferenciaAltura;
-    [SerializeField] Transform detectarAltura;
-
     [Header("Ground Collision Data")]
     [SerializeField] float groundRaycastLegth;
     public bool onGround;
@@ -115,11 +107,6 @@ public class JugadorMovimiento : MonoBehaviour
 
         CambiarDireccionDisparo();
 
-    }
-    private void LateUpdate()
-    {
-        if (onGround) AlturaSuelo();
-        else registrarAlturaGround = 0;
     }
     private void FixedUpdate()
     {
@@ -204,19 +191,16 @@ public class JugadorMovimiento : MonoBehaviour
     }
     void CheckCollisionGround()
     {
-        //dorada = transform.position
         //Rocortar Rayo al saltar
         onGround = Physics2D.Raycast(transform.position * groundRaycastLegth, Vector2.down, groundRaycastLegth, groundMask);
         if (onGround)
         {
-            registrarAlturaAire = 0;
             tiempoEnAire = 0;
             if(almacenBotonJump.Count < 1) extraJump = 0;
             
         }
         else
         {
-            if (registrarAlturaAire < 1) { alturaAire = transform.position.y; registrarAlturaAire++; }
             tiempoEnAire += Time.deltaTime;
             if(tiempoEnAire > 0.25f) extraJump++;
         }
@@ -244,7 +228,6 @@ public class JugadorMovimiento : MonoBehaviour
         }
         else if(rb.velocity.y > 0 && !Input.GetButtonDown("Jump")) //Si acabas de saltar
         {
-            alturaAire = transform.position.y;
             if (almacenBotonJump.Count >= 1) extraJump++;
             else if (almacenBotonJump.Count < 1 && tiempoEnAire > 0.25f) {extraJump++;}
 
@@ -275,33 +258,6 @@ public class JugadorMovimiento : MonoBehaviour
     void QuitarJump()
     {
         almacenBotonJump.Dequeue();
-    }
-
-    void AlturaSuelo()
-    {
-        RaycastHit2D alturaSuelo = Physics2D.Raycast(transform.position,Vector2.down,1.5f,groundMask);
-
-        if (alturaSuelo)
-        {
-            if (registrarAlturaGround < 1) 
-            {
-                alturaGround = transform.position.y;
-
-                diferenciaAltura = alturaGround - alturaAire;
-
-                if (Mathf.Abs(diferenciaAltura) >= 7 && Mathf.Abs(diferenciaAltura) < 10) vidaPlayer.Daño(10);
-                else if (Mathf.Abs(diferenciaAltura) >= 10 && Mathf.Abs(diferenciaAltura) < 15) vidaPlayer.Daño(40);
-                else if (Mathf.Abs(diferenciaAltura) >= 15 && Mathf.Abs(diferenciaAltura) < 20) vidaPlayer.Daño(70);
-                else if (Mathf.Abs(diferenciaAltura) >= 20) vidaPlayer.Daño(100);
-
-                registrarAlturaGround++; 
-            
-            }
-            else { }
-
-
-        }
-        
     }
     private void OnDrawGizmos()
     {
