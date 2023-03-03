@@ -56,6 +56,7 @@ public class ItemsOnShip : MonoBehaviour
             barca.enabled = false;
             //Estableces la velocidad en cero para que no se te vaya la barca
             rb2DBarca.velocity = new Vector2(0,rb2DBarca.velocity.y);
+            StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
         }
         else
         {

@@ -58,6 +58,11 @@ public class FallDamage : MonoBehaviour
             //Cuando toco el agua tambien debe resetea el aire
             registroAire = 0;
         }
+        if(stairsPlayer.escalar && playerMov.onGround)
+        {
+            Debug.Log("Acaba de llegar al suelo con la escalera");
+            registroAireAltura = transform.position.y;
+        }
     }
     void RegistrarAlturas()
     {

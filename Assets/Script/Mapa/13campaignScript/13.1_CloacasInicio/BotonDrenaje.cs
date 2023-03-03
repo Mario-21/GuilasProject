@@ -27,7 +27,12 @@ public class BotonDrenaje : MonoBehaviour
     bool timeDrenar;
     bool timeLoadAgua;
     PlayerHere player;
+    SpriteRenderer spriteBotonDrenaje;
 
+    private void Awake()
+    {
+        spriteBotonDrenaje = GetComponent<SpriteRenderer>();
+    }
     void Start()
     {
         //drenar = StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion;
@@ -45,7 +50,7 @@ public class BotonDrenaje : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = drenar;
+        StatusButtonColor();
 
         if (player.playerImHere)
         {
@@ -137,6 +142,17 @@ public class BotonDrenaje : MonoBehaviour
                 waterInfo.transform.position = waterInfo.alturaMax.position;
                 waterInfo.porcentajeAgua = 100;
             }
+        }
+    }
+    void StatusButtonColor()
+    {
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
+        {
+            spriteBotonDrenaje.color = Color.green;
+        }
+        else
+        {
+            spriteBotonDrenaje.color = Color.red;
         }
     }
 }

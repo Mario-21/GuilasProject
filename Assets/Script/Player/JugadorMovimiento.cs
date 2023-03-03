@@ -143,9 +143,6 @@ public class JugadorMovimiento : MonoBehaviour
 
         //Animación 
         anim.SetBool("Walk", true);
-        //Caminar
-        //if (Mathf.Abs(horizontalMov) > 0) anim.SetBool("Walk", true);
-        //Parar
         if (horizontalMov == 0) anim.SetBool("Walk", false);
 
         //Escala del Personaje, cuando no apuntas con el arma

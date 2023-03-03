@@ -139,7 +139,6 @@ public class Stairs_Hidden : MonoBehaviour
     {
         if (escalar)
         {
-            Debug.Log("Estoy Escalando");
             rb.gravityScale = 0;
             rb.velocity = new Vector2(rb.velocity.x, vertical * velocidadSubir);
         }
