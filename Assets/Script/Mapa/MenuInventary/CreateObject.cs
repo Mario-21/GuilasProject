@@ -50,5 +50,18 @@ public class CreateObject : MonoBehaviour
         Inventory.gameIsPause = false;
 
     }
+    public void SpawnItem(GameObject objeto)
+    {
+        objetoClone = Instantiate(objeto);
+        Inventory.gameIsPause = false;
+    }
+    public void TagSign(string nameTag)
+    {
+        objetoClone.tag = nameTag;
+    }
+    public void ChangeSprite (SpriteRenderer spriteItem)
+    {
+        objetoClone.GetComponent<SpriteRenderer>().sprite = spriteItem.sprite;
+    }
     
 }

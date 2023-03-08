@@ -7,8 +7,6 @@ public class CompletarNivel : MonoBehaviour
     public int siguienteNivel;
     [SerializeField] BloquearMovimientoPlayer blockPlayer;
     EstructuraNiveles anim = new EstructuraNiveles();
-    [Header("Listas Nivel")]
-    public List<GameObject> listasDelNivel;
 
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D collision)
@@ -21,11 +19,13 @@ public class CompletarNivel : MonoBehaviour
             CheckPointController.numeroCheckPoint = 0;
 
             //Destruye las listas del nivel
-            for(int e = 0; e < listasDelNivel.Count; e++)
+            for(int e = 0; e < ListDestroyEndLevel.levelList.levelListDestroy.Count; e++)
             {
-                Destroy(listasDelNivel[e].gameObject);
-                Debug.Log("La Lista " + listasDelNivel[e].name + " ha sido eliminada");
+                Destroy(ListDestroyEndLevel.levelList.levelListDestroy[e].gameObject);
+                Debug.Log("La Lista " + ListDestroyEndLevel.levelList.levelListDestroy[e].name + " ha sido eliminada");
+                
             }
+            Destroy(ListDestroyEndLevel.levelList.gameObject);
         }
 
     }
