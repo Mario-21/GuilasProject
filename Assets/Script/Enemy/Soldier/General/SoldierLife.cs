@@ -23,6 +23,8 @@ public class SoldierLife : MonoBehaviour
     [SerializeField] LayerMask dormido;
     [SerializeField]GameObject cuerpo;
 
+    Rigidbody2D rB2D;
+
     private void Awake()
     {
         //Tipo de enemigo
@@ -33,6 +35,8 @@ public class SoldierLife : MonoBehaviour
         anim = GetComponent<Animator>();
 
         status = GetComponent<ActualStatus>();
+
+        rB2D = GetComponent<Rigidbody2D>();
     }
     void Start()
     {
@@ -61,6 +65,9 @@ public class SoldierLife : MonoBehaviour
 
             //Tras haber quedado dormmido tu layer cambia
             cuerpo.layer = 12;
+
+            //Rigibody 2D
+            rB2D.drag = 0;
 
         }
         

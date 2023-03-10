@@ -18,24 +18,39 @@ public class TextNoItem : MonoBehaviour
 
     bool showMeText;
     //Item info
+    public bool withItem;
     bool youCanChange;
     bool playerIsInRange;
 
+    CogerObjeto pickItem;
+
     void Start()
     {
-
+        if (!withItem)
+        {
+            pickItem = GetComponent<CogerObjeto>();
+        }
     }
     void Update()
     {
-        //Muestra Texto
-        MostrarTexto();
         //Al mostrar el texto desaparecera con el tiempo
         DisAppearText();
-        //Condiciones para no ver el Texto
-        NoMostrarTextUseItem();
+
+        if (withItem)
+        {
+            //Muestra Texto
+            MostrarTextoItem();
+            //Condiciones para no ver el Texto
+            NoMostrarTextUseItem();
+        }
+        else
+        {
+            MostrarTexto();
+
+        }
     }
 
-    void MostrarTexto()
+    void MostrarTextoItem()
     {
         if(soldierVida.vida > 0)
         {
@@ -65,6 +80,7 @@ public class TextNoItem : MonoBehaviour
     }
     void NoMostrarTextUseItem()
     {
+        //Si el soldado ha muerto o la variable  se ha activado, Ya no muestres el texto y desactiva su activador
         if(soldierVida.vida < 1 || StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
             //El habilitar poder usar el item
@@ -73,6 +89,22 @@ public class TextNoItem : MonoBehaviour
             this.enabled = false;
             text.alpha = 0;
             showMeText = false;
+        }
+    }
+    void MostrarTexto()
+    {
+        if (soldierVida.vida > 0)
+        {
+            if (playerIsInRange && Input.GetKeyDown(KeyCode.T))
+            {
+                text.alpha = 1;
+                timeText = 0;
+                showMeText = true;
+            }
+        }
+        else
+        {
+            pickItem.enabled = true;
         }
     }
 

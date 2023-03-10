@@ -8,11 +8,11 @@ public class DamageWaterPosion : MonoBehaviour
 
     [Header("ColdownDaño")]
     public float coldownDamageLimit;
-    float coldownDamage;
+    public float coldownDamage;
     [Header("Daño Agua")]
     public float damagePoison;
 
-    int countDaño;
+    public int countDaño;
     bool dañoPoison;
     void Start()
     {
@@ -35,6 +35,7 @@ public class DamageWaterPosion : MonoBehaviour
         if(countDaño < 1)
         {
             playerVida.Daño(damagePoison);
+            Debug.Log("Daño recibido por veneno");
             countDaño++;
         }
     }
