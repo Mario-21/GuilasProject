@@ -30,6 +30,7 @@ public class TextNoItem : MonoBehaviour
         {
             pickItem = GetComponent<CogerObjeto>();
         }
+        
     }
     void Update()
     {
