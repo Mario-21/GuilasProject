@@ -10,6 +10,12 @@ public class RechargeBattery : MonoBehaviour
     [Header("Battery Energy")]
     [SerializeField] SpriteRenderer bEnergy;
 
+    PlayerHere player;
+    private void Awake()
+    {
+        player = GetComponent<PlayerHere>();
+    }
+
     private void Start()
     {
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
@@ -19,7 +25,7 @@ public class RechargeBattery : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z) && player.playerImHere)
         {
             Recharge();
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;

@@ -17,6 +17,7 @@ public class CompletarNivel : MonoBehaviour
             EstructuraNiveles.nivel = siguienteNivel;
             AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
             CheckPointController.numeroCheckPoint = 0;
+            InventoryManager.instanciaInventory.indexInventoryPosition = 0;
 
             //Destruye las listas del nivel
             for(int e = 0; e < ListDestroyEndLevel.levelList.levelListDestroy.Count; e++)

@@ -27,6 +27,7 @@ public class SustitucionObjeto : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1")) SustituirObjeto();
         }
+        //baseButtonMod.GetComponent<RectTransform>().localPosition = InventoryManager.instanciaInventory.inventoryPosition[SaveScene.instancia.listaItemsNivelGuardar[baseButtonMod.indexButton].ubiPosButton];
     }
     void SustituirObjeto()
     {
@@ -37,10 +38,11 @@ public class SustitucionObjeto : MonoBehaviour
         //Coger el objeto de la lista
         SaveScene.instancia.listaItemsNivelGuardar[indexObjetoMod].objetoObtenido = true;
         SaveScene.instancia.listaItemsNivelGuardar[indexObjetoOriginal].objetoObtenido = false;
-        
-        //Coloca el boton en la misma posicion que el original ya almacenado previamente
-        baseButtonMod.GetComponent<RectTransform>().localPosition = InventoryManager.instanciaInventory.inventoryPosition[SaveScene.instancia.listaItemsNivelGuardar[baseButtonMod.indexButton].ubiPosButton];
 
+        //Coloca el boton en la misma posicion que el original ya almacenado previamente
+        baseButtonMod.GetComponent<RectTransform>().localPosition = baseButton.GetComponent<RectTransform>().localPosition;
+        //Asignas la posicion del objeto original al modificado
+        SaveScene.instancia.listaItemsNivelGuardar[indexObjetoMod].ubiPosButton = SaveScene.instancia.listaItemsNivelGuardar[indexObjetoOriginal].ubiPosButton;
 
     }
 
