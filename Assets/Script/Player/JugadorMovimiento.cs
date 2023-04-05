@@ -67,6 +67,9 @@ public class JugadorMovimiento : MonoBehaviour
     [SerializeField] B8Arma b8;
     [SerializeField] ArmaController pistol;
 
+    [Header("Escala Crear Icono")]
+    public GameObject crearIcono;
+
 
     SoundManager soundManager;
     VidaPlayer vidaPlayer;
@@ -243,6 +246,7 @@ public class JugadorMovimiento : MonoBehaviour
             direccionBala = true;
             //Escala Disparo
             municionTexto.transform.localScale = new Vector3(0.1f, 0.1f, 1f);
+            crearIcono.transform.localScale = new Vector3(1f, 1f, 1f);
 
         }
         if (myTransform.localScale.x == -1)
@@ -250,6 +254,7 @@ public class JugadorMovimiento : MonoBehaviour
             direccionBala = false;
             //Escala Disparo
             municionTexto.transform.localScale = new Vector3(-0.1f, 0.1f, 1f);
+            crearIcono.transform.localScale = new Vector3(-1f, 1f, 1f);
         }
     }
     void QuitarJump()
