@@ -85,6 +85,10 @@ public class JugadorMovimiento : MonoBehaviour
         spawn = FindObjectOfType<CheckPointController>();
         soundManager = FindObjectOfType<SoundManager>();
         //Cuando interactues con el portatil seras visible
+
+        //Asignar Rigibody2D y el Transform del Player
+        myTransform = GetComponent<Transform>();
+        rb = GetComponent<Rigidbody2D>();
     }
     void Start()
     {
@@ -92,10 +96,6 @@ public class JugadorMovimiento : MonoBehaviour
         anim = GetComponent<Animator>();
         vidaPlayer = GetComponent<VidaPlayer>();
         direccionBala = true;
-        rb = GetComponent<Rigidbody2D>();
-        myTransform = GetComponent<Transform>();
-
-        //transform.position = spawn.checkpoints[0].position;
 
     }
 

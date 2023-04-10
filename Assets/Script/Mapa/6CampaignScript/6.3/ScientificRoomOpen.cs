@@ -11,6 +11,7 @@ public class ScientificRoomOpen : MonoBehaviour
     [Tooltip("Puedes establecer el feedback si quieres, simplemente cambia algo de rojo a verde")]
     public bool feedback;
     [SerializeField] SpriteRenderer botonFeedback;
+    public Color colorFeedback = Color.green;   
     private void Awake()
     {
         player = GetComponent<PlayerHere>();
@@ -19,7 +20,7 @@ public class ScientificRoomOpen : MonoBehaviour
     {
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) 
         {
-            if (feedback) botonFeedback.color = Color.green;
+            if (feedback) botonFeedback.color = colorFeedback   ;
         }
     }
     void Update()
@@ -33,7 +34,7 @@ public class ScientificRoomOpen : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Z))
             {
                 StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
-                if (feedback) botonFeedback.color = Color.green;
+                if (feedback) botonFeedback.color = colorFeedback;
             }
         }
     }
