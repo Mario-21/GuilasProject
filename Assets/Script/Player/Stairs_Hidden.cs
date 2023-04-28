@@ -52,7 +52,7 @@ public class Stairs_Hidden : MonoBehaviour
             if (canHidden)
             {
                 //hacer que se quede completamente quieto en mov
-                if (Input.GetKeyDown(KeyCode.O))
+                if (Input.GetButtonDown("Fire2"))
                 {
                     //Parar Movimiento
                     //weaponHidden.tiempoVisible += 99;

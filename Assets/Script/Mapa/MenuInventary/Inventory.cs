@@ -11,10 +11,15 @@ public class Inventory : MonoBehaviour
     public ArmaController pistol;
     public B8Arma b8;
     ChangeWeapon change;
-    void Start()
+    private void Awake()
     {
         pistol = FindObjectOfType<ArmaController>();
         change = FindObjectOfType<ChangeWeapon>();
+    }
+    void Start()
+    {
+        //pistol = FindObjectOfType<ArmaController>();
+        //change = FindObjectOfType<ChangeWeapon>();
     }
 
     // Update is called once per frame
@@ -22,19 +27,19 @@ public class Inventory : MonoBehaviour
     {
         if (change.changeWeapon)
         {
-            if (Input.GetKeyDown(KeyCode.Escape) && !b8.activarB8)
+            if (Input.GetButtonDown("Inventory") && !b8.activarB8)
             {
                 gameIsPause = !gameIsPause;
             }
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.Escape) && !pistol.activarDisparo)
+            if (Input.GetButtonDown("Inventory") && !pistol.activarDisparo)
             {
                 gameIsPause = !gameIsPause;
             }
         }
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetButtonDown("Draw_Weapon"))
         {
             gameIsPause = false;
         }

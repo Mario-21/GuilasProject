@@ -21,6 +21,9 @@ public class Barco : MonoBehaviour
     [SerializeField] GameObject pala;
     [SerializeField] SpriteRenderer pistolSprite;
     [SerializeField] SpriteRenderer b8Sprite;
+    [Header("Particulas Barco")]
+    public GameObject particulas;
+    int activeParticles;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -41,6 +44,7 @@ public class Barco : MonoBehaviour
             horizontalMov = 0;
         }
         MoveBarco();
+        ActivarParticles();
     }
     void MoveBarco()
     {
@@ -69,11 +73,15 @@ public class Barco : MonoBehaviour
                     transform.localScale = new Vector3(1, 1, 1);
                     //El Player se orienta en base al barco
                     player.transform.localScale = new Vector3(1, 1, 1);
+                    //Ver particulas y escalarlas
+                    particulas.transform.localScale = new Vector3(1, 1, 1);
                 }
                 if (horizontalMov == -1) 
                 {
                     transform.localScale = new Vector3(-1, 1, 1);
                     player.transform.localScale = new Vector3(-1, 1, 1);
+                    //Ver particulas y escalarlas
+                    particulas.transform.localScale = new Vector3(-1, 1, 1);
                 }
             }
             else
@@ -94,11 +102,13 @@ public class Barco : MonoBehaviour
                 {
                     transform.localScale = new Vector3(1, 1, 1);
                     player.transform.localScale = new Vector3(1, 1, 1);
+                    particulas.transform.localScale = new Vector3(1, 1, 1);
                 }
                 if (horizontalMov == -1) 
                 {
                     transform.localScale = new Vector3(-1, 1, 1);
                     player.transform.localScale = new Vector3(-1, 1, 1);
+                    particulas.transform.localScale = new Vector3(-1, 1, 1);
                 }
             }
             else
@@ -108,8 +118,26 @@ public class Barco : MonoBehaviour
             }
         }
     }
+    void ActivarParticles()
+    {
+        if (horizontalMov == 0)
+        {
+            activeParticles = 0;
+            particulas.GetComponent<ParticleSystem>().Stop();
+        }
+        else if (horizontalMov == 1 || horizontalMov == -1)
+        {
+
+            if (activeParticles <= 0)
+            {
+                particulas.GetComponent<ParticleSystem>().Play();
+                activeParticles++;
+            }
+        }
+    }
     Vector2 GetInput()
     {
         return new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
     }
+
 }

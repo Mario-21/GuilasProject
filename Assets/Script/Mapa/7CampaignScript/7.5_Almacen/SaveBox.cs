@@ -74,8 +74,12 @@ public class SaveBox : MonoBehaviour
     }
     public void DeleteNum()
     {
-        textSaveBox.text = textSaveBox.text.Remove(textSaveBox.text.Length - 1);
-        numTeclasPress--;
+        //Limita el numero de veces que puedes borrar un numero para que no de un index negativo
+        if(textSaveBox.text.Length > 0)
+        {
+            textSaveBox.text = textSaveBox.text.Remove(textSaveBox.text.Length - 1);
+            numTeclasPress--;
+        }
     }
     public void CheckPassword()
     {
