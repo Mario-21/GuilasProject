@@ -34,6 +34,7 @@ public class ReadOtherScene : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Z))
             {
                 seeText = !seeText;
+                //Colocar Texto
                 Keeping().KeepTextCadena(textoNota);
                 //Deberia tener 
                 MostrarTextoNota();
