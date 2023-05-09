@@ -7,7 +7,7 @@ public class Water2_MaterialPropBlock : MonoBehaviour
     public Color mainColor, secondaryColor;
     public Vector2 direction, secondaryDirection;
 
-    Renderer _renderer;
+    public Renderer _renderer;
     MaterialPropertyBlock _propBlock;
 
 
