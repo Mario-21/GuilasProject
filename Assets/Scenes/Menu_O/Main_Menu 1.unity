@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -923,7 +923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b7b7b8a722dc684f99b97dfe9eb0f0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenaMenuOption: 164
+  scenaMenuOption: 166
   animTransition: {fileID: 652633573}
 --- !u!1001 &723651581
 PrefabInstance:
@@ -1856,12 +1856,62 @@ PrefabInstance:
     - target: {fileID: 4786714649627758314, guid: bc0a5f0a071528a4e9fb2b3f9b445d90,
         type: 3}
       propertyPath: listaReliquiasInspector.Array.data[0].reliquiaObtenida
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4786714649627758314, guid: bc0a5f0a071528a4e9fb2b3f9b445d90,
         type: 3}
       propertyPath: listaReliquiasInspector.Array.data[1].reliquiaObtenida
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786714649627758314, guid: bc0a5f0a071528a4e9fb2b3f9b445d90,
+        type: 3}
+      propertyPath: listaReliquiasInspector.Array.data[11].reliquiaObtenida
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786714649627758314, guid: bc0a5f0a071528a4e9fb2b3f9b445d90,
+        type: 3}
+      propertyPath: listaReliquiasInspector.Array.data[10].reliquiaObtenida
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786714649627758314, guid: bc0a5f0a071528a4e9fb2b3f9b445d90,
+        type: 3}
+      propertyPath: listaReliquiasInspector.Array.data[9].reliquiaObtenida
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786714649627758314, guid: bc0a5f0a071528a4e9fb2b3f9b445d90,
+        type: 3}
+      propertyPath: listaReliquiasInspector.Array.data[8].reliquiaObtenida
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786714649627758314, guid: bc0a5f0a071528a4e9fb2b3f9b445d90,
+        type: 3}
+      propertyPath: listaReliquiasInspector.Array.data[7].reliquiaObtenida
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786714649627758314, guid: bc0a5f0a071528a4e9fb2b3f9b445d90,
+        type: 3}
+      propertyPath: listaReliquiasInspector.Array.data[6].reliquiaObtenida
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786714649627758314, guid: bc0a5f0a071528a4e9fb2b3f9b445d90,
+        type: 3}
+      propertyPath: listaReliquiasInspector.Array.data[5].reliquiaObtenida
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786714649627758314, guid: bc0a5f0a071528a4e9fb2b3f9b445d90,
+        type: 3}
+      propertyPath: listaReliquiasInspector.Array.data[4].reliquiaObtenida
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786714649627758314, guid: bc0a5f0a071528a4e9fb2b3f9b445d90,
+        type: 3}
+      propertyPath: listaReliquiasInspector.Array.data[3].reliquiaObtenida
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786714649627758314, guid: bc0a5f0a071528a4e9fb2b3f9b445d90,
+        type: 3}
+      propertyPath: listaReliquiasInspector.Array.data[2].reliquiaObtenida
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4786714649627758315, guid: bc0a5f0a071528a4e9fb2b3f9b445d90,
         type: 3}
@@ -2430,6 +2480,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1975617753}
   m_CullTransparentMesh: 0
+--- !u!95 &1978811125 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 673560243982258999, guid: b712a2823c413214799dac2d16f608d3,
+    type: 3}
+  m_PrefabInstance: {fileID: 805911186}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2007734200
 GameObject:
   m_ObjectHideFlags: 0
@@ -2462,6 +2518,7 @@ MonoBehaviour:
   collidersButtonMenu:
   - {fileID: 1235991409}
   - {fileID: 448741882}
+  - {fileID: 2139380579}
 --- !u!4 &2007734202
 Transform:
   m_ObjectHideFlags: 0
@@ -2504,11 +2561,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2139380577}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 492e3b1e5bee87b46952390b59b8bd9d, type: 3}
+  m_Script: {fileID: 11500000, guid: 930730ac21f7cac4e9dd76e010a6f69b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameAnimVar: Opciones
-  transtion: {fileID: 652633573}
+  goScene: 164
+  nameAnimVar: Detectar_Echar
+  transtion: {fileID: 1978811125}
 --- !u!61 &2139380579
 BoxCollider2D:
   m_ObjectHideFlags: 0

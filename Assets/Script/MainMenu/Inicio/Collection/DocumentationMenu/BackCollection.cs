@@ -9,5 +9,6 @@ public class BackCollection : MonoBehaviour
     {
         CollectionDirection.posFila = backCollection;
         CollectionDirection.repostDocs = true;
+        CollectionDirection.botonDocs = true;
     }
 }

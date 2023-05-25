@@ -30,7 +30,7 @@ public class Camino_CambiarZona : MonoBehaviour
         {
             iconeZoneSprite.sprite = iconoArrow;
             iconoZone.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetButtonDown("Action"))
             {
                 //Para que no que los enemigos si te ven, no te ataquen al cambiar de zona
                 playerCuerpo.layer = 0;

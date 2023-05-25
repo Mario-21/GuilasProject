@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -4846,7 +4846,7 @@ PrefabInstance:
     - target: {fileID: 673560243982258953, guid: b712a2823c413214799dac2d16f608d3,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 673560243982258995, guid: b712a2823c413214799dac2d16f608d3,
         type: 3}
@@ -4982,6 +4982,12 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 54
   m_TargetDisplay: 0
+--- !u!95 &1250623360 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 673560243982258999, guid: b712a2823c413214799dac2d16f608d3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1250623357}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1259184424
 GameObject:
   m_ObjectHideFlags: 0
@@ -5169,7 +5175,7 @@ PrefabInstance:
     - target: {fileID: 7618812491406503904, guid: 089b4c19fd82c584bb612b1ad64c31f3,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7618812491406503907, guid: 089b4c19fd82c584bb612b1ad64c31f3,
         type: 3}
@@ -6111,6 +6117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flechaIzquierda: {fileID: 1067210930}
   flechaDerecha: {fileID: 1772102805}
+  backButton: {fileID: 0}
   fila: {fileID: 1768572289}
   velocidad: 2000
   carpeta_Pos:
@@ -6139,7 +6146,6 @@ MonoBehaviour:
   - {fileID: 1181871562}
   - {fileID: 234476168}
   - {fileID: 480867150}
-  mover: 0
   indexFila: 0
 --- !u!4 &1502084259
 Transform:
@@ -7662,6 +7668,7 @@ GameObject:
   - component: {fileID: 1954786482}
   - component: {fileID: 1954786481}
   - component: {fileID: 1954786480}
+  - component: {fileID: 1954786483}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -7731,7 +7738,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1954786481}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1954786483}
+        m_MethodName: CallNewScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1954786481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7769,6 +7787,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1954786478}
   m_CullTransparentMesh: 0
+--- !u!114 &1954786483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954786478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5045c47b4969814ba24175ac6bbf747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene: 162
+  nameAnimVar: Detectar_Echar
+  transtion: {fileID: 1250623360}
 --- !u!1001 &1957766084
 PrefabInstance:
   m_ObjectHideFlags: 0

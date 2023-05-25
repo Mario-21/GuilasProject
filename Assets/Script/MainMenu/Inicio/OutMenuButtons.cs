@@ -15,6 +15,7 @@ public class OutMenuButtons : MonoBehaviour
     }
     private void Update()
     {
+        Debug.Log("El estado de los collider Buttons es " + colliderButtonsStatus);
         if (colliderButtonsStatus)
         {
             On_Colliders_Buttons();

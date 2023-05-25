@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class CollectionDirection : MonoBehaviour
 {
-    [Header("Flechas UI")]
+    [Header("Flechas UI and Back")]
     public GameObject flechaIzquierda;
     public GameObject flechaDerecha;
+    public Button backButton;
     [Header("Fila Principal")]
     public RectTransform fila;
     public float velocidad;
@@ -19,6 +20,7 @@ public class CollectionDirection : MonoBehaviour
     public int indexFila;
     public static int posFila;
     public static bool repostDocs;
+    public static bool botonDocs;
     //NOTA; Es inversamente proporcional, si le doy a la derecha la fila se mueve hacía la izquierda;
     //Si le doy a la izquierda la fila se mueve a la derecha
     enum Orientation
@@ -32,6 +34,7 @@ public class CollectionDirection : MonoBehaviour
         //Al darle a back regresamos a la misma carpeta
         fila.position = carpeta_Pos[posFila].position;
         mover = false;
+        botonDocs = true;
     }
 
     // Update is called once per frame
@@ -132,19 +135,31 @@ public class CollectionDirection : MonoBehaviour
     }
     void ReglasButton()
     {
-        //SI mi indice actual coincide con uno de los botones activa dicho boton
-        for (int i = 0; i < carpeta_Button.Count; i++)
+        if (botonDocs)
         {
-            //EL boton del indice actual se activa
-            if(i == indexFila && ListaReliquias.listaReliquiasTotal[indexFila].reliquiaObtenida)
+            flechaDerecha.GetComponent<Button>().enabled = true;
+            flechaIzquierda.GetComponent<Button>().enabled = true;
+            //SI mi indice actual coincide con uno de los botones activa dicho boton
+            for (int i = 0; i < carpeta_Button.Count; i++)
             {
-                Debug.Log("Trazacaminos " + i);
-                carpeta_Button[indexFila].enabled = true;
+                //EL boton del indice actual se activa
+                if (i == indexFila && ListaReliquias.listaReliquiasTotal[indexFila].reliquiaObtenida)
+                {
+                    Debug.Log("Trazacaminos " + i);
+                    carpeta_Button[indexFila].enabled = true;
+                }
+                else
+                {
+                    carpeta_Button[i].enabled = false;
+                }
             }
-            else
-            {
-                carpeta_Button[i].enabled = false;
-            }
+        }
+        else
+        {
+            carpeta_Button[indexFila].enabled = false;
+            flechaDerecha.GetComponent<Button>().enabled = false;
+            flechaIzquierda.GetComponent<Button>().enabled = false;
+            backButton.enabled = false;
         }
     }
     void RecolocarPosDocs()

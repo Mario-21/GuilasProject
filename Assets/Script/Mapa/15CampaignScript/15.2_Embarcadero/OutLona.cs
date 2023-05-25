@@ -38,7 +38,7 @@ public class OutLona : MonoBehaviour
     {
         if (player.playerImHere)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetButtonDown("Action"))
             {
                 ItemsAction();
                 StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
