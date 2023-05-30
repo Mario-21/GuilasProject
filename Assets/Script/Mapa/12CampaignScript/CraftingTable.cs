@@ -78,7 +78,7 @@ public class CraftingTable : MonoBehaviour
     }
     void Craftear()
     {
-        if (Input.GetKey(KeyCode.Z))
+        if (Input.GetButtonDown("Action"))
         {
             //La barra de la UI comenzara a llenarse
             timeCraft += 0.01f;

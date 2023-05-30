@@ -52,7 +52,7 @@ public class CogerObjetoSoldado : MonoBehaviour
     }
     void CatchObjectNormal()
     {
-        if (Input.GetKeyDown(KeyCode.T) && !SaveScene.instancia.listaItemsNivelGuardar[objetoARecoger].objetoObtenido)
+        if (Input.GetButtonDown("Take") && !SaveScene.instancia.listaItemsNivelGuardar[objetoARecoger].objetoObtenido)
         {
             iconItem.SpawnIcon();
 
@@ -68,7 +68,7 @@ public class CogerObjetoSoldado : MonoBehaviour
     }
     void CatchItemUI()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetButtonDown("Take"))
         {
             buttonObjectInventory.SetActive(true);
             objectToPickUp.SetActive(false);

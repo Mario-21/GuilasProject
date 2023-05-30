@@ -7,8 +7,6 @@ public class SceneAditive : MonoBehaviour
 {
     public int scenaAditiva;
     public int openTries;
-
-    public bool s4;
     private void Awake()
     {
 
@@ -21,14 +19,14 @@ public class SceneAditive : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetButtonDown("Cancel"))
         {   
             if (openTries < 1)
            {
                 Time.timeScale = 0;
                 SceneManager.LoadSceneAsync(scenaAditiva, LoadSceneMode.Additive);
                 openTries++;
-           }
+            }
            else if (openTries >= 1)
             {
                 Time.timeScale = 1;

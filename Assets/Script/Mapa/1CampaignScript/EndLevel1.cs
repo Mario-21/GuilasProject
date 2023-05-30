@@ -11,7 +11,10 @@ public class EndLevel1 : MonoBehaviour
     [Header("Vehiculo Conditions")]
     public int indexVehiculo;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        terminales = FindObjectOfType<TotalTerminales>();
+    }
     void Update()
     {
         RuleLevel();
