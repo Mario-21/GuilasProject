@@ -46,7 +46,6 @@ public class Portatil_Info : MonoBehaviour
     private void Start()
     {
         LoadPorcentaje(); 
-
         downloadBar.fillAmount = 0;
     }
     private void Update()
@@ -62,8 +61,13 @@ public class Portatil_Info : MonoBehaviour
     }
     void CollectAllInfo()
     {
-        if (TotalTerminales.terminalesTotales.terminalesActivados >= numeroDeTerminalesTotales) infoCompiled = true;
+        if (TotalTerminales.terminalesTotales.terminalesActivados >= numeroDeTerminalesTotales) 
+        {
+            infoCompiled = true;
+            TotalTerminales.terminalesTotales.carga = infoCompiled;
+            infoCompiled = true;
 
+        }
         if (infoCompiled) nivelCompletado.Nivel_1(infoCompiled, zonaCompletarNivel);
 
     }
@@ -130,6 +134,8 @@ public class Portatil_Info : MonoBehaviour
                     TotalTerminales.terminalesTotales.terminalesActivados++;
 
                     active = true;
+                    TotalTerminales.terminalesTotales.terminalesActivos[indexTerminal] = active;
+
                 }
             }
             
@@ -144,18 +150,6 @@ public class Portatil_Info : MonoBehaviour
                 downloadBar.fillAmount = 0;
             }
         }
-    }
-
-    private void OnDestroy()
-    {
-       SavePorcentaje();
-    }
-    void SavePorcentaje()
-    {
-        TotalTerminales.terminalesTotales.carga = infoCompiled;
-        
-         TotalTerminales.terminalesTotales.terminalesActivos[indexTerminal] = active;
-        
     }
     void LoadPorcentaje()
     {

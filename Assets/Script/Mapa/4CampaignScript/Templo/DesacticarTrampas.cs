@@ -4,30 +4,31 @@ using UnityEngine;
 
 public class DesacticarTrampas : MonoBehaviour
 {
+    public int indexModTrampasOn;
+    public int indexModTrampasOff;
+
+    [Header("What happen When off Trampas")]
+    [SerializeField] GameObject baldosaStart;
+    [SerializeField] GameObject baldosaFinish;
+    [SerializeField] Transform ubiBaldosa;
+
+    [Header("Item Off Trampas")]
     public int objetoAObtener;
-    bool here;
+
+
     private void Update()
     {
         if (SaveScene.instancia.listaItemsNivelGuardar[objetoAObtener].objetoObtenido)
         {
-            ExtraVariable.extras.activarTrampasTemplo = false;
-        }
-        if (!ExtraVariable.extras.activarTrampasTemplo)
-        {
-            if (here)
-            {
-                Debug.Log("Necesitas activar el mecanismo, para poder coger el orbe");
-            }
+            StatusGameobjectsVariables.statusGameobject.modificacion[indexModTrampasOn].modificacion = false;
+            StatusGameobjectsVariables.statusGameobject.modificacion[indexModTrampasOff].modificacion = true;
+
+            baldosaStart.SetActive(false);
+            baldosaFinish.SetActive(true);
+
+            baldosaFinish.transform.position = ubiBaldosa.position;
         }
         
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player")) here = true;
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player")) here = false;
     }
 
 }

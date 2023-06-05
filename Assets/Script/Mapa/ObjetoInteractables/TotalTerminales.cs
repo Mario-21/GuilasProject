@@ -29,12 +29,5 @@ public class TotalTerminales : MonoBehaviour
         }
     }
 
-    public void PortatilValueReset()
-    {
-        TotalTerminales.terminalesTotales.terminalesActivos.Clear();
-        TotalTerminales.terminalesTotales.terminalesActivados = 0;
-        carga = false;
-    }
-
 
 }

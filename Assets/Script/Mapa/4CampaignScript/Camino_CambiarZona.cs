@@ -17,7 +17,11 @@ public class Camino_CambiarZona : MonoBehaviour
     [SerializeField] BloquearMovimientoPlayer bloqPlayer;
 
     bool camino;
-
+    BoxCollider2D triggerBox;
+    private void Start()
+    {
+        triggerBox = GetComponent<BoxCollider2D>();
+    }
     private void Update()
     {
         Caminar();
@@ -32,6 +36,9 @@ public class Camino_CambiarZona : MonoBehaviour
             iconoZone.SetActive(true);
             if (Input.GetButtonDown("Action"))
             {
+                //Desactivar collider
+                triggerBox.enabled = false;
+                iconoZone.SetActive(false);
                 //Para que no que los enemigos si te ven, no te ataquen al cambiar de zona
                 playerCuerpo.layer = 0;
                 //Parar el Movimiento del Player

@@ -4,21 +4,32 @@ using UnityEngine;
 
 public class AccionarTrampas : MonoBehaviour
 {
-    [SerializeField] CogerObjeto cogerObjetoOrbe;
+    public int indexModTrampasOn;
 
+    public Transform baldosaBaja;
+    public float speed;
+
+    private void Start()
+    {
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexModTrampasOn].modificacion)
+        {
+            transform.position = baldosaBaja.position;
+            this.enabled = false;
+        }
+    }
     private void Update()
     {
-        if(ExtraVariable.extras.activarTrampasTemplo) cogerObjetoOrbe.enabled = true;
+        if(StatusGameobjectsVariables.statusGameobject.modificacion[indexModTrampasOn].modificacion)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, baldosaBaja.position, speed * Time.deltaTime);
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player")) 
         {
-            if (!SaveScene.instancia.listaItemsNivelGuardar[2].objetoObtenido)
-            {
-                ExtraVariable.extras.activarTrampasTemplo = true;
-                
-            }
+            //Añadir sonido baldosa bajando
+            StatusGameobjectsVariables.statusGameobject.modificacion[indexModTrampasOn].modificacion = true;
             
         } 
     }

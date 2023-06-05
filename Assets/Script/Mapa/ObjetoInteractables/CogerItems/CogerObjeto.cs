@@ -32,7 +32,7 @@ public class CogerObjeto : MonoBehaviour
     }
     void PickUpObject()
     {
-        if (Input.GetKeyDown(KeyCode.T) && !SaveScene.instancia.listaItemsNivelGuardar[objetoARecoger].objetoObtenido)
+        if (Input.GetButtonDown("Take") && !SaveScene.instancia.listaItemsNivelGuardar[objetoARecoger].objetoObtenido)
         {
             feedbackItem.SpawnIcon();
             //Take The object

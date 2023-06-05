@@ -43,7 +43,6 @@ public class Stairs_Hidden : MonoBehaviour
     }
     void Update()
     {
-
         //Subir escalera 
         Up_Down_Stairs();
         //Poder Esconderte

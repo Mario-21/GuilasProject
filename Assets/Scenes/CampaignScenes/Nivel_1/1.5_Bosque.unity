@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -5376,6 +5376,8 @@ MonoBehaviour:
   pistol: {fileID: 194165287}
   changeWeapon: {fileID: 194165288}
   b8: {fileID: 194165286}
+  inventory: {fileID: 15778613}
+  itemCreate: {fileID: 582024590}
 --- !u!114 &47553372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5388,7 +5390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4290f4be8960ef4fb1713aa4a654de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenaAditiva: 173
+  scenaAditiva: 172
   openTries: 0
 --- !u!1 &66666122
 GameObject:
@@ -6337,7 +6339,7 @@ PrefabInstance:
     - target: {fileID: 1072517792700396460, guid: c8f67dd5fca164345ab0a882c7f89747,
         type: 3}
       propertyPath: siguienteEscena
-      value: 171
+      value: 170
       objectReference: {fileID: 0}
     - target: {fileID: 1072517792700396462, guid: c8f67dd5fca164345ab0a882c7f89747,
         type: 3}
@@ -7314,7 +7316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexMod: 14
   indexTutorial: 2
-  scenaTutorial: 172
+  scenaTutorial: 171
   pause: {fileID: 47553372}
 --- !u!61 &698317839
 BoxCollider2D:
@@ -7572,7 +7574,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexMod: 13
   indexTutorial: 5
-  scenaTutorial: 172
+  scenaTutorial: 171
   pause: {fileID: 47553372}
 --- !u!61 &826689869
 BoxCollider2D:
@@ -8905,6 +8907,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cambiar Area Playa
       objectReference: {fileID: 0}
+    - target: {fileID: 1072517792700396460, guid: c8f67dd5fca164345ab0a882c7f89747,
+        type: 3}
+      propertyPath: siguienteEscena
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072517792700396460, guid: c8f67dd5fca164345ab0a882c7f89747,
+        type: 3}
+      propertyPath: checkPoint
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1072517792700396462, guid: c8f67dd5fca164345ab0a882c7f89747,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9083,7 +9095,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexMod: 12
   indexTutorial: 6
-  scenaTutorial: 172
+  scenaTutorial: 171
   pause: {fileID: 47553372}
 --- !u!61 &1418116067
 BoxCollider2D:
@@ -9682,6 +9694,11 @@ PrefabInstance:
         type: 3}
       propertyPath: listaItemsNivelGuardar.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3676899899470690420, guid: 54b60fe1c71821b4b884a1d221552448,
+        type: 3}
+      propertyPath: listaItemsNivelGuardar.Array.data[0].objetoObtenido
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3676899899470690421, guid: 54b60fe1c71821b4b884a1d221552448,
         type: 3}

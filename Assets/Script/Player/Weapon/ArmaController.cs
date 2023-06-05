@@ -67,7 +67,7 @@ public class ArmaController : MonoBehaviour
     void DrawWeapon()
     {
         //Draw the weapon or keep it
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetButtonDown("Draw_Weapon"))
         {
             activarDisparo = !activarDisparo;
         }

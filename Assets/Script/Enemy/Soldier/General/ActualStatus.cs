@@ -16,6 +16,7 @@ public class ActualStatus : MonoBehaviour
     SoldadoNormal soldadoMode;
     int oneTimeAttackMode;
     int oneTimeWarningMode;
+    int onlyOne;
     private void Awake()
     {
         soldierLife = GetComponent<SoldierLife>();
@@ -24,6 +25,7 @@ public class ActualStatus : MonoBehaviour
     }
     void Start()
     {
+        //Te lo carga si esta vivo
         LoadStatus();
         EstablishLifeBegin();
         
@@ -31,6 +33,7 @@ public class ActualStatus : MonoBehaviour
     private void Update()
     {
         LifeConstantly();
+        SafeModeSoldier();
 
         if(ListaAttackSoldado.modeSoldiers.activeAllAttackSoldiers && oneTimeAttackMode < 1 && soldierLife.vida > 0)
         {
@@ -44,6 +47,14 @@ public class ActualStatus : MonoBehaviour
         }
         
     }
+    void SafeModeSoldier()
+    {
+        if (soldadoMode.berserker && onlyOne < 1)
+        {
+            SoldierActiveInScene.instancia.soldiersStatus[iD].modeSoldier = soldadoMode.berserker;
+            onlyOne++;
+        }
+    }
     private void OnDestroy()
     {
         SaveStatus();   
@@ -53,12 +64,11 @@ public class ActualStatus : MonoBehaviour
         //Necesitas algo para identificar el array
 
         //Cuando Aparece Cae dormido Deberia aparecer ya dormido
-        SoldierActiveInScene.instancia.soldiersStatus[iD].statusVida = soldierLife.vida;
         //Si con transform no funciona el almacenado, almacena los vectores
         SoldierActiveInScene.instancia.soldiersStatus[iD].position_x = transform.position.x;
         SoldierActiveInScene.instancia.soldiersStatus[iD].position_y = transform.position.y;
         //Mode From soldier
-        SoldierActiveInScene.instancia.soldiersStatus[iD].modeSoldier = soldadoMode.berserker;
+        //SoldierActiveInScene.instancia.soldiersStatus[iD].modeSoldier = soldadoMode.berserker;
         SoldierActiveInScene.instancia.soldiersStatus[iD].warningSoldier = soldadoMode.seeCadaverWarning;
     }
     void LoadStatus()

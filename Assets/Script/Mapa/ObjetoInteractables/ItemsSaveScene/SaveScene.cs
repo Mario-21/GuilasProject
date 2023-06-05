@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaveScene : MonoBehaviour
 {
@@ -10,8 +11,6 @@ public class SaveScene : MonoBehaviour
     #region ListaItemsNivel
     public List<ListaTodosObjetos> listaItemsNivelGuardar;
     #endregion
-
-    //Quiero que ocurra en contadas escenas
     private void Awake()
     {
         if (SaveScene.instancia == null)
@@ -23,5 +22,13 @@ public class SaveScene : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("OnSceneLoaded: " + scene.name);
     }
 }

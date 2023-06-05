@@ -32,6 +32,7 @@ public class Detectar_y_Echar : MonoBehaviour
 
 
     float timeDialogo;
+    int reactivateInventory;
     private void Awake()
     {
         movPlayer = FindObjectOfType<JugadorMovimiento>();
@@ -50,6 +51,11 @@ public class Detectar_y_Echar : MonoBehaviour
         }
         if (soldier.GetComponent<SoldierLife>().vida <= 0 || soldier.berserker) 
         {
+            if(reactivateInventory < 1)
+            {
+                menuPlayer.enabled = true;
+                reactivateInventory++;
+            }
             Destroy(this);
             player.HabilitarMovPlayer();
         }

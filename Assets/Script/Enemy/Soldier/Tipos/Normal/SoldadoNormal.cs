@@ -90,7 +90,7 @@ public class SoldadoNormal : MonoBehaviour
     [Range(0, 360)]
     [SerializeField] float toSeePlayer;
     public float leaveOutPlayer = 10;
-    [HideInInspector]public bool berserker;
+    public bool berserker;
 
     [Header("Busqueda Data")]
     public float esperarModoBusquedaLimite;
@@ -861,7 +861,14 @@ public class SoldadoNormal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("BalaPlayer")) { estadoSoldado = EstadoSoldado.ataque; berserker = true; }
+        if (collision.gameObject.CompareTag("BalaPlayer")) 
+        { 
+            if(soldierLife.vida > 0)
+            {
+                estadoSoldado = EstadoSoldado.ataque;
+                berserker = true;
+            }
+        }
     }
     private void OnCollisionStay2D(Collision2D collision)
     {

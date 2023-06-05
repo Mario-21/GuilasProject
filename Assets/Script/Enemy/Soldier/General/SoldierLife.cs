@@ -9,6 +9,7 @@ public class SoldierLife : MonoBehaviour
     //Soldado Armadura 3;
     [Header("Vida Soldado Data")]
     public int vida;
+    int vidaMax;
     ActualStatus status;
 
 
@@ -40,6 +41,9 @@ public class SoldierLife : MonoBehaviour
     }
     void Start()
     {
+        //Setear la vidaMax Actual
+        vidaMax = vida;
+
         anim.SetLayerWeight(1, 0);
         restarSoldados = 0;
 
@@ -77,8 +81,17 @@ public class SoldierLife : MonoBehaviour
     {
         vida -= daño;
         status.indexCasco -= daño;
-        //cabeza.sprite = casco[indexCasco];
-        //indexCasco = indexCasco - daño;
+        //Ir guardando su vida
+        DiferenciaVida();
+
+    }
+    public void DiferenciaVida()
+    {
+        if(vida != vidaMax)
+        {
+            SoldierActiveInScene.instancia.soldiersStatus[status.iD].statusVida = vida;
+            vidaMax = vida;
+        }
     }
     public void SleepingParticles()
     {

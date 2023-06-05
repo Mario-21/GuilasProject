@@ -14,7 +14,6 @@ public class TutoControlerInGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Tutorial " + tutoActive);
         if(tutoActual != null)
         {
             Debug.Log("Existo y soy " + tutoActual.name);

@@ -10,6 +10,8 @@ public class NoWeapon : MonoBehaviour
     [SerializeField] ArmaController pistol;
     [SerializeField] ChangeWeapon changeWeapon;
     [SerializeField] B8Arma b8;
+
+    int once;
     void Start()
     {
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexNoWeapon].modificacion)

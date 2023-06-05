@@ -137,6 +137,7 @@ public class CollectionDirection : MonoBehaviour
     {
         if (botonDocs)
         {
+            backButton.enabled = true;
             flechaDerecha.GetComponent<Button>().enabled = true;
             flechaIzquierda.GetComponent<Button>().enabled = true;
             //SI mi indice actual coincide con uno de los botones activa dicho boton

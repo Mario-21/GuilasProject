@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class TrampaLanzas : MonoBehaviour
 {
-    float originalPosition_y;
+    public int indexModTrampaOn;
 
-    [SerializeField] bool activarTrampa;
-
-    float tiempoActivarTrampa;
+    [Header("Duracion Trampas")]
     public float tiempoActivarTrampaLimite;
+    float tiempoActivarTrampa;
 
     //Hacerlo por Estados con enum
     enum FasesTrampaLanzas
@@ -19,6 +18,9 @@ public class TrampaLanzas : MonoBehaviour
         bajar
     }
     FasesTrampaLanzas fasesTrampaLanzas;
+    [SerializeField] bool activarTrampa;
+
+    float originalPosition_y;
     void Start()
     {
         originalPosition_y = transform.position.y;
@@ -26,7 +28,8 @@ public class TrampaLanzas : MonoBehaviour
 
     void Update()
     {
-        if (ExtraVariable.extras.activarTrampasTemplo)
+        
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexModTrampaOn].modificacion)
         {
             switch (fasesTrampaLanzas)
             {
@@ -42,7 +45,7 @@ public class TrampaLanzas : MonoBehaviour
             }
         }
         else { transform.position = new Vector3(transform.position.x, originalPosition_y, transform.position.z); }
-
+        
     }
     void TrampaLanzaActivada()
     {

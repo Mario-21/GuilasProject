@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CreateObject : MonoBehaviour
 {
-    GameObject objetoClone;
+    [HideInInspector] public GameObject objetoClone;
 
     Camera cam;
 
@@ -26,7 +26,7 @@ public class CreateObject : MonoBehaviour
         {
             canDestroyObject = true;
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Q))
+        else if (Input.GetButtonDown("Inventory") || Input.GetButtonDown("Draw_Weapon"))
         {
             Destroy(objetoClone);
         }

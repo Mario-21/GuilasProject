@@ -6,14 +6,16 @@ public class ExtraVariable : MonoBehaviour
 {
     public static ExtraVariable extras;
 
+    //Esto lo puedo cambiar
     #region EndLoop(Nivel_4)
+        /*
     [HideInInspector] public bool finalLoop;
     #endregion
     #region ViajeRapido(Nivel_ 4)
     [HideInInspector] public int usosViajeRapido = 1;
     #endregion
     #region Templo(Nivel_4)
-    [HideInInspector] public bool activarTrampasTemplo;
+    [HideInInspector] public bool activarTrampasTemplo; */
     #endregion
 
     #region TheLastSoldiersFloor0(Nivel_6.3)

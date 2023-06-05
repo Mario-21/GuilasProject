@@ -20,7 +20,7 @@ public class CogerReliquias : MonoBehaviour
     }
     void PickReliquia()
     {
-        if (Input.GetKeyDown(KeyCode.T)) 
+        if (Input.GetButtonDown("Take")) 
         { 
             ListaReliquias.listaReliquiasTotal[numeroReliquia].reliquiaObtenida = true;
             this.gameObject.SetActive(false);

@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class TrampaDardos : MonoBehaviour
 {
-    [SerializeField] GameObject dardo;
-
-    [SerializeField] Transform spawnDardo;
-
-    float tiempoSpawnDardo;
+    public int indexModTrampasOn;
+    [Header("Datos Dardos")]
     public float tiempoSpawnDardoLimite;
     public float velocidadDardo;
+    [SerializeField] GameObject dardo;
+    [SerializeField] Transform spawnDardo;
+    float tiempoSpawnDardo;
 
     [SerializeField] bool rapido;
     void Update()
     {
-        if (ExtraVariable.extras.activarTrampasTemplo)
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexModTrampasOn].modificacion)
         {
             DispararDardo();
         }
