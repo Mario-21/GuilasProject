@@ -26,7 +26,7 @@ public class IncreaseAmmo : MonoBehaviour
     {
         if (player.playerImHere)
         {
-            if (Input.GetKeyDown(KeyCode.T))
+            if (Input.GetButtonDown("Take"))
             {
                 playerWeapon.municionTotal += ammoRecovery;
                 this.gameObject.SetActive(false);

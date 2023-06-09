@@ -22,6 +22,9 @@ public class Polipasto_Normal : MonoBehaviour
     [SerializeField] SpriteRenderer cuerda;
     float cuerda_Size;
 
+    [Header("Cooldown ascensor")]
+    public float timeCooldownLimit;
+    float timeCooldown;
 
 
     private void Awake()
@@ -34,7 +37,14 @@ public class Polipasto_Normal : MonoBehaviour
     }
     void FixedUpdate()
     {
-        Ascensor_Normal();
+        if(timeCooldown >= timeCooldownLimit)
+        {
+            Ascensor_Normal();
+        }
+        else
+        {
+            timeCooldown += Time.deltaTime;
+        }
     }
     void Ascensor_Normal()
     {
@@ -48,7 +58,15 @@ public class Polipasto_Normal : MonoBehaviour
             rb.MovePosition(movePosition);
 
             //Cuando estes a cierto margen de distancia comienza a calcular para cambiar de destino.Esto se activara si te has cargado antes a uno de los dos cargueros
-            if (Vector2.Distance(destinos[0].position, transform.position) < 1) { cambiarDireccion += Time.deltaTime; if (cambiarDireccion >= cambiarDireccionTimeLimite) bajar = false; }
+            if (Vector2.Distance(destinos[0].position, transform.position) < 1) 
+            {
+                cambiarDireccion += Time.deltaTime;
+                if (cambiarDireccion >= cambiarDireccionTimeLimite) 
+                {
+                    bajar = false;
+                    timeCooldown = 0;
+                }
+            }
             else cambiarDireccion = 0;
 
             //Mientras no hayas llegado a tu destino la cuerda aumentara
@@ -65,7 +83,15 @@ public class Polipasto_Normal : MonoBehaviour
             rb.MovePosition(movePosition);
 
             //Cuando estes a cierto margen de distancia comienza a calcular para cambiar de destino.Esto se activara si te has cargado antes a uno de los dos cargueros
-            if (Vector2.Distance(destinos[1].position, transform.position) < 1) { cambiarDireccion += Time.deltaTime; if (cambiarDireccion >= cambiarDireccionTimeLimite) bajar = true; }
+            if (Vector2.Distance(destinos[1].position, transform.position) < 1) 
+            { 
+                cambiarDireccion += Time.deltaTime;
+                if (cambiarDireccion >= cambiarDireccionTimeLimite) 
+                {
+                    bajar = true;
+                    timeCooldown = 0;
+                }
+            }
             else cambiarDireccion = 0;
 
 

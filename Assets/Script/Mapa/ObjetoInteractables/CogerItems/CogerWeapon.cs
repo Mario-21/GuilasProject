@@ -21,10 +21,9 @@ public class CogerWeapon : MonoBehaviour
     }
     void PickWeapon()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetButtonDown("Take"))
         {
             SpecialWeapons.specialW.b8 = true;
-            ExtraVariable.extras.b8Reogida++;
             this.gameObject.SetActive(false);
         }
     }

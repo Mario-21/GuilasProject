@@ -50,7 +50,7 @@ public class CientificoCinematic : MonoBehaviour
                 case Scientific_Scenes.Start_Scene:
                     playerMov.BloquearMovPlayer();
                     AnimationHud.detectar_echar.SetBool("Transicion", true);
-                    if(timeNextScene >= 2)
+                    if(timeNextScene >= 3)
                     {
                         mainCamera.Follow = scientific.transform;
                         scientific_Cinematic = Scientific_Scenes.Middle_Scene_1;

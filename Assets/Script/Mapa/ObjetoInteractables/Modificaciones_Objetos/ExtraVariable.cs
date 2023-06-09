@@ -19,13 +19,15 @@ public class ExtraVariable : MonoBehaviour
     #endregion
 
     #region TheLastSoldiersFloor0(Nivel_6.3)
+        /*
     [HideInInspector] public float xLastDeath;
     [HideInInspector] public float yLastDeath;
-    [HideInInspector] public int onlyOne;
+    [HideInInspector] public int onlyOne;*/
     #endregion
     #region B8(Best Weapon)(6.5)
+      /*  
     [HideInInspector] public int b8Reogida;
-    [HideInInspector] public bool izqEscombrosB8;
+    [HideInInspector] public bool izqEscombrosB8;*/
     #endregion
 
     #region WakeUpDoctor(Nivel 7.4/Enfermeria)

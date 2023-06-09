@@ -5,47 +5,19 @@ using UnityEngine;
 public class LostB8 : MonoBehaviour
 {
     public GameObject escombrosB8;
-
-    [Header("Spawn Escombros")]
-    public Transform left;
-    public Transform right;
+    [SerializeField] ArmaController weaponPlayer;
     void Start()
     {
-        DecideTheSide();
-        IdentificarPosB8();
         B8Rota();
     }
     void B8Rota()
     {
         //Previously pick up the object
         //no puedes hacerlo en base al spawn dado que cuendo entres de nuevo ya no sera 1 o 2
-        if(!SpecialWeapons.specialW.b8 && ExtraVariable.extras.b8Reogida >= 1)
+        if(SpecialWeapons.specialW.b8 && weaponPlayer.municionTotal > 0)
         {
+            SpecialWeapons.specialW.b8 = false;
             escombrosB8.SetActive(true);
-        }
-    }
-    void IdentificarPosB8()
-    {
-        if (ExtraVariable.extras.izqEscombrosB8)
-        {
-            //si tu personaje lo lanzo desde la derecha
-            escombrosB8.transform.position = left.position;
-        }
-        else
-        {
-            //si tu personaje lo lanzo desde la izquierda
-            escombrosB8.transform.position = right.position;
-        }
-    }
-    void DecideTheSide()
-    {
-        if(CheckPointController.numeroCheckPoint == 1)
-        {
-            ExtraVariable.extras.izqEscombrosB8 = true;
-        }
-        else if (CheckPointController.numeroCheckPoint == 2)
-        {
-            ExtraVariable.extras.izqEscombrosB8 = false;
         }
     }
 }

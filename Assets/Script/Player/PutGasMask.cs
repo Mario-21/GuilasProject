@@ -15,6 +15,7 @@ public class PutGasMask : MonoBehaviour
     void Update()
     {
         CanUseMask();
+        OffMask();
     }
     void CanUseMask()
     {
@@ -33,6 +34,21 @@ public class PutGasMask : MonoBehaviour
         {
             gas_Mask.SetActive(true);
             mascaraButton.UsosGastados();
+        }
+    }
+    void OffMask()
+    {
+        //NOTA: En el casco minero del nivel 5 te va habilitar ambos botones
+        //Si llevo el cosmetico
+        if (putMask)
+        {
+            //Pulso la te para quitarmelo
+            if (Input.GetButtonDown("Take_Off"))
+            {
+                gas_Mask.SetActive(false);
+                mascaraButton.HabilitarUsos();
+                putMask = false;
+            }
         }
     }
 

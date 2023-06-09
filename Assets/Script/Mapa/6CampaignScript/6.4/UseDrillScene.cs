@@ -35,7 +35,7 @@ public class UseDrillScene : MonoBehaviour
         if (player.playerImHere)
         {
             evento.actionOnCinematic += DeleteGroundFake;
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetButtonDown("Action"))
             {
                 encenderScene = true;
                 startEvento = true;

@@ -22,7 +22,7 @@ public class OnCinematic : MonoBehaviour
     {
         if (player.playerImHere)
         {
-            if (Input.GetKeyDown(KeyCode.O))
+            if (Input.GetButtonDown("Fire2"))
             {
                 enabledEscaleraMano = true;
                 AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");

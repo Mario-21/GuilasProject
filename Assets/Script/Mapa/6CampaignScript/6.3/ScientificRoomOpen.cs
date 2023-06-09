@@ -31,8 +31,10 @@ public class ScientificRoomOpen : MonoBehaviour
     {
         if (player.playerImHere)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            Debug.Log("ESToy en la puerta science");
+            if (Input.GetButtonDown("Action"))
             {
+                Debug.Log("Presionete la puerta science");
                 StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
                 if (feedback) botonFeedback.color = colorFeedback;
             }

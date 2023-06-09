@@ -16,7 +16,7 @@ public class FallDamage : MonoBehaviour
     float registroSueloAltura;
     int registroSuelo;
     [Header("Altura Total")]
-    float alturaTotalCalculo;
+    public float alturaTotalCalculo;
     [Header("Porcentaje Daño")]
     float porcentajeDaño;
     [Header("Daño ")]
