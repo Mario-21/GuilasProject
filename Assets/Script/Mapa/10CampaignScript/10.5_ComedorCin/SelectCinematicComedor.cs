@@ -23,9 +23,10 @@ public class SelectCinematicComedor : MonoBehaviour
     [SerializeField] List<GameObject> listEnemyVen;
     void Awake()
     {
-        switch (ExtraVariable.extras.comedorScene)
+        
+        switch (DataCinematic.dataCin.comedorScene)
         {
-            case ExtraVariable.CinematicComedor105.Aspersor:
+            case DataCinematic.CinematicComedor96.Aspersor:
                 //Coloca los datos de la camara
                 mainCamera.Follow = ubiAspersor;
                 mainCamera.m_Lens.OrthographicSize = 3;
@@ -40,7 +41,7 @@ public class SelectCinematicComedor : MonoBehaviour
                 angryChef.enabled = true;
                 break;
 
-            case ExtraVariable.CinematicComedor105.Veneno:
+            case DataCinematic.CinematicComedor96.Veneno:
                 //Coloca los datos de la camara
                 mainCamera.Follow = ubiVeneno;
                 mainCamera.m_Lens.OrthographicSize = 4;

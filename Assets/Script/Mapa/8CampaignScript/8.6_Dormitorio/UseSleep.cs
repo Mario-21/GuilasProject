@@ -10,6 +10,12 @@ public class UseSleep : MonoBehaviour
     public int cinematicDormitorio;
     public int spawn;
     public SoldierLife soldadoDiary;
+
+    BloquearMovimientoPlayer bloqPlayer;
+    private void Awake()
+    {
+        bloqPlayer = FindObjectOfType<BloquearMovimientoPlayer>();
+    }
     void Start()
     {
         activador = GetComponent<ActivarModificador>();
@@ -26,6 +32,7 @@ public class UseSleep : MonoBehaviour
     {
         if (activador.modificacion)
         {
+            bloqPlayer.BloquearMovPlayer();
             EstructuraNiveles.nivel = cinematicDormitorio;
             CheckPointController.numeroCheckPoint = spawn;
             AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");

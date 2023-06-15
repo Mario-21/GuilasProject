@@ -5,6 +5,7 @@ using UnityEngine;
 public class BossTrigger : MonoBehaviour
 {
     public int indexMod;
+    public int indexModPeluca;
 
     [Header("Time Scene Boss")]
     public float waitBossLimit;
@@ -14,6 +15,8 @@ public class BossTrigger : MonoBehaviour
     public int spawnBoss;
     [Header("Ascensor")]
     [SerializeField] Camino_CambiarZona ascensor;
+    [Header("Peluca Condicions")]
+    [SerializeField] PutGasMask peluca;
 
     bool bossWait;
     void Start()
@@ -37,6 +40,7 @@ public class BossTrigger : MonoBehaviour
             if(waitBoss >= waitBossLimit)
             {
                 StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+                if(peluca.putMask) StatusGameobjectsVariables.statusGameobject.modificacion[indexModPeluca].modificacion = true;
                 ascensor.enabled = false;
                 CheckPointController.numeroCheckPoint = spawnBoss;
                 EstructuraNiveles.nivel = scenaBoss;

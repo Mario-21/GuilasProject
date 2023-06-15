@@ -19,7 +19,7 @@ public class GeneradorEscavacion_B : MonoBehaviour
 
         ColorGenerador();
 
-        if (ExtraVariable.extras.valorGenerador >= valorElectricoMaximo) 
+        if (TurnosWorked.extras.valorGenerador >= valorElectricoMaximo) 
         {
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
         }
@@ -28,9 +28,9 @@ public class GeneradorEscavacion_B : MonoBehaviour
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = false;
         }
         //No puede llegar a ser menor que cero
-        if(ExtraVariable.extras.valorGenerador <= 0)
+        if(TurnosWorked.extras.valorGenerador <= 0)
         {
-            ExtraVariable.extras.valorGenerador = 0;
+            TurnosWorked.extras.valorGenerador = 0;
         }
     }
     void ColorGenerador()

@@ -8,7 +8,6 @@ public class ReliquiaValvula : MonoBehaviour
     [Header("Valvula Data")]
     [SerializeField] Valvula valvula;
     public int limitUses;
-    public int uses;
     public bool canIncrease;
 
     PlayerHere player;
@@ -18,26 +17,24 @@ public class ReliquiaValvula : MonoBehaviour
     }
     void Start()
     {
-        uses = ExtraVariable.extras.actionOne;
     }
 
     // Update is called once per frame
     void Update()
     {
         LimitUses();
-        ExtraVariable.extras.actionOne = uses;
         if (player.playerImHere)
         {
-            if (Input.GetKeyDown(KeyCode.Z) && !valvula.valvulaOn && !canIncrease)
+            if (Input.GetButtonDown("Action") && !valvula.valvulaOn && !canIncrease)
             {
                 canIncrease = true;
-                if(uses < limitUses) uses++;
+                if(ClotheData.clotheInfo.numCloth < limitUses) ClotheData.clotheInfo.numCloth++;
             }
         }
     }
     void LimitUses()
     {
-        if(uses >= limitUses)
+        if(ClotheData.clotheInfo.numCloth >= limitUses)
         {
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
         }
@@ -48,6 +45,6 @@ public class ReliquiaValvula : MonoBehaviour
     }
     private void OnDestroy()
     {
-        ExtraVariable.extras.actionOne = uses;
+        //ExtraVariable.extras.actionOne = uses;
     }
 }

@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class ButtonRevive : MonoBehaviour
 {
-    Revive revivirScene;
+    public Revive revivirScene;
+    [Header("Info Reload")]
+    public Animator transicionPause;
     void Start()
     {
         revivirScene = FindObjectOfType<Revive>();
@@ -30,12 +32,20 @@ public class ButtonRevive : MonoBehaviour
     {
         if (TotalTerminales.terminalesTotales != null) revivirScene.ResetearTerminales();
     }
+    public void ButtonResetAmmoPlayer()
+    {
+        revivirScene.ResetearMunicionPlayer();
+    }
     public void ButtonResetAmmo()
     {
-        revivirScene.ResetearMunicion();
+        revivirScene.ResetearAmmo();
     }
-    public void ReloadScene()
+    public void ButtonResetearUiItems()
     {
-        AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
+        revivirScene.ResetearUiItems();
+    }
+    public void ReloadScene(string name)
+    {
+        transicionPause.SetTrigger(name);
     }
 }

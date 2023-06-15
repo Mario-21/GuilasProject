@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class VidaPlayer : MonoBehaviour
 {
     [Header("Life Data")]
     public float vidaActual;
     public float vidaTotal;
     Image vidaUI;
+    [Header("Death Data")]
+    public bool youWantDied;
+    public int deathScene;
+    int once;
+    BloquearMovimientoPlayer bloquear;
     [Header("Recovery ammo")]
     public B8Arma b8Weapon;
     private void Awake()
@@ -16,6 +22,8 @@ public class VidaPlayer : MonoBehaviour
     }
     void Start()
     {
+        //SceneManager.LoadSceneAsync(scenaTutorial, LoadSceneMode.Additive);
+        bloquear = FindObjectOfType<BloquearMovimientoPlayer>();
         vidaActual = vidaTotal;
     }
 
@@ -31,7 +39,17 @@ public class VidaPlayer : MonoBehaviour
     }
     void Muerte()
     {
-        if (vidaActual <= 0) Debug.Log("Te moriste");
+        if (vidaActual <= 0 && once < 1) 
+        {
+            if (youWantDied)
+            {
+                Debug.Log("Te moriste");
+                bloquear.DeathPlayer();
+                SceneManager.LoadSceneAsync(deathScene, LoadSceneMode.Additive);
+                once++;
+            }
+        }
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

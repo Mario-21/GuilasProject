@@ -31,6 +31,8 @@ public class GirarSoldier : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             girar = true;
+            //aumentar en el momento de tocar el trigger del soldado
+            ClotheData.clotheInfo.numCloth++;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

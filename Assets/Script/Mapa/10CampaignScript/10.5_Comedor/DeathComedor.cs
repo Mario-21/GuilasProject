@@ -4,35 +4,41 @@ using UnityEngine;
 
 public class DeathComedor : MonoBehaviour
 {
+    public int indexModVenenoGlass; // Equivale al 5
+    public int indexComedorDeath; //Variable nueva
     [Header("Total Enemigos")]
     public int totalEnemy;
     public int enemyDeath;
     [SerializeField] Aparecer_DesAp_Obj soldadosAspersores;
-    [SerializeField] HelpDeath helpDeath;
 
     private void Start()
     {
-        if (ExtraVariable.extras.soldadosDeathComedor)
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexComedorDeath].modificacion)
         {
             soldadosAspersores.enabled = false;
             this.enabled = false;
         }
-        if (ExtraVariable.extras.helpSoldados)
+        
+    }
+    private void Update()
+    {
+        CantidadEnemigos();
+        //Aplicar lo mismo pero solo a los dos soldados del baño
+        if (enemyDeath >= totalEnemy)
+        {
+            StatusGameobjectsVariables.statusGameobject.modificacion[indexComedorDeath].modificacion = true;
+            soldadosAspersores.enabled = false;
+        }
+    }
+    void CantidadEnemigos()
+    {
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexModVenenoGlass].modificacion)
         {
             totalEnemy = 5;
         }
         else
         {
             totalEnemy = 7;
-        }
-    }
-    private void Update()
-    {
-        //Aplicar lo mismo pero solo a los dos soldados del baño
-        if (enemyDeath >= totalEnemy)
-        {
-            ExtraVariable.extras.soldadosDeathComedor = true;
-            soldadosAspersores.enabled = false;
         }
     }
 }

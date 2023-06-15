@@ -4,40 +4,52 @@ using UnityEngine;
 
 public class NoviceSoldier : MonoBehaviour
 {
+    public static NoviceSoldier noviceDeathLife;
+
     public int indexStop;
     [Header("Time Limit Novice Survive")]
     public float limitTimeDeathNovice;
+    public float timeNoviceDeath;
     [Header("Time Options")]
     public int indexExceedTime;
     public int indexMinusTime;
-    void Start()
+    private void Awake()
     {
-        
+        if (NoviceSoldier.noviceDeathLife == null)
+        {
+            NoviceSoldier.noviceDeathLife = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     void Update()
     {
         StopTime();
         OptionsTime();
     }
+
+    void StopTime()
+    {
+        if (!StatusGameobjectsVariables.statusGameobject.modificacion[indexStop].modificacion)
+        {
+            timeNoviceDeath += Time.deltaTime;
+        }
+    }
     void OptionsTime()
     {
-        if (ExtraVariable.extras.timeNoviceDeath > limitTimeDeathNovice)
+
+        if (timeNoviceDeath > limitTimeDeathNovice)
         {
             StatusGameobjectsVariables.statusGameobject.modificacion[indexExceedTime].modificacion = true;
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMinusTime].modificacion = false;
         }
         else
         {
-
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMinusTime].modificacion = true;
             StatusGameobjectsVariables.statusGameobject.modificacion[indexExceedTime].modificacion = false;
-        }
-    }
-    void StopTime()
-    {
-        if (!StatusGameobjectsVariables.statusGameobject.modificacion[indexStop].modificacion)
-        {
-            ExtraVariable.extras.timeNoviceDeath += Time.deltaTime;
         }
     }
 }

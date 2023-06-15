@@ -32,7 +32,7 @@ public class PasswordNotebook : MonoBehaviour
     {
         if (player.playerImHere)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetButtonDown("Action"))
             {
                 seeNote = !seeNote;
             }

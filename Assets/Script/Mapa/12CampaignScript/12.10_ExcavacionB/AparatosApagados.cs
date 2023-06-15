@@ -34,7 +34,7 @@ public class AparatosApagados : MonoBehaviour
     {
         if (player.playerImHere)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetButtonDown("Action"))
             {
                 Apagar();
             }
@@ -51,7 +51,7 @@ public class AparatosApagados : MonoBehaviour
         {
             //Se apaga el aparato, se resta la cantidad de energia
             StatusGameobjectsVariables.statusGameobject.modificacion[indexAparato].modificacion = false;
-            ExtraVariable.extras.valorGenerador -= cargaElectrica;
+            TurnosWorked.extras.valorGenerador -= cargaElectrica;
             //Se resta en el fillAmount para que visualmente se vea que se ha restado
             float decrementoElect = (float)cargaElectrica / 100;
             GeneradorEscavacion_B.DecrementoGenerador(decrementoElect);

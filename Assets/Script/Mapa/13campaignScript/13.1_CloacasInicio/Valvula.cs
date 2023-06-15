@@ -46,7 +46,7 @@ public class Valvula : MonoBehaviour
         StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = valvulaOn;
         if (player.playerImHere && !valvulaOn)
         {
-            if (Input.GetKeyDown(KeyCode.Z) && !valvulaTime)
+            if (Input.GetButtonDown("Action") && !valvulaTime)
             {
                 //CalculoDeAguas();
                 //Conserva si la valvula ha sido activada

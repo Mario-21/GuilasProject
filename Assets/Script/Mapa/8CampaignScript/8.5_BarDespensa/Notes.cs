@@ -19,7 +19,7 @@ public class Notes : MonoBehaviour
     {
         if (player.playerImHere)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetButtonDown("Action"))
             {
                 readNote = !readNote;
             }

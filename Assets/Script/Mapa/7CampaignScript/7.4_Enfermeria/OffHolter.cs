@@ -27,7 +27,7 @@ public class OffHolter : MonoBehaviour
     }
     void ActiveHolter()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetButtonDown("Action"))
         {
             onHolter = !onHolter;
         }

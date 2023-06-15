@@ -50,13 +50,13 @@ public class DispositivoElectrico : MonoBehaviour
     }
     void PressLuz()
     {
-        if (Input.GetKeyDown(KeyCode.Z)) 
+        if (Input.GetButtonDown("Action")) 
         {
             luzOn = !luzOn;
             SwitchLuz();
 
             TipoDispositivo dispositivo = new TipoDispositivo();
-            dispositivo.GastoElectrico(ref ExtraVariable.extras.valorGenerador, gastoElectrico,  ref luzOn);
+            dispositivo.GastoElectrico(ref TurnosWorked.extras.valorGenerador, gastoElectrico,  ref luzOn);
         }
     }
     void ImDispositivo()

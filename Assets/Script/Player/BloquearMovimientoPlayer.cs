@@ -5,13 +5,25 @@ using UnityEngine;
 [System.Serializable]
 public class BloquearMovimientoPlayer : MonoBehaviour
 {
+    [Header("Elementos Player")]
     public JugadorMovimiento player;
     public VidaPlayer vidaPlayer;
     public ArmaController pistol;
     public B8Arma b8;
     public ChangeWeapon conditionToChangeWeapon;
 
+    [Header("Elemento Menu")]
+    Inventory inventory;
+    PauseControler pausaMenu;
+
     float vidaActual;
+
+    private void Start()
+    {
+        inventory = FindObjectOfType<Inventory>();
+        pausaMenu = FindObjectOfType<PauseControler>();
+        
+    }
 
     public void BloquearMovPlayer()
     {
@@ -81,5 +93,29 @@ public class BloquearMovimientoPlayer : MonoBehaviour
         //Reactiva la vida
         vidaPlayer.enabled = true;
 
+    }
+    public void DeathPlayer()
+    {
+        player.enabled = false;
+        player.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+        //Llamar Death Anim
+        player.GetComponent<Animator>().SetBool("Walk", false);
+        //Deactivate Pistol
+        pistol.activarDisparo = false;
+        pistol.enabled = false;
+        pistol.mira.gameObject.SetActive(false);
+        //Deactivate B8
+        b8.activarB8 = false;
+        b8.enabled = false;
+        b8.mira.gameObject.SetActive(false);
+        //Deactivate ChangeWeapon
+        conditionToChangeWeapon.enabled = false;
+        //Desactiva Inventario
+        inventory.enabled = false;
+        Inventory.gameIsPause = false;
+        //Desactivar Menu Pausa
+        pausaMenu.enabled = false;
+        //Pausar
+        Time.timeScale = 0;
     }
 }

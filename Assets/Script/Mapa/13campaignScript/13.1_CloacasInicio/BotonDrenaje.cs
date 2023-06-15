@@ -54,7 +54,7 @@ public class BotonDrenaje : MonoBehaviour
 
         if (player.playerImHere)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetButtonDown("Action"))
             {
                 if(!timeDrenar && waterInfo.porcentajeAgua > 0)
                 {

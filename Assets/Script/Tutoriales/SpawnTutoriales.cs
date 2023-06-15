@@ -14,12 +14,13 @@ public class SpawnTutoriales : MonoBehaviour
     void Start()
     {
         pause = FindObjectOfType<SceneAditive>();
-        var spawn = Instantiate(tutoriales[spawnTutorial]);
-        spawn.transform.parent = gameObject.transform;
+        GameObject spawn = Instantiate(tutoriales[spawnTutorial]);
+        spawn.transform.SetParent(gameObject.transform);
         //parentItem.transform.parent = tutoriales[spawnTutorial].transform;
     }
     private void Update()
     {
+        //spawn.transform.parent = gameObject.transform;
         if (Input.GetButtonDown("Cancel"))
         {
             Time.timeScale = 1;

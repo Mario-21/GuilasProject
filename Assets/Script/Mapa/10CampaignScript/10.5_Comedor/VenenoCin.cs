@@ -17,7 +17,8 @@ public class VenenoCin : MonoBehaviour
     {
         if (activador.modificacion)
         {
-            ExtraVariable.extras.comedorScene = ExtraVariable.CinematicComedor105.Veneno;
+            DataCinematic.dataCin.comedorScene = DataCinematic.CinematicComedor96.Veneno;
+            //ExtraVariable.extras.comedorScene = ExtraVariable.CinematicComedor105.Veneno;
         }
         
     }

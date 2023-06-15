@@ -19,7 +19,7 @@ public class ChangeTurnsRest : MonoBehaviour
     void Update()
     {
         Demo_Turnos turnosCambio = new Demo_Turnos();
-        turnosCambio.ChangeTurnos(ExtraVariable.extras.turnosWork);
+        turnosCambio.ChangeTurnos(TurnosWorked.extras.turnosWork);
 
         PressButtonChangeTurn();
         TurnoReset();
@@ -28,18 +28,18 @@ public class ChangeTurnsRest : MonoBehaviour
     {
         if (player.playerImHere)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetButtonDown("Action"))
             {
-                ExtraVariable.extras.turnosWork++;
+                TurnosWorked.extras.turnosWork++;
                 MarcoColor();
             }
         }
     }
     void TurnoReset()
     {
-        if(ExtraVariable.extras.turnosWork >= limitTurnos)
+        if(TurnosWorked.extras.turnosWork >= limitTurnos)
         {
-            ExtraVariable.extras.turnosWork = 0;
+            TurnosWorked.extras.turnosWork = 0;
             MarcoColor();
         }
     }
@@ -47,7 +47,7 @@ public class ChangeTurnsRest : MonoBehaviour
     {
         for (int i = 0; i < marcosTurns.Count; i++)
         {
-            if (i == ExtraVariable.extras.turnosWork)
+            if (i == TurnosWorked.extras.turnosWork)
             {
                 marcosTurns[i].color = Color.green;
             }

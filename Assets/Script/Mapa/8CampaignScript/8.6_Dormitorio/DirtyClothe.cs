@@ -28,13 +28,15 @@ public class DirtyClothe : MonoBehaviour
     {
         if (player.playerImHere)
         {
-            if (Input.GetKeyDown(KeyCode.T))
+            if (Input.GetButtonDown("Take"))
             {
                 StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
                 CatchClothes();
                 //Recogiendo ropa
-                ExtraVariable.extras.numClothes++;
-                if (ExtraVariable.extras.numClothes >= totalClothes) StatusGameobjectsVariables.statusGameobject.modificacion[indexAllClothes].modificacion = true;
+                //ESto servía para saber cuanta ropa habias recogido, y cuando llegaras al tope la variable se activava
+                //Aplicar la misma que Liquid
+                ClotheData.clotheInfo.numCloth++;
+                if (ClotheData.clotheInfo.numCloth >= totalClothes) StatusGameobjectsVariables.statusGameobject.modificacion[indexAllClothes].modificacion = true;
             }
         }
     }

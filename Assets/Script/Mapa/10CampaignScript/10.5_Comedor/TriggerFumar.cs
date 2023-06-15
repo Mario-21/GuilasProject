@@ -50,7 +50,8 @@ public class TriggerFumar : MonoBehaviour
         if(colocarCigarro.putMask && encenderCigarro.putMask && fumarArea)
         {
             fumarCin.UseCinematic();
-            ExtraVariable.extras.comedorScene = ExtraVariable.CinematicComedor105.Aspersor;
+            DataCinematic.dataCin.comedorScene = DataCinematic.CinematicComedor96.Aspersor;
+            //ExtraVariable.extras.comedorScene = ExtraVariable.CinematicComedor105.Aspersor;
         }
         //Si entras a la sala solo con el cigarro sin encender, te echan 
         else if (colocarCigarro.putMask && !encenderCigarro.putMask && fumarArea)
@@ -66,7 +67,8 @@ public class TriggerFumar : MonoBehaviour
         if (colocarCigarro.putMask && encenderCigarro.putMask && fumarArea)
         {
             fumarCin.UseCinematic();
-            ExtraVariable.extras.comedorScene = ExtraVariable.CinematicComedor105.Aspersor;
+            DataCinematic.dataCin.comedorScene = DataCinematic.CinematicComedor96.Aspersor;
+            //ExtraVariable.extras.comedorScene = ExtraVariable.CinematicComedor105.Aspersor;
         }
         Debug.Log("Garma");
 

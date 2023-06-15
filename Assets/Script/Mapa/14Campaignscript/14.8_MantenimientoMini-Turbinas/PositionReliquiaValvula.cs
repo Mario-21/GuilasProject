@@ -9,6 +9,6 @@ public class PositionReliquiaValvula : MonoBehaviour
     public List<Transform> ubiAllReliquia;
     void Update()
     {
-        reliquiaPos.position = ubiAllReliquia[ExtraVariable.extras.actionOne].position;
+        reliquiaPos.position = ubiAllReliquia[ClotheData.clotheInfo.numCloth].position;
     }
 }

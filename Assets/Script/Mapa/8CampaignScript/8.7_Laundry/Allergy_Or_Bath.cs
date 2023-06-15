@@ -16,7 +16,6 @@ public class Allergy_Or_Bath : MonoBehaviour
     public SaveButton buttonJarraVacia;
     public int vasoVacio;
     [Header("Liquid")]
-    [SerializeField] LiquidColor typeDrink;
     ActivarModificador activador;
     int once;
     void Start()
@@ -35,15 +34,15 @@ public class Allergy_Or_Bath : MonoBehaviour
     {
         if (activador.modificacion && once < 1)
         {
-            if (typeDrink.selectedDrink == 1 || typeDrink.selectedDrink == 2)
+            if (LiquidColor.liquid.selectedDrink == 1 || LiquidColor.liquid.selectedDrink == 2)
             {
-                ExtraVariable.extras.consumption++;
+                LiquidColor.liquid.consumption++;
                 beberEffect.Play();
                 once++;
                 ChangeGlass();
                 Bath();
             }
-            if(typeDrink.selectedDrink == 0)
+            if(LiquidColor.liquid.selectedDrink == 0)
             {
                 AllergyDrink();
                 allergyLimit.LimitUse();
@@ -56,7 +55,7 @@ public class Allergy_Or_Bath : MonoBehaviour
     }
     void Bath()
     {
-        if(ExtraVariable.extras.consumption >= 3) 
+        if(LiquidColor.liquid.consumption >= 3) 
         {
             StatusGameobjectsVariables.statusGameobject.modificacion[indexModBath].modificacion = true;
             this.enabled = false;

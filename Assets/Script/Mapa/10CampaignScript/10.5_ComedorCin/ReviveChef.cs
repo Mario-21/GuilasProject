@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class ReviveChef : MonoBehaviour
 {
+    public int indexDeathComedor;
     public int indexChef;
     void Start()
     {
-        if (!ExtraVariable.extras.soldadosDeathComedor)
+        if (!StatusGameobjectsVariables.statusGameobject.modificacion[indexDeathComedor].modificacion)
         {
             SoldierActiveInScene.instancia.soldiersStatus[indexChef].statusVida = 1;
+            SoldierActiveInScene.instancia.soldiersStatus[indexChef].modeSoldier = false;
             Debug.Log("Revive");
         }
         else

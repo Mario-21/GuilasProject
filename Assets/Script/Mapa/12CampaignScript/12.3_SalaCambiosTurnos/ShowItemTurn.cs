@@ -21,7 +21,7 @@ public class ShowItemTurn : MonoBehaviour
     {
         ItemsTurnos items = new ItemsTurnos();
         Demo_Turnos turno = new Demo_Turnos();
-        turno.ChangeTurnos(ExtraVariable.extras.turnosWork);
+        turno.ChangeTurnos(TurnosWorked.extras.turnosWork);
         Debug.Log("EN show item el turno es " + turno.turnoActual);
         switch (zoneItem)
         {

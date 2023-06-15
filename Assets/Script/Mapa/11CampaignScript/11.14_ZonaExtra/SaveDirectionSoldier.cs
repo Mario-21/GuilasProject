@@ -7,10 +7,8 @@ public class SaveDirectionSoldier : MonoBehaviour
     [SerializeField] SoldadoNormal soldadoCode;
     void Start()
     {
-        soldadoCode.indexUbi = ExtraVariable.extras.ubiSave;
+        soldadoCode.indexUbi = ClotheData.clotheInfo.numCloth;
+        soldadoCode.transform.position = soldadoCode.ubicacionesDirigir[ClotheData.clotheInfo.numCloth].position;
     }
-    private void OnDestroy()
-    {
-        ExtraVariable.extras.ubiSave = soldadoCode.indexUbi;
-    }
+
 }

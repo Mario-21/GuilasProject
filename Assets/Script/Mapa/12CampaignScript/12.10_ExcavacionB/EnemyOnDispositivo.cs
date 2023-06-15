@@ -28,7 +28,7 @@ public class EnemyOnDispositivo : MonoBehaviour
             device.luzOn = true;
             //Calcula el gasto Electrico
             TipoDispositivo dispositivo = new TipoDispositivo();
-            dispositivo.GastoElectrico(ref ExtraVariable.extras.valorGenerador, device.gastoElectrico, ref device.luzOn);
+            dispositivo.GastoElectrico(ref TurnosWorked.extras.valorGenerador, device.gastoElectrico, ref device.luzOn);
             //Variable para desactivar este trigger ya que solo quieres hacerlo una única vez
             StatusGameobjectsVariables.statusGameobject.modificacion[indexModEnemy].modificacion = true;
             //Deja encendido el dispositivo en concreto

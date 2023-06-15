@@ -20,19 +20,21 @@ public class ScientificRoomOpen : MonoBehaviour
     {
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) 
         {
-            if (feedback) botonFeedback.color = colorFeedback   ;
+            if (feedback) botonFeedback.color = colorFeedback;
+            this.enabled = false;
         }
     }
-    void Update()
+    void FixedUpdate()
     {
-        if (!StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) OpenScientificRoom();
+        //if (!StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) OpenScientificRoom();
+        OpenScientificRoom();
     }
     void OpenScientificRoom()
     {
         if (player.playerImHere)
         {
             Debug.Log("ESToy en la puerta science");
-            if (Input.GetButtonDown("Action"))
+            if (Input.GetButton("Action"))
             {
                 Debug.Log("Presionete la puerta science");
                 StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;

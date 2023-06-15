@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class GetUpScience : MonoBehaviour
 {
-    //public int indexMod;
-
-    //[SerializeField] List<SoldierLife> vidaSoldiers;
+    public int indexMod;
+    [Header("Lista Soldados Up")]
     public List<int> indexSoldados;
     void Start()
     {
-        if(ExtraVariable.extras.actionOne >= 1)
+        if(StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
             this.enabled = false;
         }
@@ -29,6 +28,7 @@ public class GetUpScience : MonoBehaviour
             Debug.Log( i + " " + "Soldao");
             SoldierActiveInScene.instancia.soldiersStatus[indexSoldados[i]].statusVida = 1;
             SoldierActiveInScene.instancia.soldiersStatus[indexSoldados[i]].modeSoldier = false;
+            StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
         }
     }
 }

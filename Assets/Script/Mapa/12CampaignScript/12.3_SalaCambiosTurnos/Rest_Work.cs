@@ -19,7 +19,7 @@ public class Rest_Work : MonoBehaviour
     void Start()
     {
         Demo_Turnos turno = new Demo_Turnos();
-        turno.ChangeTurnos(ExtraVariable.extras.turnosWork);
+        turno.ChangeTurnos(TurnosWorked.extras.turnosWork);
         Turno_Zona turno_Zona = new Turno_Zona();
         Turno_Excavacion turno_Excavacion = new Turno_Excavacion();
         switch (zonaNivel)

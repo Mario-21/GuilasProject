@@ -14,9 +14,15 @@ public class Revive : MonoBehaviour
     public List<ListaStatusSoldierScenes> vidaSoldados;
     [Header("Terminales Nivel")]
     public List<bool> terminalesStartLevel;
-    [Header("Municiones Nivel")]
+    [Header("Municion Nivel")]
+    public List<bool> ammoStartLevel;
+    [Header("Ui Items Nivel")]
+    public List<bool> uiItemsStartLevel;
+
+    [Header("Municiones Player")]
     [SerializeField] ArmaController mainWeaponPlayer;
     public int municionStartLevel;
+    
     void Start()
     {
         //Coloca la municion
@@ -55,6 +61,26 @@ public class Revive : MonoBehaviour
                 if (TotalTerminales.terminalesTotales.terminalesActivos[k])
                 {
                     terminalesStartLevel[k] = true;
+                }
+            }
+        }
+        if(AmmoRecoveryList.ammoFromLevel != null)
+        {
+            for(int t = 0; t < ammoStartLevel.Count; t++)
+            {
+                if (AmmoRecoveryList.ammoFromLevel.ammo[t])
+                {
+                    ammoStartLevel[t] = true;
+                }
+            }
+        }
+        if(ListaItemsUI.listaItemsUI != null)
+        {
+            for (int h = 0; h < uiItemsStartLevel.Count; h++)
+            {
+                if (ListaItemsUI.listaItemsUI.listaAllItemUI[h].itemUICatch)
+                {
+                    uiItemsStartLevel[h] = true;
                 }
             }
         }
@@ -116,9 +142,31 @@ public class Revive : MonoBehaviour
             }
         }
     }
-    public void ResetearMunicion()
+    public void ResetearMunicionPlayer()
     {
         mainWeaponPlayer.municionTotal = municionStartLevel;
     }
-    //Tambien debe guardar la municion
+    public void ResetearAmmo()
+    {
+        for (int w = 0; w < ammoStartLevel.Count; w++)
+        {
+            //Si son diferentes, quiere decir que lo acabas de modificar ahora pero has muerto en el proceso, por tanto debe resetearse
+            if (AmmoRecoveryList.ammoFromLevel.ammo[w] != ammoStartLevel[w])
+            {
+                AmmoRecoveryList.ammoFromLevel.ammo[w] = ammoStartLevel[w];
+            }
+        }
+    }
+    public void ResetearUiItems()
+    {
+        for (int w = 0; w < uiItemsStartLevel.Count; w++)
+        {
+            //Si son diferentes, quiere decir que lo acabas de modificar ahora pero has muerto en el proceso, por tanto debe resetearse
+            if (ListaItemsUI.listaItemsUI.listaAllItemUI[w].itemUICatch != uiItemsStartLevel[w])
+            {
+                ListaItemsUI.listaItemsUI.listaAllItemUI[w].itemUICatch = uiItemsStartLevel[w];
+            }
+        }
+    }
+
 }

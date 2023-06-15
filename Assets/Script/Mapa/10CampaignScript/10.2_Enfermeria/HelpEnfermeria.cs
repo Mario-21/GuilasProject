@@ -4,19 +4,36 @@ using UnityEngine;
 
 public class HelpEnfermeria : MonoBehaviour
 {
+    public int indexModVenenoGlass; // Equivale al 5
+    public int indexMod; // Index propio del script
     [Header("Soldados Ayuda Veneno")]
-    [SerializeField] GameObject soldado1;
-    [SerializeField] GameObject spawnSoldado1;
-    [SerializeField] GameObject soldado2;
-    [SerializeField] GameObject spawnSoldado2;
+    public GameObject ap_des_HelpPoison;
+    public int indexSoldado1;
+    public int indexSoldado2;
     void Start()
     {
-        if (ExtraVariable.extras.helpSoldados)
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
-            soldado1.SetActive(true);
-            spawnSoldado1.SetActive(true);
-            soldado2.SetActive(true);
-            spawnSoldado2.SetActive(true);
+            ap_des_HelpPoison.SetActive(true);
+            this.enabled = false;
+            Debug.Log("Katana Fuera");
+        }
+
+        if(StatusGameobjectsVariables.statusGameobject.modificacion[indexModVenenoGlass].modificacion && !StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
+        {
+            if(SoldierActiveInScene.instancia.soldiersStatus[indexSoldado1].statusVida > 0 && SoldierActiveInScene.instancia.soldiersStatus[indexSoldado2].statusVida > 0)
+            {
+                SoldierActiveInScene.instancia.soldiersStatus[indexSoldado1].modeSoldier = false;
+                SoldierActiveInScene.instancia.soldiersStatus[indexSoldado2].modeSoldier = false;
+                StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+                ap_des_HelpPoison.SetActive(true);
+                Debug.Log("Katana 0");
+            }
+            else if (SoldierActiveInScene.instancia.soldiersStatus[indexSoldado1].statusVida <= 0 && SoldierActiveInScene.instancia.soldiersStatus[indexSoldado2].statusVida <= 0)
+            {
+                ap_des_HelpPoison.SetActive(false);
+                Debug.Log("Katana No Existe");
+            }
         }
     }
 

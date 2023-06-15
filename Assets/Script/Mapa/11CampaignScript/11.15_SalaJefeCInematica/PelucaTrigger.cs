@@ -5,7 +5,7 @@ using UnityEngine;
 public class PelucaTrigger : MonoBehaviour
 {
     [Header("Player Data")]
-    [SerializeField] PutGasMask peluca;
+    [SerializeField] int indexPeluca;
     [SerializeField] MovPlayerCin movPlayer;
     [Header("Enemy Data")]
     public Transform boss;
@@ -89,7 +89,7 @@ public class PelucaTrigger : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (peluca.putMask)
+            if (StatusGameobjectsVariables.statusGameobject.modificacion[indexPeluca].modificacion)
             {
                 stopPlayer = true;
             }

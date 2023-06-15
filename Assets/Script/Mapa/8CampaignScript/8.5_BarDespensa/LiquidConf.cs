@@ -5,12 +5,12 @@ using UnityEngine;
 public class LiquidConf : MonoBehaviour
 {
     [SerializeField] List<Color> liquid;
-    LiquidColor liquidColor;
+    //LiquidColor liquidColor;
     SpriteRenderer bebidaColor;
     void Start()
     {
         bebidaColor = GetComponent<SpriteRenderer>();
-        liquidColor = FindObjectOfType<LiquidColor>();
+        //liquidColor = FindObjectOfType<LiquidColor>();
     }
 
     // Update is called once per frame
@@ -20,6 +20,6 @@ public class LiquidConf : MonoBehaviour
     }
     void DrinkType()
     {
-        bebidaColor.color = liquid[liquidColor.selectedDrink];
+        bebidaColor.color = liquid[LiquidColor.liquid.selectedDrink];
     }
 }

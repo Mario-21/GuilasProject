@@ -34,7 +34,7 @@ public class TextAboutItemScene : MonoBehaviour
         Debug.Log("Tiempo transcurrido " + timeText);
         if (player.playerImHere)
         {
-            if(Input.GetKeyDown(KeyCode.Z))
+            if(Input.GetButtonDown("Action"))
             {
                 Change_See_Text();
                 seeText = true;
