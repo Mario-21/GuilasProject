@@ -43,7 +43,8 @@ public class Valvula : MonoBehaviour
     }
     void ActiveValvula()
     {
-        StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = valvulaOn;
+        //El problema esta aqui, cuando le das al boton no te puede cambiar la variable dado que esta estableciendo constantemene el de la valvulaOn
+        //StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = valvulaOn;
         if (player.playerImHere && !valvulaOn)
         {
             if (Input.GetButtonDown("Action") && !valvulaTime)
@@ -85,10 +86,15 @@ public class Valvula : MonoBehaviour
             //Resetea el timing
             timeValvula = 0;
             //Calcula cuanto sube el agua si el drenaje esta cerrado
-            if (!StatusGameobjectsVariables.statusGameobject.modificacion[indexDrenar].modificacion) CalculoDeAguas();
+            if (!StatusGameobjectsVariables.statusGameobject.modificacion[indexDrenar].modificacion) 
+            {
+                //StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+                CalculoDeAguas();
+            }
             //Puedes volver a moverte
             bloqPlayer.HabilitarMovPlayer();
 
+            StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
 
         }
         else
@@ -108,5 +114,6 @@ public class Valvula : MonoBehaviour
         waterAltTotal.transform.position = new Vector3(waterAltTotal.transform.position.x, aguaTotal, waterAltTotal.transform.position.z);
         //Suma el porcentaje del agua tras activar la valvula
         waterAltTotal.porcentajeAgua += (int)porcentajeAgua;
+        ListWaters.listWaters.infoAguas[waterAltTotal.indexWater].porcentajeAgua += (int)porcentajeAgua;
     }
 }

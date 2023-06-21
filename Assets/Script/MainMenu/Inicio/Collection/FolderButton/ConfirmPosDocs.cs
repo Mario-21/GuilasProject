@@ -26,9 +26,9 @@ public class ConfirmPosDocs : MonoBehaviour
     }
     void BotonFolderPosAsignar()
     {
-        for (int i = 0; i < ListaReliquias.listaReliquiasTotal.Count; i++)
+        for (int i = 0; i < ListaReliquias.instancia.listaReliquiasTotal.Count; i++)
         {
-            if (ListaReliquias.listaReliquiasTotal[i].reliquiaObtenida)
+            if (ListaReliquias.instancia.listaReliquiasTotal[i].reliquiaObtenida)
             {
                 Debug.Log("Dos ver man " + folderDocs[i].posDoc);
                 folderDocs[i].posDoc = reliquiaPosDoc;

@@ -144,7 +144,7 @@ public class CollectionDirection : MonoBehaviour
             for (int i = 0; i < carpeta_Button.Count; i++)
             {
                 //EL boton del indice actual se activa
-                if (i == indexFila && ListaReliquias.listaReliquiasTotal[indexFila].reliquiaObtenida)
+                if (i == indexFila && ListaReliquias.instancia.listaReliquiasTotal[indexFila].reliquiaObtenida)
                 {
                     Debug.Log("Trazacaminos " + i);
                     carpeta_Button[indexFila].enabled = true;

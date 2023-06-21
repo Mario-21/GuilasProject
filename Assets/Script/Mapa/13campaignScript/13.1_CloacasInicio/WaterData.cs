@@ -38,14 +38,6 @@ public class WaterData : MonoBehaviour
             porcentajeAgua = 100;
         }
     }
-    private void OnDestroy()
-    {
-        SaveWater();
-    }
-    void SaveWater()
-    {
-        ListWaters.listWaters.infoAguas[indexWater].porcentajeAgua = porcentajeAgua;
-    }
     void LoadWater()
     {
         //aguaRestar = (porcentajeAgua * waterAltTotal.alturaTotal) / 100;

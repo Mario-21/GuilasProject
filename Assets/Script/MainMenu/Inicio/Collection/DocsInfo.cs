@@ -119,7 +119,7 @@ public class DocsInfo : MonoBehaviour
         //posicion de la fila se elige de manera externa
         for (int i = 0; i < docsBase.Count; i++)
         {
-            if (ListaReliquias.listaReliquiasTotal[i].reliquiaObtenida)
+            if (ListaReliquias.instancia.listaReliquiasTotal[i].reliquiaObtenida)
             {
                 //Coloca la Imagen del Documento en su respectiva posicion
                 docsIndividual[i].docsImage.position = docsBase[reliquiasObtenidas].posDocsImageBase.position;

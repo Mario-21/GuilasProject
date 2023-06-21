@@ -11,17 +11,21 @@ public class BloquearMovimientoPlayer : MonoBehaviour
     public ArmaController pistol;
     public B8Arma b8;
     public ChangeWeapon conditionToChangeWeapon;
+    Stairs_Hidden stairs_Hidden;
 
     [Header("Elemento Menu")]
     Inventory inventory;
     PauseControler pausaMenu;
+    CreateObject itemCreate;
 
     float vidaActual;
 
-    private void Start()
+    private void Awake()
     {
         inventory = FindObjectOfType<Inventory>();
         pausaMenu = FindObjectOfType<PauseControler>();
+        itemCreate = FindObjectOfType<CreateObject>();
+        stairs_Hidden = FindObjectOfType<Stairs_Hidden>();
         
     }
 
@@ -97,7 +101,6 @@ public class BloquearMovimientoPlayer : MonoBehaviour
     public void DeathPlayer()
     {
         player.enabled = false;
-        player.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
         //Llamar Death Anim
         player.GetComponent<Animator>().SetBool("Walk", false);
         //Deactivate Pistol
@@ -116,6 +119,31 @@ public class BloquearMovimientoPlayer : MonoBehaviour
         //Desactivar Menu Pausa
         pausaMenu.enabled = false;
         //Pausar
-        Time.timeScale = 0;
+        
+    }
+    public void PausarGame()
+    {
+        //Desactivar Armas
+        pistol.enabled = false;
+        conditionToChangeWeapon.enabled = false;
+        b8.enabled = false;
+        //Desactivar Inventario
+        inventory.enabled = false;
+        inventory.CloseInventory();
+        //Destruir el item creado
+        Destroy(itemCreate.objetoClone);
+    }
+    public void ReanudarGame()
+    {
+        //Activar Armas Solo si no estoy escondido
+        if (!stairs_Hidden.imHidden)
+        {
+            pistol.enabled = true;
+            conditionToChangeWeapon.enabled = true;
+            b8.enabled = true;
+        }
+
+        //Activar Inventario
+        inventory.enabled = true;
     }
 }

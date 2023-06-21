@@ -14,7 +14,7 @@ public class CraftingTable : MonoBehaviour
     [Header("Numero Items Necesarios")]
     //Items necesarios para el crafteo 
     public int limitCountItemCrafteo;
-    [HideInInspector] public int countItemCrafteo;
+    public int countItemCrafteo;
     [Header("Tiempo para Craftear")]
     public float timeCraftLimit;
     public float timeCraft;
@@ -78,7 +78,7 @@ public class CraftingTable : MonoBehaviour
     }
     void Craftear()
     {
-        if (Input.GetButtonDown("Action"))
+        if (Input.GetButton("Action"))
         {
             //La barra de la UI comenzara a llenarse
             timeCraft += 0.01f;

@@ -8,7 +8,7 @@ public class Show_Reliquia : MonoBehaviour
     [SerializeField] GameObject reliquia;
     void Update()
     {
-        if (ListaReliquias.listaReliquiasTotal[listaCampaign.indexReliquia].reliquiaObtenida)
+        if (ListaReliquias.instancia.listaReliquiasTotal[listaCampaign.indexReliquia].reliquiaObtenida)
         {
             reliquia.SetActive(true);
         }

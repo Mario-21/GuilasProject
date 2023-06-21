@@ -13,6 +13,7 @@ public class SoldierDeepLife : MonoBehaviour
 
     void Start()
     {
+        saveOne = vida;
         soldado = GetComponent<SoldadoProfundo>();
         //Carga la vida tras volver a escena
         LoadStatus();
@@ -24,11 +25,12 @@ public class SoldierDeepLife : MonoBehaviour
     private void OnDestroy()
     {
         //Guarda La vida tras cambiar de escena
-        SaveStatus();
+        SavePos();
     }
     public void Daño(int daño)
     {
         vida -= daño;
+        SaveVida();
     }
     void DeathAnim()
     {
@@ -40,9 +42,16 @@ public class SoldierDeepLife : MonoBehaviour
             this.enabled = false;
         }
     }
-    void SaveStatus()
+    void SaveVida()
     {
-        SoldierActiveInScene.instancia.soldiersStatus[indexSoldado].statusVida = vida;
+        if(saveOne != vida)
+        {
+            SoldierActiveInScene.instancia.soldiersStatus[indexSoldado].statusVida = vida;
+            saveOne = vida;
+        }
+    }
+    void SavePos()
+    {
         SoldierActiveInScene.instancia.soldiersStatus[indexSoldado].position_x = transform.position.x;
         SoldierActiveInScene.instancia.soldiersStatus[indexSoldado].position_y = transform.position.y;
     }

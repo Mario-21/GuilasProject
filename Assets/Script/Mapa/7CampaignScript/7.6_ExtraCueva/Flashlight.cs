@@ -22,7 +22,7 @@ public class Flashlight : MonoBehaviour
     {
         if (putItem.putMask)
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetButtonDown("UseMask"))
             {
                 onLight = !onLight;
                 if (onLight)

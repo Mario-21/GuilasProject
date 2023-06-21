@@ -17,7 +17,7 @@ public class ReliquiaDocumentation : MonoBehaviour
 
     void CheckearReliquiaDocumentation()
     {
-        if (ListaReliquias.listaReliquiasTotal[numeroReliquia].reliquiaObtenida)
+        if (ListaReliquias.instancia.listaReliquiasTotal[numeroReliquia].reliquiaObtenida)
         {
             documentos.SetActive(true);
             fotoReliquia.SetActive(true);

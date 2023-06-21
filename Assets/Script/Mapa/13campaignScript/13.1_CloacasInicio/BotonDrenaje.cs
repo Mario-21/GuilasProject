@@ -29,6 +29,9 @@ public class BotonDrenaje : MonoBehaviour
     PlayerHere player;
     SpriteRenderer spriteBotonDrenaje;
 
+    float timeRepeatPressButton;
+    bool repeatButton;
+
     private void Awake()
     {
         spriteBotonDrenaje = GetComponent<SpriteRenderer>();
@@ -43,7 +46,7 @@ public class BotonDrenaje : MonoBehaviour
             Debug.Log("el Drenaje " + indexMod + " en esta zona esta abierto");
             waterInfo.transform.position = waterInfo.alturaMin.position;
             waterInfo.porcentajeAgua = 0;
-            ListWaters.listWaters.infoAguas[waterInfo.indexWater].porcentajeAgua = 0;
+            //ListWaters.listWaters.infoAguas[waterInfo.indexWater].porcentajeAgua = 0;
         }
     }
 
@@ -51,10 +54,11 @@ public class BotonDrenaje : MonoBehaviour
     void Update()
     {
         StatusButtonColor();
+        //RefreshButton();
 
         if (player.playerImHere)
         {
-            if (Input.GetButtonDown("Action"))
+            if (Input.GetButtonDown("Action") && !repeatButton)
             {
                 if(!timeDrenar && waterInfo.porcentajeAgua > 0)
                 {
@@ -64,8 +68,8 @@ public class BotonDrenaje : MonoBehaviour
                 {
                     timeLoadAgua = true;
                     StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = !StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion;
-                } 
-
+                }
+                
             }
         }
         Drenaje();
@@ -86,7 +90,7 @@ public class BotonDrenaje : MonoBehaviour
         {
             //Por esto ya no llega a funcionar el trasladar agua, el boton de drenaje absorbe constantemente el agua, si activas una de las valvulas ya no se efectua por el timing de 1.5
             //Hay que eliminar el tiempo, hacerlo aparte o algo.
-            if (timeDrenaje >= 1.5)
+            if (timeDrenaje >= limitTimeDrenaje)
             {
                 waterInfo.transform.position = waterInfo.alturaMin.position;
                 waterInfo.porcentajeAgua = 0;
@@ -118,10 +122,21 @@ public class BotonDrenaje : MonoBehaviour
         if(timeDrenaje >= limitTimeDrenaje)
         {
             //Añadir sonido agua siendo drenada
+            if(timeDrenar)
+            {
+                Debug.Log("Drenaste Agua");
+                ListWaters.listWaters.infoAguas[waterInfo.indexWater].porcentajeAgua = 0;
+            }
+            else if (timeLoadAgua)
+            {
+                Debug.Log("Llenaste Agua");
+                ListWaters.listWaters.infoAguas[waterInfo.indexWater].porcentajeAgua = 100;
+            }
             AnimationHud.detectar_echar.SetBool("Transicion", false);
             timeDrenaje = 0;
             timeDrenar = false;
             timeLoadAgua = false;
+            repeatButton = false;
             bloqPlayer.HabilitarMovPlayer();
         }
         else
@@ -136,12 +151,34 @@ public class BotonDrenaje : MonoBehaviour
         //Si no has activado la palanca de mantenimiento y has cerrado el drenaje
         if(!StatusGameobjectsVariables.statusGameobject.modificacion[indexMantinance].modificacion && !StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
+            repeatButton = true;
             DrenajeTransition();
-            if (timeDrenaje >= 1.5)
-            {
+            //LlenarTransition();
+            if (timeDrenaje >= (limitTimeDrenaje * 3 )/ 4)
+            {//Colocar el fresh button
                 waterInfo.transform.position = waterInfo.alturaMax.position;
                 waterInfo.porcentajeAgua = 100;
             }
+        }
+    }
+    void LlenarTransition()
+    {
+        if (timeDrenaje >= limitTimeDrenaje)
+        {
+            Debug.Log("Llenaste Agua");
+            AnimationHud.detectar_echar.SetBool("Transicion", false);
+            timeDrenaje = 0;
+            timeDrenar = false;
+            timeLoadAgua = false;
+            repeatButton = false;
+            bloqPlayer.HabilitarMovPlayer();
+            ListWaters.listWaters.infoAguas[waterInfo.indexWater].porcentajeAgua = 100;
+        }
+        else
+        {
+            timeDrenaje += Time.deltaTime;
+            AnimationHud.detectar_echar.SetBool("Transicion", true);
+            bloqPlayer.BloquearMovPlayer();
         }
     }
     void StatusButtonColor()
@@ -155,4 +192,5 @@ public class BotonDrenaje : MonoBehaviour
             spriteBotonDrenaje.color = Color.red;
         }
     }
+
 }

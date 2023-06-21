@@ -6,6 +6,7 @@ public class TrasladarWithValvula : MonoBehaviour
 {
     [Header("Drenaje")]
     public int indexDrenaje;
+    public int indexDrenajeDown;
     [Header("Agua Trasladada")]
     public int indexAgua;
 
@@ -27,9 +28,9 @@ public class TrasladarWithValvula : MonoBehaviour
     {
         if (player.playerImHere) 
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetButtonDown("Action"))
             {
-                if (StatusGameobjectsVariables.statusGameobject.modificacion[indexDrenaje].modificacion && !cooldownOn)
+                if (StatusGameobjectsVariables.statusGameobject.modificacion[indexDrenaje].modificacion && !StatusGameobjectsVariables.statusGameobject.modificacion[indexDrenajeDown].modificacion && !cooldownOn)
                 {
                     ListWaters.listWaters.infoAguas[indexAgua].porcentajeAgua += (int)valvula.porcentajeAgua;
                     cooldownOn = true;

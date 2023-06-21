@@ -33,9 +33,9 @@ public class ItemCrafting : MonoBehaviour
     {
         if (activador.modificacion) 
         {
+            itemCount.countItemCrafteo++;
             ShowItemToCraft();
             //Al colocar un item aumenta en uno el conteo de items para marcar que ya has usado este item.
-            itemCount.countItemCrafteo++;
         }
     }
     void ShowItemToCraft()

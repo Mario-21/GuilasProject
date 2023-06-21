@@ -10,10 +10,10 @@ public class SpawnTutoriales : MonoBehaviour
     public static int spawnTutorial;
 
     public List<GameObject> tutoriales;
-    SceneAditive pause;
+    PauseMenu pause;
     void Start()
     {
-        pause = FindObjectOfType<SceneAditive>();
+        pause = FindObjectOfType<PauseMenu>();
         GameObject spawn = Instantiate(tutoriales[spawnTutorial]);
         spawn.transform.SetParent(gameObject.transform);
         //parentItem.transform.parent = tutoriales[spawnTutorial].transform;

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneAditive : MonoBehaviour
+public class PauseMenu : MonoBehaviour
 {
     public int scenaAditiva;
-    public int openTries;
+    public static int openTries;
     private void Awake()
     {
 
@@ -19,6 +19,7 @@ public class SceneAditive : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("El open Tries es " + openTries);
         if (Input.GetButtonDown("Cancel"))
         {   
             if (openTries < 1)

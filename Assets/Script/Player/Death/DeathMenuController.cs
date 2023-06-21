@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DeathMenuController : MonoBehaviour
 {
@@ -12,8 +13,8 @@ public class DeathMenuController : MonoBehaviour
     public Animator animDeath;
     [Header("Death Exit")]
     public int mainMenuScene;
-    [Header("Death Reinicio")]
-    public int deathReset;
+    [Header("Reanudar Gameplay")]
+    public int out_MenuPausa;
 
     public void ExitMainMenu(string name)
     {
@@ -33,6 +34,8 @@ public class DeathMenuController : MonoBehaviour
 
         }
         Destroy(ListDestroyEndLevel.levelList.gameObject);
+        //Poder Restablecer el menu
+        PauseMenu.openTries = 0;
     }
     public void ReiniciarNivel(string nameReset)
     {
@@ -57,5 +60,14 @@ public class DeathMenuController : MonoBehaviour
 
         }
         Destroy(ListDestroyEndLevel.levelList.gameObject);
+        //Poder Restablecer el menu
+        PauseMenu.openTries = 0;
+    }
+    public void Reanudar()
+    {
+        Time.timeScale = 1;
+        SceneManager.UnloadSceneAsync(out_MenuPausa);
+        //Poder Restablecer el menu
+        PauseMenu.openTries = 0;
     }
 }

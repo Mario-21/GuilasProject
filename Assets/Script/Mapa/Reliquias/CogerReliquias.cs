@@ -16,13 +16,13 @@ public class CogerReliquias : MonoBehaviour
     {
         if (estoyEnLaReliquia) PickReliquia();
 
-        if (ListaReliquias.listaReliquiasTotal[numeroReliquia].reliquiaObtenida) this.gameObject.SetActive(false);
+        if (ListaReliquias.instancia.listaReliquiasTotal[numeroReliquia].reliquiaObtenida) this.gameObject.SetActive(false);
     }
     void PickReliquia()
     {
         if (Input.GetButtonDown("Take")) 
-        { 
-            ListaReliquias.listaReliquiasTotal[numeroReliquia].reliquiaObtenida = true;
+        {
+            ListaReliquias.instancia.listaReliquiasTotal[numeroReliquia].reliquiaObtenida = true;
             this.gameObject.SetActive(false);
         }
     }

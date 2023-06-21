@@ -28,7 +28,7 @@ public class DirtyClothe : MonoBehaviour
     {
         if (player.playerImHere)
         {
-            if (Input.GetButtonDown("Take"))
+            if (Input.GetButtonDown("UseMask"))
             {
                 StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
                 CatchClothes();

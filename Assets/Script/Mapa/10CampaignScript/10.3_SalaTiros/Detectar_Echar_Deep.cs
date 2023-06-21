@@ -5,6 +5,7 @@ using UnityEngine;
 public class Detectar_Echar_Deep : MonoBehaviour
 {
     [Header("Player Data")]
+    [SerializeField] Inventory inventoryPlayer;
     [SerializeField] JugadorMovimiento movPlayer;
     [SerializeField] BloquearMovimientoPlayer player;
     [Header("Enemy Data")]
@@ -20,6 +21,7 @@ public class Detectar_Echar_Deep : MonoBehaviour
     ObjetoInteractivo objInter;
 
     float timeDialogo;
+    int reactivateInventory;
     enum SecuenceDetect
     {
         girarSoldado,
@@ -41,6 +43,11 @@ public class Detectar_Echar_Deep : MonoBehaviour
         }
         if(soldadoDeepLife.vida <= 0)
         {
+            if (reactivateInventory < 1)
+            {
+                inventoryPlayer.enabled = true;
+                reactivateInventory++;
+            }
             Destroy(this);
             player.HabilitarMovPlayer();
         }
@@ -50,6 +57,8 @@ public class Detectar_Echar_Deep : MonoBehaviour
         switch (detectScene)
         {
             case SecuenceDetect.girarSoldado:
+                inventoryPlayer.enabled = false;
+                inventoryPlayer.inventory.SetActive(false);
                 //Apaga al soldado
                 soldadoDeep.enabled = false;
                 EstructuraNiveles.nivel = sceneReload;

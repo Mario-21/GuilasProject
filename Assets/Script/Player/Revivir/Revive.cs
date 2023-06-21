@@ -7,7 +7,7 @@ public class Revive : MonoBehaviour
     [Header("Variables Nivel")]
     public List<bool> variablesStartLevel;
     [Header("Items Nivel")]
-    public List<bool> itemsStartLevel;
+    public List<ListaTodosObjetos> itemsStartLevel;
     [Header("Reliquias Nivel")]
     public List<bool> reliquiaStartLevel;
     [Header("Enemies Nivel")]
@@ -18,16 +18,26 @@ public class Revive : MonoBehaviour
     public List<bool> ammoStartLevel;
     [Header("Ui Items Nivel")]
     public List<bool> uiItemsStartLevel;
+    [Header("Inventory Position")]
+    public int inventoryPosStart;
 
     [Header("Municiones Player")]
     [SerializeField] ArmaController mainWeaponPlayer;
     public int municionStartLevel;
-    
+
+    private void Awake()
+    {
+        mainWeaponPlayer = FindObjectOfType<ArmaController>();
+    }
     void Start()
     {
+        //Establecer Posicion inicial de inventario
+        inventoryPosStart = InventoryManager.instanciaInventory.indexInventoryPosition;
+
         //Coloca la municion
         municionStartLevel = mainWeaponPlayer.municionTotal;
 
+        //Variables Level
         for(int e = 0; e < variablesStartLevel.Count; e++)
         {
             if (StatusGameobjectsVariables.statusGameobject.modificacion[e].modificacion)
@@ -35,25 +45,31 @@ public class Revive : MonoBehaviour
                 variablesStartLevel[e] = true;
             }
         }
+        //Items Level
         for (int w = 0; w < itemsStartLevel.Count; w++)
         {
             if (SaveScene.instancia.listaItemsNivelGuardar[w].objetoObtenido)
             {
-                itemsStartLevel[w] = true;
+                itemsStartLevel[w].objetoObtenido = true;
+                itemsStartLevel[w].vecesUsadoObjeto = SaveScene.instancia.listaItemsNivelGuardar[w].vecesUsadoObjeto;
+                itemsStartLevel[w].ubiPosButton = SaveScene.instancia.listaItemsNivelGuardar[w].ubiPosButton;
             }
         }
+        //Reliquias Level
         for(int i = 0; i < reliquiaStartLevel.Count; i++)
         {
-            if (ListaReliquias.listaReliquiasTotal[i].reliquiaObtenida)
+            if (ListaReliquias.instancia.listaReliquiasTotal[i].reliquiaObtenida)
             {
                 reliquiaStartLevel[i] = true;
             }
         }
+        //Soldados Level
         for(int h = 0; h < vidaSoldados.Count; h++)
         {
             vidaSoldados[h].statusVida = SoldierActiveInScene.instancia.soldiersStatus[h].statusVida;
             vidaSoldados[h].modeSoldier = SoldierActiveInScene.instancia.soldiersStatus[h].modeSoldier;
         }
+        //Terminales Level
         if(TotalTerminales.terminalesTotales != null)
         {
             for (int k = 0; k < terminalesStartLevel.Count; k++)
@@ -64,6 +80,7 @@ public class Revive : MonoBehaviour
                 }
             }
         }
+        //Ammo Level
         if(AmmoRecoveryList.ammoFromLevel != null)
         {
             for(int t = 0; t < ammoStartLevel.Count; t++)
@@ -74,6 +91,7 @@ public class Revive : MonoBehaviour
                 }
             }
         }
+        //UI Level
         if(ListaItemsUI.listaItemsUI != null)
         {
             for (int h = 0; h < uiItemsStartLevel.Count; h++)
@@ -102,9 +120,13 @@ public class Revive : MonoBehaviour
         for (int w = 0; w < itemsStartLevel.Count; w++)
         {
             //Si son diferentes, quiere decir que lo acabas de modificar ahora pero has muerto en el proceso, por tanto debe resetearse
-            if (SaveScene.instancia.listaItemsNivelGuardar[w].objetoObtenido != itemsStartLevel[w])
+            if (SaveScene.instancia.listaItemsNivelGuardar[w].objetoObtenido != itemsStartLevel[w].objetoObtenido)
             {
-                SaveScene.instancia.listaItemsNivelGuardar[w].objetoObtenido = itemsStartLevel[w];
+                SaveScene.instancia.listaItemsNivelGuardar[w].objetoObtenido = itemsStartLevel[w].objetoObtenido;
+            }
+            if(SaveScene.instancia.listaItemsNivelGuardar[w].vecesUsadoObjeto != itemsStartLevel[w].vecesUsadoObjeto)
+            {
+                SaveScene.instancia.listaItemsNivelGuardar[w].vecesUsadoObjeto = itemsStartLevel[w].vecesUsadoObjeto;
             }
         }
     }
@@ -113,9 +135,9 @@ public class Revive : MonoBehaviour
         for (int w = 0; w < itemsStartLevel.Count; w++)
         {
             //Si son diferentes, quiere decir que lo acabas de modificar ahora pero has muerto en el proceso, por tanto debe resetearse
-            if (ListaReliquias.listaReliquiasTotal[w].reliquiaObtenida != reliquiaStartLevel[w])
+            if (ListaReliquias.instancia.listaReliquiasTotal[w].reliquiaObtenida != reliquiaStartLevel[w])
             {
-                ListaReliquias.listaReliquiasTotal[w].reliquiaObtenida = reliquiaStartLevel[w];
+                ListaReliquias.instancia.listaReliquiasTotal[w].reliquiaObtenida = reliquiaStartLevel[w];
             }
         }
     }
@@ -124,7 +146,8 @@ public class Revive : MonoBehaviour
         for (int w = 0; w < vidaSoldados.Count; w++)
         {
             //Si son diferentes, quiere decir que lo acabas de modificar ahora pero has muerto en el proceso, por tanto debe resetearse
-            if (SoldierActiveInScene.instancia.soldiersStatus[w].statusVida != vidaSoldados[w].statusVida)
+            //Deben de establecer tambien cuando es modificado el modeSoldier, dado que si mueres sin hacerles daño hace que su mode no cambie
+            if (SoldierActiveInScene.instancia.soldiersStatus[w].statusVida != vidaSoldados[w].statusVida || SoldierActiveInScene.instancia.soldiersStatus[w].modeSoldier != vidaSoldados[w].modeSoldier)
             {
                 SoldierActiveInScene.instancia.soldiersStatus[w].statusVida = vidaSoldados[w].statusVida;
                 SoldierActiveInScene.instancia.soldiersStatus[w].modeSoldier = vidaSoldados[w].modeSoldier;
@@ -145,6 +168,10 @@ public class Revive : MonoBehaviour
     public void ResetearMunicionPlayer()
     {
         mainWeaponPlayer.municionTotal = municionStartLevel;
+    }
+    public void ResetearInventoryPos()
+    {
+        InventoryManager.instanciaInventory.indexInventoryPosition = inventoryPosStart;
     }
     public void ResetearAmmo()
     {

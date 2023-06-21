@@ -10,7 +10,7 @@ public class TriggerTutoriales : MonoBehaviour
     public int indexTutorial;
     public int scenaTutorial;
     [Header("Pausa")]
-    public SceneAditive pause;
+    public PauseMenu pause;
 
     BoxCollider2D boxTrigger;
     private void Awake()
