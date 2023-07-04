@@ -11,10 +11,20 @@ public class TextWithVariable : MonoBehaviour
     float timeText;
     PlayerHere player;
     bool showT;
+
+    IconItem iconeLeer;
+    private void Awake()
+    {
+        iconeLeer = GetComponent<IconItem>();
+    }
     void Start()
     {
         player = GetComponent<PlayerHere>();
-        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) this.enabled = false;
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) 
+        {
+            iconeLeer.enabled = false;
+            this.enabled = false;
+        }
     }
     void Update()
     {
@@ -25,7 +35,7 @@ public class TextWithVariable : MonoBehaviour
     {
         if (!StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
-            if (player.playerImHere && Input.GetKeyDown(KeyCode.T))
+            if (player.playerImHere && Input.GetButtonDown("Action"))
             {
                 text.alpha = 1;
                 timeText = 0;
@@ -35,6 +45,8 @@ public class TextWithVariable : MonoBehaviour
         else
         {
             text.alpha = 0;
+            iconeLeer.enabled = false;
+            iconeLeer.iconoZone.SetActive(false);
             this.enabled = false;
         }
         

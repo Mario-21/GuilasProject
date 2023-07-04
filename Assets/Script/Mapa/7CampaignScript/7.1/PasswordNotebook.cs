@@ -13,6 +13,11 @@ public class PasswordNotebook : MonoBehaviour
     public Text password;
     public Sprite notebookRevealPass;
     bool seeNote;
+    private void Awake()
+    {
+        activar = GetComponent<ActivarModificador>();
+        player = GetComponent<PlayerHere>();
+    }
     void Start()
     {
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
@@ -20,13 +25,11 @@ public class PasswordNotebook : MonoBehaviour
             notebook.sprite = notebookRevealPass;
             password.enabled = true;
         }
-        activar = GetComponent<ActivarModificador>();
-        player = GetComponent<PlayerHere>();
     }
     void Update()
     {
         SeePapers();
-        if(!StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) SeePassword();
+        SeePassword();
     }
     void SeePapers()
     {
@@ -57,8 +60,8 @@ public class PasswordNotebook : MonoBehaviour
         if (activar.modificacion) 
         {
             notebook.sprite = notebookRevealPass;
-            StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
             password.enabled = true;
+            StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
         }
     }
 }

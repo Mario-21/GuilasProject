@@ -7,10 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     public int scenaAditiva;
     public static int openTries;
-    private void Awake()
-    {
 
-    }
     void Start()
     {
         //scene.allowSceneActivation = false;

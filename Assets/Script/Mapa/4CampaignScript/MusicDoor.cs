@@ -5,7 +5,7 @@ using UnityEngine;
 public class MusicDoor : MonoBehaviour
 {
     public AudioSource musicAmbient;
-    public SoundManager playerWalk;
+    //public SoundManager playerWalk;
     public AudioClip cave;
     public AudioClip forest;
     public bool play;
@@ -27,18 +27,18 @@ public class MusicDoor : MonoBehaviour
             play = !play;
             if (play)
             {
-                playerWalk.controlAudio[1].clip = playerWalk.audiosPlayer[0];
-                playerWalk.controlAudio[1].Play();
-                playerWalk.controlAudio[1].volume = 0.2f;
+                //playerWalk.controlAudio[1].clip = playerWalk.audiosPlayer[0];
+                //playerWalk.controlAudio[1].Play();
+                //playerWalk.controlAudio[1].volume = 0.2f;
                 musicAmbient.clip = forest;
                 musicAmbient.Play();
 
             }
             if (!play)
             {
-                playerWalk.controlAudio[1].clip = playerWalk.audiosPlayer[4];
-                playerWalk.controlAudio[1].volume = 0.5f;
-                playerWalk.controlAudio[1].Play();
+                //playerWalk.controlAudio[1].clip = playerWalk.audiosPlayer[4];
+                //playerWalk.controlAudio[1].volume = 0.5f;
+                //playerWalk.controlAudio[1].Play();
                 musicAmbient.clip = cave;
                 musicAmbient.Play();
             }

@@ -26,6 +26,8 @@ public class DeathMenuController : MonoBehaviour
         EstructuraNiveles.nivel = mainMenuScene;
         //Restablece las posiciones del inventario
         InventoryManager.instanciaInventory.indexInventoryPosition = 0;
+        //Restablece las notas
+        MostrarTextObjectives.indexLine = 0;
         //Destruye todas las listas 
         for (int e = 0; e < ListDestroyEndLevel.levelList.levelListDestroy.Count; e++)
         {
@@ -49,6 +51,8 @@ public class DeathMenuController : MonoBehaviour
         //2.Hacer que esto se destruya aparte dado que no se modifica y permanecera statico
         //3.Cambiar la ejecucion de StartSceneLevelCampaign
         EstructuraNiveles.nivel = StartSceneLevelCampaign.infoActualCampaign.firstActualSceneCampaign;
+        //Restablece las notas
+        MostrarTextObjectives.indexLine = 0;
         //Restablece las posiciones del inventario
         InventoryManager.instanciaInventory.indexInventoryPosition = 0;
         //Destruir las listas no se si funcionara debido a que no se si entrara en conflicto con lo demás

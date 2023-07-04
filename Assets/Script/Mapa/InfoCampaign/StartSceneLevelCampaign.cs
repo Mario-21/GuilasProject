@@ -7,11 +7,8 @@ public class StartSceneLevelCampaign : MonoBehaviour
     public static StartSceneLevelCampaign infoActualCampaign;
 
     public int firstActualSceneCampaign;
-    public string objectiveTxt;
     private void Awake()
     {
-        MostrarTextObjectives.fileName = objectiveTxt;
-
         if (StartSceneLevelCampaign.infoActualCampaign == null)
         {
             StartSceneLevelCampaign.infoActualCampaign = this;

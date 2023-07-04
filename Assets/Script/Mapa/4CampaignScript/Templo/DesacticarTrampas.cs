@@ -27,6 +27,7 @@ public class DesacticarTrampas : MonoBehaviour
             baldosaFinish.SetActive(true);
 
             baldosaFinish.transform.position = ubiBaldosa.position;
+            
         }
         
     }

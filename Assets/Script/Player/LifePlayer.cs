@@ -13,13 +13,13 @@ public class LifePlayer : MonoBehaviour
     Stairs_Hidden escaleraMano;
     Animator player;
 
-    SoundManager soundManager;
+    //SoundManager soundManager;
     private void Start()
     {
         player = GetComponent<Animator>();
         escaleraMano = GetComponent<Stairs_Hidden>();
         jugadorMov = GetComponent<JugadorMovimiento>();
-        soundManager = FindObjectOfType<SoundManager>();
+        //soundManager = FindObjectOfType<SoundManager>();
     }
     void Update()
     {

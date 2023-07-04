@@ -6,6 +6,23 @@ public class TriggerNewObjective : MonoBehaviour
 {
     public int indexMod;
 
+    [Header("What's Task")]
+    public int taskWho;
+    private void Start()
+    {
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
+        {
+            TaskWhoIAmTrigger();
+        }
+    }
+    private void Update()
+    {
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
+        {
+            TaskWhoIAmTrigger();
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -14,12 +31,20 @@ public class TriggerNewObjective : MonoBehaviour
             if (!StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
             {
                 //Salta la animacion de la nueva nota.
-                MostrarTextObjectives.indexPosImageMask++;
                 StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
             }
-            
-            
-
+        }
+    }
+    public void TaskWhoIAmTrigger()
+    {
+        if (MostrarTextObjectives.indexLine == taskWho)
+        {
+            MostrarTextObjectives.indexLine++;
+            this.enabled = false;
+        }
+        else if (MostrarTextObjectives.indexLine > taskWho)
+        {
+            this.enabled = false;
         }
     }
 }

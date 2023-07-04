@@ -26,7 +26,7 @@ public class SeeCartel : MonoBehaviour
     {
         if (player.playerImHere)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetButtonDown("Action"))
             {
                 seeNote = !seeNote;
                 //Lo colocas en falso para que no se abra una vez salgas del cartel que estas viendo

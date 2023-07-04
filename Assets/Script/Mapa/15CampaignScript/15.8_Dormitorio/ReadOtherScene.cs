@@ -7,7 +7,7 @@ public class ReadOtherScene : MonoBehaviour
 {
     PlayerHere player;
     public int scenaRead;
-    int contador;
+    public int contador;
     [TextArea(2,10)]
     public string[] textoNota;
 
@@ -27,11 +27,11 @@ public class ReadOtherScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MostrarTextoNota();
+        FixNoteBug();
         if (player.playerImHere)
         {
             //Boton de accion
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetButtonDown("Action"))
             {
                 seeText = !seeText;
                 //Colocar Texto
@@ -47,24 +47,37 @@ public class ReadOtherScene : MonoBehaviour
         {
             if(contador >= 1)
             {
-                contador = 0;
-                seeText = false;
+
+                //NOTA: Esta condicion se ha hecho para evitar un bug, en el que si presionas el boton de accion en el borde del trigger se puede quedar pillada la pantalla del texto.
                 SceneManager.UnloadSceneAsync(scenaRead);
+                seeText = false;
+                if (!SceneManager.GetSceneByBuildIndex(scenaRead).isLoaded) 
+                {
+                    Debug.Log("AlphaSniper");
+                    contador = 0;
+                }
             }
             //Creo que solo debe hacer se una vez sino no puedes volver a cargarla si hay dos notas en la misma zona
         }
     }
     void MostrarTextoNota()
     {
-        if (seeText && contador < 1)
+        if (seeText)
         {
             SceneManager.LoadSceneAsync(scenaRead, LoadSceneMode.Additive);
             contador++;
         }
-        else if (!seeText && contador >= 1)
+        else
         {
             SceneManager.UnloadSceneAsync(scenaRead);
             contador = 0;
+        }
+    }
+    void FixNoteBug()
+    {
+        if(contador == 0 && SceneManager.GetSceneByBuildIndex(scenaRead).isLoaded)
+        {
+            SceneManager.UnloadSceneAsync(scenaRead);
         }
     }
     public KeepText Keeping()

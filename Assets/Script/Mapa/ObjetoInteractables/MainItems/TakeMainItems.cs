@@ -24,7 +24,7 @@ public class TakeMainItems : MonoBehaviour
     {
         if (player.playerImHere)
         {
-            if (Input.GetKeyDown(KeyCode.T))
+            if (Input.GetButtonDown("Take"))
             {
                 this.gameObject.SetActive(false);
                 ListMissions.listaMissions.missionsMap[indexItemMision].success = true;

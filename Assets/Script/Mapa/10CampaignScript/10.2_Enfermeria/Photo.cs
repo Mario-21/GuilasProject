@@ -22,7 +22,7 @@ public class Photo : MonoBehaviour
     {
         if (player.playerImHere)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetButtonDown("Action"))
             {
                 //Animacion tomar Photo
                 picture.SetBool("Picture", true);

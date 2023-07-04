@@ -7,26 +7,91 @@ using System.Linq;
 
 public class MostrarTextObjectives : MonoBehaviour
 {
-    public static string fileName;
-    public static int indexPosImageMask;
+    public string fileName;
+    public static int indexLine;
+    [Header("New Note")]
+    [SerializeField] Animator animNote;
+    int linePrevious;
+    [Header("Last Note")]
+    public int indexLastNote;
+    public GameObject checkComplete;
     [Header("Note Data")]
-    public Transform windowContent;
-    public GameObject callTextObject;
-    [Header("Position Mask")]
-    public RectTransform imageMask;
-    public List<RectTransform> posImageMask;
+    public Text lines;
+    public List<string> fileLine;
+
+    Animator animObjective;
+    bool objective;
+    private void Awake()
+    {
+        animObjective = GetComponent<Animator>();
+    }
     private void Start()
     {
-        imageMask.position = posImageMask[indexPosImageMask].position;
+        linePrevious = indexLine;
 
-        //Enlazarlo con los niveles cuando este en el nivel 1 colocarlo con el de objetivos_1 y asi con todo
-
-        //readFromFilePae = Application.dataPath + "/Textos/" + "/Text_Objective/" + "Objetives_Level_1" + ".txt";
-        //string readFromFilePath = Application.dataPath + "/Textos/" + "/Text_Objective/" + "Objetives_Level_1" + ".txt";
         string readFromFilePath = Application.dataPath + "/Textos/Text_Objective/" + fileName + ".txt";
-        //
-        string fileLines = File.ReadAllText(readFromFilePath);
-        //Instantiate(callTextObject, windowContent);
-        callTextObject.GetComponent<Text>().text = fileLines;
+        fileLine = File.ReadAllLines(readFromFilePath).ToList();
+        lines.text = fileLine[indexLine];
+    }
+    private void Update()
+    {
+        ObjectiveTask();
+        ObjectiveMostrar();
+        LimitTask();
+        NewNote();
+        Check();
+
+        lines.text = fileLine[indexLine];
+    }
+    void ObjectiveTask()
+    {
+        if (Input.GetButton("Task"))
+        {
+            Debug.Log("Objective On");
+            objective = true;
+        }
+        else if (Input.GetButtonUp("Task"))
+        {
+            Debug.Log("Objective Off");
+            objective = false;
+        }
+    }
+    void ObjectiveMostrar()
+    {
+        if (objective)
+        {
+            animObjective.SetBool("OnObjective", true);
+        }
+        else
+        {
+            animObjective.SetBool("OnObjective", false);
+        }
+    }
+    void LimitTask()
+    {
+        if(indexLine >= fileLine.Count)
+        {
+            indexLine = fileLine.Count - 1;
+        }
+    }
+
+    void NewNote()
+    {
+        if(indexLine != linePrevious)
+        {
+            animNote.SetTrigger("NewNote");
+            linePrevious = indexLine;
+        }
+    }
+
+    void Check()
+    {
+        if(indexLine == fileLine.Count - 1)
+        {
+            if (StatusGameobjectsVariables.statusGameobject.modificacion[indexLastNote].modificacion)
+            {
+                checkComplete.SetActive(true);
+            }
+        }
     }
 }

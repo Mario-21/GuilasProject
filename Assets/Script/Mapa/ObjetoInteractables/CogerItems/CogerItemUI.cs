@@ -21,7 +21,7 @@ public class CogerItemUI : MonoBehaviour
     }
     void PickItemUI()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetButtonDown("Take"))
         {
             itemUI.SetActive(true);
             ListaItemsUI.listaItemsUI.listaAllItemUI[indexUIMod].itemUICatch = true;

@@ -55,7 +55,7 @@ public class SaveBox : MonoBehaviour
         if (player.playerImHere)
         {
             
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetButtonDown("Action"))
             {
                 onSaveBox = !onSaveBox;
             }

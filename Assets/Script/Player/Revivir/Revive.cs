@@ -20,10 +20,11 @@ public class Revive : MonoBehaviour
     public List<bool> uiItemsStartLevel;
     [Header("Inventory Position")]
     public int inventoryPosStart;
-
     [Header("Municiones Player")]
     [SerializeField] ArmaController mainWeaponPlayer;
     public int municionStartLevel;
+    [Header("Note Nivel")]
+    public int noteStart;
 
     private void Awake()
     {
@@ -31,6 +32,9 @@ public class Revive : MonoBehaviour
     }
     void Start()
     {
+        //Establecer notes iniciales
+        noteStart = MostrarTextObjectives.indexLine;
+
         //Establecer Posicion inicial de inventario
         inventoryPosStart = InventoryManager.instanciaInventory.indexInventoryPosition;
 
@@ -194,6 +198,10 @@ public class Revive : MonoBehaviour
                 ListaItemsUI.listaItemsUI.listaAllItemUI[w].itemUICatch = uiItemsStartLevel[w];
             }
         }
+    }
+    public void ResetearNote()
+    {
+        MostrarTextObjectives.indexLine = noteStart;
     }
 
 }

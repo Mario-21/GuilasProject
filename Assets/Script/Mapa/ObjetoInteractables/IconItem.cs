@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IconItem : MonoBehaviour
 {
-    [SerializeField] GameObject iconoZone;
+    public GameObject iconoZone;
     [SerializeField] SpriteRenderer iconeZoneSprite;
     [SerializeField] Sprite icon;
 

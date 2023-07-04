@@ -54,4 +54,8 @@ public class ButtonRevive : MonoBehaviour
     {
         revivirScene.ResetearInventoryPos();
     }
+    public void ButtonResetearNote()
+    {
+        revivirScene.ResetearNote();
+    }
 }

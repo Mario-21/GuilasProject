@@ -24,7 +24,6 @@ public class ArmaController : MonoBehaviour
     public EffectDisparo shootAnim;
     float cooldown;
     public float refreshWeapon = 0.5f;
-    SoundManager soundManager;
 
     [Header("Weapon Sprite")]
     SpriteRenderer weaponSprite;
@@ -43,7 +42,7 @@ public class ArmaController : MonoBehaviour
     }
     void Start()
     {
-        soundManager = FindObjectOfType<SoundManager>();
+        //soundManager = FindObjectOfType<SoundManager>();
     }
 
     // Update is called once per frame
@@ -98,7 +97,8 @@ public class ArmaController : MonoBehaviour
                         if (Input.GetButtonDown("Fire1"))
                         {
                             //Sound
-                            soundManager.SeleccionAudio(soundManager.audiosArmas, 0, 1f, 0);
+                            //soundManager.SeleccionAudio(soundManager.audiosArmas, 0, 1f, 0);
+                            AudioManager.instancia.PlayOneShot(FMODEvent.instancia.shoot);
                             //Effect
                             shootAnim.AnimationEffectDisparo();
                             //Attack
@@ -115,7 +115,7 @@ public class ArmaController : MonoBehaviour
                     municionText.color = Color.red;
                     if (Input.GetButtonDown("Fire1"))
                     {
-                        soundManager.SeleccionAudio(soundManager.audiosArmas, 1, 1f, 0);
+                        //soundManager.SeleccionAudio(soundManager.audiosArmas, 1, 1f, 0);
                         Debug.Log("Estas sin munición");
                     }
 

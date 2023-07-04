@@ -22,7 +22,6 @@ public class PauseControler : MonoBehaviour
         if(Time.timeScale == 0)
         {
             bloqPause.PausarGame();
-
             once = 0;
         }
         else

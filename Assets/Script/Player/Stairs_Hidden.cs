@@ -30,13 +30,13 @@ public class Stairs_Hidden : MonoBehaviour
     public Transform cuerpoPlayer;
     public GameObject ParticulaEsconderse;
 
-    SoundManager soundManager;
+    //SoundManager soundManager;
     int soundPlayOne;
 
     private void Start()
     {
         weaponHidden = GetComponent<OcultacionByWeapon>();
-        soundManager = FindObjectOfType<SoundManager>();
+        //soundManager = FindObjectOfType<SoundManager>();
         rb = GetComponent<Rigidbody2D>();
         mov = GetComponent<JugadorMovimiento>();
         imHidden = false;
@@ -60,7 +60,7 @@ public class Stairs_Hidden : MonoBehaviour
 
                     //Icono
                     Instantiate(ParticulaEsconderse, cuerpoPlayer.position, Quaternion.identity);
-                    soundManager.SeleccionAudio(soundManager.audiosAmbiente, 0, 1f, 0);
+                    //soundManager.SeleccionAudio(soundManager.audiosAmbiente, 0, 1f, 0);
                     iconoZone.SetActive(false);
 
                     imHidden = !imHidden;
@@ -121,8 +121,8 @@ public class Stairs_Hidden : MonoBehaviour
 
             if (soundPlayOne < 1)
             {
-                soundManager.controlAudio[1].Pause();
-                soundManager.controlAudio[2].Play();
+                //soundManager.controlAudio[1].Pause();
+                //soundManager.controlAudio[2].Play();
                 
                 soundPlayOne++;
             }
@@ -130,7 +130,7 @@ public class Stairs_Hidden : MonoBehaviour
         }
         else if (vertical == 0)
         {
-            soundManager.controlAudio[2].Pause();
+            //soundManager.controlAudio[2].Pause();
             soundPlayOne = 0;
         }
     }
@@ -177,7 +177,7 @@ public class Stairs_Hidden : MonoBehaviour
             zonaEscalada = false;
             escalar = false;
             rb.gravityScale = 1;
-            soundManager.controlAudio[2].Stop();
+            //soundManager.controlAudio[2].Stop();
             soundPlayOne = 0;
             //Usar el WalkSource porque necesito pararlo y con PlayOneShot no se puede parar
         }

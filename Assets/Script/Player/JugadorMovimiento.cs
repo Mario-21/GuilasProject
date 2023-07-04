@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using FMOD.Studio;
 
 public class JugadorMovimiento : MonoBehaviour
 {
@@ -71,9 +72,11 @@ public class JugadorMovimiento : MonoBehaviour
     public GameObject crearIcono;
 
 
-    SoundManager soundManager;
+    //SoundManager soundManager;
     VidaPlayer vidaPlayer;
     CheckPointController spawn;
+
+    EventInstance playerStepsGrass;
 
     //cambiar la posicion del transform de Altura a mi Transform
     //calcular El daño >10 25 daño >20 50 etc.
@@ -83,7 +86,7 @@ public class JugadorMovimiento : MonoBehaviour
     {
         almacenBotonJump = new Queue<KeyCode>();
         spawn = FindObjectOfType<CheckPointController>();
-        soundManager = FindObjectOfType<SoundManager>();
+        //soundManager = FindObjectOfType<SoundManager>();
         //Cuando interactues con el portatil seras visible
 
         //Asignar Rigibody2D y el Transform del Player
@@ -92,7 +95,7 @@ public class JugadorMovimiento : MonoBehaviour
     }
     void Start()
     {
-
+        playerStepsGrass = AudioManager.instancia.CreateEventInstance(FMODEvent.instancia.footStepGlass);
         anim = GetComponent<Animator>();
         vidaPlayer = GetComponent<VidaPlayer>();
         direccionBala = true;
@@ -101,6 +104,7 @@ public class JugadorMovimiento : MonoBehaviour
 
     void Update()
     {
+        SoundSteps();
         horizontalMov = GetInput().x;
 
         if (canJump && extraJump < 1) Jump();
@@ -138,6 +142,7 @@ public class JugadorMovimiento : MonoBehaviour
 
     void MoveCharacter()
     {
+        Debug.Log(Mathf.Abs(rb.velocity.x) + " velocidad");
         rb.AddForce(new Vector2(horizontalMov, 0f) * aceleracion);
         if (Mathf.Abs(rb.velocity.x) > speed)
         {
@@ -260,6 +265,24 @@ public class JugadorMovimiento : MonoBehaviour
     void QuitarJump()
     {
         almacenBotonJump.Dequeue();
+    }
+    void SoundSteps()
+    {
+        if(Mathf.Abs(rb.velocity.x) > 1 && onGround)
+        {
+            PLAYBACK_STATE playbackState;
+            playerStepsGrass.getPlaybackState(out playbackState);
+            if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
+            {
+                playerStepsGrass.start();
+            }
+            
+        }
+        else
+        {
+            
+            playerStepsGrass.stop(STOP_MODE.ALLOWFADEOUT);
+        }
     }
     private void OnDrawGizmos()
     {

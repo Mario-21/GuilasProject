@@ -11,7 +11,9 @@ public class ScientificRoomOpen : MonoBehaviour
     [Tooltip("Puedes establecer el feedback si quieres, simplemente cambia algo de rojo a verde")]
     public bool feedback;
     [SerializeField] SpriteRenderer botonFeedback;
-    public Color colorFeedback = Color.green;   
+    public Color colorFeedback = Color.green;
+    [Header("Activate ScientificRoom")]
+    public bool scienceRoom;
     private void Awake()
     {
         player = GetComponent<PlayerHere>();
@@ -27,7 +29,16 @@ public class ScientificRoomOpen : MonoBehaviour
     void FixedUpdate()
     {
         //if (!StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) OpenScientificRoom();
+        //OpenScientificRoom();
+    }
+    private void Update()
+    {
         OpenScientificRoom();
+        if (scienceRoom) 
+        {
+            Debug.Log("Golondrina sefarea");
+            StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+        }
     }
     void OpenScientificRoom()
     {
@@ -36,8 +47,8 @@ public class ScientificRoomOpen : MonoBehaviour
             Debug.Log("ESToy en la puerta science");
             if (Input.GetButton("Action"))
             {
-                Debug.Log("Presionete la puerta science");
-                StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+                scienceRoom = true;
+                Debug.Log("Presionaste la puerta science");
                 if (feedback) botonFeedback.color = colorFeedback;
             }
         }
