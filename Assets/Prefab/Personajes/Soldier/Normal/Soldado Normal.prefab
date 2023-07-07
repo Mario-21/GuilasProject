@@ -5284,6 +5284,7 @@ GameObject:
   - component: {fileID: 2508941545725514893}
   - component: {fileID: 4887143178439294451}
   - component: {fileID: 5382868657175186577}
+  - component: {fileID: 4898233101950329812}
   m_Layer: 14
   m_Name: Soldado Normal
   m_TagString: Enemy
@@ -5440,6 +5441,7 @@ MonoBehaviour:
   leaveOutPlayer: 10
   berserker: 0
   esperarModoBusquedaLimite: 3
+  esperarModoBusqueda: 0
   busquedaMode: 0
   ubicacionesDirigir:
   - {fileID: 0}
@@ -5479,6 +5481,37 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f0fc65dc13284344b9aadea6bcec3621, type: 3}
   - {fileID: 21300000, guid: 878e26be3e367304b905b853d371bd6d, type: 3}
   indexCasco: 0
+--- !u!114 &4898233101950329812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6252209984872713497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1357468495
+      Data2: 1097111985
+      Data3: 56071865
+      Data4: -764401685
+    Path: event:/SFX/Enemy/EnemySteps
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 4
 --- !u!1 &6252209985207125574
 GameObject:
   m_ObjectHideFlags: 0

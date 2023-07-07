@@ -69,6 +69,7 @@ public class DeathMenuController : MonoBehaviour
     }
     public void Reanudar()
     {
+        AudioManager.instancia.PlayOneShot(FMODEvent.instancia.shoot);
         Time.timeScale = 1;
         SceneManager.UnloadSceneAsync(out_MenuPausa);
         //Poder Restablecer el menu

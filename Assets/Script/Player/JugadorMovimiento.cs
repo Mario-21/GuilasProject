@@ -104,7 +104,11 @@ public class JugadorMovimiento : MonoBehaviour
 
     void Update()
     {
-        SoundSteps();
+        if(vidaPlayer.vidaActual > 0)
+        {
+            SoundSteps();
+        }
+
         horizontalMov = GetInput().x;
 
         if (canJump && extraJump < 1) Jump();
@@ -142,7 +146,6 @@ public class JugadorMovimiento : MonoBehaviour
 
     void MoveCharacter()
     {
-        Debug.Log(Mathf.Abs(rb.velocity.x) + " velocidad");
         rb.AddForce(new Vector2(horizontalMov, 0f) * aceleracion);
         if (Mathf.Abs(rb.velocity.x) > speed)
         {

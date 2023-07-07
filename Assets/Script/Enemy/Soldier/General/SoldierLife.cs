@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using FMODUnity;
 
 public class SoldierLife : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class SoldierLife : MonoBehaviour
 
     Rigidbody2D rB2D;
 
+    StudioEventEmitter emitterSteps;
+
     private void Awake()
     {
         //Tipo de enemigo
@@ -41,6 +44,8 @@ public class SoldierLife : MonoBehaviour
     }
     void Start()
     {
+        emitterSteps = AudioManager.instancia.InitializeEventEmitter(FMODEvent.instancia.stepsEnemy, this.gameObject);
+
         //Setear la vidaMax Actual
         vidaMax = vida;
 
@@ -57,6 +62,7 @@ public class SoldierLife : MonoBehaviour
 
         if(vida <= 0)
         {
+            emitterSteps.Stop();
 
             anim.SetLayerWeight(1, 1);
             //Anula el estado de uno de los dos tipos de enemigos

@@ -1,5 +1,107 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8904247090324128866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music.bank
+  m_EditorClassIdentifier: 
+  Path: ../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Music.bank
+  Name: Music
+  StudioPath: bank:/Music
+  lastModified: 638242683684787290
+  FileSizes:
+  - Name: Desktop
+    Value: 3413536
+  Exists: 1
+--- !u!114 &-8104951932329056796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Muzska
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Muzska
+  Guid:
+    Data1: -376911885
+    Data2: 1214872480
+    Data3: -2023394654
+    Data4: 1531802574
+  Banks:
+  - {fileID: -8904247090324128866}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 175960
+--- !u!114 &-7254008163204575377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Forest_Noon
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Forest_Noon
+  Guid:
+    Data1: -70379903
+    Data2: 1215346916
+    Data3: 1735188100
+    Data4: 971252225
+  Banks:
+  - {fileID: 6798184156996057821}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -5132524042518760867}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 62734
+--- !u!114 &-6096257580004556393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player/GrassSteps
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player/GrassSteps
+  Guid:
+    Data1: 313669315
+    Data2: 1076808047
+    Data3: 866740915
+    Data4: -301642034
+  Banks:
+  - {fileID: -1759832431823967003}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 600
 --- !u!114 &-5469677174553562781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,12 +117,65 @@ MonoBehaviour:
   Path: ../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638240963181219203
+  lastModified: 638243260110337993
   FileSizes:
   - Name: Desktop
-    Value: 896
+    Value: 1702
   Exists: 1
---- !u!114 &-3081818037125842808
+--- !u!114 &-5134338643371814772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/LevelMusic1/area
+  m_EditorClassIdentifier: 
+  Name: area
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 489916529
+    data2: 2003628991
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Level1
+  - Level2
+  Exists: 1
+--- !u!114 &-5132524042518760867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Forest_Noon/areaAmbience
+  m_EditorClassIdentifier: 
+  Name: areaAmbience
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 3410531234
+    data2: 622815325
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Forest
+  - Cave
+  - Birds
+  Exists: 1
+--- !u!114 &-4208870534303443672
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -30,9 +185,36 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/NoAmmoWeapon
+  m_Name: event:/SFX/Weapon/Shoot
   m_EditorClassIdentifier: 
-  Path: event:/NoAmmoWeapon
+  Path: event:/SFX/Weapon/Shoot
+  Guid:
+    Data1: -358409999
+    Data2: 1334171330
+    Data3: 1726903982
+    Data4: 1562832283
+  Banks:
+  - {fileID: -1759832431823967003}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-3621267327333815054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Weapon/NoAmmoWeapon
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Weapon/NoAmmoWeapon
   Guid:
     Data1: 669438496
     Data2: 1284078822
@@ -47,6 +229,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-3283157767723782028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Birds
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Birds
+  Guid:
+    Data1: -364886392
+    Data2: 1232096539
+    Data3: -1747816539
+    Data4: -2076967960
+  Banks:
+  - {fileID: 6798184156996057821}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3080
 --- !u!114 &-1759832431823967003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,12 +271,12 @@ MonoBehaviour:
   Path: ../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638240963183685281
+  lastModified: 638242409511103817
   FileSizes:
   - Name: Desktop
-    Value: 24256
+    Value: 96448
   Exists: 1
---- !u!114 &-244622819479403440
+--- !u!114 &-288079016189743437
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -77,23 +286,51 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Shoot
+  m_Name: event:/SFX/Stairs/Stairs_Up_Down
   m_EditorClassIdentifier: 
-  Path: event:/Shoot
+  Path: event:/SFX/Stairs/Stairs_Up_Down
   Guid:
-    Data1: -358409999
-    Data2: 1334171330
-    Data3: 1726903982
-    Data4: 1562832283
+    Data1: -666918689
+    Data2: 1145750575
+    Data3: 2108630961
+    Data4: 646601881
   Banks:
   - {fileID: -1759832431823967003}
   IsStream: 0
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 950
+--- !u!114 &-180967140549426575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Wind
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Wind
+  Guid:
+    Data1: 334959510
+    Data2: 1119285717
+    Data3: 489783704
+    Data4: 2052462647
+  Banks:
+  - {fileID: 6798184156996057821}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 6887330244215459051}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 12000
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,18 +347,29 @@ MonoBehaviour:
   - {fileID: -5469677174553562781}
   - {fileID: 7825735980197503540}
   - {fileID: -1759832431823967003}
+  - {fileID: 6798184156996057821}
+  - {fileID: -8904247090324128866}
   EditorEvents:
-  - {fileID: -3081818037125842808}
-  - {fileID: -244622819479403440}
-  - {fileID: 4044916964405166837}
+  - {fileID: -3621267327333815054}
+  - {fileID: 6509283432660072300}
+  - {fileID: -6096257580004556393}
+  - {fileID: -4208870534303443672}
+  - {fileID: 5098705116327968977}
+  - {fileID: -288079016189743437}
+  - {fileID: -180967140549426575}
+  - {fileID: -7254008163204575377}
+  - {fileID: 3916610661917927462}
+  - {fileID: -3283157767723782028}
+  - {fileID: -8104951932329056796}
+  - {fileID: 2381691147065250052}
   EditorParameters: []
   MasterBanks:
   - {fileID: 7825735980197503540}
   StringsBanks:
   - {fileID: -5469677174553562781}
-  cacheTime: 638240963183685281
+  cacheTime: 638243260462991959
   cacheVersion: 131605
---- !u!114 &4044916964405166837
+--- !u!114 &2381691147065250052
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,23 +379,177 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/GrassSteps
+  m_Name: event:/Ambience/Ambiences
   m_EditorClassIdentifier: 
-  Path: event:/GrassSteps
+  Path: event:/Ambience/Ambiences
   Guid:
-    Data1: 313669315
-    Data2: 1076808047
-    Data3: 866740915
-    Data4: -301642034
+    Data1: 1593942403
+    Data2: 1296059728
+    Data3: 295430801
+    Data4: 1460232994
+  Banks:
+  - {fileID: 6798184156996057821}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 4136341913237488266}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &3916610661917927462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/LevelMusic1
+  m_EditorClassIdentifier: 
+  Path: event:/Music/LevelMusic1
+  Guid:
+    Data1: -1359799990
+    Data2: 1087280300
+    Data3: -551356280
+    Data4: -1294549235
+  Banks:
+  - {fileID: -8904247090324128866}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -5134338643371814772}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &4136341913237488266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Ambiences/areaAmbience
+  m_EditorClassIdentifier: 
+  Name: areaAmbience
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 3410531234
+    data2: 622815325
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Forest
+  - Cave
+  - Birds
+  Exists: 1
+--- !u!114 &5098705116327968977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Hidden/Arbustos
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Hidden/Arbustos
+  Guid:
+    Data1: 1446150826
+    Data2: 1141004536
+    Data3: 591955610
+    Data4: -686591001
   Banks:
   - {fileID: -1759832431823967003}
   IsStream: 0
   Is3D: 0
-  IsOneShot: 0
+  IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 600
+  Length: 0
+--- !u!114 &6509283432660072300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Enemy/EnemySteps
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Enemy/EnemySteps
+  Guid:
+    Data1: -1357468495
+    Data2: 1097111985
+    Data3: 56071865
+    Data4: -764401685
+  Banks:
+  - {fileID: -1759832431823967003}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 15
+  Length: 500
+--- !u!114 &6798184156996057821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Ambience.bank
+  m_EditorClassIdentifier: 
+  Path: ../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Ambience.bank
+  Name: Ambience
+  StudioPath: bank:/Ambience
+  lastModified: 638243260462991959
+  FileSizes:
+  - Name: Desktop
+    Value: 3734880
+  Exists: 1
+--- !u!114 &6887330244215459051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Wind/wind_intensity
+  m_EditorClassIdentifier: 
+  Name: wind_intensity
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 105524554
+    data2: 649212709
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &7825735980197503540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,8 +565,8 @@ MonoBehaviour:
   Path: ../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638240963181169348
+  lastModified: 638243260110113105
   FileSizes:
   - Name: Desktop
-    Value: 1036
+    Value: 1486
   Exists: 1

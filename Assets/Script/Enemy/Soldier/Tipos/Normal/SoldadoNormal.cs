@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using FMODUnity;
 
 public class SoldadoNormal : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class SoldadoNormal : MonoBehaviour
     [Header("Objetivo")]
     public Transform player;
     public Transform enemigo_FOV;
+    bool movimiento;
 
     [Header("Range Enemy Vision")]
     public float outRange = 10;
@@ -134,6 +136,12 @@ public class SoldadoNormal : MonoBehaviour
     public float tiempoEmpezarTeleportLimite;
     bool canTeleport;
     public bool wantTeleport;
+
+    [Header("Sound Enemy")]
+    StudioEventEmitter emitterSteps;
+    int onceSoundSteps;
+    
+    
     //Añadir barra UI Para señalizar teletransporte 
     //Añadir barra UI Para señalizar el evento cajas para saber que estan esperando
     //Añadir script en el circle collider que almacene un soldier life, cuando este cerca y su vida llegue a cero llamara a todos y los pondra en modo busqueda 
@@ -178,10 +186,20 @@ public class SoldadoNormal : MonoBehaviour
         rayWallDireccion = Vector3.right;
 
     }
+    private void Start()
+    {
+        emitterSteps = AudioManager.instancia.InitializeEventEmitter(FMODEvent.instancia.stepsEnemy, this.gameObject);
+
+    }
 
     void Update()
     {
-     
+
+        if(soldierLife.vida > 0)
+        {
+            SoundStepEnemy();  
+        }
+
         CancelarAnimacionCaminar();
 
         if (wantTeleport) Teletransportar();
@@ -216,7 +234,7 @@ public class SoldadoNormal : MonoBehaviour
         if(soldierLife.vida > 0)
         {
             //Limita la velocidad de Movimiento
-            LimitarVelocidad();
+            //LimitarVelocidad();
 
             //Cambia la orientacion de los rayos en base a la escala
             EscalaRay();
@@ -450,10 +468,12 @@ public class SoldadoNormal : MonoBehaviour
         if (transform.position.x < player.position.x + limiteDireccion - distanceStopAnim || transform.position.x > player.position.x + limiteDireccion + distanceStopAnim) 
         {
             anim.SetBool("WalkSoldier", true);
+            movimiento = true;
         } 
         else if (transform.position.x >= player.position.x + limiteDireccion - distanceStopAnim && transform.position.x <= player.position.x + limiteDireccion + distanceStopAnim) 
         {
             anim.SetBool("WalkSoldier", false);
+            movimiento = false;
         }
 
         //Sino estas en la ubicacion walk true
@@ -634,6 +654,7 @@ public class SoldadoNormal : MonoBehaviour
                 //Al llegar a tu destino cambias la direccion
                 if (Vector2.Distance(movePositionPlus, transform.position) < 0.5f)
                 {
+                    movimiento = false;
                     esperarModoBusqueda += Time.deltaTime;
                     if (esperarModoBusqueda >= esperarModoBusquedaLimite)
                     {
@@ -641,6 +662,10 @@ public class SoldadoNormal : MonoBehaviour
                         if (direccionFinalizada < sumaDirigirse + 1) direccionFinalizada++;
                         esperarModoBusqueda = 0;
                     }
+                }
+                else
+                {
+                    movimiento = true;
                 }
 
             }
@@ -659,6 +684,7 @@ public class SoldadoNormal : MonoBehaviour
                 //Al llegar a tu destino cambias la direccion
                 if (Vector2.Distance(movePositionMinus, transform.position) < 0.5f)
                 {
+                    movimiento = false;
                     esperarModoBusqueda += Time.deltaTime;
                     if (esperarModoBusqueda >= esperarModoBusquedaLimite)
                     {
@@ -666,6 +692,10 @@ public class SoldadoNormal : MonoBehaviour
                         if (direccionFinalizada < sumaDirigirse + 1) direccionFinalizada++;
                         esperarModoBusqueda = 0;
                     }
+                }
+                else
+                {
+                    movimiento = true;
                 }
             }
         }
@@ -717,12 +747,17 @@ public class SoldadoNormal : MonoBehaviour
             //Al acercarte a la ubicacion se pasara un tiempo y cambiara la localizacion
             if (Vector2.Distance(ubicacionesDirigir[indexUbi].position, transform.position) < distanciaComienzaNextPatrulla) 
             {
+                movimiento = false;
                 siguienteUbi += Time.deltaTime;
                 if (siguienteUbi >= maxTiempoUbi)
                 {
                     if (siguienteUbi >= 5 && siguienteUbi < 90) { indexUbi++; siguienteUbi = 0; }
                     else if (siguienteUbi >= 90) if(!ListaAttackSoldado.modeSoldiers.activeAllAttackSoldiers) LlamarATodos(); else { indexUbi++; siguienteUbi = 0; maxTiempoUbi = 5; }
                 }
+            }
+            else
+            {
+                movimiento = true;
             }
 
             //Animacion
@@ -858,6 +893,24 @@ public class SoldadoNormal : MonoBehaviour
     {
         anim.SetBool("WalkSoldier", false);
     }
+    void SoundStepEnemy()
+    {
+        //Colocar para la busqueda y perseguir enemigo
+        if (movimiento && onGround)
+        {
+            if (onceSoundSteps < 1)
+            {
+                emitterSteps.Play();
+                onceSoundSteps++;
+            }
+        }
+        else
+        {
+            emitterSteps.Stop();
+            onceSoundSteps = 0;
+        }
+
+     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

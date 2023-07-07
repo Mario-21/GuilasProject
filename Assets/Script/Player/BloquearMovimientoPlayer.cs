@@ -33,6 +33,8 @@ public class BloquearMovimientoPlayer : MonoBehaviour
     {
         //Don't loss your life when you are blocked
         //vidaActual = vidaPlayer.vidaActual;
+        //Detener Audio pasos
+        AudioManager.instancia.CleanUp();
         //Deactive LifePlayer; Note: Keep the live when bloq is active
         vidaPlayer.enabled = false;
         //Deactive Player
@@ -123,6 +125,8 @@ public class BloquearMovimientoPlayer : MonoBehaviour
     }
     public void PausarGame()
     {
+        //Detener Audio pasos
+        AudioManager.instancia.StopAudios();
         //Desactivar Armas
         pistol.enabled = false;
         conditionToChangeWeapon.enabled = false;
@@ -132,6 +136,7 @@ public class BloquearMovimientoPlayer : MonoBehaviour
         inventory.CloseInventory();
         //Destruir el item creado
         Destroy(itemCreate.objetoClone);
+        //Desactivar Audio
     }
     public void ReanudarGame()
     {
@@ -145,5 +150,7 @@ public class BloquearMovimientoPlayer : MonoBehaviour
 
         //Activar Inventario
         inventory.enabled = true;
+
+        AudioManager.instancia.ReanudaMusicAmbience();
     }
 }

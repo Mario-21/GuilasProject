@@ -46,7 +46,8 @@ public class VidaPlayer : MonoBehaviour
         {
             if (youWantDied)
             {
-                
+                //Limpia los audios
+                AudioManager.instancia.CleanUp();
                 Debug.Log("Te moriste");
                 bloquear.DeathPlayer(); 
                 animPlayer.SetBool("Dead", true);

@@ -3603,20 +3603,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0373aea3aa062b04aac29e3766d2b2fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  music:
+    Guid:
+      Data1: -376911885
+      Data2: 1214872480
+      Data3: -2023394654
+      Data4: 1531802574
+    Path: event:/Music/Muzska
+  wind:
+    Guid:
+      Data1: 1593942403
+      Data2: 1296059728
+      Data3: 295430801
+      Data4: 1460232994
+    Path: event:/Ambience/Ambiences
   footStepGlass:
     Guid:
       Data1: 313669315
       Data2: 1076808047
       Data3: 866740915
       Data4: -301642034
-    Path: event:/GrassSteps
+    Path: event:/SFX/Player/GrassSteps
   shoot:
     Guid:
       Data1: -358409999
       Data2: 1334171330
       Data3: 1726903982
       Data4: 1562832283
-    Path: event:/Shoot
+    Path: event:/SFX/Weapon/Shoot
+  arbusto:
+    Guid:
+      Data1: 1446150826
+      Data2: 1141004536
+      Data3: 591955610
+      Data4: -686591001
+    Path: event:/SFX/Hidden/Arbustos
+  stepsEnemy:
+    Guid:
+      Data1: -1357468495
+      Data2: 1097111985
+      Data3: 56071865
+      Data4: -764401685
+    Path: event:/SFX/Enemy/EnemySteps
+  stairsUpDown:
+    Guid:
+      Data1: -666918689
+      Data2: 1145750575
+      Data3: 2108630961
+      Data4: 646601881
+    Path: event:/SFX/Stairs/Stairs_Up_Down
 --- !u!4 &570151046
 Transform:
   m_ObjectHideFlags: 0
@@ -4067,6 +4102,77 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &624729974
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 624729977}
+  - component: {fileID: 624729976}
+  - component: {fileID: 624729975}
+  m_Layer: 0
+  m_Name: Trigger Chance Ambience Increase
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &624729975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624729974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49de25a2ff820cf4f82692e4acdc8ff8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ambienceArea: 0
+--- !u!61 &624729976
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624729974}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 1.0750797}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 3.1501594}
+  m_EdgeRadius: 0
+--- !u!4 &624729977
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624729974}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.92, y: -2.62, z: -1.6106976}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 30
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &631787638
 GameObject:
   m_ObjectHideFlags: 0
@@ -9926,6 +10032,26 @@ PrefabInstance:
       propertyPath: ubicacionesDirigir.Array.data[0]
       value: 
       objectReference: {fileID: 959600816}
+    - target: {fileID: 4887143178439294451, guid: c0c7e686e24850a489fd7abdbf3e46a8,
+        type: 3}
+      propertyPath: teslaSteps
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898233101950329812, guid: c0c7e686e24850a489fd7abdbf3e46a8,
+        type: 3}
+      propertyPath: TriggerOnce
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898233101950329812, guid: c0c7e686e24850a489fd7abdbf3e46a8,
+        type: 3}
+      propertyPath: AllowNonRigidbodyDoppler
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898233101950329812, guid: c0c7e686e24850a489fd7abdbf3e46a8,
+        type: 3}
+      propertyPath: PlayEvent
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6252209984872713497, guid: c0c7e686e24850a489fd7abdbf3e46a8,
         type: 3}
       propertyPath: m_Name
@@ -11389,6 +11515,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06654889fb575214cbccb42d28cfc1b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  masterVolume: 1
+  musicVolume: 1
+  ambienceVolume: 1
+  SFXVolume: 1
 --- !u!4 &1856511816
 Transform:
   m_ObjectHideFlags: 0
@@ -11484,6 +11614,77 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1945908441
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1945908444}
+  - component: {fileID: 1945908443}
+  - component: {fileID: 1945908442}
+  m_Layer: 0
+  m_Name: Trigger Chance Ambience Decrease
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1945908442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945908441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49de25a2ff820cf4f82692e4acdc8ff8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ambienceArea: 1
+--- !u!61 &1945908443
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945908441}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 1.0750797}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 3.1501594}
+  m_EdgeRadius: 0
+--- !u!4 &1945908444
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945908441}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.7, y: -2.62, z: -1.6106976}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 31
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1991345903
 PrefabInstance:
   m_ObjectHideFlags: 0

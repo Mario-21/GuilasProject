@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD.Studio;
 
 public class Stairs_Hidden : MonoBehaviour
 {
@@ -30,11 +31,14 @@ public class Stairs_Hidden : MonoBehaviour
     public Transform cuerpoPlayer;
     public GameObject ParticulaEsconderse;
 
-    //SoundManager soundManager;
+    EventInstance stairsSound;
+
     int soundPlayOne;
 
     private void Start()
     {
+        stairsSound = AudioManager.instancia.CreateEventInstance(FMODEvent.instancia.stairsUpDown);
+
         weaponHidden = GetComponent<OcultacionByWeapon>();
         //soundManager = FindObjectOfType<SoundManager>();
         rb = GetComponent<Rigidbody2D>();
@@ -43,6 +47,7 @@ public class Stairs_Hidden : MonoBehaviour
     }
     void Update()
     {
+        StairsSound();
         //Subir escalera 
         Up_Down_Stairs();
         //Poder Esconderte
@@ -53,6 +58,8 @@ public class Stairs_Hidden : MonoBehaviour
                 //hacer que se quede completamente quieto en mov
                 if (Input.GetButtonDown("Fire2"))
                 {
+                    //Sonido de la ocultacion
+                    AudioManager.instancia.PlayOneShot(FMODEvent.instancia.arbusto);
                     //Parar Movimiento
                     //weaponHidden.tiempoVisible += 99;
                     mov.horizontalMov = 0;
@@ -132,6 +139,29 @@ public class Stairs_Hidden : MonoBehaviour
         {
             //soundManager.controlAudio[2].Pause();
             soundPlayOne = 0;
+        }
+    }
+    void StairsSound()
+    {
+        if (!mov.onGround && escalar)
+        {
+            PLAYBACK_STATE playbackStairs;
+            stairsSound.getPlaybackState(out playbackStairs);
+            if (playbackStairs.Equals(PLAYBACK_STATE.STOPPED))
+            {
+                stairsSound.start();
+            }
+            /*
+            PLAYBACK_STATE playbackState;
+            playerStepsGrass.getPlaybackState(out playbackState);
+            if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
+            {
+                playerStepsGrass.start();
+            }*/
+        }
+        else
+        {
+            stairsSound.stop(STOP_MODE.ALLOWFADEOUT);
         }
     }
     private void FixedUpdate()

@@ -7,10 +7,10 @@ public class PauseMenu : MonoBehaviour
 {
     public int scenaAditiva;
     public static int openTries;
+    public static bool pause;
 
     void Start()
     {
-        //scene.allowSceneActivation = false;
     }
 
     // Update is called once per frame
@@ -22,12 +22,14 @@ public class PauseMenu : MonoBehaviour
             if (openTries < 1)
            {
                 Time.timeScale = 0;
+                pause = true;
                 SceneManager.LoadSceneAsync(scenaAditiva, LoadSceneMode.Additive);
                 openTries++;
             }
            else if (openTries >= 1)
             {
                 Time.timeScale = 1;
+                pause = false;
                 SceneManager.UnloadSceneAsync(scenaAditiva);
                 openTries = 0;
             }

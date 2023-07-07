@@ -5,10 +5,21 @@ using FMODUnity;
 
 public class FMODEvent : MonoBehaviour
 {
+    [Header("Music")]
+    [SerializeField] public EventReference music;
+    [Header("Ambience")]
+    [SerializeField] public EventReference wind;
     [Header("Player SFX")]
     [SerializeField] public EventReference footStepGlass;
     [Header("Weapon SFX")]
     [SerializeField] public EventReference shoot;
+    [Header("Hidden SFX")]
+    [SerializeField] public EventReference arbusto;
+    [Header("Enemy SFX")]
+    [SerializeField] public EventReference stepsEnemy;
+    [Header("Stairs SFX")]
+    [SerializeField] public EventReference stairsUpDown;
+    
 
     public static FMODEvent instancia;
     public void Awake()
