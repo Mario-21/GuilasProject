@@ -32,6 +32,7 @@ public class PauseMenu : MonoBehaviour
                 pause = false;
                 SceneManager.UnloadSceneAsync(scenaAditiva);
                 openTries = 0;
+                
             }
         }
     }

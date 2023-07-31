@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9108640998781114976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Ambiences/areaAmbience
+  m_EditorClassIdentifier: 
+  Name: areaAmbience
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 3410531234
+    data2: 622815325
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Forest
+  - Cave
+  - Birds
+  Exists: 1
 --- !u!114 &-8904247090324128866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,7 +74,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 175960
---- !u!114 &-7254008163204575377
+--- !u!114 &-6750944290832919776
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57,51 +84,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambience/Forest_Noon
+  m_Name: event:/SFX/Weapon/Pistola(Player)/Shoot
   m_EditorClassIdentifier: 
-  Path: event:/Ambience/Forest_Noon
+  Path: event:/SFX/Weapon/Pistola(Player)/Shoot
   Guid:
-    Data1: -70379903
-    Data2: 1215346916
-    Data3: 1735188100
-    Data4: 971252225
-  Banks:
-  - {fileID: 6798184156996057821}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 1
-  Parameters:
-  - {fileID: -5132524042518760867}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 62734
---- !u!114 &-6096257580004556393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Player/GrassSteps
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/Player/GrassSteps
-  Guid:
-    Data1: 313669315
-    Data2: 1076808047
-    Data3: 866740915
-    Data4: -301642034
+    Data1: -358409999
+    Data2: 1334171330
+    Data3: 1726903982
+    Data4: 1562832283
   Banks:
   - {fileID: -1759832431823967003}
   IsStream: 0
   Is3D: 0
-  IsOneShot: 0
+  IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 600
+  Length: 0
 --- !u!114 &-5469677174553562781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,10 +116,10 @@ MonoBehaviour:
   Path: ../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638243260110337993
+  lastModified: 638264227191689193
   FileSizes:
   - Name: Desktop
-    Value: 1702
+    Value: 1874
   Exists: 1
 --- !u!114 &-5134338643371814772
 MonoBehaviour:
@@ -148,34 +147,7 @@ MonoBehaviour:
   - Level1
   - Level2
   Exists: 1
---- !u!114 &-5132524042518760867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Forest_Noon/areaAmbience
-  m_EditorClassIdentifier: 
-  Name: areaAmbience
-  StudioPath: 
-  Min: 0
-  Max: 2
-  Default: 0
-  ID:
-    data1: 3410531234
-    data2: 622815325
-  Type: 2
-  IsGlobal: 0
-  Labels:
-  - Forest
-  - Cave
-  - Birds
-  Exists: 1
---- !u!114 &-4208870534303443672
+--- !u!114 &-4060499574275169107
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -185,36 +157,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Weapon/Shoot
+  m_Name: event:/SFX/Weapon/Pistola(Player)/NoAmmoWeapon
   m_EditorClassIdentifier: 
-  Path: event:/SFX/Weapon/Shoot
-  Guid:
-    Data1: -358409999
-    Data2: 1334171330
-    Data3: 1726903982
-    Data4: 1562832283
-  Banks:
-  - {fileID: -1759832431823967003}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &-3621267327333815054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Weapon/NoAmmoWeapon
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/Weapon/NoAmmoWeapon
+  Path: event:/SFX/Weapon/Pistola(Player)/NoAmmoWeapon
   Guid:
     Data1: 669438496
     Data2: 1284078822
@@ -229,7 +174,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-3283157767723782028
+--- !u!114 &-2462574178353712972
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -239,23 +184,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambience/Birds
+  m_Name: event:/SFX/Player/Pasos/Hormigon/ConcreteSteps
   m_EditorClassIdentifier: 
-  Path: event:/Ambience/Birds
+  Path: event:/SFX/Player/Pasos/Hormigon/ConcreteSteps
   Guid:
-    Data1: -364886392
-    Data2: 1232096539
-    Data3: -1747816539
-    Data4: -2076967960
+    Data1: -1522073436
+    Data2: 1126574080
+    Data3: 1980514946
+    Data4: -1780953734
   Banks:
-  - {fileID: 6798184156996057821}
+  - {fileID: -1759832431823967003}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 3080
+  Length: 500
 --- !u!114 &-1759832431823967003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,12 +216,12 @@ MonoBehaviour:
   Path: ../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638242409511103817
+  lastModified: 638264291084669119
   FileSizes:
   - Name: Desktop
-    Value: 96448
+    Value: 155744
   Exists: 1
---- !u!114 &-288079016189743437
+--- !u!114 &-1365544185848493592
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -286,9 +231,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Stairs/Stairs_Up_Down
+  m_Name: event:/SFX/Player/Escaleras/Madera/Ladder_Wood
   m_EditorClassIdentifier: 
-  Path: event:/SFX/Stairs/Stairs_Up_Down
+  Path: event:/SFX/Player/Escaleras/Madera/Ladder_Wood
   Guid:
     Data1: -666918689
     Data2: 1145750575
@@ -302,8 +247,8 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 950
---- !u!114 &-180967140549426575
+  Length: 600
+--- !u!114 &-1296813359476602583
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -313,24 +258,50 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambience/Wind
+  m_Name: event:/SFX/Enemy/Pasos/EnemySteps
   m_EditorClassIdentifier: 
-  Path: event:/Ambience/Wind
+  Path: event:/SFX/Enemy/Pasos/EnemySteps
   Guid:
-    Data1: 334959510
-    Data2: 1119285717
-    Data3: 489783704
-    Data4: 2052462647
+    Data1: -1357468495
+    Data2: 1097111985
+    Data3: 56071865
+    Data4: -764401685
   Banks:
-  - {fileID: 6798184156996057821}
-  IsStream: 1
+  - {fileID: -1759832431823967003}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 15
+  Length: 500
+--- !u!114 &-1021986457256819074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player/Pasos/Cesped/GrassSteps
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player/Pasos/Cesped/GrassSteps
+  Guid:
+    Data1: 313669315
+    Data2: 1076808047
+    Data3: 866740915
+    Data4: -301642034
+  Banks:
+  - {fileID: -1759832431823967003}
+  IsStream: 0
   Is3D: 0
   IsOneShot: 0
-  Parameters:
-  - {fileID: 6887330244215459051}
+  Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 12000
+  Length: 540
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,26 +321,28 @@ MonoBehaviour:
   - {fileID: 6798184156996057821}
   - {fileID: -8904247090324128866}
   EditorEvents:
-  - {fileID: -3621267327333815054}
-  - {fileID: 6509283432660072300}
-  - {fileID: -6096257580004556393}
-  - {fileID: -4208870534303443672}
-  - {fileID: 5098705116327968977}
-  - {fileID: -288079016189743437}
-  - {fileID: -180967140549426575}
-  - {fileID: -7254008163204575377}
   - {fileID: 3916610661917927462}
-  - {fileID: -3283157767723782028}
   - {fileID: -8104951932329056796}
-  - {fileID: 2381691147065250052}
+  - {fileID: 5239217922078296259}
+  - {fileID: -1296813359476602583}
+  - {fileID: 7621368637659740082}
+  - {fileID: -1021986457256819074}
+  - {fileID: 6200244793806215895}
+  - {fileID: -4060499574275169107}
+  - {fileID: 1071710596735242209}
+  - {fileID: -1365544185848493592}
+  - {fileID: -6750944290832919776}
+  - {fileID: 4571293239922247486}
+  - {fileID: -2462574178353712972}
+  - {fileID: 4420806109321189850}
   EditorParameters: []
   MasterBanks:
   - {fileID: 7825735980197503540}
   StringsBanks:
   - {fileID: -5469677174553562781}
-  cacheTime: 638243260462991959
+  cacheTime: 638264291084669119
   cacheVersion: 131605
---- !u!114 &2381691147065250052
+--- !u!114 &1071710596735242209
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -379,21 +352,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambience/Ambiences
+  m_Name: event:/SFX/Player/Esconderse/Arbusto_Hidden/Arbustos
   m_EditorClassIdentifier: 
-  Path: event:/Ambience/Ambiences
+  Path: event:/SFX/Player/Esconderse/Arbusto_Hidden/Arbustos
   Guid:
-    Data1: 1593942403
-    Data2: 1296059728
-    Data3: 295430801
-    Data4: 1460232994
+    Data1: 1446150826
+    Data2: 1141004536
+    Data3: 591955610
+    Data4: -686591001
   Banks:
-  - {fileID: 6798184156996057821}
-  IsStream: 1
+  - {fileID: -1759832431823967003}
+  IsStream: 0
   Is3D: 0
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 4136341913237488266}
+  IsOneShot: 1
+  Parameters: []
   MinDistance: 1
   MaxDistance: 20
   Length: 0
@@ -425,34 +397,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &4136341913237488266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Ambiences/areaAmbience
-  m_EditorClassIdentifier: 
-  Name: areaAmbience
-  StudioPath: 
-  Min: 0
-  Max: 2
-  Default: 0
-  ID:
-    data1: 3410531234
-    data2: 622815325
-  Type: 2
-  IsGlobal: 0
-  Labels:
-  - Forest
-  - Cave
-  - Birds
-  Exists: 1
---- !u!114 &5098705116327968977
+--- !u!114 &4420806109321189850
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -462,24 +407,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Hidden/Arbustos
+  m_Name: event:/SFX/Player/Pasos/Arena/SandSteps
   m_EditorClassIdentifier: 
-  Path: event:/SFX/Hidden/Arbustos
+  Path: event:/SFX/Player/Pasos/Arena/SandSteps
   Guid:
-    Data1: 1446150826
-    Data2: 1141004536
-    Data3: 591955610
-    Data4: -686591001
+    Data1: -1283535381
+    Data2: 1110644144
+    Data3: 289318303
+    Data4: 1114042154
   Banks:
   - {fileID: -1759832431823967003}
   IsStream: 0
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
---- !u!114 &6509283432660072300
+  Length: 520
+--- !u!114 &4571293239922247486
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -489,23 +434,78 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Enemy/EnemySteps
+  m_Name: event:/SFX/Player/Pasos/Metal/MetalSteps
   m_EditorClassIdentifier: 
-  Path: event:/SFX/Enemy/EnemySteps
+  Path: event:/SFX/Player/Pasos/Metal/MetalSteps
   Guid:
-    Data1: -1357468495
-    Data2: 1097111985
-    Data3: 56071865
-    Data4: -764401685
+    Data1: -997872005
+    Data2: 1240903572
+    Data3: 1194406059
+    Data4: 1339300148
   Banks:
   - {fileID: -1759832431823967003}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 0
   Parameters: []
   MinDistance: 1
-  MaxDistance: 15
-  Length: 500
+  MaxDistance: 20
+  Length: 640
+--- !u!114 &5239217922078296259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Ambiences
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Ambiences
+  Guid:
+    Data1: 1593942403
+    Data2: 1296059728
+    Data3: 295430801
+    Data4: 1460232994
+  Banks:
+  - {fileID: 6798184156996057821}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -9108640998781114976}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &6200244793806215895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Bosque/Birds
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Bosque/Birds
+  Guid:
+    Data1: -364886392
+    Data2: 1232096539
+    Data3: -1747816539
+    Data4: -2076967960
+  Banks:
+  - {fileID: 6798184156996057821}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 184632
 --- !u!114 &6798184156996057821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -521,12 +521,12 @@ MonoBehaviour:
   Path: ../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Ambience.bank
   Name: Ambience
   StudioPath: bank:/Ambience
-  lastModified: 638243260462991959
+  lastModified: 638264198513163300
   FileSizes:
   - Name: Desktop
-    Value: 3734880
+    Value: 8828768
   Exists: 1
---- !u!114 &6887330244215459051
+--- !u!114 &7621368637659740082
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -535,21 +535,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Wind/wind_intensity
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player/Pasos/Madera/WoodSteps
   m_EditorClassIdentifier: 
-  Name: wind_intensity
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 105524554
-    data2: 649212709
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
+  Path: event:/SFX/Player/Pasos/Madera/WoodSteps
+  Guid:
+    Data1: 340036355
+    Data2: 1225268212
+    Data3: -46417500
+    Data4: -1488640692
+  Banks:
+  - {fileID: -1759832431823967003}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 530
 --- !u!114 &7825735980197503540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -565,7 +568,7 @@ MonoBehaviour:
   Path: ../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638243260110113105
+  lastModified: 638264227191639040
   FileSizes:
   - Name: Desktop
     Value: 1486

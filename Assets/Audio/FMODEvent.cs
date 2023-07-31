@@ -5,12 +5,19 @@ using FMODUnity;
 
 public class FMODEvent : MonoBehaviour
 {
+
     [Header("Music")]
     [SerializeField] public EventReference music;
     [Header("Ambience")]
     [SerializeField] public EventReference wind;
     [Header("Player SFX")]
-    [SerializeField] public EventReference footStepGlass;
+    public string apartado_1;
+    [SerializeField] public EventReference grassSteps;
+    [SerializeField] public EventReference sandSteps;
+    [SerializeField] public EventReference concreteSteps;
+    [SerializeField] public EventReference metalSteps;
+    [Space(20)]
+    public string name_2;
     [Header("Weapon SFX")]
     [SerializeField] public EventReference shoot;
     [Header("Hidden SFX")]

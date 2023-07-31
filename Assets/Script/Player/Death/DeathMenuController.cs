@@ -69,10 +69,11 @@ public class DeathMenuController : MonoBehaviour
     }
     public void Reanudar()
     {
-        AudioManager.instancia.PlayOneShot(FMODEvent.instancia.shoot);
+        Debug.Log(Time.timeScale + " actual");
         Time.timeScale = 1;
         SceneManager.UnloadSceneAsync(out_MenuPausa);
         //Poder Restablecer el menu
         PauseMenu.openTries = 0;
+        PauseMenu.pause = false;
     }
 }

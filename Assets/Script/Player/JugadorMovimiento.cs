@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 using FMOD.Studio;
 
 public class JugadorMovimiento : MonoBehaviour
@@ -76,7 +75,10 @@ public class JugadorMovimiento : MonoBehaviour
     VidaPlayer vidaPlayer;
     CheckPointController spawn;
 
-    EventInstance playerStepsGrass;
+    public EventInstance playerStepsGrass;
+    public DetectTypeFloor triggerFootSteps;
+
+    public bool releaseMov;
 
     //cambiar la posicion del transform de Altura a mi Transform
     //calcular El daño >10 25 daño >20 50 etc.
@@ -86,6 +88,7 @@ public class JugadorMovimiento : MonoBehaviour
     {
         almacenBotonJump = new Queue<KeyCode>();
         spawn = FindObjectOfType<CheckPointController>();
+        triggerFootSteps = GetComponentInChildren<DetectTypeFloor>();
         //soundManager = FindObjectOfType<SoundManager>();
         //Cuando interactues con el portatil seras visible
 
@@ -95,7 +98,8 @@ public class JugadorMovimiento : MonoBehaviour
     }
     void Start()
     {
-        playerStepsGrass = AudioManager.instancia.CreateEventInstance(FMODEvent.instancia.footStepGlass);
+        playerStepsGrass = AudioManager.instancia.CreateEventInstance(triggerFootSteps.actualStepsSound);
+        //Release esta instancia para crear una nueva
         anim = GetComponent<Animator>();
         vidaPlayer = GetComponent<VidaPlayer>();
         direccionBala = true;
@@ -104,7 +108,7 @@ public class JugadorMovimiento : MonoBehaviour
 
     void Update()
     {
-        if(vidaPlayer.vidaActual > 0)
+        if (vidaPlayer.vidaActual > 0)
         {
             SoundSteps();
         }

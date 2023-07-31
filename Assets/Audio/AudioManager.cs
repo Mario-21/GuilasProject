@@ -81,7 +81,11 @@ public class AudioManager : MonoBehaviour
         {
             //Para el audio
             eventInstance.setPaused(PauseMenu.pause);
-            Debug.Log("Audios Pausados");
+            Debug.Log("Audios Continue");
+        }
+        foreach (StudioEventEmitter eventEmitter in eventEmitters)
+        {
+            eventEmitter.EventInstance.setPaused(PauseMenu.pause);
         }
     }
     public void SetAmbienceParameter(string parameterName, float parameterValue)
@@ -157,11 +161,7 @@ public class AudioManager : MonoBehaviour
         }
         foreach (StudioEventEmitter eventEmitter in eventEmitters)
         {
-            //Ocurrira lo mismo que con las instancias se reiniciaran al hacer stop() o funcionara de manera diferente 
-            //Le ocurre los mismo, hay que pausar lo
-            eventEmitter.Stop();
-            
-            
+            eventEmitter.EventInstance.setPaused(PauseMenu.pause);
         }
         
     }

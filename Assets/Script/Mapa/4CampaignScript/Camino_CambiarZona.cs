@@ -48,6 +48,8 @@ public class Camino_CambiarZona : MonoBehaviour
                 EstructuraNiveles.nivel = siguienteEscena;
                 AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
                 iconoZone.SetActive(false);
+
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.shoot);
             }
         }
     }
