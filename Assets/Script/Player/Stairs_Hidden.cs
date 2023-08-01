@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using FMOD.Studio;
+using FMODUnity;
+
 
 public class Stairs_Hidden : MonoBehaviour
 {
@@ -19,7 +21,7 @@ public class Stairs_Hidden : MonoBehaviour
     public SpriteRenderer iconeZoneSprite;
     public Sprite hiddenIcon;
     [HideInInspector] public bool imHidden;
-    bool canHidden = false;
+    public bool canHidden = false;
     [Header("Layer Hidden")]
     public int layerDesocultacion;
     [Header("Stop Hidden Player")]
@@ -31,14 +33,13 @@ public class Stairs_Hidden : MonoBehaviour
     public Transform cuerpoPlayer;
     public GameObject ParticulaEsconderse;
 
-    EventInstance stairsSound;
+    public EventInstance laddersSound;
+    public EventReference hiddenSound;
 
     int soundPlayOne;
 
     private void Start()
     {
-        stairsSound = AudioManager.instancia.CreateEventInstance(FMODEvent.instancia.stairsUpDown);
-
         weaponHidden = GetComponent<OcultacionByWeapon>();
         //soundManager = FindObjectOfType<SoundManager>();
         rb = GetComponent<Rigidbody2D>();
@@ -59,7 +60,7 @@ public class Stairs_Hidden : MonoBehaviour
                 if (Input.GetButtonDown("Fire2"))
                 {
                     //Sonido de la ocultacion
-                    AudioManager.instancia.PlayOneShot(FMODEvent.instancia.arbusto);
+                    AudioManager.instancia.PlayOneShot(hiddenSound);
                     //Parar Movimiento
                     //weaponHidden.tiempoVisible += 99;
                     mov.horizontalMov = 0;
@@ -125,43 +126,22 @@ public class Stairs_Hidden : MonoBehaviour
         if (zonaEscalada && Mathf.Abs(vertical) > 0f)
         {
             escalar = true;
-
-            if (soundPlayOne < 1)
-            {
-                //soundManager.controlAudio[1].Pause();
-                //soundManager.controlAudio[2].Play();
-                
-                soundPlayOne++;
-            }
-            //Poner sonido escalera
-        }
-        else if (vertical == 0)
-        {
-            //soundManager.controlAudio[2].Pause();
-            soundPlayOne = 0;
         }
     }
     void StairsSound()
     {
-        if (!mov.onGround && escalar)
+        if (Mathf.Abs(rb.velocity.y) > 1 && !mov.onGround && escalar)
         {
             PLAYBACK_STATE playbackStairs;
-            stairsSound.getPlaybackState(out playbackStairs);
+            laddersSound.getPlaybackState(out playbackStairs);
             if (playbackStairs.Equals(PLAYBACK_STATE.STOPPED))
             {
-                stairsSound.start();
+                laddersSound.start();
             }
-            /*
-            PLAYBACK_STATE playbackState;
-            playerStepsGrass.getPlaybackState(out playbackState);
-            if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
-            {
-                playerStepsGrass.start();
-            }*/
         }
         else
         {
-            stairsSound.stop(STOP_MODE.ALLOWFADEOUT);
+            laddersSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
     }
     private void FixedUpdate()

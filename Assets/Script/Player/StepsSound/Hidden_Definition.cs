@@ -1,0 +1,48 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Hidden_Definition : MonoBehaviour
+{
+    Stairs_Hidden hiddenPlayerControler;
+
+    public enum Type_Hidden
+    {
+        Arbusto,
+        Taquilla,
+        Puerta,
+        Caja,
+        Basura,
+        Default
+    }
+    public Type_Hidden hiddenDefine; 
+    private void Awake()
+    {
+        hiddenPlayerControler = FindObjectOfType<Stairs_Hidden>();
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            switch (hiddenDefine)
+            {
+                case Type_Hidden.Arbusto:
+                    hiddenPlayerControler.hiddenSound = FMODEvent.instancia.arbustoHidden;
+                    break;
+                case Type_Hidden.Basura:
+                    hiddenPlayerControler.hiddenSound = FMODEvent.instancia.basuraHidden;
+                    break;
+                case Type_Hidden.Caja:
+                    hiddenPlayerControler.hiddenSound = FMODEvent.instancia.cajaHidden;
+                    break;
+                case Type_Hidden.Puerta:
+                    hiddenPlayerControler.hiddenSound = FMODEvent.instancia.puertaHidden;
+                    break;
+                case Type_Hidden.Taquilla:
+                    hiddenPlayerControler.hiddenSound = FMODEvent.instancia.taquillaHidden;
+                    break;
+            }
+        }
+        
+    }
+}

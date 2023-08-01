@@ -6,15 +6,19 @@ using FMODUnity;
 public class DetectTypeFloor : MonoBehaviour
 {
     public JugadorMovimiento playerControl;
-
+    [Header("Player_Steps")]
     public EventReference actualStepsSound;
-
     public enum TypeFloor
     {
         Sand,
         Forest,
         Metal,
         Concrete,
+        Wood,
+        Cave,
+        Wet,
+        Water,
+        Mud,
         Default
     }
     public TypeFloor actualFloor;
@@ -54,6 +58,21 @@ public class DetectTypeFloor : MonoBehaviour
             case TypeFloor.Metal:
                 actualStepsSound = FMODEvent.instancia.metalSteps;
                 break;
+            case TypeFloor.Wood:
+                actualStepsSound = FMODEvent.instancia.woodSteps;
+                break;
+            case TypeFloor.Cave:
+                actualStepsSound = FMODEvent.instancia.caveSteps;
+                break;
+            case TypeFloor.Wet:
+                actualStepsSound = FMODEvent.instancia.wetSteps;
+                break;
+            case TypeFloor.Mud:
+                actualStepsSound = FMODEvent.instancia.mudSteps;
+                break;
+            case TypeFloor.Water:
+                actualStepsSound = FMODEvent.instancia.swimSteps;
+                break;
         }
     }
     void ChangeSteps()
@@ -88,9 +107,54 @@ public class DetectTypeFloor : MonoBehaviour
                         playerControl.playerStepsGrass = AudioManager.instancia.CreateEventInstance(FMODEvent.instancia.metalSteps);
                         floorNow = TypeFloor.Metal;
                         break;
+                    case TypeFloor.Wood:
+                        playerControl.playerStepsGrass.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                        playerControl.playerStepsGrass.release();
+                        playerControl.playerStepsGrass = AudioManager.instancia.CreateEventInstance(FMODEvent.instancia.woodSteps);
+                        floorNow = TypeFloor.Wood;
+                        break;
+                    case TypeFloor.Cave:
+                        playerControl.playerStepsGrass.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                        playerControl.playerStepsGrass.release();
+                        playerControl.playerStepsGrass = AudioManager.instancia.CreateEventInstance(FMODEvent.instancia.caveSteps);
+                        floorNow = TypeFloor.Cave;
+                        break;
+                    case TypeFloor.Mud:
+                        playerControl.playerStepsGrass.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                        playerControl.playerStepsGrass.release();
+                        playerControl.playerStepsGrass = AudioManager.instancia.CreateEventInstance(FMODEvent.instancia.mudSteps);
+                        floorNow = TypeFloor.Mud;
+                        break;
+                    case TypeFloor.Wet:
+                        playerControl.playerStepsGrass.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                        playerControl.playerStepsGrass.release();
+                        playerControl.playerStepsGrass = AudioManager.instancia.CreateEventInstance(FMODEvent.instancia.wetSteps);
+                        floorNow = TypeFloor.Wet;
+                        break;
                 }
             }
         }
+        if (playerControl.onWater)
+        {
+            if (floorNow != actualFloor)
+            {
+                playerControl.playerStepsGrass.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                playerControl.playerStepsGrass.release();
+                playerControl.playerStepsGrass = AudioManager.instancia.CreateEventInstance(FMODEvent.instancia.swimSteps);
+                floorNow = TypeFloor.Water;
+            }
+        }
+    }
+
+    void DefinicionLadders()
+    {
+        /*
+         * Dentro de Ladder
+         * Enum que defina el tipo de escalera es
+         * Una vez obtenida la definicion, cada vez que el player entre (Getcomponent(DefinicionEscalera) stairs_sound = ladderDefinitionSound) cambiara su instancia del sonido dependiendo del tipo de escalera
+         * Si salgo mi sonido se establecera como default
+         * Si hay dos escaleras una al lado de la otra, no cambiar ni reiniciar sonido, parecido al del detector de steps
+         */
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -117,7 +181,35 @@ public class DetectTypeFloor : MonoBehaviour
                 Debug.Log("Metal");
                 actualFloor = TypeFloor.Metal;
             }
+            else if (collision.gameObject.CompareTag("Wood"))
+            {
+                Debug.Log("Wood");
+                actualFloor = TypeFloor.Wood;
+            }
+            else if (collision.gameObject.CompareTag("Cave"))
+            {
+                Debug.Log("Cave");
+                actualFloor = TypeFloor.Cave;
+            }
+            else if (collision.gameObject.CompareTag("Wet"))
+            {
+                Debug.Log("Wet");
+                actualFloor = TypeFloor.Wet;
+            }
+            else if (collision.gameObject.CompareTag("Mud"))
+            {
+                Debug.Log("Mud");
+                actualFloor = TypeFloor.Mud;
+            }
 
+        }
+        if (playerControl.onWater)
+        {
+            if (collision.gameObject.CompareTag("Water"))
+            {
+                Debug.Log("Water");
+                actualFloor = TypeFloor.Water;
+            }
         }
         
 

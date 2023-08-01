@@ -110,7 +110,7 @@ public class JugadorMovimiento : MonoBehaviour
     {
         if (vidaPlayer.vidaActual > 0)
         {
-            SoundSteps();
+            GroundSoundSteps();
         }
 
         horizontalMov = GetInput().x;
@@ -273,9 +273,9 @@ public class JugadorMovimiento : MonoBehaviour
     {
         almacenBotonJump.Dequeue();
     }
-    void SoundSteps()
+    void GroundSoundSteps()
     {
-        if(Mathf.Abs(rb.velocity.x) > 1 && onGround)
+        if(Mathf.Abs(rb.velocity.x) > 1 && (onGround || onWater))
         {
             PLAYBACK_STATE playbackState;
             playerStepsGrass.getPlaybackState(out playbackState);
@@ -287,7 +287,6 @@ public class JugadorMovimiento : MonoBehaviour
         }
         else
         {
-            
             playerStepsGrass.stop(STOP_MODE.ALLOWFADEOUT);
         }
     }
@@ -305,6 +304,7 @@ public class JugadorMovimiento : MonoBehaviour
         if (collision.gameObject.CompareTag("Water"))
         {
             onWater = true;
+            AudioManager.instancia.PlayOneShot(FMODEvent.instancia.splashWater);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
