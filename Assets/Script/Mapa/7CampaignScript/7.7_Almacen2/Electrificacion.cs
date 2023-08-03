@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class Electrificacion : MonoBehaviour
 {
@@ -41,6 +42,7 @@ public class Electrificacion : MonoBehaviour
             repeatDamage += Time.deltaTime;
             if (repeatDamage >= timeOnPlayerLimit + 0.1)
             {
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.electroDamage);
                 playerVida.Daño(25);
                 //No inhabilitar llamar al bloqueoPlayer
                 playerBlock.BloquearMovConDaño();
@@ -53,6 +55,7 @@ public class Electrificacion : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player")) 
         {
+            AudioManager.instancia.PlayOneShot(FMODEvent.instancia.electroDamage);
             playerVida.Daño(20);
             Debug.Log("Capela");
             playerBlock.BloquearMovConDaño();

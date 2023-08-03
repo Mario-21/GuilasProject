@@ -102,7 +102,7 @@ public class EstadoGenerador : MonoBehaviour
             case StateGenerator.mojado:
                 if (imHereInGen)
                 {
-                    if (Input.GetKeyDown(KeyCode.Z))
+                    if (Input.GetButtonDown("Action"))
                     {
                         vidaJugador.Daño(150);
                         //Instanciar explosion o efecto de descarga

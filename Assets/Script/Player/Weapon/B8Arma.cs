@@ -67,6 +67,7 @@ public class B8Arma : MonoBehaviour
             {
                 if (Input.GetButtonDown("Fire1"))
                 {
+                    AudioManager.instancia.PlayOneShot(FMODEvent.instancia.b8Lanzar);
                     Ataque();
                     ocultacion.visible = true;
                     activarB8 = false;

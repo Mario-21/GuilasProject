@@ -69,6 +69,15 @@ public class ArmaController : MonoBehaviour
         if (Input.GetButtonDown("Draw_Weapon"))
         {
             activarDisparo = !activarDisparo;
+
+            if (!activarDisparo)
+            {
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.outWeapon);
+            }
+            else
+            {
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.drawWeapon);
+            }
         }
     }
     void UseWeapon()
@@ -116,6 +125,7 @@ public class ArmaController : MonoBehaviour
                     if (Input.GetButtonDown("Fire1"))
                     {
                         //soundManager.SeleccionAudio(soundManager.audiosArmas, 1, 1f, 0);
+                        AudioManager.instancia.PlayOneShot(FMODEvent.instancia.noAmmo);
                         Debug.Log("Estas sin munición");
                     }
 

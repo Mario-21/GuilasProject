@@ -23,6 +23,7 @@ public class PutGasMask : MonoBehaviour
         {
             if(Input.GetButtonDown("Fire1"))
             {
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.takeClothes);
                 putMask = true;
                 PutMask();
             }
@@ -45,6 +46,7 @@ public class PutGasMask : MonoBehaviour
             //Pulso la te para quitarmelo
             if (Input.GetButtonDown("Take_Off"))
             {
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.takeOffClothes);
                 gas_Mask.SetActive(false);
                 mascaraButton.HabilitarUsos();
                 putMask = false;

@@ -41,7 +41,7 @@ public class DispositivoElectrico : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ImDispositivo();
+        if(!PauseMenu.pause)ImDispositivo();
         ColorButton();
         if (player.playerImHere)
         {

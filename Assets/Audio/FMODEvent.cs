@@ -35,9 +35,25 @@ public class FMODEvent : MonoBehaviour
     [SerializeField] public EventReference taquillaHidden;
     [SerializeField] public EventReference basuraHidden;
     [SerializeField] public EventReference puertaHidden;
-
-    [Header("Weapon SFX")]
+    [Space(20)]
+    public string apartado_4;
+    [SerializeField] public EventReference damage;
+    [SerializeField] public EventReference electroDamage;
+    [Space(20)]
+    public string apartado_5;
+    [SerializeField] public EventReference takeClothes;
+    [SerializeField] public EventReference takeOffClothes;
+    [Space(20)]
+    public string apartado_6;
     [SerializeField] public EventReference shoot;
+    [SerializeField] public EventReference noAmmo;
+    [SerializeField] public EventReference drawWeapon;
+    [SerializeField] public EventReference outWeapon;
+    [SerializeField] public EventReference recoveryAmmo;
+    [SerializeField] public EventReference b8Lanzar;
+    [SerializeField] public EventReference b8Recoger;
+    [SerializeField] public EventReference b8CollisionGround;
+    //CAMBIAR EL SOPNIDO DEL COCHE A AMBIENTE
     [Header("Enemy SFX")]
     [SerializeField] public EventReference stepsEnemy;
     

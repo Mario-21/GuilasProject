@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class FallDamage : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class FallDamage : MonoBehaviour
     [Header("Daño ")]
     int daño;
     int registroDaño;
+    [Header("Sound Fall Damage")]
+    public EventReference boneBreak;
 
     VidaPlayer vida;
     JugadorMovimiento playerMov;
@@ -104,6 +107,7 @@ public class FallDamage : MonoBehaviour
         if(alturaTotalCalculo > alturaStartDaño)
         {
             Debug.Log("Damage por altura");
+            AudioManager.instancia.PlayOneShot(boneBreak);
             //Primero calcula el porcentaje del daño que te va hacer la caída
             porcentajeDaño = (alturaTotalCalculo * 100) / alturaDeath;
             //Segundo te calcula el daño de dicho porcentaje

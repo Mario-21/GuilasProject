@@ -19,7 +19,6 @@ public class PauseControler : MonoBehaviour
     void TogglePause()
     {
         //Si el juego esta pausado
-        Debug.Log("Toggle");
         if (Time.timeScale == 0)
         {
             bloqPause.PausarGame();

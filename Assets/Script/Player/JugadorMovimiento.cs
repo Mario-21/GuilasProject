@@ -115,7 +115,10 @@ public class JugadorMovimiento : MonoBehaviour
 
         horizontalMov = GetInput().x;
 
-        if (canJump && extraJump < 1) Jump();
+        if (canJump && extraJump < 1)
+        {
+            Jump();
+        }
 
         //Almacena la cantidad de saltos, para que no sobrepases el numero limite de saltos.
         if (almacenBotonJump.Count < 1) if (Input.GetButtonDown("Jump")) { almacenBotonJump.Enqueue(KeyCode.Space); Invoke("QuitarJump", 0.1f); };

@@ -66,7 +66,12 @@ public class VidaPlayer : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("BulletEnemy")) { Daño(34f); Destroy(collision.gameObject); }
+        if (collision.gameObject.CompareTag("BulletEnemy")) 
+        {
+            Daño(34f);
+            Destroy(collision.gameObject);
+            AudioManager.instancia.PlayOneShot(FMODEvent.instancia.damage);
+        }
         if (collision.gameObject.CompareTag("Dardo")) { Daño(15f);}
     }
 

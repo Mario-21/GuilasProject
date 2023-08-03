@@ -26,16 +26,16 @@ public class VolumeSlider : MonoBehaviour
         switch (volumeType)
         {
             case VolumeType.MASTER:
-                volumeSlider.value = AudioManager.instancia.masterVolume;
+                volumeSlider.value = AudioMenu.instancia.masterVolume;
                 break;
             case VolumeType.MUSIC:
-                volumeSlider.value = AudioManager.instancia.musicVolume;
+                volumeSlider.value = AudioMenu.instancia.musicVolume;
                 break;
             case VolumeType.AMBIENCE:
-                volumeSlider.value = AudioManager.instancia.ambienceVolume;
+                volumeSlider.value = AudioMenu.instancia.ambienceVolume;
                 break;
             case VolumeType.SFX:
-                volumeSlider.value = AudioManager.instancia.SFXVolume;
+                volumeSlider.value = AudioMenu.instancia.SFXVolume;
                 break;
         }
     }
@@ -44,16 +44,16 @@ public class VolumeSlider : MonoBehaviour
         switch (volumeType)
         {
             case VolumeType.MASTER:
-                AudioManager.instancia.masterVolume = volumeSlider.value;
+                AudioMenu.instancia.masterVolume = volumeSlider.value;
                 break;
             case VolumeType.MUSIC:
-                AudioManager.instancia.musicVolume = volumeSlider.value;
+                AudioMenu.instancia.musicVolume = volumeSlider.value;
                 break;
             case VolumeType.AMBIENCE:
-                AudioManager.instancia.ambienceVolume = volumeSlider.value;
+                AudioMenu.instancia.ambienceVolume = volumeSlider.value;
                 break;
             case VolumeType.SFX:
-                AudioManager.instancia.SFXVolume = volumeSlider.value;
+                AudioMenu.instancia.SFXVolume = volumeSlider.value;
                 break;
         }
     }

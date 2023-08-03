@@ -24,6 +24,7 @@ public class ColocarCuerda : MonoBehaviour
     }
     void ColocarItem()
     {
+
         StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
         colocarItem.SetActive(true);
         //Se desactiva para que no puedas a volver a realizar la acción y no te quite uses a los objetos si tienen más de un uso
