@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using FMOD.Studio;
 
 public class Portatil_Info : MonoBehaviour
 {
@@ -31,6 +32,9 @@ public class Portatil_Info : MonoBehaviour
     EstructuraNiveles nivelCompletado = new EstructuraNiveles();
 
     PlayerHere playerInTerminal;
+
+    EventInstance teclearTerminalSound;
+    int onceTeclearSound;
     
 
     //NOTA
@@ -47,6 +51,7 @@ public class Portatil_Info : MonoBehaviour
     {
         LoadPorcentaje(); 
         downloadBar.fillAmount = 0;
+        teclearTerminalSound = AudioManager.instancia.CreateEventInstance(FMODEvent.instancia.teclear);
     }
     private void Update()
     {
@@ -107,7 +112,13 @@ public class Portatil_Info : MonoBehaviour
 
                         seePlayer = true;
                         player.SeeByAction(seePlayer);
-                        
+
+                        //Reproducir sonido del tecleado
+                        if (onceTeclearSound < 1)
+                        {
+                            teclearTerminalSound.start();
+                            onceTeclearSound++;
+                        }
 
                     }
                     else
@@ -121,6 +132,9 @@ public class Portatil_Info : MonoBehaviour
                         if (downloadBar.fillAmount < 1)
                         {
                             downloadBar.fillAmount = 0;
+                            //Parar el tecleado y el conteo
+                            teclearTerminalSound.stop(STOP_MODE.IMMEDIATE);
+                            onceTeclearSound = 0;
                         }
                     }
                 }
@@ -136,6 +150,11 @@ public class Portatil_Info : MonoBehaviour
                     active = true;
                     TotalTerminales.terminalesTotales.terminalesActivos[indexTerminal] = active;
 
+                    //Paramos el audio teclear
+                    teclearTerminalSound.stop(STOP_MODE.IMMEDIATE);
+                    //Sonido de confirmacion
+                    AudioManager.instancia.PlayOneShot(FMODEvent.instancia.endTerminal);
+
                 }
             }
             
@@ -148,6 +167,10 @@ public class Portatil_Info : MonoBehaviour
                 animExclamacion.enabled = false;
                 exclamacionMark.enabled = false;
                 downloadBar.fillAmount = 0;
+
+                //Parar el tecleado y resetear
+                teclearTerminalSound.stop(STOP_MODE.IMMEDIATE);
+                onceTeclearSound = 0;
             }
         }
     }

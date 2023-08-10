@@ -10,12 +10,19 @@ public class Cambiar_Area: MonoBehaviour
     public bool usarCheckpoint;
     bool entrarCamino;
 
+    BloquearMovimientoPlayer bloqPlayer;
+
+    private void Start()
+    {
+        bloqPlayer = FindObjectOfType<BloquearMovimientoPlayer>();
+    }
     private void Update()
     {
         if (entrarCamino) { CambiarNivel(); }
     }
     void CambiarNivel()
     {
+        bloqPlayer.BloquearMovPlayer();
         EstructuraNiveles.nivel = siguienteEscena;
         AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
         if (usarCheckpoint) CheckPointController.numeroCheckPoint = checkPoint;

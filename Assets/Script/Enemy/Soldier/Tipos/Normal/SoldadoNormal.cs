@@ -22,6 +22,7 @@ public class SoldadoNormal : MonoBehaviour
     [SerializeField] int indexFOV;
     public float distanciaFOV;
     [SerializeField] LayerMask playerMask;
+    [SerializeField] LayerMask detectarPlayerMask;
 
     [Range(0, 360)]
     [SerializeField] float anguloVision;
@@ -138,8 +139,11 @@ public class SoldadoNormal : MonoBehaviour
     public bool wantTeleport;
 
     [Header("Sound Enemy")]
+    public GameObject callEmitter;
+    StudioEventEmitter callPeople;
     StudioEventEmitter emitterSteps;
     int onceSoundSteps;
+    int callSound;
     
     
     //Añadir barra UI Para señalizar teletransporte 
@@ -188,6 +192,7 @@ public class SoldadoNormal : MonoBehaviour
     }
     private void Start()
     {
+        callPeople = AudioManager.instancia.InitializeEventEmitter(FMODEvent.instancia.call, callEmitter);
         emitterSteps = AudioManager.instancia.InitializeEventEmitter(FMODEvent.instancia.stepsEnemy, this.gameObject);
 
     }
@@ -223,6 +228,7 @@ public class SoldadoNormal : MonoBehaviour
             DetectarCadaver();
             if (oneTimeWarning < 1)
             {
+                callPeople.Play();
                 estadoSoldado = EstadoSoldado.warning;
                 oneTimeWarning++;
             }
@@ -284,10 +290,19 @@ public class SoldadoNormal : MonoBehaviour
             
             if (distancia && !seeCadaverWarning && !muro)
             {
-                
-                if (DistancenPlayer().magnitude >= outRange && !busquedaMode) estadoSoldado = EstadoSoldado.patrulla;
-                else if (DistancenPlayer().magnitude < outRange && DistancenPlayer().magnitude >= insideRange) estadoSoldado = EstadoSoldado.busqueda;
-                else if (DistancenPlayer().magnitude < insideRange) estadoSoldado = EstadoSoldado.ataque;
+                if (DistancenPlayer().magnitude >= outRange && !busquedaMode)
+                {
+                    estadoSoldado = EstadoSoldado.patrulla;
+                }
+                else if (DistancenPlayer().magnitude < outRange && DistancenPlayer().magnitude >= insideRange) 
+                {
+                    estadoSoldado = EstadoSoldado.busqueda;
+                }
+                else if (DistancenPlayer().magnitude < insideRange) 
+                {
+                    estadoSoldado = EstadoSoldado.ataque;
+                    AudioManager.instancia.PlayOneShot(FMODEvent.instancia.attackMode);
+                }
             }
 
             //Modo Alerta
@@ -353,6 +368,8 @@ public class SoldadoNormal : MonoBehaviour
         {
             case EstadoSoldado.ataque:
 
+                playerMask = detectarPlayerMask;
+
                 //Activa el modo Ataque
                 berserker = true;
                 seeCadaverWarning = false;
@@ -375,13 +392,20 @@ public class SoldadoNormal : MonoBehaviour
                     //Si vuelves a entrar se vuelve a ocultar LLamarATodos
                     contorno.SetActive(false);
                     tiempoNecesarioLlamar = 0;
-
+                    //Detener el audio
+                    callPeople.Stop();
+                    callSound = 0;
                     //Apuntas
                     Apuntar();
                 }
                 else if(DistancenPlayer().magnitude >= leaveOutPlayer && seePlayer)
                 {
-                    //Si sales fuera del rango deja de verme
+                    //Si sales fuera del rango deja de verme solo una vez
+                    if(callSound < 1)
+                    {
+                        callPeople.Play();
+                        callSound++;
+                    }
                     seePlayer = false;
                     mano.rotation = new Quaternion(0f, 0f, 0f, 0f);
                 }
@@ -438,6 +462,8 @@ public class SoldadoNormal : MonoBehaviour
 
                 break;
             case EstadoSoldado.warning:
+
+                LimitadorSeñales();
                 Patrulla();
 
                 estadosColor = 3;
@@ -774,14 +800,6 @@ public class SoldadoNormal : MonoBehaviour
 
         
     }
-    void LimitarVelocidad()
-    {
-        if (Mathf.Abs(rb.velocity.x) > speed)
-        {
-            rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * velocidad, rb.velocity.y);
-        }
-
-    }
     void LimiteDeUnaZona()
     {
         Vector3 movePosition = transform.position;
@@ -806,6 +824,9 @@ public class SoldadoNormal : MonoBehaviour
                 ListaAttackSoldado.modeSoldiers.AllActiveAttack();
                 ListaAttackSoldado.modeSoldiers.UnactiveAllWarning();
                 contorno.SetActive(false);
+                //Se corta la llamada
+                callPeople.Stop();
+
             }
         }
     }
@@ -827,6 +848,8 @@ public class SoldadoNormal : MonoBehaviour
                 }
                 ListaAttackSoldado.modeSoldiers.AllWarningActive();
                 contorno.SetActive(false);
+                //Detener llamada;
+                callPeople.Stop();
             }
         }
     }
@@ -852,7 +875,17 @@ public class SoldadoNormal : MonoBehaviour
         if (estadoAnterior != estadoSoldado)
         {
             limitarSeñales = 0;
+            switch (estadoSoldado)
+            {
+                case EstadoSoldado.busqueda:
+                    AudioManager.instancia.PlayOneShot(FMODEvent.instancia.searchMode);
+                    break;
+                case EstadoSoldado.warning:
+                    AudioManager.instancia.PlayOneShot(FMODEvent.instancia.detect_CadaverMode);
+                    break;
+            }
             estadoAnterior = estadoSoldado;
+            
         }
         
 
@@ -915,8 +948,8 @@ public class SoldadoNormal : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("BalaPlayer")) 
-        { 
-            if(soldierLife.vida > 0)
+        {
+            if (soldierLife.vida > 0)
             {
                 estadoSoldado = EstadoSoldado.ataque;
                 berserker = true;

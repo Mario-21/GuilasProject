@@ -11,7 +11,7 @@ public class MusicChangeTrigger : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            AudioManager.instancia.SetMusicArea(area);
+            MusicAmbienceManager.instance.SetMusicArea(area);
         }
     }
 }

@@ -13,7 +13,7 @@ public class TriggerChanceAmbience : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            AudioManager.instancia.SetAmbienceParameter(parameterName, parameterValue);
+            MusicAmbienceManager.instance.SetAmbienceParameterValue(parameterName, parameterValue);
         }
     }
 }

@@ -8,7 +8,9 @@ public enum AmbienceArea
 
     CAVE,
 
-    BIRDS
+    WAVES,
+
+    MACHINES
 }
 public class AmbienceActual: MonoBehaviour
 {

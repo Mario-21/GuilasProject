@@ -14,6 +14,7 @@ public class CompletarNivel : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             blockPlayer.BloquearMovPlayer();
+            AudioManager.instancia.CleanUp();
             EstructuraNiveles.nivel = siguienteNivel;
             AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
             CheckPointController.numeroCheckPoint = 0;

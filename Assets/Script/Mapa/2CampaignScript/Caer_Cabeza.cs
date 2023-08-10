@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class Caer_Cabeza : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class Caer_Cabeza : MonoBehaviour
 
     int vecesSaltadas;
     public int LimitevecesSaltadas = 3;
+
+    [Header("Sound Effect Ramas")]
+    public EventReference shoot_Caer;
+    public EventReference player_Touch;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -27,6 +32,7 @@ public class Caer_Cabeza : MonoBehaviour
             rb.gravityScale = 1;
             Destroy(collision.gameObject);
             StatusGameobjectsVariables.statusGameobject.modificacion[indexModificar].modificacion = true;
+            AudioManager.instancia.PlayOneShot(shoot_Caer);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -38,6 +44,11 @@ public class Caer_Cabeza : MonoBehaviour
             {
                 rb.bodyType = RigidbodyType2D.Dynamic;
                 rb.gravityScale = 1;
+                AudioManager.instancia.PlayOneShot(shoot_Caer);
+            }
+            else
+            {
+                AudioManager.instancia.PlayOneShot(player_Touch);
             }
         }
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Enemy"))

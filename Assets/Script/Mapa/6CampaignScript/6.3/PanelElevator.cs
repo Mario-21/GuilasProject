@@ -23,7 +23,6 @@ public class PanelElevator : MonoBehaviour
         if (player.playerImHere)
         {
             panel.SetActive(true);
-            //Debug.Log("PLaer in Elevator");
         }
         if (elevator.elevatorActive)
         {

@@ -16,7 +16,7 @@ public class ZonaChangeSound : MonoBehaviour
     public TypeZona zonaDefinition;
     PlayerHere player;
 
-    public int oneSound;
+    int oneSound;
     private void Awake()
     {
         player = GetComponent<PlayerHere>();

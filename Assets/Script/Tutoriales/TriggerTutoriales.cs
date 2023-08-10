@@ -24,6 +24,10 @@ public class TriggerTutoriales : MonoBehaviour
             boxTrigger.enabled = false;
         }
     }
+    private void Update()
+    {
+        Debug.Log("Time Scale" + Time.timeScale);
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))

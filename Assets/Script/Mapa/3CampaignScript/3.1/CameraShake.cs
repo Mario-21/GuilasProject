@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using FMOD.Studio;
 
 public class CameraShake : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class CameraShake : MonoBehaviour
     public int zonaModificada;
     private void Awake()
     {
-        //cineMachineCamera = GetComponent<CinemachineVirtualCamera>();
+
     }
     public void Shake()
     {

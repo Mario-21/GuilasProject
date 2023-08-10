@@ -16,8 +16,7 @@ public class AmbienceChangeTrigger : MonoBehaviour
         {
             if(AmbienceActual.ambienceNow != ambienceArea)
             {
-                AmbienceActual.ambienceNow = ambienceArea;
-                AudioManager.instancia.AmbienceStopNew(ambienceArea);
+                MusicAmbienceManager.instance.ChangeAmbienceManager(ambienceArea);
             }
             
         }

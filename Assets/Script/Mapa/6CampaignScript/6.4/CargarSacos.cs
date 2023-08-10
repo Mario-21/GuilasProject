@@ -5,7 +5,7 @@ using UnityEngine;
 public class CargarSacos : MonoBehaviour
 {
     [Header("Elevator Info")]
-    [SerializeField] Polipasto_Normal platform;
+    [SerializeField] Polipasto_Normal platformNormal;
     [SerializeField] PlatformEnCarga platformInCharge;
     public int indexPosPlatform;
 
@@ -57,7 +57,7 @@ public class CargarSacos : MonoBehaviour
     }
     void CargarBags()
     {
-        if(cargaAcive && platform.transform.position == platform.destinos[indexPosPlatform].position)
+        if(cargaAcive && platformNormal.transform.position == platformNormal.destinos[indexPosPlatform].position)
         {
             timeCargar += Time.deltaTime;
             if(timeCargar >= timeCargarLimite && indexItemCargar < itemInPlatformC.Count)
@@ -78,7 +78,7 @@ public class CargarSacos : MonoBehaviour
                 //I finish to cargar
                 cargaAcive = false;
                 //the platform can move
-                platform.enabled = true;
+                platformNormal.enabled = true;
                 //Reset Time 
                 timeCargar = 0;
                 //Made only one time
@@ -94,7 +94,11 @@ public class CargarSacos : MonoBehaviour
     void PlatformActive()
     {
         //if The platform reaches the destiny and is descargada, disable the platform to the soldier can cargar
-        if (platform.transform.position == platform.destinos[indexPosPlatform].position && !platformInCharge.cargo) platform.enabled = false;
+        if (platformNormal.transform.position == platformNormal.destinos[indexPosPlatform].position && !platformInCharge.cargo) 
+        {
+            platformNormal.enabled = false;
+            platformNormal.emitterAscensor.Stop();
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

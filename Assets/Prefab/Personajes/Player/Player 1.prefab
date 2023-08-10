@@ -109,13 +109,6 @@ MonoBehaviour:
   municionText: {fileID: 7088808354135713845}
   shootAnim: {fileID: 5750129213846619141}
   refreshWeapon: 0.5
-  shootSound:
-    Guid:
-      Data1: -358409999
-      Data2: 1334171330
-      Data3: 1726903982
-      Data4: 1562832283
-    Path: event:/Shoot
   bullet: {fileID: 4807674687017979912, guid: 5eb8ddb7851788c418c30b4c314a2da1, type: 3}
   theySeeYou: {fileID: 2691870885741423122}
 --- !u!1 &1065910357261844661
@@ -413,6 +406,7 @@ Transform:
   m_Children:
   - {fileID: 1425663039986608500}
   - {fileID: 5194523000048681913}
+  - {fileID: 5825511926158753134}
   m_Father: {fileID: 1425663039846246149}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -610,6 +604,8 @@ MonoBehaviour:
   b8: {fileID: 7404634530439725226}
   pistol: {fileID: 2274574423668032000}
   crearIcono: {fileID: 5701481715361404064}
+  triggerFootSteps: {fileID: 0}
+  releaseMov: 0
 --- !u!114 &6307014440896943787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -630,12 +626,20 @@ MonoBehaviour:
   hiddenIcon: {fileID: 294785315827399991, guid: c87476b525db3d740b0c04da29db31fb,
     type: 3}
   imHidden: 0
+  canHidden: 0
   layerDesocultacion: 16
   arma: {fileID: 2274574423668032000}
   mira: {fileID: 8273260715807006018}
   cuerpoPlayer: {fileID: 1425663039361588080}
   ParticulaEsconderse: {fileID: 6760277790133665456, guid: 8422978191525e44db5b027cb5c1a13d,
     type: 3}
+  hiddenSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!114 &8004836998412987235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -690,6 +694,13 @@ MonoBehaviour:
   alturaDeath: 22
   "alturaStartDa\xF1o": 3.2
   alturaTotalCalculo: 0
+  boneBreak:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &1425663039986608501
 GameObject:
   m_ObjectHideFlags: 0
@@ -10535,6 +10546,76 @@ Transform:
   m_Father: {fileID: 1425663039846246149}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7196682539910621481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5825511926158753134}
+  - component: {fileID: 8987341226682823717}
+  - component: {fileID: 1796167497455165356}
+  m_Layer: 16
+  m_Name: Trigger SueloSteps
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5825511926158753134
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7196682539910621481}
+  m_LocalRotation: {x: -0, y: -0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.019, y: -0.43, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1425663039361588080}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &8987341226682823717
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7196682539910621481}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.15
+--- !u!114 &1796167497455165356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7196682539910621481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1b1c5d7e64197f4ca61ad817e63a48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerControl: {fileID: 6041581643071098403}
+  actualStepsSound:
+    Guid:
+      Data1: 313669315
+      Data2: 1076808047
+      Data3: 866740915
+      Data4: -301642034
+    Path: event:/SFX/Player/Pasos/Cesped/GrassSteps
+  actualFloor: 0
+  floorNow: 2
 --- !u!1 &7830131406566220437
 GameObject:
   m_ObjectHideFlags: 0

@@ -50,7 +50,7 @@ public class BeginCinematic_1 : MonoBehaviour
                 if (timeToStartCinematic <= 0) { AnimationHud.detectar_echar.SetBool("Transicion", false); timeToStartCinematic = 0; cinematicScenes = CinematicPhases.scene_3; }
                 break;
             case CinematicPhases.scene_3:
-                if (!polipasto.bajar) 
+                if (!polipasto.mov) 
                 {
                     EstructuraNiveles.nivel = volverEscena;
                     AnimationHud.detectar_echar.SetTrigger("Detectar_Echar"); cinematicScenes = CinematicPhases.normal; 

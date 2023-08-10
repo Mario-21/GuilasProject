@@ -54,9 +54,37 @@ public class FMODEvent : MonoBehaviour
     [SerializeField] public EventReference b8Recoger;
     [SerializeField] public EventReference b8CollisionGround;
     //CAMBIAR EL SOPNIDO DEL COCHE A AMBIENTE
-    [Header("Enemy SFX")]
+    [Header("Soldier Enemy SFX")]
+    public string apartado_1_Enemy;
     [SerializeField] public EventReference stepsEnemy;
-    
+    [Space(20)]
+    public string apartado_2_Enemy;
+    [SerializeField] public EventReference dañarEnemy;
+    [SerializeField] public EventReference fallEnemy;
+    [SerializeField] public EventReference sleepEnemy;
+    [Space(20)]
+    public string apartado_3_Enemy;
+    [SerializeField] public EventReference call;
+    [SerializeField] public EventReference call_Cadaver;
+    [Space(20)]
+    public string apartado_4_Enemy;
+    [SerializeField] public EventReference attackMode;
+    [SerializeField] public EventReference searchMode;
+    [SerializeField] public EventReference detect_CadaverMode;
+    [SerializeField] public EventReference detect_NormalMode;
+    [Header("Shark Enemy SFX")]
+    [SerializeField] public EventReference biteAttack;
+    [SerializeField] public EventReference nadarShark;
+    [Header("Items Interactives SFX")]
+    public string terminal;
+    [SerializeField] public EventReference teclear;
+    [SerializeField] public EventReference endTerminal;
+    public string ascensor;
+    [SerializeField] public EventReference botonGeneral;
+    [SerializeField] public EventReference ascensorMove;
+    public string derrumbamiento;
+    [SerializeField] public EventReference rumbling;
+
 
     public static FMODEvent instancia;
     public void Awake()

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class Sharks : MonoBehaviour
 {
@@ -23,9 +24,12 @@ public class Sharks : MonoBehaviour
     public DirectionShark directionShark;
 
     public SharkSpawn sharkSpawn;
+    [Header("Sound Shark")]
+    StudioEventEmitter swimShark;
+    int soundShark;
     void Start()
     {
-        //sharkSpawn = GetComponent<SharkSpawn>();
+        swimShark = AudioManager.instancia.InitializeEventEmitter(FMODEvent.instancia.nadarShark, this.gameObject);
         transform.position = sharkSpawn.spawn.position;
         playerLife = GameObject.FindObjectOfType<VidaPlayer>();
     }
@@ -35,6 +39,7 @@ public class Sharks : MonoBehaviour
     {
         Mathf.Abs(scaleNegative);
         WaitShark();
+        SharkSoundNadar();
         switch (directionShark)
         {
             case DirectionShark.derecha:
@@ -45,15 +50,6 @@ public class Sharks : MonoBehaviour
                 Debug.Log("Izquierda Shark");
                 SharkMoveIzquierda();
                 break;
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("Player Choca Shark");
-            playerLife.Daño(dañoShark);
         }
     }
     void SharkMoveDerecha()
@@ -101,6 +97,33 @@ public class Sharks : MonoBehaviour
                 }
                 wait = false;
             }
+        }
+    }
+    void SharkSoundNadar()
+    {
+        if (!wait)
+        {
+            //reproduce el sonido del nado 1 vez
+            if (soundShark < 1)
+            {
+                swimShark.Play();
+                soundShark++;
+            }
+        }
+        else
+        {
+            //En cuanto este sea verdadero, significara que tiene que parar
+            swimShark.Stop();
+            soundShark = 0;
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Player Choca Shark");
+            playerLife.Daño(dañoShark);
+            AudioManager.instancia.PlayOneShot(FMODEvent.instancia.biteAttack);
         }
     }
     private void OnDisable()

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4546593624630477156}
   - component: {fileID: 4546593624630477157}
   - component: {fileID: 4546593624630477155}
+  - component: {fileID: 5625244641524813733}
+  - component: {fileID: 82784689740387683}
   m_Layer: 0
   m_Name: 'Door '
   m_TagString: Untagged
@@ -100,6 +102,8 @@ MonoBehaviour:
   iconoZone: {fileID: 0}
   iconeZoneSprite: {fileID: 0}
   iconoArrow: {fileID: 21300000, guid: 47cc322370def12428f67ca7278ac589, type: 3}
+  playerCuerpo: {fileID: 0}
+  bloqPlayer: {fileID: 0}
 --- !u!61 &4546593624630477155
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -126,3 +130,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.25, y: 2.25}
   m_EdgeRadius: 0
+--- !u!114 &5625244641524813733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4546593624630477159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03d1da2e7bdc6f04f94744e4500b4aa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerImHere: 0
+--- !u!114 &82784689740387683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4546593624630477159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bfa86b30a070664aa606af421f24c13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zonaSound:
+    Guid:
+      Data1: 876719133
+      Data2: 1330566329
+      Data3: 592015251
+      Data4: 1043647502
+    Path: event:/SFX/Player/Esconderse/Puerta_Hidden/Puertas
+  zonaDefinition: 0
+  oneSound: 0

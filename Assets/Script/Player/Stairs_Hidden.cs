@@ -63,6 +63,7 @@ public class Stairs_Hidden : MonoBehaviour
                     AudioManager.instancia.PlayOneShot(hiddenSound);
                     //Parar Movimiento
                     //weaponHidden.tiempoVisible += 99;
+                    mov.playerStepsGrass.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
                     mov.horizontalMov = 0;
                     mov.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
 

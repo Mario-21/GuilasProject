@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class CogerObjetoSoldado : MonoBehaviour
 {
@@ -21,8 +22,10 @@ public class CogerObjetoSoldado : MonoBehaviour
         NormalItem,
         UiItem
     }
-    public TypeItem typeItem; 
+    public TypeItem typeItem;
 
+    [Header("Item SFX")]
+    public EventReference itemSound;
 
 
     private void Awake()
@@ -54,6 +57,8 @@ public class CogerObjetoSoldado : MonoBehaviour
     {
         if (Input.GetButtonDown("Take") && !SaveScene.instancia.listaItemsNivelGuardar[objetoARecoger].objetoObtenido)
         {
+            AudioManager.instancia.PlayOneShot(itemSound);
+
             iconItem.SpawnIcon();
 
             SaveScene.instancia.listaItemsNivelGuardar[objetoARecoger].objetoObtenido = true;

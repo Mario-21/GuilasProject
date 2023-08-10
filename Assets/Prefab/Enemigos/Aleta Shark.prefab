@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7012203465730086634}
   - component: {fileID: 7012203465730086635}
   - component: {fileID: 7012203465730086639}
+  - component: {fileID: 346527686690644065}
   m_Layer: 0
   m_Name: Aleta Shark
   m_TagString: Untagged
@@ -149,7 +150,39 @@ MonoBehaviour:
   speed: 3
   up: {fileID: 0}
   down: {fileID: 0}
+  spawn: {fileID: 0}
   up_DownShark: 0
+--- !u!114 &346527686690644065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7012203465730086632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1687334045
+      Data2: 1234421671
+      Data3: -1189437510
+      Data4: 1978955373
+    Path: event:/SFX/Enemy/Shark/Nado/NadarShark
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 5
+  OverrideMaxDistance: 10
 --- !u!1 &7012203466330620488
 GameObject:
   m_ObjectHideFlags: 0

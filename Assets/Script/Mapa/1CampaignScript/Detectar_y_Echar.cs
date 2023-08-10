@@ -66,6 +66,7 @@ public class Detectar_y_Echar : MonoBehaviour
         switch (detectScene)
         {
             case SecuenceDetect.girarSoldado:
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.detect_NormalMode);
                 //Inhabilita mi inventario
                 menuPlayer.enabled = false;
                 menuPlayer.inventory.SetActive(false);

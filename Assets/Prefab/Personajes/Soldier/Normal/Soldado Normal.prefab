@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &146682101754775383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6948045037671793098}
+  - component: {fileID: 2831089137867503209}
+  m_Layer: 14
+  m_Name: Call_Emitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6948045037671793098
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146682101754775383}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6252209985963870368}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2831089137867503209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146682101754775383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -653322098
+      Data2: 1080450889
+      Data3: -1621960567
+      Data4: 910673782
+    Path: event:/SFX/Enemy/Soldier/Llamar_Todos/C_All
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 7
+  OverrideMaxDistance: 15
 --- !u!1 &1002202275401220711
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,6 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2145132cb11bba540ae734181d786c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vidaNowSoldier: 0
 --- !u!1 &3313515297685896559
 GameObject:
   m_ObjectHideFlags: 0
@@ -5370,11 +5433,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vida: 1
+  vidaMax: 0
   particularDormir: {fileID: 8107291409287105608}
   dormido:
     serializedVersion: 2
     m_Bits: 4096
   cuerpo: {fileID: 6252209985963870371}
+  sleepEmitter: {fileID: 143870527329736427}
+  itemSleepEmissor: {fileID: 6252209985708295358}
 --- !u!114 &4887143178439294451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5396,6 +5462,9 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 1048576
+  detectarPlayerMask:
+    serializedVersion: 2
+    m_Bits: 1114112
   anguloVision: 50
   velocidad: 5
   aceleracion: 25
@@ -5461,6 +5530,7 @@ MonoBehaviour:
   distanciaStartTeleport: 1
   tiempoEmpezarTeleportLimite: 3
   wantTeleport: 1
+  callEmitter: {fileID: 146682101754775383}
   seePlayer: 0
 --- !u!114 &5382868657175186577
 MonoBehaviour:
@@ -5500,7 +5570,7 @@ MonoBehaviour:
       Data2: 1097111985
       Data3: 56071865
       Data4: -764401685
-    Path: event:/SFX/Enemy/Pasos/EnemySteps
+    Path: event:/SFX/Enemy/Soldier/Pasos/EnemySteps
   Event: 
   PlayEvent: 0
   StopEvent: 0
@@ -5604,6 +5674,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6252209985708295357}
   - component: {fileID: 6252209985708295355}
+  - component: {fileID: 143870527329736427}
   m_Layer: 14
   m_Name: cabeza
   m_TagString: Enemy
@@ -5677,6 +5748,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &143870527329736427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6252209985708295358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1208874883
+      Data2: 1121753066
+      Data3: -563748468
+      Data4: 1391081310
+    Path: "event:/SFX/Enemy/Soldier/Da\xF1o/Sleep"
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 5
+  OverrideMaxDistance: 8
 --- !u!1 &6252209985963870371
 GameObject:
   m_ObjectHideFlags: 0
@@ -5707,6 +5809,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3745724568143058681}
+  - {fileID: 6948045037671793098}
   m_Father: {fileID: 6252209984872713574}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD.Studio;
 
 public class Derrumbamiento : MonoBehaviour
 {
@@ -18,12 +19,19 @@ public class Derrumbamiento : MonoBehaviour
     [Header("Soldier Inactive")]
     public List<SoldadoNormal> listaSoldadosCopia;
 
+    EventInstance rumbling;
 
+    private void Start()
+    {
+       rumbling = AudioManager.instancia.CreateEventInstance(FMODEvent.instancia.rumbling);
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("BalaPlayer")) 
         {    
             Destroy(collision.gameObject);
+            //se sigue reproduciendo aun cambiando de escena, hacerlo una instancia
+            rumbling.start();
             Rumbling();
         }
     }
@@ -36,6 +44,7 @@ public class Derrumbamiento : MonoBehaviour
     }
     void Rumbling()
     {
+
         StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
 
         //Asign the level
@@ -57,5 +66,10 @@ public class Derrumbamiento : MonoBehaviour
         //Bloquea tus movimientos y arma para no aprovechar la situacion
         player.BloquearMovPlayer();
     }
-    
+    private void OnDisable()
+    {
+        rumbling.stop(STOP_MODE.IMMEDIATE);
+        rumbling.release();
+    }
+
 }

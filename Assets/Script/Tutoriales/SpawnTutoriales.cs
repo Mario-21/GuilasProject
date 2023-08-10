@@ -13,6 +13,7 @@ public class SpawnTutoriales : MonoBehaviour
     PauseMenu pause;
     void Start()
     {
+
         pause = FindObjectOfType<PauseMenu>();
         GameObject spawn = Instantiate(tutoriales[spawnTutorial]);
         spawn.transform.SetParent(gameObject.transform);

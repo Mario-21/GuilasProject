@@ -5,7 +5,7 @@ using UnityEngine;
 public class DescargarSacos : MonoBehaviour
 {
     [Header("Elevator Info")]
-    [SerializeField] Polipasto_Normal platform;
+    [SerializeField] Polipasto_Normal platformNormal;
     [SerializeField] PlatformEnCarga platformInCharge;
     public int indexPosPlatform;
 
@@ -58,7 +58,7 @@ public class DescargarSacos : MonoBehaviour
 
     void DescargarBags()
     {
-        if (descargaActive && platform.transform.position == platform.destinos[indexPosPlatform].position)
+        if (descargaActive && platformNormal.transform.position == platformNormal.destinos[indexPosPlatform].position)
         {
             timeCargar += Time.deltaTime;
             //Start Descarga
@@ -81,7 +81,7 @@ public class DescargarSacos : MonoBehaviour
                 //I finish to descargar
                 descargaActive = false;
                 //The platform can move
-                platform.enabled = true;
+                platformNormal.enabled = true;
                 //Reset Time 
                 timeCargar = 0;
                 //Made only one time
@@ -97,7 +97,11 @@ public class DescargarSacos : MonoBehaviour
     void PlatformActive()
     {
         //If the platform is in her position and is in charge, desactive the component to wait 
-        if (platform.transform.position == platform.destinos[indexPosPlatform].position && platformInCharge.cargo) platform.enabled = false;
+        if (platformNormal.transform.position == platformNormal.destinos[indexPosPlatform].position && platformInCharge.cargo) 
+        {
+            platformNormal.enabled = false;
+            platformNormal.emitterAscensor.Stop();
+        }
         //Make a number that change when the enemy enter and active the platform again if soldiers are life 
     }
     private void OnTriggerEnter2D(Collider2D collision)

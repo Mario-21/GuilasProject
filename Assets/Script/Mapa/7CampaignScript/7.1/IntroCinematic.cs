@@ -74,7 +74,8 @@ public class IntroCinematic : MonoBehaviour
                 //El soldado va y enciende el ascensor
                 if(timeBetweenScene >= 5)
                 {
-                    ascensorIntro.interruptorBajar = false;
+
+                    ascensorIntro.piso = 1;
                     startScene = IntroBegin.End;
                 }
                 else

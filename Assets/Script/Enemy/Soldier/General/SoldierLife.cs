@@ -10,7 +10,7 @@ public class SoldierLife : MonoBehaviour
     //Soldado Armadura 3;
     [Header("Vida Soldado Data")]
     public int vida;
-    int vidaMax;
+    [HideInInspector] public int vidaMax;
     ActualStatus status;
 
 
@@ -27,7 +27,10 @@ public class SoldierLife : MonoBehaviour
 
     Rigidbody2D rB2D;
 
-    StudioEventEmitter emitterSteps;
+    [Header("Enemy Sound Emitter")]
+    public StudioEventEmitter sleepEmitter;
+    public GameObject itemSleepEmissor;
+    StudioEventEmitter stepsEmitter;
 
     private void Awake()
     {
@@ -44,7 +47,9 @@ public class SoldierLife : MonoBehaviour
     }
     void Start()
     {
-        emitterSteps = AudioManager.instancia.InitializeEventEmitter(FMODEvent.instancia.stepsEnemy, this.gameObject);
+        stepsEmitter = AudioManager.instancia.InitializeEventEmitter(FMODEvent.instancia.stepsEnemy, this.gameObject);
+
+        sleepEmitter = AudioManager.instancia.InitializeEventEmitter(FMODEvent.instancia.sleepEnemy, itemSleepEmissor);
 
         //Setear la vidaMax Actual
         vidaMax = vida;
@@ -54,15 +59,18 @@ public class SoldierLife : MonoBehaviour
 
         //Status Animacion
         anim.SetInteger("Status Life", vida);
-    }
 
-    
-    void Update()
-    {
-
+        //Si al entrar ya estoy muerto, tiene que saltar el audio sleep
         if(vida <= 0)
         {
-            emitterSteps.Stop();
+            sleepEmitter.Play();
+        }
+    }
+    void Update()
+    {
+        if (vida <= 0)
+        {
+            stepsEmitter.Stop();
 
             anim.SetLayerWeight(1, 1);
             //Anula el estado de uno de los dos tipos de enemigos
@@ -80,8 +88,6 @@ public class SoldierLife : MonoBehaviour
             rB2D.drag = 0;
 
         }
-        
-
     }
     public void Daño(int daño)
     {
@@ -95,12 +101,16 @@ public class SoldierLife : MonoBehaviour
     {
         if(vida != vidaMax)
         {
+            AudioManager.instancia.PlayOneShot(FMODEvent.instancia.dañarEnemy);
+            Debug.Log("Doer");
             SoldierActiveInScene.instancia.soldiersStatus[status.iD].statusVida = vida;
             vidaMax = vida;
         }
     }
+    //Evento Animacion
     public void SleepingParticles()
     {
+        sleepEmitter.Play();
         particularDormir.Play();
     }
     void RestarSoldadoActivo()
@@ -120,6 +130,7 @@ public class SoldierLife : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("ObjetoCaer"))
         {
+            AudioManager.instancia.PlayOneShot(FMODEvent.instancia.fallEnemy);
             Daño(3);
         }
     }

@@ -33,10 +33,9 @@ public class BloquearMovimientoPlayer : MonoBehaviour
     {
         //Don't loss your life when you are blocked
         //vidaActual = vidaPlayer.vidaActual;
-        //Detener Audio pasos
-        AudioManager.instancia.CleanUp();
         //Deactive LifePlayer; Note: Keep the live when bloq is active
         vidaPlayer.enabled = false;
+        player.playerStepsGrass.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         //Deactive Player
         player.enabled = false;
         player.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
@@ -125,8 +124,9 @@ public class BloquearMovimientoPlayer : MonoBehaviour
     }
     public void PausarGame()
     {
+        player.playerStepsGrass.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         //Detener Audio pasos
-        AudioManager.instancia.StopAudios();
+        AudioManager.instancia.PauseAudios();
         //Desactivar Armas
         pistol.enabled = false;
         conditionToChangeWeapon.enabled = false;
@@ -137,6 +137,7 @@ public class BloquearMovimientoPlayer : MonoBehaviour
         //Destruir el item creado
         Destroy(itemCreate.objetoClone);
         //Desactivar Audio
+        
     }
     public void ReanudarGame()
     {
