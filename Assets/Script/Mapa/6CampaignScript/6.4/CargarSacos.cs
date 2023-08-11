@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class CargarSacos : MonoBehaviour
 {
@@ -20,10 +21,16 @@ public class CargarSacos : MonoBehaviour
     public float timeDefaultWaitSoldier;
     public float timeCargar;
 
+    [Header("Cargar SFX")]
+    [SerializeField] EventReference cargaSFX;
+    StudioEventEmitter emissorCarga;
+    [SerializeField] GameObject itemCarga;
+
     int oneAction;
     public bool cargaAcive;
     void Start()
     {
+        emissorCarga = AudioManager.instancia.InitializeEventEmitter(cargaSFX, itemCarga);
         //Faltaria hacer los otros dos triggers que te ponen el saco
     }
 
@@ -31,7 +38,7 @@ public class CargarSacos : MonoBehaviour
     {
         
         //El polipasto tiene que llegar
-        if(cargaSoldier.GetComponent<SoldierLife>().vida > 0)
+        if(cargaSoldier.GetComponent<SoldierLife>().vida > 0 && !cargaSoldier.berserker)
         {
             PlatformActive();
             if (oneAction < 1)
@@ -62,6 +69,7 @@ public class CargarSacos : MonoBehaviour
             timeCargar += Time.deltaTime;
             if(timeCargar >= timeCargarLimite && indexItemCargar < itemInPlatformC.Count)
             {
+                emissorCarga.Play();
                 //Put item in platform
                 itemInPlatformC[indexItemCargar].SetActive(true);
                 itemFromSoldierC[indexItemCargar].SetActive(false);

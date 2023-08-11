@@ -5,19 +5,27 @@ using FMODUnity;
 
 public class Caer_Cabeza : MonoBehaviour
 {
-    Rigidbody2D rb;
-
     public int indexModificar;
+    Rigidbody2D rb;
+    public enum TypePlatform
+    {
+        rama,
+        polipasto
+    }
+    [Header("Tipo de plataforma")]
+    public TypePlatform typePlatform;
 
+    [Header("Item a caer")]
     [SerializeField] Caida_Objeto caidaObjeto;
-    [SerializeField] JugadorMovimiento playerAltura;
 
-    int vecesSaltadas;
+    [Header("Saltos para hacer qur caiga")]
     public int LimitevecesSaltadas = 3;
+    int vecesSaltadas;
 
     [Header("Sound Effect Ramas")]
     public EventReference shoot_Caer;
     public EventReference player_Touch;
+    public EventReference impacto;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -26,21 +34,32 @@ public class Caer_Cabeza : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("BalaPlayer"))
+        switch (typePlatform)
         {
-            rb.bodyType = RigidbodyType2D.Dynamic;
-            rb.gravityScale = 1;
-            Destroy(collision.gameObject);
-            StatusGameobjectsVariables.statusGameobject.modificacion[indexModificar].modificacion = true;
-            AudioManager.instancia.PlayOneShot(shoot_Caer);
+            //Si es la rama puedes simplemente disparar a la misma para que esta caiga
+            case TypePlatform.rama:
+                if (collision.gameObject.CompareTag("BalaPlayer"))
+                {
+                    rb.bodyType = RigidbodyType2D.Dynamic;
+                    rb.gravityScale = 1;
+                    Destroy(collision.gameObject);
+                    StatusGameobjectsVariables.statusGameobject.modificacion[indexModificar].modificacion = true;
+                    AudioManager.instancia.PlayOneShot(shoot_Caer);
+                }
+                break;
+            //El polipasto es dependiente de una cuerda por tanto solo puede caer al romper la misma
+            case TypePlatform.polipasto:
+                break;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //Esto es irrelevante para el tipo de plataforma
         if (collision.gameObject.CompareTag("Player"))
         {
             vecesSaltadas++;
-            if(vecesSaltadas >= LimitevecesSaltadas)
+            AudioManager.instancia.PlayOneShot(player_Touch);
+            if (vecesSaltadas >= LimitevecesSaltadas)
             {
                 rb.bodyType = RigidbodyType2D.Dynamic;
                 rb.gravityScale = 1;
@@ -48,31 +67,17 @@ public class Caer_Cabeza : MonoBehaviour
             }
             else
             {
-                AudioManager.instancia.PlayOneShot(player_Touch);
+                //AudioManager.instancia.PlayOneShot(player_Touch);
             }
         }
-        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.layer == 9 || collision.gameObject.CompareTag("Enemy"))
         {
+            AudioManager.instancia.PlayOneShot(impacto);
             //Cuando choca contra el suelo tambien deberia modificarse
             StatusGameobjectsVariables.statusGameobject.modificacion[indexModificar].modificacion = true;
             caidaObjeto.ObjetoInGround();
             //Quiza cambiar 
             Destroy(this.gameObject);
-        }
-    }
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            //O lo quito y simplemente lo mantengo con darle 3 veces encima o colocas el FallDamage, lo que con lleva que tenga que reasignarlo en todos los niveles :(
-            /*
-            if (Mathf.Abs(playerAltura.diferenciaAltura) > 5)
-            {
-                Debug.Log("FD");
-                rb.bodyType = RigidbodyType2D.Dynamic;
-                rb.gravityScale = 1;
-                rb.AddForce(new Vector2(0f, -1f),ForceMode2D.Impulse);
-            }*/
         }
     }
 }

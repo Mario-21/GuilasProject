@@ -3908,13 +3908,13 @@ PrefabInstance:
     - target: {fileID: 7136951151454070282, guid: fe1854321ea25f84fa57931d180939f8,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Escondite
       objectReference: {fileID: 0}
     - target: {fileID: 7136951151454070283, guid: fe1854321ea25f84fa57931d180939f8,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f525e7ffbe19cd34ca7cfecfdc419c20,
+      objectReference: {fileID: 21300000, guid: 131800b1fd853e942b2420c3ba14856d,
         type: 3}
     m_RemovedComponents:
     - {fileID: 5790560054398759841, guid: fe1854321ea25f84fa57931d180939f8, type: 3}
@@ -26324,7 +26324,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 625955985}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.487915, y: -11.86837, z: 0}
+  m_LocalPosition: {x: -7.6428223, y: -12.369243, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1879235937}
@@ -26756,6 +26756,16 @@ PrefabInstance:
       propertyPath: allLayersPlayer.m_Bits
       value: 1114112
       objectReference: {fileID: 0}
+    - target: {fileID: 4887143178439294451, guid: c0c7e686e24850a489fd7abdbf3e46a8,
+        type: 3}
+      propertyPath: outRange
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887143178439294451, guid: c0c7e686e24850a489fd7abdbf3e46a8,
+        type: 3}
+      propertyPath: insideRange
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5382868657175186577, guid: c0c7e686e24850a489fd7abdbf3e46a8,
         type: 3}
       propertyPath: iD
@@ -26769,12 +26779,12 @@ PrefabInstance:
     - target: {fileID: 6252209984872713574, guid: c0c7e686e24850a489fd7abdbf3e46a8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.05
+      value: -11.204907
       objectReference: {fileID: 0}
     - target: {fileID: 6252209984872713574, guid: c0c7e686e24850a489fd7abdbf3e46a8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -14.036811
+      value: -14.5376835
       objectReference: {fileID: 0}
     - target: {fileID: 6252209984872713574, guid: c0c7e686e24850a489fd7abdbf3e46a8,
         type: 3}
@@ -27004,7 +27014,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 712970824}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.875092, y: -11.950687, z: 0}
+  m_LocalPosition: {x: -10.029999, y: -12.45156, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1879235937}
@@ -27685,6 +27695,7 @@ GameObject:
   m_Component:
   - component: {fileID: 841955931}
   - component: {fileID: 841955932}
+  - component: {fileID: 841955933}
   m_Layer: 0
   m_Name: Carro Carga
   m_TagString: Untagged
@@ -27726,6 +27737,37 @@ MonoBehaviour:
   player: {fileID: 1850624189}
   soldadoVida: {fileID: 1250861227}
   vidaActual: 0
+--- !u!114 &841955933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841955930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1976681111
+      Data2: 1279642554
+      Data3: -1100322378
+      Data4: 1961438983
+    Path: event:/SFX/Enemy/Soldier/InteractionsSoldados/Coger_Sacar_Cajas
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 5
+  OverrideMaxDistance: 10
 --- !u!1 &860506204
 GameObject:
   m_ObjectHideFlags: 0
@@ -29431,6 +29473,14 @@ MonoBehaviour:
   timeCargarLimite: 2
   timeDefaultWaitSoldier: 5
   timeCargar: 0
+  cargaSFX:
+    Guid:
+      Data1: -1976681111
+      Data2: 1279642554
+      Data3: -1100322378
+      Data4: 1961438983
+    Path: event:/SFX/Enemy/Soldier/InteractionsSoldados/Coger_Sacar_Cajas
+  itemCarga: {fileID: 1810797403}
   cargaAcive: 0
 --- !u!1 &1176619546
 GameObject:
@@ -30949,23 +30999,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   indexModificar: 2
+  typePlatform: 1
   caidaObjeto: {fileID: 308588136}
-  playerAltura: {fileID: 755786778}
   LimitevecesSaltadas: 3
   shoot_Caer:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 314157908
+      Data2: 1241905587
+      Data3: -1154418270
+      Data4: -437439528
+    Path: event:/SFX/Objetos_Interactivos/Cuerda/CutRope
   player_Touch:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 48711874
+      Data2: 1310719942
+      Data3: -1135563861
+      Data4: -504263140
+    Path: event:/SFX/Objetos_Interactivos/Platform/PlatformTouch
+  impacto:
+    Guid:
+      Data1: 501551089
+      Data2: 1114738300
+      Data3: 1024763805
+      Data4: -1678825142
+    Path: event:/SFX/Objetos_Interactivos/Platform/FallPlatform
 --- !u!1 &1435807974
 GameObject:
   m_ObjectHideFlags: 0
@@ -30997,7 +31054,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bce461e4ed8ed644a7d69a75dadbf3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  indexMod: 2
   rbChild: {fileID: 1422057456}
+  cuerdaRota: {fileID: 21300004, guid: fcabc19693987dc47911778fbb36690b, type: 3}
+  soundCuerdaRota:
+    Guid:
+      Data1: 264442555
+      Data2: 1274094573
+      Data3: -1628296821
+      Data4: 308014089
+    Path: event:/SFX/Objetos_Interactivos/Cuerda/CutCuerda
 --- !u!61 &1435807976
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -31647,6 +31713,14 @@ MonoBehaviour:
   timeToCatchLimit: 2
   timeToTakeBag: 5
   soldierAction: 1
+  agarrar:
+    Guid:
+      Data1: -1976681111
+      Data2: 1279642554
+      Data3: -1100322378
+      Data4: 1961438983
+    Path: event:/SFX/Enemy/Soldier/InteractionsSoldados/Coger_Sacar_Cajas
+  emisorCarreta: {fileID: 1810797403}
 --- !u!1001 &1611234789
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31752,12 +31826,12 @@ PrefabInstance:
     - target: {fileID: 6252209984872713574, guid: c0c7e686e24850a489fd7abdbf3e46a8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.575092
+      value: -13.73
       objectReference: {fileID: 0}
     - target: {fileID: 6252209984872713574, guid: c0c7e686e24850a489fd7abdbf3e46a8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -14.119128
+      value: -14.62
       objectReference: {fileID: 0}
     - target: {fileID: 6252209984872713574, guid: c0c7e686e24850a489fd7abdbf3e46a8,
         type: 3}
@@ -53406,6 +53480,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1810797404}
   - component: {fileID: 1810797405}
+  - component: {fileID: 1810797406}
   m_Layer: 0
   m_Name: Carro Carga
   m_TagString: Untagged
@@ -53447,6 +53522,37 @@ MonoBehaviour:
   player: {fileID: 1850624189}
   soldadoVida: {fileID: 1250861227}
   vidaActual: 0
+--- !u!114 &1810797406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810797403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1976681111
+      Data2: 1279642554
+      Data3: -1100322378
+      Data4: 1961438983
+    Path: event:/SFX/Enemy/Soldier/InteractionsSoldados/Coger_Sacar_Cajas
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 5
+  OverrideMaxDistance: 10
 --- !u!1001 &1811860964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55207,6 +55313,14 @@ MonoBehaviour:
   timeToCatchLimit: 2
   timeToTakeBag: 5
   soldierAction: 0
+  agarrar:
+    Guid:
+      Data1: -1976681111
+      Data2: 1279642554
+      Data3: -1100322378
+      Data4: 1961438983
+    Path: event:/SFX/Enemy/Soldier/InteractionsSoldados/Coger_Sacar_Cajas
+  emisorCarreta: {fileID: 841955930}
 --- !u!1 &1949895787
 GameObject:
   m_ObjectHideFlags: 0
@@ -55616,7 +55730,7 @@ PrefabInstance:
     - target: {fileID: 3838564230275462092, guid: 76997908ada58b04fadfd58457619a1e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.5599966
+      value: -8.83
       objectReference: {fileID: 0}
     - target: {fileID: 3838564230275462092, guid: 76997908ada58b04fadfd58457619a1e,
         type: 3}
@@ -56339,6 +56453,14 @@ MonoBehaviour:
   - {fileID: 66871042}
   timeCargarLimite: 2
   timeDefaultWaitSoldier: 5
+  descargaSFX:
+    Guid:
+      Data1: -1976681111
+      Data2: 1279642554
+      Data3: -1100322378
+      Data4: 1961438983
+    Path: event:/SFX/Enemy/Soldier/InteractionsSoldados/Coger_Sacar_Cajas
+  itemDescarga: {fileID: 841955930}
 --- !u!1 &2114037136 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5555761558262405812, guid: a714d9ac7ea43494aa5f7d0db98e02d7,

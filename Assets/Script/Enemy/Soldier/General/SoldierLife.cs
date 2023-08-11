@@ -130,7 +130,6 @@ public class SoldierLife : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("ObjetoCaer"))
         {
-            AudioManager.instancia.PlayOneShot(FMODEvent.instancia.fallEnemy);
             Daño(3);
         }
     }

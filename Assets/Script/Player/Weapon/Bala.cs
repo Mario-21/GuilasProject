@@ -8,12 +8,11 @@ public class Bala : MonoBehaviour
     [Header("Características de la bala Player")]
     Rigidbody2D rb;
     public float speed;
-    public float daño = 10;
-    
-    
 
+    [SerializeField] LayerMask layerGround;
     void Start()
     {
+
         rb = GetComponent<Rigidbody2D>();
         if (JugadorMovimiento.direccionBala)
         {
@@ -25,7 +24,6 @@ public class Bala : MonoBehaviour
         }
 
     }
-
     void Update()
     {
         Destroy(this.gameObject, 2f);
@@ -39,10 +37,8 @@ public class Bala : MonoBehaviour
             vidaEnemy.Daño(1);
             Destroy(this.gameObject);
             ArmaController.preCollisionObject = false;
-
-
         }
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.layer == 9)
         {
             Destroy(this.gameObject);
             ArmaController.preCollisionObject = false;

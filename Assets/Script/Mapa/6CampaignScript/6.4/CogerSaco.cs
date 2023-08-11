@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class CogerSaco : MonoBehaviour
 {
@@ -23,6 +24,15 @@ public class CogerSaco : MonoBehaviour
     [Header("What action")]
     public ActionBags soldierAction;
 
+    [Header("SFX Agarrar")]
+    [SerializeField] EventReference agarrar;
+    StudioEventEmitter emissorEffect;
+    [SerializeField] GameObject emisorCarreta;
+
+    private void Start()
+    {
+        emissorEffect = AudioManager.instancia.InitializeEventEmitter(agarrar, emisorCarreta);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -46,6 +56,7 @@ public class CogerSaco : MonoBehaviour
                             itemToCatch[indexItemCatch].SetActive(true);
                             break;
                     }
+                    emissorEffect.Play();
                     indexItemCatch++;
                     timeToCatch = 0;
                 }

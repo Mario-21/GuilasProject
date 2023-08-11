@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class DescargarSacos : MonoBehaviour
 {
@@ -20,10 +21,16 @@ public class DescargarSacos : MonoBehaviour
     public float timeDefaultWaitSoldier;
     float timeCargar;
 
+    [Header("SFX Descargar")]
+    [SerializeField] EventReference descargaSFX;
+    StudioEventEmitter emissorDescarga;
+    [SerializeField] GameObject itemDescarga;
+
     int oneAction;
     bool descargaActive;
     void Start()
     {
+        emissorDescarga = AudioManager.instancia.InitializeEventEmitter(descargaSFX, itemDescarga);
         //Faltaria hacer los otros dos triggers que te ponen el saco
     }
 
@@ -32,7 +39,7 @@ public class DescargarSacos : MonoBehaviour
     {
         
         //El polipasto tiene que llegar
-        if (descargaSoldier.GetComponent<SoldierLife>().vida > 0)
+        if (descargaSoldier.GetComponent<SoldierLife>().vida > 0 && !descargaSoldier.berserker)
         {
             PlatformActive();
             if (oneAction < 1)
@@ -64,6 +71,7 @@ public class DescargarSacos : MonoBehaviour
             //Start Descarga
             if (timeCargar >= timeCargarLimite && indexItemDescarga < itemInPlatformD.Count)
             {
+                emissorDescarga.Play();
                 //Put item in platform
                 itemInPlatformD[indexItemDescarga].SetActive(false);
                 itemFromSoldierD[indexItemDescarga].SetActive(true);
