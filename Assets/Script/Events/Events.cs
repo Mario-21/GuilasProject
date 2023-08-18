@@ -35,7 +35,7 @@ public class Events : MonoBehaviour
             case PhasesOfScene.action:
 
                 timeChangeAction += Time.deltaTime;
-                if (timeChangeAction >= 2)
+                if (timeChangeAction >= 2.5)
                 {
                     actionOnCinematic();
                     phasesOnScene = PhasesOfScene.clear_screen;

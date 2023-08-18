@@ -14,32 +14,14 @@ public class ZonaChangeSound : MonoBehaviour
         Default
     }
     public TypeZona zonaDefinition;
-    PlayerHere player;
 
     int oneSound;
-    private void Awake()
-    {
-        player = GetComponent<PlayerHere>();
-    }
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (player.playerImHere) CambiarZonaSound();
-    }
-    void CambiarZonaSound()
+    public void CambiarZonaSound()
     {
         switch (zonaDefinition)
         {
             case TypeZona.ActionPlayer:
-                if (Input.GetButtonDown("Action"))
-                {
-                    AudioManager.instancia.PlayOneShot(zonaSound);
-                }
+                AudioManager.instancia.PlayOneShot(zonaSound);
                 break;
             case TypeZona.TriggerPlayer:
                 if(oneSound < 1)

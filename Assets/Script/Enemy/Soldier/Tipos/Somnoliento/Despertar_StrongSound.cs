@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class Despertar_StrongSound : MonoBehaviour
 {
-    Somnolencia somnolencia;
-    [SerializeField] ParticleSystem particulasDormido;
     SoldadoNormal soldadoDormido;
+    Somnolencia somnolenciaSoldado;
+    SoldierLife soldierLife;
 
+    [Header("Ubicaciones")]
     [SerializeField] Transform ubiSwitch;
     [SerializeField] Transform ubiOriginal;
 
-    float timeToGoSwitch;
-    bool returnSleep;
+    [Header("Time Despertar Data")]
+    [SerializeField] float timeDespertarLimit;
+    float timeDespertar;
 
     private void Awake()
     {
         soldadoDormido = GetComponent<SoldadoNormal>();
-        somnolencia = GetComponent<Somnolencia>();
+        somnolenciaSoldado = GetComponent<Somnolencia>();
+        soldierLife = GetComponent<SoldierLife>();
     }
 
     // Update is called once per frame
@@ -29,46 +32,47 @@ public class Despertar_StrongSound : MonoBehaviour
     {
         if (EncenderTaladro.encender)
         {
-            //Wake Up
-            somnolencia.enabled = false;
-            particulasDormido.Stop();
             //Change your direction guide you towards switch 
             soldadoDormido.ubicacionesDirigir[0] = ubiSwitch;
-
-            //Wait and check if anyone off the drills
-            timeToGoSwitch += Time.deltaTime;
-            //if time exceed this soldier go to off
-            //NOTA: Enlazar bien el tiempo con el personaje de arriba
-            if(timeToGoSwitch >= 4)
-            {
-                //Go to off switch
-                soldadoDormido.enabled = true;
-                returnSleep = false;
-            }
+            Despertar();
         }
         else
         {
             soldadoDormido.ubicacionesDirigir[0] = ubiOriginal;
-
-            
-            //if you are between this range, begin the time to return sleep
-           if (soldadoDormido.transform.position.x <= soldadoDormido.ubicacionesDirigir[0].position.x + 0.3f && soldadoDormido.transform.position.x >= soldadoDormido.ubicacionesDirigir[0].position.x - 0.3f)
+            if(soldadoDormido.ubicacionesDirigir[0].position.x != transform.position.x)
             {
-                if (!returnSleep)
-                {
-                    timeToGoSwitch -= Time.deltaTime;
-                    if (timeToGoSwitch <= 0)
-                    {
-                        soldadoDormido.enabled = false;
-                        somnolencia.enabled = true;
-                        soldadoDormido.GetComponent<Animator>().SetBool("WalkSoldier", false);
-                        returnSleep = true;
-                    }
-                }
+
             }
-            
+            else
+            {
+                RegresarSleep();
+            }
         }
         
 
+    }
+    void Despertar()
+    {
+        if(timeDespertar >= timeDespertarLimit)
+        {
+            //Somnolencia se desactiva
+            somnolenciaSoldado.enabled = false;
+            //Parar particulas y sonido 
+            soldierLife.sleepEmitter.Stop();
+            soldierLife.particularDormir.Stop();
+            //Soldado Activar
+            soldadoDormido.enabled = true;
+
+        }
+        else
+        {
+            timeDespertar += Time.deltaTime;
+        }
+    }
+    void RegresarSleep()
+    {
+        timeDespertar = 0;
+        somnolenciaSoldado.enabled = true;
+        soldadoDormido.enabled = false;
     }
 }

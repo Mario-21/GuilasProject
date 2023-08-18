@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(ZonaChangeSound))]
 public class Camino_CambiarZona : MonoBehaviour
 {
 
@@ -18,8 +19,10 @@ public class Camino_CambiarZona : MonoBehaviour
 
     bool camino;
     BoxCollider2D triggerBox;
+    ZonaChangeSound zonaChange;
     private void Start()
     {
+        zonaChange = GetComponent<ZonaChangeSound>();
         triggerBox = GetComponent<BoxCollider2D>();
     }
     private void Update()
@@ -36,6 +39,7 @@ public class Camino_CambiarZona : MonoBehaviour
             iconoZone.SetActive(true);
             if (Input.GetButtonDown("Action"))
             {
+                zonaChange.CambiarZonaSound();
                 //Desactivar collider
                 triggerBox.enabled = false;
                 iconoZone.SetActive(false);

@@ -11,7 +11,7 @@ public class FMODEvent : MonoBehaviour
     [Header("Ambience")]
     [SerializeField] public EventReference wind;
     [Header("Player SFX")]
-    public string apartado_1;
+    [SerializeField] string apartado_1;
     [SerializeField] public EventReference grassSteps;
     [SerializeField] public EventReference sandSteps;
     [SerializeField] public EventReference concreteSteps;
@@ -23,28 +23,28 @@ public class FMODEvent : MonoBehaviour
     [SerializeField] public EventReference wetSteps;
     [SerializeField] public EventReference swimSteps;
     [Space(20)]
-    public string apartado_2;
+    [SerializeField] string apartado_2;
     [SerializeField] public EventReference woodLadder;
     [SerializeField] public EventReference stealLadder;
     [SerializeField] public EventReference ropeLadder;
     [SerializeField] public EventReference splashWater;
     [Space(20)]
-    public string apartado_3;
+    [SerializeField] string apartado_3;
     [SerializeField] public EventReference arbustoHidden;
     [SerializeField] public EventReference cajaHidden;
     [SerializeField] public EventReference taquillaHidden;
     [SerializeField] public EventReference basuraHidden;
     [SerializeField] public EventReference puertaHidden;
     [Space(20)]
-    public string apartado_4;
+    [SerializeField] string apartado_4;
     [SerializeField] public EventReference damage;
     [SerializeField] public EventReference electroDamage;
     [Space(20)]
-    public string apartado_5;
+    [SerializeField] string apartado_5;
     [SerializeField] public EventReference takeClothes;
     [SerializeField] public EventReference takeOffClothes;
     [Space(20)]
-    public string apartado_6;
+    [SerializeField] string apartado_6;
     [SerializeField] public EventReference shoot;
     [SerializeField] public EventReference noAmmo;
     [SerializeField] public EventReference drawWeapon;
@@ -55,19 +55,19 @@ public class FMODEvent : MonoBehaviour
     [SerializeField] public EventReference b8CollisionGround;
     //CAMBIAR EL SOPNIDO DEL COCHE A AMBIENTE
     [Header("Soldier Enemy SFX")]
-    public string apartado_1_Enemy;
+    [SerializeField] string apartado_1_Enemy;
     [SerializeField] public EventReference stepsEnemy;
     [Space(20)]
-    public string apartado_2_Enemy;
+    [SerializeField] string apartado_2_Enemy;
     [SerializeField] public EventReference dañarEnemy;
     [SerializeField] public EventReference fallEnemy;
     [SerializeField] public EventReference sleepEnemy;
     [Space(20)]
-    public string apartado_3_Enemy;
+    [SerializeField] string apartado_3_Enemy;
     [SerializeField] public EventReference call;
     [SerializeField] public EventReference call_Cadaver;
     [Space(20)]
-    public string apartado_4_Enemy;
+    [SerializeField] string apartado_4_Enemy;
     [SerializeField] public EventReference attackMode;
     [SerializeField] public EventReference searchMode;
     [SerializeField] public EventReference detect_CadaverMode;
@@ -76,14 +76,26 @@ public class FMODEvent : MonoBehaviour
     [SerializeField] public EventReference biteAttack;
     [SerializeField] public EventReference nadarShark;
     [Header("Items Interactives SFX")]
-    public string terminal;
+    [SerializeField] string terminal;
     [SerializeField] public EventReference teclear;
     [SerializeField] public EventReference endTerminal;
-    public string ascensor;
+    [SerializeField] string ascensor;
     [SerializeField] public EventReference botonGeneral;
     [SerializeField] public EventReference ascensorMove;
-    public string derrumbamiento;
+    [SerializeField] string derrumbamiento;
     [SerializeField] public EventReference rumbling;
+    [Header("Temple SFX")]
+    [SerializeField] string dardos;
+    [SerializeField] public EventReference dardoShoot;
+    [SerializeField] public EventReference dardoImpact;
+    [SerializeField] string spear;
+    [SerializeField] public EventReference spearActive;
+    [SerializeField] public EventReference spearImpact;
+    [SerializeField] public EventReference spearGear;
+    [SerializeField] string traps;
+    [SerializeField] public EventReference baldosaTrap;
+    [SerializeField] public EventReference secretTemple;
+
 
 
     public static FMODEvent instancia;

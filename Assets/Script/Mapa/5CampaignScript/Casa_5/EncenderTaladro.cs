@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class EncenderTaladro : MonoBehaviour
 {
@@ -14,10 +15,22 @@ public class EncenderTaladro : MonoBehaviour
 
     int terminarParticulas;
 
+    [Header("Sound Effect")]
+    [SerializeField] List <StudioEventEmitter> emittersDrills;
+    [SerializeField] List<GameObject> itemEmisor;
+    [SerializeField] EventReference drillOn;
+
     private void Awake()
     {
         encender = false;
         herePlayer = GetComponent<PlayerHere>();
+    }
+    private void Start()
+    {
+        for(int e = 0; e < emittersDrills.Count; e++)
+        {
+            emittersDrills[e] = AudioManager.instancia.InitializeEventEmitter(drillOn, itemEmisor[e]);
+        }
     }
     void Update()
     {
@@ -31,9 +44,10 @@ public class EncenderTaladro : MonoBehaviour
         if (herePlayer.playerImHere)
         {
             //Puedo encender el generador
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetButtonDown("Action"))
             {
                 encender = !encender;
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.botonGeneral);
             }
         }
         //Si lo enciendo salen las particulas

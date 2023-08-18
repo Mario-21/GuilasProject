@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 [RequireComponent(typeof(SpawnItemIcon))]
 public class SustitucionObjeto : MonoBehaviour
@@ -17,6 +18,9 @@ public class SustitucionObjeto : MonoBehaviour
     [Header("FeedBack Item")]
     SpawnItemIcon iconItemPickUp;
 
+    [Header("Sound Effect")]
+    [SerializeField] EventReference llenarWater;
+
     private void Start()
     {
         iconItemPickUp = GetComponent<SpawnItemIcon>();
@@ -31,6 +35,7 @@ public class SustitucionObjeto : MonoBehaviour
     }
     void SustituirObjeto()
     {
+        AudioManager.instancia.PlayOneShot(llenarWater);
         iconItemPickUp.SpawnIcon();
         //Cambias el boton original por el modificado, para dar entender que se ha hecho esa accion con el objeto pero este no se ha perdido
         baseButton.gameObject.SetActive(false);

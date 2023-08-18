@@ -30,6 +30,7 @@ public class AccionarTrampas : MonoBehaviour
         {
             //Añadir sonido baldosa bajando
             StatusGameobjectsVariables.statusGameobject.modificacion[indexModTrampasOn].modificacion = true;
+            AudioManager.instancia.PlayOneShot(FMODEvent.instancia.baldosaTrap);
             
         } 
     }

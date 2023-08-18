@@ -14,6 +14,8 @@ public class AudioManager : MonoBehaviour
     private EventInstance musicEventInstance;
 
     public static AudioManager instancia;
+
+    int numEmissor;
     private void Awake()
     {
         if(AudioManager.instancia == null)
@@ -28,6 +30,11 @@ public class AudioManager : MonoBehaviour
 
         eventInstances = new List<EventInstance>();
         eventEmitters = new List<StudioEventEmitter>();
+    }
+
+    private void Update()
+    {
+        //Debug.Log("Instance " + eventInstances.Count);
     }
     public void PlayOneShot(EventReference sound)
     {
@@ -95,5 +102,9 @@ public class AudioManager : MonoBehaviour
         {
             eventEmitter.Stop();
         }
+    }
+    private void OnDestroy()
+    {
+        CleanUpEmitters();
     }
 }

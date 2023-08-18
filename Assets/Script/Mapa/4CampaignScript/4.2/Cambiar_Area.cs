@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(ZonaChangeSound))]
 public class Cambiar_Area: MonoBehaviour
 {
 
@@ -11,9 +12,11 @@ public class Cambiar_Area: MonoBehaviour
     bool entrarCamino;
 
     BloquearMovimientoPlayer bloqPlayer;
+    ZonaChangeSound zonaChangeSound;
 
     private void Start()
     {
+        zonaChangeSound = GetComponent<ZonaChangeSound>();
         bloqPlayer = FindObjectOfType<BloquearMovimientoPlayer>();
     }
     private void Update()
@@ -22,6 +25,7 @@ public class Cambiar_Area: MonoBehaviour
     }
     void CambiarNivel()
     {
+        zonaChangeSound.CambiarZonaSound();
         bloqPlayer.BloquearMovPlayer();
         EstructuraNiveles.nivel = siguienteEscena;
         AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");

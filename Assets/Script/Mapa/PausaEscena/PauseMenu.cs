@@ -16,7 +16,6 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("El open Tries es " + openTries);
         if (Input.GetButtonDown("Cancel"))
         {   
             if (openTries < 1)

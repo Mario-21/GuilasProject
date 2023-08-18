@@ -38,6 +38,7 @@ public class VidaPlayer : MonoBehaviour
     }
     public void Daño(float daño)
     {
+        AudioManager.instancia.PlayOneShot(FMODEvent.instancia.damage);
         vidaActual -= daño;
     }
     void Muerte()
@@ -70,9 +71,11 @@ public class VidaPlayer : MonoBehaviour
         {
             Daño(34f);
             Destroy(collision.gameObject);
-            AudioManager.instancia.PlayOneShot(FMODEvent.instancia.damage);
         }
-        if (collision.gameObject.CompareTag("Dardo")) { Daño(15f);}
+        if (collision.gameObject.CompareTag("Dardo")) 
+        { 
+            Daño(15f);
+        }
     }
 
     //I need that player recovery ammo, because if you made with b8 you can't fix the problem with the collision in player

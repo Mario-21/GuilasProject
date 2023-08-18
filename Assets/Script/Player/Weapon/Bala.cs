@@ -8,8 +8,6 @@ public class Bala : MonoBehaviour
     [Header("Características de la bala Player")]
     Rigidbody2D rb;
     public float speed;
-
-    [SerializeField] LayerMask layerGround;
     void Start()
     {
 

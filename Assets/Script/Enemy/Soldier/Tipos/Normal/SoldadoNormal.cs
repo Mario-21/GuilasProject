@@ -301,7 +301,8 @@ public class SoldadoNormal : MonoBehaviour
                 else if (DistancenPlayer().magnitude < insideRange) 
                 {
                     estadoSoldado = EstadoSoldado.ataque;
-                    AudioManager.instancia.PlayOneShot(FMODEvent.instancia.attackMode);
+                    //Si estoy vivo puedo reproducir el grito
+                    if(soldierLife.vida > 0) AudioManager.instancia.PlayOneShot(FMODEvent.instancia.attackMode);
                 }
             }
 

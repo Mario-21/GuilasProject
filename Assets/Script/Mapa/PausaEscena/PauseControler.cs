@@ -5,9 +5,9 @@ using UnityEngine;
 public class PauseControler : MonoBehaviour
 {
     [Header("DataPausa")]
-    [SerializeField] BloquearMovimientoPlayer bloqPause;
+    BloquearMovimientoPlayer bloqPause;
 
-    public int once;
+    [HideInInspector] public int once;
     private void Awake()
     {
         bloqPause = FindObjectOfType<BloquearMovimientoPlayer>();
@@ -23,14 +23,12 @@ public class PauseControler : MonoBehaviour
         {
             bloqPause.PausarGame();
             once = 0;
-            Debug.Log("Cero");
         }
         else
         {
             if(once < 1)
             {
                 //Activar Armas Solo si no estoy escondido
-                Debug.Log("Guau");
                 bloqPause.ReanudarGame();
                 once++;
             }

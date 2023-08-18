@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class CogerObjeto : MonoBehaviour
 {
@@ -12,7 +13,8 @@ public class CogerObjeto : MonoBehaviour
     public GameObject objetcButtonInventory;
     [Header("FeedBack Pick Item")]
     SpawnItemIcon feedbackItem;
-
+    [Header("Sound Effect Item")]
+    [SerializeField] EventReference soundItem;
 
     PlayerHere dentroDeZona;
     private void Awake()
@@ -34,6 +36,8 @@ public class CogerObjeto : MonoBehaviour
     {
         if (Input.GetButtonDown("Take") && !SaveScene.instancia.listaItemsNivelGuardar[objetoARecoger].objetoObtenido)
         {
+            //Sonido item
+            AudioManager.instancia.PlayOneShot(soundItem);
             feedbackItem.SpawnIcon();
             //Take The object
             //listaItemNivel.listaItemsNivel[objetoARecoger].objetoObtenido = true;

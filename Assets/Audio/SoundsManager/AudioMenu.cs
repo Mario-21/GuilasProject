@@ -32,7 +32,7 @@ public class AudioMenu : MonoBehaviour
         else
         {
             Destroy(gameObject);
-            Debug.Log("Hay más de un audio");
+            Debug.Log("He sido destruido");
         }
         masterBus = RuntimeManager.GetBus("bus:/");
         musicBus = RuntimeManager.GetBus("bus:/Music");

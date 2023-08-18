@@ -25,7 +25,6 @@ public class MusicAmbienceManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
-            Debug.Log("Hay más de un audio");
         }
     }
     void Start()

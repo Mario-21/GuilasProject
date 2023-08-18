@@ -1,15 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class SewerSystem : MonoBehaviour
 {
     public int indexMod;
+
+    [Header("Pozo Data")]
     [SerializeField] GameObject aqua;
     [SerializeField] Camino_CambiarZona pozoArea;
     [SerializeField] Events evento;
-    PlayerHere player;
 
+    [Header("Zona Sound Effect")]
+    [SerializeField] EventReference soundDrain;
+    [SerializeField] ZonaChangeSound zonaSound;
+    int reproduceAudio;
+
+    PlayerHere player;
     bool activeEvent;
     ActivarModificador activar;
     private void Awake()
@@ -36,9 +44,14 @@ public class SewerSystem : MonoBehaviour
         if (player.playerImHere && activar.modificacion)
         {
             evento.actionOnCinematic += Drain;
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetButtonDown("Action"))
             {
                 activeEvent = true;
+                if(reproduceAudio < 1)
+                {
+                    AudioManager.instancia.PlayOneShot(soundDrain);
+                    reproduceAudio++;
+                }
             }
         }
         else evento.actionOnCinematic -= Drain;
@@ -49,12 +62,13 @@ public class SewerSystem : MonoBehaviour
         //Make the action of event
         aqua.SetActive(false);
         pozoArea.enabled = true;
+        zonaSound.enabled = true;
         StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
         
     }
     void ExecuteDrain()
     {
-        //Active Event when you press the Z
+        
         if (activeEvent)
         {
             evento.Cinematic(ref activeEvent);

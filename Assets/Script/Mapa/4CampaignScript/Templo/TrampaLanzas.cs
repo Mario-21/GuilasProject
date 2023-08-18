@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class TrampaLanzas : MonoBehaviour
 {
@@ -21,8 +22,15 @@ public class TrampaLanzas : MonoBehaviour
     [SerializeField] bool activarTrampa;
 
     float originalPosition_y;
+    [Header("Sound Effect Lanza")]
+    [SerializeField] GameObject gearLanza;
+    StudioEventEmitter emissorGear;
+    int reproduceGear;
+    StudioEventEmitter emissorLanza;
     void Start()
     {
+        emissorLanza = AudioManager.instancia.InitializeEventEmitter(FMODEvent.instancia.spearActive, this.gameObject);
+        emissorGear = AudioManager.instancia.InitializeEventEmitter(FMODEvent.instancia.spearGear, gearLanza);
         originalPosition_y = transform.position.y;
     }
 
@@ -49,17 +57,28 @@ public class TrampaLanzas : MonoBehaviour
     }
     void TrampaLanzaActivada()
     {
+        emissorLanza.Play();
         transform.position = new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z);
         activarTrampa = true;
         fasesTrampaLanzas = FasesTrampaLanzas.esperar;
     }
     void ResetearTrampa()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y - 0.01f, transform.position.z);
         activarTrampa = false;
         if(transform.position.y <= originalPosition_y)
         {
             fasesTrampaLanzas = FasesTrampaLanzas.esperar;
+            reproduceGear = 0;
+            emissorGear.Stop();
+        }
+        else
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.01f, transform.position.z);
+            if (reproduceGear < 1)
+            {
+                emissorGear.Play();
+                reproduceGear++;
+            }
         }
     }
     void EsperarTrampaLanzas()
@@ -78,6 +97,13 @@ public class TrampaLanzas : MonoBehaviour
                 tiempoActivarTrampa = 0;
             }
                
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            AudioManager.instancia.PlayOneShot(FMODEvent.instancia.spearImpact);
         }
     }
 }

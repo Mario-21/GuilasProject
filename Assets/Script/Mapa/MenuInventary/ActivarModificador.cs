@@ -29,7 +29,6 @@ public class ActivarModificador : MonoBehaviour
         switch (tipoSonido)
         {
             case TypeSound.PlayOneShot:
-                Debug.Log("Soy PlayOneShot y no tengo que asignar nada");
                 break;
             case TypeSound.Emitter:
                 emissorAction = AudioManager.instancia.InitializeEventEmitter(sonidoAction, this.gameObject);

@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
+[RequireComponent(typeof(PressActionSounds))]
 public class EstadoGenerador : MonoBehaviour
 {
     public int indexModificador;
@@ -16,6 +18,13 @@ public class EstadoGenerador : MonoBehaviour
     [Header("Vida Personajes")]
     [SerializeField] VidaPlayer vidaJugador;
     [SerializeField] SoldierLife soldadoVida;
+
+    [Header("Sound Wet")]
+    [SerializeField] GameObject emitterElectro;
+    [SerializeField] EventReference generator_Broken;
+    StudioEventEmitter emissorElectricity;
+    PressActionSounds sonidoAction;
+    int audioReproduce;
 
     public enum StateGenerator
     {
@@ -38,6 +47,10 @@ public class EstadoGenerador : MonoBehaviour
     }
     private void Start()
     {
+        emissorElectricity = AudioManager.instancia.InitializeEventEmitter(generator_Broken, emitterElectro);
+
+        sonidoAction = GetComponent<PressActionSounds>();
+
         if (!StatusGameobjectsVariables.statusGameobject.modificacion[indexModificador].modificacion) 
         {
             stateGenerator = StateGenerator.normal;
@@ -71,7 +84,7 @@ public class EstadoGenerador : MonoBehaviour
                 //Si entra el enemigo hacer que pase un tiempo y encienda
                 if (imHereInGen)
                 {
-                    if (Input.GetKeyDown(KeyCode.Z))
+                    if (Input.GetButtonDown("Action"))
                     {
                         on = !on;
                         numeroVecesUsados++;
@@ -100,6 +113,7 @@ public class EstadoGenerador : MonoBehaviour
 
                 break;
             case StateGenerator.mojado:
+                CambiarSonidoGenerador();
                 if (imHereInGen)
                 {
                     if (Input.GetButtonDown("Action"))
@@ -132,6 +146,16 @@ public class EstadoGenerador : MonoBehaviour
                 break;
         }
     }
+    void CambiarSonidoGenerador()
+    {
+        if(audioReproduce < 1)
+        {
+            sonidoAction.emissorAction.Stop();
+            sonidoAction.enabled = false;
+            emissorElectricity.Play();
+            audioReproduce++;
+        }
+    }
 
     void CabreoEnemigo()
     {
@@ -154,7 +178,16 @@ public class EstadoGenerador : MonoBehaviour
     {
         
         if (collision.gameObject.CompareTag("Player")) imHereInGen = true;
-        if (collision.gameObject.CompareTag("Enemy")) imEnemy = true;
+        if (collision.gameObject.CompareTag("Enemy")) 
+        {
+            imEnemy = true;
+            if(soldadoVida.vida > 0 && !StatusGameobjectsVariables.statusGameobject.modificacion[indexModificador].modificacion)
+            {
+                AudioManager.instancia.PlayOneShot(sonidoAction.sonidoAction);
+                sonidoAction.emissorAction.Play();
+                sonidoAction.action = true;
+            }
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

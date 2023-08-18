@@ -31,10 +31,11 @@ public class PressActionSounds : MonoBehaviour
         switch (sonidoTipo)
         {
             case Type_Sound.PlayOneShot:
-                Debug.Log("Soy PlayOneShot y no tengo que asignar nada");
+                
                 break;
             case Type_Sound.Emisor:
                 emissorAction = AudioManager.instancia.InitializeEventEmitter(sonidoEmissor, itemEmissor);
+                if(action) emissorAction.Play();
                 break;
         }
     }

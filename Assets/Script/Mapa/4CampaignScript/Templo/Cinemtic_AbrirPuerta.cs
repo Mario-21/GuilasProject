@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using FMOD.Studio;
 
 public class Cinemtic_AbrirPuerta : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class Cinemtic_AbrirPuerta : MonoBehaviour
     [SerializeField] Transform cameraPosition;
 
     [SerializeField] CinemachineVirtualCamera cV_Camera;
+
     enum CinematicTemplo
     {
         transicionInicial,
@@ -31,9 +33,15 @@ public class Cinemtic_AbrirPuerta : MonoBehaviour
 
     float tiempoCambiarCinematic;
 
+    EventInstance openGateTemploSFX;
+
     private void Awake()
     {
         activarCinematic = GetComponent<ActivarModificador>();
+    }
+    private void Start()
+    {
+        openGateTemploSFX = AudioManager.instancia.CreateEventInstance(FMODEvent.instancia.secretTemple); 
     }
     void Update()
     {
@@ -53,9 +61,11 @@ public class Cinemtic_AbrirPuerta : MonoBehaviour
                     inventario.enabled = false;
                     if(tiempoCambiarCinematic >= 1.5f)
                     {
+                        openGateTemploSFX.start();
                         cinematic_Templo = CinematicTemplo.escenaPuertaTemplo;
                         cV_Camera.Follow = cameraPosition;
                         player.SetActive(false);
+                        
                     }
                     //cinematic_Templo = CinematicTemplo.escenaAbrirPuertaTemplo;
                     //Colocar tiempo
@@ -69,6 +79,7 @@ public class Cinemtic_AbrirPuerta : MonoBehaviour
                         cV_Camera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 1f;
                         if (puerta.transform.position.y >= puertaObjetivo.position.y)
                         {
+                            openGateTemploSFX.stop(STOP_MODE.ALLOWFADEOUT);
                             cinematic_Templo = CinematicTemplo.transicionFinal;
                         }
                     }

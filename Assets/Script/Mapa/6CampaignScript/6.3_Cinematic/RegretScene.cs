@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class RegretScene : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class RegretScene : MonoBehaviour
     public int spawn;
     public int nextScene;
     bool regret;
+
+    [Header("Sound Effect Action")]
+    [SerializeField] EventReference soundAction;
     void Update()
     {
         GetBack();
@@ -25,6 +29,10 @@ public class RegretScene : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy")) regret = true;
+        if (collision.gameObject.CompareTag("Enemy")) 
+        {
+            regret = true;
+            AudioManager.instancia.PlayOneShot(soundAction);
+        }
     }
 }

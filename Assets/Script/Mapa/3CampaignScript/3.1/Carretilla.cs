@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Carretilla : MonoBehaviour
 {
+    public int indexSoldado;    
     [SerializeField] Transform player;
     [SerializeField] SoldierLife soldadoVida;
 
@@ -14,7 +15,7 @@ public class Carretilla : MonoBehaviour
     }
     void Start()
     {
-        vidaActual = soldadoVida.vida;
+        vidaActual = SoldierActiveInScene.instancia.soldiersStatus[indexSoldado].statusVida;
     }
 
     // Update is called once per frame

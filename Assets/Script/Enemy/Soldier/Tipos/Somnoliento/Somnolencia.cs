@@ -6,12 +6,13 @@ public class Somnolencia : MonoBehaviour
 {
     public ParticleSystem particulasDormido;
     SoldadoNormal soldado;
+    SoldierLife soldierLife;
 
     [Header ("Time Sleep")]
     public float tiempoLimiteSomnoliento;
     public float tiempoLimiteDespierto;
-    float tiempoSomnoliento;
-    float tiempoDespierto;
+    public float tiempoSomnoliento;
+    public float tiempoDespierto;
 
     [Header("ChangePatrol")]
     public List<Transform> ubis;
@@ -25,15 +26,22 @@ public class Somnolencia : MonoBehaviour
     }
 
     bool despierto;
+    int soundSleep;
 
     private void Awake()
     {
         soldado = GetComponent<SoldadoNormal>();
+        soldierLife = GetComponent<SoldierLife>();
         despierto = true;
     }
-    
+    private void Start()
+    {
+        //Si me muero, da igual estas ejecuciones
+        RemoveDeath();
+    }
     void Update()
     {
+        RemoveDeath();
         if (!soldado.berserker && !soldado.busquedaMode) 
         {
             switch (sleepMode)
@@ -52,6 +60,11 @@ public class Somnolencia : MonoBehaviour
             particulasDormido.Stop();
             soldado.enabled = true;
             this.enabled = false;
+            if(soundSleep < 1)
+            {
+                if(soldierLife.vida > 0) soldierLife.sleepEmitter.Stop();
+                soundSleep++;
+            }
         }
     }
 
@@ -64,7 +77,8 @@ public class Somnolencia : MonoBehaviour
 
         //Te duermes
         if (tiempoDespierto >= tiempoLimiteDespierto) 
-        { 
+        {
+            soldierLife.sleepEmitter.Play();
             particulasDormido.Play();
             //Apaga la animacion de caminar
             soldado.OutAnimation();
@@ -75,7 +89,8 @@ public class Somnolencia : MonoBehaviour
 
         //Te despiertas
         if (tiempoSomnoliento >= tiempoLimiteSomnoliento) 
-        { 
+        {
+            soldierLife.sleepEmitter.Stop();
             particulasDormido.Stop();
             soldado.enabled = true;
             despierto = true;
@@ -86,6 +101,11 @@ public class Somnolencia : MonoBehaviour
         particulasDormido.Play();
         soldado.OutAnimation();
         soldado.enabled = false;
+        if(soundSleep < 1)
+        {
+            soldierLife.sleepEmitter.Play();
+            soundSleep++;
+        }
     }
     void ChangePatrolMov()
     {
@@ -93,6 +113,13 @@ public class Somnolencia : MonoBehaviour
         for (int i = 0; i < ubis.Count; i++)
         {
             soldado.ubicacionesDirigir.Add(ubis[i]);
+        }
+    }
+    void RemoveDeath()
+    {
+        if (soldierLife.vida <= 0)
+        {
+            this.enabled = false;
         }
     }
 }

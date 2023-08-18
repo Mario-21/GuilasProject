@@ -145,17 +145,6 @@ public class DetectTypeFloor : MonoBehaviour
             }
         }
     }
-
-    void DefinicionLadders()
-    {
-        /*
-         * Dentro de Ladder
-         * Enum que defina el tipo de escalera es
-         * Una vez obtenida la definicion, cada vez que el player entre (Getcomponent(DefinicionEscalera) stairs_sound = ladderDefinitionSound) cambiara su instancia del sonido dependiendo del tipo de escalera
-         * Si salgo mi sonido se establecera como default
-         * Si hay dos escaleras una al lado de la otra, no cambiar ni reiniciar sonido, parecido al del detector de steps
-         */
-    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         

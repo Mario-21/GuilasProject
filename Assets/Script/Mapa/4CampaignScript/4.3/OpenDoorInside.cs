@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class OpenDoorInside : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class OpenDoorInside : MonoBehaviour
     [SerializeField] SpriteRenderer door;
     [SerializeField] Sprite doorOpen;
     BoxCollider2D openCollider;
+
+    [Header("Sound Effect Door")]
+    [SerializeField] EventReference doorOpenSFX;
     private void Start()
     {
         openCollider = GetComponent<BoxCollider2D>();
@@ -19,6 +23,7 @@ public class OpenDoorInside : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy")) 
         {
             AbrirPuertaInside();
+            AudioManager.instancia.PlayOneShot(doorOpenSFX);
         }
     }
     void AbrirPuertaInside()

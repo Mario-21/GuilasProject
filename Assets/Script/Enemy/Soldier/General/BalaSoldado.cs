@@ -20,12 +20,10 @@ public class BalaSoldado : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player")) 
         {
-            Debug.Log("Player golpeado"); 
             Destroy(this.gameObject);
         }
-        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Faker")) 
+        if (collision.gameObject.layer == 9 || collision.gameObject.CompareTag("Faker")) 
         {
-            Debug.Log("Ground golpeado");
             Destroy(this.gameObject);
         }
         
