@@ -78,6 +78,7 @@ public class CientificoCinematic : MonoBehaviour
                         scientific.enabled = true;
                         if (scientific.transform.position.x == scientific.ubicacionesDirigir[0].position.x)
                         {
+                            AudioManager.instancia.PlayOneShot(FMODEvent.instancia.puertaHidden);
                             blackScreen.SetActive(true);
                             //Add Sound of door close with lock
                             AnimationHud.detectar_echar.SetBool("Transicion", true);
@@ -93,6 +94,7 @@ public class CientificoCinematic : MonoBehaviour
                     mainCamera.Follow = player;
                     if(timeNextScene <= 0)
                     {
+                        AudioManager.instancia.PlayOneShot(FMODEvent.instancia.cerrar_Abrir_Lock);
                         blackScreen.SetActive(false);
                         playerMov.HabilitarMovPlayer();
                         AnimationHud.detectar_echar.SetBool("Transicion", false);

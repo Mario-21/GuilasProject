@@ -6,8 +6,8 @@ public class PutSomething : MonoBehaviour
 {
     ActivarModificador activador;
     public int indexMod;
+    [Header("Accion Script")]
     [SerializeField] Aparecer_DesAp_Obj desAp_Obj;
-
     [SerializeField] List<GameObject> wantAppear;
     [SerializeField] List<GameObject> wantDisappear;
 

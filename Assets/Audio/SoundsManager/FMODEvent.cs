@@ -22,6 +22,7 @@ public class FMODEvent : MonoBehaviour
     [SerializeField] public EventReference forestSteps;
     [SerializeField] public EventReference wetSteps;
     [SerializeField] public EventReference swimSteps;
+    [SerializeField] public EventReference ramaSteps;
     [Space(20)]
     [SerializeField] string apartado_2;
     [SerializeField] public EventReference woodLadder;
@@ -84,6 +85,12 @@ public class FMODEvent : MonoBehaviour
     [SerializeField] public EventReference ascensorMove;
     [SerializeField] string derrumbamiento;
     [SerializeField] public EventReference rumbling;
+    [SerializeField] string candado;
+    [SerializeField] public EventReference cerrar_Abrir_Lock;
+    [SerializeField] string campana;
+    [SerializeField] public EventReference bell;
+    [SerializeField] string notas;
+    [SerializeField] public EventReference escribir;
     [Header("Temple SFX")]
     [SerializeField] string dardos;
     [SerializeField] public EventReference dardoShoot;

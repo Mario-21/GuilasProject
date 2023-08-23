@@ -33,6 +33,7 @@ public class PanelElevator : MonoBehaviour
     public void SelectFloor(int selectFloor)
     {
         elevator.nextFloor = selectFloor;
+        AudioManager.instancia.PlayOneShot(FMODEvent.instancia.botonGeneral);
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

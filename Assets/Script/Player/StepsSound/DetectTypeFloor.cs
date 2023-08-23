@@ -19,6 +19,7 @@ public class DetectTypeFloor : MonoBehaviour
         Wet,
         Water,
         Mud,
+        Rama,
         Default
     }
     public TypeFloor actualFloor;
@@ -72,6 +73,9 @@ public class DetectTypeFloor : MonoBehaviour
                 break;
             case TypeFloor.Water:
                 actualStepsSound = FMODEvent.instancia.swimSteps;
+                break;
+            case TypeFloor.Rama:
+                actualStepsSound = FMODEvent.instancia.ramaSteps;
                 break;
         }
     }
@@ -131,6 +135,12 @@ public class DetectTypeFloor : MonoBehaviour
                         playerControl.playerStepsGrass = AudioManager.instancia.CreateEventInstance(FMODEvent.instancia.wetSteps);
                         floorNow = TypeFloor.Wet;
                         break;
+                    case TypeFloor.Rama:
+                        playerControl.playerStepsGrass.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                        playerControl.playerStepsGrass.release();
+                        playerControl.playerStepsGrass = AudioManager.instancia.CreateEventInstance(FMODEvent.instancia.ramaSteps);
+                        floorNow = TypeFloor.Rama;
+                        break;
                 }
             }
         }
@@ -189,6 +199,11 @@ public class DetectTypeFloor : MonoBehaviour
             {
                 Debug.Log("Mud");
                 actualFloor = TypeFloor.Mud;
+            }
+            else if (collision.gameObject.CompareTag("Rama"))
+            {
+                Debug.Log("Rama");
+                actualFloor = TypeFloor.Rama;
             }
 
         }

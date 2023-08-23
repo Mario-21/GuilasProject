@@ -1,17 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class UseDrillScene : MonoBehaviour
 {
-    public bool encenderScene;
+    bool encenderScene;
     bool startEvento;
     PlayerHere player;
     public int indexMod;
     [SerializeField] Events evento;
+    [Header("Drill Effect")]
     [SerializeField] ParticleSystem drillEffect;
-    [SerializeField] SpriteRenderer buttonGenerator;
     [SerializeField] GameObject fakeGround;
+    [Header("Generator Data")]
+    [SerializeField] SpriteRenderer buttonGenerator;
+    [Header("Sound Effects Drill")]
+    StudioEventEmitter emissorDrill;
+    [SerializeField] GameObject drillItem;
+    [SerializeField] EventReference drillSound;
+
 
     int drillEffectUse;
     private void Awake()
@@ -20,6 +28,8 @@ public class UseDrillScene : MonoBehaviour
     }
     void Start()
     {
+        emissorDrill = AudioManager.instancia.InitializeEventEmitter(drillSound, drillItem);
+
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) DeleteGroundFake();
     }
 
@@ -53,8 +63,10 @@ public class UseDrillScene : MonoBehaviour
         {
             if(drillEffectUse < 1)
             {
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.botonGeneral);
                 buttonGenerator.color = Color.green;
                 drillEffect.Play();
+                emissorDrill.Play();
                 drillEffectUse++;
             }
         }
@@ -64,6 +76,7 @@ public class UseDrillScene : MonoBehaviour
             {
                 buttonGenerator.color = Color.red;
                 drillEffect.Stop();
+                emissorDrill.Stop();
                 drillEffectUse = 0;
             }
         }

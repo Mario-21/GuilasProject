@@ -23,6 +23,7 @@ public class CogerWeapon : MonoBehaviour
     {
         if (Input.GetButtonDown("Take"))
         {
+            AudioManager.instancia.PlayOneShot(FMODEvent.instancia.b8Recoger);
             SpecialWeapons.specialW.b8 = true;
             this.gameObject.SetActive(false);
         }

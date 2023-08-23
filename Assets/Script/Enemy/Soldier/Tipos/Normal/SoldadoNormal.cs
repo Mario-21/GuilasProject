@@ -228,7 +228,7 @@ public class SoldadoNormal : MonoBehaviour
             DetectarCadaver();
             if (oneTimeWarning < 1)
             {
-                callPeople.Play();
+                if(soldierLife.vida > 0) callPeople.Play();
                 estadoSoldado = EstadoSoldado.warning;
                 oneTimeWarning++;
             }
@@ -266,6 +266,10 @@ public class SoldadoNormal : MonoBehaviour
                 ApplyLinearAirDrag();
                 FallMultiplier();
             }
+        }
+        else
+        {
+            callPeople.Stop();
         }
     }
     void Vision()

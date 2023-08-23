@@ -534,6 +534,7 @@ Transform:
   - {fileID: 1157471677}
   - {fileID: 1804794602}
   - {fileID: 724426113}
+  - {fileID: 1161215048}
   m_Father: {fileID: 0}
   m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18355,26 +18356,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 445244160}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &445244162 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3838564230304781323, guid: 76997908ada58b04fadfd58457619a1e,
-    type: 3}
-  m_PrefabInstance: {fileID: 445244160}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &445244163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 445244162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 941d961812e0bce46b18612c882f8387, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  indexMod: 10
-  taskWho: 0
 --- !u!1001 &446651080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30300,10 +30281,13 @@ MonoBehaviour:
   particulasDormido: {fileID: 826202431}
   tiempoLimiteSomnoliento: 5
   tiempoLimiteDespierto: 5
+  tiempoSomnoliento: 0
+  tiempoDespierto: 0
   ubis:
   - {fileID: 674105238}
   - {fileID: 1814278883}
   sleepMode: 0
+  despierto: 0
 --- !u!1 &833386015
 GameObject:
   m_ObjectHideFlags: 0
@@ -33534,6 +33518,51 @@ MonoBehaviour:
   spawnStart: {fileID: 172948557}
   soldadoMove: {fileID: 529395032}
   soldadoMoveLife: {fileID: 1443202496}
+--- !u!1 &1161215047
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1161215048}
+  - component: {fileID: 1161215049}
+  m_Layer: 0
+  m_Name: TerminalObjectiveTask
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1161215048
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161215047}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -71.61, y: 70.53, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 28574120}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1161215049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161215047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cdffc102089be943bf94b727522cbf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indexMod: 10
+  taskWho: 0
 --- !u!1001 &1167525066
 PrefabInstance:
   m_ObjectHideFlags: 0

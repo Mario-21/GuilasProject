@@ -16,12 +16,20 @@ public class AudioMenu : MonoBehaviour
     [Range(0, 1)]
     public float ambienceVolume = 1;
     [Range(0, 1)]
-    public float SFXVolume = 1;
+    public float sfxItems = 1;
+    [Range(0, 1)]
+    public float sfxEnemy = 1;
+    [Range(0, 1)]
+    public float sfxPlayer = 1;
+
+
 
     private Bus masterBus;
     private Bus musicBus;
     private Bus ambienceBus;
-    private Bus sfxBus;
+    private Bus sfxItemsBus;
+    private Bus sfxEnemyBus;
+    private Bus sfxPlayerBus;
     private void Awake()
     {
         if (AudioMenu.instancia == null)
@@ -32,18 +40,21 @@ public class AudioMenu : MonoBehaviour
         else
         {
             Destroy(gameObject);
-            Debug.Log("He sido destruido");
         }
         masterBus = RuntimeManager.GetBus("bus:/");
         musicBus = RuntimeManager.GetBus("bus:/Music");
         ambienceBus = RuntimeManager.GetBus("bus:/Ambience");
-        sfxBus = RuntimeManager.GetBus("bus:/SFX");
+        sfxItemsBus = RuntimeManager.GetBus("bus:/SFX");
+        sfxEnemyBus = RuntimeManager.GetBus("bus:/Enemy_SFX");
+        sfxPlayerBus = RuntimeManager.GetBus("bus:/Player_SFX");
     }
     private void Update()
     {
         masterBus.setVolume(masterVolume);
         musicBus.setVolume(musicVolume);
         ambienceBus.setVolume(ambienceVolume);
-        sfxBus.setVolume(SFXVolume);
+        sfxItemsBus.setVolume(sfxItems);
+        sfxEnemyBus.setVolume(sfxEnemy);
+        sfxPlayerBus.setVolume(sfxPlayer);
     }
 }

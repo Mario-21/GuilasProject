@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using FMODUnity;
 
 public class TextAboutItemScene : MonoBehaviour
 {
+    public int indexMod;
     [Header("Texto UI")]
     public Text textoUi;
     public CanvasGroup textUiCanvas;
@@ -13,7 +15,8 @@ public class TextAboutItemScene : MonoBehaviour
     [Header("Time Text")]
     public float timeLimitText;
     float timeText;
-
+    [Header("Sound Effect Stuck")]
+    [SerializeField] EventReference sound;
 
     PlayerHere player;
     bool seeText;
@@ -31,11 +34,12 @@ public class TextAboutItemScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Tiempo transcurrido " + timeText);
+        TextOut();
         if (player.playerImHere)
         {
             if(Input.GetButtonDown("Action"))
             {
+                AudioManager.instancia.PlayOneShot(sound);
                 Change_See_Text();
                 seeText = true;
                 timeText = 0;
@@ -66,6 +70,13 @@ public class TextAboutItemScene : MonoBehaviour
             //El texto ira desapareciendo poco a poco 
             textUiCanvas.alpha -= 0.01f;
             seeText = false;
+        }
+    }
+    void TextOut()
+    {
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
+        {
+            textUiCanvas.alpha = 0;
         }
     }
 

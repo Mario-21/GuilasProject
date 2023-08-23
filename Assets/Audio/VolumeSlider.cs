@@ -10,7 +10,9 @@ public class VolumeSlider : MonoBehaviour
         MASTER,
         MUSIC,
         AMBIENCE,
-        SFX
+        ITEMSFX,
+        ENEMYSFX,
+        PLAYERSFX
     }
     [Header("Type")]
     [SerializeField] private VolumeType volumeType;
@@ -34,8 +36,14 @@ public class VolumeSlider : MonoBehaviour
             case VolumeType.AMBIENCE:
                 volumeSlider.value = AudioMenu.instancia.ambienceVolume;
                 break;
-            case VolumeType.SFX:
-                volumeSlider.value = AudioMenu.instancia.SFXVolume;
+            case VolumeType.ITEMSFX:
+                volumeSlider.value = AudioMenu.instancia.sfxItems;
+                break;
+            case VolumeType.ENEMYSFX:
+                volumeSlider.value = AudioMenu.instancia.sfxEnemy;
+                break;
+            case VolumeType.PLAYERSFX:
+                volumeSlider.value = AudioMenu.instancia.sfxPlayer;
                 break;
         }
     }
@@ -52,8 +60,14 @@ public class VolumeSlider : MonoBehaviour
             case VolumeType.AMBIENCE:
                 AudioMenu.instancia.ambienceVolume = volumeSlider.value;
                 break;
-            case VolumeType.SFX:
-                AudioMenu.instancia.SFXVolume = volumeSlider.value;
+            case VolumeType.ITEMSFX:
+                AudioMenu.instancia.sfxItems = volumeSlider.value;
+                break;
+            case VolumeType.ENEMYSFX:
+                AudioMenu.instancia.sfxEnemy = volumeSlider.value;
+                break;
+            case VolumeType.PLAYERSFX:
+                AudioMenu.instancia.sfxPlayer = volumeSlider.value;
                 break;
         }
     }

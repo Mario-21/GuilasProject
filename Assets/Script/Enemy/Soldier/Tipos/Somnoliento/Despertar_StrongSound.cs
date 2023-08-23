@@ -15,6 +15,7 @@ public class Despertar_StrongSound : MonoBehaviour
     [Header("Time Despertar Data")]
     [SerializeField] float timeDespertarLimit;
     float timeDespertar;
+    int onceAWake;
 
     private void Awake()
     {
@@ -32,8 +33,6 @@ public class Despertar_StrongSound : MonoBehaviour
     {
         if (EncenderTaladro.encender)
         {
-            //Change your direction guide you towards switch 
-            soldadoDormido.ubicacionesDirigir[0] = ubiSwitch;
             Despertar();
         }
         else
@@ -55,6 +54,8 @@ public class Despertar_StrongSound : MonoBehaviour
     {
         if(timeDespertar >= timeDespertarLimit)
         {
+            //Change your direction guide you towards switch 
+            soldadoDormido.ubicacionesDirigir[0] = ubiSwitch;
             //Somnolencia se desactiva
             somnolenciaSoldado.enabled = false;
             //Parar particulas y sonido 
@@ -62,6 +63,8 @@ public class Despertar_StrongSound : MonoBehaviour
             soldierLife.particularDormir.Stop();
             //Soldado Activar
             soldadoDormido.enabled = true;
+
+            onceAWake = 0;
 
         }
         else
@@ -74,5 +77,11 @@ public class Despertar_StrongSound : MonoBehaviour
         timeDespertar = 0;
         somnolenciaSoldado.enabled = true;
         soldadoDormido.enabled = false;
+
+        if(onceAWake < 1)
+        {
+            somnolenciaSoldado.despierto = true;
+            onceAWake++;
+        }
     }
 }

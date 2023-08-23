@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class ChooseFloorAscensor : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class ChooseFloorAscensor : MonoBehaviour
     [Header("Rope of Elevator")]
     [SerializeField] SpriteRenderer cuerda;
     float cuerda_Size;
+
+    StudioEventEmitter emissorAscensor;
+    int soundReproduce;
     private void Awake()
     {
         actualFloor = nextFloor;
@@ -26,7 +30,7 @@ public class ChooseFloorAscensor : MonoBehaviour
     }
     void Start()
     {
-        
+        emissorAscensor = AudioManager.instancia.InitializeEventEmitter(FMODEvent.instancia.ascensorMove, this.gameObject);
     }
 
     // Update is called once per frame
@@ -44,10 +48,13 @@ public class ChooseFloorAscensor : MonoBehaviour
         if (transform.position != floors[nextFloor].position)
         {
             ElevatorRope();
+            ElevatorSound();
             elevatorActive = true;
         }
         else 
         {
+            emissorAscensor.Stop();
+            soundReproduce = 0;
             actualFloor = nextFloor;
             elevatorActive = false;
         }
@@ -65,6 +72,14 @@ public class ChooseFloorAscensor : MonoBehaviour
         {
             //Rope Increase and UP false
             cuerda.size += new Vector2(0f, cuerda_Size);
+        }
+    }
+    void ElevatorSound()
+    {
+        if(soundReproduce < 1)
+        {
+            emissorAscensor.Play();
+            soundReproduce++;
         }
     }
 }

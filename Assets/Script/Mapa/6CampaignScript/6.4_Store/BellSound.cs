@@ -18,12 +18,13 @@ public class BellSound : MonoBehaviour
     {
         if (bellSound)
         {
-            StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
             if(soundOnlyOne < 1)
             {
                 //Reproduce the audioCLip BellSound only once 
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.bell);
                 soundOnlyOne++;
             }
+            StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
 
         }
     }

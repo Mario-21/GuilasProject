@@ -85,6 +85,7 @@ public class VidaPlayer : MonoBehaviour
         {
             if (SpecialWeapons.specialW.b8)
             {
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.b8Recoger);
                 b8Weapon.municionTotal++;
                 Destroy(collision.gameObject);
             }

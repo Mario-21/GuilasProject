@@ -70,20 +70,9 @@ public class B8 : MonoBehaviour
             }
         
         }
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.layer == 9)
         {
-            if (rb.velocity.magnitude >= 10 && onceOnly < 1)
-            {
-                if (derecha)
-                {
-                    //rb.velocity = Vector2.right * 10;
-                }
-                else
-                {
-                    //rb.velocity = -Vector2.right * 10;
-                }
-                onceOnly++;
-            }
+            AudioManager.instancia.PlayOneShot(FMODEvent.instancia.b8CollisionGround);
         }
     }
 }

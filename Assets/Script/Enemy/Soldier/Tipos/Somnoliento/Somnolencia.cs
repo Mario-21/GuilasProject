@@ -25,7 +25,7 @@ public class Somnolencia : MonoBehaviour
         Sleep
     }
 
-    bool despierto;
+    [HideInInspector] public bool despierto;
     int soundSleep;
 
     private void Awake()

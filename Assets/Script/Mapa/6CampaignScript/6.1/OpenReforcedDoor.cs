@@ -1,15 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class OpenReforcedDoor : MonoBehaviour
 {
     public int indexMod;
-
+    [Header("Door Private")]
     [SerializeField] Camino_CambiarZona doorClose;
-
+    [Header("Keys Requirement")]
     [HideInInspector] public int keys;
     public int totalKeys;
+    [Header("Sonido Desbloquear")]
+    [SerializeField] EventReference unlockDoor;
+    int unlockCheck;
     
 
     void Start()
@@ -28,6 +32,11 @@ public class OpenReforcedDoor : MonoBehaviour
 
         if(keys == totalKeys)
         {
+            if(unlockCheck < 1 && !StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
+            {
+                AudioManager.instancia.PlayOneShot(unlockDoor);
+                unlockCheck++;
+            }
             doorClose.enabled = true;
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
         }

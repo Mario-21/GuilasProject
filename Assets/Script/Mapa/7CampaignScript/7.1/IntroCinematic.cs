@@ -61,6 +61,7 @@ public class IntroCinematic : MonoBehaviour
                 AnimationHud.detectar_echar.SetBool("Transicion", false);
                 if(timeBetweenScene <= 0)
                 {
+                    AudioManager.instancia.PlayOneShot(FMODEvent.instancia.escribir);
                     noviceIntro.enabled = true;
                     bocadillo.SetActive(false);
                     startScene = IntroBegin.Third;

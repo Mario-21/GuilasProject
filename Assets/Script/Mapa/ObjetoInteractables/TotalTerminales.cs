@@ -9,7 +9,7 @@ public class TotalTerminales : MonoBehaviour
 
     public List<bool> terminalesActivos;
 
-     [HideInInspector]public bool carga;
+     public bool carga;
      public int terminalesActivados;
 
      
