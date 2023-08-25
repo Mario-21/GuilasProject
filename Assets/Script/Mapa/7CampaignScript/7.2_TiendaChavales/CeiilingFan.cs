@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class CeiilingFan : MonoBehaviour
 {
@@ -12,14 +13,21 @@ public class CeiilingFan : MonoBehaviour
     [SerializeField] Transform ceilingFan;
     [Header("Soldier Switch")]
     [SerializeField] SoldierLife soldierSwitchLife;
-    bool enemyHere;
-    float timeOnCeiling;
     public float timeOnCeilingLimit = 1.5f;
+    float timeOnCeiling;
+    bool enemyHere;
+
+    [Header("Ceiling Fan SFX")]
+    [SerializeField] EventReference ceilingSFX;
+    public StudioEventEmitter emitterCeilingFan;
+    [SerializeField] GameObject ceiling;
 
     PlayerHere player;
     void Start()
     {
         player = GetComponent<PlayerHere>();
+        emitterCeilingFan = AudioManager.instancia.InitializeEventEmitter(ceilingSFX, ceiling);
+        if (!StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) emitterCeilingFan.Play();
     }
     void Update()
     {
@@ -29,14 +37,20 @@ public class CeiilingFan : MonoBehaviour
             CeilingFan();
             SoldierOnCeiling();
         }
+        else
+        {
+            emitterCeilingFan.Stop();
+        }
     }
     void ActiveCeilingFan()
     {
         if (player.playerImHere)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetButtonDown("Action"))
             {
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.botonGeneral);
                 onCeilingFan = !onCeilingFan;
+                SoundCeilingFan();
             }
         }
         
@@ -61,6 +75,7 @@ public class CeiilingFan : MonoBehaviour
             if (timeOnCeiling >= timeOnCeilingLimit)
             {
                 onCeilingFan = true;
+                emitterCeilingFan.Stop();
                 timeOnCeiling = 0;
                 enemyHere = false;
             }
@@ -69,6 +84,21 @@ public class CeiilingFan : MonoBehaviour
         {
             timeOnCeiling = 0;
         }
+    }
+    void SoundCeilingFan()
+    {
+        if (onCeilingFan)
+        {
+            emitterCeilingFan.Play();
+        }
+        else
+        {
+            emitterCeilingFan.Stop();
+        }
+    }
+    private void OnDisable()
+    {
+        emitterCeilingFan.Stop();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

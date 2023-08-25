@@ -51,17 +51,6 @@ public class AscensorMinero : MonoBehaviour
             ascensorEmissor.Stop();
         }
     }
-    void SoundAscensor()
-    {
-        if (movimiento)
-        {
-            if (reproduce < 1)
-            {
-                ascensorEmissor.Play();
-                reproduce++;
-            }
-        }
-    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Esto es el sticker, quiza cambiar 

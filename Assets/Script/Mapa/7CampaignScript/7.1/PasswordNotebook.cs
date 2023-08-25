@@ -37,6 +37,7 @@ public class PasswordNotebook : MonoBehaviour
         {
             if (Input.GetButtonDown("Action"))
             {
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.seeNote);
                 seeNote = !seeNote;
             }
             if (seeNote)

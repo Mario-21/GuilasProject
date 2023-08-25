@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class OffHolter : MonoBehaviour
 {
@@ -15,8 +16,12 @@ public class OffHolter : MonoBehaviour
     [SerializeField] Transform doctorOriginalPos;
     public bool enemyHere;
     public float timeOnHolterDoctor;
+
+    StudioEventEmitter emitterHolter;
+    int onceAudio;
     private void Start()
     {
+        emitterHolter = AudioManager.instancia.InitializeEventEmitter(FMODEvent.instancia.holter, this.gameObject);
         player = GetComponent<PlayerHere>();
     }
     void Update()
@@ -29,6 +34,7 @@ public class OffHolter : MonoBehaviour
     {
         if (Input.GetButtonDown("Action"))
         {
+            AudioManager.instancia.PlayOneShot(FMODEvent.instancia.botonGeneral);
             onHolter = !onHolter;
         }
     }
@@ -38,11 +44,18 @@ public class OffHolter : MonoBehaviour
         {
             holterEffect.SetActive(true);
             botonHolter.color = Color.green;
+            if (onceAudio < 1)
+            {
+                emitterHolter.Play();
+                onceAudio++;
+            }
         }
         else
         {
             holterEffect.SetActive(false);
             botonHolter.color = Color.red;
+            onceAudio = 0;
+            emitterHolter.Stop();
         }
     }
     void OnHolterSoldier()
@@ -52,6 +65,7 @@ public class OffHolter : MonoBehaviour
             timeOnHolterDoctor += Time.deltaTime;
             if(timeOnHolterDoctor >= 4)
             {
+                timeOnHolterDoctor = 0;
                 onHolter = true;
                 doctor.ubicacionesDirigir[0] = doctorOriginalPos;
             }

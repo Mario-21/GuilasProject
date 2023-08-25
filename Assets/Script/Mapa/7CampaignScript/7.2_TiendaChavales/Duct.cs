@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
+[RequireComponent(typeof(PlayerHere))]
 public class Duct : MonoBehaviour
 {
     PlayerHere playerHere;
@@ -18,6 +20,8 @@ public class Duct : MonoBehaviour
     [SerializeField] SpriteRenderer iconZoneSprite;
     [SerializeField] Sprite iconLeft;
     [SerializeField] Sprite iconRight;
+    [Header("SFX")]
+    [SerializeField] EventReference sfxSound;
 
     bool startDuct;
     enum Secuence
@@ -51,8 +55,9 @@ public class Duct : MonoBehaviour
         {
             DirectionIcon();
             iconZone.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetButtonDown("Action"))
             {
+                AudioManager.instancia.PlayOneShot(sfxSound);
                 startDuct = true;
                 startSecuence =  Secuence.first;
             }

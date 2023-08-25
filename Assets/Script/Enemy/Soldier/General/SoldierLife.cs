@@ -23,7 +23,7 @@ public class SoldierLife : MonoBehaviour
 
     [Header("CambiarLayer")]
     [SerializeField] LayerMask dormido;
-    [SerializeField]GameObject cuerpo;
+    [SerializeField] GameObject cuerpo;
 
     Rigidbody2D rB2D;
 
@@ -112,6 +112,11 @@ public class SoldierLife : MonoBehaviour
     {
         sleepEmitter.Play();
         particularDormir.Play();
+        
+    }
+    public void DetenerBody()
+    {
+        rB2D.bodyType = RigidbodyType2D.Static;
     }
     void RestarSoldadoActivo()
     {

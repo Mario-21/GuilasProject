@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using FMODUnity;
 
 public class CogerItemUI : MonoBehaviour
 {
     public int indexUIMod;
     PlayerHere player;
     public GameObject itemUI;
+
+    [Header("Sound Effect")]
+    [SerializeField] EventReference takeSound;
     void Start()
     {
         player = GetComponent<PlayerHere>();
@@ -23,6 +26,7 @@ public class CogerItemUI : MonoBehaviour
     {
         if (Input.GetButtonDown("Take"))
         {
+            AudioManager.instancia.PlayOneShot(takeSound);
             itemUI.SetActive(true);
             ListaItemsUI.listaItemsUI.listaAllItemUI[indexUIMod].itemUICatch = true;
             this.gameObject.SetActive(false);

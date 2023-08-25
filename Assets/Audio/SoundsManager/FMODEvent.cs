@@ -44,6 +44,7 @@ public class FMODEvent : MonoBehaviour
     [SerializeField] string apartado_5;
     [SerializeField] public EventReference takeClothes;
     [SerializeField] public EventReference takeOffClothes;
+    [SerializeField] public EventReference flashlight;
     [Space(20)]
     [SerializeField] string apartado_6;
     [SerializeField] public EventReference shoot;
@@ -79,7 +80,7 @@ public class FMODEvent : MonoBehaviour
     [Header("Items Interactives SFX")]
     [SerializeField] string terminal;
     [SerializeField] public EventReference teclear;
-    [SerializeField] public EventReference endTerminal;
+    [SerializeField] public EventReference confirmTerminal;
     [SerializeField] string ascensor;
     [SerializeField] public EventReference botonGeneral;
     [SerializeField] public EventReference ascensorMove;
@@ -91,6 +92,9 @@ public class FMODEvent : MonoBehaviour
     [SerializeField] public EventReference bell;
     [SerializeField] string notas;
     [SerializeField] public EventReference escribir;
+    [SerializeField] public EventReference seeNote;
+    [SerializeField] string enfermeria;
+    [SerializeField] public EventReference holter;
     [Header("Temple SFX")]
     [SerializeField] string dardos;
     [SerializeField] public EventReference dardoShoot;
@@ -102,8 +106,9 @@ public class FMODEvent : MonoBehaviour
     [SerializeField] string traps;
     [SerializeField] public EventReference baldosaTrap;
     [SerializeField] public EventReference secretTemple;
-
-
+    [Header("UI SFX")]
+    [SerializeField] public EventReference retrocerder_UI;
+    [SerializeField] public EventReference error_UI;
 
     public static FMODEvent instancia;
     public void Awake()

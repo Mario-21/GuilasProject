@@ -1033,7 +1033,7 @@ public class SoldadoNormal : MonoBehaviour
         Vector2 distanciaPlayer;
         return distanciaPlayer = player.position - enemigo_FOV.position;
     }
-
+    
 
 
 

@@ -41,7 +41,7 @@ public class FinishIntro : MonoBehaviour
     {
         if (end) 
         {
-            if (timeToFinish >= 2)
+            if (timeToFinish >= 3)
             {
                 mainCamera.Follow = player;
                 AnimationHud.detectar_echar.SetBool("Transicion", false);

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class Ghost : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class Ghost : MonoBehaviour
     public float timeGhostLimit;
     public float timeGhost;
     bool ghostOn;
+
+    [Header("Ghost SFX")]
+    [SerializeField] EventReference ghostSFX;
+    int onceScary;
     void Start()
     {
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) this.enabled = false;
@@ -28,6 +33,11 @@ public class Ghost : MonoBehaviour
     {
         if (ghostOn)
         {
+            if(onceScary < 1)
+            {
+                AudioManager.instancia.PlayOneShot(ghostSFX);
+                onceScary++;
+            }
             timeGhost += Time.deltaTime;
             if (timeGhost >= timeGhostLimit)
             {

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -7027,6 +7027,13 @@ MonoBehaviour:
   soldado2: {fileID: 742266824}
   flowerSoldado: {fileID: 693129090}
   flowerTumba: {fileID: 1007673458}
+  flowerSFX:
+    Guid:
+      Data1: -670295068
+      Data2: 1330389230
+      Data3: 970000302
+      Data4: 814097924
+    Path: event:/SFX/Enemy/Soldier/InteractionsSoldados/PutFlower_Soldier
   ubiSalida1: {fileID: 1060599466}
 --- !u!1001 &1226938099
 PrefabInstance:
@@ -9994,6 +10001,56 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1969820836
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1969820838}
+  - component: {fileID: 1969820837}
+  m_Layer: 0
+  m_Name: CryEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1969820837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969820836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd419e3808b5862489f1ac2b1e969c45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crySound:
+    Guid:
+      Data1: 665846297
+      Data2: 1301500323
+      Data3: -615596380
+      Data4: 1501016776
+    Path: event:/SFX/Enemy/Soldier/InteractionsSoldados/Cry_Soldier
+--- !u!4 &1969820838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969820836}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 34
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1991345903
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ public class SoldierRecoveryRoom : MonoBehaviour
 {
     [Header("Soldier Switch")]
     [SerializeField] SoldierLife soldierSwitch;
+    [SerializeField] GameObject soldierBodySwitch;
     [Header("Soldier Normal")]
     [SerializeField] SoldadoNormal soldadoNormal;
     [Header("Soldier Normal Go Switch")]
@@ -13,8 +14,6 @@ public class SoldierRecoveryRoom : MonoBehaviour
     [SerializeField] Transform soldadoNormalSP;
     public float timeWaitToGoLimit;
     public float timeWaitToGo;
-    [Header("Trigger Recovery Room")]
-    [SerializeField] TriggerInfarmary infarmaryTrigger;
 
     void Update()
     {
@@ -24,10 +23,11 @@ public class SoldierRecoveryRoom : MonoBehaviour
     {
         if(soldierSwitch.vida <= 0)
         {
-            infarmaryTrigger.RecoveryRoomTrigger();
             timeWaitToGo += Time.deltaTime;
             if(timeWaitToGo >= timeWaitToGoLimit)
             {
+                soldierSwitch.enabled = false;
+                soldierBodySwitch.layer = 0;
                 soldadoNormal.ubicacionesDirigir[0] = soldadoNormalSP;
             }
         }

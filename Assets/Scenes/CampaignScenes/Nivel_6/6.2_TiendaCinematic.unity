@@ -853,8 +853,8 @@ GameObject:
   - component: {fileID: 22213461}
   - component: {fileID: 22213460}
   m_Layer: 9
-  m_Name: Suelo
-  m_TagString: Ground
+  m_Name: Cave Suelo
+  m_TagString: Cave
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3112,16 +3112,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bce461e4ed8ed644a7d69a75dadbf3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indexMod: 0
+  indexMod: 2
   rbChild: {fileID: 648928230}
-  cuerdaRota: {fileID: 0}
+  cuerdaRota: {fileID: 21300004, guid: fcabc19693987dc47911778fbb36690b, type: 3}
   soundCuerdaRota:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 314157908
+      Data2: 1241905587
+      Data3: -1154418270
+      Data4: -437439528
+    Path: event:/SFX/Objetos_Interactivos/Cuerda/CutRope
 --- !u!1 &258290648
 GameObject:
   m_ObjectHideFlags: 0
@@ -4595,6 +4595,7 @@ GameObject:
   - component: {fileID: 648928231}
   - component: {fileID: 648928230}
   - component: {fileID: 648928229}
+  - component: {fileID: 648928232}
   m_Layer: 0
   m_Name: Ceiling Fan (1)
   m_TagString: ObjetoCaer
@@ -4630,30 +4631,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   indexModificar: 2
-  typePlatform: 0
+  typePlatform: 1
   caidaObjeto: {fileID: 249440320}
   LimitevecesSaltadas: 3
   shoot_Caer:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 314157908
+      Data2: 1241905587
+      Data3: -1154418270
+      Data4: -437439528
+    Path: event:/SFX/Objetos_Interactivos/Cuerda/CutRope
   player_Touch:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1828690030
+      Data2: 1198902269
+      Data3: 351286180
+      Data4: 1773466729
+    Path: event:/SFX/Objetos_Interactivos/Aparatos_Electricos/Ventilador/Slash_Ventilador
   impacto:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1058491556
+      Data2: 1284016825
+      Data3: 2115966896
+      Data4: -106900448
+    Path: event:/SFX/Objetos_Interactivos/Aparatos_Electricos/Ventilador/Hit_Ventilador
 --- !u!50 &648928230
 Rigidbody2D:
   serializedVersion: 4
@@ -4701,6 +4702,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.25, y: 2.25}
   m_EdgeRadius: 0
+--- !u!114 &648928232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648928227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -2145651440
+      Data2: 1167669053
+      Data3: -1629654911
+      Data4: -1186039932
+    Path: event:/SFX/Objetos_Interactivos/Aparatos_Electricos/Ventilador/Ventilador
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &649063745
 GameObject:
   m_ObjectHideFlags: 0
@@ -6011,6 +6043,7 @@ GameObject:
   - component: {fileID: 932966462}
   - component: {fileID: 932966461}
   - component: {fileID: 932966460}
+  - component: {fileID: 932966465}
   m_Layer: 0
   m_Name: Interruptor (1)
   m_TagString: Untagged
@@ -6050,6 +6083,13 @@ MonoBehaviour:
   indexMod: 3
   water: {fileID: 390198402}
   soldierSwitchLife: {fileID: 87963219}
+  electricity:
+    Guid:
+      Data1: 1135807775
+      Data2: 1168581414
+      Data3: 1693030326
+      Data4: -1574682056
+    Path: event:/SFX/Objetos_Interactivos/Generador/Broken_Generator
 --- !u!114 &932966461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6067,11 +6107,11 @@ MonoBehaviour:
   buttonOfItemUse: {fileID: 15778615}
   sonidoAction:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1397404621
+      Data2: 1281983843
+      Data3: 1064214695
+      Data4: -202209943
+    Path: event:/SFX/Objetos_Interactivos/Generador/Wet_Generador
   emissorAction: {fileID: 0}
   tipoSonido: 0
 --- !u!114 &932966462
@@ -6081,7 +6121,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 932966458}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa6a6040071a254459bdf00d5c15fe76, type: 3}
   m_Name: 
@@ -6089,9 +6129,18 @@ MonoBehaviour:
   indexMod: 2
   speed: 5
   onCeilingFan: 1
-  ceilingFan: {fileID: 0}
-  soldierSwitchLife: {fileID: 0}
+  ceilingFan: {fileID: 649063748}
+  soldierSwitchLife: {fileID: 87963219}
   timeOnCeilingLimit: 1.5
+  ceilingSFX:
+    Guid:
+      Data1: -2145651440
+      Data2: 1167669053
+      Data3: -1629654911
+      Data4: -1186039932
+    Path: event:/SFX/Objetos_Interactivos/Aparatos_Electricos/Ventilador/Ventilador
+  emitterCeilingFan: {fileID: 648928232}
+  ceiling: {fileID: 648928227}
 --- !u!114 &932966463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6131,6 +6180,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2373953, y: 2.2267325}
   m_EdgeRadius: 0
+--- !u!114 &932966465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932966458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1135807775
+      Data2: 1168581414
+      Data3: 1693030326
+      Data4: -1574682056
+    Path: event:/SFX/Objetos_Interactivos/Generador/Broken_Generator
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &934487399
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,7 +10,11 @@ public enum AmbienceArea
 
     WAVES,
 
-    MACHINES
+    MACHINES,
+
+    CAVE_WET,
+
+    CAVE_TERROR
 }
 public class AmbienceActual: MonoBehaviour
 {

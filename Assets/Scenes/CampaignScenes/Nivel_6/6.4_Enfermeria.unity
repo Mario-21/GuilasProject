@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -789,8 +789,8 @@ GameObject:
   - component: {fileID: 22213461}
   - component: {fileID: 22213460}
   m_Layer: 9
-  m_Name: Suelo
-  m_TagString: Ground
+  m_Name: Cave Suelo
+  m_TagString: Cave
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3482,6 +3482,7 @@ GameObject:
   m_Component:
   - component: {fileID: 223936155}
   - component: {fileID: 223936156}
+  - component: {fileID: 223936157}
   m_Layer: 0
   m_Name: Head_5
   m_TagString: Untagged
@@ -3554,6 +3555,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &223936157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223936154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1208874883
+      Data2: 1121753066
+      Data3: -563748468
+      Data4: 1391081310
+    Path: "event:/SFX/Enemy/Soldier/Da\xF1o/Sleep"
+  Event: 
+  PlayEvent: 11
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &231107304
 GameObject:
   m_ObjectHideFlags: 0
@@ -10209,6 +10241,31 @@ PrefabInstance:
       propertyPath: objetoARecoger
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4157322816508488713, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
+        type: 3}
+      propertyPath: soundItem.Guid.Data1
+      value: -593625010
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157322816508488713, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
+        type: 3}
+      propertyPath: soundItem.Guid.Data2
+      value: 1214022419
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157322816508488713, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
+        type: 3}
+      propertyPath: soundItem.Guid.Data3
+      value: -103060087
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157322816508488713, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
+        type: 3}
+      propertyPath: soundItem.Guid.Data4
+      value: -1092578089
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157322816508488713, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
+        type: 3}
+      propertyPath: soundItem.Path
+      value: event:/SFX/Objetos_Recoger/Vaso/GlassTake
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea3305e2f82df3246a2f9f5d23b82bf6, type: 3}
 --- !u!1 &540003231 stripped
@@ -10293,11 +10350,11 @@ MonoBehaviour:
     type: 3}
   doorOpenSFX:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 876719133
+      Data2: 1330566329
+      Data3: 592015251
+      Data4: 1043647502
+    Path: event:/SFX/Player/Esconderse/Puerta_Hidden/Puertas
 --- !u!61 &554453980
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10331,6 +10388,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1077568618}
     m_Modifications:
+    - target: {fileID: 82784689740387683, guid: d3b125bb0975b25438acae4530db2ade,
+        type: 3}
+      propertyPath: zonaSound.Guid.Data1
+      value: -1430424505
+      objectReference: {fileID: 0}
+    - target: {fileID: 82784689740387683, guid: d3b125bb0975b25438acae4530db2ade,
+        type: 3}
+      propertyPath: zonaSound.Guid.Data2
+      value: 1176388285
+      objectReference: {fileID: 0}
+    - target: {fileID: 82784689740387683, guid: d3b125bb0975b25438acae4530db2ade,
+        type: 3}
+      propertyPath: zonaSound.Guid.Data3
+      value: -1669768015
+      objectReference: {fileID: 0}
+    - target: {fileID: 82784689740387683, guid: d3b125bb0975b25438acae4530db2ade,
+        type: 3}
+      propertyPath: zonaSound.Guid.Data4
+      value: 1566596427
+      objectReference: {fileID: 0}
+    - target: {fileID: 82784689740387683, guid: d3b125bb0975b25438acae4530db2ade,
+        type: 3}
+      propertyPath: zonaSound.Path
+      value: event:/SFX/Objetos_Interactivos/Transicion_Niveles/LonaZone
+      objectReference: {fileID: 0}
     - target: {fileID: 4546593624630477157, guid: d3b125bb0975b25438acae4530db2ade,
         type: 3}
       propertyPath: iconoZone
@@ -29048,6 +29130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1482681111}
   - component: {fileID: 1482681112}
+  - component: {fileID: 1482681113}
   m_Layer: 0
   m_Name: Head_5
   m_TagString: Untagged
@@ -29120,6 +29203,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1482681113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482681110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1208874883
+      Data2: 1121753066
+      Data3: -563748468
+      Data4: 1391081310
+    Path: "event:/SFX/Enemy/Soldier/Da\xF1o/Sleep"
+  Event: 
+  PlayEvent: 11
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &1485031410
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41454,6 +41568,31 @@ PrefabInstance:
       propertyPath: objetoARecoger
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4157322816508488713, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
+        type: 3}
+      propertyPath: soundItem.Guid.Data1
+      value: -1261266116
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157322816508488713, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
+        type: 3}
+      propertyPath: soundItem.Guid.Data2
+      value: 1185365621
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157322816508488713, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
+        type: 3}
+      propertyPath: soundItem.Guid.Data3
+      value: -747772762
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157322816508488713, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
+        type: 3}
+      propertyPath: soundItem.Guid.Data4
+      value: 298577735
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157322816508488713, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
+        type: 3}
+      propertyPath: soundItem.Path
+      value: event:/SFX/Objetos_Recoger/Variedad/Generic_Take
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2264154302394478893, guid: ea3305e2f82df3246a2f9f5d23b82bf6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ea3305e2f82df3246a2f9f5d23b82bf6, type: 3}
@@ -49074,9 +49213,46 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 5522647803322161951}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5522647803322161954}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8212591b2106d04aad17a5a29c9273a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5522647803322161954 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5522647802913697745, guid: 763a63f5c63d30c45b78a662d045b1d3,
+    type: 3}
+  m_PrefabInstance: {fileID: 5522647803322161951}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5522647803322161955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522647803322161954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -731910413
+      Data2: 1324417998
+      Data3: -2111089760
+      Data4: -2024782385
+    Path: event:/SFX/Objetos_Interactivos/Enfermeria/Holter
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20

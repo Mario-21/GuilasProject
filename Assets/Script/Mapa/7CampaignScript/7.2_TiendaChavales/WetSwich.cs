@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class WetSwich : MonoBehaviour
 {
@@ -13,24 +14,40 @@ public class WetSwich : MonoBehaviour
     [SerializeField] SoldierLife soldierSwitchLife;
     bool enemyHere;
     float timeOnCeiling;
-
+    [Header("Switch Sound")]
+    [SerializeField] EventReference electricity;
+    StudioEventEmitter emitterElec;
+    int soundEffect;
     void Start()
     {
+        emitterElec = AudioManager.instancia.InitializeEventEmitter(electricity, this.gameObject);
         activar = GetComponent<ActivarModificador>();
         ceiiling = GetComponent<CeiilingFan>();
-        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) SwitchWet();
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) 
+        {
+            SwitchWet();
+        }
     }
     void Update()
     {
         if (activar.modificacion) SwitchWet();
         //The switch is wet
-        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion && enemyHere)
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
-            SoldierTakeDamageWet();
+            if (soundEffect < 1)
+            {
+                emitterElec.Play();
+                soundEffect++;
+            }
+            if (enemyHere)
+            {
+                SoldierTakeDamageWet();
+            }
         }
     }
     void SwitchWet()
     {
+        ceiiling.emitterCeilingFan.Stop();
         water.SetActive(true);
         StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
         ceiiling.onCeilingFan = false;
@@ -43,6 +60,7 @@ public class WetSwich : MonoBehaviour
             timeOnCeiling += Time.deltaTime;
             if (timeOnCeiling > 1)
             {
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.electroDamage);
                 soldierSwitchLife.Daño(3);
             }
         }

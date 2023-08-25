@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using FMOD.Studio;
 
 
 public class RocksFall : MonoBehaviour
@@ -32,8 +33,12 @@ public class RocksFall : MonoBehaviour
     public float positionRandom;
 
     int stablishOnce;
+
+    EventInstance rumblingInstance;
+    int onceRumblingSFX;
     void Start()
     {
+        rumblingInstance = AudioManager.instancia.CreateEventInstance(FMODEvent.instancia.rumbling);
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) this.enabled = false;
         
     }
@@ -47,6 +52,11 @@ public class RocksFall : MonoBehaviour
     {
         if(timeRocksFall < timeRocksFallEnds)
         {
+            if(onceRumblingSFX < 1)
+            {
+                rumblingInstance.start();
+                onceRumblingSFX++;
+            }
             //ShaKe Camera
             cmCamera_1.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 1;
             //Time Duration
@@ -75,6 +85,7 @@ public class RocksFall : MonoBehaviour
         }
         else 
         {
+            rumblingInstance.stop(STOP_MODE.ALLOWFADEOUT);
             cmCamera_1.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0;
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
         }

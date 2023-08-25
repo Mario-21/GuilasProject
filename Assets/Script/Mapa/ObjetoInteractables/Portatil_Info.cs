@@ -153,7 +153,7 @@ public class Portatil_Info : MonoBehaviour
                     //Paramos el audio teclear
                     teclearTerminalSound.stop(STOP_MODE.IMMEDIATE);
                     //Sonido de confirmacion
-                    AudioManager.instancia.PlayOneShot(FMODEvent.instancia.endTerminal);
+                    AudioManager.instancia.PlayOneShot(FMODEvent.instancia.confirmTerminal);
 
                 }
             }

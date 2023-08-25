@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class NoviceDeathScene : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class NoviceDeathScene : MonoBehaviour
     [Header("Flower")]
     public GameObject flowerSoldado;
     public GameObject flowerTumba;
+    [SerializeField] EventReference flowerSFX;
     [Header("Ubicaciones Salida")]
     [SerializeField] Transform ubiSalida1;
     enum SceneNovice 
@@ -58,6 +60,7 @@ public class NoviceDeathScene : MonoBehaviour
                 timeScene -= Time.deltaTime;
                 if (timeScene <= 0)
                 {
+                    AudioManager.instancia.PlayOneShot(flowerSFX);
                     flowerSoldado.SetActive(false);
                     flowerTumba.SetActive(true);
                     sceneNoviceDeath = SceneNovice.Third;

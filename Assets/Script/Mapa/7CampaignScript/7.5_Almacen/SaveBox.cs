@@ -75,6 +75,7 @@ public class SaveBox : MonoBehaviour
     public void DeleteNum()
     {
         //Limita el numero de veces que puedes borrar un numero para que no de un index negativo
+        AudioManager.instancia.PlayOneShot(FMODEvent.instancia.retrocerder_UI);
         if(textSaveBox.text.Length > 0)
         {
             textSaveBox.text = textSaveBox.text.Remove(textSaveBox.text.Length - 1);
@@ -86,6 +87,7 @@ public class SaveBox : MonoBehaviour
         if (textSaveBox.text == saveBoxPassword.ToString()) 
         {
             Debug.Log("Correcto");
+            AudioManager.instancia.PlayOneShot(FMODEvent.instancia.confirmTerminal);
             SaveBoxOpen();
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
             onSaveBox = false;
@@ -95,6 +97,7 @@ public class SaveBox : MonoBehaviour
         }
         else
         {
+            AudioManager.instancia.PlayOneShot(FMODEvent.instancia.error_UI);
             //Reinicia
             Debug.Log("Incorrecto");
             textSaveBox.text = "";
@@ -105,15 +108,14 @@ public class SaveBox : MonoBehaviour
     }
     public void ColocarNum(int num)
     {
+        AudioManager.instancia.PlayOneShot(FMODEvent.instancia.botonGeneral);
         if(textSaveBox.text.Length < 4)
         {
             textSaveBox.text += num.ToString();
-            Debug.Log("Fal2");
             numTeclasPress++;
         }
         else if(textSaveBox.text.Length >= 4)
         {
-            Debug.Log("Fal");
             //Si por casualidad tienen el mismo numero sustituira tambien el mismo numero
             textSaveBox.text = textSaveBox.text.Remove(textSaveBox.text.Length - 1);
             textSaveBox.text += num.ToString();

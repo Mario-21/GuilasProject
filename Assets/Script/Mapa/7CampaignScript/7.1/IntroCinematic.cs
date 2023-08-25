@@ -25,6 +25,8 @@ public class IntroCinematic : MonoBehaviour
     IntroBegin startScene;
     float timeBetweenScene;
     bool introStart;
+
+    int soundOnce;
     void Start()
     {
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
@@ -61,7 +63,6 @@ public class IntroCinematic : MonoBehaviour
                 AnimationHud.detectar_echar.SetBool("Transicion", false);
                 if(timeBetweenScene <= 0)
                 {
-                    AudioManager.instancia.PlayOneShot(FMODEvent.instancia.escribir);
                     noviceIntro.enabled = true;
                     bocadillo.SetActive(false);
                     startScene = IntroBegin.Third;
@@ -70,12 +71,16 @@ public class IntroCinematic : MonoBehaviour
                 {
                     timeBetweenScene -= Time.deltaTime;
                 }
+                if(timeBetweenScene <= 1.5f && soundOnce < 1)
+                {
+                    AudioManager.instancia.PlayOneShot(FMODEvent.instancia.escribir);
+                    soundOnce++;
+                }
                 break;
             case IntroBegin.Third:
                 //El soldado va y enciende el ascensor
                 if(timeBetweenScene >= 5)
                 {
-
                     ascensorIntro.piso = 1;
                     startScene = IntroBegin.End;
                 }
