@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using FMODUnity;
 public class Notes : MonoBehaviour
 {
     PlayerHere player;
     bool readNote;
     public Image note;
+    [Header("SFX Notes")]
+    [SerializeField] EventReference noteSound;
     void Start()
     {
         player = GetComponent<PlayerHere>();
@@ -21,6 +24,7 @@ public class Notes : MonoBehaviour
         {
             if (Input.GetButtonDown("Action"))
             {
+                AudioManager.instancia.PlayOneShot(noteSound);
                 readNote = !readNote;
             }
             if (readNote)

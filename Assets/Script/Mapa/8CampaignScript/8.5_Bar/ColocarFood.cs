@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class ColocarFood : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class ColocarFood : MonoBehaviour
     [SerializeField] SoldadoNormal chef;
     [SerializeField] SoldierLife chefLife;
     [SerializeField] Transform originalPos;
+    [Header("SFX Comida")]
+    [SerializeField] EventReference foodColocar;
     void Start()
     {
         timeAction = GetComponent<TimeAndAction>();
@@ -42,6 +45,7 @@ public class ColocarFood : MonoBehaviour
         //Solo una vez para que no entre en conflicto con CerrarDucto() y nunca pueda desaparecer la comida.
         if (timeAction.onTime && foodCount < 1)
         {
+            AudioManager.instancia.PlayOneShot(foodColocar);
             comidaChef.SetActive(false);
             comidaColocada.SetActive(true);
             foodCount++;

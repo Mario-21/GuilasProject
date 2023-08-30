@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
+using FMOD.Studio;
 
 public class Electrificacion : MonoBehaviour
 {
@@ -16,6 +17,14 @@ public class Electrificacion : MonoBehaviour
     float repeatDamage;
     public bool canRepeat;
 
+    [Header("Electricidad SFX")]
+    [SerializeField] EventReference electricitySFX;
+    EventInstance electricity;
+    private void Start()
+    {
+        electricity = AudioManager.instancia.CreateEventInstance(electricitySFX);
+        electricity.start();
+    }
     void Update()
     {
         //Creo que no voy a añadir fuerzas, pondré unos efectos con partículas uno animación de electrocución y ya
@@ -72,5 +81,9 @@ public class Electrificacion : MonoBehaviour
             playerBlock.HabilitarMovPlayer();
             repeatDamage = 0;
         }
+    }
+    private void OnDestroy()
+    {
+        electricity.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 }

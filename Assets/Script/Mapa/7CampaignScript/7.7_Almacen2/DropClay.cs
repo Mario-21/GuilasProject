@@ -59,13 +59,10 @@ public class DropClay : MonoBehaviour
     void ClayCutElectricity()
     {
         //The action in event
-        if (activador.modificacion)
-        {
-            //Destruir las particulas o hacerlas desaparecer
-            Destroy(electricity);
-            Destroy(particleElectro);
-            clay.SetActive(true);
-            StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
-        }
+        //Destruir las particulas o hacerlas desaparecer
+        Destroy(electricity);
+        Destroy(particleElectro);
+        clay.SetActive(true);
+        StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
     }
 }

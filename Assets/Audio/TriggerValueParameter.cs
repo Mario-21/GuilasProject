@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerChanceAmbience : MonoBehaviour
+public class TriggerValueParameter : MonoBehaviour
 {
     [Header("Parameter Change")]
     [SerializeField] string parameterName;

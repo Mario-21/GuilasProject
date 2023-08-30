@@ -37,6 +37,7 @@ public class Desenterrar : MonoBehaviour
     {
         if (!StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) ActiveUnearth();
         ExecuteUnearth();
+        OutEvent();
         //Una vez lo activas por primera vez hace toda la "Cinematica"
     }
 
@@ -77,5 +78,13 @@ public class Desenterrar : MonoBehaviour
     {
         ap_Des_Obj.AparecerObjetos(itemDownEarth);
         //StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+    }
+    void OutEvent()
+    {
+        if(!beginEvent && StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
+        {
+            evento.actionOnCinematic -= RemoveEarth;
+            evento.actionOnCinematic -= Unearth;
+        }
     }
 }

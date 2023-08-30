@@ -44,6 +44,7 @@ public class FMODEvent : MonoBehaviour
     [SerializeField] string apartado_5;
     [SerializeField] public EventReference takeClothes;
     [SerializeField] public EventReference takeOffClothes;
+    [SerializeField] public EventReference laundryClothes;
     [SerializeField] public EventReference flashlight;
     [Space(20)]
     [SerializeField] string apartado_6;
@@ -64,6 +65,8 @@ public class FMODEvent : MonoBehaviour
     [SerializeField] public EventReference dañarEnemy;
     [SerializeField] public EventReference fallEnemy;
     [SerializeField] public EventReference sleepEnemy;
+    [SerializeField] public EventReference drinkEnemy;
+    [SerializeField] public EventReference angryEnemy;
     [Space(20)]
     [SerializeField] string apartado_3_Enemy;
     [SerializeField] public EventReference call;
@@ -95,6 +98,11 @@ public class FMODEvent : MonoBehaviour
     [SerializeField] public EventReference seeNote;
     [SerializeField] string enfermeria;
     [SerializeField] public EventReference holter;
+    [SerializeField] string zona_comida;
+    [SerializeField] public EventReference compuertaFood;
+    [SerializeField] string lavanderia;
+    [SerializeField] public EventReference finishWashingMachine;
+
     [Header("Temple SFX")]
     [SerializeField] string dardos;
     [SerializeField] public EventReference dardoShoot;

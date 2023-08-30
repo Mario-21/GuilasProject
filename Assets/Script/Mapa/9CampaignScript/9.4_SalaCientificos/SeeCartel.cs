@@ -28,6 +28,7 @@ public class SeeCartel : MonoBehaviour
         {
             if (Input.GetButtonDown("Action"))
             {
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.seeNote);
                 seeNote = !seeNote;
                 //Lo colocas en falso para que no se abra una vez salgas del cartel que estas viendo
                 Inventory.gameIsPause = false;

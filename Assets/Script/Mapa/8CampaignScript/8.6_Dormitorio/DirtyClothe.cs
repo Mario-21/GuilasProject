@@ -10,8 +10,11 @@ public class DirtyClothe : MonoBehaviour
     [Header("Clothes Info")]
     public int totalClothes;
     public int indexAllClothes;
+    [SerializeField] bool itemInClothe;
+    CogerObjeto item;
     void Start()
     {
+        if (itemInClothe) item = GetComponent<CogerObjeto>();
         player = GetComponent<PlayerHere>();
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
@@ -30,9 +33,12 @@ public class DirtyClothe : MonoBehaviour
         {
             if (Input.GetButtonDown("UseMask"))
             {
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.laundryClothes);
                 StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
-                CatchClothes();
                 //Recogiendo ropa
+                CatchClothes();
+                //Item Ropa si tienes
+                if (itemInClothe) item.Pick();
                 //ESto servía para saber cuanta ropa habias recogido, y cuando llegaras al tope la variable se activava
                 //Aplicar la misma que Liquid
                 ClotheData.clotheInfo.numCloth++;

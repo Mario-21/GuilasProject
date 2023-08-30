@@ -9,19 +9,38 @@ public class Allergy : MonoBehaviour
     [SerializeField] SoldierLife soldadoLaundry;
     [SerializeField] SpriteRenderer headSoldadoLaundry;
     public Color allergyColor;
-    
-    void Update()
-    {
-        AllergyOn();
-    }
-    void AllergyOn()
+
+
+    [Header("Allergy Time Activation")]
+    [SerializeField] float allergyTimeOnLimit;
+    float allergyTime;
+
+    private void Start()
     {
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
             headSoldadoLaundry.color = allergyColor;
-            soldadoLaundry.Daño(10);
             this.enabled = false;
-
         }
+    }
+    void Update()
+    {
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
+        {
+            if (allergyTime >= allergyTimeOnLimit)
+            {
+                AllergyOn();
+            }
+            else
+            {
+                allergyTime += Time.deltaTime;
+            }
+        }
+    }
+    void AllergyOn()
+    {
+        headSoldadoLaundry.color = allergyColor;
+        soldadoLaundry.Daño(3);
+        this.enabled = false;
     }
 }

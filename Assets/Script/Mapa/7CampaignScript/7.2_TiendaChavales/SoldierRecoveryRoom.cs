@@ -27,7 +27,7 @@ public class SoldierRecoveryRoom : MonoBehaviour
             if(timeWaitToGo >= timeWaitToGoLimit)
             {
                 soldierSwitch.enabled = false;
-                soldierBodySwitch.layer = 0;
+                soldierBodySwitch.layer = 17;
                 soldadoNormal.ubicacionesDirigir[0] = soldadoNormalSP;
             }
         }

@@ -40,6 +40,7 @@ public class BoneCin : MonoBehaviour
                 if(timeBetweenScene >= 1)
                 {
                     boneLlamar.Play();
+                    AudioManager.instancia.PlayOneShot(FMODEvent.instancia.detect_CadaverMode);
                     boneCinema = BoneCinematic.End;
                     timeBetweenScene = 0;
                 }

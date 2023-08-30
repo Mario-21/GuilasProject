@@ -32,6 +32,13 @@ public class SoldierLife : MonoBehaviour
     public GameObject itemSleepEmissor;
     StudioEventEmitter stepsEmitter;
 
+    [Header("Raycast Death")]
+    [SerializeField] GameObject rayoInstancia;
+    [SerializeField] float distanceRay;
+    [SerializeField] LayerMask layerGround;
+    bool rayCara;
+    bool rayEspalda;
+
     private void Awake()
     {
         //Tipo de enemigo
@@ -87,6 +94,8 @@ public class SoldierLife : MonoBehaviour
             //Rigibody 2D
             rB2D.drag = 0;
 
+            RaycastDeath();
+
         }
     }
     public void Daño(int daño)
@@ -130,6 +139,30 @@ public class SoldierLife : MonoBehaviour
             else { soldado.enabled = false; }
             restarSoldados++;
         }
+    }
+
+    void RaycastDeath()
+    {
+       
+        rayCara = Physics2D.Raycast(rayoInstancia.transform.position, Vector2.up, distanceRay, layerGround);
+
+        rayEspalda = Physics2D.Raycast(rayoInstancia.transform.position, Vector2.down, distanceRay, layerGround);
+
+        if(rayCara || rayEspalda)
+        {
+            Debug.Log("Cuerpo detenido");
+            DetenerBody();
+        }
+    }
+    private void OnDrawGizmos()
+    {
+        /*
+        Gizmos.color = rayCara ? Color.green : Color.red;
+        Gizmos.DrawLine(rayoInstancia.transform.position, rayoInstancia.transform.position + Vector3.up * distanceRay);
+
+        Gizmos.color = rayEspalda ? Color.green : Color.red;
+        Gizmos.DrawLine(rayoInstancia.transform.position, rayoInstancia.transform.position + Vector3.down * distanceRay);
+        */
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

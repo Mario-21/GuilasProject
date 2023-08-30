@@ -17,13 +17,15 @@ public class DoorGenerator : MonoBehaviour
     PlayerHere player;
 
     bool onDoor;
+    int reproduceAudio;
 
     void Start()
     {
         player = GetComponent<PlayerHere>();
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
-            onDoor = true;
+            OpenDoorWithGenerator();
+            this.enabled = false;
         }
     }
 
@@ -31,27 +33,36 @@ public class DoorGenerator : MonoBehaviour
     {
         if (player.playerImHere)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetButtonDown("Action"))
             {
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.botonGeneral);
                 onDoor = true;
             }
         }
-        OpenDoorWithGenerator();
-    }
-
-    void OpenDoorWithGenerator()
-    {
         if (onDoor)
         {
-            triggerB8.enabled = false;
-            //On Light
-            luzDoor.color = Color.green;
-            luzGenerator.color = Color.green;
-            //Open Door
-            door.sprite = doorOpen;
-            colliderDoor.enabled = false;
-            //Mod
-            StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+            OpenDoorWithGenerator();
+            DoorGeneratorSound();
+        }
+    }
+    void OpenDoorWithGenerator()
+    {
+        triggerB8.enabled = false;
+        //On Light
+        luzDoor.color = Color.green;
+        luzGenerator.color = Color.green;
+        //Open Door
+        door.sprite = doorOpen;
+        colliderDoor.enabled = false;
+        //Mod
+        StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+    }
+    void DoorGeneratorSound()
+    {
+        if(reproduceAudio < 1)
+        {
+            AudioManager.instancia.PlayOneShot(FMODEvent.instancia.puertaHidden);
+            reproduceAudio++;
         }
     }
 }

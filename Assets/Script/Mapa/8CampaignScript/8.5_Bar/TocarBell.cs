@@ -32,8 +32,9 @@ public class TocarBell : MonoBehaviour
     {
         if (player.playerImHere)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetButtonDown("Action"))
             {
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.bell);
                 bellSound = true;
                 //Deshabilitar para que cuando termine el chef y llegue con la comida poder Volver a tocarla
             }

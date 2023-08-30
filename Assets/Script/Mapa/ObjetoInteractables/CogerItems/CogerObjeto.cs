@@ -36,21 +36,25 @@ public class CogerObjeto : MonoBehaviour
     {
         if (Input.GetButtonDown("Take") && !SaveScene.instancia.listaItemsNivelGuardar[objetoARecoger].objetoObtenido)
         {
-            //Sonido item
-            AudioManager.instancia.PlayOneShot(soundItem);
-            feedbackItem.SpawnIcon();
-            //Take The object
-            //listaItemNivel.listaItemsNivel[objetoARecoger].objetoObtenido = true;
-            SaveScene.instancia.listaItemsNivelGuardar[objetoARecoger].objetoObtenido = true;
-            //Set the button position and active
-            objetcButtonInventory.GetComponent<RectTransform>().localPosition = InventoryManager.instanciaInventory.inventoryPosition[InventoryManager.instanciaInventory.indexInventoryPosition];
-            SaveScene.instancia.listaItemsNivelGuardar[objetoARecoger].ubiPosButton = InventoryManager.instanciaInventory.indexInventoryPosition;
-            objetcButtonInventory.SetActive(true);
-            //Increaso to the next position for the following object
-            InventoryManager.instanciaInventory.indexInventoryPosition++;
-            //Disappaer the object
-            objectCatch.SetActive(false);
+            Pick();
         }
        
+    }
+    public void Pick()
+    {
+        //Sonido item
+        AudioManager.instancia.PlayOneShot(soundItem);
+        feedbackItem.SpawnIcon();
+        //Take The object
+        //listaItemNivel.listaItemsNivel[objetoARecoger].objetoObtenido = true;
+        SaveScene.instancia.listaItemsNivelGuardar[objetoARecoger].objetoObtenido = true;
+        //Set the button position and active
+        objetcButtonInventory.GetComponent<RectTransform>().localPosition = InventoryManager.instanciaInventory.inventoryPosition[InventoryManager.instanciaInventory.indexInventoryPosition];
+        SaveScene.instancia.listaItemsNivelGuardar[objetoARecoger].ubiPosButton = InventoryManager.instanciaInventory.indexInventoryPosition;
+        objetcButtonInventory.SetActive(true);
+        //Increaso to the next position for the following object
+        InventoryManager.instanciaInventory.indexInventoryPosition++;
+        //Disappaer the object
+        objectCatch.SetActive(false);
     }
 }

@@ -47,6 +47,7 @@ public class Duct : MonoBehaviour
         else
         {
             UseDuct();
+            timeBetweenScene = 0;
         }
     }
     void UseDuct()

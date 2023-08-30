@@ -45,8 +45,9 @@ public class LaundryCinEnd : MonoBehaviour
             case LaundryScene.Second:
 
                 timeBetweenScene += Time.deltaTime;
-                if(timeBetweenScene >= 2)
+                if(timeBetweenScene >= 3)
                 {
+                    AudioManager.instancia.PlayOneShot(FMODEvent.instancia.finishWashingMachine);
                     itemCin.Appear();
                     itemCin.DesAppear();
                     botonLavadora.color = Color.green;
@@ -59,6 +60,7 @@ public class LaundryCinEnd : MonoBehaviour
                 timeBetweenScene += Time.deltaTime;
                 if(timeBetweenScene >= 3 && contador < 1)
                 {
+                    AudioManager.instancia.PlayOneShot(FMODEvent.instancia.angryEnemy);
                     Instantiate(globoEnfado, spawnGlobo.transform.position, Quaternion.identity);
                     angry.SetActive(true);
                     laundryCin = LaundryScene.End;

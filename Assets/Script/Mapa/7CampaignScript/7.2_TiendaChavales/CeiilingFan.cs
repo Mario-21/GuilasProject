@@ -74,8 +74,9 @@ public class CeiilingFan : MonoBehaviour
             timeOnCeiling += Time.deltaTime;
             if (timeOnCeiling >= timeOnCeilingLimit)
             {
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.botonGeneral);
                 onCeilingFan = true;
-                emitterCeilingFan.Stop();
+                SoundCeilingFan();
                 timeOnCeiling = 0;
                 enemyHere = false;
             }

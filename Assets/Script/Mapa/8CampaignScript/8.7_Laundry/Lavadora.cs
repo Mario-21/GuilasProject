@@ -13,6 +13,8 @@ public class Lavadora : MonoBehaviour
     [SerializeField] SpriteRenderer botonLavadora;
     [SerializeField] GameObject basket;
     ActivarModificador activador;
+
+    int audio;
     void Start()
     {
         activador = GetComponent<ActivarModificador>();
@@ -26,6 +28,7 @@ public class Lavadora : MonoBehaviour
         {
             this.enabled = false;
             botonLavadora.color = Color.red;
+            activador.emissorAction.Play();
         }
     }
     void Update()
@@ -39,6 +42,11 @@ public class Lavadora : MonoBehaviour
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
             basket.SetActive(false);
             botonLavadora.color = Color.red;
+            if(audio < 1)
+            {
+                activador.emissorAction.Play();
+                audio++;
+            }
         }
     }
 }

@@ -680,8 +680,8 @@ GameObject:
   - component: {fileID: 22213461}
   - component: {fileID: 22213460}
   m_Layer: 9
-  m_Name: Suelo
-  m_TagString: Ground
+  m_Name: Cave Suelo
+  m_TagString: Cave
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2046,8 +2046,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 143817135}
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.5266661, y: 0.006673257, z: 0}
-  m_LocalScale: {x: 0.5333332, y: 0.6666665, z: 1}
+  m_LocalPosition: {x: -1.05, y: 0.01, z: 0}
+  m_LocalScale: {x: 7.8382177, y: 6.6993318, z: 10.049}
   m_Children:
   - {fileID: 1989970892}
   m_Father: {fileID: 1269089323}
@@ -2092,15 +2092,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: c1084f9bf83283a4abcfd3485496a0bd, type: 3}
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.2, y: 0.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &194165281
@@ -2697,11 +2697,11 @@ MonoBehaviour:
   buttonOfItemUse: {fileID: 15778615}
   sonidoAction:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -902585786
+      Data2: 1178459104
+      Data3: -573311830
+      Data4: -715656534
+    Path: event:/SFX/Objetos_Interactivos/Seguridad/Candado_Out
   emissorAction: {fileID: 0}
   tipoSonido: 0
 --- !u!61 &376903387
@@ -2832,6 +2832,7 @@ GameObject:
   - component: {fileID: 449018305}
   - component: {fileID: 449018307}
   - component: {fileID: 449018306}
+  - component: {fileID: 449018308}
   m_Layer: 0
   m_Name: taquilla-metalica
   m_TagString: Escondite
@@ -2929,6 +2930,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &449018308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449018304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43d1a928ee972da4abf94168c3590f6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hiddenDefine: 1
 --- !u!1 &451836431
 GameObject:
   m_ObjectHideFlags: 0
@@ -2940,6 +2954,7 @@ GameObject:
   - component: {fileID: 451836434}
   - component: {fileID: 451836433}
   - component: {fileID: 451836432}
+  - component: {fileID: 451836435}
   m_Layer: 0
   m_Name: taquilla-metalica
   m_TagString: Escondite
@@ -3037,6 +3052,19 @@ Transform:
   m_Father: {fileID: 837175865}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &451836435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451836431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43d1a928ee972da4abf94168c3590f6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hiddenDefine: 1
 --- !u!1001 &476286802
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3062,7 +3090,7 @@ PrefabInstance:
     - target: {fileID: 4887143178439294451, guid: c0c7e686e24850a489fd7abdbf3e46a8,
         type: 3}
       propertyPath: playerMask.m_Bits
-      value: 1048576
+      value: 1114112
       objectReference: {fileID: 0}
     - target: {fileID: 4887143178439294451, guid: c0c7e686e24850a489fd7abdbf3e46a8,
         type: 3}
@@ -3158,6 +3186,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1789445058}
     m_Modifications:
+    - target: {fileID: 82784689740387683, guid: d3b125bb0975b25438acae4530db2ade,
+        type: 3}
+      propertyPath: zonaSound.Guid.Data1
+      value: -1430424505
+      objectReference: {fileID: 0}
+    - target: {fileID: 82784689740387683, guid: d3b125bb0975b25438acae4530db2ade,
+        type: 3}
+      propertyPath: zonaSound.Guid.Data2
+      value: 1176388285
+      objectReference: {fileID: 0}
+    - target: {fileID: 82784689740387683, guid: d3b125bb0975b25438acae4530db2ade,
+        type: 3}
+      propertyPath: zonaSound.Guid.Data3
+      value: -1669768015
+      objectReference: {fileID: 0}
+    - target: {fileID: 82784689740387683, guid: d3b125bb0975b25438acae4530db2ade,
+        type: 3}
+      propertyPath: zonaSound.Guid.Data4
+      value: 1566596427
+      objectReference: {fileID: 0}
+    - target: {fileID: 82784689740387683, guid: d3b125bb0975b25438acae4530db2ade,
+        type: 3}
+      propertyPath: zonaSound.Path
+      value: event:/SFX/Objetos_Interactivos/Transicion_Niveles/LonaZone
+      objectReference: {fileID: 0}
     - target: {fileID: 4546593624630477157, guid: d3b125bb0975b25438acae4530db2ade,
         type: 3}
       propertyPath: iconoZone
@@ -3492,14 +3545,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexMod: 0
   rbChild: {fileID: 1269089321}
-  cuerdaRota: {fileID: 0}
+  cuerdaRota: {fileID: 21300004, guid: fcabc19693987dc47911778fbb36690b, type: 3}
   soundCuerdaRota:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 264442555
+      Data2: 1274094573
+      Data3: -1628296821
+      Data4: 308014089
+    Path: event:/SFX/Objetos_Interactivos/Cuerda/CutCuerda
 --- !u!212 &608959809
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7927,25 +7980,25 @@ MonoBehaviour:
   LimitevecesSaltadas: 3
   shoot_Caer:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1950415492
+      Data2: 1172513618
+      Data3: -1987229817
+      Data4: -346564277
+    Path: event:/SFX/Objetos_Interactivos/Shoot_Caer/Rama/FallCoco
   player_Touch:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1950415492
+      Data2: 1172513618
+      Data3: -1987229817
+      Data4: -346564277
+    Path: event:/SFX/Objetos_Interactivos/Shoot_Caer/Rama/FallCoco
   impacto:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -699738661
+      Data2: 1234926465
+      Data3: -1513145437
+      Data4: -97229168
+    Path: event:/SFX/Objetos_Interactivos/Shoot_Caer/Lampara/Lampara_Impact
 --- !u!61 &1269089320
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8051,7 +8104,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1269089318}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.97160333, z: 0}
+  m_LocalPosition: {x: 0, y: -1.18, z: 0}
   m_LocalScale: {x: 0.30245122, y: 4.3265224, z: 1}
   m_Children:
   - {fileID: 143817136}
@@ -8279,6 +8332,7 @@ GameObject:
   - component: {fileID: 1317902067}
   - component: {fileID: 1317902069}
   - component: {fileID: 1317902068}
+  - component: {fileID: 1317902070}
   m_Layer: 0
   m_Name: taquilla-metalica
   m_TagString: Escondite
@@ -8376,6 +8430,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1317902070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317902066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43d1a928ee972da4abf94168c3590f6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hiddenDefine: 1
 --- !u!1 &1322623833
 GameObject:
   m_ObjectHideFlags: 0
@@ -8647,7 +8714,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400162063}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.09999865, y: -0.1299999, z: 0}
+  m_LocalPosition: {x: 0.09999865, y: -0.33, z: 0}
   m_LocalScale: {x: 9.850276, y: 0.51977754, z: 1}
   m_Children: []
   m_Father: {fileID: 608959810}
@@ -9247,6 +9314,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4887143178439294451, guid: c0c7e686e24850a489fd7abdbf3e46a8,
+        type: 3}
+      propertyPath: playerMask.m_Bits
+      value: 1114112
+      objectReference: {fileID: 0}
     - target: {fileID: 5382868657175186577, guid: c0c7e686e24850a489fd7abdbf3e46a8,
         type: 3}
       propertyPath: iD
@@ -9652,6 +9724,31 @@ PrefabInstance:
       propertyPath: objetcButtonInventory
       value: 
       objectReference: {fileID: 15778616}
+    - target: {fileID: 4157322816508488713, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
+        type: 3}
+      propertyPath: soundItem.Guid.Data1
+      value: -826863268
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157322816508488713, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
+        type: 3}
+      propertyPath: soundItem.Guid.Data2
+      value: 1288840107
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157322816508488713, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
+        type: 3}
+      propertyPath: soundItem.Guid.Data3
+      value: 310080146
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157322816508488713, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
+        type: 3}
+      propertyPath: soundItem.Guid.Data4
+      value: 2041389361
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157322816508488713, guid: ea3305e2f82df3246a2f9f5d23b82bf6,
+        type: 3}
+      propertyPath: soundItem.Path
+      value: event:/SFX/Objetos_Recoger/Herramienta/Herramienta_Take
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea3305e2f82df3246a2f9f5d23b82bf6, type: 3}
 --- !u!1 &1793537278 stripped

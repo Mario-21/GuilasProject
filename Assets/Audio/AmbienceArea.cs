@@ -14,7 +14,11 @@ public enum AmbienceArea
 
     CAVE_WET,
 
-    CAVE_TERROR
+    CAVE_TERROR,
+
+    PEOPLE_TALK,
+
+    LAVANDERIA
 }
 public class AmbienceActual: MonoBehaviour
 {

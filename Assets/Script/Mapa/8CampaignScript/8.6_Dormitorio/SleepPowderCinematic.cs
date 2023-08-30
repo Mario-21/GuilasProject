@@ -21,6 +21,8 @@ public class SleepPowderCinematic : MonoBehaviour
     SceneSleepPowder sleepScene;
     float timeBetweenScene;
 
+    int audiReproduce;
+
     private void Start()
     {
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) this.enabled = false;
@@ -34,6 +36,11 @@ public class SleepPowderCinematic : MonoBehaviour
         if (timeRotate < timeRotateLimit)
         {
             //Bebe La bebida
+            if(audiReproduce < 1)
+            {
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.drinkEnemy);
+                audiReproduce++;
+            }
             timeRotate += Time.deltaTime;
             brazoSoldier.Rotate(0f, 0f, 1f);
         }
