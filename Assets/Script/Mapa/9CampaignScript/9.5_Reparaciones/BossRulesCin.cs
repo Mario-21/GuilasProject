@@ -11,7 +11,7 @@ public class BossRulesCin : MonoBehaviour
     [SerializeField] SoldadoNormal boss;
     [Header("Cinematics")]
     [SerializeField] FallCinematic fallCinematicAsistance;
-    [SerializeField] FallCinematic fallCinematicBoss;
+    [SerializeField] GameObject rangeCar;
     void Update()
     {
         //Solo salta la cinemática si se cumple una condición especifica para ello en el caso del Asistente que se le caíga la lámpara,
@@ -24,7 +24,7 @@ public class BossRulesCin : MonoBehaviour
             asistente.berserker || boss.berserker)
         {
             Destroy(fallCinematicAsistance);
-            Destroy(fallCinematicBoss);
+            Destroy(rangeCar);
         }
     }
 }

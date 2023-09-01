@@ -102,6 +102,8 @@ public class FMODEvent : MonoBehaviour
     [SerializeField] public EventReference compuertaFood;
     [SerializeField] string lavanderia;
     [SerializeField] public EventReference finishWashingMachine;
+    [SerializeField] string hook;
+    [SerializeField] public EventReference hookBox;
 
     [Header("Temple SFX")]
     [SerializeField] string dardos;

@@ -16,6 +16,8 @@ public class CatchHook : MonoBehaviour
     [Header("Box Hook")]
     [SerializeField] BoxCollider2D boxHookCollider;
     [SerializeField] SpriteRenderer boxHookSprite;
+
+
     void Update()
     {
         CatchBox();
@@ -27,6 +29,7 @@ public class CatchHook : MonoBehaviour
             timeCatchBox += Time.deltaTime;
             if(timeCatchBox >= 1.5)
             {
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.hookBox);
                 switch (tipoCaja)
                 {
                     case BoxHookType.CatchBox:  

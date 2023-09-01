@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class HookPlatform : MonoBehaviour
 {
@@ -19,8 +20,14 @@ public class HookPlatform : MonoBehaviour
     [Header("Tiempo permanecer ubicaciones")]
     public float timeInUbiLimit;
     float timeInUbi;
+    [Header("Sound Hook")]
+    StudioEventEmitter emitterHook;
+    [SerializeField] EventReference moveHookSound;
+
+    int sfxHook;
     void Start()
     {
+        emitterHook = AudioManager.instancia.InitializeEventEmitter(moveHookSound, this.gameObject);
         hookCollider = GetComponent<BoxCollider2D>();
         hookSprite = GetComponent<SpriteRenderer>();
         transform.position = ubicaciones[0].position;
@@ -36,13 +43,23 @@ public class HookPlatform : MonoBehaviour
         //Se dirige a las ubicaciones
         transform.position = Vector2.MoveTowards(transform.position, ubicaciones[indexUbi].position, velocidad * Time.deltaTime);
 
-        if(Vector2.Distance(ubicaciones[indexUbi].position,transform.position) < 1)
+        if(Vector2.Distance(ubicaciones[indexUbi].position,transform.position) < 0.5f)
         {
             timeInUbi += Time.deltaTime;
+            emitterHook.Stop();
             if(timeInUbi >= timeInUbiLimit)
             {
                 indexUbi++;
                 timeInUbi = 0;
+                sfxHook = 0;
+            }
+        }
+        else
+        {
+            if(sfxHook < 1)
+            {
+                emitterHook.Play();
+                sfxHook++;
             }
         }
     }

@@ -18,7 +18,9 @@ public enum AmbienceArea
 
     PEOPLE_TALK,
 
-    LAVANDERIA
+    LAVANDERIA,
+
+    DUCHA
 }
 public class AmbienceActual: MonoBehaviour
 {

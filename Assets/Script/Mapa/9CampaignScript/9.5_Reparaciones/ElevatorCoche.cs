@@ -1,30 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class ElevatorCoche : MonoBehaviour
 {
     PlayerHere player;
-
-    [SerializeField] SoldadoNormal boss;
-
     public int indexMod;
 
-    [Header("Fall Item")]
-    public GameObject fallItem;
-
-    [Header("Elevator")]
-    [SerializeField] Transform elevador;
-    [SerializeField] Transform[] ubiElevator;
-
-    bool onElevator;
+    [Header("Range Car")]
+    [SerializeField] RangeCarTrigger car;
+    [Header("Sfx Car Impact")]
+    [SerializeField] EventReference sfxImpactCar;
+    [Header("Cinematic")]
+    [SerializeField] GameObject cutItemCin;
+    [SerializeField] int cinematic;
     void Start()
     {
         player = GetComponent<PlayerHere>();
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
             this.enabled = false;
-            elevador.position = ubiElevator[0].position;
         }
     }
 
@@ -32,28 +28,31 @@ public class ElevatorCoche : MonoBehaviour
     void Update()
     {
         ElevatorVehicle();
-        ElevatorMove();
     }
     void ElevatorVehicle()
     {
         if (player.playerImHere)
         {
-            if (Input.GetKeyDown(KeyCode.Z) && !StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
+            if (Input.GetButtonDown("Action"))
             {
-                onElevator = true;
-                boss.enabled = false;
-                fallItem.SetActive(true);
-                StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.botonGeneral);
+                CorteEscena();
 
             }
         }
-    }
-    void ElevatorMove()
-    {
-        if (onElevator)
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
-            Vector2 movePosition = elevador.position;
-            elevador.position = Vector2.MoveTowards(elevador.position, ubiElevator[0].position, 1 * Time.deltaTime);
+            AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
+            EstructuraNiveles.nivel = cinematic;
+        }
+    }
+    void CorteEscena()
+    {
+        if(car.RangeCar && !StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
+        {
+            cutItemCin.SetActive(true);
+            AudioManager.instancia.PlayOneShot(sfxImpactCar);
+            StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
         }
     }
 }

@@ -131,7 +131,7 @@ PrefabInstance:
     - target: {fileID: 73286309180251524, guid: a714d9ac7ea43494aa5f7d0db98e02d7,
         type: 3}
       propertyPath: m_Text
-      value: "Tubo Ca\xF1eria"
+      value: Wrench
       objectReference: {fileID: 0}
     - target: {fileID: 448701251294818760, guid: a714d9ac7ea43494aa5f7d0db98e02d7,
         type: 3}
@@ -146,7 +146,7 @@ PrefabInstance:
     - target: {fileID: 1102425120688180926, guid: a714d9ac7ea43494aa5f7d0db98e02d7,
         type: 3}
       propertyPath: m_Name
-      value: "Tubo Ca\xF1eria"
+      value: Wrench
       objectReference: {fileID: 0}
     - target: {fileID: 1144606652627197656, guid: a714d9ac7ea43494aa5f7d0db98e02d7,
         type: 3}
@@ -345,7 +345,7 @@ PrefabInstance:
     - target: {fileID: 3424474597785915089, guid: a714d9ac7ea43494aa5f7d0db98e02d7,
         type: 3}
       propertyPath: m_Name
-      value: ScrewDriver
+      value: Alicates
       objectReference: {fileID: 0}
     - target: {fileID: 3498648236772282610, guid: a714d9ac7ea43494aa5f7d0db98e02d7,
         type: 3}
@@ -371,7 +371,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1839678683626655606, guid: dbbcd994f6df0d04aa1f4f7aad900a7e,
+      objectReference: {fileID: 1839678683626655606, guid: 14c94d3ac56cf60498f032f45709ac03,
         type: 3}
     - target: {fileID: 3682625691363763996, guid: a714d9ac7ea43494aa5f7d0db98e02d7,
         type: 3}
@@ -403,7 +403,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1839678683626655606, guid: 23324d1184cc8a041b54b54236341913,
+      objectReference: {fileID: 1839678683626655606, guid: d51c801571f2e5043a1383060ad05b04,
         type: 3}
     - target: {fileID: 3935330525522648668, guid: a714d9ac7ea43494aa5f7d0db98e02d7,
         type: 3}
@@ -524,7 +524,7 @@ PrefabInstance:
     - target: {fileID: 7343213121546667663, guid: a714d9ac7ea43494aa5f7d0db98e02d7,
         type: 3}
       propertyPath: m_Text
-      value: ScrewDriver
+      value: Alicates
       objectReference: {fileID: 0}
     - target: {fileID: 7600133128726890729, guid: a714d9ac7ea43494aa5f7d0db98e02d7,
         type: 3}
@@ -2585,10 +2585,20 @@ PrefabInstance:
       propertyPath: ubicacionesDirigir.Array.data[1]
       value: 
       objectReference: {fileID: 2141493591}
+    - target: {fileID: 4898233101950329812, guid: c0c7e686e24850a489fd7abdbf3e46a8,
+        type: 3}
+      propertyPath: StopEvent
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5382868657175186577, guid: c0c7e686e24850a489fd7abdbf3e46a8,
         type: 3}
       propertyPath: iD
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5382868657175186577, guid: c0c7e686e24850a489fd7abdbf3e46a8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6252209984872713497, guid: c0c7e686e24850a489fd7abdbf3e46a8,
         type: 3}
@@ -3011,15 +3021,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   indexMod: 14
-  spawn: 10
-  nextScene: 58
+  spawn: 1
+  nextScene: 60
   soundAction:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1843392216
+      Data2: 1227715451
+      Data3: -413184578
+      Data4: -66627462
+    Path: event:/SFX/Objetos_Interactivos/Transicion_Niveles/MetalZone
 --- !u!61 &480055708
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6870,6 +6880,58 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &797593861
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 797593862}
+  - component: {fileID: 797593863}
+  m_Layer: 0
+  m_Name: Aire Off
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &797593862
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797593861}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1206388196}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &797593863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797593861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b329fa66141d64e46b48dc02b5a85245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indexMod: 1
+  aireSFX:
+    Guid:
+      Data1: 1076039058
+      Data2: 1153258813
+      Data3: 1762011299
+      Data4: -1487908714
+    Path: event:/SFX/Objetos_Interactivos/Aparatos_Electricos/Aire_Acondicionado/Aire_On
+  aireItem: {fileID: 1664848720}
 --- !u!1 &826024664
 GameObject:
   m_ObjectHideFlags: 0
@@ -6883,7 +6945,7 @@ GameObject:
   - component: {fileID: 826024667}
   m_Layer: 9
   m_Name: Base Vigia
-  m_TagString: Ground
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7340,12 +7402,12 @@ PrefabInstance:
     - target: {fileID: 1363467014327164557, guid: 7a389af19db7f8c41b4f9348ae42142b,
         type: 3}
       propertyPath: modificacion.Array.data[0].ObjetoQueSeVaModificar
-      value: Use Screwdriver (9.1)
+      value: Use Alicates (8.3)
       objectReference: {fileID: 0}
     - target: {fileID: 1363467014327164557, guid: 7a389af19db7f8c41b4f9348ae42142b,
         type: 3}
       propertyPath: modificacion.Array.data[1].ObjetoQueSeVaModificar
-      value: Bloquear Ventilacion (9.1)
+      value: Use Wrench (8.3)
       objectReference: {fileID: 0}
     - target: {fileID: 1363467014327164557, guid: 7a389af19db7f8c41b4f9348ae42142b,
         type: 3}
@@ -8098,6 +8160,7 @@ Transform:
   m_Children:
   - {fileID: 480055710}
   - {fileID: 1866818565}
+  - {fileID: 797593862}
   m_Father: {fileID: 0}
   m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9500,6 +9563,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1664848721}
   - component: {fileID: 1664848722}
+  - component: {fileID: 1664848723}
   m_Layer: 0
   m_Name: Aire Acondicionado
   m_TagString: Untagged
@@ -9573,6 +9637,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1664848723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664848720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1076039058
+      Data2: 1153258813
+      Data3: 1762011299
+      Data4: -1487908714
+    Path: event:/SFX/Objetos_Interactivos/Aparatos_Electricos/Aire_Acondicionado/Aire_On
+  Event: 
+  PlayEvent: 0
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &1709828606
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10222,7 +10317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ad0fe8d797c374abaaf9045fb07f2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indexMod: 0
+  indexMod: 20
   indexSoldados: 03000000040000000500000006000000
 --- !u!1 &1907371001
 GameObject:
@@ -10620,6 +10715,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be063edf98dfac74ea920943daf8c756, type: 3}
+--- !u!1 &2079206449 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1777989262170554276, guid: be063edf98dfac74ea920943daf8c756,
+    type: 3}
+  m_PrefabInstance: {fileID: 2079206448}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2079206450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079206449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9eb52dd686df8c438cdc313bf267f64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfx_Goteo:
+    Guid:
+      Data1: 1182653836
+      Data2: 1327095417
+      Data3: 101215165
+      Data4: -1160540276
+    Path: event:/SFX/Enemy/Soldier/InteractionsSoldados/Jadear_Soldier
 --- !u!1001 &2111370515
 PrefabInstance:
   m_ObjectHideFlags: 0

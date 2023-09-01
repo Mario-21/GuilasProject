@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using FMODUnity;
 
 public class CuboLamentos : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class CuboLamentos : MonoBehaviour
     public GameObject iconPlayer;
     public SpriteRenderer iconSpritePlayer;
     public Sprite icon;
+    [Header("SFX Cubo")]
+    [SerializeField] EventReference sfx_OpenCubo;
 
     PlayerHere player;
     [HideInInspector] public bool inCubo;
@@ -55,6 +58,7 @@ public class CuboLamentos : MonoBehaviour
     {
         if(password == passwordComplete)
         {
+            AudioManager.instancia.PlayOneShot(sfx_OpenCubo);
             //Aparece Reliquia
             reliquia.SetActive(true);
             //Interfaz del cubo se va fuera
@@ -74,7 +78,7 @@ public class CuboLamentos : MonoBehaviour
     {
         if (player.playerImHere)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetButtonDown("Action"))
             {
                 inCubo = !inCubo;
                 if (inCubo)
