@@ -84,6 +84,7 @@ public class SoldadoNormal : MonoBehaviour
     float cooldownDisparo;
     [SerializeField] float dispara;
     public GameObject bala;
+    GameObject balaEnemigo;
     public Transform spawnBala;
     public float velocidadBala;
 
@@ -327,7 +328,7 @@ public class SoldadoNormal : MonoBehaviour
         }
         
     }
-    void Apuntar()
+    public void Apuntar()
     {
         EscalaAtaque();
 
@@ -344,7 +345,7 @@ public class SoldadoNormal : MonoBehaviour
         cooldownDisparo += Time.deltaTime;
         if (cooldownDisparo >= dispara && !player.GetComponent<Stairs_Hidden>().imHidden)
         {
-            GameObject balaEnemigo = Instantiate(bala, spawnBala.position,Quaternion.identity);
+            balaEnemigo = Instantiate(bala, spawnBala.position,Quaternion.identity);
             balaEnemigo.GetComponent<Rigidbody2D>().AddForce(spawnBala.right * velocidadBala,ForceMode2D.Impulse);
             cooldownDisparo = 0;
         }

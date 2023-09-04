@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class TakeMainItems : MonoBehaviour
 {
     PlayerHere player;
     public int indexItemMision;
+    [SerializeField] EventReference sfxMainItem;
     void Start()
     {
         player = GetComponent<PlayerHere>();
@@ -26,6 +28,7 @@ public class TakeMainItems : MonoBehaviour
         {
             if (Input.GetButtonDown("Take"))
             {
+                AudioManager.instancia.PlayOneShot(sfxMainItem);
                 this.gameObject.SetActive(false);
                 ListMissions.listaMissions.missionsMap[indexItemMision].success = true;
             }

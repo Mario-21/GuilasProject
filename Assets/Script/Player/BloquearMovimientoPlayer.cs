@@ -50,6 +50,9 @@ public class BloquearMovimientoPlayer : MonoBehaviour
         b8.mira.gameObject.SetActive(false);
         //Deactivate ChangeWeapon
         conditionToChangeWeapon.enabled = false;
+        //Desactivar escaleras
+        stairs_Hidden.enabled = false;
+        stairs_Hidden.laddersSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
     //Electricidad (7.7) Paralizar
     public void BloquearMovConDaño()

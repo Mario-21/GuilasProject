@@ -9,8 +9,10 @@ public class GoCin : MonoBehaviour
     public int sceneCin;
 
     ActivarModificador activador;
+    BloquearMovimientoPlayer playerMov;
     void Start()
     {
+        playerMov = FindObjectOfType<BloquearMovimientoPlayer>();
         activador = GetComponent<ActivarModificador>();
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
@@ -31,6 +33,7 @@ public class GoCin : MonoBehaviour
             EstructuraNiveles.nivel = sceneCin;
             AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+            playerMov.BloquearMovPlayer();
         }
     }
 }
