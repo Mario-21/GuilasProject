@@ -47,6 +47,8 @@ public class PisoAscensor : MonoBehaviour
     public void GoPiso(int piso)
     {
         Debug.Log("Escena Piso");
+        AudioManager.instancia.PlayOneShot(FMODEvent.instancia.buttonAscensor_UI);
+        AudioManager.instancia.PlayOneShot(FMODEvent.instancia.ascensorAction);
         EstructuraNiveles.nivel = piso;
         AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
         bloqPlayer.BloquearMovPlayer();
@@ -59,10 +61,12 @@ public class PisoAscensor : MonoBehaviour
     }
     public void ActiveWritePassWord()
     {
+        AudioManager.instancia.PlayOneShot(FMODEvent.instancia.buttonAscensor_UI);
         passwordOn = !passwordOn;
     }
     public void ColocarNum(int num)
     {
+        AudioManager.instancia.PlayOneShot(FMODEvent.instancia.buttonAscensor_UI);
         if (textAscensor.text.Length < limitPassword)
         {
             textAscensor.text += num.ToString();
@@ -79,6 +83,7 @@ public class PisoAscensor : MonoBehaviour
     }
     public void DeleteNum()
     {
+        AudioManager.instancia.PlayOneShot(FMODEvent.instancia.retrocerder_UI);
         textAscensor.text = textAscensor.text.Remove(textAscensor.text.Length - 1);
         cifrasAscensor--;
     }
@@ -115,6 +120,7 @@ public class PisoAscensor : MonoBehaviour
     {
         if(textAscensor.text == ascensorPassword.ToString())
         {
+            AudioManager.instancia.PlayOneShot(FMODEvent.instancia.confirm_UI);
             AscensorCorrect();
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
             onPass.color = Color.green;
@@ -122,6 +128,7 @@ public class PisoAscensor : MonoBehaviour
         }
         else
         {
+            AudioManager.instancia.PlayOneShot(FMODEvent.instancia.error_UI);
             textAscensor.text = "";
             cifrasAscensor = 0;
             onPass.color = Color.red;

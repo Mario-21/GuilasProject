@@ -11,7 +11,7 @@ public class BloquearMovimientoPlayer : MonoBehaviour
     public ArmaController pistol;
     public B8Arma b8;
     public ChangeWeapon conditionToChangeWeapon;
-    Stairs_Hidden stairs_Hidden;
+    public Stairs_Hidden stairs_Hidden;
 
     [Header("Elemento Menu")]
     Inventory inventory;

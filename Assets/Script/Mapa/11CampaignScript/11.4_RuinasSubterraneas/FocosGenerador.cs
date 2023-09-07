@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 public class FocosGenerador : MonoBehaviour
 {
     PlayerHere player;
@@ -19,8 +20,15 @@ public class FocosGenerador : MonoBehaviour
     //Colocar que solo ocurrira mientras el soldado este vivo
 
     int indexLuces;
+
+    [Header("Generator SFX")]
+    [SerializeField] EventReference generador_SFX;
+    [SerializeField] GameObject emitterItem;
+    StudioEventEmitter emitterGenerator;
+    int audiGenerator;
     void Start()
     {
+        emitterGenerator = AudioManager.instancia.InitializeEventEmitter(generador_SFX,emitterItem);
         player = GetComponent<PlayerHere>();
         focosOn = true;
     }
@@ -35,8 +43,9 @@ public class FocosGenerador : MonoBehaviour
     {
         if (player.playerImHere)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetButtonDown("Action"))
             {
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.botonGeneral);
                 focosOn = !focosOn;
                 indexLuces = 0;
             }
@@ -84,10 +93,17 @@ public class FocosGenerador : MonoBehaviour
         if (focosOn)
         {
             boton.color = Color.green;
+            if(audiGenerator < 1)
+            {
+                emitterGenerator.Play();
+                audiGenerator++;
+            }
         }
         else
         {
             boton.color = Color.red;
+            audiGenerator = 0;
+            emitterGenerator.Stop();
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

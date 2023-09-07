@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class OutSalaSoldier : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class OutSalaSoldier : MonoBehaviour
     [Header("Time Out Sala")]
     public float timeOutSalaLimit;
     float timeOutSala;
+    [Header("Sonido")]
+    [SerializeField] EventReference sfxPuerta;
 
     bool doorInSoldier;
     void Start()
@@ -47,6 +50,7 @@ public class OutSalaSoldier : MonoBehaviour
             timeOutSala += Time.deltaTime;
             if(timeOutSala >= timeOutSalaLimit)
             {
+                AudioManager.instancia.PlayOneShot(sfxPuerta);
                 soldadoCodeLife.gameObject.SetActive(false);
                 triggerSoldadoCode.SetActive(false);
                 StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;

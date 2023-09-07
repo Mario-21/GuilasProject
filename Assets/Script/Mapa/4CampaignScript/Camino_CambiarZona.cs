@@ -5,7 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(ZonaChangeSound))]
 public class Camino_CambiarZona : MonoBehaviour
 {
-
+    [Header("Estado de la puerta")]
+    [SerializeField] bool locker;
+    ScientificRoomOpen lockDoor;
     [Header("Escena y Spawn")]
     public int siguienteEscena;
     public int checkpointSpanwScene;
@@ -24,6 +26,7 @@ public class Camino_CambiarZona : MonoBehaviour
     {
         zonaChange = GetComponent<ZonaChangeSound>();
         triggerBox = GetComponent<BoxCollider2D>();
+        if (locker) lockDoor = GetComponent<ScientificRoomOpen>();
     }
     private void Update()
     {
@@ -52,6 +55,7 @@ public class Camino_CambiarZona : MonoBehaviour
                 EstructuraNiveles.nivel = siguienteEscena;
                 AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
                 iconoZone.SetActive(false);
+                if (locker) lockDoor.OpenScientificRoom();
             }
         }
     }

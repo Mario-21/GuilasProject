@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class GunpowderUse : MonoBehaviour
 {
@@ -15,10 +16,13 @@ public class GunpowderUse : MonoBehaviour
     [Header("Tiempo Dejar Huellas")]
     public float timeHuellasLimit;
     public float timeHuellas;
-
+    [Header("Huella SFX")]
+    [SerializeField] EventReference sfxHuella;
 
     ActivarModificador activador;
     bool huellas;
+
+
 
     void Start()
     {
@@ -53,6 +57,7 @@ public class GunpowderUse : MonoBehaviour
             timeHuellas += Time.deltaTime;
             if(timeHuellas >= timeHuellasLimit)
             {
+                AudioManager.instancia.PlayOneShot(sfxHuella);
                 item.SetActive(true);
                 StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
                 //inhabilitar texto o mirar si ya lo hace en su variable

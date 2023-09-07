@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using FMODUnity;
 
 public class AngryChef : MonoBehaviour
 {
@@ -33,6 +34,8 @@ public class AngryChef : MonoBehaviour
         End
     }
     Secuencia scena;
+    [Header("SFX Dialogue")]
+    [SerializeField] EventReference soundDialogue;
     void Start()
     {
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) this.enabled = false;
@@ -61,6 +64,7 @@ public class AngryChef : MonoBehaviour
                             if (once < 1)
                             {
                                 Instantiate(globoDialogo, ubiDialogo.position, ubiDialogo.rotation);
+                                AudioManager.instancia.PlayOneShot(soundDialogue); 
                                 timeScene = 0;
                                 scena = Secuencia.End;
                             }

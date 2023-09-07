@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class PelucaTrigger : MonoBehaviour
 {
@@ -30,6 +31,8 @@ public class PelucaTrigger : MonoBehaviour
         End
     }
     TalkEnemyPeluca talkEnemy;
+    [Header("Audio_Ascensor")]
+    [SerializeField] EventReference audioAscensor;
     void Start()
     {
         
@@ -78,6 +81,7 @@ public class PelucaTrigger : MonoBehaviour
                 enemyTalk += Time.deltaTime;
                 if(enemyTalk >= timeEnemyTalkLimit)
                 {
+                    AudioManager.instancia.PlayOneShot(audioAscensor);
                     EstructuraNiveles.nivel = nextScene;
                     AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
                     CheckPointController.numeroCheckPoint = checkPoint;

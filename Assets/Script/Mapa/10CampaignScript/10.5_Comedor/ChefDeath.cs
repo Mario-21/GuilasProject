@@ -9,7 +9,7 @@ public class ChefDeath : MonoBehaviour
     public int indexChef;
 
     [SerializeField] Aparecer_DesAp_Obj chefAp_Des;
-    private void Awake()
+    private void Start()
     {
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {

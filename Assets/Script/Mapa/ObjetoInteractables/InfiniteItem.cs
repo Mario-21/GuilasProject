@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class InfiniteItem : MonoBehaviour
 {
     [SerializeField] SaveButton itemButton;
     public int indexButton;
     SpawnItemIcon iconItemSpawn;
+    [SerializeField] EventReference takeSFX;
 
     PlayerHere player;
     void Start()
@@ -25,8 +27,9 @@ public class InfiniteItem : MonoBehaviour
     }
     void TakeItemAgain()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetButtonDown("Take"))
         {
+            AudioManager.instancia.PlayOneShot(takeSFX);
             SaveScene.instancia.listaItemsNivelGuardar[indexButton].vecesUsadoObjeto = 0;
             itemButton.HabilitarUsos();
             if(SaveScene.instancia.listaItemsNivelGuardar[indexButton].vecesUsadoObjeto >= 1)

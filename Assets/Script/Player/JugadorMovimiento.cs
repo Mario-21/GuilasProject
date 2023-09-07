@@ -317,6 +317,10 @@ public class JugadorMovimiento : MonoBehaviour
             onWater = false;
         }
     }
+    private void OnDestroy()
+    {
+        playerStepsGrass.stop(STOP_MODE.IMMEDIATE);
+    }
 
 
 

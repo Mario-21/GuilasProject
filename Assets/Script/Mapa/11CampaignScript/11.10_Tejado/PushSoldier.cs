@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class PushSoldier : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class PushSoldier : MonoBehaviour
     float timePush;
     bool push;
     BoxCollider2D colliderTrigger;
+    [Header("SFX Wilheim")]
+    [SerializeField] EventReference wilheim;
     void Start()
     {
         colliderTrigger = GetComponent<BoxCollider2D>();
@@ -40,7 +43,7 @@ public class PushSoldier : MonoBehaviour
         {
             if(soldadoVida.vida > 0 && soldadoInside)
             {
-                if (Input.GetKeyDown(KeyCode.Z))
+                if (Input.GetButtonDown("Action"))
                 {
                     //Recarga la escena emitiendo un sonido
 
@@ -64,6 +67,7 @@ public class PushSoldier : MonoBehaviour
             timePush += Time.deltaTime;
             if(timePush >= timePushLimit)
             {
+                AudioManager.instancia.PlayOneShot(wilheim);
                 //La pantalla vuelve a la normalidad
                 AnimationHud.detectar_echar.SetBool("Transicion", false);
                 //Puedes Moverte

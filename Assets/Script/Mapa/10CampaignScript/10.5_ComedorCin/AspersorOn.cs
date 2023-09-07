@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD.Studio;
+using FMODUnity;
 
 public class AspersorOn : MonoBehaviour
 {
@@ -20,6 +22,11 @@ public class AspersorOn : MonoBehaviour
     [Header("End Scene")]
     [Tooltip("Solo ocurrira si el soldado a muerto anteriormente")]
     [SerializeField] UseCin end;
+    [Header("Aspersor Particles")]
+    [SerializeField] List<ParticleSystem> aspersorParticle;
+    [Header("SFX Aspersores")]
+    [SerializeField] GameObject aspersorTriggerAmbience;
+
 
     void Start()
     {
@@ -36,6 +43,11 @@ public class AspersorOn : MonoBehaviour
         {
             //Enciende el aspersor
             luzAspersor.color = Color.green;
+            aspersorTriggerAmbience.SetActive(true);
+            foreach(ParticleSystem particle in aspersorParticle)
+            {
+                particle.Play();
+            }
 
             //Si continua vivo la escena se ejecutara como normalmente lo hace
             if(SoldierActiveInScene.instancia.soldiersStatus[indexChef].statusVida > 0)

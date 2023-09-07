@@ -40,6 +40,8 @@ public class PoisonDrink : MonoBehaviour
         Help
     }
     SecuenciaPoison poisonScene;
+
+    int drinkAudio;
     void Start()
     {
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
@@ -65,6 +67,11 @@ public class PoisonDrink : MonoBehaviour
                 //Pasado un tiempo transicion y cambio de escena
                 if(timeScene >= poisonSceneLimit)
                 {
+                    if (drinkAudio < 1)
+                    {
+                        AudioManager.instancia.PlayOneShot(FMODEvent.instancia.drinkEnemy);
+                        drinkAudio++;
+                    }
                     AnimationHud.detectar_echar.SetBool("Transicion", true);
                     poisonScene = SecuenciaPoison.PoisonCadaver;
                     timeScene = 0;

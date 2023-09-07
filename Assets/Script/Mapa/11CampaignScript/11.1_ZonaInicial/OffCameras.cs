@@ -34,8 +34,9 @@ public class OffCameras : MonoBehaviour
     {
         if (player.playerImHere)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetButtonDown("Action"))
             {
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.botonGeneral);
                 ApagarCamaras();
                 ChangeStatusBoton();
                 StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;

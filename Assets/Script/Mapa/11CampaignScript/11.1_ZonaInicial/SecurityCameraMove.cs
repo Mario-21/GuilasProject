@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class SecurityCameraMove : MonoBehaviour
 {
@@ -15,8 +16,14 @@ public class SecurityCameraMove : MonoBehaviour
     public float limitCameraRot;
     float limitRotCameraDrcha;
     float limitRotCameraIzq;
+    [Header("SFX Camera")]
+    StudioEventEmitter emitterCamera;
+    [SerializeField] EventReference sfx_Camera;
+    int audiCamera;
     void Start()
     {
+        //Emissor camera
+        emitterCamera = AudioManager.instancia.InitializeEventEmitter(sfx_Camera, this.gameObject);
         //Establecer Limite Derecha
         limitRotCameraDrcha = limitCameraRot;
         //Establecer Limite Izquierda
@@ -50,18 +57,26 @@ public class SecurityCameraMove : MonoBehaviour
             {
                 Debug.Log("Quiero Rotar");
                 transform.Rotate(0, 0, velocidad);
+                //Reproducir audio
+                if (audiCamera < 1)
+                {
+                    emitterCamera.Play();
+                    audiCamera++;
+                }
             }
 
             //Tras pasar el limite se esperara un tiempo y comenzará a girar en la otra dirección
             if (transform.eulerAngles.z >= limitRotCameraDrcha && transform.eulerAngles.z < limitRotCameraIzq)
             {
                 velocidad = 0;
+                emitterCamera.Stop();
                 timeCamera += Time.deltaTime;
                 if (timeCamera >= timeCameraLimit)
                 {
                     //Cambias y te diriges a la izquierda
                     velocidad = velocidadDefault * -1;
                     derecha = false;
+                    audiCamera = 0;
                     timeCamera = 0;
                 }
             }
@@ -79,13 +94,19 @@ public class SecurityCameraMove : MonoBehaviour
             {
                 Debug.Log("Quiero Rotar");
                 transform.Rotate(0, 0, velocidad);
+                //Reproducir audio
+                if (audiCamera < 1)
+                {
+                    emitterCamera.Play();
+                    audiCamera++;
+                }
             }
             //Segunda Condición
 
             //Tras la dos condiciones anteriores solo habría que pedirle de nuevo la condición del límite por la izquierda, para que cuando se cumpla anular la velocidad. 
             if (transform.eulerAngles.z <= limitRotCameraIzq && transform.eulerAngles.z > limitRotCameraDrcha)
             {
-                Debug.Log("Quiero llorar");
+                emitterCamera.Stop();
                 velocidad = 0;
                 timeCamera += Time.deltaTime;
                 if (timeCamera >= timeCameraLimit)
@@ -93,6 +114,7 @@ public class SecurityCameraMove : MonoBehaviour
                     //Cambias y te diriges a la derecha.
                     velocidad = velocidadDefault * 1;
                     derecha = true;
+                    audiCamera = 0;
                     timeCamera = 0;
                 }
             }

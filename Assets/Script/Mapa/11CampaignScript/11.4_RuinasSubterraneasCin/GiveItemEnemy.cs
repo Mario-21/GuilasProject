@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class GiveItemEnemy : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class GiveItemEnemy : MonoBehaviour
         End
     }
     CinGiveitem giveEnemy;
+
+    [Header("Give SFX")]
+    [SerializeField] EventReference giveTrade_SFX;
     void Start()
     {
         
@@ -68,6 +72,7 @@ public class GiveItemEnemy : MonoBehaviour
     }
     void GiveItem()
     {
+        AudioManager.instancia.PlayOneShot(giveTrade_SFX);
         notaSoldado.SetActive(false);
         notaGive.SetActive(true);
     }

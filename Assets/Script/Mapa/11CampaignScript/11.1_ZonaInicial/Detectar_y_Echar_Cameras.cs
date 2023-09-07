@@ -50,6 +50,7 @@ public class Detectar_y_Echar_Cameras : MonoBehaviour
         switch (detectScene)
         {
             case SecuenceDetect.girarSoldado:
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.securityCamAlert);
                 //Inhabilita mi inventario
                 menuPlayer.enabled = false;
                 menuPlayer.inventory.SetActive(false);

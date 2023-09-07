@@ -87,6 +87,7 @@ public class FMODEvent : MonoBehaviour
     [SerializeField] string ascensor;
     [SerializeField] public EventReference botonGeneral;
     [SerializeField] public EventReference ascensorMove;
+    [SerializeField] public EventReference ascensorAction;
     [SerializeField] string derrumbamiento;
     [SerializeField] public EventReference rumbling;
     [SerializeField] string candado;
@@ -104,6 +105,9 @@ public class FMODEvent : MonoBehaviour
     [SerializeField] public EventReference finishWashingMachine;
     [SerializeField] string hook;
     [SerializeField] public EventReference hookBox;
+    [SerializeField] string cameras;
+    [SerializeField] public EventReference securityCamAlert;
+    [SerializeField] public EventReference alarm;
 
     [Header("Temple SFX")]
     [SerializeField] string dardos;
@@ -118,7 +122,9 @@ public class FMODEvent : MonoBehaviour
     [SerializeField] public EventReference secretTemple;
     [Header("UI SFX")]
     [SerializeField] public EventReference retrocerder_UI;
+    [SerializeField] public EventReference confirm_UI;
     [SerializeField] public EventReference error_UI;
+    [SerializeField] public EventReference buttonAscensor_UI;
 
     public static FMODEvent instancia;
     public void Awake()

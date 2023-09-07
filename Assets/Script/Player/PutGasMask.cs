@@ -9,8 +9,7 @@ public class PutGasMask : MonoBehaviour
     [SerializeField] SaveButton mascaraButton;
     public string tagName = "Mascara";
     bool canPut;
-     public bool putMask;
-
+    public bool putMask;
 
     void Update()
     {

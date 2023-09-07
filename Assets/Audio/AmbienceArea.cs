@@ -20,7 +20,15 @@ public enum AmbienceArea
 
     LAVANDERIA,
 
-    DUCHA
+    DUCHA,
+
+    VIENTO,
+
+    ASPERSORES,
+
+    BASURA,
+
+    DEFAULT
 }
 public class AmbienceActual: MonoBehaviour
 {

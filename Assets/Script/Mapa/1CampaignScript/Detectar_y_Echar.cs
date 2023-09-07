@@ -99,7 +99,7 @@ public class Detectar_y_Echar : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (movPlayer.onGround && collision.gameObject.CompareTag("Player"))
+        if (movPlayer.onGround && collision.gameObject.CompareTag("Player") || player.stairs_Hidden.escalar && collision.gameObject.CompareTag("Player"))
         {
             evento = true;
             if(!balaInside && !ArmaController.preCollisionObject)player.BloquearMovPlayer();

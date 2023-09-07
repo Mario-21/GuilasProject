@@ -199,4 +199,8 @@ public class Stairs_Hidden : MonoBehaviour
             
         }
     }
+    private void OnDestroy()
+    {
+        laddersSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+    }
 }

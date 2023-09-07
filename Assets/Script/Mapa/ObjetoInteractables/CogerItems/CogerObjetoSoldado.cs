@@ -75,6 +75,7 @@ public class CogerObjetoSoldado : MonoBehaviour
     {
         if (Input.GetButtonDown("Take"))
         {
+            AudioManager.instancia.PlayOneShot(itemSound);
             buttonObjectInventory.SetActive(true);
             objectToPickUp.SetActive(false);
             ListaItemsUI.listaItemsUI.listaAllItemUI[objetoARecoger].itemUICatch = true;
