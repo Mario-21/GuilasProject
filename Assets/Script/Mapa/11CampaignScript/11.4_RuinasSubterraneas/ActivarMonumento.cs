@@ -35,6 +35,8 @@ public class ActivarMonumento : MonoBehaviour
         //Abrir Boca
         bocaAbierta.SetActive(true);
         bocaCerrada.SetActive(false);
+        //Desactivar para que funcione el revivir
+        this.enabled = false;
 
     }
 }

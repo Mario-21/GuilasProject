@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using FMOD.Studio;
 
 public class CraftingTable : MonoBehaviour
 {
@@ -30,12 +31,16 @@ public class CraftingTable : MonoBehaviour
     public List<GameObject> itemsEnMesa;
     [Header("Particulas Crafting")]
     public GameObject estelaHumo;
+
+    EventInstance craftingSound;
+    int soundEffect;
     private void Awake()
     {
         player = GetComponent<PlayerHere>();
     }
     void Start()
     {
+        craftingSound = AudioManager.instancia.CreateEventInstance(FMODEvent.instancia.crafteo);
         //Si has crafteado el item, ya no puedes volverlo a craftearlo
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexModCrafteo].modificacion)
         {
@@ -83,9 +88,16 @@ public class CraftingTable : MonoBehaviour
             //La barra de la UI comenzara a llenarse
             timeCraft += 0.01f;
             iconCrafteoUI.fillAmount = timeCraft;
+            //Sonido Crafting
+            if(soundEffect < 1)
+            {
+                craftingSound.start();
+                soundEffect++;
+            }
             //Al terminar el crafteo
             if (timeCraft >= timeCraftLimit)
             {
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.endCrafteo);
                 //Aparece una estela de humo para que no se vea como crea el objeto
                 Instantiate(estelaHumo, transform.position, Quaternion.identity);
                 //Desapaarecen los items en mesa
@@ -104,11 +116,16 @@ public class CraftingTable : MonoBehaviour
                 iconoZone.SetActive(false);
                 //Aparece el objeto crafteado
                 itemCrafteado.SetActive(true);
+                //Se detiene el sonido
+                craftingSound.stop(STOP_MODE.ALLOWFADEOUT);
+                soundEffect = 0;
                 Debug.Log("Crafteo completado");
             }
         }
         else
         {
+            soundEffect = 0;
+            craftingSound.stop(STOP_MODE.ALLOWFADEOUT);
             timeCraft = 0;
             iconCrafteoUI.fillAmount = 0;
         }

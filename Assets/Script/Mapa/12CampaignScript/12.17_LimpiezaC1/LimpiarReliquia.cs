@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class LimpiarReliquia : MonoBehaviour
 {
@@ -13,7 +14,9 @@ public class LimpiarReliquia : MonoBehaviour
     public List<GameObject> cleanItem;
     [Header ("Item Raw")]
     public List<GameObject> rawItem;
-
+    [Header("Sfx Limpiar")]
+    [SerializeField] EventReference sfxClean;
+    int cleanSound;
     bool beginEvent;
     void Start()
     {
@@ -39,7 +42,7 @@ public class LimpiarReliquia : MonoBehaviour
         {
             events.actionOnCinematic += CleanReliquia;
             //evento.actionOnCinematic += Unearth;
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetButtonDown("Action"))
             {
                 beginEvent = true;
             }
@@ -60,6 +63,12 @@ public class LimpiarReliquia : MonoBehaviour
         cleanShowItem.DeleteItems(rawItem);
 
         StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+
+        if (cleanSound < 1)
+        {
+            AudioManager.instancia.PlayOneShot(sfxClean);
+            cleanSound++;
+        }
     }
     private void OnDisable()
     {

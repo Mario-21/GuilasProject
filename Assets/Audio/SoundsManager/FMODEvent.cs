@@ -90,6 +90,9 @@ public class FMODEvent : MonoBehaviour
     [SerializeField] public EventReference ascensorAction;
     [SerializeField] string derrumbamiento;
     [SerializeField] public EventReference rumbling;
+    [SerializeField] public EventReference explosion;
+    [SerializeField] public EventReference failLight;
+    [SerializeField] public EventReference goteoMetal;
     [SerializeField] string candado;
     [SerializeField] public EventReference cerrar_Abrir_Lock;
     [SerializeField] string campana;
@@ -108,6 +111,12 @@ public class FMODEvent : MonoBehaviour
     [SerializeField] string cameras;
     [SerializeField] public EventReference securityCamAlert;
     [SerializeField] public EventReference alarm;
+    [SerializeField] string mesa_crafting;
+    [SerializeField] public EventReference crafteo;
+    [SerializeField] public EventReference endCrafteo;
+    [SerializeField] string aparatos_electricos;
+    [SerializeField] public EventReference drill;
+    [SerializeField] public EventReference ventilador;
 
     [Header("Temple SFX")]
     [SerializeField] string dardos;

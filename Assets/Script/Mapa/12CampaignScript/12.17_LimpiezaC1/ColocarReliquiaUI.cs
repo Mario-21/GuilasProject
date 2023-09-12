@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class ColocarReliquiaUI : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class ColocarReliquiaUI : MonoBehaviour
     [Header("Item Data")]
     public GameObject item;
     public GameObject itemUI;
+    [Header("Sfx")]
+    [SerializeField] EventReference sfx;
 
     PlayerHere player;
 
@@ -22,6 +25,7 @@ public class ColocarReliquiaUI : MonoBehaviour
         {
             this.gameObject.SetActive(false);
             item.SetActive(true);
+            this.enabled = false;
         }
     }
 
@@ -31,14 +35,16 @@ public class ColocarReliquiaUI : MonoBehaviour
         //Si tienes el objeto y estas cerca de la posicion puedes colocar el objeto
         if (ListaItemsUI.listaItemsUI.listaAllItemUI[indexUI].itemUICatch && player.playerImHere)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetButtonDown("Action"))
             {
+                AudioManager.instancia.PlayOneShot(sfx);
                 item.SetActive(true);
                 StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
                 this.gameObject.SetActive(false);
                 //Quitar el UI de la lista, ya que lo acabas de usar 
                 ListaItemsUI.listaItemsUI.listaAllItemUI[indexUI].itemUICatch = false;
                 itemUI.SetActive(false);
+                this.enabled = false;
 
 
             }

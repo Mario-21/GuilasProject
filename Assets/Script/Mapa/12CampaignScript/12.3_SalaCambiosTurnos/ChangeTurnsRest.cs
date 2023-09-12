@@ -30,6 +30,7 @@ public class ChangeTurnsRest : MonoBehaviour
         {
             if (Input.GetButtonDown("Action"))
             {
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.botonGeneral);
                 TurnosWorked.extras.turnosWork++;
                 MarcoColor();
             }

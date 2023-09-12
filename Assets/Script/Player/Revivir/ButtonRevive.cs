@@ -48,6 +48,7 @@ public class ButtonRevive : MonoBehaviour
     {
         transicionPause.SetTrigger(name);
         PauseMenu.openTries = 0;
+        PauseMenu.pause = false;
         
     }
     public void ButtonResetearPosInventory()

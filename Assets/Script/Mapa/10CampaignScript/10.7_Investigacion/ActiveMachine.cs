@@ -29,6 +29,7 @@ public class ActiveMachine : MonoBehaviour
         {
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
             OnMachine();
+            this.enabled = false;
         }
     }
     void OnMachine()

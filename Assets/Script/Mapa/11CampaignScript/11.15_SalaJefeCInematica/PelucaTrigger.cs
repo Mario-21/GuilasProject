@@ -24,6 +24,7 @@ public class PelucaTrigger : MonoBehaviour
     public int checkPoint;
 
     bool stopPlayer;
+    int reproduceAudio;
     enum TalkEnemyPeluca
     {
         Girarse,
@@ -81,7 +82,11 @@ public class PelucaTrigger : MonoBehaviour
                 enemyTalk += Time.deltaTime;
                 if(enemyTalk >= timeEnemyTalkLimit)
                 {
-                    AudioManager.instancia.PlayOneShot(audioAscensor);
+                    if (reproduceAudio < 1) 
+                    {
+                        AudioManager.instancia.PlayOneShot(audioAscensor);
+                        reproduceAudio++; 
+                    }
                     EstructuraNiveles.nivel = nextScene;
                     AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
                     CheckPointController.numeroCheckPoint = checkPoint;

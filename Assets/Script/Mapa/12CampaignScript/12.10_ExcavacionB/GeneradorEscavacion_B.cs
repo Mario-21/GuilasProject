@@ -55,6 +55,5 @@ public class GeneradorEscavacion_B : MonoBehaviour
     public static void DecrementoGenerador(float decremento)
     {
         barraGenNumber -= decremento;
-
     }
 }
