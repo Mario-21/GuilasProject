@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class Out_In_Buttons : MonoBehaviour
 {
@@ -19,5 +20,4 @@ public class Out_In_Buttons : MonoBehaviour
         buttons.DeleteItems(buttonsDisAppear);
         
     }
-    
 }

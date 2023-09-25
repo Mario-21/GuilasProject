@@ -28,7 +28,16 @@ public enum AmbienceArea
 
     BASURA,
 
-    DEFAULT
+    DEFAULT,
+
+    CLOACAS, 
+
+    TURBINA,
+    
+    STORM,
+
+    ALARM
+
 }
 public class AmbienceActual: MonoBehaviour
 {

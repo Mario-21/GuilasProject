@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD.Studio;
+using FMODUnity;
 
 public class Barco : MonoBehaviour
 {
@@ -24,8 +26,12 @@ public class Barco : MonoBehaviour
     [Header("Particulas Barco")]
     public GameObject particulas;
     int activeParticles;
+    [Header("Barco SFX")]
+    [SerializeField] EventReference sfx_Barco;
+    [HideInInspector] public EventInstance barcoSteps;
     void Start()
     {
+        barcoSteps = AudioManager.instancia.CreateEventInstance(sfx_Barco);
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -43,6 +49,7 @@ public class Barco : MonoBehaviour
         {
             horizontalMov = 0;
         }
+        SoundMoveShip();
         MoveBarco();
         ActivarParticles();
     }
@@ -138,6 +145,27 @@ public class Barco : MonoBehaviour
     Vector2 GetInput()
     {
         return new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+    }
+    void SoundMoveShip()
+    {
+        if(Mathf.Abs(horizontalMov) > 0)
+        {
+            Debug.Log("Barca SFX");
+            PLAYBACK_STATE playbackState;
+            barcoSteps.getPlaybackState(out playbackState);
+            if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
+            {
+                barcoSteps.start();
+            }
+        }
+        else
+        {
+            barcoSteps.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+    }
+    private void OnDisable()
+    {
+        barcoSteps.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
 
 }

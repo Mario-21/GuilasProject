@@ -36,6 +36,7 @@ public class FMODEvent : MonoBehaviour
     [SerializeField] public EventReference taquillaHidden;
     [SerializeField] public EventReference basuraHidden;
     [SerializeField] public EventReference puertaHidden;
+    [SerializeField] public EventReference containerHidden;
     [Space(20)]
     [SerializeField] string apartado_4;
     [SerializeField] public EventReference damage;
@@ -117,6 +118,10 @@ public class FMODEvent : MonoBehaviour
     [SerializeField] string aparatos_electricos;
     [SerializeField] public EventReference drill;
     [SerializeField] public EventReference ventilador;
+    [SerializeField] string sistema_drenaje;
+    [SerializeField] public EventReference drenar;
+    [SerializeField] public EventReference llenarDrenaje;
+    [SerializeField] public EventReference valvula;
 
     [Header("Temple SFX")]
     [SerializeField] string dardos;
@@ -134,6 +139,9 @@ public class FMODEvent : MonoBehaviour
     [SerializeField] public EventReference confirm_UI;
     [SerializeField] public EventReference error_UI;
     [SerializeField] public EventReference buttonAscensor_UI;
+    [SerializeField] public EventReference writeNote_UI;
+    [SerializeField] public EventReference sacarPaper_UI;
+    [SerializeField] public EventReference lamp_UI;
 
     public static FMODEvent instancia;
     public void Awake()

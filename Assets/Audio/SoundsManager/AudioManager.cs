@@ -14,8 +14,6 @@ public class AudioManager : MonoBehaviour
     private EventInstance musicEventInstance;
 
     public static AudioManager instancia;
-
-    int numEmissor;
     private void Awake()
     {
         if(AudioManager.instancia == null)
@@ -25,9 +23,7 @@ public class AudioManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
-            Debug.Log("Hay más de un audio");
         }
-
         eventInstances = new List<EventInstance>();
         eventEmitters = new List<StudioEventEmitter>();
     }

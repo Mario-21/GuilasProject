@@ -33,7 +33,7 @@ public class JugadorMovimiento : MonoBehaviour
     [Header("Jump Data")]
     [SerializeField] float jumpForce = 12f;
     [SerializeField] float airLinearDrag = 2.5f;
-    [SerializeField] float fallMultiplier = 8f;
+    public float fallMultiplier = 8f;
     [SerializeField] float lowJumpFallMultiplier = 5f;
     [SerializeField] int extraJump;
     Queue<KeyCode> almacenBotonJump;
@@ -49,6 +49,7 @@ public class JugadorMovimiento : MonoBehaviour
     public float aceleracionWater;
     public float speedWater;
     public bool onWater;
+    [SerializeField] SpashSound splashWater;
 
     [Header("Escaleras")]
     public Stairs_Hidden subirEscalera;
@@ -86,6 +87,7 @@ public class JugadorMovimiento : MonoBehaviour
     //comprobar en valor absoluto la diferencia de altura
     private void Awake()
     {
+        splashWater = GetComponentInChildren<SpashSound>();
         almacenBotonJump = new Queue<KeyCode>();
         spawn = FindObjectOfType<CheckPointController>();
         triggerFootSteps = GetComponentInChildren<DetectTypeFloor>();
@@ -222,7 +224,7 @@ public class JugadorMovimiento : MonoBehaviour
     }
     void CheckCollisionWater()
     {
-        if (onWater) 
+        if (onWater && splashWater.onWet) 
         {
             velocidad = velocidadWater;
             speed = speedWater;
@@ -251,7 +253,7 @@ public class JugadorMovimiento : MonoBehaviour
         }
         else
         {
-            if(!subirEscalera.zonaEscalada) rb.gravityScale = 1f;
+            
         }
     }
     public void CambiarDireccionDisparo()
@@ -307,7 +309,6 @@ public class JugadorMovimiento : MonoBehaviour
         if (collision.gameObject.CompareTag("Water"))
         {
             onWater = true;
-            AudioManager.instancia.PlayOneShot(FMODEvent.instancia.splashWater);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

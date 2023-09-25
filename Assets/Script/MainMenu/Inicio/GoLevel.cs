@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class GoLevel : MonoBehaviour
 {
@@ -9,12 +10,15 @@ public class GoLevel : MonoBehaviour
     [Header("Transicion Animacion")]
     public string nameAnimVar;
     public Animator transtion;
+    [Header("SFX")]
+    [SerializeField] EventReference sfx;
     private void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
     }
     private void OnMouseEnter()
     {
+        AudioManager.instancia.PlayOneShot(sfx);
         sprite.color = Color.green;
         Debug.Log("Mouse Entro");
     }

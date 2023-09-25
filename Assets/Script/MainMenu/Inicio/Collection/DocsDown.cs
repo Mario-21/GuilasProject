@@ -16,6 +16,7 @@ public class DocsDown : MonoBehaviour
     public GameObject luzFake;
 
     bool killerMove;
+    int soundLamp;
     void Start()
     {
         myPos = GetComponent<RectTransform>();
@@ -39,6 +40,11 @@ public class DocsDown : MonoBehaviour
             {
                 //Sonido encendido
                 luzFake.SetActive(true);
+                if(soundLamp < 1)
+                {
+                    AudioManager.instancia.PlayOneShot(FMODEvent.instancia.lamp_UI);
+                    soundLamp++;
+                }
                 killerMove = false;
             }
         }

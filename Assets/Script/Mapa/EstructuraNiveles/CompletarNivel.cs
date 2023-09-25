@@ -15,6 +15,7 @@ public class CompletarNivel : MonoBehaviour
         {
             blockPlayer.BloquearMovPlayer();
             AudioManager.instancia.CleanUp();
+            MusicAmbienceManager.instance.CleanAmbienceMusic();
             EstructuraNiveles.nivel = siguienteNivel;
             AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
             CheckPointController.numeroCheckPoint = 0;

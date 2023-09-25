@@ -92,10 +92,10 @@ GameObject:
   - component: {fileID: 3995840133332932482}
   - component: {fileID: 3995840133332932483}
   - component: {fileID: 3995840133332932511}
-  - component: {fileID: 3995840133332932508}
   - component: {fileID: 3995840133332932509}
+  - component: {fileID: 1557262758001460470}
   m_Layer: 0
-  m_Name: Panel Mantenimiento Apagado
+  m_Name: 'Panel Mantenimiento '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -180,21 +180,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerImHere: 0
---- !u!114 &3995840133332932508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3995840133332932480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b81a0096ccd0d94cac0462c61901beb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  indexMod: 9
-  feedback: 0
-  botonFeedback: {fileID: 0}
 --- !u!61 &3995840133332932509
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -221,6 +206,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2909613, y: 2.1207812}
   m_EdgeRadius: 0
+--- !u!114 &1557262758001460470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995840133332932480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e67ecc87bc9a82248a06897672e48e7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indexMod: 0
+  palancaOn: {fileID: 21300000, guid: 21ef38100cdbda946a0ac2c7214bd743, type: 3}
+  verdeButton: {fileID: 3995840133027095538}
+  verdeOn: {r: 0.53333336, g: 1, b: 0, a: 1}
+  rojoButton: {fileID: 3995840134180983701}
+  rojoOff: {r: 0.69803923, g: 0.23529412, b: 0.23529412, a: 1}
+  leverMantenimiento:
+    Guid:
+      Data1: 912487838
+      Data2: 1250642359
+      Data3: -1311366758
+      Data4: 1737057160
+    Path: event:/SFX/Objetos_Interactivos/Cloacas/Mantenimiento/Lever_Mantenimiento
 --- !u!1 &3995840134180983707
 GameObject:
   m_ObjectHideFlags: 0

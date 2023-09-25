@@ -9,11 +9,14 @@ public class RechargeBattery : MonoBehaviour
     [SerializeField] SpriteRenderer bNoEnergy;
     [Header("Battery Energy")]
     [SerializeField] SpriteRenderer bEnergy;
+    [Header("Cable Battery")]
+    [SerializeField] GameObject cable;
 
-    PlayerHere player;
+
+    ActivarModificador activador; 
     private void Awake()
     {
-        player = GetComponent<PlayerHere>();
+        activador = GetComponent<ActivarModificador>();
     }
 
     private void Start()
@@ -25,7 +28,7 @@ public class RechargeBattery : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z) && player.playerImHere)
+        if (activador.modificacion)
         {
             Recharge();
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
@@ -35,6 +38,7 @@ public class RechargeBattery : MonoBehaviour
     {
         bNoEnergy.color = Color.yellow;
         bEnergy.color = Color.red;
+        cable.SetActive(true);
 
         this.enabled = false;
     }

@@ -76,6 +76,7 @@ public class BloquearMovimientoPlayer : MonoBehaviour
     public void HabilitarMovPlayer()
     {
         //vidaPlayer.vidaActual = vidaActual;
+        stairs_Hidden.enabled = true;
         vidaPlayer.enabled = true;
         player.enabled = true;
         pistol.enabled = true;

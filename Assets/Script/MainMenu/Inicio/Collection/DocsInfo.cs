@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using FMODUnity;
 
 public class DocsInfo : MonoBehaviour
 {
+    [Header("SFX Flechas")]
+    [SerializeField] EventReference sfx_Flechas;
     [Header("Flechas UI")]
     public GameObject flechaIzquierda;
     public GameObject flechaDerecha;
@@ -24,6 +27,13 @@ public class DocsInfo : MonoBehaviour
     public static int docsPosStart;
     //NOTA; Es inversamente proporcional, si le doy a la derecha la fila se mueve hacía la izquierda;
     //Si le doy a la izquierda la fila se mueve a la derecha
+    [Header("Info de la Position")]
+    [SerializeField] int actualDocsPos;
+    [SerializeField] int nextDocsPos;
+    [SerializeField] int previousDocsPos;
+    [Header("Info Sound")]
+    [SerializeField] int soundDocs;
+    bool derechaDocs;
     enum Orientation
     {
         izquierda,
@@ -38,11 +48,14 @@ public class DocsInfo : MonoBehaviour
         filaDocs.position = docsBase[docsPosStart].posDocs.position;
         //La fila se establece igual a la posicion de los documentos
         indexFilaDocs = docsPosStart;
+        InfoDocsStart();
     }
     void Update()
     {
         //Para poder acceder a la escena de documentos previamente has tenido que obtener uno, por tanto se tiene que siempre
         //Solo puede dar a error si yo accedo manualmente a ella
+        if (actualDocsPos != nextDocsPos && derechaDocs) InfoDocsPositionDerecha();
+        if (actualDocsPos != previousDocsPos && !derechaDocs) InfoDocsPositionIzquierda();
         CanvasGroupShow();
         ReglasFlecha();
         if (mover)
@@ -86,6 +99,8 @@ public class DocsInfo : MonoBehaviour
     }
     public void DerechaButton()
     {
+        //AudioManager.instancia.PlayOneShot(sfx_Flechas);
+        derechaDocs = true;
         canvasText[indexFilaDocs].alpha = 0;
         mover = true;
         //Inversamente proporcional
@@ -106,6 +121,9 @@ public class DocsInfo : MonoBehaviour
     }
     public void IzquierdaButton()
     {
+        derechaDocs = false;
+        //Para reproducir el audio tiene que tener en cuenta que es cuando el papel ha llegado a la posicion y se vuelve a mover
+        //AudioManager.instancia.PlayOneShot(sfx_Flechas);
         canvasText[indexFilaDocs].alpha = 0;
 
         mover = true;
@@ -166,6 +184,95 @@ public class DocsInfo : MonoBehaviour
         else
         {
             flechaDerecha.SetActive(true);
+        }
+    }
+    void InfoDocsPositionDerecha()
+    {
+        //limitar para que el audio solo se reproduzca una vez
+        //Hacer lo mismo a la izquierda calores invertidos
+        //Cuando haya llegado y superado la siguientePos de los Documentos filaDocs.position.x < docsBase[indexFilaDocs].posDocs.position.x
+        if (filaDocs.position.x <= docsBase[nextDocsPos].posDocs.position.x)
+        {
+            //Al llegar a la posicion, establece lo que era anteriormente su siguientePos como la actual.
+            actualDocsPos = nextDocsPos;
+            if (actualDocsPos != 1) previousDocsPos = previousDocsPos + 1;
+            if(actualDocsPos < reliquiasObtenidas - 1) nextDocsPos = actualDocsPos + 1;
+            //Resetear Parametros del sonido
+            soundDocs = 0;
+        }
+        else
+        {
+            //Si has comenzado a moverte y no has llegado a la siguiente posicion quiere decir que te estas moviendo
+            //Entonces reproduce el audio
+            if (mover)
+            {
+                if(soundDocs < 1)
+                {
+                    AudioManager.instancia.PlayOneShot(sfx_Flechas);
+                    soundDocs++;
+                }
+            }
+        }
+        //Esto lo tiene que hacer cada vez que se llegue a la nextpositionDOcs
+    }
+    void InfoDocsPositionIzquierda()
+    {
+        if (filaDocs.position.x >= docsBase[previousDocsPos].posDocs.position.x)
+        {
+            //Al llegar a la posicion, establece lo que era anteriormente su siguientePos como la actual.
+            actualDocsPos = previousDocsPos;
+            if (actualDocsPos != reliquiasObtenidas - 2) nextDocsPos = nextDocsPos - 1;
+            if (actualDocsPos > 0) previousDocsPos = actualDocsPos - 1;
+            //Resetear Parametros del sonido
+            soundDocs = 0;
+        }
+        else
+        {
+            //Si has comenzado a moverte y no has llegado a la siguiente posicion quiere decir que te estas moviendo
+            //Entonces reproduce el audio
+            if (mover)
+            {
+                if (soundDocs < 1)
+                {
+                    AudioManager.instancia.PlayOneShot(sfx_Flechas);
+                    soundDocs++;
+                }
+            }
+        }
+    }
+    void InfoDocsStart()
+    {
+        //Primero establece la posicion del documento 
+        actualDocsPos = docsPosStart;
+        if(actualDocsPos <= 0)
+        {
+            previousDocsPos = actualDocsPos;
+        }
+        else
+        {
+            previousDocsPos = actualDocsPos - 1;
+        }
+        //Si al entrar mi posicion actual es diferente al numero maximo de reliquia, quiere decir que no te has establecido en el limite de los documentos 
+        if(actualDocsPos != reliquiasObtenidas - 1)
+        {
+            nextDocsPos = actualDocsPos + 1;
+        }
+        //Entras en la documentacion justo en el limite
+        else
+        {
+            nextDocsPos = actualDocsPos;
+        }
+    }
+    void Garabato()
+    {
+        if (filaDocs.position.x < docsBase[nextDocsPos].posDocs.position.x)
+        {
+            Debug.Log("la fila es mas pequeña que...");
+        }
+        else
+        {
+            Debug.Log("la filaDocs es " + filaDocs.position.x);
+            Debug.Log("la docsBase es " + docsBase[nextDocsPos].posDocs.position.x);
         }
     }
 }

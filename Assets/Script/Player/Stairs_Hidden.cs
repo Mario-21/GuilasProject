@@ -149,6 +149,7 @@ public class Stairs_Hidden : MonoBehaviour
     {
         if (escalar)
         {
+            Debug.Log("Axis vertical " + escalar);
             rb.gravityScale = 0;
             rb.velocity = new Vector2(rb.velocity.x, vertical * velocidadSubir);
         }
@@ -187,7 +188,7 @@ public class Stairs_Hidden : MonoBehaviour
         {
             zonaEscalada = false;
             escalar = false;
-            rb.gravityScale = 1;
+            rb.gravityScale = mov.fallMultiplier;
             //soundManager.controlAudio[2].Stop();
             soundPlayOne = 0;
             //Usar el WalkSource porque necesito pararlo y con PlayOneShot no se puede parar

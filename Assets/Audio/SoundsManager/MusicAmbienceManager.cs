@@ -15,8 +15,11 @@ public class MusicAmbienceManager : MonoBehaviour
     public EventInstance ambienceInstance;
     public AmbienceArea ambiente;
 
+    List<EventInstance> ambiencesInstances;
+
     private void Awake()
     {
+        
         if (MusicAmbienceManager.instance == null)
         {
             MusicAmbienceManager.instance = this;
@@ -26,16 +29,25 @@ public class MusicAmbienceManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
     }
     void Start()
     {
+        ambiencesInstances = new List<EventInstance>();
         InitializeMusic(musicStart);
         InitializeAmbience(ambienceStart);
         SetearAmbience(ambiente);
     }
+    public EventInstance CreateEventAmbienceInstance(EventReference eventReference)
+    {
+        EventInstance eventInstance = RuntimeManager.CreateInstance(eventReference);
+        ambiencesInstances.Add(eventInstance);
+        return eventInstance;
+    }
     void InitializeAmbience(EventReference ambientEventReference)
     {
-        ambienceInstance = AudioManager.instancia.CreateEventInstance(ambientEventReference);
+        //ambienceInstance = AudioManager.instancia.CreateEventInstance(ambientEventReference);
+        ambienceInstance = CreateEventAmbienceInstance(ambientEventReference);
         ambienceInstance.start();
     }
     public void ChangeAmbienceManager(AmbienceArea areaSetAmbience)
@@ -60,12 +72,22 @@ public class MusicAmbienceManager : MonoBehaviour
     }
     void InitializeMusic(EventReference musicEventReference)
     {
-        musicInstance = AudioManager.instancia.CreateEventInstance(musicEventReference);
+        //musicInstance = AudioManager.instancia.CreateEventInstance(musicEventReference);
+        musicInstance = CreateEventAmbienceInstance(musicEventReference);
         musicInstance.start();
     }
     public void SetMusicArea(MusicArea area)
     {
         musicInstance.setParameterByName("area", (float)area);
     }
-
+    public void CleanAmbienceMusic()
+    {
+        foreach (EventInstance eventInstance in ambiencesInstances)
+        {
+            //Para el audio
+            eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            //Cuando lo para, lo destruye
+            eventInstance.release();
+        }
+    }
 }

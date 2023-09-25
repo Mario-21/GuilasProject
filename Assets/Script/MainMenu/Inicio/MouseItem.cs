@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using FMODUnity;
 
 public class MouseItem : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class MouseItem : MonoBehaviour
     [Header("Transicion Animacion")]
     public string nameAnimVar;
     public Animator transtion;
+    [Header("SFX")]
+    [SerializeField] EventReference sfx;
 
     private void Awake()
     {
@@ -16,6 +19,7 @@ public class MouseItem : MonoBehaviour
     }
     private void OnMouseEnter()
     {
+        AudioManager.instancia.PlayOneShot(sfx);
         sprite.color = Color.green;
         Debug.Log("Mouse Entro");
     }

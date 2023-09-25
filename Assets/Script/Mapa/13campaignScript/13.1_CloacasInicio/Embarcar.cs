@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
-
+using FMODUnity;
 public class Embarcar : MonoBehaviour
 {
     [Header("Player Data")]
@@ -26,6 +26,8 @@ public class Embarcar : MonoBehaviour
     float timeEmbarcar;
     [Header("Camera Data")]
     [SerializeField] CinemachineVirtualCamera mainCamera;
+    [Header("Pato SFX")]
+    [SerializeField] EventReference patoSplash;
 
     bool useBarco;
     bool playerRange;
@@ -45,6 +47,7 @@ public class Embarcar : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1"))
             {
+                AudioManager.instancia.PlayOneShot(patoSplash);
                 putBarco = true;
             }
         }

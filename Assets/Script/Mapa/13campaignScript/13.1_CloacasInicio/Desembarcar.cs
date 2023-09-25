@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using FMODUnity;
 
 public class Desembarcar : MonoBehaviour
 {
@@ -29,6 +30,8 @@ public class Desembarcar : MonoBehaviour
     [SerializeField] GameObject iconoZone;
     [SerializeField] SpriteRenderer iconeZoneSprite;
     [SerializeField] Sprite iconoDesembar;
+    [Header("Desembarcar SFX")]
+    [SerializeField] EventReference sfx_Desembarcar;
 
     bool barcoOrilla;
     bool desembarcar;
@@ -44,8 +47,9 @@ public class Desembarcar : MonoBehaviour
         {
             iconeZoneSprite.sprite = iconoDesembar;
             iconoZone.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetButtonDown("Action"))
             {
+                AudioManager.instancia.PlayOneShot(sfx_Desembarcar);
                 desembarcar = true;
             }
         }

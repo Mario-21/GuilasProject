@@ -268,10 +268,6 @@ public class SoldadoNormal : MonoBehaviour
                 FallMultiplier();
             }
         }
-        else
-        {
-            callPeople.Stop();
-        }
     }
     void Vision()
     {
@@ -950,6 +946,11 @@ public class SoldadoNormal : MonoBehaviour
         }
 
      }
+    private void OnDisable()
+    {
+        if(callPeople != null) callPeople.Stop();
+        if(emitterSteps != null) emitterSteps.Stop();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

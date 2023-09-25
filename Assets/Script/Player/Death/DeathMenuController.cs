@@ -18,6 +18,9 @@ public class DeathMenuController : MonoBehaviour
 
     public void ExitMainMenu(string name)
     {
+        //Detener Sonido
+        AudioManager.instancia.CleanUp();
+        MusicAmbienceManager.instance.CleanAmbienceMusic();
         //La vida del Player, dado que aun no se conserva 
         animDeath.SetTrigger(name);
         //Restablece el checkpoint a 0
@@ -33,7 +36,6 @@ public class DeathMenuController : MonoBehaviour
         {
             Destroy(ListDestroyEndLevel.levelList.levelListDestroy[e].gameObject);
             Debug.Log("La Lista " + ListDestroyEndLevel.levelList.levelListDestroy[e].name + " ha sido eliminada");
-
         }
         Destroy(ListDestroyEndLevel.levelList.gameObject);
         //Poder Restablecer el menu
@@ -41,6 +43,9 @@ public class DeathMenuController : MonoBehaviour
     }
     public void ReiniciarNivel(string nameReset)
     {
+        //Detener Sonido
+        AudioManager.instancia.CleanUp();
+        MusicAmbienceManager.instance.CleanAmbienceMusic();
         animDeath.SetTrigger(nameReset);
         //Reinicia el checkpoint para que te envie a spawn del inicio del nivel
         CheckPointController.numeroCheckPoint = 0;

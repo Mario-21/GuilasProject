@@ -13,6 +13,7 @@ public class Hidden_Definition : MonoBehaviour
         Puerta,
         Caja,
         Basura,
+        Container,
         Default
     }
     public Type_Hidden hiddenDefine; 
@@ -40,6 +41,9 @@ public class Hidden_Definition : MonoBehaviour
                     break;
                 case Type_Hidden.Taquilla:
                     hiddenPlayerControler.hiddenSound = FMODEvent.instancia.taquillaHidden;
+                    break;
+                case Type_Hidden.Container:
+                    hiddenPlayerControler.hiddenSound = FMODEvent.instancia.containerHidden;
                     break;
             }
         }

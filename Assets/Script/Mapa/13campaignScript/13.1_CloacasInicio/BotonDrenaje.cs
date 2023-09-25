@@ -29,6 +29,8 @@ public class BotonDrenaje : MonoBehaviour
     PlayerHere player;
     SpriteRenderer spriteBotonDrenaje;
 
+    int soundDrenaje;
+    int soundDrenaje_NoMaintenance;
     float timeRepeatPressButton;
     bool repeatButton;
 
@@ -60,6 +62,7 @@ public class BotonDrenaje : MonoBehaviour
         {
             if (Input.GetButtonDown("Action") && !repeatButton)
             {
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.botonGeneral);
                 if(!timeDrenar && waterInfo.porcentajeAgua > 0)
                 {
                     timeDrenar = true;
@@ -134,6 +137,8 @@ public class BotonDrenaje : MonoBehaviour
             }
             AnimationHud.detectar_echar.SetBool("Transicion", false);
             timeDrenaje = 0;
+            soundDrenaje = 0;
+            soundDrenaje_NoMaintenance = 0;
             timeDrenar = false;
             timeLoadAgua = false;
             repeatButton = false;
@@ -144,13 +149,24 @@ public class BotonDrenaje : MonoBehaviour
             timeDrenaje += Time.deltaTime;
             AnimationHud.detectar_echar.SetBool("Transicion", true);
             bloqPlayer.BloquearMovPlayer();
+            if(soundDrenaje < 1 && StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
+            {
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.drenar);
+                soundDrenaje++;
+            }
         }
     }
     void LlenarWaterAgain()
     {
         //Si no has activado la palanca de mantenimiento y has cerrado el drenaje
-        if(!StatusGameobjectsVariables.statusGameobject.modificacion[indexMantinance].modificacion && !StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
+        if (!StatusGameobjectsVariables.statusGameobject.modificacion[indexMantinance].modificacion && !StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
+            if (soundDrenaje_NoMaintenance < 1)
+            {
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.llenarDrenaje);
+                soundDrenaje_NoMaintenance++;
+            }
+            //colocar audio de llenado
             repeatButton = true;
             DrenajeTransition();
             //LlenarTransition();
@@ -161,26 +177,7 @@ public class BotonDrenaje : MonoBehaviour
             }
         }
     }
-    void LlenarTransition()
-    {
-        if (timeDrenaje >= limitTimeDrenaje)
-        {
-            Debug.Log("Llenaste Agua");
-            AnimationHud.detectar_echar.SetBool("Transicion", false);
-            timeDrenaje = 0;
-            timeDrenar = false;
-            timeLoadAgua = false;
-            repeatButton = false;
-            bloqPlayer.HabilitarMovPlayer();
-            ListWaters.listWaters.infoAguas[waterInfo.indexWater].porcentajeAgua = 100;
-        }
-        else
-        {
-            timeDrenaje += Time.deltaTime;
-            AnimationHud.detectar_echar.SetBool("Transicion", true);
-            bloqPlayer.BloquearMovPlayer();
-        }
-    }
+    
     void StatusButtonColor()
     {
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)

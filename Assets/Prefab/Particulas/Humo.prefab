@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4018143485557386225}
   - component: {fileID: 2769948330379447284}
   - component: {fileID: 836470979657658957}
+  - component: {fileID: 2412472865028235443}
+  - component: {fileID: 6434293870771106418}
   m_Layer: 0
   m_Name: Humo
   m_TagString: Untagged
@@ -4761,3 +4763,54 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &2412472865028235443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7185944628786748976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 985629063
+      Data2: 1328852923
+      Data3: 1702722721
+      Data4: 164586279
+    Path: event:/Ambience/Coches/MotorBurn_Amb
+  Event: 
+  PlayEvent: 11
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 3
+  OverrideMaxDistance: 8
+--- !u!114 &6434293870771106418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7185944628786748976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cace633c6ab8ae48a8164758d33c589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound_Effect:
+    Guid:
+      Data1: 985629063
+      Data2: 1328852923
+      Data3: 1702722721
+      Data4: 164586279
+    Path: event:/Ambience/Coches/MotorBurn_Amb
+  itemEmitter: {fileID: 7185944628786748976}

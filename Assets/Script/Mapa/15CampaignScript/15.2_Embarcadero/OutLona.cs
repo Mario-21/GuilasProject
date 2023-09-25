@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using FMODUnity;
 public class OutLona : MonoBehaviour
 {
     public int indexMod;
@@ -10,6 +10,8 @@ public class OutLona : MonoBehaviour
     public List<GameObject> itemDelete;
     [Header("Items Appear")]
     public List<GameObject> itemAppear;
+    [Header("SFX Lona")]
+    [SerializeField] EventReference sfxLona;
 
     PlayerHere player;
 
@@ -40,8 +42,10 @@ public class OutLona : MonoBehaviour
         {
             if (Input.GetButtonDown("Action"))
             {
+                AudioManager.instancia.PlayOneShot(sfxLona);
                 ItemsAction();
                 StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+                this.enabled = false;
             }
         }
     }

@@ -308,6 +308,7 @@ Transform:
   m_Children:
   - {fileID: 157634818683974107}
   - {fileID: 157634819007395044}
+  - {fileID: 8336634463280461166}
   m_Father: {fileID: 157634818586893264}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -401,7 +402,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerVida: {fileID: 0}
   coldownDamageLimit: 2
+  coldownDamage: 0
   damagePoison: 15
+  "countDa\xF1o": 0
 --- !u!114 &157634819092844920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,3 +503,86 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &3706013740890969786
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8336634463280461166}
+  - component: {fileID: 5523896590272059212}
+  - component: {fileID: 6497820933268301704}
+  m_Layer: 0
+  m_Name: Emisor Cascada
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8336634463280461166
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3706013740890969786}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 157634819092844924}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5523896590272059212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3706013740890969786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1941740264
+      Data2: 1159276104
+      Data3: 1015335350
+      Data4: -2066893670
+    Path: event:/SFX/Objetos_Interactivos/Cloacas/Valvula/Cascada_Valvula
+  Event: 
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 6
+  OverrideMaxDistance: 10
+--- !u!114 &6497820933268301704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3706013740890969786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cace633c6ab8ae48a8164758d33c589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound_Effect:
+    Guid:
+      Data1: -1941740264
+      Data2: 1159276104
+      Data3: 1015335350
+      Data4: -2066893670
+    Path: event:/SFX/Objetos_Interactivos/Cloacas/Valvula/Cascada_Valvula
+  itemEmitter: {fileID: 3706013740890969786}

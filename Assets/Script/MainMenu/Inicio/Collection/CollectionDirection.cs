@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using FMODUnity;
 
 public class CollectionDirection : MonoBehaviour
 {
+    [Header("File SFX")]
+    [SerializeField] EventReference file_SFX;
     [Header("Flechas UI and Back")]
     public GameObject flechaIzquierda;
     public GameObject flechaDerecha;
@@ -21,6 +24,14 @@ public class CollectionDirection : MonoBehaviour
     public static int posFila;
     public static bool repostDocs;
     public static bool botonDocs;
+
+    [Header("File info")]
+    [SerializeField] int actualFile;
+    [SerializeField] int previousFile;
+    [SerializeField] int nextFile;
+    [Header("Sonido")]
+    [SerializeField] int soundEffect;
+    bool derechaFile;
     //NOTA; Es inversamente proporcional, si le doy a la derecha la fila se mueve hacía la izquierda;
     //Si le doy a la izquierda la fila se mueve a la derecha
     enum Orientation
@@ -31,6 +42,7 @@ public class CollectionDirection : MonoBehaviour
     Orientation directionFila;
     void Start()
     {
+        InfoFileStart();
         //Al darle a back regresamos a la misma carpeta
         fila.position = carpeta_Pos[posFila].position;
         mover = false;
@@ -40,6 +52,12 @@ public class CollectionDirection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Reglas de los sonidos
+        //if (actualDocsPos != nextDocsPos
+        if (actualFile != nextFile && derechaFile) InfoFilesDerecha();
+        //actualDocsPos != previousDocsPos
+        if (actualFile != previousFile && !derechaFile) InfoFilesIzquierda();
+
         //Cuando se muevan las carpetas hacer desaparecer las flechas?
         //Deberia añadir una animación manual de subida y baja, para tener un mayor feedback
         ReglasFlechas();
@@ -92,6 +110,7 @@ public class CollectionDirection : MonoBehaviour
     }
     public void DerechaButton()
     {
+        derechaFile = true;
         mover = true;
         directionFila = Orientation.izquierda;
         if(indexFila < carpeta_Pos.Count - 1 )indexFila++;
@@ -110,6 +129,7 @@ public class CollectionDirection : MonoBehaviour
     }
     public void IzquierdaButton()
     {
+        derechaFile = false;
         mover = true;
         directionFila = Orientation.derecha;
         if(indexFila > 0 ) indexFila--;
@@ -162,6 +182,58 @@ public class CollectionDirection : MonoBehaviour
             flechaIzquierda.GetComponent<Button>().enabled = false;
             backButton.enabled = false;
         }
+    }
+    void InfoFilesDerecha()
+    {
+        if (fila.position.x <= carpeta_Pos[nextFile].position.x)
+        {
+            //Al llegar a la posicion, establece lo que era anteriormente su siguientePos como la actual.
+            actualFile = nextFile;
+            if (actualFile != 1) previousFile = previousFile + 1;
+            if (actualFile < carpeta_Pos.Count - 1) nextFile = actualFile + 1;
+            //Resetear parametros sonido
+            soundEffect = 0;
+        }
+        else
+        {
+            if (mover)
+            {
+                if(soundEffect < 1)
+                {
+                    AudioManager.instancia.PlayOneShot(file_SFX);
+                    soundEffect++;
+                }
+            }
+        }
+    }
+    void InfoFilesIzquierda()
+    {
+        if (fila.position.x >= carpeta_Pos[previousFile].position.x)
+        {
+            //Al llegar a la posicion, establece lo que era anteriormente su siguientePos como la actual.
+            actualFile = previousFile;
+            if (actualFile != carpeta_Pos.Count - 2) nextFile = nextFile - 1;
+            if (actualFile > 0) previousFile = actualFile - 1;
+            //Resetear Parametros del sonido
+            soundEffect = 0;
+        }
+        else
+        {
+            if (mover)
+            {
+                if(soundEffect < 1)
+                {
+                    AudioManager.instancia.PlayOneShot(file_SFX);
+                    soundEffect++;
+                }
+            }
+        }
+    }
+    void InfoFileStart()
+    {
+        actualFile = 0;
+        previousFile = 0;
+        nextFile = actualFile + 1;
     }
     void RecolocarPosDocs()
     {

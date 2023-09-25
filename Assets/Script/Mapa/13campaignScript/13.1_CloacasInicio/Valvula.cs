@@ -49,6 +49,7 @@ public class Valvula : MonoBehaviour
         {
             if (Input.GetButtonDown("Action") && !valvulaTime)
             {
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.valvula);
                 //CalculoDeAguas();
                 //Conserva si la valvula ha sido activada
                 cascada.SetActive(true);
