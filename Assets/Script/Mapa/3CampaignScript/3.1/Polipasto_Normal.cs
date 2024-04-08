@@ -19,6 +19,7 @@ public class Polipasto_Normal : MonoBehaviour
     public float velocidad;
 
     [Header("Cuerda Polipasto")]
+    [SerializeField] bool have_Cuerda;
     [SerializeField] SpriteRenderer cuerda;
     float cuerda_Size;
 
@@ -52,7 +53,7 @@ public class Polipasto_Normal : MonoBehaviour
         if (destinos[indexPiso].position != transform.position)
         {
             //Cuerda se expande o retrae
-            CuerdaAscensor();
+            if(have_Cuerda) CuerdaAscensor();
             //Reproducir sonido
             
             if(reproduceAscensor < 1)

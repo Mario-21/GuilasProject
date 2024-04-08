@@ -40,7 +40,7 @@ public class PisoAscensor : MonoBehaviour
     void Update()
     {
         ActivePanelAscensor();
-        AnalisisPassword();
+        //AnalisisPassword();
     }
     #region BotonesPulsar
 

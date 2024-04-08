@@ -22,7 +22,7 @@ public class UseQuarry : MonoBehaviour
         Debug.Log("Ascensor posiciones " + ascensor.posiciones.Length);
         if (player.playerImHere)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetButtonDown("Action"))
             {
                 AudioManager.instancia.PlayOneShot(FMODEvent.instancia.botonGeneral);
                 if(ascensor.piso < ascensor.posiciones.Length - 1)
