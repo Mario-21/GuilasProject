@@ -81,10 +81,10 @@ public class OcultacionByWeapon : MonoBehaviour
     {
         if (seePlayerByAction)
         {
-            Debug.Log("Puedo ser VIsto;");
+            Debug.Log("Puedo ser VIsto;" + "Mi layer" + playerTorso.layer);
             //Evitar poner un icono diferente
             isVisible.enabled = true;
-            playerTorso.layer = 20;
+            playerTorso.layer = layerPlayer;
         }
         else
         {

@@ -26,7 +26,7 @@ public class ArmaController : MonoBehaviour
     public float refreshWeapon = 0.5f;
 
     [Header("Weapon Sprite")]
-    SpriteRenderer weaponSprite;
+    [HideInInspector] public SpriteRenderer weaponSprite;
     public GameObject bullet;
     //Cambiar Layer
     [Header("Infiltración Data")]

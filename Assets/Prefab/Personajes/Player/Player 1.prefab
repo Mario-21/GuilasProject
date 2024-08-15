@@ -109,6 +109,7 @@ MonoBehaviour:
   municionText: {fileID: 7088808354135713845}
   shootAnim: {fileID: 5750129213846619141}
   refreshWeapon: 0.5
+  weaponSprite: {fileID: 0}
   bullet: {fileID: 4807674687017979912, guid: 5eb8ddb7851788c418c30b4c314a2da1, type: 3}
   theySeeYou: {fileID: 2691870885741423122}
 --- !u!1 &1065910357261844661
@@ -493,6 +494,7 @@ GameObject:
   - component: {fileID: 8004836998412987235}
   - component: {fileID: 2691870885741423122}
   - component: {fileID: 7630229161105204462}
+  - component: {fileID: 5277971254648583803}
   m_Layer: 20
   m_Name: Player 1
   m_TagString: Player
@@ -703,6 +705,19 @@ MonoBehaviour:
       Data3: 1323758237
       Data4: -1550179880
     Path: event:/SFX/Player/Damage/Caida_Hueso/Bone_Break
+--- !u!114 &5277971254648583803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425663039846246151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d487565cc787fc3498833ac1d6f2d702, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vida: {fileID: 8004836998412987235}
 --- !u!1 &1425663039986608501
 GameObject:
   m_ObjectHideFlags: 0
@@ -10467,7 +10482,7 @@ GameObject:
   - component: {fileID: 5658801715554342689}
   - component: {fileID: 3042410467141573445}
   - component: {fileID: 2415365828156296870}
-  m_Layer: 16
+  m_Layer: 0
   m_Name: Trigger Mojado
   m_TagString: Untagged
   m_Icon: {fileID: 0}

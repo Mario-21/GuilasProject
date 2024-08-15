@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyToSwitch : MonoBehaviour
 {
-    [SerializeField] CeiilingFan ceiiling;
+    [SerializeField] VentiladorBombilla ceiiling;
     [Header("Original Position")]
     [SerializeField] Transform originalPos;
     [Header("Switch Position")]

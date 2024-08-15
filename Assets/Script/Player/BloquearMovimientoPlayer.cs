@@ -12,6 +12,7 @@ public class BloquearMovimientoPlayer : MonoBehaviour
     public B8Arma b8;
     public ChangeWeapon conditionToChangeWeapon;
     public Stairs_Hidden stairs_Hidden;
+    public Vision visionMode;
 
     [Header("Elemento Menu")]
     Inventory inventory;
@@ -26,11 +27,16 @@ public class BloquearMovimientoPlayer : MonoBehaviour
         pausaMenu = FindObjectOfType<PauseControler>();
         itemCreate = FindObjectOfType<CreateObject>();
         stairs_Hidden = FindObjectOfType<Stairs_Hidden>();
+        visionMode = FindObjectOfType<Vision>();
         
     }
 
     public void BloquearMovPlayer()
     {
+        //Vision en falso primero y luego desactivar, seguramente no le de tiempo a ejecutarlo, por lo que tocara desactivarlo manualmente :-(
+        visionMode.visiOn = false;
+        visionMode.enabled = false;
+        visionMode.visionShadder.SetActive(false);
         //Don't loss your life when you are blocked
         //vidaActual = vidaPlayer.vidaActual;
         //Deactive LifePlayer; Note: Keep the live when bloq is active
@@ -76,6 +82,7 @@ public class BloquearMovimientoPlayer : MonoBehaviour
     public void HabilitarMovPlayer()
     {
         //vidaPlayer.vidaActual = vidaActual;
+        visionMode.enabled = true;
         stairs_Hidden.enabled = true;
         vidaPlayer.enabled = true;
         player.enabled = true;

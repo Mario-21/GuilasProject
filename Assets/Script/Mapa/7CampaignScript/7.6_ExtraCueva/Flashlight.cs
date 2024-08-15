@@ -24,7 +24,7 @@ public class Flashlight : MonoBehaviour
         {
             if (Input.GetButtonDown("UseMask"))
             {
-                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.flashlight);
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.lighterFire);
                 onLight = !onLight;
                 if (onLight)
                 {

@@ -46,7 +46,7 @@ public class FMODEvent : MonoBehaviour
     [SerializeField] public EventReference takeClothes;
     [SerializeField] public EventReference takeOffClothes;
     [SerializeField] public EventReference laundryClothes;
-    [SerializeField] public EventReference flashlight;
+    [SerializeField] public EventReference lighterFire;
     [Space(20)]
     [SerializeField] string apartado_6;
     [SerializeField] public EventReference shoot;
@@ -57,6 +57,8 @@ public class FMODEvent : MonoBehaviour
     [SerializeField] public EventReference b8Lanzar;
     [SerializeField] public EventReference b8Recoger;
     [SerializeField] public EventReference b8CollisionGround;
+    [SerializeField] public EventReference visionModeOn;
+    [SerializeField] public EventReference visionModeOff;
     //CAMBIAR EL SOPNIDO DEL COCHE A AMBIENTE
     [Header("Soldier Enemy SFX")]
     [SerializeField] string apartado_1_Enemy;

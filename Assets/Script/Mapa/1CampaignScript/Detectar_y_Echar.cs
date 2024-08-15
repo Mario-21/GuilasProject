@@ -38,10 +38,15 @@ public class Detectar_y_Echar : MonoBehaviour
         movPlayer = FindObjectOfType<JugadorMovimiento>();
         objInter = GetComponent<ObjetoInteractivo>();
     }
+    private void Start()
+    {
+        VisionSwitch();
+    }
 
     // Update is called once per frame
     void Update()
     {
+        VisionSwitch();
         //Change the script: SoldadoDet/Echar out, now you have the same script in all soldier, but with
         //the difference that soldier with trigger will have low range
         //Hacer script aditional con la rama nivel 2 si el estatus es true destruye esto
@@ -58,6 +63,10 @@ public class Detectar_y_Echar : MonoBehaviour
             }
             Destroy(this);
             player.HabilitarMovPlayer();
+        }
+        if(soldier.GetComponent<SoldierLife>().vida > 0)
+        {
+            VisionSwitch();
         }
         
     }
@@ -90,6 +99,19 @@ public class Detectar_y_Echar : MonoBehaviour
                 AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
                 CheckPointController.numeroCheckPoint = spawn;
                 break;
+        }
+    }
+    void VisionSwitch()
+    {
+        //En cuanto el soldado entre en modo ataque, el rango de visión se intercambiará del cuadrado al cono.
+        if (soldier.berserker)
+        {
+            soldier.visionItemRange.gameObject.SetActive(true);
+            this.gameObject.SetActive(false);
+        }
+        else
+        {
+            soldier.visionItemRange.gameObject.SetActive(false);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

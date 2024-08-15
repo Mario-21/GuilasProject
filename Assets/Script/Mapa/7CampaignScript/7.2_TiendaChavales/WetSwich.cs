@@ -9,7 +9,7 @@ public class WetSwich : MonoBehaviour
     [Header("Water")]
     public GameObject water;
     ActivarModificador activar;
-    CeiilingFan ceiiling;
+    VentiladorBombilla ceiiling;
     [Header("Soldier Switch")]
     [SerializeField] SoldierLife soldierSwitchLife;
     bool enemyHere;
@@ -22,7 +22,7 @@ public class WetSwich : MonoBehaviour
     {
         emitterElec = AudioManager.instancia.InitializeEventEmitter(electricity, this.gameObject);
         activar = GetComponent<ActivarModificador>();
-        ceiiling = GetComponent<CeiilingFan>();
+        ceiiling = GetComponent<VentiladorBombilla>();
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) 
         {
             SwitchWet();
@@ -47,7 +47,8 @@ public class WetSwich : MonoBehaviour
     }
     void SwitchWet()
     {
-        ceiiling.emitterCeilingFan.Stop();
+        //ceiiling.cabezaVentilador.sprite = ceiiling.ventiladorOff;
+        //ceiiling.luzFake.SetActive(false);
         water.SetActive(true);
         StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
         ceiiling.onCeilingFan = false;

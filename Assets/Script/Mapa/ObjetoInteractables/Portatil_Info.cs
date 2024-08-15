@@ -9,6 +9,7 @@ public class Portatil_Info : MonoBehaviour
 {
     [Header("See Player")]
     [SerializeField] OcultacionByWeapon player;
+    [SerializeField] ArmaController armaPlayer;
     bool seePlayer;
     
     [Header("Icono")]
@@ -35,10 +36,8 @@ public class Portatil_Info : MonoBehaviour
 
     EventInstance teclearTerminalSound;
     int onceTeclearSound;
-    
 
-    //NOTA
-    //Si no funciona probar con armacontroler 
+    int restaurarArmaLayer;
     private void Awake()
     {
         animExclamacion = GetComponent<Animator>();
@@ -98,11 +97,12 @@ public class Portatil_Info : MonoBehaviour
         //If you are here and don't active the terminal
         if(playerInTerminal.playerImHere)
         {
+            restaurarArmaLayer = 0;
             if(!active)
             {
                 if (downloadBar.fillAmount < 1)
                 {
-                    if (Input.GetKey(KeyCode.E))
+                    if (Input.GetButton("Action"))
                     {
                         //Deja de verse la exclamacion y comienza a visualizar se el progreso de la descargar
                         contorno.SetActive(true);
@@ -112,6 +112,24 @@ public class Portatil_Info : MonoBehaviour
 
                         seePlayer = true;
                         player.SeeByAction(seePlayer);
+                        //Mientras estes usando el terminal no puedes usar el arma
+                        //Guardar Arma en caso de comenzar el hackeo con el arma desechada
+                        #region
+                        
+                        if (armaPlayer.activarDisparo) 
+                        {
+                            AudioManager.instancia.PlayOneShot(FMODEvent.instancia.outWeapon);
+                            Debug.Log("Arma desechada");
+                        }
+                        armaPlayer.activarDisparo = false;
+                        armaPlayer.enabled = false;
+                        armaPlayer.weaponSprite.enabled = false;
+                        armaPlayer.municionText.enabled = false;
+                        armaPlayer.mira.localPosition = new Vector2(0f, armaPlayer.mira.localPosition.y);
+                        armaPlayer.mira.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                        armaPlayer.brazo.transform.rotation = Quaternion.identity;
+                        
+                        #endregion 
 
                         //Reproducir sonido del tecleado
                         if (onceTeclearSound < 1)
@@ -123,6 +141,9 @@ public class Portatil_Info : MonoBehaviour
                     }
                     else
                     {
+                        //Cuando dejes de usar el terminal habilitas el arma
+                        armaPlayer.enabled = true;
+
                         seePlayer = false;
                         player.SeeByAction(seePlayer);
 
@@ -172,6 +193,8 @@ public class Portatil_Info : MonoBehaviour
                 teclearTerminalSound.stop(STOP_MODE.IMMEDIATE);
                 onceTeclearSound = 0;
             }
+            //Que me restaure el arma y el layer del soldado, una única vez
+            RestaurarLayerAndArma();
         }
     }
     void LoadPorcentaje()
@@ -181,5 +204,15 @@ public class Portatil_Info : MonoBehaviour
         
         active = TotalTerminales.terminalesTotales.terminalesActivos[indexTerminal];
 
+    }
+    void RestaurarLayerAndArma()
+    {
+        if(restaurarArmaLayer < 1)
+        {
+            armaPlayer.enabled = true;
+            seePlayer = false;
+            player.SeeByAction(seePlayer);
+            restaurarArmaLayer++;
+        }
     }
 }

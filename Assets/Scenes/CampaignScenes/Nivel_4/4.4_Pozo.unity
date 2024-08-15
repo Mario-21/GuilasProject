@@ -4163,18 +4163,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.07216412, y: -36.71249}
+  m_Offset: {x: 0, y: 1.262579}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0.16666667, z: 0, w: 4.166667}
-    pivot: {x: 0.5, y: 1}
-    oldSize: {x: 2.6666667, y: 5.3333335}
-    newSize: {x: 2.6666667, y: 73.7}
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16666667, y: 0.3}
+    newSize: {x: 0.1666667, y: 19.3}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.8754425, y: 73.42498}
+  m_Size: {x: 0.45365524, y: 21.933441}
   m_EdgeRadius: 0
 --- !u!212 &641026085
 SpriteRenderer:
@@ -4215,12 +4215,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: fcabc19693987dc47911778fbb36690b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ce2f2a45cfad7ed44bc0bb121a146603, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 2.6666667, y: 73.7}
+  m_Size: {x: 0.1666667, y: 19.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -4234,8 +4234,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 641026083}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.8199997, y: 11.97, z: -0.10319022}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalPosition: {x: -0.8199997, y: -0.38, z: -0.10319022}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 47309354}
   m_RootOrder: 0
@@ -9647,6 +9647,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6041581643071098403, guid: 0b6ae8e3895c24a4683486071f2fa82d,
+        type: 3}
+      propertyPath: triggerFootSteps
+      value: 
+      objectReference: {fileID: 812753784}
+    - target: {fileID: 6041581643071098403, guid: 0b6ae8e3895c24a4683486071f2fa82d,
+        type: 3}
+      propertyPath: splashWater
+      value: 
+      objectReference: {fileID: 812753785}
     - target: {fileID: 6126641766333062512, guid: 0b6ae8e3895c24a4683486071f2fa82d,
         type: 3}
       propertyPath: m_Layer
@@ -9795,6 +9805,30 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 812753772}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &812753784 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1796167497455165356, guid: 0b6ae8e3895c24a4683486071f2fa82d,
+    type: 3}
+  m_PrefabInstance: {fileID: 812753772}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1b1c5d7e64197f4ca61ad817e63a48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &812753785 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2415365828156296870, guid: 0b6ae8e3895c24a4683486071f2fa82d,
+    type: 3}
+  m_PrefabInstance: {fileID: 812753772}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41aa15774e76c7c4ebdf7ad194e288ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &859923360
 GameObject:
   m_ObjectHideFlags: 0
@@ -12559,6 +12593,8 @@ GameObject:
   - component: {fileID: 1901307449}
   - component: {fileID: 1901307448}
   - component: {fileID: 1901307447}
+  - component: {fileID: 1901307452}
+  - component: {fileID: 1901307451}
   m_Layer: 0
   m_Name: Salir Pozo
   m_TagString: Untagged
@@ -12671,6 +12707,39 @@ Transform:
   m_Father: {fileID: 47309354}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1901307451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901307446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bfa86b30a070664aa606af421f24c13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zonaSound:
+    Guid:
+      Data1: 1429233632
+      Data2: 1124025265
+      Data3: -306402139
+      Data4: 553606331
+    Path: event:/SFX/Objetos_Interactivos/Transicion_Niveles/RopeZone
+  zonaDefinition: 1
+--- !u!114 &1901307452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901307446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03d1da2e7bdc6f04f94744e4500b4aa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerImHere: 0
 --- !u!1001 &1945220438
 PrefabInstance:
   m_ObjectHideFlags: 0

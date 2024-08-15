@@ -7,6 +7,10 @@ public class SewerSystem : MonoBehaviour
 {
     public int indexMod;
 
+    [Header("Boton Generador")]
+    [SerializeField] SpriteRenderer boton_Generador;
+    [SerializeField] Color color_Gen_On;
+     
     [Header("Pozo Data")]
     [SerializeField] GameObject aqua;
     [SerializeField] Camino_CambiarZona pozoArea;
@@ -49,6 +53,7 @@ public class SewerSystem : MonoBehaviour
                 activeEvent = true;
                 if(reproduceAudio < 1)
                 {
+                    boton_Generador.color = color_Gen_On;
                     AudioManager.instancia.PlayOneShot(soundDrain);
                     reproduceAudio++;
                 }
@@ -61,6 +66,7 @@ public class SewerSystem : MonoBehaviour
     {
         //Make the action of event
         aqua.SetActive(false);
+        boton_Generador.color = color_Gen_On;
         pozoArea.enabled = true;
         zonaSound.enabled = true;
         StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;

@@ -32,7 +32,7 @@ public class ChangeWeapon : MonoBehaviour
     void Weapons()
     {
         Icon();
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetButtonDown("Change_Weapon"))
         {
             changeWeapon = !changeWeapon;
             //changeWeapon = B8

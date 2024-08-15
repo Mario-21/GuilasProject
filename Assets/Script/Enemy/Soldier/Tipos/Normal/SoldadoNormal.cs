@@ -17,6 +17,15 @@ public class SoldadoNormal : MonoBehaviour
     [Header("Range Enemy Vision")]
     public float outRange = 10;
     public float insideRange = 5;
+    public float AlturaRange = 2;
+    [SerializeField] bool debugAltura;
+
+    [Header("Color Mode Estado")]
+    public SpriteRenderer visionItemRange;
+    [SerializeField] Color patrullaC;
+    [SerializeField] Color busquedaC;
+    [SerializeField] Color ataqueC;
+    [SerializeField] Color warningC;
 
     [Header("FOV Enemigo")]
     [SerializeField] int indexFOV;
@@ -94,6 +103,7 @@ public class SoldadoNormal : MonoBehaviour
     [Range(0, 360)]
     [SerializeField] float toSeePlayer;
     public float leaveOutPlayer = 10;
+    public float leaveOutPlayerAltura = 2;
     public bool berserker;
 
     [Header("Busqueda Data")]
@@ -193,6 +203,7 @@ public class SoldadoNormal : MonoBehaviour
     }
     private void Start()
     {
+        distanciaFOV = outRange;
         callPeople = AudioManager.instancia.InitializeEventEmitter(FMODEvent.instancia.call, callEmitter);
         emitterSteps = AudioManager.instancia.InitializeEventEmitter(FMODEvent.instancia.stepsEnemy, this.gameObject);
 
@@ -200,6 +211,11 @@ public class SoldadoNormal : MonoBehaviour
 
     void Update()
     {
+        if (debugAltura) 
+        {
+            Debug.Log("Altura" + Mathf.Abs(DistancenPlayer().y));
+            Debug.Log("Magnitud" + Mathf.Abs(DistancenPlayer().magnitude));
+        }
 
         if(soldierLife.vida > 0)
         {
@@ -291,15 +307,15 @@ public class SoldadoNormal : MonoBehaviour
             
             if (distancia && !seeCadaverWarning && !muro)
             {
-                if (DistancenPlayer().magnitude >= outRange && !busquedaMode)
+                if (DistancenPlayer().magnitude >= outRange && !busquedaMode && Mathf.Abs(DistancenPlayer().y) > AlturaRange)
                 {
                     estadoSoldado = EstadoSoldado.patrulla;
                 }
-                else if (DistancenPlayer().magnitude < outRange && DistancenPlayer().magnitude >= insideRange) 
+                else if (DistancenPlayer().magnitude < outRange && DistancenPlayer().magnitude >= insideRange && Mathf.Abs(DistancenPlayer().y) <= AlturaRange) 
                 {
                     estadoSoldado = EstadoSoldado.busqueda;
                 }
-                else if (DistancenPlayer().magnitude < insideRange) 
+                else if (DistancenPlayer().magnitude < insideRange ) 
                 {
                     estadoSoldado = EstadoSoldado.ataque;
                     //Si estoy vivo puedo reproducir el grito
@@ -370,6 +386,7 @@ public class SoldadoNormal : MonoBehaviour
         {
             case EstadoSoldado.ataque:
 
+                visionItemRange.color = ataqueC;
                 playerMask = detectarPlayerMask;
 
                 //Activa el modo Ataque
@@ -381,7 +398,7 @@ public class SoldadoNormal : MonoBehaviour
                 SeePlayer();
                 //Ejecuta el Movimiento y el Ataque
                 //Si tu estas a menos de 10m ira a dispararte, si estas alejado vuelve a patrullar
-                if (DistancenPlayer().magnitude < leaveOutPlayer && seePlayer)
+                if (DistancenPlayer().magnitude < leaveOutPlayer && seePlayer && Mathf.Abs(DistancenPlayer().y) < leaveOutPlayerAltura)
                 {
                     //Debug.Log(DistancenPlayer().magnitude);
 
@@ -400,7 +417,7 @@ public class SoldadoNormal : MonoBehaviour
                     //Apuntas
                     Apuntar();
                 }
-                else if(DistancenPlayer().magnitude >= leaveOutPlayer && seePlayer)
+                else if(DistancenPlayer().magnitude >= leaveOutPlayer && seePlayer || Mathf.Abs(DistancenPlayer().y) >= leaveOutPlayerAltura)
                 {
                     //Si sales fuera del rango deja de verme solo una vez
                     if(callSound < 1)
@@ -425,6 +442,7 @@ public class SoldadoNormal : MonoBehaviour
 
                 //Representa el color de los Gizmos
                 estadosColor = 1;
+                visionItemRange.color = busquedaC;
 
                 mano.rotation = new Quaternion(0f, 0f, 0f,0f);
                 if (cambiarTiempoPlayer < 1) { player.GetComponent<OcultacionByWeapon>().tiempoLimiteVisible = 6f; cambiarTiempoPlayer++; }
@@ -450,6 +468,7 @@ public class SoldadoNormal : MonoBehaviour
                 break;
             case EstadoSoldado.patrulla:
 
+                visionItemRange.color = patrullaC;
                 Patrulla();
                 //Representa el color de los Gizmos
                 estadosColor = 0;
@@ -465,6 +484,7 @@ public class SoldadoNormal : MonoBehaviour
                 break;
             case EstadoSoldado.warning:
 
+                visionItemRange.color = warningC;
                 LimitadorSeñales();
                 Patrulla();
 
@@ -946,8 +966,16 @@ public class SoldadoNormal : MonoBehaviour
         }
 
      }
+    void VisionOut()
+    {
+        if(soldierLife.vida <= 0)
+        {
+            visionItemRange.gameObject.SetActive(false);
+        }
+    }
     private void OnDisable()
     {
+        VisionOut();
         if(callPeople != null) callPeople.Stop();
         if(emitterSteps != null) emitterSteps.Stop();
     }
