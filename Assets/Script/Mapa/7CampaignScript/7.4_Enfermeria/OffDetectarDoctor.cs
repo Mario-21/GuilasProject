@@ -6,6 +6,8 @@ public class OffDetectarDoctor : MonoBehaviour
 {
     [Header("Detector Info")]
     [SerializeField] BoxCollider2D colliderDetector;
+    [SerializeField] SpriteRenderer spriteDetector;
+    [SerializeField] SpriteRenderer spriteDetectorInside;
     public bool offDetector;
     [Header("Doctor Info")]
     [SerializeField] SoldadoNormal doctor;
@@ -32,10 +34,14 @@ public class OffDetectarDoctor : MonoBehaviour
         if (!offDetector)
         {
             colliderDetector.enabled = false;
+            spriteDetector.enabled = false;
+            spriteDetectorInside.enabled = true;
         }
         else
         {
             colliderDetector.enabled = true;
+            spriteDetector.enabled = true;
+            spriteDetectorInside.enabled = false;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

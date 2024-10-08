@@ -46,7 +46,6 @@ public class Detectar_y_Echar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        VisionSwitch();
         //Change the script: SoldadoDet/Echar out, now you have the same script in all soldier, but with
         //the difference that soldier with trigger will have low range
         //Hacer script aditional con la rama nivel 2 si el estatus es true destruye esto
@@ -67,6 +66,10 @@ public class Detectar_y_Echar : MonoBehaviour
         if(soldier.GetComponent<SoldierLife>().vida > 0)
         {
             VisionSwitch();
+        }
+        else if (soldier.GetComponent<SoldierLife>().vida <= 0)
+        {
+            this.gameObject.SetActive(false);
         }
         
     }
@@ -111,6 +114,7 @@ public class Detectar_y_Echar : MonoBehaviour
         }
         else
         {
+            Debug.Log("vision detector Desactivo");
             soldier.visionItemRange.gameObject.SetActive(false);
         }
     }
