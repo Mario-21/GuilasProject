@@ -10,8 +10,6 @@ public class WaterData : MonoBehaviour
     [Header("Alturas Agua")]
     public Transform alturaMax; 
     public Transform alturaMin;
-    [Header("Particulas Chapoteo")]
-    public GameObject chapoteoParticle;
 
     public float alturaTotal;
     float aguaRestar;
@@ -51,16 +49,5 @@ public class WaterData : MonoBehaviour
         transform.position = new Vector3(transform.position.x, alturaWater, transform.position.z);
         //Minimo del Agua = -18.47
         //10.216 = Altura ==> 4.0864
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Transform ubiPlayerAgua = collision.gameObject.transform;
-
-            Vector3 ubiPlayerFake = ubiPlayerAgua.position + (Vector3.down / 2);
-
-            Instantiate(chapoteoParticle,ubiPlayerFake, ubiPlayerAgua.rotation);
-        }
     }
 }

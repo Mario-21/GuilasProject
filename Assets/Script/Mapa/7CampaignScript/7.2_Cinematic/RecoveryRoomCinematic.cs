@@ -10,7 +10,7 @@ public class RecoveryRoomCinematic : MonoBehaviour
     [Header("Soldado Normal Spawn")]
     //que el soldado normal aparezca a cierta distancia, para que se adapte el soldado, dependiendo del switch muera 
     [SerializeField] Transform soldierNormal;
-    [SerializeField] Transform soldierSwitch;
+    [SerializeField] Transform soldierSpawn;
     [Header("Globo Dialogo")]
     [SerializeField] GameObject globoDialogo;
     [SerializeField] Transform glopoPos;
@@ -25,7 +25,7 @@ public class RecoveryRoomCinematic : MonoBehaviour
     CinematicOrder cinematic;
     void Start()
     {
-        soldierNormal.position = new Vector3(soldierSwitch.position.x - 1, soldierNormal.position.y, soldierNormal.position.z);
+        soldierNormal.position = new Vector3(soldierSpawn.position.x, soldierNormal.position.y, soldierNormal.position.z);
     }
 
     // Update is called once per frame

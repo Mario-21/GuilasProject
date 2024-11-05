@@ -33,6 +33,7 @@ public class RomperCuerda : MonoBehaviour
         {
             cuerda.sprite = cuerdaRota;
             rbChild.bodyType = RigidbodyType2D.Dynamic;
+            StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
             boxCollider2D.enabled = false;
             AudioManager.instancia.PlayOneShot(soundCuerdaRota);
         }

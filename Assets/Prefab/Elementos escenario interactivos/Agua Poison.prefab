@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1624503495814544236}
   - component: {fileID: 1624503495814544237}
   - component: {fileID: 9112213859903209700}
+  - component: {fileID: 7354488610950535353}
   m_Layer: 4
   m_Name: Agua Poison
   m_TagString: Water
@@ -102,8 +103,6 @@ MonoBehaviour:
   porcentajeAgua: 100
   alturaMax: {fileID: 0}
   alturaMin: {fileID: 0}
-  chapoteoParticle: {fileID: 5750840455280647188, guid: 7fa20ca636da43040b5ae92e982cee87,
-    type: 3}
   alturaTotal: 0
 --- !u!114 &1624503495814544235
 MonoBehaviour:
@@ -119,7 +118,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerVida: {fileID: 0}
   coldownDamageLimit: 1
+  coldownDamage: 0
   damagePoison: 10
+  "countDa\xF1o": 0
 --- !u!61 &1624503495814544236
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -186,3 +187,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7354488610950535353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624503495814544225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be89fac17df8daf4cb5028361f8bffdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chapoteoParticle: {fileID: 5750840455280647188, guid: 7fa20ca636da43040b5ae92e982cee87,
+    type: 3}

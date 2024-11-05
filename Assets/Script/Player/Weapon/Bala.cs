@@ -31,6 +31,7 @@ public class Bala : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            Debug.Log("Choque con un enemigo");
             SoldierLife vidaEnemy = collision.gameObject.GetComponentInParent<SoldierLife>();
             vidaEnemy.Daño(1);
             Destroy(this.gameObject);
@@ -40,6 +41,10 @@ public class Bala : MonoBehaviour
         {
             Destroy(this.gameObject);
             ArmaController.preCollisionObject = false;
+        }
+        if (collision.gameObject)
+        {
+            //Destroy(this.gameObject);
         }
     }
 
