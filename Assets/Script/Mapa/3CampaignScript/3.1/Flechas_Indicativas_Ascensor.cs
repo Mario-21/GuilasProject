@@ -12,14 +12,15 @@ public class Flechas_Indicativas_Ascensor : MonoBehaviour
     [SerializeField] Color colorStandar;
     [SerializeField] Color colorIndicativo;
 
-    float directionFlechas;
+    public float directionFlechas;
     void Update()
     {
+        directionFlechas = ascensor.transform.position.y - ascensor.posiciones[ascensor.piso].position.y;
         ColoresIndicativos();
+        ResetearColoresFlechas();
     }
     void ColoresIndicativos()
     {
-        directionFlechas = transform.position.y - ascensor.posiciones[ascensor.piso].position.y;
         //Cuando la plataforma comience a moverse se enciende la flecha en base a donde te  diriges
         if (ascensor.movimiento)
         {
@@ -36,12 +37,14 @@ public class Flechas_Indicativas_Ascensor : MonoBehaviour
                 flecha_Up.color = colorStandar;
             }
         }
+    }
+    void ResetearColoresFlechas()
+    {
         //Cuando la plataforma llega a su destino las flechas se apagan
-        else
+        if (!ascensor.movimiento)
         {
             flecha_Down.color = colorStandar;
             flecha_Up.color = colorStandar;
         }
-
     }
 }
