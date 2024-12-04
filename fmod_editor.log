@@ -8,18 +8,307 @@
 [LOG] SystemI::init                            : Output requires a sample rate of 44100Hz, resampling will occur.
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 000001D3C567AB48 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 00000243241243F8 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] PlaybackSystem::init                     : done
 [LOG] Thread::initThread                       : Init FMOD Studio bank load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] Manager::init                            : done.
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] SystemI::createSound                     : filename = ../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Music.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000242D8EAC608, queue head = 00000243240AAC78, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000242D8EAC608
+[LOG] SystemI::createSoundInternal             :     Create name='../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Music.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 3407360
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 6176
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000024318707690
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='music_lvl_02_electronic_layer_01', format=5, channels=2, frequency=48000, lengthbytes=612608, lengthpcm=2730668, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.338623.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000242D8EAC608
+[LOG] SoundI::release                          : music_lvl_02_electronic_layer_01 (00000242D8EB0E98)
+[LOG] SoundI::release                          :     music_lvl_02_electronic_layer_01 (0000024324518A88)
+[LOG] SoundI::release                          :     music_lvl_02_electronic_layer_01 (00000242D8EB1708)
+[LOG] SystemI::createSound                     : filename = ../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Music.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000242D8EB1708, queue head = 00000243240AAC78, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000242D8EB1708
+[LOG] SystemI::createSoundInternal             :     Create name='../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Music.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 3407360
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 6176
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000024318707550
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='CANCIÓN DE MUZSKA _ #TodosSomosMuzska _ Kinox ft Riglock (128 kbps)', format=5, channels=2, frequency=48000, lengthbytes=2127104, lengthpcm=8446119, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.999969.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000242D8EB1708
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000242D8EAF1E8, queue head = 00000243240AAC78, queue count = 0
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000242D8EAAB08, queue head = 00000243240AAC78, queue count = 1
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000242D8EAF1E8
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000242D8EAF1E8
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000242D8EAAB08
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000242D8EAAB08
+[LOG] SystemI::createSound                     : filename = ../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Music.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000242D8EB3C28, queue head = 00000243240AAC78, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000242D8EB3C28
+[LOG] SystemI::createSoundInternal             :     Create name='../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Music.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 3407360
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 6176
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000243187077D0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='CANCIÓN DE MUZSKA _ #TodosSomosMuzska _ Kinox ft Riglock (128 kbps)', format=5, channels=2, frequency=48000, lengthbytes=2127104, lengthpcm=8446119, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.999969.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000242D8EB3C28
+[LOG] SoundI::release                          : CANCIÓN DE MUZSKA _ #TodosSomosMuzska _ Kinox ft Riglock (128 kbps) (00000242D8EB1708)
+[LOG] SoundI::release                          :     CANCIÓN DE MUZSKA _ #TodosSomosMuzska _ Kinox ft Riglock (128 kbps) (00000243212F8308)
+[LOG] SoundI::release                          :     CANCIÓN DE MUZSKA _ #TodosSomosMuzska _ Kinox ft Riglock (128 kbps) (00000242D8EAF1E8)
+[LOG] SystemI::createSound                     : filename = ../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Music.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000242D8EB0E98, queue head = 00000243240AAC78, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000242D8EB0E98
+[LOG] SystemI::createSoundInternal             :     Create name='../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Music.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 3407360
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 6176
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000242893371B0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='CANCIÓN DE MUZSKA _ #TodosSomosMuzska _ Kinox ft Riglock (128 kbps)', format=5, channels=2, frequency=48000, lengthbytes=2127104, lengthpcm=8446119, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.999969.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000242D8EB0E98
+[LOG] SoundI::release                          : CANCIÓN DE MUZSKA _ #TodosSomosMuzska _ Kinox ft Riglock (128 kbps) (00000242D8EB3C28)
+[LOG] SoundI::release                          :     CANCIÓN DE MUZSKA _ #TodosSomosMuzska _ Kinox ft Riglock (128 kbps) (0000024324AB9378)
+[LOG] SoundI::release                          :     CANCIÓN DE MUZSKA _ #TodosSomosMuzska _ Kinox ft Riglock (128 kbps) (00000242D8EA6E48)
+[LOG] SystemI::createSound                     : filename = ../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Music.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000242D8EAF1E8, queue head = 00000243240AAC78, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000242D8EAF1E8
+[LOG] SystemI::createSoundInternal             :     Create name='../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Music.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 3407360
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 6176
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000024289B93630
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='CANCIÓN DE MUZSKA _ #TodosSomosMuzska _ Kinox ft Riglock (128 kbps)', format=5, channels=2, frequency=48000, lengthbytes=2127104, lengthpcm=8446119, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.999969.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000242D8EAF1E8
+[LOG] SoundI::release                          : CANCIÓN DE MUZSKA _ #TodosSomosMuzska _ Kinox ft Riglock (128 kbps) (00000242D8EB0E98)
+[LOG] SoundI::release                          :     CANCIÓN DE MUZSKA _ #TodosSomosMuzska _ Kinox ft Riglock (128 kbps) (0000024324518268)
+[LOG] SoundI::release                          :     CANCIÓN DE MUZSKA _ #TodosSomosMuzska _ Kinox ft Riglock (128 kbps) (00000242D8EB1708)
+[LOG] SoundI::release                          : CANCIÓN DE MUZSKA _ #TodosSomosMuzska _ Kinox ft Riglock (128 kbps) (00000242D8EAF1E8)
+[LOG] SoundI::release                          :     CANCIÓN DE MUZSKA _ #TodosSomosMuzska _ Kinox ft Riglock (128 kbps) (00000243212F87E8)
+[LOG] SoundI::release                          :     CANCIÓN DE MUZSKA _ #TodosSomosMuzska _ Kinox ft Riglock (128 kbps) (00000242D8EAC968)
+[LOG] SystemI::createSound                     : filename = ../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Music.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000242D8EABD98, queue head = 00000243240AAC78, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000242D8EABD98
+[LOG] SystemI::createSoundInternal             :     Create name='../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Music.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 3407360
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 6176
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000024318707550
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='CANCIÓN DE MUZSKA _ #TodosSomosMuzska _ Kinox ft Riglock (128 kbps)', format=5, channels=2, frequency=48000, lengthbytes=2127104, lengthpcm=8446119, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.999969.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000242D8EABD98
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000242D8EAA298, queue head = 00000243240AAC78, queue count = 0
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000242D8EAAB08, queue head = 00000243240AAC78, queue count = 1
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000242D8EAA298
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000242D8EAA298
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000242D8EAAB08
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000242D8EAAB08
+[LOG] SoundI::release                          : CANCIÓN DE MUZSKA _ #TodosSomosMuzska _ Kinox ft Riglock (128 kbps) (00000242D8EABD98)
+[LOG] SoundI::release                          :     CANCIÓN DE MUZSKA _ #TodosSomosMuzska _ Kinox ft Riglock (128 kbps) (0000024324518A88)
+[LOG] SoundI::release                          :     CANCIÓN DE MUZSKA _ #TodosSomosMuzska _ Kinox ft Riglock (128 kbps) (00000242D8EAA298)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 707776
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 57216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000042EE3EF4E8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFF39953CA0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFF39953C60
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFF39953D80
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFF39953E40
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000024324AADD38
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Draw WeaponV2_1', format=5, channels=2, frequency=48000, lengthbytes=7776, lengthpcm=25344, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.940857.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 2618816
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 30368
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000042EE3EF4E8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFF39953CA0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFF39953C60
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFF39953D80
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFF39953E40
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000024324AADD38
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Busqueda Grave', format=5, channels=2, frequency=48000, lengthbytes=6880, lengthpcm=33408, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.873260.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 707776
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 57216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000042EE3EF4E8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFF39953CA0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFF39953C60
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFF39953D80
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFF39953E40
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000024324AADD38
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Silenciador LIMPIO 2', format=5, channels=2, frequency=48000, lengthbytes=2528, lengthpcm=12538, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.395660.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 2618816
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 30368
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000042EE3EF4E8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFF39953CA0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFF39953C60
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFF39953D80
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFF39953E40
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000024324AADD38
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Daño_1 Grave V2', format=5, channels=2, frequency=48000, lengthbytes=13568, lengthpcm=71424, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.869629.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 707776
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 57216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000042EE3EF4E8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFF39953CA0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFF39953C60
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFF39953D80
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFF39953E40
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000024324AADD38
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Out WeaponV2_5', format=5, channels=2, frequency=48000, lengthbytes=3232, lengthpcm=13792, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.900482.
+[LOG] SystemI::createSound                     : filename = ../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Enemy_SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000242D8EAB1C8, queue head = 00000243240AAC78, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000242D8EAB1C8
+[LOG] SystemI::createSoundInternal             :     Create name='../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Enemy_SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 2618816
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 30368
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000024318707550
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Sleep_Fast', format=5, channels=1, frequency=48000, lengthbytes=390496, lengthpcm=2323584, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.707581.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000242D8EAB1C8
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000242D8EACCC8, queue head = 00000243240AAC78, queue count = 0
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000242D8EAAB08, queue head = 00000243240AAC78, queue count = 1
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000242D8EACCC8
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000242D8EACCC8
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000242D8EAAB08
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000242D8EAAB08
+[LOG] SoundI::release                          : Sleep_Fast (00000242D8EAB1C8)
+[LOG] SoundI::release                          :     Sleep_Fast (000002432409AE78)
+[LOG] SoundI::release                          :     Sleep_Fast (00000242D8EACCC8)
+[LOG] SoundI::release                          :  (00000243214A7498)
+[LOG] SoundI::release                          :     Step Grass_1 (00000242D8D543A8)
+[LOG] SoundI::release                          :  (00000243214A6638)
+[LOG] SoundI::release                          :     Step Grass_2 (0000024289AFF2F8)
+[LOG] SoundI::release                          :  (00000243214A5C28)
+[LOG] SoundI::release                          :     Step Grass_3 (00000242D8D54888)
+[LOG] SoundI::release                          :  (00000243214A5AB8)
+[LOG] SoundI::release                          :     Step Grass_4 (0000024289AFEFB8)
+[LOG] SoundI::release                          :  (00000243214A67A8)
+[LOG] SoundI::release                          :     Boot Steps_1 (0000024289AFF7D8)
+[LOG] SoundI::release                          :  (00000243214A78E8)
+[LOG] SoundI::release                          :     Boot Steps_2 (000002428D831758)
+[LOG] SoundI::release                          :  (00000243214A5D98)
+[LOG] SoundI::release                          :     Boot Steps_3 (0000024289AFEE18)
+[LOG] SoundI::release                          :  (00000243214A8018)
+[LOG] SoundI::release                          :     Boot Steps_4 (000002428D8315B8)
+[LOG] SoundI::release                          :  (00000243214A85D8)
+[LOG] SoundI::release                          :     Draw WeaponV2_1 (000002428932F728)
+[LOG] SoundI::release                          :  (00000243214A8B98)
+[LOG] SoundI::release                          :     Silenciador LIMPIO 2 (000002428932FA68)
+[LOG] SoundI::release                          :  (00000243214A8188)
+[LOG] SoundI::release                          :     Busqueda Grave (000002428932FC08)
+[LOG] SoundI::release                          : music_lvl_02_electronic_layer_01 (00000242D8EAC608)
+[LOG] SoundI::release                          :     music_lvl_02_electronic_layer_01 (000002428D831418)
+[LOG] SoundI::release                          :     music_lvl_02_electronic_layer_01 (00000242D8EAAB08)
+[LOG] SoundI::release                          : Maquinaria_Turbinas V4 (00000242D8EADF58)
+[LOG] SoundI::release                          :     Maquinaria_Turbinas V4 (0000024324518C28)
+[LOG] SoundI::release                          :     Maquinaria_Turbinas V4 (00000242D8EB2638)
+[LOG] SoundI::release                          :  (00000243214A71B8)
+[LOG] SoundI::release                          :     Mosca_3 (00000242D8D54208)
+[LOG] SoundI::release                          :  (00000243214A7EA8)
+[LOG] SoundI::release                          :     Mosca_2 (00000242D8D54BC8)
+[LOG] SoundI::release                          :  (00000243214A6D68)
+[LOG] SoundI::release                          :     Mosca_1 (00000242D8D54068)
+[LOG] SoundI::release                          :  (00000243214A9438)
+[LOG] SoundI::release                          :     Shower Final (0000024318082208)
+[LOG] SoundI::release                          :  (00000243214A3B18)
+[LOG] SoundI::release                          :     Daño_1 Grave V2 (000002428932F8C8)
+[LOG] SoundI::release                          :  (00000243214A1898)
+[LOG] SoundI::release                          :     Step Metal_4 (0000024324AB7638)
+[LOG] SoundI::release                          :  (00000243214A0028)
+[LOG] SoundI::release                          :     Step Metal_3 (000002428D262A48)
+[LOG] SoundI::release                          :  (00000243214A1168)
+[LOG] SoundI::release                          :     Step Metal_2 (0000024324AB7CB8)
+[LOG] SoundI::release                          :  (00000243214A0308)
+[LOG] SoundI::release                          :     Step Metal_1 (0000024324AB77D8)
+[LOG] SoundI::release                          :  (00000243214A05E8)
+[LOG] SoundI::release                          :     FootStep Ladder Metal_1 (0000024324AB7E58)
+[LOG] SoundI::release                          :  (00000243214A3C88)
+[LOG] SoundI::release                          :     FootStep Ladder Metal_2 (0000024324AB8338)
+[LOG] SoundI::release                          :  (00000243214A33E8)
+[LOG] SoundI::release                          :     FootStep Ladder Metal_3 (0000024324AB7158)
+[LOG] SoundI::release                          :  (00000243214A15B8)
+[LOG] SoundI::release                          :     Out WeaponV2_5 (000002432409A318)
+[LOG] SoundI::release                          :  (00000243214A29D8)
+[LOG] SoundI::release                          :     Step Metal_5 (0000024324AB99F8)
+[LOG] SoundI::release                          :  (00000243214A1FC8)
+[LOG] SoundI::release                          :     Step Metal_6 (0000024324AB6C78)
+[LOG] SoundI::release                          :  (000002432149FBD8)
+[LOG] SoundI::release                          :     FootStep Ladder Metal_4 (0000024324AB8678)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] SystemI::close                           : Closed.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 
@@ -27,3 +316,5 @@
 [LOG] Thread::callback                         : FMOD stream thread finished.
 [LOG] Thread::callback                         : FMOD mixer thread finished.
 [LOG] SystemI::close                           : Closed.
+[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
+[LOG] Thread::callback                         : FMOD file thread finished.
