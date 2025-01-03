@@ -4,25 +4,23 @@ using UnityEngine;
 using FMOD.Studio;
 using FMODUnity;
 
-public class AudioMenu : MonoBehaviour
+public class AudioMenu : MonoBehaviour, IDataPersistenceNoCrypted
 {
     public static AudioMenu instancia;
 
     [Header("Volumen")]
     [Range(0, 1)]
-    public float masterVolume = 1;
+    public float masterVolume;
     [Range(0, 1)]
-    public float musicVolume = 1;
+    public float musicVolume;
     [Range(0, 1)]
-    public float ambienceVolume = 1;
+    public float ambienceVolume;
     [Range(0, 1)]
-    public float sfxItems = 1;
+    public float sfxItems;
     [Range(0, 1)]
-    public float sfxEnemy = 1;
+    public float sfxEnemy;
     [Range(0, 1)]
-    public float sfxPlayer = 1;
-
-
+    public float sfxPlayer; 
 
     private Bus masterBus;
     private Bus musicBus;
@@ -30,8 +28,32 @@ public class AudioMenu : MonoBehaviour
     private Bus sfxItemsBus;
     private Bus sfxEnemyBus;
     private Bus sfxPlayerBus;
+
+    public void LoadDataNoCrypted(NoEncryptedGameData noEncryptedGameData)
+    {
+        this.masterVolume = noEncryptedGameData.masterVolume;
+        this.musicVolume = noEncryptedGameData.musicVolume;
+        this.ambienceVolume = noEncryptedGameData.ambienceVolume;
+        this.sfxItems = noEncryptedGameData.itemsVolume;
+        this.sfxEnemy = noEncryptedGameData.enemyVolume;
+        this.sfxPlayer = noEncryptedGameData.playerVolume;
+    }
+
+    public void SavaDataNoCrypted(ref NoEncryptedGameData noEncryptedGameData)
+    {
+        noEncryptedGameData.masterVolume = this.masterVolume;
+        noEncryptedGameData.musicVolume = this.musicVolume;
+        noEncryptedGameData.ambienceVolume = this.ambienceVolume;
+        noEncryptedGameData.itemsVolume = this.sfxItems;
+        noEncryptedGameData.enemyVolume = this.sfxEnemy;
+        noEncryptedGameData.playerVolume = this.sfxPlayer;
+    }
+    private void Start()
+    {
+    }
     private void Awake()
     {
+        
         if (AudioMenu.instancia == null)
         {
             AudioMenu.instancia = this;
@@ -41,6 +63,7 @@ public class AudioMenu : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
         masterBus = RuntimeManager.GetBus("bus:/");
         musicBus = RuntimeManager.GetBus("bus:/Music");
         ambienceBus = RuntimeManager.GetBus("bus:/Ambience");

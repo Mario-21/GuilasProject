@@ -7,6 +7,7 @@ public class VidaPlayer : MonoBehaviour
 {
     [Header("Life Data")]
     public float vidaActual;
+    [SerializeField] float vidaDiferencia;
     public float vidaTotal;
     Image vidaUI;
     [Header("Death Data")]
@@ -27,7 +28,8 @@ public class VidaPlayer : MonoBehaviour
     {
         //SceneManager.LoadSceneAsync(scenaTutorial, LoadSceneMode.Additive);
         bloquear = FindObjectOfType<BloquearMovimientoPlayer>();
-        vidaActual = vidaTotal;
+        vidaActual = ListDataPlayer.listDataPlayer.vidaPlayerNow;
+        vidaDiferencia = vidaActual;
     }
 
     // Update is called once per frame
@@ -35,11 +37,13 @@ public class VidaPlayer : MonoBehaviour
     {
         vidaUI.fillAmount = vidaActual / vidaTotal;
         Muerte();
+        SaveVidaData();
     }
     public void Daño(float daño)
     {
         AudioManager.instancia.PlayOneShot(FMODEvent.instancia.damage);
         vidaActual -= daño;
+        SaveVidaData();
     }
     void Muerte()
     {
@@ -63,6 +67,16 @@ public class VidaPlayer : MonoBehaviour
             Time.timeScale = 0;
             SceneManager.LoadSceneAsync(deathScene, LoadSceneMode.Additive);
             once++;
+        }
+    }
+    void SaveVidaData()
+    {
+        //Cuando mi vida varíe guardara mi vida actual en el objeto no destruible 
+        if(vidaActual != vidaDiferencia)
+        {
+            //En caso de que no funcione, hacer que se espere unos segundos a guardarlo.
+            ListDataPlayer.listDataPlayer.vidaPlayerNow = vidaActual;
+            vidaDiferencia = vidaActual;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

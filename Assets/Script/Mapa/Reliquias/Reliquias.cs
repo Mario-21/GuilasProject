@@ -7,4 +7,5 @@ public class Reliquias
 {
     public string nombreReliquia;
     public bool reliquiaObtenida;
+    public string idReliquia;
 }

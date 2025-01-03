@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,15 +9,17 @@ public class ListCampaign : MonoBehaviour
     [Header("Componenetes del Menu Campaign")]
     public Text titulo;
     public Image imagenNivel;
+    public Button buttonNivel;
     public int nivel;
     public int indexReliquia;
     public Image contornoReliquia;
     public Image imagenReliquia;
     [Header("Condiciones Reliquia")]
-    public int minRange;
+    public string code;
     public int maxRange;
     [Header("Lista Campaigns")]
     public int indexCampaign;
+    public int nivelesCompletados;
     public List<InfoMenuCampaign> listaCampaign;
     private void OnDisable()
     {
@@ -24,26 +27,24 @@ public class ListCampaign : MonoBehaviour
         indexReliquia = 0;
         ChangeInfoLevel();
     }
+    private void Update()
+    {
+        ChangeInfoLevel();
+    }
     public void FlechaDerecha()
     {
-        ConditionsReliquiaIncrease();
         if (indexCampaign < listaCampaign.Count - 1)
         {
             indexCampaign++;
         }
-        ChangeInfoLevel();
-        //ConditionsReliquiaIncrease();
 
     }
     public void FlechaIzquierda()
     {
-        ConditionsReliquiaDecrease();
         if (indexCampaign > 0)
         {
             indexCampaign--;
         }
-        ChangeInfoLevel();
-        //ConditionsReliquiaDecrease();
 
     }
     public void ChangeInfoLevel()
@@ -52,31 +53,27 @@ public class ListCampaign : MonoBehaviour
         nivel = listaCampaign[indexCampaign].nivelScene;
         imagenNivel.sprite = listaCampaign[indexCampaign].imagenNivel;
         //Reliquias
-        contornoReliquia.sprite = listaCampaign[indexCampaign].reliquiaContorno;
-        imagenReliquia.sprite = listaCampaign[indexCampaign].reliquiaImage;
-
-    }
-    void ConditionsReliquiaIncrease()
-    {
-        if (listaCampaign[indexCampaign].onReliquia)
+        if (!string.IsNullOrEmpty(listaCampaign[indexCampaign].idReliquia)) 
         {
-            if(indexReliquia < maxRange)
+            Debug.Log("Estoy Lleno");
+            contornoReliquia.enabled = true;
+            contornoReliquia.sprite = listaCampaign[indexCampaign].reliquiaContorno;
+            if (listaCampaign[indexCampaign].onReliquia)
             {
-                indexReliquia++;
+                imagenReliquia.enabled = true;
+                imagenReliquia.sprite = listaCampaign[indexCampaign].reliquiaImage;
             }
-            //no puede ser mayor que el rango
-            
+            else
+            {
+                imagenReliquia.enabled = false;
+            }
         }
-    }
-    void ConditionsReliquiaDecrease()
-    {
-        if (listaCampaign[indexCampaign].onReliquia && indexCampaign > minRange)
+        else
         {
-            if(indexReliquia > 0)
-            {
-                indexReliquia--;
-            }
-            
+
+            Debug.Log("Estoy Vacio");
+            contornoReliquia.enabled = false;
+            imagenReliquia.enabled = false;
         }
     }
 }

@@ -15,6 +15,8 @@ public class ConfirmPosDocs : MonoBehaviour
     }
 
     // Update is called once per frame
+
+    //Colocar el load aqui o en su defecto colocar que lo haga en la lista de reliquias, para no hacer tanta cosa
     void Update()
     {
         if(once < 1)
@@ -37,4 +39,5 @@ public class ConfirmPosDocs : MonoBehaviour
             }
         }
     }
+
 }

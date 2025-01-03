@@ -11,5 +11,7 @@ public class OpcionesUIControler : MonoBehaviour
     public void DesaparecerCanvas(GameObject desCanvas)
     {
         desCanvas.SetActive(false);
+        DataPersistenceManager.instance.SaveGameNoEncrypt();
+        Debug.Log("Salvada");
     }
 }

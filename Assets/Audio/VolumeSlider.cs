@@ -18,13 +18,13 @@ public class VolumeSlider : MonoBehaviour
     [SerializeField] private VolumeType volumeType;
 
     private Slider volumeSlider;
-
     private void Awake()
     {
         volumeSlider = this.GetComponentInChildren<Slider>();
     }
-    private void Update()
+    private void Start()
     {
+        //Establece el volumen en el slider
         switch (volumeType)
         {
             case VolumeType.MASTER:
@@ -46,9 +46,11 @@ public class VolumeSlider : MonoBehaviour
                 volumeSlider.value = AudioMenu.instancia.sfxPlayer;
                 break;
         }
+        
     }
     public void SliderChangeVolume()
     {
+        //Cambiar el volumen mediante el slider del menu de opciones
         switch (volumeType)
         {
             case VolumeType.MASTER:

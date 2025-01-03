@@ -23,6 +23,8 @@ public class Revive : MonoBehaviour
     [Header("Municiones Player")]
     [SerializeField] ArmaController mainWeaponPlayer;
     public int municionStartLevel;
+    [Header("Vida Player")]
+    public float vidaPlayerStartLevel;
     [Header("Note Nivel")]
     public int noteStart;
 
@@ -32,6 +34,7 @@ public class Revive : MonoBehaviour
     }
     void Start()
     {
+        vidaPlayerStartLevel = ListDataPlayer.listDataPlayer.vidaPlayerNow;
         //Establecer notes iniciales
         noteStart = MostrarTextObjectives.indexLine;
 
@@ -202,6 +205,10 @@ public class Revive : MonoBehaviour
     public void ResetearNote()
     {
         MostrarTextObjectives.indexLine = noteStart;
+    }
+    public void ResetearVida()
+    {
+        ListDataPlayer.listDataPlayer.vidaPlayerNow = vidaPlayerStartLevel;
     }
 
 }

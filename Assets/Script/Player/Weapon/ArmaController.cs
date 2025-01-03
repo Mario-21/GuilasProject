@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ArmaController : MonoBehaviour
+public class ArmaController : MonoBehaviour, IDataPersistence
 {
     [Header("Info Weapon")]
     public Transform raySpawn;
@@ -35,6 +35,14 @@ public class ArmaController : MonoBehaviour
 
 
     Camera pruebaCamera;
+    public void LoadData (GameData data)
+    {
+        this.municionTotal = data.ammoActual;
+    }
+    public void SaveData(ref GameData data)
+    {
+        data.ammoActual = this.municionTotal;
+    }
     private void Awake()
     {
         weaponSprite = GetComponent<SpriteRenderer>();
@@ -42,6 +50,7 @@ public class ArmaController : MonoBehaviour
     }
     void Start()
     {
+
         //soundManager = FindObjectOfType<SoundManager>();
     }
 

@@ -263,16 +263,4 @@ public class DocsInfo : MonoBehaviour
             nextDocsPos = actualDocsPos;
         }
     }
-    void Garabato()
-    {
-        if (filaDocs.position.x < docsBase[nextDocsPos].posDocs.position.x)
-        {
-            Debug.Log("la fila es mas pequeña que...");
-        }
-        else
-        {
-            Debug.Log("la filaDocs es " + filaDocs.position.x);
-            Debug.Log("la docsBase es " + docsBase[nextDocsPos].posDocs.position.x);
-        }
-    }
 }

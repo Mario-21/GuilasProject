@@ -52,10 +52,10 @@ public class SecurityCameraMove : MonoBehaviour
         //Si la cámara se dirige a la derecha
         if (derecha)
         {
-            Debug.Log("Derecha Cámara");
+            
             if (transform.eulerAngles.z > limitRotCameraDrcha || transform.eulerAngles.z < limitRotCameraIzq)
             {
-                Debug.Log("Quiero Rotar");
+                
                 transform.Rotate(0, 0, velocidad);
                 //Reproducir audio
                 if (audiCamera < 1)
@@ -84,7 +84,7 @@ public class SecurityCameraMove : MonoBehaviour
         //Si la cámara se dirige a la izquierda
         else
         {
-            Debug.Log("Izquierda Cámara");
+            
             //Primera Condición
           
             /*Cuando este al lado derecho con <<X>> la cámara rotara si Z Actual es  < que el limite por la izquierda, pero, IMPORTANTE
@@ -92,7 +92,7 @@ public class SecurityCameraMove : MonoBehaviour
             para poder continuar girando */
             if (transform.eulerAngles.z < limitRotCameraIzq || transform.eulerAngles.z > limitRotCameraDrcha)
             {
-                Debug.Log("Quiero Rotar");
+                
                 transform.Rotate(0, 0, velocidad);
                 //Reproducir audio
                 if (audiCamera < 1)
