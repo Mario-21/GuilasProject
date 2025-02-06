@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using FMODUnity;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +10,7 @@ public class SeeCartel : MonoBehaviour
     PlayerHere player;
     [Header("Reveal Password")]
     public Image notebook;
+    public EventReference soundCartel;
     bool seeNote;
     Inventory inventario;
     void Start()
@@ -28,7 +30,7 @@ public class SeeCartel : MonoBehaviour
         {
             if (Input.GetButtonDown("Action"))
             {
-                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.seeNote);
+                AudioManager.instancia.PlayOneShot(soundCartel);
                 seeNote = !seeNote;
                 //Lo colocas en falso para que no se abra una vez salgas del cartel que estas viendo
                 Inventory.gameIsPause = false;

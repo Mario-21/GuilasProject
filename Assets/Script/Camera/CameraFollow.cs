@@ -12,7 +12,11 @@ public class CameraFollow : MonoBehaviour
 
 
     //posterior mente Limitar los lados
-
+    private void Start()
+    {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 120;
+    }
     void FixedUpdate ()
     {
         FollowCamera();

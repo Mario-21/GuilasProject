@@ -46,16 +46,35 @@ public class ChangeTurnsRest : MonoBehaviour
     }
     void MarcoColor()
     {
-        for (int i = 0; i < marcosTurns.Count; i++)
+        switch (TurnosWorked.extras.turnosWork)
         {
-            if (i == TurnosWorked.extras.turnosWork)
-            {
-                marcosTurns[i].color = Color.green;
-            }
-            else
-            {
-                marcosTurns[i].color = Color.red;
-            }
+            case 0:
+                //Turno_0 = A y B en verde, C en rojo.
+                //A
+                marcosTurns[0].color = Color.green;
+                //B
+                marcosTurns[1].color = Color.green;
+                //C
+                marcosTurns[2].color = Color.red;
+                break;
+            case 1:
+                //Turno_1 = A y C en verde, B en rojo.
+                //A
+                marcosTurns[0].color = Color.green;
+                //B
+                marcosTurns[1].color = Color.red;
+                //C
+                marcosTurns[2].color = Color.green;
+                break;
+            case 2:
+                //Turno_2 = C y B en verde, A en rojo
+                //A
+                marcosTurns[0].color = Color.red;
+                //B
+                marcosTurns[1].color = Color.green;
+                //C
+                marcosTurns[2].color = Color.green;
+                break;
         }
     }
 }
