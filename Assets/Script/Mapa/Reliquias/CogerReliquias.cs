@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 public class CogerReliquias : MonoBehaviour, IDataPersistence
 {
     [SerializeField] private string idReliquia;
@@ -13,7 +14,8 @@ public class CogerReliquias : MonoBehaviour, IDataPersistence
 
     public int numeroReliquia;
     bool estoyEnLaReliquia;
-
+    [Header("Sonido al coger la Reliquia")]
+    [SerializeField] EventReference sonidoReliquia;
     //Esto no se tiene que guardar aquí, pero me sirve para hacer pruebas
     public void LoadData(GameData reliquiaData)
     {
@@ -40,6 +42,7 @@ public class CogerReliquias : MonoBehaviour, IDataPersistence
     {
         if (Input.GetButtonDown("Take")) 
         {
+            AudioManager.instancia.PlayOneShot(sonidoReliquia);
             ListaReliquias.instancia.listaReliquiasTotal[numeroReliquia].reliquiaObtenida = true;
             //reliquiaPillada = true;
             this.gameObject.SetActive(false);

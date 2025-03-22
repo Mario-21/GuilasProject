@@ -124,6 +124,8 @@ public class FMODEvent : MonoBehaviour
     [SerializeField] public EventReference drenar;
     [SerializeField] public EventReference llenarDrenaje;
     [SerializeField] public EventReference valvula;
+    [SerializeField] public EventReference rejillaOpen;
+    [SerializeField] public EventReference rejillaClose;
 
     [Header("Temple SFX")]
     [SerializeField] string dardos;

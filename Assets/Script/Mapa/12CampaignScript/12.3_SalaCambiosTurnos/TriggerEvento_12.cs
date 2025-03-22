@@ -21,6 +21,7 @@ public class TriggerEvento_12 : MonoBehaviour
     public float durationShakeLimit;
     [Header("Overcharge Info")]
     public GameObject luz;
+    public LuzSound luzSound;
     float timeBlink;
     public float timeBlinkLimit;
     int countBlink;
@@ -86,13 +87,14 @@ public class TriggerEvento_12 : MonoBehaviour
                 }
                 break;
             case evento_12.Overcharge:
+                luzSound.enabled = true;
                 Overcharge overcharge = new Overcharge();
                 overcharge.BlinkLight(luz, ref timeBlink, timeBlinkLimit, ref countBlink, countBlinkLimit);
-                if(soundOnce < 1)
+                /*if(soundOnce < 1)
                 {
                     AudioManager.instancia.PlayOneShot(FMODEvent.instancia.failLight);
                     soundOnce++;
-                }
+                }*/
                 if(countBlink >= countBlinkLimit)
                 {
                     this.enabled = false;

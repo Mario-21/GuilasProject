@@ -10,16 +10,19 @@ public class BotonDrenaje : MonoBehaviour
     [SerializeField] BloquearMovimientoPlayer bloqPlayer;
     [Header("Agua Data")]
     [SerializeField] WaterData waterInfo;
+    [Header("Boton Drenaje")]
+    [SerializeField] SpriteRenderer spriteBotonDrenaje;
     [Header("Sprite rejillas")]
     [SerializeField] Sprite rejillaOpen;
     [SerializeField] Sprite rejillaClose;
     [SerializeField] List<SpriteRenderer> rejillas;
+    public bool statusRejillas;
+    int limitRejillaSound;
     [Header("Valvulas Data")]
     [SerializeField] List<Valvula> valvulas;
     [Header("Time Drenar")]
     public float limitTimeDrenaje;
     float timeDrenaje;
-
     //Añadir el habilitar la valvula 
     //Pero solo si se ha dado previamente a la palanca de mantenimiento de su respectiva zona
     //ademas de 
@@ -27,17 +30,11 @@ public class BotonDrenaje : MonoBehaviour
     bool timeDrenar;
     bool timeLoadAgua;
     PlayerHere player;
-    SpriteRenderer spriteBotonDrenaje;
 
     int soundDrenaje;
     int soundDrenaje_NoMaintenance;
     float timeRepeatPressButton;
     bool repeatButton;
-
-    private void Awake()
-    {
-        spriteBotonDrenaje = GetComponent<SpriteRenderer>();
-    }
     void Start()
     {
         //drenar = StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion;
@@ -63,6 +60,7 @@ public class BotonDrenaje : MonoBehaviour
             if (Input.GetButtonDown("Action") && !repeatButton)
             {
                 AudioManager.instancia.PlayOneShot(FMODEvent.instancia.botonGeneral);
+                limitRejillaSound = 0;
                 if(!timeDrenar && waterInfo.porcentajeAgua > 0)
                 {
                     timeDrenar = true;
@@ -71,6 +69,12 @@ public class BotonDrenaje : MonoBehaviour
                 {
                     timeLoadAgua = true;
                     StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = !StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion;
+                    RejillasSound();
+                    /*if (limitRejillaSound < 1)
+                    {
+                        RejillasSound();
+                        limitRejillaSound++;
+                    }*/
                 }
                 
             }
@@ -80,6 +84,11 @@ public class BotonDrenaje : MonoBehaviour
         {
             DrenajeTransition();
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+            if(limitRejillaSound < 1)
+            {
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.rejillaOpen);
+                limitRejillaSound++;
+            }
         }
         if (timeLoadAgua)
         {
@@ -91,6 +100,7 @@ public class BotonDrenaje : MonoBehaviour
         //Rejilla Abierta
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
+            statusRejillas = true;
             //Por esto ya no llega a funcionar el trasladar agua, el boton de drenaje absorbe constantemente el agua, si activas una de las valvulas ya no se efectua por el timing de 1.5
             //Hay que eliminar el tiempo, hacerlo aparte o algo.
             if (timeDrenaje >= limitTimeDrenaje)
@@ -107,6 +117,7 @@ public class BotonDrenaje : MonoBehaviour
         //Rejilla Cerrada
         else
         {
+            statusRejillas = false;
             foreach (SpriteRenderer rejilla in rejillas)
             {
                 rejilla.sprite = rejillaClose;
@@ -187,6 +198,19 @@ public class BotonDrenaje : MonoBehaviour
         else
         {
             spriteBotonDrenaje.color = Color.red;
+        }
+    }
+    void RejillasSound()
+    {
+        //Abrir
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
+        {
+            AudioManager.instancia.PlayOneShot(FMODEvent.instancia.rejillaOpen);
+        }
+        //Cerrar
+        else
+        {
+            AudioManager.instancia.PlayOneShot(FMODEvent.instancia.rejillaClose);
         }
     }
 

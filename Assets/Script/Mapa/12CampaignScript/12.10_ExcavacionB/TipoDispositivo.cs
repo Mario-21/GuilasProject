@@ -23,18 +23,18 @@ public class TipoDispositivo
 }
 class Taladro : TipoDispositivo
 {
-    public void UseTaladro(ref bool encender, GameObject baseTaladro, float velocidad, GameObject particlesDrill)
+    public void UseTaladro(ref bool encender, Animator animTaladro,GameObject particlesDrill)
     {
         if (encender)
         {
-            //Taladro comienza a girar
-            baseTaladro.transform.Rotate(0, baseTaladro.transform.position.y + velocidad, 0);
+            //Taladro Activar la animacion
+            animTaladro.enabled = true;
             particlesDrill.SetActive(true);
             
         }
         else
         {
-            baseTaladro.transform.Rotate(0, 0, 0);
+            animTaladro.enabled = false;
             particlesDrill.SetActive(false);
         }
     }

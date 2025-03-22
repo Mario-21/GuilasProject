@@ -14,7 +14,7 @@ public class Valvula : MonoBehaviour
     [SerializeField] WaterData waterAltTotal;
     [Header("Tuberia Data")]
     [SerializeField] SpriteRenderer boton;
-    [SerializeField] GameObject cascada;
+    public GameObject cascada;
     [Header("Time Valvula")]
     public float timeLimitValvula;
     public float timeValvula;
@@ -90,7 +90,10 @@ public class Valvula : MonoBehaviour
             if (!StatusGameobjectsVariables.statusGameobject.modificacion[indexDrenar].modificacion) 
             {
                 //StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
-                CalculoDeAguas();
+                //Si el porcentaje es superior a 100 no quieres que te calcule nada, debido a que a habido un bug
+                //en el que si te mueves a la vez que le das a la valvula, por alguna razón, el agua se desborda,
+                //haciendo que te golpeé
+                if(waterAltTotal.porcentajeAgua < 100) CalculoDeAguas();
             }
             //Puedes volver a moverte
             bloqPlayer.HabilitarMovPlayer();

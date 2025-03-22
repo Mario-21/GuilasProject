@@ -21,9 +21,10 @@ public class DispositivoElectrico : MonoBehaviour
 
     [Header("Consumo Electrico")]
     public int gastoElectrico;
+    public bool gastarElectricidad;
 
     [Header("Componentes Aparato")]
-    public GameObject baseAparato;
+    public GameObject efectoAparato;
     public float velocidad;
     public GameObject particles;
 
@@ -33,7 +34,7 @@ public class DispositivoElectrico : MonoBehaviour
     [HideInInspector] public bool luzOn;
     PlayerHere player;
 
-    StudioEventEmitter emitterDispositive;
+    public StudioEventEmitter emitterDispositive;
     void Start()
     {
         player = GetComponent<PlayerHere>();
@@ -50,6 +51,7 @@ public class DispositivoElectrico : MonoBehaviour
             Debug.Log("Sispotive");
         }
         ColorButton();
+        ActivarGastoElectrico();
         if (player.playerImHere)
         {
             PressLuz();
@@ -60,11 +62,22 @@ public class DispositivoElectrico : MonoBehaviour
         if (Input.GetButtonDown("Action")) 
         {
             luzOn = !luzOn;
+            gastarElectricidad = true;
             SwitchLuz();
             SoundDispositivo();
 
+            //Deberia hacerlo cuando la luz es encendida
+            //TipoDispositivo dispositivo = new TipoDispositivo();
+            //dispositivo.GastoElectrico(ref TurnosWorked.extras.valorGenerador, gastoElectrico,  ref luzOn);
+        }
+    }
+    void ActivarGastoElectrico()
+    {
+        if (gastarElectricidad)
+        {
             TipoDispositivo dispositivo = new TipoDispositivo();
-            dispositivo.GastoElectrico(ref TurnosWorked.extras.valorGenerador, gastoElectrico,  ref luzOn);
+            dispositivo.GastoElectrico(ref TurnosWorked.extras.valorGenerador, gastoElectrico, ref luzOn);
+            gastarElectricidad = false;
         }
     }
     void ImDispositivo()
@@ -73,15 +86,17 @@ public class DispositivoElectrico : MonoBehaviour
         {
             case AparatoElectrico.Taladro:
                 Taladro taladro = new Taladro();
-                taladro.UseTaladro(ref luzOn, baseAparato, velocidad, particles);
+                Animator animTaladro = new Animator(); 
+                animTaladro = efectoAparato.GetComponent<Animator>();
+                taladro.UseTaladro(ref luzOn, animTaladro, particles);
                 break;
             case AparatoElectrico.Ventilador:
                 Ventilador ventilador = new Ventilador();
-                ventilador.UseVentilador(ref luzOn, baseAparato, velocidad);
+                ventilador.UseVentilador(ref luzOn, efectoAparato, velocidad);
                 break;
             case AparatoElectrico.Foco:
                 Foco foco = new Foco();
-                foco.UseFoco(ref luzOn, baseAparato);
+                foco.UseFoco(ref luzOn, efectoAparato);
                 break;
         }
     }
@@ -116,11 +131,11 @@ public class DispositivoElectrico : MonoBehaviour
         switch (aparato)
         {
             case AparatoElectrico.Taladro:
-                emitterDispositive = AudioManager.instancia.InitializeEventEmitter(FMODEvent.instancia.drill, baseAparato);
+                emitterDispositive = AudioManager.instancia.InitializeEventEmitter(FMODEvent.instancia.drill, efectoAparato);
                 if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) emitterDispositive.Play();
                 break;
             case AparatoElectrico.Ventilador:
-                emitterDispositive = AudioManager.instancia.InitializeEventEmitter(FMODEvent.instancia.ventilador, baseAparato);
+                emitterDispositive = AudioManager.instancia.InitializeEventEmitter(FMODEvent.instancia.ventilador, efectoAparato);
                 if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) emitterDispositive.Play();
                 break;
             case AparatoElectrico.Foco:
