@@ -11,6 +11,8 @@ public class ArmaController : MonoBehaviour, IDataPersistence
     public Transform mira;
     public Transform brazo;
     public bool activarDisparo;
+    [Tooltip("Al comenzar el nivel se coloca en true para cargar las balas del anterior")]
+    public int indexModCargarAmmoData;
     [Header("Raycast Pistol")]
     public static bool preCollisionObject;
     public LayerMask maskCollision;
@@ -18,6 +20,7 @@ public class ArmaController : MonoBehaviour, IDataPersistence
     public float timeAppearAim;
     public float timeAppearAimLimit;
     [Header("Municion Text")]
+    public int municion;
     public int municionTotal;
     public Text municionText;
     [Header("Disparos")]
@@ -37,11 +40,22 @@ public class ArmaController : MonoBehaviour, IDataPersistence
     Camera pruebaCamera;
     public void LoadData (GameData data)
     {
-        this.municionTotal = data.ammoActual;
+        //Colocar un bool para que me deje cargar la munición una sola vez al inicio de cada nivel
+        //Este bool solo se colocara en true al inicio de cada nivel para que establezca la munición solo al inicio
+        //Tras establecerla pasara a usar el método que existia antes de una ListaPlayer haciendo de puente
+        if (!StatusGameobjectsVariables.statusGameobject.modificacion[indexModCargarAmmoData].modificacion) 
+        {
+            Debug.Log("Eye Liener");
+            this.municion = data.ammoActual;
+            //Establece la munición con la que empiezas el nivel y la que va a ir utilizando para viajar entre escenas.
+            ListDataPlayer.listDataPlayer.ammoPlayerNow = data.ammoActual;
+            StatusGameobjectsVariables.statusGameobject.modificacion[indexModCargarAmmoData].modificacion = true;
+        }
     }
     public void SaveData(ref GameData data)
     {
-        data.ammoActual = this.municionTotal;
+        //Esto solo ocurre al final
+        data.ammoActual = this.municion;
     }
     private void Awake()
     {
@@ -50,15 +64,19 @@ public class ArmaController : MonoBehaviour, IDataPersistence
     }
     void Start()
     {
-
+        //Establecer la municion Total con la inicial;
+        municionTotal = municion;
+        //Si cierro Unity y el lunes esto no funciona, habrá que cambiarlo para que solo ejecute una vez 
+        AmmoBetweenSameLevel();
         //soundManager = FindObjectOfType<SoundManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        municionText.text = municionTotal.ToString();
+        municionText.text = municion.ToString();
 
+        DiferenciaAmmo();
         DrawWeapon();
         UseWeapon();
     }
@@ -72,6 +90,26 @@ public class ArmaController : MonoBehaviour, IDataPersistence
         //brazo.up = brazo.position - mira.position;
     }
 
+    void AmmoBetweenSameLevel() 
+    {
+        //Cuando ya hayas comenzado el nivel, no  te cargará más munición por parte del GameData, a no ser que reinicies o salgas del juego.
+        //La carga única se hace para que el jugador no pueda farmear munición infinita saliendo y entrando del juego.
+        //Para poder seguir conectando la munición entre niveles sin que se guarde la munición en el GameData, existe la ammoData
+        //AmmoData esta solo para que almacene dicha munición en una lista de datos del jugador que tiene información del nivel que juegas en ese momento
+        //así la munición viaja entre las escenas de dicho nivel sin necesidad de guardarla
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexModCargarAmmoData].modificacion)
+        {
+            municion = ListDataPlayer.listDataPlayer.ammoPlayerNow;
+        }
+    }
+    void DiferenciaAmmo()
+    {
+        if(municion != municionTotal)
+        {
+            ListDataPlayer.listDataPlayer.ammoPlayerNow = municion;
+            municionTotal = municion;
+        }
+    }
     void DrawWeapon()
     {
         //Draw the weapon or keep it
@@ -106,7 +144,7 @@ public class ArmaController : MonoBehaviour, IDataPersistence
                 municionText.enabled = true;
                 mira.position = pruebaCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -pruebaCamera.transform.position.z));
                 
-                if (municionTotal > 0)
+                if (municion > 0)
                 {
                     municionText.color = Color.white;
                     //Añadir cooldown;
@@ -122,12 +160,12 @@ public class ArmaController : MonoBehaviour, IDataPersistence
                             //Attack
                             Ataque();
                             cooldown = refreshWeapon;
-                            municionTotal -= 1;
+                            municion -= 1;
                             theySeeYou.visible = true;
                         }
                     }
                 }
-                else if (municionTotal <= 0)
+                else if (municion <= 0)
                 {
                     //Show your ammo in red 
                     municionText.color = Color.red;

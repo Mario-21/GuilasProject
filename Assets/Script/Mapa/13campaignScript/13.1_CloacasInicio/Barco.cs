@@ -20,7 +20,6 @@ public class Barco : MonoBehaviour
     [SerializeField] B8Arma b8;
     [SerializeField] ArmaController pistol;
     [Header("Switch Pala and Weapon")]
-    [SerializeField] GameObject pala;
     [SerializeField] SpriteRenderer pistolSprite;
     [SerializeField] SpriteRenderer b8Sprite;
     [Header("Particulas Barco")]
@@ -29,6 +28,13 @@ public class Barco : MonoBehaviour
     [Header("Barco SFX")]
     [SerializeField] EventReference sfx_Barco;
     [HideInInspector] public EventInstance barcoSteps;
+
+    Animator animPato;
+    private void Awake()
+    {
+        animPato = GetComponent<Animator>();
+        //anim.SetBool("Walk", true);
+    }
     void Start()
     {
         barcoSteps = AudioManager.instancia.CreateEventInstance(sfx_Barco);
@@ -52,6 +58,7 @@ public class Barco : MonoBehaviour
         SoundMoveShip();
         MoveBarco();
         ActivarParticles();
+        MovePatoAnim();
     }
     void MoveBarco()
     {
@@ -73,7 +80,6 @@ public class Barco : MonoBehaviour
             if (!pistol.activarDisparo)
             {
                 pistolSprite.enabled = false;
-                pala.SetActive(true);
                 if (horizontalMov == 1) 
                 {
                     //Orientacion barco
@@ -94,7 +100,6 @@ public class Barco : MonoBehaviour
             else
             {
                 pistolSprite.enabled = true;
-                pala.SetActive(false);
             }
         }
         //si tienes la B8, cambiara entre la B8 y la pala
@@ -102,7 +107,6 @@ public class Barco : MonoBehaviour
         {
             if (!b8.activarB8)
             {
-                pala.SetActive(true);
                 b8Sprite.enabled = false;
                 Debug.Log("Wepon 8V");
                 if (horizontalMov == 1) 
@@ -120,7 +124,6 @@ public class Barco : MonoBehaviour
             }
             else
             {
-                pala.SetActive(false);
                 b8Sprite.enabled = true;
             }
         }
@@ -162,6 +165,17 @@ public class Barco : MonoBehaviour
         {
             barcoSteps.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
+    }
+    void MovePatoAnim()
+    {
+        if(horizontalMov != 0)
+        {
+            animPato.SetBool("Walking_Pato", true);
+        }
+        else if(horizontalMov == 0)
+        {
+            animPato.SetBool("Walking_Pato", false);
+        } 
     }
     private void OnDisable()
     {

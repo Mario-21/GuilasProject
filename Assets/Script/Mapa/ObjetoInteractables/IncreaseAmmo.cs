@@ -29,7 +29,7 @@ public class IncreaseAmmo : MonoBehaviour
             if (Input.GetButtonDown("Take"))
             {
                 AudioManager.instancia.PlayOneShot(FMODEvent.instancia.recoveryAmmo);
-                playerWeapon.municionTotal += ammoRecovery;
+                playerWeapon.municion += ammoRecovery;
                 this.gameObject.SetActive(false);
                 AmmoRecoveryList.ammoFromLevel.ammo[indexAmmo] = true;
             }

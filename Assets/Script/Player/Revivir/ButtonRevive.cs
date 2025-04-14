@@ -39,6 +39,7 @@ public class ButtonRevive : MonoBehaviour
     public void ButtonResetAmmo()
     {
         revivirScene.ResetearAmmo();
+       
     }
     public void ButtonResetearUiItems()
     {

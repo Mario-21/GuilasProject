@@ -29,10 +29,10 @@ public class Embarcar : MonoBehaviour
     [Header("Pato SFX")]
     [SerializeField] EventReference patoSplash;
 
-    bool useBarco;
-    bool playerRange;
+    public bool useBarco;
+    public bool playerRange;
     public bool waterRange;
-    bool putBarco;
+    public bool putBarco;
     BoxCollider2D colliderEmbarcar;
 
     private void Awake()
@@ -45,9 +45,11 @@ public class Embarcar : MonoBehaviour
 
         if (useBarco && playerRange && waterRange && bloqPlayer.player.onGround && !bloqPlayer.player.onWater)
         {
+            Debug.Log("Se cumplen todas las condiciones para colocar la barca");
             if (Input.GetButtonDown("Fire1"))
             {
                 AudioManager.instancia.PlayOneShot(patoSplash);
+                Debug.Log("Barca siendo colocada");
                 putBarco = true;
             }
         }

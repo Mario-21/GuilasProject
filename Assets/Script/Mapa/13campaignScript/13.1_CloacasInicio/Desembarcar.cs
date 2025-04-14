@@ -17,7 +17,6 @@ public class Desembarcar : MonoBehaviour
     [SerializeField] TriggerFollowSoldier followBarcaPlayer;
     [SerializeField] JugadorMovimiento movimientoPlayer;
     [SerializeField] Stairs_Hidden stairsPlayer;
-    [SerializeField] GameObject palaPlayer;
     [Header("Barco Data")]
     [SerializeField] GameObject barca;
     [SerializeField] SaveButton barcaButton;
@@ -75,7 +74,6 @@ public class Desembarcar : MonoBehaviour
             //Camera Player
             mainCamera.Follow = player.transform;
             //Guarda la pala
-            palaPlayer.SetActive(false);
             //Llamar Transicion
             AnimationHud.detectar_echar.SetBool("Transicion", false);
             //Desactivas el desembarcar

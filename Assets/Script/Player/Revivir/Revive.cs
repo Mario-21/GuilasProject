@@ -23,6 +23,7 @@ public class Revive : MonoBehaviour
     [Header("Municiones Player")]
     [SerializeField] ArmaController mainWeaponPlayer;
     public int municionStartLevel;
+    bool establecerAmmoInicial;
     [Header("Vida Player")]
     public float vidaPlayerStartLevel;
     [Header("Note Nivel")]
@@ -42,7 +43,6 @@ public class Revive : MonoBehaviour
         inventoryPosStart = InventoryManager.instanciaInventory.indexInventoryPosition;
 
         //Coloca la municion
-        municionStartLevel = mainWeaponPlayer.municionTotal;
 
         //Variables Level
         for(int e = 0; e < variablesStartLevel.Count; e++)
@@ -110,6 +110,14 @@ public class Revive : MonoBehaviour
             }
         }
     }
+    private void Update()
+    {
+        if (!establecerAmmoInicial)
+        {
+            ListDataPlayer.listDataPlayer.ammoPlayerStartScene = ListDataPlayer.listDataPlayer.ammoPlayerNow;
+            establecerAmmoInicial = true;
+        }
+    }
     public void ResetearVariablesZona()
     {
         //Si son diferentes establece la variable a como estaba al inicio del nivel
@@ -174,7 +182,8 @@ public class Revive : MonoBehaviour
     }
     public void ResetearMunicionPlayer()
     {
-        mainWeaponPlayer.municionTotal = municionStartLevel;
+        //La municion de ahora pasa a ser la munición con la que entraste para resetear el ultimo checkpoint
+        ListDataPlayer.listDataPlayer.ammoPlayerNow = ListDataPlayer.listDataPlayer.ammoPlayerStartScene;
     }
     public void ResetearInventoryPos()
     {

@@ -10,6 +10,7 @@ public class ListDataPlayer : MonoBehaviour
     public float vidaPlayerNow;
     [Header("Munición Jugador")]
     public int ammoPlayerNow;
+    public int ammoPlayerStartScene;
     //Nota: AmmoPlayerNow no debe destruirse hasta llegar al final.
     private void Awake()
     {

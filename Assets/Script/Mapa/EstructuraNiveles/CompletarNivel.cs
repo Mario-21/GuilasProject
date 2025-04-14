@@ -42,6 +42,9 @@ public class CompletarNivel : MonoBehaviour, IDataPersistence
         if (collision.gameObject.CompareTag("Player"))
         {
             triggerPasarNivel = true;
+            /* /////////////////////////////////// */
+            //Cuando acabes un nivel, te reestablecera la posibilidad de volver a cargar tu munición ya que la DataPlayer se elimina, n
+            //blockPlayer.pistol.ammoData = true;
             //Guardar GameData
             DataPersistenceManager.instance.SaveGame();
             //Bloqueamos las acciones del Jugador

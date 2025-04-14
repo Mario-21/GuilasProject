@@ -31,18 +31,7 @@ public class DataPersistenceManager : MonoBehaviour
             Debug.LogError("Se ha encontrado más de Data Persistence Manager en escena");
             //Destroy(gameObject);
         }
-        instance = this;
-        /*
-        if(instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        */
+        instance = this;    
     }
     //NOTA: ESTO ES UNA MERA PRUEBA COMO EN EL TUTORIAL SEGUIDO.
 
@@ -124,7 +113,7 @@ public class DataPersistenceManager : MonoBehaviour
     //POSTERIOR AL TUTORIAL ESTE VOID HABRÁ QUE QUITARLO DADO QUE YO NO QUIERO QUE AQUÍ ME GUARDE LOS DATOS, SINO A LA HORA DE PASARTE UN NIVEL
     void OnApplicationQuit()
     {
-        SaveGame();
+        //SaveGame();
         SaveGameNoEncrypt();
         
     }

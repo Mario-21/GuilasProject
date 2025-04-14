@@ -10,9 +10,14 @@ public class ButtonMadre : MonoBehaviour
     [Header("Color Encendido")]
     [SerializeField] Color colorOn;
     [Header("SFX Encendido")]
-    [SerializeField] EventReference sfx_On;
+    [SerializeField] EventReference button_On;
+    [SerializeField] EventReference compuertasOpen;
     SpriteRenderer buttonSprite;
     PlayerHere player;
+    [Header("Datos Resetear Zona")]
+    [SerializeField] BloquearMovimientoPlayer bloqPlayer;
+    [SerializeField] int spawnPanelMadre;
+    [SerializeField] int escenaGeneradorMadre;
     private void Awake()
     {
         buttonSprite = GetComponent<SpriteRenderer>();
@@ -23,6 +28,7 @@ public class ButtonMadre : MonoBehaviour
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
             OnMotherButton();
+            this.enabled = false;
         }
     }
 
@@ -33,10 +39,20 @@ public class ButtonMadre : MonoBehaviour
         {
             if (Input.GetButtonDown("Action"))
             {
-                AudioManager.instancia.PlayOneShot(sfx_On);
+                AudioManager.instancia.PlayOneShot(button_On);
                 StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
                 OnMotherButton();
             }
+        }
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
+        {
+            AudioManager.instancia.PlayOneShot(compuertasOpen);
+            //Parar el Movimiento del Player
+            bloqPlayer.BloquearMovPlayer();
+            //Cambiar Zona
+            CheckPointController.numeroCheckPoint = spawnPanelMadre;
+            EstructuraNiveles.nivel = escenaGeneradorMadre;
+            AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
         }
     }
     

@@ -9,7 +9,7 @@ public class BestWeapon : MonoBehaviour
     void Start()
     {
         //Spawn Besto Weapon B8
-        if(weaponPlayer.municionTotal <= 0 && !SpecialWeapons.specialW.b8)
+        if(weaponPlayer.municion <= 0 && !SpecialWeapons.specialW.b8)
         {
             bestWeapon.SetActive(true);
         }
