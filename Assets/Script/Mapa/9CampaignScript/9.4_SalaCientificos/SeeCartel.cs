@@ -11,6 +11,10 @@ public class SeeCartel : MonoBehaviour
     [Header("Reveal Password")]
     public Image notebook;
     public EventReference soundCartel;
+    [Header("Icon")]
+    [SerializeField] GameObject iconoZone;
+    [SerializeField] SpriteRenderer iconeZoneSprite;
+    [SerializeField] Sprite iconoSprite;
     bool seeNote;
     Inventory inventario;
     void Start()
@@ -28,6 +32,7 @@ public class SeeCartel : MonoBehaviour
     {
         if (player.playerImHere)
         {
+            
             if (Input.GetButtonDown("Action"))
             {
                 AudioManager.instancia.PlayOneShot(soundCartel);
@@ -41,10 +46,17 @@ public class SeeCartel : MonoBehaviour
             }
             if (seeNote)
             {
+                //Desaparece el icono porque ya lo estas haciendo
+                iconoZone.SetActive(false);
+
                 notebook.gameObject.SetActive(true);
             }
             else
             {
+                //Si estoy en rango de usar el objeto y no lo he usado, aparece el icono
+                iconoZone.SetActive(true);
+                iconeZoneSprite.sprite = iconoSprite;
+
                 notebook.gameObject.SetActive(false);
             }
 
@@ -60,6 +72,7 @@ public class SeeCartel : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             inventario.enabled = true;
+            iconoZone.SetActive(false);
         }
     }
 }

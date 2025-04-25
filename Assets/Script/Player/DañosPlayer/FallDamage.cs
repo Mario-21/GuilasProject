@@ -53,9 +53,9 @@ public class FallDamage : MonoBehaviour
         {
             RegistrarAlturas();
         }
-        //Si una de estas acciones se da no puedes calcular el daño, debido a que si usas las escaleras no se considera que te estas cayendo si lo estas usando. A su vez si caes al agua,
+        //Si una de estas acciones se da no puedes calcular el daño, debido a que si usas las escaleras no se considera que te estas cayendo si la estas usando. A su vez si caes al agua,
         //esta misma te frena por lo que no te hara daño
-        else
+        else if(stairsPlayer.escalar || playerMov.onWater)
         {
             //Resetea el registroAire para que vuelva a calcular el daño, ya que las escaleras te frenan
             //Cuando toco el agua tambien debe resetea el aire

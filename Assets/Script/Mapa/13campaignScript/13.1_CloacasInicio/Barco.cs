@@ -29,6 +29,13 @@ public class Barco : MonoBehaviour
     [SerializeField] EventReference sfx_Barco;
     [HideInInspector] public EventInstance barcoSteps;
 
+    public enum TipoBarco
+    {
+        pato,
+        barco
+    }
+    [Header("Tipo Barco")]
+    public TipoBarco tipoBarco;
     Animator animPato;
     private void Awake()
     {
@@ -170,11 +177,27 @@ public class Barco : MonoBehaviour
     {
         if(horizontalMov != 0)
         {
-            animPato.SetBool("Walking_Pato", true);
+            switch (tipoBarco)
+            {
+                case TipoBarco.pato:
+                    animPato.SetBool("Walking_Pato", true);
+                    break;
+                case TipoBarco.barco:
+                    animPato.SetBool("Helice_Barca", true);
+                    break;
+            }
         }
         else if(horizontalMov == 0)
         {
-            animPato.SetBool("Walking_Pato", false);
+            switch (tipoBarco)
+            {
+                case TipoBarco.pato:
+                    animPato.SetBool("Walking_Pato", false);
+                    break;
+                case TipoBarco.barco:
+                    animPato.SetBool("Helice_Barca", false);
+                    break;
+            }
         } 
     }
     private void OnDisable()
