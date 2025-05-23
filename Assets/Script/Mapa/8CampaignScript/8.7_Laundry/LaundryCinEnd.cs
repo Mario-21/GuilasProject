@@ -17,8 +17,9 @@ public class LaundryCinEnd : MonoBehaviour
     int contador;
 
     [Header("Lavadora")]
+    public GameObject lavadoraOn;
+    public GameObject lavadoraOff;
     public Aparecer_DesAp_Obj itemCin;
-    [SerializeField] SpriteRenderer botonLavadora;
     [Header("Completar Nivel")]
     [SerializeField] GameObject completarNivel;
     [Header("Diálogo")]
@@ -50,7 +51,9 @@ public class LaundryCinEnd : MonoBehaviour
                     AudioManager.instancia.PlayOneShot(FMODEvent.instancia.finishWashingMachine);
                     itemCin.Appear();
                     itemCin.DesAppear();
-                    botonLavadora.color = Color.green;
+                    //Cambiar el color de los botones para simular que ha sido apagada
+                    lavadoraOn.SetActive(false);
+                    lavadoraOff.SetActive(true);
                     AnimationHud.detectar_echar.SetBool("Transicion", false);
                     laundryCin = LaundryScene.Third;
                     timeBetweenScene = 0;

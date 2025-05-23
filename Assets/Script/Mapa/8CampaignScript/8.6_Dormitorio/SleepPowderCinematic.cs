@@ -6,8 +6,7 @@ public class SleepPowderCinematic : MonoBehaviour
 {
     public int indexMod;
     [Header("Regresar Nivel Anterior")]
-    public int regretScene;
-    public int checkpoint;
+    public GameObject cambiarAreaTrigger;
     [Header("Escena Info")]
     [SerializeField]Transform brazoSoldier;
     public float timeRotateLimit;
@@ -62,9 +61,7 @@ public class SleepPowderCinematic : MonoBehaviour
                 }
                 break;
             case SceneSleepPowder.Second:
-                CheckPointController.numeroCheckPoint = checkpoint;
-                EstructuraNiveles.nivel = regretScene;
-                AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
+                cambiarAreaTrigger.SetActive(true);
                 break;
         }
     }

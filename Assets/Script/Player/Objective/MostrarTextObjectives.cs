@@ -30,6 +30,7 @@ public class MostrarTextObjectives : MonoBehaviour
         linePrevious = indexLine;
 
         string readFromFilePath = Application.dataPath + "/Textos/Text_Objective/" + fileName + ".txt";
+        //Debug.Log(readFromFilePath);
         fileLine = File.ReadAllLines(readFromFilePath).ToList();
         lines.text = fileLine[indexLine];
     }

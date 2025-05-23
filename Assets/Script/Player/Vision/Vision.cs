@@ -6,7 +6,7 @@ public class Vision : MonoBehaviour
 {
     [Header("Vida Player")]
     [SerializeField] VidaPlayer vida;
-    [HideInInspector] public GameObject visionShadder;
+    public GameObject visionShadder;
     [HideInInspector] public bool visiOn;
     void Start()
     {

@@ -8,6 +8,8 @@ public class Allergy : MonoBehaviour
     [Header("Soldado Info")]
     [SerializeField] SoldierLife soldadoLaundry;
     [SerializeField] SpriteRenderer headSoldadoLaundry;
+    //Llamar animacion
+    public Animator animAllergy;
     public Color allergyColor;
 
 
@@ -39,7 +41,7 @@ public class Allergy : MonoBehaviour
     }
     void AllergyOn()
     {
-        headSoldadoLaundry.color = allergyColor;
+        animAllergy.enabled = true;
         soldadoLaundry.Daño(3);
         this.enabled = false;
     }

@@ -10,9 +10,13 @@ public class Lavadora : MonoBehaviour
     [Header("Variable Ropa")]
     public int indexAllClothes;
     [Header("Lavadora On")]
-    [SerializeField] SpriteRenderer botonLavadora;
     [SerializeField] GameObject basket;
     ActivarModificador activador;
+    [Header("Informacion botones Lavadora")]
+    [SerializeField] SpriteRenderer botonRojo;
+    [SerializeField] SpriteRenderer botonVerde;
+    [SerializeField] Color colorLuzVerde;
+    [SerializeField] Color colorLuzRojo;
 
     int audio;
     void Start()
@@ -24,12 +28,6 @@ public class Lavadora : MonoBehaviour
             activador.enabled = true;
         }
         //Si la lavadora se ha activado
-        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
-        {
-            this.enabled = false;
-            botonLavadora.color = Color.red;
-            activador.emissorAction.Play();
-        }
     }
     void Update()
     {
@@ -37,15 +35,17 @@ public class Lavadora : MonoBehaviour
     }
     void LavadoraOn()
     {
-        if (activador.modificacion)
+        if (activador.modificacion || StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
             basket.SetActive(false);
-            botonLavadora.color = Color.red;
-            if(audio < 1)
+            botonRojo.color = colorLuzRojo;
+            botonVerde.color = colorLuzVerde;
+            if (audio < 1)
             {
                 activador.emissorAction.Play();
                 audio++;
+                this.enabled = false;
             }
         }
     }
