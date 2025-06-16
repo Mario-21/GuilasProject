@@ -7,6 +7,7 @@ public class Somnolencia : MonoBehaviour
     public ParticleSystem particulasDormido;
     SoldadoNormal soldado;
     SoldierLife soldierLife;
+    public int onSoldier;
 
     [Header ("Time Sleep")]
     public float tiempoLimiteSomnoliento;
@@ -25,7 +26,7 @@ public class Somnolencia : MonoBehaviour
         Sleep
     }
 
-    [HideInInspector] public bool despierto;
+    public bool despierto;
     int soundSleep;
 
     private void Awake()
@@ -36,50 +37,83 @@ public class Somnolencia : MonoBehaviour
     }
     private void Start()
     {
+        if (!soldado.berserker)
+        {
+            soldado.animHead.SetBool("Idle_Somnoliento", true);
+        }
         //Si me muero, da igual estas ejecuciones
         RemoveDeath();
     }
     void Update()
     {
         RemoveDeath();
-        if (!soldado.berserker && !soldado.busquedaMode) 
+        if (!soldado.berserker && !soldado.busquedaMode)
         {
             switch (sleepMode)
             {
                 case SleepMode.Somnolent:
-                    Somnoliento();
+                    //Si estoy parado que active el estado de somnolencia
+                    if (!soldado.movimiento)
+                    {
+                        Somnoliento();
+                    }
+                    //Si estoy moviendo que cambie el aspecto y no este en el estado de Somnolineto
+                    else
+                    {
+                        soldado.animHead.SetBool("Idle_Somnoliento", true);
+                    }
                     break;
                 case SleepMode.Sleep:
                     Dormido();
                     break;
             }
         }
-        else if(soldado.berserker)
+        else if (soldado.berserker)
         {
+            soldado.animHead.SetBool("Somnolencia", false);
+            soldado.animHead.SetBool("Idle_Somnoliento", false);
             ChangePatrolMov();
             particulasDormido.Stop();
             soldado.enabled = true;
             this.enabled = false;
-            if(soundSleep < 1)
+            if (soundSleep < 1)
             {
-                if(soldierLife.vida > 0) soldierLife.sleepEmitter.Stop();
+                if (soldierLife.vida > 0) soldierLife.sleepEmitter.Stop();
                 soundSleep++;
             }
+        }
+
+        if (soldado.busquedaMode)
+        {
+            soldado.animHead.SetBool("Somnolencia", false);
         }
     }
 
     void Somnoliento()
     {
         //Despierto
-        if (despierto) {tiempoDespierto += Time.deltaTime; tiempoSomnoliento = 0; }
+        if (despierto) 
+        {
+            soldado.animHead.SetBool("Idle_Somnoliento", false);
+            soldado.animHead.SetBool("Somnolencia", true);
+            tiempoDespierto += Time.deltaTime; 
+            tiempoSomnoliento = 0;
+            soldado.animHead.SetBool("Dormido", false);
+            if (onSoldier > 0) { soldado.enabled = true; onSoldier = 0; }
+        }
         //Dormido
-        else { tiempoSomnoliento += Time.deltaTime; tiempoDespierto = 0; }
+        else 
+        { 
+            tiempoSomnoliento += Time.deltaTime;
+            tiempoDespierto = 0;
+            soldado.animHead.SetBool("Dormido", true);
+        }
 
-        //Te duermes
+        //Te duermes, tiempo que requieres para entrar en el modo dormido
         if (tiempoDespierto >= tiempoLimiteDespierto) 
         {
-            soldierLife.sleepEmitter.Play();
-            particulasDormido.Play();
+            //soldierLife.sleepEmitter.Play();
+            //particulasDormido.Play();
             //Apaga la animacion de caminar
             soldado.OutAnimation();
             //Desactiva al soldado
@@ -87,25 +121,25 @@ public class Somnolencia : MonoBehaviour
             despierto = false;
         }
 
-        //Te despiertas
+        //Te despiertas, tiempo que requieres para entrar en el modo somnoliento
         if (tiempoSomnoliento >= tiempoLimiteSomnoliento) 
         {
-            soldierLife.sleepEmitter.Stop();
-            particulasDormido.Stop();
-            soldado.enabled = true;
             despierto = true;
         }
     }
     void Dormido()
     {
-        particulasDormido.Play();
+        //particulasDormido.Play();
+        soldado.animHead.SetBool("Dormido", true);
         soldado.OutAnimation();
         soldado.enabled = false;
+        /*
         if(soundSleep < 1)
         {
             soldierLife.sleepEmitter.Play();
             soundSleep++;
         }
+        */
     }
     void ChangePatrolMov()
     {

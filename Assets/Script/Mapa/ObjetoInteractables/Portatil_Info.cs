@@ -123,7 +123,7 @@ public class Portatil_Info : MonoBehaviour
                         }
                         armaPlayer.activarDisparo = false;
                         armaPlayer.enabled = false;
-                        armaPlayer.weaponSprite.enabled = false;
+                        armaPlayer.pistola.enabled = false;
                         armaPlayer.municionText.enabled = false;
                         armaPlayer.mira.localPosition = new Vector2(0f, armaPlayer.mira.localPosition.y);
                         armaPlayer.mira.gameObject.GetComponent<SpriteRenderer>().enabled = false;

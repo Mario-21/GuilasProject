@@ -26,6 +26,7 @@ public class Stairs_Hidden : MonoBehaviour
     public int layerDesocultacion;
     [Header("Stop Hidden Player")]
     public ArmaController arma;
+    public B8Arma b8;
     public GameObject mira;
     JugadorMovimiento mov;
 
@@ -36,10 +37,17 @@ public class Stairs_Hidden : MonoBehaviour
     public EventInstance laddersSound;
     public EventReference hiddenSound;
 
+    [Header("Ocultar Cuerpo Jugador")]
+    public List<SpriteRenderer> listaCuerpo;
+    [SerializeField] int conteoPiezasCuerpo;
+
     int soundPlayOne;
+    VidaPlayer vidaPlayer;
 
     private void Start()
     {
+        Debug.Log("Lista de body" + listaCuerpo.Count);
+        vidaPlayer = GetComponent<VidaPlayer>();
         weaponHidden = GetComponent<OcultacionByWeapon>();
         //soundManager = FindObjectOfType<SoundManager>();
         rb = GetComponent<Rigidbody2D>();
@@ -48,44 +56,52 @@ public class Stairs_Hidden : MonoBehaviour
     }
     void Update()
     {
-        StairsSound();
-        //Subir escalera 
-        Up_Down_Stairs();
-        //Poder Esconderte
-        if (mov.onGround)
+        //Si estas vivo, puedes esconderte // escalar
+        if (vidaPlayer.vidaActual > 0)
         {
-            if (canHidden)
+            StairsSound();
+            //Subir escalera 
+            Up_Down_Stairs();
+            //Poder Esconderte
+            if (mov.onGround)
             {
-                //hacer que se quede completamente quieto en mov
-                if (Input.GetButtonDown("Fire2"))
+                if (canHidden)
                 {
-                    //Sonido de la ocultacion
-                    AudioManager.instancia.PlayOneShot(hiddenSound);
-                    //Parar Movimiento
-                    //weaponHidden.tiempoVisible += 99;
-                    mov.playerStepsGrass.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-                    mov.horizontalMov = 0;
-                    mov.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+                    //hacer que se quede completamente quieto en mov
+                    if (Input.GetButtonDown("Fire2"))
+                    {
+                        //Esto lo hago porque no me acuerdo si hay algun script que oculte piezas de mi cuerpo en algun lado, así que para librarme de todo mal, existe este conteo
+                        conteoPiezasCuerpo = 0;
+                        //Sonido de la ocultacion
+                        AudioManager.instancia.PlayOneShot(hiddenSound);
+                        //Parar Movimiento
+                        //weaponHidden.tiempoVisible += 99;
+                        mov.playerStepsGrass.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                        mov.horizontalMov = 0;
+                        mov.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
 
-                    //Icono
-                    Instantiate(ParticulaEsconderse, cuerpoPlayer.position, Quaternion.identity);
-                    //soundManager.SeleccionAudio(soundManager.audiosAmbiente, 0, 1f, 0);
-                    iconoZone.SetActive(false);
+                        //Icono
+                        Instantiate(ParticulaEsconderse, cuerpoPlayer.position, Quaternion.identity);
+                        //soundManager.SeleccionAudio(soundManager.audiosAmbiente, 0, 1f, 0);
+                        iconoZone.SetActive(false);
 
-                    imHidden = !imHidden;
+                        imHidden = !imHidden;
 
-                    Hidden();
+                        Hidden();
 
+                    }
                 }
             }
         }
-
     }
 
     void Hidden()
     {
         if (imHidden)
         {
+            //Esconder las partes del cuerpo
+            CuerpoOcultar();
+
             //disable OcultacionByWeapon for tags don't get problems 
             weaponHidden.enabled = false;
 
@@ -93,8 +109,9 @@ public class Stairs_Hidden : MonoBehaviour
             mira.SetActive(false);
             //can't move and shoot
             arma.enabled = false;
+            b8.enabled = false;
             mov.enabled = false;
-
+            
 
             //Cambiar Layer y tag, para ocultarte
             mov.torso.layer = 31;
@@ -103,6 +120,9 @@ public class Stairs_Hidden : MonoBehaviour
         }
         else
         {
+            //Reaparecer el cuerpo
+            CuerpoReaparecer();
+
             //enabled OcultacionByWeapon 
             weaponHidden.enabled = true;
 
@@ -112,6 +132,7 @@ public class Stairs_Hidden : MonoBehaviour
             iconoZone.SetActive(true);
             //can move and shoot
             arma.enabled = true;
+            b8.enabled = true;
             mov.enabled = true;
 
             ////Cambiar Layer y tag, para desocultarte
@@ -143,6 +164,29 @@ public class Stairs_Hidden : MonoBehaviour
         else
         {
             laddersSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+    }
+    void CuerpoOcultar()
+    {
+        if(conteoPiezasCuerpo < listaCuerpo.Count)
+        {
+            foreach (SpriteRenderer spriteBody in listaCuerpo)
+            {
+                spriteBody.enabled = false;
+                conteoPiezasCuerpo++;
+            }
+        }
+        
+    }
+    void CuerpoReaparecer() 
+    {
+        if(conteoPiezasCuerpo < listaCuerpo.Count)
+        {
+            foreach (SpriteRenderer spriteBody in listaCuerpo)
+            {
+                spriteBody.enabled = true;
+                conteoPiezasCuerpo++;
+            }
         }
     }
     private void FixedUpdate()

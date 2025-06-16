@@ -12,6 +12,8 @@ public class Detectar_y_Echar : MonoBehaviour
     [SerializeField] BloquearMovimientoPlayer player;
     [Header("Enemy Data")]
     public SoldadoNormal soldier;
+    public GameObject brazoNormal;
+    public GameObject brazoAccion;
     [Header("Scene")]
     public int sceneReload;
     public int spawn;
@@ -19,7 +21,7 @@ public class Detectar_y_Echar : MonoBehaviour
     bool evento;
     bool balaInside;
 
-    ObjetoInteractivo objInter;
+    //ObjetoInteractivo objInter;
 
     enum SecuenceDetect
     {
@@ -36,7 +38,7 @@ public class Detectar_y_Echar : MonoBehaviour
     private void Awake()
     {
         movPlayer = FindObjectOfType<JugadorMovimiento>();
-        objInter = GetComponent<ObjetoInteractivo>();
+        //objInter = GetComponent<ObjetoInteractivo>();
     }
     private void Start()
     {
@@ -94,9 +96,15 @@ public class Detectar_y_Echar : MonoBehaviour
                 if (!balaInside) detectScene = SecuenceDetect.showDialogo;
                 break;
             case SecuenceDetect.showDialogo:
+                brazoNormal.SetActive(false);
+                brazoAccion.SetActive(true);
                 timeDialogo += Time.deltaTime;
-                if (timeDialogo >= 1) objInter.DetenerDialogo();
-                if (timeDialogo >= 2) detectScene = SecuenceDetect.resetScene;
+                if (timeDialogo >= 1) 
+                {
+                    Debug.Log("Colocar dialogo"); //objInter.DetenerDialogo();
+                    detectScene = SecuenceDetect.resetScene;
+                }
+                if (timeDialogo >= 2) Debug.Log("Final dialogo 2");//detectScene = SecuenceDetect.resetScene;
                 break;
             case SecuenceDetect.resetScene:
                 AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");

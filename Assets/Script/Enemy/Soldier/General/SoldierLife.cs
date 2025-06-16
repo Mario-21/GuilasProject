@@ -16,7 +16,8 @@ public class SoldierLife : MonoBehaviour
 
     [Header("Animacion Dormir")]
     public ParticleSystem particularDormir;
-    Animator anim;
+    public Animator animBody;
+    public Animator animHead;
 
     SoldadoNormal soldado;
     int restarSoldados;
@@ -46,7 +47,7 @@ public class SoldierLife : MonoBehaviour
 
         //Particulas de sueño
         particularDormir = GetComponentInChildren<ParticleSystem>();
-        anim = GetComponent<Animator>();
+        animBody = GetComponent<Animator>();
 
         status = GetComponent<ActualStatus>();
 
@@ -61,11 +62,11 @@ public class SoldierLife : MonoBehaviour
         //Setear la vidaMax Actual
         vidaMax = vida;
 
-        anim.SetLayerWeight(1, 0);
+        animBody.SetLayerWeight(1, 0);
         restarSoldados = 0;
 
-        //Status Animacion
-        anim.SetInteger("Status Life", vida);
+        //Status Animacion (Antiguo)
+        animBody.SetInteger("Status Life", vida);
 
         //Si al entrar ya estoy muerto, tiene que saltar el audio sleep
         if(vida <= 0)
@@ -79,14 +80,19 @@ public class SoldierLife : MonoBehaviour
         {
             stepsEmitter.Stop();
 
-            anim.SetLayerWeight(1, 1);
+            //Las capas solo lo tiene la antigua animacion
+            //animBody.SetLayerWeight(1, 1);
             //Anula el estado de uno de los dos tipos de enemigos
 
             RestarSoldadoActivo();
-            soldado.contorno.SetActive(false);
+            soldado.barra.SetActive(false);
 
-            //Activar animacion de noqueo
-            anim.SetBool("Sleeping", true);
+            //Activar animacion de noqueo (Antiguo)
+            //anim.SetBool("Sleeping", true);
+
+            //Activa animacion muerte
+            animBody.SetBool("Death", true);
+            animHead.SetBool("Muerte", true);
 
             //Tras haber quedado dormmido tu layer cambia
             cuerpo.layer = 12;
@@ -100,8 +106,10 @@ public class SoldierLife : MonoBehaviour
     }
     public void Daño(int daño)
     {
+        animBody.SetTrigger("Herir");
+        animHead.SetTrigger("Herida");
         vida -= daño;
-        status.indexCasco -= daño;
+        //status.indexCasco -= daño;
         //Ir guardando su vida
         DiferenciaVida();
 

@@ -6,10 +6,10 @@ public class ActualStatus : MonoBehaviour
 {
     [Header("Identity")]
     public int iD;
-    [Header("Vida Soldier UI")]
-    [SerializeField] SpriteRenderer head;
-    [SerializeField] List<Sprite> cascos;
-    [HideInInspector] public int indexCasco;
+    [Header("Casco Soldado Vida")]
+    [SerializeField] GameObject cascoSoldado;
+    [SerializeField] SpriteRenderer spriteCascoSoldado;
+    [SerializeField] Sprite spriteCascoSoldadoGrieta;
 
     SoldierLife soldierLife;
     //Nota: For soldadosDetectar doesnt work, because you dont put her script
@@ -27,13 +27,12 @@ public class ActualStatus : MonoBehaviour
     {
         //Te lo carga si esta vivo
         LoadStatus();
-        EstablishLifeBegin();
+        SkinCabezaCasco();
         
     }
     private void Update()
     {
-        LifeConstantly();
-        SafeModeSoldier();
+        CascoStatus();
 
         if(ListaAttackSoldado.modeSoldiers.activeAllAttackSoldiers && oneTimeAttackMode < 1 && soldierLife.vida > 0)
         {
@@ -99,6 +98,7 @@ public class ActualStatus : MonoBehaviour
         Debug.Log("Chocolata");
         soldadoMode.seeCadaverWarning = SoldierActiveInScene.instancia.soldiersStatus[iD].warningSoldier;
     }
+    /*
     void EstablishLifeBegin()
     {
         if (soldierLife.vida > 0) indexCasco = soldierLife.vida - 1;
@@ -112,6 +112,24 @@ public class ActualStatus : MonoBehaviour
         if(soldierLife.vida <= 0)
         {
             head.sprite = cascos[0];
+        }
+    }*/
+    void SkinCabezaCasco()
+    {
+        if(soldierLife.vida > 1)
+        {
+            cascoSoldado.SetActive(true);
+        }
+    }
+    void CascoStatus()
+    {
+        if(soldierLife.vida == 2)
+        {
+            spriteCascoSoldado.sprite = spriteCascoSoldadoGrieta;
+        }
+        else if (soldierLife.vida == 1)
+        {
+            cascoSoldado.SetActive(false);
         }
     }
 }

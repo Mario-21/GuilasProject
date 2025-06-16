@@ -23,7 +23,7 @@ public class JugadorMovimiento : MonoBehaviour
 
     [Header("Datos Movimiento")]
     public float velocidad;
-    [SerializeField] private float aceleracion;
+    public float aceleracion;
     [SerializeField] private float speed;
     [SerializeField] private float groundLinearDrag;
     public float horizontalMov;
@@ -37,12 +37,14 @@ public class JugadorMovimiento : MonoBehaviour
     [SerializeField] float lowJumpFallMultiplier = 5f;
     [SerializeField] int extraJump;
     Queue<KeyCode> almacenBotonJump;
-    bool canJump => Input.GetButtonDown("Jump") && onGround || Input.GetButtonDown("Jump") && tiempoEnAire <= 0.25f && !onGround;
+    bool canJump => Input.GetButtonDown("Jump") && onGround || Input.GetButtonDown("Jump") && tiempoEnAire <= tiempoEnAireLimit && !onGround;
 
     [Header("Ground Collision Data")]
+    [SerializeField] Transform startGroundRaycast;
     [SerializeField] float groundRaycastLegth;
     public bool onGround;
     [SerializeField] float tiempoEnAire;
+    public float tiempoEnAireLimit; //Base 0.25f
 
     [Header("Water Collision Data")]
     public float velocidadWater;
@@ -55,7 +57,13 @@ public class JugadorMovimiento : MonoBehaviour
     public Stairs_Hidden subirEscalera;
 
     [Header("Animacion")]
-    public Animator anim;
+    public Animator animBodyP;
+    public enum TipoAnimacion
+    {
+        Antigua,
+        Nueva
+    }
+    public TipoAnimacion tipoAnim;
 
     [Header("Hidden")]
     public GameObject torso;
@@ -102,7 +110,7 @@ public class JugadorMovimiento : MonoBehaviour
     {
         playerStepsGrass = AudioManager.instancia.CreateEventInstance(triggerFootSteps.actualStepsSound);
         //Release esta instancia para crear una nueva
-        anim = GetComponent<Animator>();
+        animBodyP = GetComponent<Animator>();
         vidaPlayer = GetComponent<VidaPlayer>();
         direccionBala = true;
 
@@ -113,6 +121,7 @@ public class JugadorMovimiento : MonoBehaviour
         if (vidaPlayer.vidaActual > 0)
         {
             GroundSoundSteps();
+            AnimAire();
         }
 
         horizontalMov = GetInput().x;
@@ -152,6 +161,20 @@ public class JugadorMovimiento : MonoBehaviour
     {
         return new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
     }
+    void AnimAire()
+    {
+        //Para que suceda la animacion suspenderte en el aire
+        if (!onGround && !onWater && !subirEscalera.escalar)
+        {
+            Debug.Log("La Cancelacion no se esta dando del aire");
+            animBodyP.SetBool("Aire", true);
+        }
+        else if (onGround || subirEscalera.escalar || onWater)
+        {
+            Debug.Log("La Cancelacion del aire se cumple");
+            animBodyP.SetBool("Aire", false);
+        }
+    }
 
     void MoveCharacter()
     {
@@ -162,8 +185,18 @@ public class JugadorMovimiento : MonoBehaviour
         }
 
         //Animación 
-        anim.SetBool("Walk", true);
-        if (horizontalMov == 0) anim.SetBool("Walk", false);
+
+        switch (tipoAnim)
+        {
+            case TipoAnimacion.Antigua:
+                animBodyP.SetBool("Walk", true);
+                if (horizontalMov == 0) animBodyP.SetBool("Walk", false);
+                break;
+            case TipoAnimacion.Nueva:
+                if(!subirEscalera.escalar) animBodyP.SetBool("Player_Caminar", true);
+                if (horizontalMov == 0 || subirEscalera.escalar) animBodyP.SetBool("Player_Caminar", false);
+                break;
+        }
 
         //Escala del Personaje, cuando no apuntas con el arma
         //if you 
@@ -185,6 +218,10 @@ public class JugadorMovimiento : MonoBehaviour
             }
         }
 
+    }
+    public void BlockMovementDeath()
+    {
+        rb.velocity = new Vector2(0, rb.velocity.y);
     }
     void ApplyLinearGroundDrag()
     {
@@ -209,7 +246,7 @@ public class JugadorMovimiento : MonoBehaviour
     void CheckCollisionGround()
     {
         //Rocortar Rayo al saltar
-        onGround = Physics2D.Raycast(transform.position * groundRaycastLegth, Vector2.down, groundRaycastLegth, groundMask);
+        onGround = Physics2D.Raycast(startGroundRaycast.position * groundRaycastLegth, Vector2.down, groundRaycastLegth, groundMask);
         if (onGround)
         {
             tiempoEnAire = 0;
@@ -219,7 +256,7 @@ public class JugadorMovimiento : MonoBehaviour
         else
         {
             tiempoEnAire += Time.deltaTime;
-            if(tiempoEnAire > 0.25f) extraJump++;
+            if(tiempoEnAire > tiempoEnAireLimit) extraJump++;
         }
     }
     void CheckCollisionWater()
@@ -246,7 +283,7 @@ public class JugadorMovimiento : MonoBehaviour
         else if(rb.velocity.y > 0 && !Input.GetButtonDown("Jump")) //Si acabas de saltar
         {
             if (almacenBotonJump.Count >= 1) extraJump++;
-            else if (almacenBotonJump.Count < 1 && tiempoEnAire > 0.25f) {extraJump++;}
+            else if (almacenBotonJump.Count < 1 && tiempoEnAire > tiempoEnAireLimit) {extraJump++;}
 
 
             if (!subirEscalera.zonaEscalada) rb.gravityScale = lowJumpFallMultiplier;
@@ -301,7 +338,7 @@ public class JugadorMovimiento : MonoBehaviour
         //Gizmos.DrawRay(puntoEspalda.position, -puntoEspalda.right * espaldaRayDistance);
 
         Gizmos.color = onGround ? Color.green : Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * groundRaycastLegth);
+        Gizmos.DrawLine(startGroundRaycast.position, startGroundRaycast.position + Vector3.down * groundRaycastLegth);
 
     }
     private void OnTriggerEnter2D(Collider2D collision)

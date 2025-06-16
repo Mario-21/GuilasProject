@@ -12,7 +12,11 @@ public class SoldadoNormal : MonoBehaviour
     [Header("Objetivo")]
     public Transform player;
     public Transform enemigo_FOV;
-    bool movimiento;
+    public bool movimiento;
+
+    [Header("Animaciones")]
+    public Animator animBody;
+    public Animator animHead;
 
     [Header("Range Enemy Vision")]
     public float outRange = 10;
@@ -28,7 +32,6 @@ public class SoldadoNormal : MonoBehaviour
     [SerializeField] Color warningC;
 
     [Header("FOV Enemigo")]
-    [SerializeField] int indexFOV;
     public float distanciaFOV;
     [SerializeField] LayerMask playerMask;
     [SerializeField] LayerMask detectarPlayerMask;
@@ -98,6 +101,7 @@ public class SoldadoNormal : MonoBehaviour
     public float velocidadBala;
 
     [SerializeField] SpriteRenderer armaSprite;
+    [SerializeField] SpriteRenderer armaSpriteCintura;
 
     [Header("Berserker Datas")]
     [Range(0, 360)]
@@ -109,7 +113,7 @@ public class SoldadoNormal : MonoBehaviour
     [Header("Busqueda Data")]
     public float esperarModoBusquedaLimite;
     public float esperarModoBusqueda;
-    [SerializeField]public bool busquedaMode;
+    public bool busquedaMode;
     Vector3 lockUbi;
     int block;
     int direccionFinalizada;
@@ -139,8 +143,10 @@ public class SoldadoNormal : MonoBehaviour
     [Header("Llamar Soldados")]
     public float tiempoNecesarioLlamarLimite;
     float tiempoNecesarioLlamar;
-    public GameObject contorno;
-    public Image llamarBarra;
+    public GameObject barra;
+    public SpriteRenderer barraRelleno;
+    public float sizeXBarra;
+    float conversorTiempo;
 
     [Header("Teletransportar")]
     public float distanciaStartTeleport;
@@ -155,8 +161,12 @@ public class SoldadoNormal : MonoBehaviour
     StudioEventEmitter emitterSteps;
     int onceSoundSteps;
     int callSound;
-    
-    
+
+    [Header("Movimiento Enemigo")]
+    [Tooltip("Cada cuanto tiempor quieres que guarde la ubicación del enemigo")]
+    public float contadorUbi;
+    float saveUbi;
+    float saveUbiLast;
     //Añadir barra UI Para señalizar teletransporte 
     //Añadir barra UI Para señalizar el evento cajas para saber que estan esperando
     //Añadir script en el circle collider que almacene un soldier life, cuando este cerca y su vida llegue a cero llamara a todos y los pondra en modo busqueda 
@@ -171,15 +181,13 @@ public class SoldadoNormal : MonoBehaviour
 
     EstadoSoldado estadoSoldado;
     SoldierLife soldierLife;
-    Animator anim;
 
-    [HideInInspector]public bool seePlayer;
+    public bool seePlayer;
 
     private void Awake()
     {
         //Medir Distancias
-        player = GameObject.Find("Player 1").GetComponent<Transform>();
-        enemigo_FOV = this.gameObject.transform.GetChild(indexFOV);
+        player = GameObject.Find("Player").GetComponent<Transform>();
 
         //Movimiento
         rb = GetComponent<Rigidbody2D>();
@@ -195,7 +203,7 @@ public class SoldadoNormal : MonoBehaviour
         limitarSeñales = 0;
 
         //Animaciones
-        anim = GetComponent<Animator>();
+        animBody = GetComponent<Animator>();
 
         //Establecer la direccion del Rayo
         rayWallDireccion = Vector3.right;
@@ -206,6 +214,11 @@ public class SoldadoNormal : MonoBehaviour
         distanciaFOV = outRange;
         callPeople = AudioManager.instancia.InitializeEventEmitter(FMODEvent.instancia.call, callEmitter);
         emitterSteps = AudioManager.instancia.InitializeEventEmitter(FMODEvent.instancia.stepsEnemy, this.gameObject);
+
+        if (soldierLife.vida > 0)
+        {
+            visionItemRange.gameObject.SetActive(true);
+        }
 
     }
 
@@ -232,11 +245,13 @@ public class SoldadoNormal : MonoBehaviour
         {
             Vision();
             armaSprite.enabled = false;
+            armaSpriteCintura.enabled = true;
         }
         else 
         {
             estadoSoldado = EstadoSoldado.ataque;
             armaSprite.enabled = true;
+            armaSpriteCintura.enabled = false; 
         }
 
         //Cuando entras en alerta mode, no puedes estar en modo ataque
@@ -287,25 +302,24 @@ public class SoldadoNormal : MonoBehaviour
     }
     void Vision()
     {
-
         //Angulo para saber si estas dentro del rango del FOV
-        float angulo;
-        angulo = Vector3.Angle(DistancenPlayer(), transform.right * transform.localScale.x);
+        //float angulo;
+        //angulo = Vector3.Angle(DistancenPlayer(), transform.right * transform.localScale.x);
 
 
         //Detecta Player
         //El 15 cambiar por publico
-        RaycastHit2D distancia;
-        distancia = Physics2D.Raycast(transform.position, DistancenPlayer().normalized, rayDistancePlayer,playerMask);
+        //RaycastHit2D distancia;
+        //distancia = Physics2D.Raycast(transform.position, DistancenPlayer().normalized, rayDistancePlayer,playerMask);
 
         //Cambiar estados Soldado dependiedo de la distancia;
-        if (angulo < anguloVision * 0.5f)
+        if (Angulo() < anguloVision * 0.5f)
         {
             //Si estas a menos de 5m y sacas el arma, te ven
             //if (DistancenPlayer().magnitude < 5 && ArmaController.activarDisparo && !muro) { estadoSoldado = EstadoSoldado.ataque; busquedaMode = false; berserker = true; }
 
             
-            if (distancia && !seeCadaverWarning && !muro)
+            if (Distancia() && !seeCadaverWarning && !muro)
             {
                 if (DistancenPlayer().magnitude >= outRange && !busquedaMode && Mathf.Abs(DistancenPlayer().y) > AlturaRange)
                 {
@@ -319,12 +333,12 @@ public class SoldadoNormal : MonoBehaviour
                 {
                     estadoSoldado = EstadoSoldado.ataque;
                     //Si estoy vivo puedo reproducir el grito
-                    if(soldierLife.vida > 0) AudioManager.instancia.PlayOneShot(FMODEvent.instancia.attackMode);
+                    if (soldierLife.vida > 0) AudioManager.instancia.PlayOneShot(FMODEvent.instancia.attackMode);
                 }
             }
 
             //Modo Alerta
-            else if(distancia && seeCadaverWarning && !muro)
+            else if(Distancia() && seeCadaverWarning && !muro)
             {
                 //Funciona como normalmente lo hace. Si estas a menos de 8 metros y te ve se activa
                 if (DistancenPlayer().magnitude <= 8)
@@ -365,17 +379,20 @@ public class SoldadoNormal : MonoBehaviour
     }
     public void SeePlayer()
     {
-        float angulo;
-        angulo = Vector3.Angle(DistancenPlayer(), transform.right * transform.localScale.x);
+        //float angulo;
+        //angulo = Vector3.Angle(DistancenPlayer(), transform.right * transform.localScale.x);
 
         //El 15 cambiar por publico
-        RaycastHit2D distancia;
-        distancia = Physics2D.Raycast(transform.position, DistancenPlayer().normalized, rayDistancePlayer, playerMask);
+        //RaycastHit2D distancia;
+        //distancia = Physics2D.Raycast(transform.position, DistancenPlayer().normalized, rayDistancePlayer, playerMask);
 
         //Cambiar estados Soldado dependiedo de la distancia;
-        if (angulo < toSeePlayer * 0.5f)
+        if (Angulo() < toSeePlayer * 0.5f)
         {
-            if (distancia) {seePlayer = true; }
+            if (Distancia()) 
+            {
+                seePlayer = true;
+            }
             //seePlayer = true;
         }
         
@@ -391,6 +408,7 @@ public class SoldadoNormal : MonoBehaviour
 
                 //Activa el modo Ataque
                 berserker = true;
+                animHead.SetBool("Berserker", true);
                 seeCadaverWarning = false;
 
                 //Representa el color de los Gizmos
@@ -409,7 +427,7 @@ public class SoldadoNormal : MonoBehaviour
                     else if (!onGroundIzq && DistancenPlayer().magnitude > 3) LimiteDeUnaZona();
 
                     //Si vuelves a entrar se vuelve a ocultar LLamarATodos
-                    contorno.SetActive(false);
+                    barra.SetActive(false);
                     tiempoNecesarioLlamar = 0;
                     //Detener el audio
                     callPeople.Stop();
@@ -460,9 +478,17 @@ public class SoldadoNormal : MonoBehaviour
 
                 //Busqueda desde la posicion que entra en busqueda, 10 hacia delante y 10 hacia atras. Apagando la patrulla para despues volverla a retomar
                 LimitadorSeñales();
-                if (busquedaMode) { armaSprite.enabled = true; CrearSeñales(señales[1]);}
-                else armaSprite.enabled = false;
-
+                if (busquedaMode)
+                {
+                    armaSprite.enabled = true;
+                    armaSpriteCintura.enabled = false;
+                    CrearSeñales(señales[1]);
+                }
+                else
+                {
+                    armaSprite.enabled = false;
+                    armaSpriteCintura.enabled = true;
+                }
                
 
                 break;
@@ -515,12 +541,12 @@ public class SoldadoNormal : MonoBehaviour
         //if (player.position.x + limiteDireccion != transform.position.x) anim.SetBool("WalkSoldier", true);
         if (transform.position.x < player.position.x + limiteDireccion - distanceStopAnim || transform.position.x > player.position.x + limiteDireccion + distanceStopAnim) 
         {
-            anim.SetBool("WalkSoldier", true);
+            animBody.SetBool("Caminar", true);
             movimiento = true;
         } 
         else if (transform.position.x >= player.position.x + limiteDireccion - distanceStopAnim && transform.position.x <= player.position.x + limiteDireccion + distanceStopAnim) 
         {
-            anim.SetBool("WalkSoldier", false);
+            animBody.SetBool("Caminar", false);
             movimiento = false;
         }
 
@@ -665,6 +691,9 @@ public class SoldadoNormal : MonoBehaviour
     }
     void Busqueda()
     {
+        //Yo termino de buscar cuando:
+        //1. he cumplido el primer recorrido, moverme de izquierda a derecha
+        //Si el player no esta dentro del area de vision y en el rango comprendido.
         busquedaMode = true;
 
         if (transform.localScale == new Vector3(1f, transform.localScale.y, transform.localScale.z)) derecha = true;
@@ -747,14 +776,20 @@ public class SoldadoNormal : MonoBehaviour
                 }
             }
         }
-        else { estadoSoldado = EstadoSoldado.patrulla; busquedaMode = false; }
+        else 
+        {
+            if (DistancenPlayer().magnitude >= outRange || Mathf.Abs(DistancenPlayer().y) > AlturaRange)
+            {
+                estadoSoldado = EstadoSoldado.patrulla;
+                busquedaMode = false;
+            }
+            else if (DistancenPlayer().magnitude < outRange && DistancenPlayer().magnitude >= insideRange)
+            {
+                direccionFinalizada = 0;
+                block = 0;
+            }
 
-        
-        
-
-
-
-
+        }
     }
     void WallCollisionBusqueda()
     {
@@ -832,10 +867,12 @@ public class SoldadoNormal : MonoBehaviour
     {
         if (!ListaAttackSoldado.modeSoldiers.activeAllAttackSoldiers)
         {
-            contorno.SetActive(true);
-            llamarBarra.color = Color.green;
-            llamarBarra.fillAmount = tiempoNecesarioLlamar / tiempoNecesarioLlamarLimite;
-            tiempoNecesarioLlamar += Time.deltaTime;
+            barra.SetActive(true);
+
+            barraRelleno.color = Color.green;
+            conversorTiempo = tiempoNecesarioLlamar * sizeXBarra / tiempoNecesarioLlamarLimite;
+            barraRelleno.size = new Vector2(conversorTiempo, barraRelleno.size.y);
+            //tiempoNecesarioLlamar += Time.deltaTime;
             if (tiempoNecesarioLlamar >= tiempoNecesarioLlamarLimite)
             {
                 // Aqui llamaras a la lista de statusSoldier, para colocar su mode en verdadero, tras esto el bool de listaAttack se colocara en true ya que todos estaran en verdadero, el actualStatus hara el resto 
@@ -845,10 +882,14 @@ public class SoldadoNormal : MonoBehaviour
                 }
                 ListaAttackSoldado.modeSoldiers.AllActiveAttack();
                 ListaAttackSoldado.modeSoldiers.UnactiveAllWarning();
-                contorno.SetActive(false);
+                barra.SetActive(false);
                 //Se corta la llamada
                 callPeople.Stop();
-
+                tiempoNecesarioLlamar = 0;
+            }
+            else if(tiempoNecesarioLlamar < tiempoNecesarioLlamarLimite)
+            {
+                tiempoNecesarioLlamar += Time.deltaTime;
             }
         }
     }
@@ -857,10 +898,11 @@ public class SoldadoNormal : MonoBehaviour
         if (!ListaAttackSoldado.modeSoldiers.warningAllSoldiers)
         {
             //HAcer una vez
+            barra.SetActive(true);
 
-            contorno.SetActive(true);
-            llamarBarra.color = Color.yellow;
-            llamarBarra.fillAmount = tiempoNecesarioLlamar / tiempoNecesarioLlamarLimite;
+            barraRelleno.color = Color.yellow;
+            conversorTiempo = tiempoNecesarioLlamar * sizeXBarra / tiempoNecesarioLlamarLimite;
+            barraRelleno.size = new Vector2(conversorTiempo, barraRelleno.size.y);
             tiempoNecesarioLlamar += Time.deltaTime;
             if (tiempoNecesarioLlamar >= tiempoNecesarioLlamarLimite)
             {
@@ -869,9 +911,14 @@ public class SoldadoNormal : MonoBehaviour
                     statusSoldierMode.warningSoldier = true;
                 }
                 ListaAttackSoldado.modeSoldiers.AllWarningActive();
-                contorno.SetActive(false);
+                barra.SetActive(false);
                 //Detener llamada;
                 callPeople.Stop();
+                tiempoNecesarioLlamar = 0;
+            }
+            else if (tiempoNecesarioLlamar < tiempoNecesarioLlamarLimite)
+            {
+                tiempoNecesarioLlamar += Time.deltaTime;
             }
         }
     }
@@ -880,16 +927,18 @@ public class SoldadoNormal : MonoBehaviour
         //Probar calculo con la busqueda
         if (transform.position.x < destino - distanceStopAnim || transform.position.x > destino + distanceStopAnim) 
         { 
-            anim.SetBool("WalkSoldier", true);
+            animBody.SetBool("Caminar", true);
+            movimiento = true;
         }
         else if (transform.position.x >= destino - distanceStopAnim && transform.position.x <= destino + distanceStopAnim) 
         { 
-            anim.SetBool("WalkSoldier", false);
+            animBody.SetBool("Caminar", false);
+            movimiento = false;
         }
     }
     void CancelarAnimacionCaminar()
     {
-        if(!onGroundDrcha || !onGroundIzq || canWall || canWall2) anim.SetBool("WalkSoldier", false);
+        if(!onGroundDrcha || !onGroundIzq || canWall || canWall2) animBody.SetBool("Caminar", false);
     }
 
     void LimitadorSeñales()
@@ -931,7 +980,7 @@ public class SoldadoNormal : MonoBehaviour
         if (Mathf.Abs(distanciaUbiMiPos.y) > distanciaStartTeleport)
         {
             canTeleport = true;
-            contorno.SetActive(false);
+            barra.SetActive(false);
             tiempoNecesarioLlamar = 0;
             tiempoEmpezarTeleport += Time.deltaTime;
             if (tiempoEmpezarTeleport >= tiempoEmpezarTeleportLimite)
@@ -946,7 +995,7 @@ public class SoldadoNormal : MonoBehaviour
     //Cuando la accion se vea interrupida de golpe
     public void OutAnimation()
     {
-        anim.SetBool("WalkSoldier", false);
+        animBody.SetBool("Caminar", false);
     }
     void SoundStepEnemy()
     {
@@ -973,6 +1022,21 @@ public class SoldadoNormal : MonoBehaviour
             visionItemRange.gameObject.SetActive(false);
         }
     }
+    void DetectarMovimiento()
+    {
+        float timeSaveNewUbi = 0;
+        timeSaveNewUbi += Time.deltaTime;
+
+        if(timeSaveNewUbi >= contadorUbi)
+        {
+            saveUbi = transform.position.x;
+            saveUbiLast = saveUbi;
+        }
+        if(saveUbi != saveUbiLast)
+        {
+
+        }
+    }
     private void OnDisable()
     {
         VisionOut();
@@ -986,6 +1050,9 @@ public class SoldadoNormal : MonoBehaviour
         {
             if (soldierLife.vida > 0)
             {
+                //animBody.SetTrigger("Herir");
+                //animHead.SetTrigger("Herida");
+                //animHead.SetBool("Berserker", true);
                 estadoSoldado = EstadoSoldado.ataque;
                 berserker = true;
             }
@@ -1000,7 +1067,7 @@ public class SoldadoNormal : MonoBehaviour
     private void OnDrawGizmos()
     {
         //DETECTAR DISTANCIA PLAYER
-        if (anguloVision <= 0) return;
+        if (Angulo() <= 0) return;
 
         float halfVisionAngle = anguloVision * 0.5f;
 
@@ -1062,6 +1129,17 @@ public class SoldadoNormal : MonoBehaviour
     {
         Vector2 distanciaPlayer;
         return distanciaPlayer = player.position - enemigo_FOV.position;
+    }
+    public float Angulo()
+    {
+        float angulo;
+        return angulo = Vector3.Angle(DistancenPlayer(), transform.right * transform.localScale.x);
+    }
+    public RaycastHit2D Distancia()
+    {
+        RaycastHit2D distancia;
+        return distancia = Physics2D.Raycast(transform.position, DistancenPlayer().normalized, rayDistancePlayer, playerMask);
+        
     }
     
 

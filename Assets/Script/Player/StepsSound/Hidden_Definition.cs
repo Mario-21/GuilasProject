@@ -5,7 +5,8 @@ using UnityEngine;
 public class Hidden_Definition : MonoBehaviour
 {
     Stairs_Hidden hiddenPlayerControler;
-
+    PlayerHere playerHere;
+    public GameObject animEscondite;
     public enum Type_Hidden
     {
         Arbusto,
@@ -19,7 +20,29 @@ public class Hidden_Definition : MonoBehaviour
     public Type_Hidden hiddenDefine; 
     private void Awake()
     {
+        playerHere = GetComponent<PlayerHere>();
         hiddenPlayerControler = FindObjectOfType<Stairs_Hidden>();
+    }
+    void Update()
+    {
+        //Si el jugador se encuentra dentro de la zona
+        if (playerHere.playerImHere)
+        {
+            //Si me escondo, sale la animacion
+            if (hiddenPlayerControler.imHidden)
+            {
+                animEscondite.SetActive(true);
+            }
+            //Si salgo del escondite, la animacion se cancela
+            else
+            {
+                animEscondite.SetActive(false);
+            }
+        }
+        else
+        {
+            animEscondite.SetActive(false);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

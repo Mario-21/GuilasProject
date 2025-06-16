@@ -112,9 +112,14 @@ public class BloquearMovimientoPlayer : MonoBehaviour
     }
     public void DeathPlayer()
     {
+        //Bloquear Movimiento
         player.enabled = false;
-        //Llamar Death Anim
-        player.GetComponent<Animator>().SetBool("Walk", false);
+        //Desactiva la subida y bajada de escaleras
+        stairs_Hidden.enabled = false;
+        stairs_Hidden.escalar = false;
+        //Desactivar la  ocultacion
+        stairs_Hidden.canHidden = false;
+        //player.GetComponent<Animator>().SetBool("Walk", false);
         //Deactivate Pistol
         pistol.activarDisparo = false;
         pistol.enabled = false;

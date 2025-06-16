@@ -10,6 +10,10 @@ public class VidaPlayer : MonoBehaviour
     [SerializeField] float vidaDiferencia;
     public float vidaTotal;
     Image vidaUI;
+    [Header("Estado Invencibilidad")]
+    public bool invencible;
+    public float invencLimitTime;
+    public float invencTime;
     [Header("Death Data")]
     public bool youWantDied;
     public int deathScene;
@@ -18,10 +22,19 @@ public class VidaPlayer : MonoBehaviour
     [Header("Recovery ammo")]
     public B8Arma b8Weapon;
 
-    Animator animPlayer;
+    [Header("Animacion Jugador")]
+    public Animator animPlayerBody;
+    public Animator animPlayerHead;
+
+    public enum TipoAnimacion
+    {
+        Antiguo,
+        Nuevo
+    }
+    public TipoAnimacion tipoAnimacion;
     private void Awake()
     {
-        animPlayer = GetComponent<Animator>();
+        animPlayerBody = GetComponent<Animator>();
         vidaUI = GameObject.Find("LifeBar").GetComponent<Image>();
     }
     void Start()
@@ -38,9 +51,20 @@ public class VidaPlayer : MonoBehaviour
         vidaUI.fillAmount = vidaActual / vidaTotal;
         Muerte();
         SaveVidaData();
+        TiempoInvencibilidad();
     }
     public void Daño(float daño)
     {
+        switch (tipoAnimacion)
+        {
+            case TipoAnimacion.Antiguo:
+                animPlayerBody.SetTrigger("Hurt");
+                break;
+            case TipoAnimacion.Nuevo:
+                animPlayerBody.SetTrigger("Player_Herida");
+                animPlayerHead.SetTrigger("P_Herir");
+                break;
+        }
         AudioManager.instancia.PlayOneShot(FMODEvent.instancia.damage);
         vidaActual -= daño;
         SaveVidaData();
@@ -54,8 +78,17 @@ public class VidaPlayer : MonoBehaviour
                 //Limpia los audios
                 AudioManager.instancia.CleanUp();
                 Debug.Log("Te moriste");
-                bloquear.DeathPlayer(); 
-                animPlayer.SetBool("Dead", true);
+                bloquear.DeathPlayer();
+                switch (tipoAnimacion)
+                {
+                    case TipoAnimacion.Antiguo:
+                        animPlayerBody.SetBool("Dead", true);
+                        break;
+                    case TipoAnimacion.Nuevo:
+                        animPlayerBody.SetBool("Player_Muerte", true);
+                        animPlayerHead.SetTrigger("P_Muerte");
+                        break;
+                }
             }
         }
 
@@ -79,11 +112,28 @@ public class VidaPlayer : MonoBehaviour
             vidaDiferencia = vidaActual;
         }
     }
+    void TiempoInvencibilidad()
+    {
+        if (invencible)
+        {
+            invencTime += Time.deltaTime;
+            if(invencTime >= invencLimitTime)
+            {
+                invencible = false;
+                invencTime = 0;
+            }
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("BulletEnemy")) 
         {
-            Daño(34f);
+            if (!invencible) 
+            {
+                Debug.Log("HitMarket");
+                Daño(34f);
+                invencible = true;
+            }
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag("Dardo")) 

@@ -34,6 +34,7 @@ public class ChangeWeapon : MonoBehaviour
         Icon();
         if (Input.GetButtonDown("Change_Weapon"))
         {
+            weaponBase.pistolaCintura.enabled = true;
             changeWeapon = !changeWeapon;
             //changeWeapon = B8
             //!changeWeapon = weaponBase

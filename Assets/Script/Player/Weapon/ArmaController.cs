@@ -29,7 +29,8 @@ public class ArmaController : MonoBehaviour, IDataPersistence
     public float refreshWeapon = 0.5f;
 
     [Header("Weapon Sprite")]
-    [HideInInspector] public SpriteRenderer weaponSprite;
+    public SpriteRenderer pistola;
+    public SpriteRenderer pistolaCintura;
     public GameObject bullet;
     //Cambiar Layer
     [Header("Infiltración Data")]
@@ -59,7 +60,7 @@ public class ArmaController : MonoBehaviour, IDataPersistence
     }
     private void Awake()
     {
-        weaponSprite = GetComponent<SpriteRenderer>();
+        pistola = GetComponent<SpriteRenderer>();
         pruebaCamera = GameObject.FindGameObjectWithTag("CameraDisparo").GetComponent<Camera>();
     }
     void Start()
@@ -136,7 +137,8 @@ public class ArmaController : MonoBehaviour, IDataPersistence
         {
             {
                 //Saca el arma
-                weaponSprite.enabled = true;
+                pistolaCintura.enabled = false;
+                pistola.enabled = true;
                 //They can see you
                 theySeeYou.VisibleOn();
                 //You aim with the gun
@@ -183,7 +185,8 @@ public class ArmaController : MonoBehaviour, IDataPersistence
         else
         {
             //Guarda el arma
-            weaponSprite.enabled = false;
+            pistola.enabled = false;
+            pistolaCintura.enabled = true;
             municionText.enabled = false;
             mira.localPosition = new Vector2(0f, mira.localPosition.y);
             mira.gameObject.GetComponent<SpriteRenderer>().enabled = false;
