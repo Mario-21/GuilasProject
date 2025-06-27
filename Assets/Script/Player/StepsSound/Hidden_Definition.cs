@@ -44,31 +44,35 @@ public class Hidden_Definition : MonoBehaviour
             animEscondite.SetActive(false);
         }
     }
+    void DefinitionHiddenSpot()
+    {
+        switch (hiddenDefine)
+        {
+            case Type_Hidden.Arbusto:
+                hiddenPlayerControler.hiddenSound = FMODEvent.instancia.arbustoHidden;
+                break;
+            case Type_Hidden.Basura:
+                hiddenPlayerControler.hiddenSound = FMODEvent.instancia.basuraHidden;
+                break;
+            case Type_Hidden.Caja:
+                hiddenPlayerControler.hiddenSound = FMODEvent.instancia.cajaHidden;
+                break;
+            case Type_Hidden.Puerta:
+                hiddenPlayerControler.hiddenSound = FMODEvent.instancia.puertaHidden;
+                break;
+            case Type_Hidden.Taquilla:
+                hiddenPlayerControler.hiddenSound = FMODEvent.instancia.taquillaHidden;
+                break;
+            case Type_Hidden.Container:
+                hiddenPlayerControler.hiddenSound = FMODEvent.instancia.containerHidden;
+                break;
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            switch (hiddenDefine)
-            {
-                case Type_Hidden.Arbusto:
-                    hiddenPlayerControler.hiddenSound = FMODEvent.instancia.arbustoHidden;
-                    break;
-                case Type_Hidden.Basura:
-                    hiddenPlayerControler.hiddenSound = FMODEvent.instancia.basuraHidden;
-                    break;
-                case Type_Hidden.Caja:
-                    hiddenPlayerControler.hiddenSound = FMODEvent.instancia.cajaHidden;
-                    break;
-                case Type_Hidden.Puerta:
-                    hiddenPlayerControler.hiddenSound = FMODEvent.instancia.puertaHidden;
-                    break;
-                case Type_Hidden.Taquilla:
-                    hiddenPlayerControler.hiddenSound = FMODEvent.instancia.taquillaHidden;
-                    break;
-                case Type_Hidden.Container:
-                    hiddenPlayerControler.hiddenSound = FMODEvent.instancia.containerHidden;
-                    break;
-            }
+            DefinitionHiddenSpot();
         }
         
     }

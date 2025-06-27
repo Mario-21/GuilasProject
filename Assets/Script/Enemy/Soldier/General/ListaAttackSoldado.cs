@@ -30,7 +30,7 @@ public class ListaAttackSoldado : MonoBehaviour
     {
         for (int i = 0; i < SoldierActiveInScene.instancia.soldiersStatus.Count; i++)
         {
-            if (SoldierActiveInScene.instancia.soldiersStatus[i].modeSoldier)
+            if (SoldierActiveInScene.instancia.soldiersStatus[i].berserkerStatus)
             {
                 soldierInAttack++;
             }

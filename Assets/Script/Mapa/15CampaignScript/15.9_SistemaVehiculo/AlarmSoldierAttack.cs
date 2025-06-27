@@ -13,6 +13,7 @@ public class AlarmSoldierAttack : MonoBehaviour
             for(int e = 0; e < soldadosScene.Count; e++)
             {
                 soldadosScene[e].berserker = true;
+                
             }
         }
     }

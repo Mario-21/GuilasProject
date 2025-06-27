@@ -74,7 +74,7 @@ public class Revive : MonoBehaviour
         for(int h = 0; h < vidaSoldados.Count; h++)
         {
             vidaSoldados[h].statusVida = SoldierActiveInScene.instancia.soldiersStatus[h].statusVida;
-            vidaSoldados[h].modeSoldier = SoldierActiveInScene.instancia.soldiersStatus[h].modeSoldier;
+            vidaSoldados[h].berserkerStatus = SoldierActiveInScene.instancia.soldiersStatus[h].berserkerStatus;
         }
         //Terminales Level
         if(TotalTerminales.terminalesTotales != null)
@@ -162,10 +162,10 @@ public class Revive : MonoBehaviour
         {
             //Si son diferentes, quiere decir que lo acabas de modificar ahora pero has muerto en el proceso, por tanto debe resetearse
             //Deben de establecer tambien cuando es modificado el modeSoldier, dado que si mueres sin hacerles daño hace que su mode no cambie
-            if (SoldierActiveInScene.instancia.soldiersStatus[w].statusVida != vidaSoldados[w].statusVida || SoldierActiveInScene.instancia.soldiersStatus[w].modeSoldier != vidaSoldados[w].modeSoldier)
+            if (SoldierActiveInScene.instancia.soldiersStatus[w].statusVida != vidaSoldados[w].statusVida || SoldierActiveInScene.instancia.soldiersStatus[w].berserkerStatus != vidaSoldados[w].berserkerStatus)
             {
                 SoldierActiveInScene.instancia.soldiersStatus[w].statusVida = vidaSoldados[w].statusVida;
-                SoldierActiveInScene.instancia.soldiersStatus[w].modeSoldier = vidaSoldados[w].modeSoldier;
+                SoldierActiveInScene.instancia.soldiersStatus[w].berserkerStatus = vidaSoldados[w].berserkerStatus;
             }
         }
     }

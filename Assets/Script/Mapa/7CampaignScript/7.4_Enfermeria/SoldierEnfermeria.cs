@@ -25,7 +25,7 @@ public class SoldierEnfermeria : MonoBehaviour
         {
             //Seguidamene activara la segunda variable en la que revivir solo se ejecutara una vezç
             SoldierActiveInScene.instancia.soldiersStatus[indexDoctorMain].statusVida = 1;
-            SoldierActiveInScene.instancia.soldiersStatus[indexDoctorMain].modeSoldier = false;
+            SoldierActiveInScene.instancia.soldiersStatus[indexDoctorMain].berserkerStatus = false;
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
         }
     }

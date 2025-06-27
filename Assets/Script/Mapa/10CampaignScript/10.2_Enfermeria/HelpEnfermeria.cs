@@ -23,8 +23,8 @@ public class HelpEnfermeria : MonoBehaviour
         {
             if(SoldierActiveInScene.instancia.soldiersStatus[indexSoldado1].statusVida > 0 && SoldierActiveInScene.instancia.soldiersStatus[indexSoldado2].statusVida > 0)
             {
-                SoldierActiveInScene.instancia.soldiersStatus[indexSoldado1].modeSoldier = false;
-                SoldierActiveInScene.instancia.soldiersStatus[indexSoldado2].modeSoldier = false;
+                SoldierActiveInScene.instancia.soldiersStatus[indexSoldado1].berserkerStatus = false;
+                SoldierActiveInScene.instancia.soldiersStatus[indexSoldado2].berserkerStatus = false;
                 StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
                 ap_des_HelpPoison.SetActive(true);
                 Debug.Log("Katana 0");

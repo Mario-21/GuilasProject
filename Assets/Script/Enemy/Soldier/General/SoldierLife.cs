@@ -62,11 +62,11 @@ public class SoldierLife : MonoBehaviour
         //Setear la vidaMax Actual
         vidaMax = vida;
 
-        animBody.SetLayerWeight(1, 0);
+        //animBody.SetLayerWeight(1, 0);
         restarSoldados = 0;
 
         //Status Animacion (Antiguo)
-        animBody.SetInteger("Status Life", vida);
+        //animBody.SetInteger("Status Life", vida);
 
         //Si al entrar ya estoy muerto, tiene que saltar el audio sleep
         if(vida <= 0)

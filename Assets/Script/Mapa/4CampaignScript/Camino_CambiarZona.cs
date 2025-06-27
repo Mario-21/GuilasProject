@@ -16,8 +16,9 @@ public class Camino_CambiarZona : MonoBehaviour
     [SerializeField] SpriteRenderer iconeZoneSprite;
     [SerializeField] Sprite iconoArrow;
     [Header("Player")]
-    [SerializeField]  GameObject playerCuerpo;
+    [SerializeField] GameObject playerCuerpo;
     [SerializeField] BloquearMovimientoPlayer bloqPlayer;
+
 
     bool camino;
     BoxCollider2D triggerBox;

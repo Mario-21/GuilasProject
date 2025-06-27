@@ -11,7 +11,7 @@ public class ReviveChef : MonoBehaviour
         if (!StatusGameobjectsVariables.statusGameobject.modificacion[indexDeathComedor].modificacion)
         {
             SoldierActiveInScene.instancia.soldiersStatus[indexChef].statusVida = 1;
-            SoldierActiveInScene.instancia.soldiersStatus[indexChef].modeSoldier = false;
+            SoldierActiveInScene.instancia.soldiersStatus[indexChef].berserkerStatus = false;
             Debug.Log("Revive");
         }
         else

@@ -8,10 +8,10 @@ public class ListaStatusSoldierScenes
     // Start is called before the first frame update
     public string SoldierName;
     public int statusVida;
-    public bool modeSoldier;
+    public bool berserkerStatus;
     [HideInInspector]public bool warningSoldier;
-    [HideInInspector]public float position_x;
-    [HideInInspector]public float position_y;
+    [HideInInspector]public float position_x; //x
+    [HideInInspector]public float position_y; //y
     public int deathScene;
     public bool imDead;
     [HideInInspector] public int scaleEnemy;

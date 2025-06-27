@@ -18,7 +18,7 @@ public class ChangeWeapon : MonoBehaviour
     [SerializeField] float timeHiddenPistol = 3;
     [Header("Player")]
     public int layerB8;
-    [SerializeField] GameObject torso;
+    public GameObject torso;
     private void Start()
     {
         changeWeapon = false;

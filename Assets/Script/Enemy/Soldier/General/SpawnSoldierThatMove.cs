@@ -18,6 +18,11 @@ public class SpawnSoldierThatMove : MonoBehaviour
             //The main reason: Gameplay and not broken the scene
             if (soldadoMoveLife.vida > 0) soldadoMove.position = spawnStart.position;
             oneTime++;
+            Debug.Log("Spawn enemigo " + soldadoMove.name);
         }
+    }
+    private void OnDisable()
+    {
+        oneTime = 0;
     }
 }

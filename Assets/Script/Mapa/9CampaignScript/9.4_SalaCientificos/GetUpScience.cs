@@ -27,7 +27,7 @@ public class GetUpScience : MonoBehaviour
         {
             Debug.Log( i + " " + "Soldao");
             SoldierActiveInScene.instancia.soldiersStatus[indexSoldados[i]].statusVida = 1;
-            SoldierActiveInScene.instancia.soldiersStatus[indexSoldados[i]].modeSoldier = false;
+            SoldierActiveInScene.instancia.soldiersStatus[indexSoldados[i]].berserkerStatus = false;
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
         }
     }

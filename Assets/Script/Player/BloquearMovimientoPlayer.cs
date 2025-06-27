@@ -45,7 +45,7 @@ public class BloquearMovimientoPlayer : MonoBehaviour
         //Deactive Player
         player.enabled = false;
         player.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
-        player.GetComponent<Animator>().SetBool("Walk", false);
+        player.animBodyP.SetBool("Player_Caminar", false);
         //Deactivate Pistol
         pistol.activarDisparo = false;
         pistol.enabled = false;
@@ -56,6 +56,7 @@ public class BloquearMovimientoPlayer : MonoBehaviour
         b8.mira.gameObject.SetActive(false);
         //Deactivate ChangeWeapon
         conditionToChangeWeapon.enabled = false;
+        conditionToChangeWeapon.torso.layer = 0;
         //Desactivar escaleras
         stairs_Hidden.enabled = false;
         stairs_Hidden.laddersSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
@@ -67,7 +68,7 @@ public class BloquearMovimientoPlayer : MonoBehaviour
         //Deactive Player
         player.enabled = false;
         player.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
-        player.GetComponent<Animator>().SetBool("Walk", false);
+        player.animBodyP.SetBool("Player_Caminar", false);
         //Deactivate Pistol
         pistol.activarDisparo = false;
         pistol.enabled = false;

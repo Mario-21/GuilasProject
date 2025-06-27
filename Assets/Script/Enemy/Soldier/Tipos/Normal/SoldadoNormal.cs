@@ -224,6 +224,7 @@ public class SoldadoNormal : MonoBehaviour
 
     void Update()
     {
+        CallExecution();
         if (debugAltura) 
         {
             Debug.Log("Altura" + Mathf.Abs(DistancenPlayer().y));
@@ -321,7 +322,7 @@ public class SoldadoNormal : MonoBehaviour
             
             if (Distancia() && !seeCadaverWarning && !muro)
             {
-                if (DistancenPlayer().magnitude >= outRange && !busquedaMode && Mathf.Abs(DistancenPlayer().y) > AlturaRange)
+                if (DistancenPlayer().magnitude >= outRange && !busquedaMode || Mathf.Abs(DistancenPlayer().y) > AlturaRange) //&& Mathf.Abs(DistancenPlayer().y) > AlturaRange
                 {
                     estadoSoldado = EstadoSoldado.patrulla;
                 }
@@ -408,6 +409,7 @@ public class SoldadoNormal : MonoBehaviour
 
                 //Activa el modo Ataque
                 berserker = true;
+                //SoldierActiveInScene.instancia.soldiersStatus[iD].modeSoldier = soldadoMode.berserker;
                 animHead.SetBool("Berserker", true);
                 seeCadaverWarning = false;
 
@@ -778,16 +780,19 @@ public class SoldadoNormal : MonoBehaviour
         }
         else 
         {
-            if (DistancenPlayer().magnitude >= outRange || Mathf.Abs(DistancenPlayer().y) > AlturaRange)
+            //Revisar el estado del player escondido, mediante los tags o no
+            if (DistancenPlayer().magnitude >= outRange || Mathf.Abs(DistancenPlayer().y) > AlturaRange || (DistancenPlayer().magnitude < insideRange && !Distancia()))
             {
                 estadoSoldado = EstadoSoldado.patrulla;
                 busquedaMode = false;
             }
+            //Termina una vez me salgo del rango o cuando me encuentra dentro del rango
             else if (DistancenPlayer().magnitude < outRange && DistancenPlayer().magnitude >= insideRange)
             {
                 direccionFinalizada = 0;
                 block = 0;
             }
+            //Si me encuentro 
 
         }
     }
@@ -834,7 +839,11 @@ public class SoldadoNormal : MonoBehaviour
                 siguienteUbi += Time.deltaTime;
                 if (siguienteUbi >= maxTiempoUbi)
                 {
-                    if (siguienteUbi >= 5 && siguienteUbi < 90) { indexUbi++; siguienteUbi = 0; }
+                    if (siguienteUbi >= 5 && siguienteUbi < 90) 
+                    { 
+                        indexUbi++; 
+                        siguienteUbi = 0;
+                    }
                     else if (siguienteUbi >= 90) if(!ListaAttackSoldado.modeSoldiers.activeAllAttackSoldiers) LlamarATodos(); else { indexUbi++; siguienteUbi = 0; maxTiempoUbi = 5; }
                 }
             }
@@ -865,7 +874,7 @@ public class SoldadoNormal : MonoBehaviour
     }
     public void LlamarATodos()
     {
-        if (!ListaAttackSoldado.modeSoldiers.activeAllAttackSoldiers)
+        if (!ListaAttackSoldado.modeSoldiers.activeAllAttackSoldiers) // && Berserker
         {
             barra.SetActive(true);
 
@@ -876,12 +885,13 @@ public class SoldadoNormal : MonoBehaviour
             if (tiempoNecesarioLlamar >= tiempoNecesarioLlamarLimite)
             {
                 // Aqui llamaras a la lista de statusSoldier, para colocar su mode en verdadero, tras esto el bool de listaAttack se colocara en true ya que todos estaran en verdadero, el actualStatus hara el resto 
-                foreach (ListaStatusSoldierScenes statusSoldierMode in SoldierActiveInScene.instancia.soldiersStatus)
+                /*foreach (ListaStatusSoldierScenes statusSoldierMode in SoldierActiveInScene.instancia.soldiersStatus)
                 {
-                    statusSoldierMode.modeSoldier = true;
-                }
-                ListaAttackSoldado.modeSoldiers.AllActiveAttack();
-                ListaAttackSoldado.modeSoldiers.UnactiveAllWarning();
+                    statusSoldierMode.berserkerStatus = true;
+                }*/
+                //ListaAttackSoldado.modeSoldiers.AllActiveAttack();
+                //ListaAttackSoldado.modeSoldiers.UnactiveAllWarning();
+                ListaAttackSoldado.modeSoldiers.activeAllAttackSoldiers = true;
                 barra.SetActive(false);
                 //Se corta la llamada
                 callPeople.Stop();
@@ -892,7 +902,19 @@ public class SoldadoNormal : MonoBehaviour
                 tiempoNecesarioLlamar += Time.deltaTime;
             }
         }
+        else
+        {
+            barra.SetActive(false);
+        }
     }
+    void CallExecution() 
+    {
+        if (ListaAttackSoldado.modeSoldiers.activeAllAttackSoldiers)
+        {
+            berserker = true;
+        }
+    }
+
     void DetectarCadaver()
     {
         if (!ListaAttackSoldado.modeSoldiers.warningAllSoldiers)
