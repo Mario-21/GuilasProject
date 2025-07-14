@@ -35,11 +35,11 @@ public class MovPlayerCin : MonoBehaviour
     {
         if (transform.position.x < objetivo  || transform.position.x > objetivo)
         {
-            anim.SetBool("Walk", true);
+            anim.SetBool("Player_Caminar", true);
         }
         else if (transform.position.x >= objetivo  && transform.position.x <= objetivo)
         {
-            anim.SetBool("Walk", false);
+            anim.SetBool("Player_Caminar", false);
         }
     }
 }

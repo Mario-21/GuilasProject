@@ -14,25 +14,36 @@ public class CogerReliquias : MonoBehaviour, IDataPersistence
 
     public int numeroReliquia;
     bool estoyEnLaReliquia;
+    bool reliquiaPillada;
     [Header("Sonido al coger la Reliquia")]
     [SerializeField] EventReference sonidoReliquia;
     //Esto no se tiene que guardar aquí, pero me sirve para hacer pruebas
     public void LoadData(GameData reliquiaData)
     {
-        reliquiaData.reliquiasCollected.TryGetValue(idReliquia, out ListaReliquias.instancia.listaReliquiasTotal[numeroReliquia].reliquiaObtenida);
-        if (ListaReliquias.instancia.listaReliquiasTotal[numeroReliquia].reliquiaObtenida)
+        reliquiaData.reliquiasCollected.TryGetValue(idReliquia, out reliquiaPillada); //ListaReliquias.instancia.listaReliquiasTotal[numeroReliquia].reliquiaObtenida);
+        if (reliquiaPillada)//(ListaReliquias.instancia.listaReliquiasTotal[numeroReliquia].reliquiaObtenida)
         {
             this.gameObject.SetActive(false);
         }
     }
     public void SaveData (ref GameData reliquiaData)
     {
+        //ahora que lo pienso, quizas es porque desaparece el objeto y no puede guardar al no estar en escena
         if (reliquiaData.reliquiasCollected.ContainsKey(idReliquia))
         {
             //Ahora ya se pueden ver las Keys
             reliquiaData.reliquiasCollected.Remove(idReliquia);
         }
-        reliquiaData.reliquiasCollected.Add(idReliquia, ListaReliquias.instancia.listaReliquiasTotal[numeroReliquia].reliquiaObtenida);
+        reliquiaData.reliquiasCollected.Add(idReliquia, reliquiaPillada);//ListaReliquias.instancia.listaReliquiasTotal[numeroReliquia].reliquiaObtenida);
+    }
+
+    private void Start()
+    {
+        if (ListaReliquias.instancia.listaReliquiasTotal[numeroReliquia].reliquiaObtenida)
+        {
+            this.gameObject.SetActive(false);
+            reliquiaPillada = true;
+        }
     }
     private void Update()
     {
@@ -44,7 +55,7 @@ public class CogerReliquias : MonoBehaviour, IDataPersistence
         {
             AudioManager.instancia.PlayOneShot(sonidoReliquia);
             ListaReliquias.instancia.listaReliquiasTotal[numeroReliquia].reliquiaObtenida = true;
-            //reliquiaPillada = true;
+            reliquiaPillada = true;
             this.gameObject.SetActive(false);
         }
     }

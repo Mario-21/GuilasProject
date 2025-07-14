@@ -7,7 +7,7 @@ public class ActualStatus : MonoBehaviour
     [Header("Identity")]
     public int iD;
     [Header("Casco Soldado Vida")]
-    [SerializeField] GameObject cascoSoldado;
+    public GameObject cascoSoldado;
     [SerializeField] SpriteRenderer spriteCascoSoldado;
     [SerializeField] Sprite spriteCascoSoldadoGrieta;
 

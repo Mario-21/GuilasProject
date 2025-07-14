@@ -13,6 +13,7 @@ public class StartAscensorFloor : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             ascensor.nextFloor = floor;
+            ascensor.transform.position = ascensor.floors[floor].position;
             foreach(BoxCollider2D box in boxesFloor)
             {
                 box.enabled = false;

@@ -23,7 +23,8 @@ public class LimpiarReliquia : MonoBehaviour
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
             this.enabled = true;
-            CleanReliquia();
+            show_Delete_Items().ShowItems(cleanItem);
+            show_Delete_Items().DeleteItems(rawItem);
         }
     }
 
@@ -57,10 +58,11 @@ public class LimpiarReliquia : MonoBehaviour
     }
     void CleanReliquia()
     {
-        Show_Delete_Items cleanShowItem = new Show_Delete_Items();
 
-        cleanShowItem.ShowItems(cleanItem);
-        cleanShowItem.DeleteItems(rawItem);
+        show_Delete_Items().ShowItems(cleanItem);
+        show_Delete_Items().DeleteItems(rawItem);
+        //cleanShowItem.ShowItems(cleanItem);
+        //cleanShowItem.DeleteItems(rawItem);
 
         StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
 
@@ -73,5 +75,10 @@ public class LimpiarReliquia : MonoBehaviour
     private void OnDisable()
     {
         events.actionOnCinematic -= CleanReliquia;
+    }
+    public Show_Delete_Items show_Delete_Items()
+    {
+        Show_Delete_Items cleanShowItem = new Show_Delete_Items();
+        return cleanShowItem;
     }
 }

@@ -177,6 +177,7 @@ public class SoldierLife : MonoBehaviour
         if (collision.gameObject.CompareTag("ObjetoCaer"))
         {
             Daño(3);
+            status.cascoSoldado.SetActive(false);
         }
     }
 
