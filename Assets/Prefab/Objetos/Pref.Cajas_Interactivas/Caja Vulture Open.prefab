@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2547603125646562364}
   - component: {fileID: 2547603125646562365}
   - component: {fileID: 2547603125646562366}
+  - component: {fileID: 7791939208532546388}
   m_Layer: 0
   m_Name: Caja Vulture Open
   m_TagString: Escondite
@@ -31,6 +32,7 @@ Transform:
   m_LocalPosition: {x: 7.52, y: -2.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 3619878486484928834}
   - {fileID: 2547603126799347519}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -50,6 +52,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -74,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 6f8346e1d5012d348bb4ecbffc6bdbe8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5b0ced6500493b7459375fc8683e76bf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -138,6 +141,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHiddenComp: {fileID: 0}
   sceneCatching: 0
+--- !u!114 &7791939208532546388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2547603125646562367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43d1a928ee972da4abf94168c3590f6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animEscondite: {fileID: 6973023831672671130}
+  hiddenDefine: 3
 --- !u!1 &2547603126799347512
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,13 +179,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2547603126799347512}
-  m_LocalRotation: {x: -0, y: -0, z: 0.58122736, w: 0.81374127}
-  m_LocalPosition: {x: -0.59, y: 0.04, z: 0}
-  m_LocalScale: {x: 0.4339, y: 0.08054, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.57471967, w: 0.8183504}
+  m_LocalPosition: {x: -0.306, y: -0.086, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2547603125646562354}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 71.074005}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 70.16}
 --- !u!212 &2547603126799347518
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -184,6 +201,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -208,8 +226,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 178e8bcfb3220db448ffc1ca0b4dbcda, type: 3}
-  m_Color: {r: 0.8490566, g: 0.5925774, b: 0.34042364, a: 1}
+  m_Sprite: {fileID: 21300000, guid: cfc233162be0fdc4dbd730771adfaa55, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -219,3 +237,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &6973023831672671130
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3619878486484928834}
+  m_Layer: 0
+  m_Name: Nada
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3619878486484928834
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6973023831672671130}
+  m_LocalRotation: {x: -0, y: -0, z: 0.57471967, w: 0.8183504}
+  m_LocalPosition: {x: -0.30600023, y: -0.085999966, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2547603125646562354}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

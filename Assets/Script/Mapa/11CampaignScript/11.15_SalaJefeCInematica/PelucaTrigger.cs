@@ -50,7 +50,7 @@ public class PelucaTrigger : MonoBehaviour
         {
             //Paras al Player
             movPlayer.enabled = false;
-            movPlayer.anim.SetBool("Walk", false);
+            movPlayer.anim.SetBool("Player_Caminar", false);
             //Habla el enemigo
             EnemyTalk();
         }

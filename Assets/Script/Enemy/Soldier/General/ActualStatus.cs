@@ -83,6 +83,10 @@ public class ActualStatus : MonoBehaviour
             lastPosition = new Vector3(SoldierActiveInScene.instancia.soldiersStatus[iD].position_x, SoldierActiveInScene.instancia.soldiersStatus[iD].position_y + 0.5f, 0f);
 
             transform.position = lastPosition;
+
+            //Cambia el Layer para que no el player al entrar a un nivel, vea todo el rato la animación de los enemigos volviendo a morir.
+            soldierLife.animBody.SetLayerWeight(2, 1);
+            soldierLife.animBody.SetLayerWeight(1, 0);
         }
         /*
         if (Mathf.Abs(SoldierActiveInScene.instancia.soldiersStatus[iD].position_x) > 0 && Mathf.Abs(SoldierActiveInScene.instancia.soldiersStatus[iD].position_y) > 0)

@@ -18,6 +18,7 @@ public class AngryChef : MonoBehaviour
     [Header("Dialogo Data")]
     [SerializeField] GameObject globoDialogo;
     [SerializeField] Transform ubiDialogo;
+    GameObject copiaGloboDialogo;
 
     [Header("Duration Scene")]
     public float timeDialogoLimit;
@@ -63,7 +64,8 @@ public class AngryChef : MonoBehaviour
                         {
                             if (once < 1)
                             {
-                                Instantiate(globoDialogo, ubiDialogo.position, ubiDialogo.rotation);
+                                copiaGloboDialogo = Instantiate(globoDialogo, ubiDialogo.position, Quaternion.identity);
+                                copiaGloboDialogo.transform.parent = ubiDialogo;
                                 AudioManager.instancia.PlayOneShot(soundDialogue); 
                                 timeScene = 0;
                                 scena = Secuencia.End;

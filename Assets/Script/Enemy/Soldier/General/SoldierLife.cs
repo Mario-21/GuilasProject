@@ -71,7 +71,7 @@ public class SoldierLife : MonoBehaviour
         //Si al entrar ya estoy muerto, tiene que saltar el audio sleep
         if(vida <= 0)
         {
-            sleepEmitter.Play();
+            //  sleepEmitter.Play();
         }
     }
     void Update()

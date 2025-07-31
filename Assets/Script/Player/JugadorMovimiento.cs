@@ -9,7 +9,7 @@ using FMOD.Studio;
 public class JugadorMovimiento : MonoBehaviour
 {
     Rigidbody2D rb;
-    Transform myTransform;
+    [HideInInspector] public Transform myTransform;
     public static bool direccionBala;
 
 
