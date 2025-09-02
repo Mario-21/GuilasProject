@@ -5,11 +5,16 @@ using UnityEngine.UI;
 
 public class PutGasMask : MonoBehaviour
 {
+    [Header("Informacion del Objeto a colocar")]
     public GameObject gas_Mask;
     [SerializeField] SaveButton mascaraButton;
     public string tagName = "Mascara";
     bool canPut;
     public bool putMask;
+    [Header("Brazo Jugador")]
+    public bool cambiarBrazo;
+    [SerializeField] SpriteRenderer brazoPlayer;
+    [SerializeField] Sprite brazoBasePlayer;
 
     void Update()
     {
@@ -49,6 +54,7 @@ public class PutGasMask : MonoBehaviour
                 gas_Mask.SetActive(false);
                 mascaraButton.HabilitarUsos();
                 putMask = false;
+                if(cambiarBrazo) brazoPlayer.sprite = brazoBasePlayer;
             }
         }
     }

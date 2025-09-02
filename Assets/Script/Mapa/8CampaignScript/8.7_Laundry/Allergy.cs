@@ -7,10 +7,12 @@ public class Allergy : MonoBehaviour
     public int indexMod;
     [Header("Soldado Info")]
     [SerializeField] SoldierLife soldadoLaundry;
-    [SerializeField] SpriteRenderer headSoldadoLaundry;
+    //[SerializeField] SpriteRenderer headSoldadoLaundry;
     //Llamar animacion
-    public Animator animAllergy;
-    public Color allergyColor;
+    [SerializeField] GameObject cabezaNormal;
+    [SerializeField] GameObject cabezaAlergia;
+    //public Animator animAllergy;
+    //public Color allergyColor;
 
 
     [Header("Allergy Time Activation")]
@@ -21,7 +23,8 @@ public class Allergy : MonoBehaviour
     {
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
-            headSoldadoLaundry.color = allergyColor;
+            cabezaNormal.SetActive(false);
+            cabezaAlergia.SetActive(true);
             this.enabled = false;
         }
     }
@@ -41,7 +44,9 @@ public class Allergy : MonoBehaviour
     }
     void AllergyOn()
     {
-        animAllergy.enabled = true;
+        //animAllergy.enabled = true;
+        cabezaNormal.SetActive(false);
+        cabezaAlergia.SetActive(true);
         soldadoLaundry.Daño(3);
         this.enabled = false;
     }

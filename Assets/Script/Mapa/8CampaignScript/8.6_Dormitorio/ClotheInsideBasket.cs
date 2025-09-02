@@ -17,5 +17,11 @@ public class ClotheInsideBasket : MonoBehaviour
         {
             clothes.enabled = true;
         }
+        //El falso se usa principalmente para los momentos en los que el personaje se esconde, de esta manera, la ropa
+        //no aparece repentinamente sin que tu la hayas cogido previamente
+        else
+        {
+            clothes.enabled = false;
+        }
     }
 }

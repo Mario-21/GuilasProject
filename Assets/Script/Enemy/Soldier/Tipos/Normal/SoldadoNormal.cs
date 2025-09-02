@@ -322,7 +322,8 @@ public class SoldadoNormal : MonoBehaviour
             
             if (Distancia() && !seeCadaverWarning && !muro)
             {
-                if (DistancenPlayer().magnitude >= outRange && !busquedaMode || Mathf.Abs(DistancenPlayer().y) > AlturaRange) //&& Mathf.Abs(DistancenPlayer().y) > AlturaRange
+                //if (DistancenPlayer().magnitude >= outRange && !busquedaMode || Mathf.Abs(DistancenPlayer().y) > AlturaRange) //&& Mathf.Abs(DistancenPlayer().y) > AlturaRange
+                if (DistancenPlayer().magnitude >= outRange && !busquedaMode && Mathf.Abs(DistancenPlayer().y) > AlturaRange) //&& Mathf.Abs(DistancenPlayer().y) > AlturaRange
                 {
                     estadoSoldado = EstadoSoldado.patrulla;
                 }

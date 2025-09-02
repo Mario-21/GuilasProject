@@ -23,7 +23,8 @@ public class LaundryCinEnd : MonoBehaviour
     [Header("Completar Nivel")]
     [SerializeField] GameObject completarNivel;
     [Header("Diálogo")]
-    [SerializeField] GameObject angry;
+    [SerializeField] GameObject cabeza;
+    [SerializeField] GameObject cabezaAngry;
     [SerializeField] GameObject globoEnfado;
     [SerializeField] Transform spawnGlobo;
     void Update()
@@ -65,7 +66,9 @@ public class LaundryCinEnd : MonoBehaviour
                 {
                     AudioManager.instancia.PlayOneShot(FMODEvent.instancia.angryEnemy);
                     Instantiate(globoEnfado, spawnGlobo.transform.position, Quaternion.identity);
-                    angry.SetActive(true);
+                    //Sustituir por una cabeza cabreada como el truco de la alergia
+                    cabeza.SetActive(false);
+                    cabezaAngry.SetActive(true);
                     laundryCin = LaundryScene.End;
                     contador++;
                     timeBetweenScene = 0;

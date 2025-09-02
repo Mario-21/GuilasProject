@@ -18,15 +18,16 @@ public class SewerSystem : MonoBehaviour
 
     [Header("Zona Sound Effect")]
     [SerializeField] EventReference soundDrain;
-    [SerializeField] ZonaChangeSound zonaSound;
+    //[SerializeField] ZonaChangeSound zonaSound;
     int reproduceAudio;
 
     PlayerHere player;
     bool activeEvent;
-    ActivarModificador activar;
+    //No puedes tomar como referencia el ActivarModificador dado que si sales de la escena, el script no
+    //podrá volver a ejecutarse a no ser que el objeto tenga más de un uso, y aun así, el nivel ya estaría roto.
+    //[SerializeField] ActivarModificador activar;
     private void Awake()
     {
-        activar = GetComponent<ActivarModificador>();
         player = GetComponent<PlayerHere>();
     }
     private void Start()
@@ -45,7 +46,7 @@ public class SewerSystem : MonoBehaviour
     void ActionDrain()
     {
         //When you are here Drain() suscribe to events and on the switch
-        if (player.playerImHere && activar.modificacion)
+        if (player.playerImHere)
         {
             evento.actionOnCinematic += Drain;
             if (Input.GetButtonDown("Action"))
@@ -68,7 +69,7 @@ public class SewerSystem : MonoBehaviour
         aqua.SetActive(false);
         boton_Generador.color = color_Gen_On;
         pozoArea.enabled = true;
-        zonaSound.enabled = true;
+        //zonaSound.enabled = true;
         StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
         
     }

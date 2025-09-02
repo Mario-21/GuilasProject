@@ -17,9 +17,11 @@ public class TocarBell : MonoBehaviour
     [SerializeField] Transform ubiChefChange;
 
     public int soundBellCount;
+    Animator animCampanilla;
     void Start()
     {
         player = GetComponent<PlayerHere>();
+        animCampanilla = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -34,6 +36,7 @@ public class TocarBell : MonoBehaviour
         {
             if (Input.GetButtonDown("Action"))
             {
+                animCampanilla.SetTrigger("Campanilla");
                 AudioManager.instancia.PlayOneShot(FMODEvent.instancia.bell);
                 bellSound = true;
                 //Deshabilitar para que cuando termine el chef y llegue con la comida poder Volver a tocarla

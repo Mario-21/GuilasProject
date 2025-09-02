@@ -9,9 +9,8 @@ public class PasswordNotebook : MonoBehaviour
     ActivarModificador activar;
     public int indexMod;
     [Header("Reveal Password")]
-    public Image notebook;
-    public Text password;
-    public Sprite notebookRevealPass;
+    public GameObject notebook;
+    public GameObject notebookRevealPass;
     bool seeNote;
     private void Awake()
     {
@@ -22,8 +21,7 @@ public class PasswordNotebook : MonoBehaviour
     {
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
-            notebook.sprite = notebookRevealPass;
-            password.enabled = true;
+            notebookRevealPass.SetActive(true);
         }
     }
     void Update()
@@ -42,17 +40,17 @@ public class PasswordNotebook : MonoBehaviour
             }
             if (seeNote)
             {
-                notebook.gameObject.SetActive(true);
+                notebook.SetActive(true);
             }
             else
             {
-                notebook.gameObject.SetActive(false);
+                notebook.SetActive(false);
             }
             
         }
         else
         {
-            notebook.gameObject.SetActive(false);
+            notebook.SetActive(false);
             seeNote = false;
         }
     }
@@ -60,8 +58,7 @@ public class PasswordNotebook : MonoBehaviour
     {
         if (activar.modificacion) 
         {
-            notebook.sprite = notebookRevealPass;
-            password.enabled = true;
+            notebookRevealPass.SetActive(true);
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
         }
     }

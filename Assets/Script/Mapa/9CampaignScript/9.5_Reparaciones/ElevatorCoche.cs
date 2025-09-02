@@ -15,11 +15,15 @@ public class ElevatorCoche : MonoBehaviour
     [Header("Cinematic")]
     [SerializeField] GameObject cutItemCin;
     [SerializeField] int cinematic;
+    [Header("Iconos")]
+    IconItem icono;
     void Start()
     {
+        icono = GetComponent<IconItem>();
         player = GetComponent<PlayerHere>();
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
+            icono.enabled = false;
             this.enabled = false;
         }
     }
@@ -36,6 +40,7 @@ public class ElevatorCoche : MonoBehaviour
             if (Input.GetButtonDown("Action"))
             {
                 AudioManager.instancia.PlayOneShot(FMODEvent.instancia.botonGeneral);
+                icono.enabled = false;
                 CorteEscena();
 
             }

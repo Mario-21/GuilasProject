@@ -7,9 +7,11 @@ public class Flashlight : MonoBehaviour
     [Header("Flashlight Info")]
     [SerializeField] GameObject lightEffect;
     [SerializeField] PutGasMask putItem;
-    [Header("Color Player")]
-    [SerializeField] Color oscuridad;
-    [SerializeField] List<SpriteRenderer> playerSprites;
+    [SerializeField] bool oscuridad;
+    [Header("Animacion Mechero")]
+    [SerializeField] Animator mecheroAnim;
+    [SerializeField] Animator iluminacionAnim;
+
 
 
     bool onLight;
@@ -28,17 +30,20 @@ public class Flashlight : MonoBehaviour
                 onLight = !onLight;
                 if (onLight)
                 {
-                    foreach (SpriteRenderer player in playerSprites)
+                    mecheroAnim.enabled = true;
+                    if (oscuridad)
                     {
-                        player.color = Color.white;
+                        iluminacionAnim.SetBool("Oscuridad", true);
                     }
+                    else
+                    {
+                        iluminacionAnim.SetBool("Oscuridad", false);
+                    }
+                    
                 }
                 else
                 {
-                    foreach (SpriteRenderer player in playerSprites)
-                    {
-                        player.color = oscuridad;
-                    }
+                    mecheroAnim.enabled = false;
                 }
                 
             }

@@ -159,6 +159,7 @@ public class BloquearMovimientoPlayer : MonoBehaviour
     public void ReanudarGame()
     {
         //Activar Armas Solo si no estoy escondido
+        //Además de especificar si estoy en una cinematica o no, para que dentro de la cinematica no se habilite el poder disparar  
         if (!stairs_Hidden.imHidden)
         {
             pistol.enabled = true;

@@ -42,6 +42,7 @@ public class Events : MonoBehaviour
                 }
                 break;
             case PhasesOfScene.clear_screen:
+                
                 player.HabilitarMovPlayer();
                 AnimationHud.detectar_echar.SetBool("Transicion", false);
                 phasesOnScene = PhasesOfScene.end;

@@ -20,7 +20,7 @@ public class Stairs_Hidden : MonoBehaviour
     public GameObject iconoZone;
     public SpriteRenderer iconeZoneSprite;
     public Sprite hiddenIcon;
-    [HideInInspector] public bool imHidden;
+    public bool imHidden;
     public bool canHidden = false;
     [Header("Layer Hidden")]
     public int layerDesocultacion;
