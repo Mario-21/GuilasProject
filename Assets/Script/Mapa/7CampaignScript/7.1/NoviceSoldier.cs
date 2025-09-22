@@ -45,6 +45,7 @@ public class NoviceSoldier : MonoBehaviour
         {
             StatusGameobjectsVariables.statusGameobject.modificacion[indexExceedTime].modificacion = true;
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMinusTime].modificacion = false;
+            StatusGameobjectsVariables.statusGameobject.modificacion[indexStop].modificacion = true;
         }
         else
         {

@@ -5,8 +5,11 @@ using UnityEngine;
 public class Bata_Soldado : MonoBehaviour
 {
     [SerializeField] SoldadoNormal soldado;
+    SoldierLife soldadoVida;
     Animator bataAnim;
-
+    [Header("Info Bata")]
+    public Sprite bataBase;
+    SpriteRenderer bataSprite;
     [Header("Tiempo Registro")]
     public float tiempoRegistroLimite;
     float tiempoRegistro;
@@ -17,6 +20,8 @@ public class Bata_Soldado : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bataSprite = GetComponentInChildren<SpriteRenderer>();
+        soldadoVida = GetComponentInParent<SoldierLife>();
         bataAnim = GetComponent<Animator>();
         ubiSaveActual = soldado.transform.position.x;
 
@@ -27,17 +32,7 @@ public class Bata_Soldado : MonoBehaviour
     {
         RegistrarUbicacion();
         CaminarBata();
-    }
-    void CaminarBatas()
-    {
-        if (soldado.movimiento)
-        {
-            bataAnim.SetBool("BataCaminar", true);
-        }
-        else
-        {
-            bataAnim.SetBool("BataCaminar", false);
-        }
+        IdleBataAgain();
     }
     void RegistrarUbicacion()
     {
@@ -94,6 +89,13 @@ public class Bata_Soldado : MonoBehaviour
         {
             bataAnim.SetBool("BataCaminar", false);
             //bataAnim.SetBool("BataCaminar", false);
+        }
+    }
+    void IdleBataAgain()
+    {
+        if(soldadoVida.vida <= 0)
+        {
+            bataSprite.sprite = bataBase;
         }
     }
 }

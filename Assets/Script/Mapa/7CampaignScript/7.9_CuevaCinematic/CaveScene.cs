@@ -30,6 +30,10 @@ public class CaveScene : MonoBehaviour
     SceneCaves cinematicCave;
 
     float timeSceneCave;
+    public float timeSceneCaveLimit;
+
+    float timeDurationDialogo;
+    public float timeDurationDialogoLimit;
 
     void Start()
     {
@@ -44,14 +48,24 @@ public class CaveScene : MonoBehaviour
         switch (cinematicCave)
         {
             case SceneCaves.Firts:
-                DialogoCueva();
+                //Secuencia de Andar
+                if (timeSceneCave >= timeSceneCaveLimit)
+                {
+                    cinematicCave = SceneCaves.Second;
+                    timeSceneCave = 0;
+                }
+                else
+                {
+                    timeSceneCave += Time.deltaTime;
+                }
                 break;
             case SceneCaves.Second:
-                timeSceneCave += Time.deltaTime;
-                if (timeSceneCave >= 3) 
+                DialogoCueva();
+
+                timeDurationDialogo += Time.deltaTime;
+                if(timeDurationDialogo >= timeDurationDialogoLimit)
                 {
                     cinematicCave = SceneCaves.Third;
-                    timeSceneCave = 0;
                 }
                 break;
             case SceneCaves.Third:
@@ -62,6 +76,27 @@ public class CaveScene : MonoBehaviour
     }
     void DialogoCueva()
     {
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexExceedTime].modificacion)
+        {
+            if (dialogo < 1)
+            {
+                Instantiate(globoDialogoDeath, globoUbi.position, Quaternion.identity);
+                dialogo++;
+                CheckPointController.numeroCheckPoint = checkpointDeath;
+                EstructuraNiveles.nivel = nivelDeath;
+            }
+        }
+        else if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMinusTime].modificacion)
+        {
+            if (dialogo < 1)
+            {
+                Instantiate(globoDialogoInfarmary, globoUbi.position, Quaternion.identity);
+                dialogo++;
+                CheckPointController.numeroCheckPoint = checkpointInfarmary;
+                EstructuraNiveles.nivel = nivelInfarmary;
+            }
+        }
+        /*
         if (caveEnemy)
         {
             if (StatusGameobjectsVariables.statusGameobject.modificacion[indexExceedTime].modificacion)
@@ -72,7 +107,6 @@ public class CaveScene : MonoBehaviour
                     dialogo++;
                     CheckPointController.numeroCheckPoint = checkpointDeath;
                     EstructuraNiveles.nivel = nivelDeath;
-                    cinematicCave = SceneCaves.Second;
                 }
             }
             else if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMinusTime].modificacion) 
@@ -83,13 +117,12 @@ public class CaveScene : MonoBehaviour
                     dialogo++;
                     CheckPointController.numeroCheckPoint = checkpointInfarmary;
                     EstructuraNiveles.nivel = nivelInfarmary;
-                    cinematicCave = SceneCaves.Second;
                 }
             }
-        }
+        }*/
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy")) caveEnemy = true;
+        //if (collision.gameObject.CompareTag("Enemy")) caveEnemy = true;
     }
 }

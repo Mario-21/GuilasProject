@@ -13,10 +13,6 @@ public class NoviceDeathScene : MonoBehaviour
     [Header("Soldados Cinematic")]
     [SerializeField] SoldadoNormal soldado1;
     [SerializeField] SoldadoNormal soldado2;
-    [Header("Flower")]
-    public GameObject flowerSoldado;
-    public GameObject flowerTumba;
-    [SerializeField] EventReference flowerSFX;
     [Header("Ubicaciones Salida")]
     [SerializeField] Transform ubiSalida1;
     enum SceneNovice 
@@ -27,7 +23,8 @@ public class NoviceDeathScene : MonoBehaviour
         Fourth
     }
     SceneNovice sceneNoviceDeath;
-    float timeScene;
+    public float timeScene;
+    public float timeSceneLimit;
     void Start()
     {
         
@@ -48,35 +45,29 @@ public class NoviceDeathScene : MonoBehaviour
                 CheckPointController.numeroCheckPoint = checkpoint;
                 StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
                 timeScene += Time.deltaTime;
-                if (timeScene >= 3)
+                if (timeScene >= timeSceneLimit)
                 {
                     soldado1.enabled = true;
                     sceneNoviceDeath = SceneNovice.Second;
+                    timeScene = 0;
                 }
                 
                 break;
             case SceneNovice.Second:
-
-                timeScene -= Time.deltaTime;
-                if (timeScene <= 0)
+                soldado1.ubicacionesDirigir[0] = ubiSalida1;
+                timeScene += Time.deltaTime;
+                if (timeScene >= 1)
                 {
-                    AudioManager.instancia.PlayOneShot(flowerSFX);
-                    flowerSoldado.SetActive(false);
-                    flowerTumba.SetActive(true);
+                    Debug.Log("Dados");
+                    soldado2.ubicacionesDirigir[0] = ubiSalida1;
                     sceneNoviceDeath = SceneNovice.Third;
+                    timeScene = 0;
                 }
                 break;
             case SceneNovice.Third:
-                soldado1.ubicacionesDirigir[0] = ubiSalida1;
-                timeScene += Time.deltaTime;
-                if (timeScene >= 2)
-                {
-                    soldado2.ubicacionesDirigir[0] = ubiSalida1;
-                    sceneNoviceDeath = SceneNovice.Fourth;
-                }
+                AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
                 break;
             case SceneNovice.Fourth:
-                AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
                 break;
         }
     }

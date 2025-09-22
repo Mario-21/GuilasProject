@@ -15,6 +15,7 @@ public class RecoveryRoomCinematic : MonoBehaviour
     [SerializeField] GameObject globoDialogo;
     [SerializeField] Transform glopoPos;
     public float timeBetweenScene;
+    public float timeBetweenSceneLimit;
     int onlyOneGlobo;
     enum CinematicOrder
     {
@@ -39,7 +40,7 @@ public class RecoveryRoomCinematic : MonoBehaviour
         {
             case CinematicOrder.Start:
                 timeBetweenScene += Time.deltaTime;
-                if(timeBetweenScene >= 3)
+                if(timeBetweenScene >= timeBetweenSceneLimit)
                 {
                     cinematic = CinematicOrder.Middle;
                 }

@@ -6,10 +6,15 @@ public class NoviceLife_Death : MonoBehaviour
 {
     public int exceedTime;
     public int minusTime;
-
+    [Header("Partes Cuerpo Novato")]
     [SerializeField] SpriteRenderer headNovice;
-    [SerializeField] Animator novice;
-    public Color color;
+    [SerializeField] SpriteRenderer brazoNovice;
+    [Header("Animaciones")]
+    [SerializeField] Animator noviceCuerpo;
+    [SerializeField] Animator noviceCabeza;
+    [Header("Sprites Post-Morten")]
+    public Sprite cabezaNoOxygen;
+    public Sprite brazoNoOxygen;
     void Start()
     {
     }
@@ -19,13 +24,15 @@ public class NoviceLife_Death : MonoBehaviour
     {
         if (StatusGameobjectsVariables.statusGameobject.modificacion[exceedTime].modificacion)
         {
-            headNovice.color = color;
-            novice.enabled = false;
+            headNovice.sprite = cabezaNoOxygen;
+            brazoNovice.sprite = brazoNoOxygen;
+            noviceCuerpo.enabled = false;
+            noviceCabeza.enabled = false;
         }
-        else if (StatusGameobjectsVariables.statusGameobject.modificacion[minusTime].modificacion)
+        /*else if (StatusGameobjectsVariables.statusGameobject.modificacion[minusTime].modificacion)
         {
             headNovice.color = Color.white;
          
-        }
+        }*/
     }
 }
