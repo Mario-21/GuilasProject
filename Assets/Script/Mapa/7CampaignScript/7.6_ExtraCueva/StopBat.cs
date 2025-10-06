@@ -5,13 +5,13 @@ using UnityEngine;
 public class StopBat : MonoBehaviour
 {
     public int indexMod;
-    [SerializeField] ParticleSystem bats;
+    [SerializeField] GameObject bats;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Antorcha")) 
         {
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
-            bats.Stop();
+            bats.SetActive(false);
         }
     }
 }

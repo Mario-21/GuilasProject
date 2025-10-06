@@ -15,7 +15,7 @@ public class Flashlight : MonoBehaviour
     [SerializeField] Animator iluminacionAnim;
 
 
-
+    public bool mecheroMojado;
     bool onLight;
     private void Start()
     {
@@ -24,6 +24,7 @@ public class Flashlight : MonoBehaviour
     {
         ActiveLight();
         On_Off();
+        if (mecheroMojado) MecheroMojado();
     }
     void ActiveLight()
     {
@@ -33,6 +34,7 @@ public class Flashlight : MonoBehaviour
             {
                 AudioManager.instancia.PlayOneShot(FMODEvent.instancia.lighterFire);
                 onLight = !onLight;
+                /*
                 if (onLight)
                 {
                     mecheroAnim.enabled = true;
@@ -40,9 +42,9 @@ public class Flashlight : MonoBehaviour
                 else
                 {
                     mecheroAnim.enabled = false;
-                    mecheroSprite.sprite = mecheroDefault;
+                    //mecheroSprite.sprite = mecheroDefault;
                 }
-                
+                */
             }
         }
         // No creo que funcione ya que cuando me lo quito se desactiva el objeto y por ende no se va a ejecutar
@@ -51,6 +53,7 @@ public class Flashlight : MonoBehaviour
     {
         if (onLight)
         {
+            mecheroAnim.enabled = true;
             lightEffect.SetActive(true);
             if (oscuridad)
             {
@@ -65,7 +68,34 @@ public class Flashlight : MonoBehaviour
         }
         else
         {
+            mecheroAnim.enabled = false;
             lightEffect.SetActive(false);
+            mecheroSprite.sprite = mecheroDefault;
+        }
+    }
+
+    void MecheroMojado()
+    {
+        if (onLight)
+        {
+            AudioManager.instancia.PlayOneShot(FMODEvent.instancia.lighterFirePlusWater);
+            onLight = false;
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Water"))
+        {
+            Debug.Log("Luz Apagada por Agua");
+            mecheroMojado = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Water"))
+        {
+            Debug.Log("Mechero ya no esta mojado");
+            mecheroMojado = false;
         }
     }
     private void OnEnable()

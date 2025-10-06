@@ -7,12 +7,7 @@ public class ConfirmCard : MonoBehaviour
     public int indexMod;
     [SerializeField] OpenReforcedDoor reforcedDoor;
     [SerializeField] ActivarModificador confirm; //Separar Los activadores y pooner cada uno en su respectiva tarjeta
-    SpriteRenderer confirmButton;
-
-    private void Awake()
-    {
-        confirmButton = GetComponent<SpriteRenderer>();
-     }
+    [SerializeField] SpriteRenderer confirmButton;
     void Start()
     {
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) KeyUse();

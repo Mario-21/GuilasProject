@@ -10642,6 +10642,21 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8540357858047124927, guid: 750d4b141be47bc4c9dbc3e2983cd398,
+        type: 3}
+      propertyPath: PlayEvent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540357858047124927, guid: 750d4b141be47bc4c9dbc3e2983cd398,
+        type: 3}
+      propertyPath: OverrideMaxDistance
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540357858047124927, guid: 750d4b141be47bc4c9dbc3e2983cd398,
+        type: 3}
+      propertyPath: OverrideMinDistance
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8540357858930190864, guid: 750d4b141be47bc4c9dbc3e2983cd398,
         type: 3}
       propertyPath: m_Name
@@ -10723,6 +10738,82 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 51792067}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &51792069 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2411558227779261828, guid: 750d4b141be47bc4c9dbc3e2983cd398,
+    type: 3}
+  m_PrefabInstance: {fileID: 51792067}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &51792070 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8540357858959179694, guid: 750d4b141be47bc4c9dbc3e2983cd398,
+    type: 3}
+  m_PrefabInstance: {fileID: 51792067}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &51792071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51792070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7da94fb3ee58ae43b97fa6f76e75f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particulasDormir: {fileID: 51792069}
+--- !u!114 &51792072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51792070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1208874883
+      Data2: 1121753066
+      Data3: -563748468
+      Data4: 1391081310
+    Path: "event:/SFX/Enemy/Soldier/Da\xF1o/Sleep"
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 3
+  OverrideMaxDistance: 6
+--- !u!114 &51792073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51792070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cace633c6ab8ae48a8164758d33c589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound_Effect:
+    Guid:
+      Data1: -1208874883
+      Data2: 1121753066
+      Data3: -563748468
+      Data4: 1391081310
+    Path: "event:/SFX/Enemy/Soldier/Da\xF1o/Sleep"
+  itemEmitter: {fileID: 51792070}
 --- !u!1001 &59013374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30363,12 +30454,12 @@ PrefabInstance:
     - target: {fileID: 8036219898582464923, guid: cb3bb1ae0be34114da19c442c77b6de7,
         type: 3}
       propertyPath: m_Size.x
-      value: 6.568324
+      value: 0.82153654
       objectReference: {fileID: 0}
     - target: {fileID: 8036219898582464923, guid: cb3bb1ae0be34114da19c442c77b6de7,
         type: 3}
       propertyPath: m_Size.y
-      value: 16.120365
+      value: 1.963637
       objectReference: {fileID: 0}
     - target: {fileID: 8036219898582464923, guid: cb3bb1ae0be34114da19c442c77b6de7,
         type: 3}
@@ -30378,12 +30469,12 @@ PrefabInstance:
     - target: {fileID: 8036219898582464923, guid: cb3bb1ae0be34114da19c442c77b6de7,
         type: 3}
       propertyPath: m_Offset.x
-      value: 1.1242614
+      value: 0.12389445
       objectReference: {fileID: 0}
     - target: {fileID: 8036219898582464923, guid: cb3bb1ae0be34114da19c442c77b6de7,
         type: 3}
       propertyPath: m_Offset.y
-      value: 3.288376
+      value: 0.5718147
       objectReference: {fileID: 0}
     - target: {fileID: 8036219898582464923, guid: cb3bb1ae0be34114da19c442c77b6de7,
         type: 3}

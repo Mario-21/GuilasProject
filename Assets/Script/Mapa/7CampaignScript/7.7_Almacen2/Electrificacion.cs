@@ -79,6 +79,7 @@ public class Electrificacion : MonoBehaviour
         {
             canRepeat = false;
             playerBlock.HabilitarMovPlayer();
+            Debug.Log("El jugador ha entrado a Rango.");
             repeatDamage = 0;
         }
     }

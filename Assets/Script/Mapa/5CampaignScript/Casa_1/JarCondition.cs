@@ -10,7 +10,11 @@ public class JarCondition : MonoBehaviour
     void Start()
     {
         //You need time to execute this before the original script that made the gameObject disappear
-        if (SaveScene.instancia.listaItemsNivelGuardar[indexModJar].objetoObtenido) 
+        Invoke("JarConditionCheck", 0.2f);
+    }
+    void JarConditionCheck()
+    {
+        if (SaveScene.instancia.listaItemsNivelGuardar[indexModJar].objetoObtenido)
         {
             jarra.enabled = false;
             jarra.gameObject.SetActive(false);

@@ -47,6 +47,7 @@ public class FMODEvent : MonoBehaviour
     [SerializeField] public EventReference takeOffClothes;
     [SerializeField] public EventReference laundryClothes;
     [SerializeField] public EventReference lighterFire;
+    [SerializeField] public EventReference lighterFirePlusWater;
     [Space(20)]
     [SerializeField] string apartado_6;
     [SerializeField] public EventReference shoot;

@@ -13,7 +13,7 @@ public class TriggerBat : MonoBehaviour
         {
             conjuntoBat.SetActive(true);
             movimientoMurcielago.enabled = true;
-            movimientoMurcielago.move_X = true;
+            this.gameObject.SetActive(false);
         }
         if (collision.gameObject.CompareTag("Antorcha"))
         {

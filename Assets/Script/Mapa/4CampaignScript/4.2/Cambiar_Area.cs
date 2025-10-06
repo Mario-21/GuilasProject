@@ -9,6 +9,9 @@ public class Cambiar_Area: MonoBehaviour
     public int siguienteEscena;
     public int checkPoint;
     public bool usarCheckpoint;
+    [Header("Tipo Cambio Area Escalera")]
+    public bool escaleraSubir;
+    public float gravedad;
     bool entrarCamino;
 
     BloquearMovimientoPlayer bloqPlayer;
@@ -30,6 +33,17 @@ public class Cambiar_Area: MonoBehaviour
         EstructuraNiveles.nivel = siguienteEscena;
         AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
         if (usarCheckpoint) CheckPointController.numeroCheckPoint = checkPoint;
+    }
+    void TipoCambioAreaEscalera()
+    {
+        if (!escaleraSubir)
+        {
+            bloqPlayer.playerRB.gravityScale = gravedad;
+        }
+        else
+        {
+            bloqPlayer.playerRB.gravityScale = -gravedad;
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

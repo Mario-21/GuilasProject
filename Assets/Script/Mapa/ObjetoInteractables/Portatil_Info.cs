@@ -5,16 +5,18 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using FMOD.Studio;
 
+[RequireComponent(typeof(IconItem))]
 public class Portatil_Info : MonoBehaviour
 {
+    public int indexMod;
+
     [Header("See Player")]
-    [SerializeField] OcultacionByWeapon player;
+    [SerializeField] OcultacionByWeapon playerOcultar;
     [SerializeField] ArmaController armaPlayer;
     bool seePlayer;
     
     [Header("Icono")]
-    public SpriteRenderer exclamacionMark;
-    Animator animExclamacion;
+    IconItem iconItem;
 
     [Header("Barra Data")]
     public int indexTerminal;
@@ -22,6 +24,7 @@ public class Portatil_Info : MonoBehaviour
     public SpriteRenderer screenLight;
     public GameObject contorno;
 
+    //Estas 3 variables me dan igual
     bool infoCompiled;
     bool active;
     public int numeroDeTerminalesTotales;
@@ -29,6 +32,8 @@ public class Portatil_Info : MonoBehaviour
 
     [Header("Completar Tarea")]
     public GameObject zonaCompletarNivel;
+    public SpriteRenderer pantallaPortatil;
+    public Sprite pantallaPortatilCompleta;
 
     EstructuraNiveles nivelCompletado = new EstructuraNiveles();
 
@@ -37,27 +42,35 @@ public class Portatil_Info : MonoBehaviour
     EventInstance teclearTerminalSound;
     int onceTeclearSound;
 
-    int restaurarArmaLayer;
+    CompletarPortatiles completarPortatil;
+
+    int restaurarArmaLayer; //quiza hay que cambiar el layer porque lo tengo en 0, cuando el 0 no sé corresponde al del player
     private void Awake()
     {
-        animExclamacion = GetComponent<Animator>();
-
+        iconItem = GetComponent<IconItem>();
         playerInTerminal = GetComponent<PlayerHere>();
 
         //SaveScene.instancia.SaveThings();
     }
     private void Start()
     {
-        LoadPorcentaje(); 
-        downloadBar.fillAmount = 0;
+        //LoadPorcentaje(); 
+        //downloadBar.fillAmount = 0;
+        completarPortatil = FindObjectOfType<CompletarPortatiles>();
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
+        {
+            iconItem.enabled = false;
+            //Comprobar esto una vez 
+            this.enabled = false;
+        }
         teclearTerminalSound = AudioManager.instancia.CreateEventInstance(FMODEvent.instancia.teclear);
     }
     private void Update()
     {
-        CanHacking();
+        //CanHacking();
         HackingTerminal();
-        CollectAllInfo();
-        ActiveYourTerminal();
+        //CollectAllInfo();
+        //ActiveYourTerminal();
         
         
         //NOTA
@@ -89,7 +102,7 @@ public class Portatil_Info : MonoBehaviour
     {
         if(playerInTerminal.playerImHere && downloadBar.fillAmount < 1 && !active)
         {
-            animExclamacion.enabled = true;
+
         }
     }
     void HackingTerminal()
@@ -98,95 +111,95 @@ public class Portatil_Info : MonoBehaviour
         if(playerInTerminal.playerImHere)
         {
             restaurarArmaLayer = 0;
-            if(!active)
+            if (downloadBar.fillAmount < 1)
             {
-                if (downloadBar.fillAmount < 1)
+                if (Input.GetButton("Action"))
                 {
-                    if (Input.GetButton("Action"))
+                    //Deja de verse la exclamacion y comienza a visualizar se el progreso de la descargar
+                    contorno.SetActive(true);
+                    downloadBar.fillAmount += 0.01f;
+
+                    seePlayer = true;
+                    playerOcultar.SeeByAction(seePlayer);
+                    //Mientras estes usando el terminal no puedes usar el arma
+                    //Guardar Arma en caso de comenzar el hackeo con el arma desechada
+                    armaPlayer.activarDisparo = false;
+                    armaPlayer.enabled = false;
+                    #region
+                    /*
+                    if (armaPlayer.activarDisparo) 
                     {
-                        //Deja de verse la exclamacion y comienza a visualizar se el progreso de la descargar
-                        contorno.SetActive(true);
-                        animExclamacion.enabled = false;
-                        exclamacionMark.enabled = false;
-                        downloadBar.fillAmount += 0.01f;
-
-                        seePlayer = true;
-                        player.SeeByAction(seePlayer);
-                        //Mientras estes usando el terminal no puedes usar el arma
-                        //Guardar Arma en caso de comenzar el hackeo con el arma desechada
-                        #region
-                        
-                        if (armaPlayer.activarDisparo) 
-                        {
-                            AudioManager.instancia.PlayOneShot(FMODEvent.instancia.outWeapon);
-                            Debug.Log("Arma desechada");
-                        }
-                        armaPlayer.activarDisparo = false;
-                        armaPlayer.enabled = false;
-                        armaPlayer.pistola.enabled = false;
-                        armaPlayer.municionText.enabled = false;
-                        armaPlayer.mira.localPosition = new Vector2(0f, armaPlayer.mira.localPosition.y);
-                        armaPlayer.mira.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-                        armaPlayer.brazo.transform.rotation = Quaternion.identity;
-                        
-                        #endregion 
-
-                        //Reproducir sonido del tecleado
-                        if (onceTeclearSound < 1)
-                        {
-                            teclearTerminalSound.start();
-                            onceTeclearSound++;
-                        }
-
+                        AudioManager.instancia.PlayOneShot(FMODEvent.instancia.outWeapon);
+                        Debug.Log("Arma desechada");
                     }
-                    else
+                    armaPlayer.activarDisparo = false;
+                    armaPlayer.enabled = false;
+                    armaPlayer.pistola.enabled = false;
+                    armaPlayer.municionText.enabled = false;
+                    armaPlayer.mira.localPosition = new Vector2(0f, armaPlayer.mira.localPosition.y);
+                    armaPlayer.mira.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                    armaPlayer.brazo.transform.rotation = Quaternion.identity;
+                    */
+                    #endregion
+
+                    //Reproducir sonido del tecleado
+                    if (onceTeclearSound < 1)
                     {
-                        //Cuando dejes de usar el terminal habilitas el arma
-                        armaPlayer.enabled = true;
-
-                        seePlayer = false;
-                        player.SeeByAction(seePlayer);
-
-                        contorno.SetActive(false);
-                        animExclamacion.enabled = true;
-                        exclamacionMark.enabled = true;
-                        if (downloadBar.fillAmount < 1)
-                        {
-                            downloadBar.fillAmount = 0;
-                            //Parar el tecleado y el conteo
-                            teclearTerminalSound.stop(STOP_MODE.IMMEDIATE);
-                            onceTeclearSound = 0;
-                        }
+                        teclearTerminalSound.start();
+                        onceTeclearSound++;
                     }
+
                 }
                 else
                 {
+                    //Cuando dejes de usar el terminal habilitas el arma
+                    armaPlayer.enabled = true;
+
                     seePlayer = false;
-                    player.SeeByAction(seePlayer);
+                    playerOcultar.SeeByAction(seePlayer);
 
                     contorno.SetActive(false);
-
-                    TotalTerminales.terminalesTotales.terminalesActivados++;
-
-                    active = true;
-                    TotalTerminales.terminalesTotales.terminalesActivos[indexTerminal] = active;
-
-                    //Paramos el audio teclear
-                    teclearTerminalSound.stop(STOP_MODE.IMMEDIATE);
-                    //Sonido de confirmacion
-                    AudioManager.instancia.PlayOneShot(FMODEvent.instancia.confirmTerminal);
-
+                    if (downloadBar.fillAmount < 1)
+                    {
+                        StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+                        downloadBar.fillAmount = 0;
+                        //Parar el tecleado y el conteo
+                        teclearTerminalSound.stop(STOP_MODE.IMMEDIATE);
+                        onceTeclearSound = 0;
+                    }
                 }
             }
-            
+            else
+            {
+                seePlayer = false;
+                playerOcultar.SeeByAction(seePlayer);
+                iconItem.enabled = false;
+
+                contorno.SetActive(false);
+
+                //TotalTerminales.terminalesTotales.terminalesActivados++;
+
+                //active = true;
+                //TotalTerminales.terminalesTotales.terminalesActivos[indexTerminal] = active;
+
+                //Paramos el audio teclear
+                teclearTerminalSound.stop(STOP_MODE.IMMEDIATE);
+                //Sonido de confirmacion
+                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.confirmTerminal);
+
+                completarPortatil.ComprobarTerminales();
+
+            }
+
+
+
+
         }
         else
         {
             if (downloadBar.fillAmount < 1)
             {
                 contorno.SetActive(false);
-                animExclamacion.enabled = false;
-                exclamacionMark.enabled = false;
                 downloadBar.fillAmount = 0;
 
                 //Parar el tecleado y resetear
@@ -211,7 +224,7 @@ public class Portatil_Info : MonoBehaviour
         {
             armaPlayer.enabled = true;
             seePlayer = false;
-            player.SeeByAction(seePlayer);
+            playerOcultar.SeeByAction(seePlayer);
             restaurarArmaLayer++;
         }
     }

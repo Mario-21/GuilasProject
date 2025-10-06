@@ -153,6 +153,8 @@ public class Somnolencia : MonoBehaviour
     {
         if (soldierLife.vida <= 0)
         {
+            soldado.animHead.SetBool("Somnolencia", false);
+            soldado.animHead.SetBool("Muerte", true);
             this.enabled = false;
         }
     }

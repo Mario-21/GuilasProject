@@ -13,6 +13,7 @@ public class BloquearMovimientoPlayer : MonoBehaviour
     public ChangeWeapon conditionToChangeWeapon;
     public Stairs_Hidden stairs_Hidden;
     public Vision visionMode;
+    [HideInInspector] public Rigidbody2D playerRB;
 
     [Header("Elemento Menu")]
     Inventory inventory;
@@ -28,7 +29,7 @@ public class BloquearMovimientoPlayer : MonoBehaviour
         itemCreate = FindObjectOfType<CreateObject>();
         stairs_Hidden = FindObjectOfType<Stairs_Hidden>();
         visionMode = FindObjectOfType<Vision>();
-        
+        playerRB = player.GetComponent<Rigidbody2D>();
     }
 
     public void BloquearMovPlayer()
@@ -44,7 +45,7 @@ public class BloquearMovimientoPlayer : MonoBehaviour
         player.playerStepsGrass.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         //Deactive Player
         player.enabled = false;
-        player.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+        playerRB.velocity = new Vector2(0f, 0f);
         player.animBodyP.SetBool("Player_Caminar", false);
         //Deactivate Pistol
         pistol.activarDisparo = false;

@@ -46,13 +46,14 @@ public class RocksFall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) SpawnRandomRock();
+        SpawnRandomRock();
     }
     void SpawnRandomRock()
     {
         if(timeRocksFall < timeRocksFallEnds)
         {
-            if(onceRumblingSFX < 1)
+            StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+            if (onceRumblingSFX < 1)
             {
                 rumblingInstance.start();
                 onceRumblingSFX++;
@@ -87,7 +88,7 @@ public class RocksFall : MonoBehaviour
         {
             rumblingInstance.stop(STOP_MODE.ALLOWFADEOUT);
             cmCamera_1.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0;
-            StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+            this.enabled = false;
         }
     }
 }

@@ -12,13 +12,18 @@ public class OpenReforcedDoor : MonoBehaviour
     [HideInInspector] public int keys;
     public int totalKeys;
     [Header("Sonido Desbloquear")]
+    [SerializeField] SpriteRenderer puertaEstado;
     [SerializeField] EventReference unlockDoor;
     int unlockCheck;
     
 
     void Start()
     {
-        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) doorClose.enabled = true;
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) 
+        {
+            puertaEstado.color = Color.green;
+            doorClose.enabled = true;
+        }
     }
 
     // Update is called once per frame
@@ -37,6 +42,7 @@ public class OpenReforcedDoor : MonoBehaviour
                 AudioManager.instancia.PlayOneShot(unlockDoor);
                 unlockCheck++;
             }
+            puertaEstado.color = Color.green;
             doorClose.enabled = true;
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
         }

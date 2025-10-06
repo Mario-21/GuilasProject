@@ -10,7 +10,7 @@ public class Ghost : MonoBehaviour
     public GameObject ghost;
     public float timeGhostLimit;
     public float timeGhost;
-    bool ghostOn;
+    public bool ghostOn;
 
     [Header("Ghost SFX")]
     [SerializeField] EventReference ghostSFX;
@@ -45,13 +45,6 @@ public class Ghost : MonoBehaviour
                 ghost.SetActive(false);
                 StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
             }
-        }
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Pantalla"))
-        {
-            ghostOn = true;
         }
     }
 }
