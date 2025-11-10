@@ -22,6 +22,17 @@ public class Demo_Turnos
             }
         }
     }
+    public virtual void DescansoSinTurnos(List<SoldierLife> soldados)
+    {
+        for (int i = 0; i < soldados.Count; i++)
+        {
+            if (soldados[i].vida > 0)
+            {
+                soldados[i].gameObject.SetActive(false);
+                //Debug.Log("Este Soldado esta vivo " + soldados[i].name);
+            }
+        }
+    }
 
 
     /// <summary>

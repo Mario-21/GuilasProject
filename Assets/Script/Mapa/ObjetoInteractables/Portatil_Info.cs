@@ -21,13 +21,13 @@ public class Portatil_Info : MonoBehaviour
     [Header("Barra Data")]
     public int indexTerminal;
     public Image downloadBar;
-    public SpriteRenderer screenLight;
+    //public SpriteRenderer screenLight;
     public GameObject contorno;
 
     //Estas 3 variables me dan igual
     bool infoCompiled;
     bool active;
-    public int numeroDeTerminalesTotales;
+    public int numeroDeTerminalesTotales; //Eliminar
 
 
     [Header("Completar Tarea")]
@@ -41,6 +41,7 @@ public class Portatil_Info : MonoBehaviour
 
     EventInstance teclearTerminalSound;
     int onceTeclearSound;
+    int confirmSound;
 
     CompletarPortatiles completarPortatil;
 
@@ -72,6 +73,8 @@ public class Portatil_Info : MonoBehaviour
         //CollectAllInfo();
         //ActiveYourTerminal();
         
+
+        /////////////////////////////////// Cuando presionas el Action el icono debe desaparecer mientras la barra del contorno de la informacion se llena
         
         //NOTA
         //quiza el desactivar el script hay que cambiar lo mas adelantea por SceneManager.GetActiveScene().buildIndex < entreNiveles[1]
@@ -91,11 +94,13 @@ public class Portatil_Info : MonoBehaviour
 
     void ActiveYourTerminal()
     {
+        /*
         if (active) 
         { 
             screenLight.color = Color.green; 
             this.enabled = false;
         };
+        */
     }
 
     void CanHacking()
@@ -118,15 +123,15 @@ public class Portatil_Info : MonoBehaviour
                     //Deja de verse la exclamacion y comienza a visualizar se el progreso de la descargar
                     contorno.SetActive(true);
                     downloadBar.fillAmount += 0.01f;
+                    iconItem.enabled = false;
+                    iconItem.iconoZone.SetActive(false);
 
                     seePlayer = true;
                     playerOcultar.SeeByAction(seePlayer);
                     //Mientras estes usando el terminal no puedes usar el arma
                     //Guardar Arma en caso de comenzar el hackeo con el arma desechada
-                    armaPlayer.activarDisparo = false;
-                    armaPlayer.enabled = false;
                     #region
-                    /*
+                    
                     if (armaPlayer.activarDisparo) 
                     {
                         AudioManager.instancia.PlayOneShot(FMODEvent.instancia.outWeapon);
@@ -139,7 +144,7 @@ public class Portatil_Info : MonoBehaviour
                     armaPlayer.mira.localPosition = new Vector2(0f, armaPlayer.mira.localPosition.y);
                     armaPlayer.mira.gameObject.GetComponent<SpriteRenderer>().enabled = false;
                     armaPlayer.brazo.transform.rotation = Quaternion.identity;
-                    */
+                    
                     #endregion
 
                     //Reproducir sonido del tecleado
@@ -155,13 +160,15 @@ public class Portatil_Info : MonoBehaviour
                     //Cuando dejes de usar el terminal habilitas el arma
                     armaPlayer.enabled = true;
 
+                    iconItem.enabled = true;
+                    iconItem.iconoZone.SetActive(true);
+
                     seePlayer = false;
                     playerOcultar.SeeByAction(seePlayer);
 
                     contorno.SetActive(false);
                     if (downloadBar.fillAmount < 1)
                     {
-                        StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
                         downloadBar.fillAmount = 0;
                         //Parar el tecleado y el conteo
                         teclearTerminalSound.stop(STOP_MODE.IMMEDIATE);
@@ -174,8 +181,9 @@ public class Portatil_Info : MonoBehaviour
                 seePlayer = false;
                 playerOcultar.SeeByAction(seePlayer);
                 iconItem.enabled = false;
-
                 contorno.SetActive(false);
+
+                StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
 
                 //TotalTerminales.terminalesTotales.terminalesActivados++;
 
@@ -185,9 +193,12 @@ public class Portatil_Info : MonoBehaviour
                 //Paramos el audio teclear
                 teclearTerminalSound.stop(STOP_MODE.IMMEDIATE);
                 //Sonido de confirmacion
-                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.confirmTerminal);
-
-                completarPortatil.ComprobarTerminales();
+                if(confirmSound < 1)
+                {
+                    AudioManager.instancia.PlayOneShot(FMODEvent.instancia.confirmTerminal);
+                    completarPortatil.ComprobarTerminales();
+                    confirmSound++;
+                }
 
             }
 

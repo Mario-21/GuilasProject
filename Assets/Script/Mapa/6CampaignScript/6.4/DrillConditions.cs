@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class DrillConditions : MonoBehaviour
 {
+    public int indexMod;
+    [Header("Condiciones Totales")]
     [SerializeField] int actualConditionsOn;
     public int totalConditions;
     [SerializeField] List<int> conditionsDrill;
-    [Header("Success Conditions")]
-    [SerializeField] GameObject success;
-    [SerializeField] GameObject oldItem;
+    [Header("Acción que quieres realizar")]
+    public GameObject objetoAccion;
+    public enum Acción
+    {
+        Aparecer,
+        Desaparecer,
+        Default
+    }
+    public Acción accionARealizar;
+
     private void Start()
     {
-        ConditionsCyclo();
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
+        {
+            AccionTrasFinalizarCondiciones();
+        }
     }
     private void Update()
     {
@@ -22,6 +34,7 @@ public class DrillConditions : MonoBehaviour
     {
         for (int i = 0; i < conditionsDrill.Count; i++)
         {
+            Debug.Log("Docenas de Listas");
             if (StatusGameobjectsVariables.statusGameobject.modificacion[conditionsDrill[i]].modificacion)
             {
                 actualConditionsOn++;
@@ -30,9 +43,23 @@ public class DrillConditions : MonoBehaviour
         }
         if (actualConditionsOn >= totalConditions)
         {
-            success.SetActive(true);
-            oldItem.SetActive(false);
-            this.enabled = false;
+            AccionTrasFinalizarCondiciones();
         }
+    }
+    void AccionTrasFinalizarCondiciones()
+    {
+        StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+        switch (accionARealizar)
+        {
+            case Acción.Aparecer:
+                objetoAccion.SetActive(true);
+                break;
+            case Acción.Desaparecer:
+                objetoAccion.SetActive(false);
+                break;
+            case Acción.Default:
+                break;
+        }
+        this.enabled = false;
     }
 }

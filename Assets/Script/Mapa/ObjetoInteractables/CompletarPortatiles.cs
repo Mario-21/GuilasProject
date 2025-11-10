@@ -34,10 +34,12 @@ public class CompletarPortatiles : MonoBehaviour
         {
             if (StatusGameobjectsVariables.statusGameobject.modificacion[terminalesIndex[e]].modificacion)
             {
+                Debug.Log("Terminal Index Removido" + terminalesIndex[e]);
                 numActualTerminales++;
                 //Esto se hace para cuando lo ejecutes en el update, no te vuelva a contar uno que ya tengas 
                 //has obtenido.
-                terminalesIndex.Remove(e);
+                terminalesIndex.Remove(terminalesIndex[e]);
+               
             }
         }
     }
