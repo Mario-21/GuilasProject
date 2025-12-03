@@ -12,6 +12,7 @@ public class B8Arma : MonoBehaviour
     public Transform mira;
     public Transform brazo;
     public SpriteRenderer b8Sprite;
+    public SpriteRenderer bCatCintura;
     [Header("Municion Text")]
     public int municionTotal = 1;
     [Header("Pistol")]
@@ -60,6 +61,7 @@ public class B8Arma : MonoBehaviour
         if (activarB8)
         {
             b8Sprite.enabled = true;
+            bCatCintura.enabled = false;
             //Mira sprite, no objeto
             mira.gameObject.GetComponent<SpriteRenderer>().enabled = true;
             mira.position = pruebaCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -pruebaCamera.transform.position.z));
@@ -80,6 +82,8 @@ public class B8Arma : MonoBehaviour
         {
             Debug.Log("No B8");
             if(municionTotal <= 0) b8Sprite.enabled = false;
+            //pistolCinturaSprite.enabled = true;
+            //bCatCintura.enabled = true;
             mira.localPosition = new Vector2(0f, mira.localPosition.y);
             mira.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             brazo.transform.rotation = Quaternion.identity;

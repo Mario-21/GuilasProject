@@ -21,6 +21,7 @@ public class VidaPlayer : MonoBehaviour
     BloquearMovimientoPlayer bloquear;
     [Header("Recovery ammo")]
     public B8Arma b8Weapon;
+    public ChangeWeapon changeWeapon;
 
     [Header("Animacion Jugador")]
     public Animator animPlayerBody;
@@ -124,6 +125,24 @@ public class VidaPlayer : MonoBehaviour
             }
         }
     }
+    void EstadoBCatArma()
+    {
+        //Si esto no funciona colocar un bool que active una variable en el b8 que haga todo esto y cuando termine la vuelve a colocar en falso y solo se active al colisionar con el b8
+        //Hay que detectar el changeweapon ya que cuando lanzes la BCat SIEMPRE va a quedar en falso el activarb8
+
+        //ChangeWeapon.changeweapon = B8
+        //!ChangeWeapon.changeweapon = Pistola
+
+        if (!changeWeapon.changeWeapon)
+        {
+            b8Weapon.bCatCintura.enabled = true;
+        }
+        else
+        {
+            b8Weapon.gameObject.SetActive(true);
+            b8Weapon.b8Sprite.enabled = true;
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("BulletEnemy")) 
@@ -149,6 +168,7 @@ public class VidaPlayer : MonoBehaviour
         {
             if (SpecialWeapons.specialW.b8)
             {
+                EstadoBCatArma();
                 AudioManager.instancia.PlayOneShot(FMODEvent.instancia.b8Recoger);
                 b8Weapon.municionTotal++;
                 Destroy(collision.gameObject);

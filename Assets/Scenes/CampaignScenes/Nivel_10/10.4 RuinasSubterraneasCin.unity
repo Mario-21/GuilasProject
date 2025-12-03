@@ -3403,6 +3403,7 @@ PrefabInstance:
     - {fileID: 2814395432731696369, guid: 259ec1f32677a3248b8f3f73b866ca1b, type: 3}
     - {fileID: 2814395432731696368, guid: 259ec1f32677a3248b8f3f73b866ca1b, type: 3}
     - {fileID: 2814395432731696371, guid: 259ec1f32677a3248b8f3f73b866ca1b, type: 3}
+    - {fileID: 2378940660353032876, guid: 259ec1f32677a3248b8f3f73b866ca1b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 259ec1f32677a3248b8f3f73b866ca1b, type: 3}
 --- !u!4 &120707192 stripped
 Transform:
@@ -4200,6 +4201,12 @@ MonoBehaviour:
   cambiarBrazo: 0
   brazoPlayer: {fileID: 0}
   brazoBasePlayer: {fileID: 0}
+--- !u!4 &248692472 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5339671697568197505, guid: 01eaafaf0b23b5d418db25ecf43d3c96,
+    type: 3}
+  m_PrefabInstance: {fileID: 248692460}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &265800478
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7872,6 +7879,7 @@ PrefabInstance:
     - {fileID: 2814395432731696369, guid: 259ec1f32677a3248b8f3f73b866ca1b, type: 3}
     - {fileID: 2814395432731696368, guid: 259ec1f32677a3248b8f3f73b866ca1b, type: 3}
     - {fileID: 2814395432731696371, guid: 259ec1f32677a3248b8f3f73b866ca1b, type: 3}
+    - {fileID: 2378940660353032876, guid: 259ec1f32677a3248b8f3f73b866ca1b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 259ec1f32677a3248b8f3f73b866ca1b, type: 3}
 --- !u!4 &902147864 stripped
 Transform:
@@ -9062,6 +9070,7 @@ GameObject:
   - component: {fileID: 1201087936}
   - component: {fileID: 1201087935}
   - component: {fileID: 1201087934}
+  - component: {fileID: 1201087937}
   m_Layer: 0
   m_Name: Vultures
   m_TagString: Untagged
@@ -9098,7 +9107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8a27e95cdff381499348bad388da8fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerWeapon: {fileID: 0}
+  playerWeapon: {fileID: 248692465}
   ammoRecovery: 3
   indexAmmo: 0
 --- !u!114 &1201087935
@@ -9140,6 +9149,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7931671, y: 0.4923077}
   m_EdgeRadius: 0
+--- !u!114 &1201087937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201087932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52fa5d42873ff443afff29891cf4628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconItem: {fileID: 8653158090913095385, guid: 9709c1c9f1f43bd4bb3b87dd7292e524,
+    type: 3}
+  iconPickUp: {fileID: 21300000, guid: 3a3d02d1e8a8cd7429bf67beb1f94be3, type: 3}
+  iconeZone: {fileID: 248692472}
 --- !u!1 &1211299772
 GameObject:
   m_ObjectHideFlags: 0
@@ -10068,6 +10093,8 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 2814395432731696368, guid: 259ec1f32677a3248b8f3f73b866ca1b, type: 3}
     - {fileID: 2814395432731696369, guid: 259ec1f32677a3248b8f3f73b866ca1b, type: 3}
+    - {fileID: 2378940660353032876, guid: 259ec1f32677a3248b8f3f73b866ca1b, type: 3}
+    - {fileID: 2814395432731696371, guid: 259ec1f32677a3248b8f3f73b866ca1b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 259ec1f32677a3248b8f3f73b866ca1b, type: 3}
 --- !u!4 &1293189249 stripped
 Transform:

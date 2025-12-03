@@ -174,7 +174,7 @@ public class SoldierLife : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("ObjetoCaer"))
+        if (collision.gameObject.CompareTag("ObjetoCaer") || collision.gameObject.CompareTag("B8"))
         {
             Daño(3);
             status.cascoSoldado.SetActive(false);

@@ -13,7 +13,7 @@ public class CompletarPortatiles : MonoBehaviour
 
     void Start()
     {
-        CompletarTerminales();
+        ComprobarTerminales();
     }
 
     // Update is called once per frame

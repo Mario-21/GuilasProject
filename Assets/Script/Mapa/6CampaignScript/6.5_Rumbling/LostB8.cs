@@ -8,7 +8,7 @@ public class LostB8 : MonoBehaviour
     [SerializeField] ArmaController weaponPlayer;
     void Start()
     {
-        B8Rota();
+        Invoke("B8Rota", 0.5f);
     }
     void B8Rota()
     {

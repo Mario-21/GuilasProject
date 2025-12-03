@@ -8,12 +8,14 @@ public class IncreaseAmmo : MonoBehaviour
     [SerializeField] ArmaController playerWeapon;
     public int ammoRecovery;
     public int indexAmmo;
+    SpawnItemIcon spawnIconAmmo;
     private void Awake()
     {
         player = GetComponent<PlayerHere>();
     }
     void Start()
     {
+        spawnIconAmmo = GetComponent<SpawnItemIcon>();
         if (AmmoRecoveryList.ammoFromLevel.ammo[indexAmmo]) this.gameObject.SetActive(false); 
     }
 
@@ -30,6 +32,7 @@ public class IncreaseAmmo : MonoBehaviour
             {
                 AudioManager.instancia.PlayOneShot(FMODEvent.instancia.recoveryAmmo);
                 playerWeapon.municion += ammoRecovery;
+                spawnIconAmmo.SpawnIcon();
                 this.gameObject.SetActive(false);
                 AmmoRecoveryList.ammoFromLevel.ammo[indexAmmo] = true;
             }

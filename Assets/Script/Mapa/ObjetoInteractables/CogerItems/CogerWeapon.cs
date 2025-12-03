@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CogerWeapon : MonoBehaviour
 {
+    public int indexMod;
     PlayerHere player;
+    [SerializeField] SpriteRenderer bCatCintura;
     private void Awake()
     {
         player = GetComponent<PlayerHere>();
@@ -23,8 +25,10 @@ public class CogerWeapon : MonoBehaviour
     {
         if (Input.GetButtonDown("Take"))
         {
+            StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
             AudioManager.instancia.PlayOneShot(FMODEvent.instancia.b8Recoger);
             SpecialWeapons.specialW.b8 = true;
+            bCatCintura.enabled = true;
             this.gameObject.SetActive(false);
         }
     }

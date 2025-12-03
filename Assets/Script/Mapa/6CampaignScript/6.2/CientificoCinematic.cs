@@ -6,116 +6,70 @@ using Cinemachine;
 public class CientificoCinematic : MonoBehaviour
 {
     public int indexMod;
-    [Header("Player Data Scene")]
-    [SerializeField]BloquearMovimientoPlayer playerMov;
-    [SerializeField]Transform player;
+    [Header("Regresar Escena Anterior")]
+    public int checkpointSpawn;
+    public int siguienteEscena;
     [Header("Scientific Data Scene")]
     [SerializeField] SoldadoNormal scientific;
-    [Header("Camera")]
-    public CinemachineVirtualCamera mainCamera;
     [Header("Actions in Scene")]
-    [SerializeField]Polipasto_Normal plataforma_1;
     public GameObject blackScreen;
     enum Scientific_Scenes
     {
         Start_Scene,
-        Middle_Scene_1,
-        Middle_Scene_2,
+        Middle_Scene,
         End_Scene,
     }
 
     Scientific_Scenes scientific_Cinematic;
 
-    bool beginCinematic;
-    float timeNextScene;
+    float tiempoEscena;
+    [Header("Tiempo Transcurso Escena")]
+    public float duracionEntreEscena;
 
-    void Start()
-    {
-        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) FinishScientificCinematic();
-    }
 
     // Update is called once per frame
     private void Update()
     {
-        ScientificScript();
-        //The first and the last scenes are the only that made the same always, theorycally 
+        CientificoCinematica();
     }
-    void ScientificScript()//GAmeobject as an objective to Camera
+    void CientificoCinematica()
     {
-        if (beginCinematic && playerMov.player.onGround)
+        switch (scientific_Cinematic)
         {
-            switch (scientific_Cinematic)
-            {
-                //Begin Cinematic: inmobilize the Player, transition and the last change camera 
-                case Scientific_Scenes.Start_Scene:
-                    playerMov.BloquearMovPlayer();
-                    AnimationHud.detectar_echar.SetBool("Transicion", true);
-                    if(timeNextScene >= 3)
+            case Scientific_Scenes.Start_Scene:
+                //Espera el tiempo necesario a que el soldado se active
+                if (tiempoEscena >= duracionEntreEscena)
+                {
+                    scientific.enabled = true;
+                    //Cuando el soldado llega a la ubicación indicada "cerrará" la puerta de golpe
+                    if (scientific.transform.position.x == scientific.ubicacionesDirigir[0].position.x)
                     {
-                        mainCamera.Follow = scientific.transform;
-                        scientific_Cinematic = Scientific_Scenes.Middle_Scene_1;
-                        
+                        AudioManager.instancia.PlayOneShot(FMODEvent.instancia.puertaHidden);
+                        blackScreen.SetActive(true);
+                        scientific_Cinematic = Scientific_Scenes.Middle_Scene;
+                        tiempoEscena = 0;
                     }
-                    else timeNextScene += Time.deltaTime;
-                    break;
-                //And action to continue the Scene (this is when event suscribe, like events)
-                case Scientific_Scenes.Middle_Scene_1:
-                    Debug.Log("Second Stage");
-                    plataforma_1.enabled = true;
-                    AnimationHud.detectar_echar.SetBool("Transicion", false);
-                    if(timeNextScene <= 0)
-                    {
-                        scientific_Cinematic = Scientific_Scenes.Middle_Scene_2;
-                        
-                    }
-                    else timeNextScene -= Time.deltaTime;
-                    break;
-                //Continue the action
-                case Scientific_Scenes.Middle_Scene_2:
-                    Debug.Log("Third Stage");
-                    if (timeNextScene >= 2)
-                    {
-                        scientific.enabled = true;
-                        if (scientific.transform.position.x == scientific.ubicacionesDirigir[0].position.x)
-                        {
-                            AudioManager.instancia.PlayOneShot(FMODEvent.instancia.puertaHidden);
-                            blackScreen.SetActive(true);
-                            //Add Sound of door close with lock
-                            AnimationHud.detectar_echar.SetBool("Transicion", true);
-                            scientific_Cinematic = Scientific_Scenes.End_Scene;
-                            
-                        }
-                    }
-                    else timeNextScene += Time.deltaTime;
-                    break;
-                //Transition is true, you can move; the GameObjectVariable is true and Desactive the Cinematic Object
-                case Scientific_Scenes.End_Scene:
-                    Debug.Log("Fourth Stage");
-                    mainCamera.Follow = player;
-                    if(timeNextScene <= 0)
-                    {
-                        AudioManager.instancia.PlayOneShot(FMODEvent.instancia.cerrar_Abrir_Lock);
-                        blackScreen.SetActive(false);
-                        playerMov.HabilitarMovPlayer();
-                        AnimationHud.detectar_echar.SetBool("Transicion", false);
-                        StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
-                        scientific.gameObject.SetActive(false);
-                        this.gameObject.SetActive(false);
-                        
-                    }
-                    else timeNextScene -= Time.deltaTime;
-                    break;
-            }
+
+                }
+                else tiempoEscena += Time.deltaTime;
+                break;
+            case Scientific_Scenes.Middle_Scene:
+                Debug.Log("Second Stage");
+                //Colocará la variable correspondiente y reproducirá un sonido de cerrado de puerta.
+                if(tiempoEscena >= 1)
+                {
+                    AudioManager.instancia.PlayOneShot(FMODEvent.instancia.cerrar_Abrir_Lock);
+                    StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+                    scientific_Cinematic = Scientific_Scenes.End_Scene;
+                }
+                else tiempoEscena += Time.deltaTime;
+                break;
+            case Scientific_Scenes.End_Scene:
+                //Regresas a la escena en la que estabas
+                CheckPointController.numeroCheckPoint = checkpointSpawn;
+                EstructuraNiveles.nivel = siguienteEscena;
+                AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
+                break;
         }
-    }
-    void FinishScientificCinematic()
-    {
-        plataforma_1.enabled = true;
-        scientific.gameObject.SetActive(false);
-        this.gameObject.SetActive(false);
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player")) beginCinematic = true;
-    }
+    } 
 }

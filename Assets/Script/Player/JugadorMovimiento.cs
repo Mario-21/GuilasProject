@@ -278,15 +278,16 @@ public class JugadorMovimiento : MonoBehaviour
     {
         if(rb.velocity.y < 0) //Si estas cayendo
         {
-            if (!subirEscalera.zonaEscalada) rb.gravityScale = fallMultiplier;
+            //if (!subirEscalera.zonaEscalada)
+            if (!subirEscalera.escalar) rb.gravityScale = fallMultiplier;
         }
         else if(rb.velocity.y > 0 && !Input.GetButtonDown("Jump")) //Si acabas de saltar
         {
             if (almacenBotonJump.Count >= 1) extraJump++;
             else if (almacenBotonJump.Count < 1 && tiempoEnAire > tiempoEnAireLimit) {extraJump++;}
 
-
-            if (!subirEscalera.zonaEscalada) rb.gravityScale = lowJumpFallMultiplier;
+            //if (!subirEscalera.zonaEscalada)
+            if (!subirEscalera.escalar) rb.gravityScale = lowJumpFallMultiplier;
         }
         else
         {

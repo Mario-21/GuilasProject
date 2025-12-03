@@ -61,7 +61,8 @@ public class Portatil_Info : MonoBehaviour
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
             iconItem.enabled = false;
-            //Comprobar esto una vez 
+            //Comprobar esto una vez
+            pantallaPortatil.sprite = pantallaPortatilCompleta;
             this.enabled = false;
         }
         teclearTerminalSound = AudioManager.instancia.CreateEventInstance(FMODEvent.instancia.teclear);
@@ -185,6 +186,8 @@ public class Portatil_Info : MonoBehaviour
 
                 StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
 
+                //Cambiar la pantalla de Rojo a Verde una vez completado
+                pantallaPortatil.sprite = pantallaPortatilCompleta;
                 //TotalTerminales.terminalesTotales.terminalesActivados++;
 
                 //active = true;

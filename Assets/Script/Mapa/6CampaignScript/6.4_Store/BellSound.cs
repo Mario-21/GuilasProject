@@ -1,9 +1,14 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using FMODUnity;
 
 public class BellSound : MonoBehaviour
 {
     public int indexMod;
+    public EventReference sound;
     bool bellSound;
+
 
     int soundOnlyOne;
     void Start()
@@ -21,7 +26,7 @@ public class BellSound : MonoBehaviour
             if(soundOnlyOne < 1)
             {
                 //Reproduce the audioCLip BellSound only once 
-                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.bell);
+                AudioManager.instancia.PlayOneShot(sound);
                 soundOnlyOne++;
             }
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;

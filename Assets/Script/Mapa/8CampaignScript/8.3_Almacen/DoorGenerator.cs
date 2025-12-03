@@ -6,6 +6,10 @@ using FMODUnity;
 public class DoorGenerator : MonoBehaviour
 {
     public int indexMod;
+    [Header("Iconos Info")]
+    public GameObject iconoZone;
+    [SerializeField] SpriteRenderer iconeZoneSprite;
+    [SerializeField] Sprite icon;
     [Header("Generator Info")]
     [SerializeField] SpriteRenderer luzGenerator;
     [Header("Door Info")]
@@ -20,6 +24,7 @@ public class DoorGenerator : MonoBehaviour
 
     bool onDoor;
     int reproduceAudio;
+    bool iconSee;
 
     void Start()
     {
@@ -35,6 +40,8 @@ public class DoorGenerator : MonoBehaviour
     {
         if (player.playerImHere)
         {
+            iconeZoneSprite.sprite = icon;
+            iconoZone.SetActive(true);
             if (Input.GetButtonDown("Action"))
             {
                 AudioManager.instancia.PlayOneShot(FMODEvent.instancia.botonGeneral);
@@ -45,6 +52,7 @@ public class DoorGenerator : MonoBehaviour
         {
             OpenDoorWithGenerator();
             DoorGeneratorSound();
+            iconoZone.SetActive(false);
             this.enabled = false;
         }
     }
@@ -67,6 +75,13 @@ public class DoorGenerator : MonoBehaviour
         {
             AudioManager.instancia.PlayOneShot(sonidoOpenDoor);
             reproduceAudio++;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            iconoZone.SetActive(false);
         }
     }
 }

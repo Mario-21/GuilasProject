@@ -6,12 +6,17 @@ public class BestWeapon : MonoBehaviour
 {
     [SerializeField] GameObject bestWeapon;
     [SerializeField] ArmaController weaponPlayer;
-    void Start()
+
+    private void Start()
     {
-        //Spawn Besto Weapon B8
-        if(weaponPlayer.municion <= 0 && !SpecialWeapons.specialW.b8)
+        Invoke("SpawnBestWeapon", 1.0f);
+    }
+    void SpawnBestWeapon()
+    {
+        if (weaponPlayer.municion <= 0 && !SpecialWeapons.specialW.b8)
         {
             bestWeapon.SetActive(true);
+            //TAmbien podría hacerlo como en el foco que tarde unos segundos en el start invoke
         }
     }
 }

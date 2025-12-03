@@ -895,7 +895,7 @@ public class SoldadoNormal : MonoBehaviour
                 ListaAttackSoldado.modeSoldiers.activeAllAttackSoldiers = true;
                 barra.SetActive(false);
                 //Se corta la llamada
-                callPeople.Stop();
+                //callPeople.Stop();
                 tiempoNecesarioLlamar = 0;
             }
             else if(tiempoNecesarioLlamar < tiempoNecesarioLlamarLimite)
@@ -905,6 +905,7 @@ public class SoldadoNormal : MonoBehaviour
         }
         else
         {
+            callPeople.Stop();
             barra.SetActive(false);
         }
     }

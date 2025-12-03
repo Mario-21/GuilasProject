@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Somnolencia : MonoBehaviour
 {
+    [Header("Datos del Soldado Somnoliento")]
     public ParticleSystem particulasDormido;
+    public GameObject visionSoldado;
+    int conteoVisionOn;
     SoldadoNormal soldado;
     SoldierLife soldierLife;
     public int onSoldier;
@@ -52,6 +55,7 @@ public class Somnolencia : MonoBehaviour
             switch (sleepMode)
             {
                 case SleepMode.Somnolent:
+                    conteoVisionOn = 0;
                     //Si estoy parado que active el estado de somnolencia
                     if (!soldado.movimiento)
                     {
@@ -72,6 +76,11 @@ public class Somnolencia : MonoBehaviour
         {
             soldado.animHead.SetBool("Somnolencia", false);
             soldado.animHead.SetBool("Idle_Somnoliento", false);
+            if (conteoVisionOn < 1)
+            {
+                visionSoldado.SetActive(true);
+                conteoVisionOn++;
+            }
             ChangePatrolMov();
             particulasDormido.Stop();
             soldado.enabled = true;
@@ -86,6 +95,12 @@ public class Somnolencia : MonoBehaviour
         if (soldado.busquedaMode)
         {
             soldado.animHead.SetBool("Somnolencia", false);
+            //Esto se hace para que no este permanente visible y entre en conflicto con otros scripts
+            if(conteoVisionOn < 1)
+            {
+                visionSoldado.SetActive(true);
+                conteoVisionOn++;
+            }
         }
     }
 
@@ -96,6 +111,7 @@ public class Somnolencia : MonoBehaviour
         {
             soldado.animHead.SetBool("Idle_Somnoliento", false);
             soldado.animHead.SetBool("Somnolencia", true);
+            visionSoldado.SetActive(true);
             tiempoDespierto += Time.deltaTime; 
             tiempoSomnoliento = 0;
             soldado.animHead.SetBool("Dormido", false);
@@ -106,6 +122,7 @@ public class Somnolencia : MonoBehaviour
         { 
             tiempoSomnoliento += Time.deltaTime;
             tiempoDespierto = 0;
+            visionSoldado.SetActive(false);
             soldado.animHead.SetBool("Dormido", true);
         }
 

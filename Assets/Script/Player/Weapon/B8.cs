@@ -55,6 +55,8 @@ public class B8 : MonoBehaviour
         {
             b8.municionTotal++;
             Destroy(this.gameObject);
+            b8.gameObject.SetActive(true);
+            b8.b8Sprite.enabled = true;
         } 
     }
     private void OnCollisionEnter2D(Collision2D collision)

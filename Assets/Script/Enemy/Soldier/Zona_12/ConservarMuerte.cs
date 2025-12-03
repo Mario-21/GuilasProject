@@ -7,6 +7,10 @@ public class ConservarMuerte : MonoBehaviour
 {
     SoldierLife vidaSoldado;
     ActualStatus actualStatus;
+    VidaPlayer vidaPlayer;
+
+
+    bool confirmarPlayerDeath;
     private void Awake()
     {
         actualStatus = GetComponent<ActualStatus>();
@@ -14,6 +18,7 @@ public class ConservarMuerte : MonoBehaviour
     }
     void Start()
     {
+        vidaPlayer = FindObjectOfType<VidaPlayer>();
         //Si coincide con la escena actual aparece
         if(SoldierActiveInScene.instancia.soldiersStatus[actualStatus.iD].deathScene == SceneManager.GetActiveScene().buildIndex)
         {
@@ -36,6 +41,10 @@ public class ConservarMuerte : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(vidaPlayer.vidaActual <= 0)
+        {
+            confirmarPlayerDeath = true;
+        }
     }
     private void OnDestroy()
     {
@@ -47,7 +56,7 @@ public class ConservarMuerte : MonoBehaviour
         //Hasta que no hayas muerte y el soldado haya sido destruido al cambiar de escena imDead no contara como verdadero;
         //Tras pasar de escena si te lo establecera como muerto y no podrás volver almacenar la ubicación, porque solo puedes morir en una zona no en varias
         //NOTA: no se puede colocar imDead en el ActualStatus, porque lo ejecuta antes que ConservarMuertos haciendo que no almacene la escena en la que muere
-        if (vidaSoldado.vida <= 0 && !SoldierActiveInScene.instancia.soldiersStatus[actualStatus.iD].imDead)
+        if (vidaSoldado.vida <= 0 && !SoldierActiveInScene.instancia.soldiersStatus[actualStatus.iD].imDead && !confirmarPlayerDeath)
         {
             SoldierActiveInScene.instancia.soldiersStatus[actualStatus.iD].deathScene = SceneManager.GetActiveScene().buildIndex;
             SoldierActiveInScene.instancia.soldiersStatus[actualStatus.iD].imDead = true;

@@ -11,17 +11,17 @@ public class FallDamage : MonoBehaviour
     public int alturaDeath;
     public float alturaStartDaño;
     [Header("Registro Antiguo Altura")]
-    float registroAireAltura;
+    public float registroAireAltura;
     int registroAire;
     [Header("Registro Nuevio Altura")]
-    float registroSueloAltura;
+    public float registroSueloAltura;
     int registroSuelo;
     [Header("Altura Total")]
     public float alturaTotalCalculo;
     [Header("Porcentaje Daño")]
     float porcentajeDaño;
     [Header("Daño ")]
-    int daño;
+    public int daño;
     int registroDaño;
     [Header("Sound Fall Damage")]
     public EventReference boneBreak;
@@ -30,8 +30,6 @@ public class FallDamage : MonoBehaviour
     JugadorMovimiento playerMov;
     Rigidbody2D rg2DPlayer;
     Stairs_Hidden stairsPlayer;
-
-    
 
     private void Awake()
     {
@@ -59,7 +57,10 @@ public class FallDamage : MonoBehaviour
         {
             //Resetea el registroAire para que vuelva a calcular el daño, ya que las escaleras te frenan
             //Cuando toco el agua tambien debe resetea el aire
+            registroAireAltura = transform.position.y;
             registroAire = 0;
+            daño = 0;
+            
         }
         if(stairsPlayer.escalar && playerMov.onGround)
         {

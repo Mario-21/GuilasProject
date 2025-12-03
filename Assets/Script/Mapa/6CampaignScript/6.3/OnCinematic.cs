@@ -9,6 +9,7 @@ public class OnCinematic : MonoBehaviour
 
     public int sceneCatching;
     bool enabledEscaleraMano;
+    public bool segundosTriggersPlayer;
     float timeEnabled;
     private void Awake()
     {
@@ -20,9 +21,10 @@ public class OnCinematic : MonoBehaviour
     }
     void BeginScene()
     {
-        if (player.playerImHere)
+        if (player.playerImHere || segundosTriggersPlayer)
         {
-            if (Input.GetButtonDown("Fire2"))
+            Debug.Log("He entrado ha rango de la caja cinematica");
+            if (playerHiddenComp.imHidden)
             {
                 enabledEscaleraMano = true;
                 AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
@@ -36,6 +38,21 @@ public class OnCinematic : MonoBehaviour
             {
                 playerHiddenComp.enabled = false;
             }
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ropa"))
+        {
+            segundosTriggersPlayer = true;
+        }
+
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ropa"))
+        {
+            segundosTriggersPlayer = false;
         }
     }
 }

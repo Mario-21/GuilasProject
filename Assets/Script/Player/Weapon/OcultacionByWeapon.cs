@@ -16,7 +16,7 @@ public class OcultacionByWeapon : MonoBehaviour
     [Header("Soldier Fake")]
     public int layerEnemigo;
 
-    [HideInInspector] public bool visible;
+    public bool visible;
     
     void Start()
     {
