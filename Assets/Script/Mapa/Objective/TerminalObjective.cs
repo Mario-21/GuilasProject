@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class TerminalObjective : MonoBehaviour
 {
-    public int indexMod;
     [Header("What's Task")]
     public int taskWho;
+    [Header("Completar_Portatiles")]
+    [SerializeField] CompletarPortatiles completarPortatiles;
     void Start()
     {
         
@@ -15,7 +16,7 @@ public class TerminalObjective : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (TotalTerminales.terminalesTotales.carga)
+        if (completarPortatiles.numActualTerminales >= completarPortatiles.numTotalTerminales)
         {
             TaskWhoIAmTerminal();
         }

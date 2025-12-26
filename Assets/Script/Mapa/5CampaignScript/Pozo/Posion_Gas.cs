@@ -4,25 +4,23 @@ using UnityEngine;
 
 public class Posion_Gas : MonoBehaviour
 {
-    [SerializeField] VidaPlayer player;
-    [SerializeField] PutGasMask playerPutMask;
-    public int indexMod;
+    [SerializeField] ChangeSkinPlayer playerSkin;
+    public GameObject triggerGas;
     
-    PlayerHere playerHere;
-    private void Awake()
-    {
-        playerHere = GetComponent<PlayerHere>();
-    }
-    
+
     void Update()
     {
         GasPoisonDamage();
     }
     void GasPoisonDamage()
     {
-        if(playerHere.playerImHere && !playerPutMask.putMask)
+        if(!playerSkin.putSkin)
         {
-            player.Daño(0.5f);
+            triggerGas.SetActive(true);
+        }
+        else
+        {
+            triggerGas.SetActive(false);
         }
     }
 }

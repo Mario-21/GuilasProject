@@ -13,7 +13,7 @@ public class DamageWaterPosion : MonoBehaviour
     public float damagePoison;
 
     public int countDaño;
-    bool dañoPoison;
+    public bool dañoPoison;
     void Start()
     {
         
@@ -66,6 +66,13 @@ public class DamageWaterPosion : MonoBehaviour
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            dañoPoison = true;
+        }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {

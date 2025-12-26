@@ -15,8 +15,6 @@ public class CompletarPortatiles : MonoBehaviour
     {
         ComprobarTerminales();
     }
-
-    // Update is called once per frame
     void Update()
     {
         CompletarTerminales();
