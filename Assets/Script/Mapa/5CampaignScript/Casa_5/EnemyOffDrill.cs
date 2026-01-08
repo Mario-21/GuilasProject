@@ -22,6 +22,7 @@ public class EnemyOffDrill : MonoBehaviour
     }
     void OffDrill()
     {
+        /*
         if (EncenderTaladro.encender)
         {
             timeToOffDrill += Time.deltaTime;
@@ -35,6 +36,6 @@ public class EnemyOffDrill : MonoBehaviour
         {
             timeToOffDrill = 0;
             soldadoVigiaGenerador.ubicacionesDirigir[0] = ubiOriginal;
-        }
+        }*/
     }
 }

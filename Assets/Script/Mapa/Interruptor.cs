@@ -11,7 +11,7 @@ public class Interruptor : MonoBehaviour
     [SerializeField] Sprite offSwitch;
 
     [Header("Estado del Interruptor")]
-    [SerializeField] bool estadoInterruptor;
+    public bool estadoInterruptor;
     [SerializeField] SpriteRenderer luzEstadoSwitch;
 
     PlayerHere player;
@@ -25,6 +25,7 @@ public class Interruptor : MonoBehaviour
     void Update()
     {
         ChangeSwitch();
+        StatusSwitch();
     }
     void ChangeSwitch()
     {
@@ -33,19 +34,20 @@ public class Interruptor : MonoBehaviour
             if (Input.GetButtonDown("Action"))
             {
                 AudioManager.instancia.PlayOneShot(FMODEvent.instancia.botonGeneral);
-                switch (estadoInterruptor)
+                estadoInterruptor = !estadoInterruptor;
+                /*switch (estadoInterruptor)
                 {
                     case true:
-                        interruptor.sprite = offSwitch;
+                        //interruptor.sprite = offSwitch;
                         estadoInterruptor = false;
-                        luzEstadoSwitch.color = Color.red;
+                        //luzEstadoSwitch.color = Color.red;
                         break;
                     case false:
-                        interruptor.sprite = onSwitch;
+                        //interruptor.sprite = onSwitch;
                         estadoInterruptor = true;
-                        luzEstadoSwitch.color = Color.green;
+                        //luzEstadoSwitch.color = Color.green;
                         break;
-                }
+                }*/
             }
         }
     }

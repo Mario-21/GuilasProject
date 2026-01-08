@@ -6,77 +6,101 @@ using FMODUnity;
 public class EncenderTaladro : MonoBehaviour
 {
     PlayerHere herePlayer;
+    Interruptor interruptor;
+    int taladroEjecuciones;
+    [Header("Datos Soldado Enemigo")]
     [SerializeField] SoldierLife vidaSoldado;
+    float tiempoSoldadoEncender;
+    public float tiempoLimiteSoldadoEncender;
     bool enemyHere;
-    float timeToOnDrill_Enemy;
     //Quiza cambiar el static 
-    public static bool encender;
-    [SerializeField] List<ParticleSystem> particulasTaladro;
-
-    int terminarParticulas;
 
     [Header("Sound Effect")]
-    [SerializeField] List <StudioEventEmitter> emittersDrills;
-    [SerializeField] List<GameObject> itemEmisor;
+    [SerializeField] List <StudioEventEmitter> emisoresTaladros;
+    [SerializeField] List<GameObject> cabezaTaladros;
     [SerializeField] EventReference drillOn;
+    public int sonidoTaladro;
 
     private void Awake()
     {
-        encender = false;
+        //encender = false;
+        interruptor = GetComponent<Interruptor>();
         herePlayer = GetComponent<PlayerHere>();
     }
     private void Start()
     {
-        for(int e = 0; e < emittersDrills.Count; e++)
+        for(int e = 0; e < emisoresTaladros.Count; e++)
         {
-            emittersDrills[e] = AudioManager.instancia.InitializeEventEmitter(drillOn, itemEmisor[e]);
+            emisoresTaladros[e] = AudioManager.instancia.InitializeEventEmitter(drillOn, cabezaTaladros[e]);
         }
     }
     void Update()
     {
-        Encender_Taladro();
+        Funcionamiento_Taladro();
         Apagar_TaladroEnemy();
     }
     
-    void Encender_Taladro()
+    void Funcionamiento_Taladro()
     {
-        //Si estoy aqui
-        if (herePlayer.playerImHere)
+        //Encendido
+        if (interruptor.estadoInterruptor)
         {
-            //Puedo encender el generador
-            if (Input.GetButtonDown("Action"))
-            {
-                encender = !encender;
-                AudioManager.instancia.PlayOneShot(FMODEvent.instancia.botonGeneral);
-            }
+            Encender_TaladroVisual();
+            Encender_SonidoTaldro();
         }
-        //Si lo enciendo salen las particulas
-        if (encender)
-        {
-            if(terminarParticulas < 1)
-            {
-                for (int i = 0; i < particulasTaladro.Count; i++)
-                {
-                    Debug.Log("Permutar" + i);
-                    particulasTaladro[i].Play();
-                    if (i >= particulasTaladro.Count - 1) terminarParticulas++;
-                }
-            }
-        }
-        //Sino se paran las particulas
+        //Apagado
         else
         {
-            if(terminarParticulas > 0)
-            {
-                for (int w = 0; w < particulasTaladro.Count; w++)
-                {
-                    Debug.Log("No Permutar" + w);
-                    particulasTaladro[w].Stop();
-                    if (w >= particulasTaladro.Count - 1) terminarParticulas--;
-                }
-            }
+            Apagar_TaladroVisual();
+            Apagar_SonidoTaladro();
         }
 
+    }
+    void Encender_TaladroVisual()
+    {
+        if (taladroEjecuciones >= 1)
+        {
+            foreach (GameObject taladro in cabezaTaladros)
+            {
+                taladro.SetActive(true);
+                Debug.Log("Cabezas Taladro dentro");
+            }
+            taladroEjecuciones--;
+        }
+    }
+    void Apagar_TaladroVisual()
+    {
+        if(taladroEjecuciones < 1)
+        {
+            foreach(GameObject taladro in cabezaTaladros)
+            {
+                taladro.SetActive(false);
+                Debug.Log("Cabezas Taladro fuera");
+            }
+            taladroEjecuciones++;
+        }
+    }
+    void Apagar_SonidoTaladro()
+    {
+        if(sonidoTaladro < 1)
+        {
+            foreach (StudioEventEmitter emisor in emisoresTaladros)
+            {
+                emisor.Stop();
+            }
+            sonidoTaladro++;
+        }
+    }
+    void Encender_SonidoTaldro()
+    {
+        if (sonidoTaladro >= 1)
+        {
+            foreach (StudioEventEmitter emisor in emisoresTaladros)
+            {
+                emisor.Play();
+            }
+            sonidoTaladro--;
+        }
     }
     void Apagar_TaladroEnemy()
     {
@@ -84,17 +108,17 @@ public class EncenderTaladro : MonoBehaviour
         {
             if(vidaSoldado.vida > 0)
             {
-                timeToOnDrill_Enemy += Time.deltaTime;
-                if (timeToOnDrill_Enemy >= 1)
+                tiempoSoldadoEncender += Time.deltaTime;
+                if (tiempoSoldadoEncender >= tiempoLimiteSoldadoEncender)
                 {
-                    encender = false;
+                    interruptor.estadoInterruptor = false;
                 }
             }
 
         }
         else
         {
-            timeToOnDrill_Enemy = 0;
+            tiempoSoldadoEncender = 0;
         }
 
     }

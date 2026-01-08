@@ -1988,13 +1988,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   indexMod: 16
-  activador: {fileID: 1464212875}
+  activador: {fileID: 683070666}
   itemEarth:
   - {fileID: 1464212873}
   itemDownEarth:
   - {fileID: 1068967047}
   evento: {fileID: 558228770}
-  playerHere: {fileID: 1464212874}
+  playerHere: {fileID: 683070667}
   ap_Des_Obj: {fileID: 2119801210}
 --- !u!1001 &98504589
 PrefabInstance:
@@ -4328,6 +4328,102 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 673996227}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &683070664
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 683070665}
+  - component: {fileID: 683070668}
+  - component: {fileID: 683070667}
+  - component: {fileID: 683070666}
+  m_Layer: 0
+  m_Name: Trigger Abrir Caja
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &683070665
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683070664}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1464212872}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &683070666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683070664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d0217bba62133843bc2c3caa4b94736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagName: Cuerda
+  modificacion: 0
+  buttonOfItemUse: {fileID: 15778615}
+  sonidoAction:
+    Guid:
+      Data1: 581086983
+      Data2: 1079736928
+      Data3: 1276902031
+      Data4: 1168396746
+    Path: event:/SFX/Objetos_Interactivos/Herramientas/Palanca/Palanca_Use
+  emissorAction: {fileID: 0}
+  tipoSonido: 0
+--- !u!114 &683070667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683070664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03d1da2e7bdc6f04f94744e4500b4aa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerImHere: 0
+--- !u!61 &683070668
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683070664}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.004916191, y: 0.09396863}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 0.8, y: 0.8}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.4542122, y: 0.98793733}
+  m_EdgeRadius: 0
 --- !u!1 &689920376
 GameObject:
   m_ObjectHideFlags: 0
@@ -9058,69 +9154,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1464212871}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1464212874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464212873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03d1da2e7bdc6f04f94744e4500b4aa4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerImHere: 0
---- !u!114 &1464212875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464212873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d0217bba62133843bc2c3caa4b94736, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tagName: Cuerda
-  modificacion: 0
-  buttonOfItemUse: {fileID: 15778615}
-  sonidoAction:
-    Guid:
-      Data1: 581086983
-      Data2: 1079736928
-      Data3: 1276902031
-      Data4: 1168396746
-    Path: event:/SFX/Objetos_Interactivos/Herramientas/Palanca/Palanca_Use
-  emissorAction: {fileID: 0}
-  tipoSonido: 0
---- !u!61 &1464212876
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464212873}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.16601112, y: 0.09396863}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8, y: 0.8}
-    newSize: {x: 0.8, y: 0.8}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.1320224, y: 0.98793733}
-  m_EdgeRadius: 0
 --- !u!1 &1486355311
 GameObject:
   m_ObjectHideFlags: 0

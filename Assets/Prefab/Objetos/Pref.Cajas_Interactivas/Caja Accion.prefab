@@ -1,5 +1,101 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4756033101159155075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2646127733711589540}
+  - component: {fileID: 961305064758958073}
+  - component: {fileID: 2617100592264800618}
+  - component: {fileID: 4283955597913393778}
+  m_Layer: 0
+  m_Name: Trigger Abrir Caja
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2646127733711589540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4756033101159155075}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5063552877585348783}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &961305064758958073
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4756033101159155075}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0077114105, y: 0.36292273}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 0.8, y: 0.8}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.398594, y: 1.5258456}
+  m_EdgeRadius: 0
+--- !u!114 &2617100592264800618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4756033101159155075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03d1da2e7bdc6f04f94744e4500b4aa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerImHere: 0
+--- !u!114 &4283955597913393778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4756033101159155075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d0217bba62133843bc2c3caa4b94736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagName: Cuerda
+  modificacion: 0
+  buttonOfItemUse: {fileID: 0}
+  sonidoAction:
+    Guid:
+      Data1: 581086983
+      Data2: 1079736928
+      Data3: 1276902031
+      Data4: 1168396746
+    Path: event:/SFX/Objetos_Interactivos/Herramientas/Palanca/Palanca_Use
+  emissorAction: {fileID: 0}
+  tipoSonido: 0
 --- !u!1 &5063552876922921759
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,9 +485,6 @@ GameObject:
   - component: {fileID: 6339923950020789183}
   - component: {fileID: 4206520029440789061}
   - component: {fileID: 8604356419223405370}
-  - component: {fileID: 5063552877585348781}
-  - component: {fileID: 5063552877585348782}
-  - component: {fileID: 5063552877585348780}
   m_Layer: 9
   m_Name: Caja Cerrada
   m_TagString: Wood
@@ -409,7 +502,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2646127733711589540}
   m_Father: {fileID: 5063552877889678617}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -511,69 +605,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
---- !u!61 &5063552877585348781
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5063552877585348784}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0077114105, y: 0.36292273}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8, y: 0.8}
-    newSize: {x: 0.8, y: 0.8}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.398594, y: 1.5258456}
-  m_EdgeRadius: 0
---- !u!114 &5063552877585348782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5063552877585348784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03d1da2e7bdc6f04f94744e4500b4aa4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerImHere: 0
---- !u!114 &5063552877585348780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5063552877585348784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d0217bba62133843bc2c3caa4b94736, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tagName: Cuerda
-  modificacion: 0
-  buttonOfItemUse: {fileID: 0}
-  sonidoAction:
-    Guid:
-      Data1: 581086983
-      Data2: 1079736928
-      Data3: 1276902031
-      Data4: 1168396746
-    Path: event:/SFX/Objetos_Interactivos/Herramientas/Palanca/Palanca_Use
-  emissorAction: {fileID: 0}
-  tipoSonido: 0
 --- !u!1 &5063552877889678619
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,13 +651,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   indexMod: 11
-  activador: {fileID: 5063552877585348780}
+  activador: {fileID: 4283955597913393778}
   itemEarth:
   - {fileID: 5063552877585348784}
   itemDownEarth:
   - {fileID: 5063552876922921759}
   evento: {fileID: 0}
-  playerHere: {fileID: 5063552877585348782}
+  playerHere: {fileID: 2617100592264800618}
   ap_Des_Obj: {fileID: 0}
 --- !u!1 &5063552878252517078
 GameObject:

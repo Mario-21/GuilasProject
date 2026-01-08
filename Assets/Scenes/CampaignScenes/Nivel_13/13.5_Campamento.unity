@@ -11202,102 +11202,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &75853928
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 75853929}
-  - component: {fileID: 75853932}
-  - component: {fileID: 75853931}
-  - component: {fileID: 75853930}
-  m_Layer: 0
-  m_Name: Trigger Abrir Plunge Caja
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &75853929
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 75853928}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5063552878062306240}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &75853930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 75853928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d0217bba62133843bc2c3caa4b94736, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tagName: Mascara
-  modificacion: 0
-  buttonOfItemUse: {fileID: 909035920}
-  sonidoAction:
-    Guid:
-      Data1: 581086983
-      Data2: 1079736928
-      Data3: 1276902031
-      Data4: 1168396746
-    Path: event:/SFX/Objetos_Interactivos/Herramientas/Palanca/Palanca_Use
-  emissorAction: {fileID: 0}
-  tipoSonido: 0
---- !u!114 &75853931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 75853928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03d1da2e7bdc6f04f94744e4500b4aa4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerImHere: 0
---- !u!61 &75853932
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 75853928}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0077114105, y: 0.36292273}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8, y: 0.8}
-    newSize: {x: 0.8, y: 0.8}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.398594, y: 1.5258456}
-  m_EdgeRadius: 0
 --- !u!1001 &99195934
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15243,7 +15147,7 @@ PrefabInstance:
         type: 3}
       propertyPath: objetosDesaparecer.Array.data[1]
       value: 
-      objectReference: {fileID: 780170505}
+      objectReference: {fileID: 0}
     - target: {fileID: 6069811041435439789, guid: a66da26700f044b4aa4be3ecdbcf5583,
         type: 3}
       propertyPath: m_Name
@@ -23096,6 +23000,16 @@ PrefabInstance:
       propertyPath: objetcButtonInventory
       value: 
       objectReference: {fileID: 15778612}
+    - target: {fileID: 4283955597913393778, guid: f3d4700be95bce9478eeed40de1c5d80,
+        type: 3}
+      propertyPath: tagName
+      value: Mascara
+      objectReference: {fileID: 0}
+    - target: {fileID: 4283955597913393778, guid: f3d4700be95bce9478eeed40de1c5d80,
+        type: 3}
+      propertyPath: buttonOfItemUse
+      value: 
+      objectReference: {fileID: 909035920}
     - target: {fileID: 5063552876922921759, guid: f3d4700be95bce9478eeed40de1c5d80,
         type: 3}
       propertyPath: m_Name
@@ -23235,7 +23149,7 @@ PrefabInstance:
         type: 3}
       propertyPath: activador
       value: 
-      objectReference: {fileID: 780170507}
+      objectReference: {fileID: 780032303}
     - target: {fileID: 5063552877889678618, guid: f3d4700be95bce9478eeed40de1c5d80,
         type: 3}
       propertyPath: ap_Des_Obj
@@ -23245,7 +23159,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerHere
       value: 
-      objectReference: {fileID: 780170508}
+      objectReference: {fileID: 780032304}
     - target: {fileID: 5063552877889678618, guid: f3d4700be95bce9478eeed40de1c5d80,
         type: 3}
       propertyPath: itemEarth.Array.size
@@ -23255,7 +23169,7 @@ PrefabInstance:
         type: 3}
       propertyPath: itemEarth.Array.data[1]
       value: 
-      objectReference: {fileID: 780170505}
+      objectReference: {fileID: 780032302}
     - target: {fileID: 5063552877889678619, guid: f3d4700be95bce9478eeed40de1c5d80,
         type: 3}
       propertyPath: m_Name
@@ -23321,102 +23235,36 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 780032298}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &780170505
+--- !u!1 &780032302 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4756033101159155075, guid: f3d4700be95bce9478eeed40de1c5d80,
+    type: 3}
+  m_PrefabInstance: {fileID: 780032298}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 780170506}
-  - component: {fileID: 780170509}
-  - component: {fileID: 780170508}
-  - component: {fileID: 780170507}
-  m_Layer: 0
-  m_Name: Trigger Abrir Horquilla/Ammo Caja
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &780170506
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 780170505}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 780032299}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &780170507
+--- !u!114 &780032303 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4283955597913393778, guid: f3d4700be95bce9478eeed40de1c5d80,
+    type: 3}
+  m_PrefabInstance: {fileID: 780032298}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 780170505}
+  m_GameObject: {fileID: 780032302}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d0217bba62133843bc2c3caa4b94736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagName: Mascara
-  modificacion: 0
-  buttonOfItemUse: {fileID: 909035920}
-  sonidoAction:
-    Guid:
-      Data1: 581086983
-      Data2: 1079736928
-      Data3: 1276902031
-      Data4: 1168396746
-    Path: event:/SFX/Objetos_Interactivos/Herramientas/Palanca/Palanca_Use
-  emissorAction: {fileID: 0}
-  tipoSonido: 0
---- !u!114 &780170508
+--- !u!114 &780032304 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2617100592264800618, guid: f3d4700be95bce9478eeed40de1c5d80,
+    type: 3}
+  m_PrefabInstance: {fileID: 780032298}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 780170505}
+  m_GameObject: {fileID: 780032302}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03d1da2e7bdc6f04f94744e4500b4aa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerImHere: 0
---- !u!61 &780170509
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 780170505}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0077114105, y: 0.36292273}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8, y: 0.8}
-    newSize: {x: 0.8, y: 0.8}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.398594, y: 1.5258456}
-  m_EdgeRadius: 0
 --- !u!1 &796758787
 GameObject:
   m_ObjectHideFlags: 0
@@ -25631,7 +25479,7 @@ PrefabInstance:
         type: 3}
       propertyPath: objetosDesaparecer.Array.data[0]
       value: 
-      objectReference: {fileID: 75853928}
+      objectReference: {fileID: 0}
     - target: {fileID: 6069811041435439788, guid: a66da26700f044b4aa4be3ecdbcf5583,
         type: 3}
       propertyPath: objetosDesaparecer.Array.data[1]
@@ -36847,6 +36695,16 @@ PrefabInstance:
       propertyPath: objetcButtonInventory
       value: 
       objectReference: {fileID: 206259877}
+    - target: {fileID: 4283955597913393778, guid: f3d4700be95bce9478eeed40de1c5d80,
+        type: 3}
+      propertyPath: tagName
+      value: Mascara
+      objectReference: {fileID: 0}
+    - target: {fileID: 4283955597913393778, guid: f3d4700be95bce9478eeed40de1c5d80,
+        type: 3}
+      propertyPath: buttonOfItemUse
+      value: 
+      objectReference: {fileID: 909035920}
     - target: {fileID: 5063552876922921759, guid: f3d4700be95bce9478eeed40de1c5d80,
         type: 3}
       propertyPath: m_IsActive
@@ -36976,7 +36834,7 @@ PrefabInstance:
         type: 3}
       propertyPath: activador
       value: 
-      objectReference: {fileID: 75853930}
+      objectReference: {fileID: 5063552878062306244}
     - target: {fileID: 5063552877889678618, guid: f3d4700be95bce9478eeed40de1c5d80,
         type: 3}
       propertyPath: ap_Des_Obj
@@ -36986,7 +36844,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerHere
       value: 
-      objectReference: {fileID: 75853931}
+      objectReference: {fileID: 5063552878062306245}
     - target: {fileID: 5063552877889678618, guid: f3d4700be95bce9478eeed40de1c5d80,
         type: 3}
       propertyPath: itemEarth.Array.size
@@ -36996,7 +36854,7 @@ PrefabInstance:
         type: 3}
       propertyPath: itemEarth.Array.data[1]
       value: 
-      objectReference: {fileID: 75853928}
+      objectReference: {fileID: 5063552878062306243}
     - target: {fileID: 5063552877889678619, guid: f3d4700be95bce9478eeed40de1c5d80,
         type: 3}
       propertyPath: m_Name
@@ -37062,3 +36920,33 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5063552878062306239}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5063552878062306243 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4756033101159155075, guid: f3d4700be95bce9478eeed40de1c5d80,
+    type: 3}
+  m_PrefabInstance: {fileID: 5063552878062306239}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5063552878062306244 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4283955597913393778, guid: f3d4700be95bce9478eeed40de1c5d80,
+    type: 3}
+  m_PrefabInstance: {fileID: 5063552878062306239}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5063552878062306243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d0217bba62133843bc2c3caa4b94736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5063552878062306245 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2617100592264800618, guid: f3d4700be95bce9478eeed40de1c5d80,
+    type: 3}
+  m_PrefabInstance: {fileID: 5063552878062306239}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5063552878062306243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03d1da2e7bdc6f04f94744e4500b4aa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

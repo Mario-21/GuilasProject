@@ -21,6 +21,7 @@ public class KeepFromDrillEnemy : MonoBehaviour
     }
     void Update()
     {
+        /*
         if (EncenderTaladro.encender) 
         {
             SafePlace();
@@ -34,6 +35,7 @@ public class KeepFromDrillEnemy : MonoBehaviour
                 reset++;
             }
         }
+        */
     }
     void SafePlace()
     {

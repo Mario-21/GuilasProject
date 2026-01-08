@@ -25,6 +25,7 @@ public class GetUpSoldier : MonoBehaviour
     void ConditionGetUp()
     {
         //The drill on and soldier "Dead"
+        /*
         if (soldierGetUpLife.vida < 1 && soldierWhoGetUp.vida > 0 && EncenderTaladro.encender) 
         {
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
@@ -34,7 +35,7 @@ public class GetUpSoldier : MonoBehaviour
         {
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = false;
             Debug.Log("Las condiciones no se cumplen");
-        }
+        }*/
     }
     void GetUpExit()
     {
