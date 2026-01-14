@@ -11,6 +11,7 @@ public class CompletarPortatiles : MonoBehaviour
     public int numTotalTerminales;
     public int numActualTerminales;
 
+    int indexVerdadero;
     void Start()
     {
         ComprobarTerminales();
@@ -28,17 +29,40 @@ public class CompletarPortatiles : MonoBehaviour
     }
     public void ComprobarTerminales()
     {
-        for (int e = 0; e < terminalesIndex.Count; e++)
+        
+        for (int e = 0; indexVerdadero < terminalesIndex.Count; e++)
         {
-            if (StatusGameobjectsVariables.statusGameobject.modificacion[terminalesIndex[e]].modificacion)
+
+            if (StatusGameobjectsVariables.statusGameobject.modificacion[terminalesIndex[indexVerdadero]].modificacion)
             {
-                Debug.Log("Terminal Index Removido" + terminalesIndex[e]);
+                Debug.Log("Terminal Index Removido" + terminalesIndex[indexVerdadero]);
                 numActualTerminales++;
                 //Esto se hace para cuando lo ejecutes en el update, no te vuelva a contar uno que ya tengas 
                 //has obtenido.
-                terminalesIndex.Remove(terminalesIndex[e]);
+                terminalesIndex.Remove(terminalesIndex[indexVerdadero]);
                
             }
+            else
+            {
+                indexVerdadero++;
+            }
         }
+        /*
+        //CUidado le pasaria lo mismo que en el for si antes no eliminas el index de la lista
+        foreach(int indexTerm in terminalesIndex)
+        {
+            Debug.Log("Cuantos terminales estan en la lista" + indexTerm);
+            if (StatusGameobjectsVariables.statusGameobject.modificacion[indexTerm].modificacion)
+            {
+                Debug.Log("Se ha completado el terminal" + indexTerm);
+                terminalesIndex.Remove(terminalesIndex[indexTerm]);
+            }
+
+
+        }*/
+    }
+    public void ResetearIndex()
+    {
+        indexVerdadero = 0;
     }
 }

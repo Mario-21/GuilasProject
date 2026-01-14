@@ -70,6 +70,11 @@ public class SoldadoNormal : MonoBehaviour
 
     [SerializeField] LayerMask detectores;
 
+    [Header("Detectar Bloqueo de Paredes Data")]
+    [SerializeField] Transform playerPov;
+    Color colorRayo;
+    public bool bloqueoPared;
+
     [Header("CheckCadaver")]
     [SerializeField] Transform castRayDormido;
     [SerializeField] float sizeRayDormido;
@@ -114,12 +119,13 @@ public class SoldadoNormal : MonoBehaviour
     public float esperarModoBusquedaLimite;
     public float esperarModoBusqueda;
     public bool busquedaMode;
+    public bool playerEnEspalda;
     Vector3 lockUbi;
-    int block;
-    int direccionFinalizada;
-    bool derecha;
-    float tiempoEsperaVerWall;
-    int cambiarTiempoPlayer;
+    [SerializeField] int block;
+    [SerializeField] int direccionFinalizada;
+    [SerializeField] bool derecha;
+    [SerializeField] float tiempoEsperaVerWall;
+    [SerializeField] int cambiarTiempoPlayer;
 
     [Header("Patrulla Data")]
     public List<Transform> ubicacionesDirigir = new List<Transform>();
@@ -188,6 +194,7 @@ public class SoldadoNormal : MonoBehaviour
     {
         //Medir Distancias
         player = GameObject.Find("Player").GetComponent<Transform>();
+        playerPov = GameObject.Find("Pov_Player").GetComponent<Transform>();
 
         //Movimiento
         rb = GetComponent<Rigidbody2D>();
@@ -211,6 +218,7 @@ public class SoldadoNormal : MonoBehaviour
     }
     private void Start()
     {
+
         distanciaFOV = outRange;
         callPeople = AudioManager.instancia.InitializeEventEmitter(FMODEvent.instancia.call, callEmitter);
         emitterSteps = AudioManager.instancia.InitializeEventEmitter(FMODEvent.instancia.stepsEnemy, this.gameObject);
@@ -224,16 +232,25 @@ public class SoldadoNormal : MonoBehaviour
 
     void Update()
     {
+
         CallExecution();
         if (debugAltura) 
         {
-            Debug.Log("Altura" + Mathf.Abs(DistancenPlayer().y));
-            Debug.Log("Magnitud" + Mathf.Abs(DistancenPlayer().magnitude));
+            //Debug.Log("Altura" + Mathf.Abs(DistancenPlayer().y));
+            //Debug.Log("Magnitud en X " + DistancenPlayer().x);
+            if (Angulo() < toSeePlayer * 0.5f) Debug.Log("Angulo" + Angulo()); ;
         }
 
         if(soldierLife.vida > 0)
         {
-            SoundStepEnemy();  
+            //Sonido de los pasos
+            SoundStepEnemy();
+            //Rayos para identificar si entre el soldado y el player existe algo que los bloquea entre medias
+            // DistanceParedDetector();
+            //DistancePlayerDetector();
+            //Definir que hay delante del enemigo
+            Ray_Paredes();
+            IdentificarPlayerEnEspalda();
         }
 
         CancelarAnimacionCaminar();
@@ -244,7 +261,7 @@ public class SoldadoNormal : MonoBehaviour
         //Berserker
         if (!berserker)
         {
-            Vision();
+            /*Quiza es aquí donde debo colocar el bloque paredes*/Vision();
             armaSprite.enabled = false;
             armaSpriteCintura.enabled = true;
         }
@@ -319,8 +336,8 @@ public class SoldadoNormal : MonoBehaviour
             //Si estas a menos de 5m y sacas el arma, te ven
             //if (DistancenPlayer().magnitude < 5 && ArmaController.activarDisparo && !muro) { estadoSoldado = EstadoSoldado.ataque; busquedaMode = false; berserker = true; }
 
-            
-            if (Distancia() && !seeCadaverWarning && !muro)
+            //if (Distancia() && !seeCadaverWarning && !muro)
+            if (Distancia() && !seeCadaverWarning && !bloqueoPared)
             {
                 //if (DistancenPlayer().magnitude >= outRange && !busquedaMode || Mathf.Abs(DistancenPlayer().y) > AlturaRange) //&& Mathf.Abs(DistancenPlayer().y) > AlturaRange
                 if (DistancenPlayer().magnitude >= outRange && !busquedaMode && Mathf.Abs(DistancenPlayer().y) > AlturaRange) //&& Mathf.Abs(DistancenPlayer().y) > AlturaRange
@@ -339,8 +356,9 @@ public class SoldadoNormal : MonoBehaviour
                 }
             }
 
-            //Modo Alerta
-            else if(Distancia() && seeCadaverWarning && !muro)
+            //Modo Alerta 
+            //else if(Distancia() && seeCadaverWarning && !muro)
+            else if (Distancia() && seeCadaverWarning && !bloqueoPared)
             {
                 //Funciona como normalmente lo hace. Si estas a menos de 8 metros y te ve se activa
                 if (DistancenPlayer().magnitude <= 8)
@@ -416,7 +434,7 @@ public class SoldadoNormal : MonoBehaviour
 
                 //Representa el color de los Gizmos
                 estadosColor = 2;
-                SeePlayer();
+                /*Probar meter aqui el bloque de vision*/SeePlayer();
                 //Ejecuta el Movimiento y el Ataque
                 //Si tu estas a menos de 10m ira a dispararte, si estas alejado vuelve a patrullar
                 if (DistancenPlayer().magnitude < leaveOutPlayer && seePlayer && Mathf.Abs(DistancenPlayer().y) < leaveOutPlayerAltura)
@@ -781,14 +799,21 @@ public class SoldadoNormal : MonoBehaviour
         }
         else 
         {
-            //Revisar el estado del player escondido, mediante los tags o no
-            if (DistancenPlayer().magnitude >= outRange || Mathf.Abs(DistancenPlayer().y) > AlturaRange || (DistancenPlayer().magnitude < insideRange && !Distancia()))
+            //Puede darse el último caso de igual manera, pero que el player se encuentre en la espalda del enemigo
+            //Si estoy fuera del Rango
+            //Si estoy fuera del Rango en altura
+            //Si estoy dentro del rango pero escondido
+            //Si estoy dentro del rango, pero a espaldas del enemigo
+            if (DistancenPlayer().magnitude >= outRange ||
+                Mathf.Abs(DistancenPlayer().y) > AlturaRange ||
+                (DistancenPlayer().magnitude < outRange && !Distancia()) ||
+                (DistancenPlayer().magnitude < outRange && playerEnEspalda))
             {
                 estadoSoldado = EstadoSoldado.patrulla;
                 busquedaMode = false;
             }
-            //Termina una vez me salgo del rango o cuando me encuentra dentro del rango
-            else if (DistancenPlayer().magnitude < outRange && DistancenPlayer().magnitude >= insideRange)
+            //Termina una vez me salgo del rango o cuando me encuentra dentro del rango                      //Esto eso lo nuevo abajo la Distancia()
+            else if (DistancenPlayer().magnitude < outRange && DistancenPlayer().magnitude >= insideRange && !playerEnEspalda)
             {
                 direccionFinalizada = 0;
                 block = 0;
@@ -815,6 +840,26 @@ public class SoldadoNormal : MonoBehaviour
                 tiempoEsperaVerWall = 0;
                 
             }   
+        }
+    }
+    void IdentificarPlayerEnEspalda()
+    {
+        if (MagnitudDistancePlayerAbsolute() < outRange)
+        {
+            //Esto significa que el jugador se encuentra a espaldas del enemigo
+            if (DistancenPlayer().x < 0 && transform.localScale.x == 1 || DistancenPlayer().x > 0 && transform.localScale.x == -1)
+            {
+                playerEnEspalda = true;
+            }
+            //Cualquiera de las otras opciones significa que esta de frente o alejado
+            else
+            {
+                playerEnEspalda = false;
+            }
+        }
+        else
+        {
+            playerEnEspalda = false;
         }
     }
     void Patrulla()
@@ -1061,6 +1106,24 @@ public class SoldadoNormal : MonoBehaviour
 
         }
     }
+
+    void Ray_Paredes()
+    {
+        if(MagnitudDistancePlayerAbsolute() < outRange)
+        {
+            Debug.DrawRay(enemigo_FOV.position, DistanceCabezaPlayerEnemy(), colorRayo);
+            if (DistanceParedDetector() && DistancePlayerDetector())
+            {
+                colorRayo = Color.red;
+                bloqueoPared = true;
+            }
+            else
+            {
+                colorRayo = Color.green;
+                bloqueoPared = false;
+            }
+        }
+    }
     private void OnDisable()
     {
         VisionOut();
@@ -1154,6 +1217,16 @@ public class SoldadoNormal : MonoBehaviour
         Vector2 distanciaPlayer;
         return distanciaPlayer = player.position - enemigo_FOV.position;
     }
+    public Vector2 DistanceCabezaPlayerEnemy()
+    {
+        Vector2 distanciaCabezas;
+        return distanciaCabezas = playerPov.position - enemigo_FOV.position;
+    }
+    float MagnitudDistancePlayerAbsolute()
+    {
+        float distancePlayerAbsolute;
+        return distancePlayerAbsolute = Mathf.Abs(DistanceCabezaPlayerEnemy().magnitude);
+    }
     public float Angulo()
     {
         float angulo;
@@ -1163,7 +1236,17 @@ public class SoldadoNormal : MonoBehaviour
     {
         RaycastHit2D distancia;
         return distancia = Physics2D.Raycast(transform.position, DistancenPlayer().normalized, rayDistancePlayer, playerMask);
-        
+    }
+
+    RaycastHit2D DistancePlayerDetector()
+    {
+        RaycastHit2D distanciaEnemyPlayer;
+        return distanciaEnemyPlayer = Physics2D.Raycast(enemigo_FOV.position, DistanceCabezaPlayerEnemy(), MagnitudDistancePlayerAbsolute(), detectarPlayerMask);
+    }
+    RaycastHit2D DistanceParedDetector()
+    {
+        RaycastHit2D distanciaEnemyGround;
+        return distanciaEnemyGround = Physics2D.Raycast(enemigo_FOV.position, DistanceCabezaPlayerEnemy(), MagnitudDistancePlayerAbsolute(), groundMask);
     }
     
 

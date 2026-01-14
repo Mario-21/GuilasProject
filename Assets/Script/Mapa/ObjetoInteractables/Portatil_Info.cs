@@ -199,6 +199,7 @@ public class Portatil_Info : MonoBehaviour
                 if(confirmSound < 1)
                 {
                     AudioManager.instancia.PlayOneShot(FMODEvent.instancia.confirmTerminal);
+                    completarPortatil.ResetearIndex();
                     completarPortatil.ComprobarTerminales();
                     confirmSound++;
                 }
