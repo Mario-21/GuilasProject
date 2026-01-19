@@ -9,8 +9,9 @@ public class TrampaLanzas : MonoBehaviour
 
     [Header("Duracion Trampas")]
     public float tiempoActivarTrampaLimite;
-    float tiempoActivarTrampa;
-
+    [HideInInspector] public float tiempoActivarTrampa;
+    [Header("Info Distancias Trampa")]
+    [SerializeField] bool debugDistancia;
     //Hacerlo por Estados con enum
     enum FasesTrampaLanzas
     {
@@ -20,6 +21,7 @@ public class TrampaLanzas : MonoBehaviour
     }
     FasesTrampaLanzas fasesTrampaLanzas;
     [SerializeField] bool activarTrampa;
+    public bool posOrigen;
 
     float originalPosition_y;
     [Header("Sound Effect Lanza")]
@@ -36,9 +38,14 @@ public class TrampaLanzas : MonoBehaviour
 
     void Update()
     {
-        
+        if (debugDistancia)
+        {
+            Debug.Log("La distancia con respecto al punto de origen es " + DistanciaAOrigen());
+        }
+        //magnitudMeOrigen = DistanciaPosOrigen().magnitude;
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexModTrampaOn].modificacion)
         {
+            IdentificarEstarPosOrigen();
             switch (fasesTrampaLanzas)
             {
                 case FasesTrampaLanzas.subir:
@@ -53,7 +60,7 @@ public class TrampaLanzas : MonoBehaviour
             }
         }
         else { transform.position = new Vector3(transform.position.x, originalPosition_y, transform.position.z); }
-        
+
     }
     void TrampaLanzaActivada()
     {
@@ -69,6 +76,7 @@ public class TrampaLanzas : MonoBehaviour
         {
             fasesTrampaLanzas = FasesTrampaLanzas.esperar;
             reproduceGear = 0;
+            //Punto Origen
             emissorGear.Stop();
         }
         else
@@ -98,6 +106,22 @@ public class TrampaLanzas : MonoBehaviour
             }
                
         }
+    }
+    void IdentificarEstarPosOrigen()
+    {
+        if(DistanciaAOrigen() <= Mathf.Clamp(DistanciaAOrigen(), 0f, 0.005f))
+        {
+            posOrigen = true;
+        }
+        else
+        {
+            posOrigen = false;
+        }
+    }
+    float DistanciaAOrigen()
+    {
+        float distanciaAOrigen;
+        return distanciaAOrigen = Mathf.Abs(originalPosition_y - transform.position.y);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

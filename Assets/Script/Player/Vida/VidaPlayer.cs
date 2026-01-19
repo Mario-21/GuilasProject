@@ -22,6 +22,7 @@ public class VidaPlayer : MonoBehaviour
     [Header("Recovery ammo")]
     public B8Arma b8Weapon;
     public ChangeWeapon changeWeapon;
+    Stairs_Hidden definirEstadoPlayer;
 
     [Header("Animacion Jugador")]
     public Animator animPlayerBody;
@@ -35,6 +36,7 @@ public class VidaPlayer : MonoBehaviour
     public TipoAnimacion tipoAnimacion;
     private void Awake()
     {
+        definirEstadoPlayer = GetComponent<Stairs_Hidden>();
         animPlayerBody = GetComponent<Animator>();
         vidaUI = GameObject.Find("LifeBar").GetComponent<Image>();
     }
@@ -145,20 +147,25 @@ public class VidaPlayer : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("BulletEnemy")) 
+        //Si yo no estoy escondido, significa que puedo recibir daño
+        if (!definirEstadoPlayer.imHidden)
         {
-            if (!invencible) 
+            if (collision.gameObject.CompareTag("BulletEnemy"))
             {
-                Debug.Log("HitMarket");
-                Daño(34f);
-                invencible = true;
+                if (!invencible)
+                {
+                    Debug.Log("HitMarket");
+                    Daño(34f);
+                    invencible = true;
+                }
+                Destroy(collision.gameObject);
             }
-            Destroy(collision.gameObject);
+            if (collision.gameObject.CompareTag("Dardo"))
+            {
+                Daño(15f);
+            }
         }
-        if (collision.gameObject.CompareTag("Dardo")) 
-        { 
-            Daño(15f);
-        }
+        
     }
 
     //I need that player recovery ammo, because if you made with b8 you can't fix the problem with the collision in player
