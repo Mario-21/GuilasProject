@@ -392,7 +392,7 @@ public class SoldadoNormal : MonoBehaviour
         if (cooldownDisparo >= dispara && !player.GetComponent<Stairs_Hidden>().imHidden)
         {
             balaEnemigo = Instantiate(bala, spawnBala.position,Quaternion.identity);
-            balaEnemigo.GetComponent<Rigidbody2D>().AddForce(spawnBala.right * velocidadBala,ForceMode2D.Impulse);
+            balaEnemigo.GetComponent<Rigidbody2D>().AddForce(spawnBala.right * velocidadBala, ForceMode2D.Impulse);
             cooldownDisparo = 0;
         }
 

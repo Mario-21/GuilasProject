@@ -50,7 +50,7 @@ public class EscaleraTrampaLanza : MonoBehaviour
 		foreach(DefinicionTrampaLanza defTrampaLanza in definicionTrampaLanza)
 		{
 			defTrampaLanza.trampaLanza.enabled = true;
-			Debug.Log("Se ha reseteado la trampa " + defTrampaLanza.name);
+			//Debug.Log("Se ha reseteado la trampa " + defTrampaLanza.name);
 		}
 		numeroTotalLanzas = 0;
 	}

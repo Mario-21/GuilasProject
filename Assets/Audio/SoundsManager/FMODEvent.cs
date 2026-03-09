@@ -139,6 +139,8 @@ public class FMODEvent : MonoBehaviour
     [SerializeField] string traps;
     [SerializeField] public EventReference baldosaTrap;
     [SerializeField] public EventReference secretTemple;
+    [SerializeField] string antorchas;
+    [SerializeField] public EventReference antorchaAmbiente;
     [Header("UI SFX")]
     [SerializeField] public EventReference retrocerder_UI;
     [SerializeField] public EventReference confirm_UI;

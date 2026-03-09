@@ -8,7 +8,6 @@ public class AccionarTrampas : MonoBehaviour
 
     public Transform baldosaBaja;
     public float speed;
-
     private void Start()
     {
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexModTrampasOn].modificacion)

@@ -126,6 +126,8 @@ public class JugadorMovimiento : MonoBehaviour
 
         horizontalMov = GetInput().x;
 
+        //Intentar colocar en el fixedUpdate
+        
         if (canJump && extraJump < 1)
         {
             Jump();
@@ -151,8 +153,6 @@ public class JugadorMovimiento : MonoBehaviour
             ApplyLinearAirDrag();
             FallMultiplier();
         }
-
-
     }
 
     

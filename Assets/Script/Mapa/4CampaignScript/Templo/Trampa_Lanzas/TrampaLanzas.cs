@@ -12,6 +12,7 @@ public class TrampaLanzas : MonoBehaviour
     [HideInInspector] public float tiempoActivarTrampa;
     [Header("Info Distancias Trampa")]
     [SerializeField] bool debugDistancia;
+    [SerializeField] float velocidadBajar;
     //Hacerlo por Estados con enum
     enum FasesTrampaLanzas
     {
@@ -24,6 +25,7 @@ public class TrampaLanzas : MonoBehaviour
     public bool posOrigen;
 
     float originalPosition_y;
+    [SerializeField] Transform resetPosition;
     [Header("Sound Effect Lanza")]
     [SerializeField] GameObject gearLanza;
     StudioEventEmitter emissorGear;
@@ -72,8 +74,10 @@ public class TrampaLanzas : MonoBehaviour
     void ResetearTrampa()
     {
         activarTrampa = false;
-        if(transform.position.y <= originalPosition_y)
+        //if(transform.position.y <= originalPosition_y)
+        if(Vector2.Distance(resetPosition.position,transform.position) <= 0f)
         {
+            Debug.Log("Me he reseteado al completo");
             fasesTrampaLanzas = FasesTrampaLanzas.esperar;
             reproduceGear = 0;
             //Punto Origen
@@ -81,7 +85,8 @@ public class TrampaLanzas : MonoBehaviour
         }
         else
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y - 0.01f, transform.position.z);
+            //transform.position = new Vector3(transform.position.x, transform.position.y - 0.01f, transform.position.z);
+            transform.position = Vector2.MoveTowards(transform.position, resetPosition.position, velocidadBajar * Time.deltaTime); ;
             if (reproduceGear < 1)
             {
                 emissorGear.Play();

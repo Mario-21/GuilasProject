@@ -36,7 +36,9 @@ public enum AmbienceArea
     
     STORM,
 
-    ALARM
+    ALARM,
+
+    DESIERTO
 
 }
 public class AmbienceActual: MonoBehaviour

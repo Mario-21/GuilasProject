@@ -63,9 +63,13 @@ public class Barco : MonoBehaviour
             horizontalMov = 0;
         }
         SoundMoveShip();
-        MoveBarco();
+        //MoveBarco();
         ActivarParticles();
         MovePatoAnim();
+    }
+    private void FixedUpdate()
+    {
+        MoveBarco();
     }
     void MoveBarco()
     {

@@ -22,6 +22,8 @@ public class ActivarModificador : MonoBehaviour
             //Nota: Para el emitter necesitare un script aparte que lo inicie, debido a que si sales de la escena no volvera a reproducirse.
     }
     public TypeSound tipoSonido;
+    [Header("Inhabilitar Moficador al usarse")]
+    [SerializeField] bool inhabilitar;
 
     //emitterSteps = AudioManager.instancia.InitializeEventEmitter(FMODEvent.instancia.stepsEnemy, this.gameObject);
     private void Start()
@@ -47,6 +49,8 @@ public class ActivarModificador : MonoBehaviour
                 Debug.Log("ACCION on");
                 UsarObjeto();
                 SoundOfAction();
+                //Para no poder volver a usar el objetos
+                if(inhabilitar) this.enabled = false;
             }
             
         }

@@ -9,8 +9,7 @@ public class DesacticarTrampas : MonoBehaviour
 
     [Header("What happen When off Trampas")]
     [SerializeField] GameObject baldosaStart;
-    [SerializeField] GameObject baldosaFinish;
-    [SerializeField] Transform ubiBaldosa;
+    //[SerializeField] GameObject baldosaFinish;
 
     [Header("Item Off Trampas")]
     public int objetoAObtener;
@@ -24,9 +23,7 @@ public class DesacticarTrampas : MonoBehaviour
             StatusGameobjectsVariables.statusGameobject.modificacion[indexModTrampasOff].modificacion = true;
 
             baldosaStart.SetActive(false);
-            baldosaFinish.SetActive(true);
-
-            baldosaFinish.transform.position = ubiBaldosa.position;
+            //baldosaFinish.SetActive(true);
             
         }
         

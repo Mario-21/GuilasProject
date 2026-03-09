@@ -8,7 +8,6 @@ public class AmbienceChangeTrigger : MonoBehaviour
     
     [Header("Area Ambience")]
     [SerializeField] private AmbienceArea ambienceArea;
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Especificar al Player

@@ -2,17 +2,288 @@
 [LOG] Manager::init                            : maxchannels = 256 studioflags = 00000006 flags 00000000 extradriverdata 0000000000000000.
 [LOG] SystemI::init                            : Initialize version=20215 (134211), maxchannels=256, flags=0x00020000
 [LOG] SystemI::setOutputInternal               : Setting output to 'FMOD WASAPI Output'
-[LOG] OutputWASAPI::init                       : Mix Format (WAVEFORMATEX): wFormatTag=0xFFFE, nChannels=2, nSamplesPerSec=44100, nAvgBytesPerSec=352800, nBlockAlign=8, wBitsPerSample=32, cbSize=22.
+[LOG] OutputWASAPI::init                       : Mix Format (WAVEFORMATEX): wFormatTag=0xFFFE, nChannels=2, nSamplesPerSec=48000, nAvgBytesPerSec=384000, nBlockAlign=8, wBitsPerSample=32, cbSize=22.
 [LOG] OutputWASAPI::init                       : Mix Format (WAVEFORMATEXTENSIBLE): wValidBitsPerSample=32, dwChannelMask=0x00000003, SubFormat=00000003-0000-0010-8000-00AA00389B71.
-[LOG] OutputWASAPI::init                       : Output buffer size: 3760 samples, latency: 0.00ms, period: 10.16ms, DSP buffer: 1024 * 4
-[LOG] SystemI::init                            : Output requires a sample rate of 44100Hz, resampling will occur.
+[LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 000001B93A53A2C8 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 000001C37470DF38 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] PlaybackSystem::init                     : done
 [LOG] Thread::initThread                       : Init FMOD Studio bank load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] Manager::init                            : done.
-[ERR] assert                                   : assertion: 'gSystemInitCount == 0' failed
+[LOG] SystemI::createSound                     : filename = ../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Ambience.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001C2E42A6118, queue head = 000001C369D23308, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001C2E42A6118
+[LOG] SystemI::createSound                     : filename = ../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Ambience.bank : mode 02010082
+[LOG] SystemI::createSoundInternal             :     Create name='../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Ambience.bank', mode=0x02010082
+[LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] AsyncThread::add                         :     add sound to async queue : soundi = 000001C2E42A3028, queue head = 000001C369D23308, queue count = 0
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 32943040
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 61728
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001C2B9A0CB20
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 2800
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='OverChargeMotor', format=5, channels=2, frequency=48000, lengthbytes=190176, lengthpcm=774144, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.516388.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001C2E42A6118
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001C2E42A3028
+[LOG] SystemI::createSoundInternal             :     Create name='../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Ambience.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 32943040
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 61728
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001C2B9A0C3A0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 2800
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='OverChargeMotor', format=5, channels=2, frequency=48000, lengthbytes=190176, lengthpcm=774144, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.516388.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001C2E42A3028
+[LOG] SoundI::release                          : OverChargeMotor (000001C36BBF07E8)
+[LOG] SoundI::release                          :     OverChargeMotor (000001C3A868A558)
+[LOG] SoundI::release                          :     OverChargeMotor (000001C36BBF6ED8)
+[LOG] SoundI::release                          : OverChargeMotor (000001C36BBF5588)
+[LOG] SoundI::release                          :     OverChargeMotor (000001C3A868A6F8)
+[LOG] SoundI::release                          :     OverChargeMotor (000001C36BBF0998)
+[LOG] SystemI::createSound                     : filename = ../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Ambience.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001C2E42A4E88, queue head = 000001C369D23308, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001C2E42A4E88
+[LOG] SystemI::createSound                     : filename = ../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Ambience.bank : mode 02010082
+[LOG] SystemI::createSoundInternal             :     Create name='../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Ambience.bank', mode=0x02010082
+[LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] AsyncThread::add                         :     add sound to async queue : soundi = 000001C2E42A27B8, queue head = 000001C369D23308, queue count = 0
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 32943040
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 61728
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001C2B34EC5B0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 2800
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='OverChargeMotor', format=5, channels=2, frequency=48000, lengthbytes=190176, lengthpcm=774144, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.516388.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001C2E42A4E88
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001C2E42A27B8
+[LOG] SystemI::createSoundInternal             :     Create name='../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Ambience.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 32943040
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 61728
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001C2B34EBF70
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 2800
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='OverChargeMotor', format=5, channels=2, frequency=48000, lengthbytes=190176, lengthpcm=774144, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.516388.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001C2E42A27B8
+[LOG] SoundI::release                          : OverChargeMotor (000001C2E42A3028)
+[LOG] SoundI::release                          :     OverChargeMotor (000001C3A8684718)
+[LOG] SoundI::release                          :     OverChargeMotor (000001C2E42A7708)
+[LOG] SoundI::release                          : OverChargeMotor (000001C2E42A6118)
+[LOG] SoundI::release                          :     OverChargeMotor (000001C3A86843D8)
+[LOG] SoundI::release                          :     OverChargeMotor (000001C2E42A62C8)
+[LOG] SystemI::createSound                     : filename = ../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Ambience.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001C2E42A58A8, queue head = 000001C369D23308, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001C2E42A58A8
+[LOG] SystemI::createSound                     : filename = ../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Ambience.bank : mode 02010082
+[LOG] SystemI::createSoundInternal             :     Create name='../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Ambience.bank', mode=0x02010082
+[LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] AsyncThread::add                         :     add sound to async queue : soundi = 000001C2E42A6B38, queue head = 000001C369D23308, queue count = 0
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 32943040
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 61728
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001C2BA5425A0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 2800
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='OverChargeMotor', format=5, channels=2, frequency=48000, lengthbytes=190176, lengthpcm=774144, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.516388.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001C2E42A58A8
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001C2E42A6B38
+[LOG] SystemI::createSoundInternal             :     Create name='../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Ambience.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 32943040
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 61728
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001C2BA545020
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 2800
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='OverChargeMotor', format=5, channels=2, frequency=48000, lengthbytes=190176, lengthpcm=774144, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.516388.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001C2E42A6B38
+[LOG] SoundI::release                          : OverChargeMotor (000001C2E42A27B8)
+[LOG] SoundI::release                          :     OverChargeMotor (000001C3A8686C78)
+[LOG] SoundI::release                          :     OverChargeMotor (000001C2E42A6CE8)
+[LOG] SoundI::release                          : OverChargeMotor (000001C2E42A4E88)
+[LOG] SoundI::release                          :     OverChargeMotor (000001C3A8687158)
+[LOG] SoundI::release                          :     OverChargeMotor (000001C2E42A6628)
+[LOG] SystemI::createSound                     : filename = ../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Ambience.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001C2E42A31D8, queue head = 000001C369D23308, queue count = 0
+[LOG] SystemI::createSound                     : filename = ../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Ambience.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001C2E42A6118, queue head = 000001C369D23308, queue count = 1
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001C2E42A31D8
+[LOG] SystemI::createSoundInternal             :     Create name='../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Ambience.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 32943040
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 61728
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001C2BA545B60
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 2800
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='OverChargeMotor', format=5, channels=2, frequency=48000, lengthbytes=190176, lengthpcm=774144, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.516388.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001C2E42A31D8
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001C2E42A6118
+[LOG] SystemI::createSoundInternal             :     Create name='../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Ambience.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 32943040
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 61728
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001C2BA5452A0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 2800
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='OverChargeMotor', format=5, channels=2, frequency=48000, lengthbytes=190176, lengthpcm=774144, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.516388.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001C2E42A6118
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3550880
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 158720
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000002A597EEFE8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD7C623CA0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD7C623C60
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD7C623D80
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD7C623E40
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001C2BC8B5858
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='ArrancarMotor', format=5, channels=2, frequency=48000, lengthbytes=55584, lengthpcm=289645, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.930237.
+[LOG] SoundI::release                          : OverChargeMotor (000001C2E42A6B38)
+[LOG] SoundI::release                          :     OverChargeMotor (000001C3A8689518)
+[LOG] SoundI::release                          :     OverChargeMotor (000001C2E42A8128)
+[LOG] SoundI::release                          : OverChargeMotor (000001C2E42A58A8)
+[LOG] SoundI::release                          :     OverChargeMotor (000001C3A86843D8)
+[LOG] SoundI::release                          :     OverChargeMotor (000001C2E42A7708)
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001C2B87B71D8, queue head = 000001C369D23308, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001C2B87B71D8
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001C2B87B71D8
+[LOG] SystemI::createSound                     : filename = ../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Ambience.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001C2E42A8B48, queue head = 000001C369D23308, queue count = 0
+[LOG] SystemI::createSound                     : filename = ../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Ambience.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001C2E42A8B48
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001C2E42A4E88, queue head = 000001C369D23308, queue count = 0
+[LOG] SystemI::createSoundInternal             :     Create name='../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Ambience.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 32943040
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 61728
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001C2B34EBF70
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 2800
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='OverChargeMotor', format=5, channels=2, frequency=48000, lengthbytes=190176, lengthpcm=774144, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.516388.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001C2E42A8B48
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001C2E42A4E88
+[LOG] SystemI::createSoundInternal             :     Create name='../FMOD Studio/Stickman_Shy_Audio/Build/Desktop/Ambience.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 32943040
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 61728
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001C2B34EC6F0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 2800
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='OverChargeMotor', format=5, channels=2, frequency=48000, lengthbytes=190176, lengthpcm=774144, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.516388.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001C2E42A4E88
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001C2B87B71D8, queue head = 000001C369D23308, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001C2B87B71D8
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001C2B87B71D8
+[LOG] SoundI::release                          :  (000001C2BB92BC48)
+[LOG] SoundI::release                          :     Step Grass_1 (000001C3A8986A28)
+[LOG] SoundI::release                          :  (000001C374ED2528)
+[LOG] SoundI::release                          :     Step Grass_2 (000001C3A89885C8)
+[LOG] SoundI::release                          :  (000001C2BB92C098)
+[LOG] SoundI::release                          :     Step Grass_3 (000001C3A8988428)
+[LOG] SoundI::release                          :  (000001C2BB92B518)
+[LOG] SoundI::release                          :     Step Grass_4 (000001C3A8989608)
+[LOG] SoundI::release                          :  (000001C2E3CA5098)
+[LOG] SoundI::release                          :     ArenaFootSteps_1 (000001C3A8985848)
+[LOG] SoundI::release                          :  (000001C2BA4E7418)
+[LOG] SoundI::release                          :     ArenaFootSteps_3 (000001C3A89892C8)
+[LOG] SoundI::release                          :  (000001C2BA4E7CB8)
+[LOG] SoundI::release                          :     ArrancarMotor (000001C3A8688198)
+[LOG] SoundI::release                          : OverChargeMotor (000001C2E42A31D8)
+[LOG] SoundI::release                          :     OverChargeMotor (000001C3A8686AD8)
+[LOG] SoundI::release                          :     OverChargeMotor (000001C2E42A67D8)
+[LOG] SoundI::release                          : OverChargeMotor (000001C2E42A6118)
+[LOG] SoundI::release                          :     OverChargeMotor (000001C3A8687158)
+[LOG] SoundI::release                          :     OverChargeMotor (000001C2E42A62C8)
+[LOG] SoundI::release                          : music_lvl_02_electronic_layer_01 (000001C39BCD6FE8)
+[LOG] SoundI::release                          :     music_lvl_02_electronic_layer_01 (000001C3A8687978)
+[LOG] SoundI::release                          :     music_lvl_02_electronic_layer_01 (000001C39BCD23F8)
+[LOG] SoundI::release                          : OverChargeMotor (000001C2E42A4E88)
+[LOG] SoundI::release                          :     OverChargeMotor (000001C3A868A078)
+[LOG] SoundI::release                          :     OverChargeMotor (000001C2E42A7C18)
+[LOG] SoundI::release                          : OverChargeMotor (000001C2E42A8B48)
+[LOG] SoundI::release                          :     OverChargeMotor (000001C3A8689378)
+[LOG] SoundI::release                          :     OverChargeMotor (000001C2E42A20F8)
+[LOG] SoundI::release                          : Cave_2 (000001C2B87B7028)
+[LOG] SoundI::release                          :     Cave_2 (000001C3A89880E8)
+[LOG] SoundI::release                          :     Cave_2 (000001C2B87B71D8)
+[LOG] SoundI::release                          :  (000001C2B34EA308)
+[LOG] SoundI::release                          :     Mosca_3 (000001C3A8985EC8)
+[LOG] SoundI::release                          :  (000001C2B34EA198)
+[LOG] SoundI::release                          :     Mosca_2 (000001C3A8987C08)
+[LOG] SoundI::release                          :  (000001C2BB92BAD8)
+[LOG] SoundI::release                          :     Mosca_1 (000001C3A8986068)
+[LOG] SoundI::release                          :  (000001C2B34EAA38)
+[LOG] SoundI::release                          :     Shower_1 (000001C3A8984E88)
+[LOG] SoundI::release                          :  (000001C2BA4E76F8)
+[LOG] SoundI::release                          :     CaveFootSteps_4 (000001C3A8685C38)
+[LOG] SoundI::release                          :  (000001C2BA4E7868)
+[LOG] SoundI::release                          :     CaveFootSteps_3 (000001C3A86855B8)
+[LOG] SoundI::release                          :  (000001C2BA4E7B48)
+[LOG] SoundI::release                          :     CaveFootSteps_2 (000001C3A8685F78)
+[LOG] SoundI::release                          :  (000001C2BA4E7588)
+[LOG] SoundI::release                          :     CaveFootSteps_1 (000001C3A8686E18)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] SystemI::close                           : Closed.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] SystemI::close                           : Closed.
+[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
+[LOG] Thread::callback                         : FMOD file thread finished.

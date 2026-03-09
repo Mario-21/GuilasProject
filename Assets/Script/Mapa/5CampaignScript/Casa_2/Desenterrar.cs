@@ -24,8 +24,6 @@ public class Desenterrar : MonoBehaviour
 
     bool beginEvent;
 
-
-
     private void Start()
     {
         
