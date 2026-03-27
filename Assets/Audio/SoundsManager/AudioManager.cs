@@ -16,6 +16,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instancia;
     private void Awake()
     {
+        
         if(AudioManager.instancia == null)
         {
             AudioManager.instancia = this;
@@ -24,6 +25,13 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        /*
+        if(instancia != null)
+        {
+            Debug.LogError("Se ha encontrado más de un Audio manager");
+        }
+        instancia = this;
+        */
         eventInstances = new List<EventInstance>();
         eventEmitters = new List<StudioEventEmitter>();
     }

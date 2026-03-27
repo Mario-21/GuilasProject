@@ -43,6 +43,7 @@ public class Camino_CambiarZona : MonoBehaviour
             iconoZone.SetActive(true);
             if (Input.GetButtonDown("Action"))
             {
+                ListDataPlayer.listDataPlayer.orientacionPlayer = (int)bloqPlayer.player.transform.localScale.x;
                 zonaChange.CambiarZonaSound();
                 //Desactivar collider
                 triggerBox.enabled = false;

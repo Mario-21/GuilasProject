@@ -11,6 +11,8 @@ public class ListDataPlayer : MonoBehaviour
     [Header("Munición Jugador")]
     public int ammoPlayerNow;
     public int ammoPlayerStartScene;
+    [Header("Orientacion Jugador")]
+    public int orientacionPlayer;
     //Nota: AmmoPlayerNow no debe destruirse hasta llegar al final.
     private void Awake()
     {

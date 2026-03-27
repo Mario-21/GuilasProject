@@ -57,13 +57,20 @@ public class AudioMenu : MonoBehaviour, IDataPersistenceNoCrypted
         if (AudioMenu.instancia == null)
         {
             AudioMenu.instancia = this;
-            DontDestroyOnLoad(gameObject);
+            //DonDestroyOnLoad hacia que en muchas ocasiones no funcionara la configuracion de audio al cambiar entre escenas
+            //DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
-        
+        /*
+        if (instancia != null)
+        {
+            Debug.LogError("Se ha encontrado más de un Audio manager");
+        }
+        instancia = this;
+        */
         masterBus = RuntimeManager.GetBus("bus:/");
         musicBus = RuntimeManager.GetBus("bus:/Music");
         ambienceBus = RuntimeManager.GetBus("bus:/Ambience");

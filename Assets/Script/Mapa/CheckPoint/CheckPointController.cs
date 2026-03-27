@@ -10,10 +10,19 @@ public class CheckPointController : MonoBehaviour
     [Header("Spawn a Eleccion")]
     public bool elegirSpawn;
     public int spawnElegido;
-    [Header("Orientacion Player")]
+    [Header("Orientacion Player por Referencia")]
     [SerializeField] Transform puntoReferencia;
     int numOrientaciones;
-
+    [Header("Orientacion Player por Index")]
+    public int indexOrientacion;
+    [Range(-1, 1)]
+    public int orientacionInicial;
+    public enum TipoOrientacionCheckpoint
+    {
+        Punto_Referencia,
+        Index,
+    }
+    public TipoOrientacionCheckpoint tipoSpawnOrientacion;
 
     //Cuando se recarga la escena apareces en el ultimo Checkpoint
     private void Start()
@@ -23,18 +32,49 @@ public class CheckPointController : MonoBehaviour
         {
             player.transform.position = checkpoints[spawnElegido].position;
         }
-        DistanciaReferencia();
-        OrientacionSpawn();
+        switch (tipoSpawnOrientacion)
+        {
+            case TipoOrientacionCheckpoint.Punto_Referencia:
+                DistanciaReferencia();
+                OrientacionSpawn();
+                break;
+            case TipoOrientacionCheckpoint.Index:
+                if (!StatusGameobjectsVariables.statusGameobject.modificacion[indexOrientacion].modificacion)
+                {
+                    player.transform.localScale = new Vector3(orientacionInicial, 1, 1);
+                }
+                else
+                {
+                    player.transform.localScale = new Vector3(ListDataPlayer.listDataPlayer.orientacionPlayer, 1, 1);
+                }
+                break;
+        }
     }
     private void Update()
     {
-        if(numOrientaciones < 1)
+        if (numOrientaciones < 1)
         {
-            Debug.Log("La distancia de referencia es de " + DistanciaReferencia());
-
-            DistanciaReferencia();
-            OrientacionSpawn();
-            numOrientaciones++;
+            switch (tipoSpawnOrientacion)
+            {
+                case TipoOrientacionCheckpoint.Punto_Referencia:
+                    Debug.Log("La distancia de referencia es de " + DistanciaReferencia());
+                    DistanciaReferencia();
+                    OrientacionSpawn();
+                    numOrientaciones++;
+                    break;
+                case TipoOrientacionCheckpoint.Index:
+                    if (!StatusGameobjectsVariables.statusGameobject.modificacion[indexOrientacion].modificacion)
+                    {
+                        player.transform.localScale = new Vector3(orientacionInicial, 1, 1);
+                        StatusGameobjectsVariables.statusGameobject.modificacion[indexOrientacion].modificacion = true;
+                    }
+                    else
+                    {
+                        player.transform.localScale = new Vector3(ListDataPlayer.listDataPlayer.orientacionPlayer, 1, 1);
+                    }
+                    numOrientaciones++;
+                    break;
+            }
         }
     }
     void OrientacionSpawn()
@@ -52,6 +92,7 @@ public class CheckPointController : MonoBehaviour
     {
         Vector2 distanciaReferencia;
         return distanciaReferencia = player.transform.position - puntoReferencia.position;
+        
     }
 
 }

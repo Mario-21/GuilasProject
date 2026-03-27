@@ -9,10 +9,14 @@ public class Cambiar_Area: MonoBehaviour
     public int siguienteEscena;
     public int checkPoint;
     public bool usarCheckpoint;
+    [Header("Orientacion Siguiente Nivel")]
+    [Range(-1, 1)]
+    public int orientacionNext;
     [Header("Tipo Cambio Area Escalera")]
     public bool escaleraSubir;
     public float gravedad;
     bool entrarCamino;
+
 
     BloquearMovimientoPlayer bloqPlayer;
     ZonaChangeSound zonaChangeSound;
@@ -28,6 +32,7 @@ public class Cambiar_Area: MonoBehaviour
     }
     void CambiarNivel()
     {
+        ListDataPlayer.listDataPlayer.orientacionPlayer = orientacionNext;
         zonaChangeSound.CambiarZonaSound();
         bloqPlayer.BloquearMovPlayer();
         EstructuraNiveles.nivel = siguienteEscena;
@@ -49,6 +54,7 @@ public class Cambiar_Area: MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            //ListDataPlayer.listDataPlayer.orientacionPlayer = (int)bloqPlayer.player.transform.localScale.x;
             entrarCamino = true;
         }
     }

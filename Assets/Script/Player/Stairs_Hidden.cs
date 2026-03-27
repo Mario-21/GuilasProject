@@ -32,7 +32,7 @@ public class Stairs_Hidden : MonoBehaviour
 
     [Header("Efecto Particles")]
     public Transform cuerpoPlayer;
-    public GameObject ParticulaEsconderse;
+    public GameObject particulaEsconderse;
 
     public EventInstance laddersSound;
     public EventReference hiddenSound;
@@ -41,11 +41,20 @@ public class Stairs_Hidden : MonoBehaviour
     public List<SpriteRenderer> listaCuerpo;
     [SerializeField] int conteoPiezasCuerpo;
 
+    [Header("Limitador Particles")]
+    public Texture btnTexture;
+    public Texture btnTexture2;
+    public Texture btnTexture3;
+    public int limiteParticulas;
+    List<GameObject> particleClonList;
+    bool overParticulas;
+
     int soundPlayOne;
     VidaPlayer vidaPlayer;
 
     private void Start()
     {
+        particleClonList = new List<GameObject>();
         Debug.Log("Lista de body" + listaCuerpo.Count);
         vidaPlayer = GetComponent<VidaPlayer>();
         weaponHidden = GetComponent<OcultacionByWeapon>();
@@ -81,7 +90,11 @@ public class Stairs_Hidden : MonoBehaviour
                         mov.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
 
                         //Icono
-                        Instantiate(ParticulaEsconderse, cuerpoPlayer.position, Quaternion.identity);
+                        if(particleClonList.Count < limiteParticulas)
+                        {
+                            //particleClon = Instantiate(particulaEsconderse, cuerpoPlayer.position, Quaternion.identity);
+                            particleClonList.Add(Instantiate(particulaEsconderse, cuerpoPlayer.position, Quaternion.identity));
+                        }
                         //soundManager.SeleccionAudio(soundManager.audiosAmbiente, 0, 1f, 0);
                         iconoZone.SetActive(false);
 
@@ -92,6 +105,18 @@ public class Stairs_Hidden : MonoBehaviour
                     }
                 }
             }
+        }
+
+        //Podría llamarlo en cuanto detecte el exceso de particulas si la lista es superior al límite, esto se accionara haciendo que se mantenga activo hasta volve a zero la lista.
+        LimiteParticulas();
+    }
+    private void FixedUpdate()
+    {
+        if (escalar)
+        {
+            //Debug.Log("Axis vertical " + escalar);
+            rb.gravityScale = 0;
+            rb.velocity = new Vector2(rb.velocity.x, vertical * velocidadSubir);
         }
     }
 
@@ -189,13 +214,30 @@ public class Stairs_Hidden : MonoBehaviour
             }
         }
     }
-    private void FixedUpdate()
+    void LimiteParticulas()
     {
-        if (escalar)
+        //Cuando llegas al limite del numero de particulas se activa el detector overParticulas para saber si se han sobrepasado el numero total maximo de particulas
+        if(particleClonList.Count >= limiteParticulas - 1)
         {
-            Debug.Log("Axis vertical " + escalar);
-            rb.gravityScale = 0;
-            rb.velocity = new Vector2(rb.velocity.x, vertical * velocidadSubir);
+            overParticulas = true;
+        }
+        //Hasta que no quede limpia la lista no se desactivara overParticulas
+        else if(particleClonList.Count == 0)
+        {
+            overParticulas = false;
+        }
+        //Cuando overParticulas se activa, comienza a revisar la lista de particulas, después de que una de las particulas se destruya la eliminara, esto se repite hasta limpiar
+        //la lista al completo
+        if (overParticulas)
+        {
+            for (int e = 0; e < particleClonList.Count; e++)
+            {
+                if (particleClonList[e] == null)
+                {
+                    //Debug.Log("Soy el numero " + e + " en la lista y me he pirado");
+                    particleClonList.Remove(particleClonList[e]);
+                }
+            }
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

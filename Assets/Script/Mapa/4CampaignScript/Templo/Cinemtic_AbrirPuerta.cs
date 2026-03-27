@@ -12,7 +12,7 @@ public class Cinemtic_AbrirPuerta : MonoBehaviour
     [SerializeField] GameObject puerta;
     [SerializeField] Transform puertaObjetivo;
     [SerializeField] GameObject cambioZona;
-
+    [SerializeField] float velocidadPuerta;
     [Header("Camera Objective")]
     [SerializeField] CinemachineVirtualCamera cV_Camera;
 
@@ -52,7 +52,8 @@ public class Cinemtic_AbrirPuerta : MonoBehaviour
                 {
                     //Ejecuta el audio una vez para evitar que se reproduzca cada frame
                     if (reproductorAudio < 1) { openGateTemploSFX.start(); reproductorAudio++; }
-                    puerta.transform.position = new Vector3(puerta.transform.position.x, puerta.transform.position.y + 0.01f, puerta.transform.position.z);
+                    //puerta.transform.position = new Vector3(puerta.transform.position.x, puerta.transform.position.y + 0.01f, puerta.transform.position.z);
+                    puerta.transform.position = Vector2.MoveTowards(puerta.transform.position, puertaObjetivo.position, velocidadPuerta * Time.deltaTime);
                     cV_Camera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 1f;
                     if (puerta.transform.position.y >= puertaObjetivo.position.y)
                     {

@@ -7,6 +7,7 @@ public class Hidden_Definition : MonoBehaviour
     Stairs_Hidden hiddenPlayerControler;
     PlayerHere playerHere;
     public GameObject animEscondite;
+    public GameObject particleDefinition;
     public enum Type_Hidden
     {
         Arbusto,
@@ -79,6 +80,7 @@ public class Hidden_Definition : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Ropa"))
         {
             DefinitionHiddenSpot();
+            hiddenPlayerControler.particulaEsconderse = particleDefinition;
         }
         
     }
