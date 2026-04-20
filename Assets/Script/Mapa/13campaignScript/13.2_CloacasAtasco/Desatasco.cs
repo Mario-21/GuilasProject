@@ -46,6 +46,7 @@ public class Desatasco : MonoBehaviour
         this.gameObject.SetActive(false);
         //Variable Activada
         StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+        activador.enabled = false;
     }
     void TimeDesatacar()
     {

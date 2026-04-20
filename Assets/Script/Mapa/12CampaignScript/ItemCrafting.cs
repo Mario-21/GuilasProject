@@ -25,6 +25,7 @@ public class ItemCrafting : MonoBehaviour
         //SI has colocado el objeto en la mesa y todavia no has crafteado, aparece aun en la mesa
         if(StatusGameobjectsVariables.statusGameobject.modificacion[myIndexItem].modificacion && !StatusGameobjectsVariables.statusGameobject.modificacion[indexModCrafteo].modificacion)
         {
+            activador.enabled = false;
             ShowItemToCraft();
         }
     }
@@ -34,6 +35,7 @@ public class ItemCrafting : MonoBehaviour
         if (activador.modificacion) 
         {
             itemCount.countItemCrafteo++;
+            activador.enabled = false;
             ShowItemToCraft();
             //Al colocar un item aumenta en uno el conteo de items para marcar que ya has usado este item.
         }

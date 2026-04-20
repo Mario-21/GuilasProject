@@ -19,6 +19,7 @@ public class OutWithWrench : MonoBehaviour
         activador = GetComponent<ActivarModificador>();
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
+            activador.enabled = false;
             this.enabled = false;
         }
     }
@@ -32,6 +33,7 @@ public class OutWithWrench : MonoBehaviour
     {
         if (activador.modificacion)
         {
+            activador.enabled = false;
             //Para que no que los enemigos si te ven, no te ataquen al cambiar de zona
             playerCuerpo.layer = 0;
             //Parar el Movimiento del Player

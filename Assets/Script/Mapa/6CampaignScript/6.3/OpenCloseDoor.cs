@@ -28,6 +28,7 @@ public class OpenCloseDoor : MonoBehaviour
     {
         doorClose.sprite = doorOpen;
         StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+        activador.enabled = false;
         doorClose.GetComponent<BoxCollider2D>().enabled = false;
         this.gameObject.SetActive(false);
         //Desactivar Collider y este objeto

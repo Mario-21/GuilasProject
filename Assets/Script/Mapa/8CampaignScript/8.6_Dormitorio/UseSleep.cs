@@ -19,7 +19,11 @@ public class UseSleep : MonoBehaviour
     void Start()
     {
         activador = GetComponent<ActivarModificador>();
-        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) this.enabled = false;
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) 
+        {
+            this.enabled = false;
+            activador.enabled = false;
+        }
     }
 
     // Update is called once per frame

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ConservarMuerte : MonoBehaviour
 {
-    SoldierLife vidaSoldado;
+    [SerializeField] SoldierLife vidaSoldado;
     ActualStatus actualStatus;
     VidaPlayer vidaPlayer;
 
@@ -20,7 +20,11 @@ public class ConservarMuerte : MonoBehaviour
     {
         vidaPlayer = FindObjectOfType<VidaPlayer>();
         //Si coincide con la escena actual aparece
-        if(SoldierActiveInScene.instancia.soldiersStatus[actualStatus.iD].deathScene == SceneManager.GetActiveScene().buildIndex)
+        if (SoldierActiveInScene.instancia.soldiersStatus[actualStatus.iD].imDead)
+        {
+            vidaSoldado.vida = 0;
+        }
+        if (SoldierActiveInScene.instancia.soldiersStatus[actualStatus.iD].deathScene == SceneManager.GetActiveScene().buildIndex)
         {
             vidaSoldado.gameObject.SetActive(true);
             Debug.Log("Estas en la misma escena en la que el " + vidaSoldado.gameObject.name + " ha muerto");
@@ -31,11 +35,6 @@ public class ConservarMuerte : MonoBehaviour
             vidaSoldado.gameObject.SetActive(false);
             Debug.Log("El " + vidaSoldado.gameObject.name + "no ha muerto en esta zona");
         }
-        if (SoldierActiveInScene.instancia.soldiersStatus[actualStatus.iD].imDead)
-        {
-            vidaSoldado.vida = 0;
-        }
-
     }
 
     // Update is called once per frame
@@ -48,7 +47,7 @@ public class ConservarMuerte : MonoBehaviour
     }
     private void OnDestroy()
     {
-        SaveStatusScene();
+        //SaveStatusScene();
     }
     void SaveStatusScene()
     {
@@ -58,8 +57,8 @@ public class ConservarMuerte : MonoBehaviour
         //NOTA: no se puede colocar imDead en el ActualStatus, porque lo ejecuta antes que ConservarMuertos haciendo que no almacene la escena en la que muere
         if (vidaSoldado.vida <= 0 && !SoldierActiveInScene.instancia.soldiersStatus[actualStatus.iD].imDead && !confirmarPlayerDeath)
         {
-            SoldierActiveInScene.instancia.soldiersStatus[actualStatus.iD].deathScene = SceneManager.GetActiveScene().buildIndex;
-            SoldierActiveInScene.instancia.soldiersStatus[actualStatus.iD].imDead = true;
+            //SoldierActiveInScene.instancia.soldiersStatus[actualStatus.iD].deathScene = SceneManager.GetActiveScene().buildIndex;
+            //SoldierActiveInScene.instancia.soldiersStatus[actualStatus.iD].imDead = true;
             Debug.Log("Scena muerte " + SceneManager.GetActiveScene().buildIndex);
         }
     }

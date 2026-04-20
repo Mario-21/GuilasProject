@@ -71,6 +71,7 @@ public class Desenterrar : MonoBehaviour
         ap_Des_Obj.DesaparacerObjetos(itemEarth);
         
         StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+        activador.enabled = false;
     }
     void Unearth()
     {

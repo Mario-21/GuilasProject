@@ -11,7 +11,7 @@ public class SoldierLife : MonoBehaviour
     [Header("Vida Soldado Data")]
     public int vida;
     [HideInInspector] public int vidaMax;
-    ActualStatus status;
+    [HideInInspector] public ActualStatus status;
 
 
     [Header("Animacion Dormir")]
@@ -79,7 +79,6 @@ public class SoldierLife : MonoBehaviour
         if (vida <= 0)
         {
             stepsEmitter.Stop();
-
             //Las capas solo lo tiene la antigua animacion
             //animBody.SetLayerWeight(1, 1);
             //Anula el estado de uno de los dos tipos de enemigos

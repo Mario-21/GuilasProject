@@ -40,11 +40,10 @@ public class Stairs_Hidden : MonoBehaviour
     [Header("Ocultar Cuerpo Jugador")]
     public List<SpriteRenderer> listaCuerpo;
     [SerializeField] int conteoPiezasCuerpo;
+    [SerializeField] bool itemEquipadoSpriteMask;
+    [SerializeField] SpriteMask maskItemEquipado;
 
     [Header("Limitador Particles")]
-    public Texture btnTexture;
-    public Texture btnTexture2;
-    public Texture btnTexture3;
     public int limiteParticulas;
     List<GameObject> particleClonList;
     bool overParticulas;
@@ -126,6 +125,7 @@ public class Stairs_Hidden : MonoBehaviour
         {
             //Esconder las partes del cuerpo
             CuerpoOcultar();
+            if (itemEquipadoSpriteMask) maskItemEquipado.enabled = false;
 
             //disable OcultacionByWeapon for tags don't get problems 
             weaponHidden.enabled = false;
@@ -147,6 +147,7 @@ public class Stairs_Hidden : MonoBehaviour
         {
             //Reaparecer el cuerpo
             CuerpoReaparecer();
+            if (itemEquipadoSpriteMask) maskItemEquipado.enabled = true;
 
             //enabled OcultacionByWeapon 
             weaponHidden.enabled = true;

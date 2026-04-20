@@ -23,6 +23,7 @@ public class AbrirCofre : MonoBehaviour
         {
             spriteActual.sprite = chestOpen;
             itemTake.SetActive(true);
+            activar.enabled = false;
         }
     }
 
@@ -39,6 +40,7 @@ public class AbrirCofre : MonoBehaviour
                 once++;
             }
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+            activar.enabled = false;
         }
     }
 }

@@ -9,7 +9,11 @@ public class VenenoCin : MonoBehaviour
     void Start()
     {
         activador = GetComponent<ActivarModificador>();
-        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) this.enabled = false;
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) 
+        {
+            activador.enabled = false;
+            this.enabled = false;
+        }
     }
 
     // Update is called once per frame
@@ -18,6 +22,7 @@ public class VenenoCin : MonoBehaviour
         if (activador.modificacion)
         {
             DataCinematic.dataCin.comedorScene = DataCinematic.CinematicComedor96.Veneno;
+            activador.enabled = false;
             //ExtraVariable.extras.comedorScene = ExtraVariable.CinematicComedor105.Veneno;
         }
         

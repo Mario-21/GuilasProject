@@ -36,5 +36,6 @@ public class PutSomething : MonoBehaviour
         desAp_Obj.DesaparacerObjetos(wantDisappear);
 
         StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+        activador.enabled = false;
     }
 }

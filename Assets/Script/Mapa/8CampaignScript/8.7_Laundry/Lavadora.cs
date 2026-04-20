@@ -47,6 +47,7 @@ public class Lavadora : MonoBehaviour
                 audio++;
                 this.enabled = false;
             }
+            activador.enabled = false;
         }
     }
 }

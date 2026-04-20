@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ActualStatus : MonoBehaviour
 {
@@ -64,8 +65,21 @@ public class ActualStatus : MonoBehaviour
 
         //Cuando Aparece Cae dormido Deberia aparecer ya dormido
         //Si con transform no funciona el almacenado, almacena los vectores
-        SoldierActiveInScene.instancia.soldiersStatus[iD].position_x = transform.position.x;
-        SoldierActiveInScene.instancia.soldiersStatus[iD].position_y = transform.position.y;
+        //Anteriormente guardaba siempre la ubicación al destruir la escena, pero ya no quiere eso. Debido a que te genera problemas con ciertas mecánicas como la
+        //de ConservarMuerte(), por tanto, dejaras de almacenar la posicion en cuanto el personaje muera.
+        if (!SoldierActiveInScene.instancia.soldiersStatus[iD].imDead)
+        {
+            SoldierActiveInScene.instancia.soldiersStatus[iD].position_x = transform.position.x;
+            SoldierActiveInScene.instancia.soldiersStatus[iD].position_y = transform.position.y;
+            //Cuando detecte que el personaje a muerto solo colocara en true el ImDead, para evitar guardar innecesariamente la ubicacion
+            if (SoldierActiveInScene.instancia.soldiersStatus[iD].statusVida <= 0) 
+            {
+                //Adicionalmente se conservera la escena en la que has palmado, para que ConservarMuerte() funcione
+                SoldierActiveInScene.instancia.soldiersStatus[iD].deathScene = SceneManager.GetActiveScene().buildIndex;
+                Debug.Log("Scena muerte " + SceneManager.GetActiveScene().buildIndex);
+                SoldierActiveInScene.instancia.soldiersStatus[iD].imDead = true;
+            }
+        }
         //Mode From soldier
         //SoldierActiveInScene.instancia.soldiersStatus[iD].berserkerStatus = soldadoMode.berserker;
         //SoldierActiveInScene.instancia.soldiersStatus[iD].modeSoldier = soldadoMode.berserker;

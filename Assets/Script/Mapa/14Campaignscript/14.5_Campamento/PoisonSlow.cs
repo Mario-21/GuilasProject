@@ -25,6 +25,7 @@ public class PoisonSlow : MonoBehaviour
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
             drink.color = poison;
+            activador.enabled = false;
             this.enabled = false;
         }
     }
@@ -36,6 +37,7 @@ public class PoisonSlow : MonoBehaviour
         if (activador.modificacion && soldadoVida.vida > 0)
         {
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+            activador.enabled = false;
             show.DeleteItems(itemsDelete);
             show.ShowItems(itemsShow);
             drink.color = poison;

@@ -23,6 +23,7 @@ public class Allergy_Or_Bath : MonoBehaviour
         activador = GetComponent<ActivarModificador>();
         if(StatusGameobjectsVariables.statusGameobject.modificacion[indexModBath].modificacion || StatusGameobjectsVariables.statusGameobject.modificacion[indexModAllergy].modificacion)
         {
+            activador.enabled = false;
             this.enabled = false;
         }
     }
@@ -45,6 +46,7 @@ public class Allergy_Or_Bath : MonoBehaviour
             if(LiquidColor.liquid.selectedDrink == 0)
             {
                 AllergyDrink();
+                beberEffect.Play();
                 allergyLimit.LimitUse();
                 buttonJarraLlena.LimitarUsos();
                 once++;
@@ -58,12 +60,14 @@ public class Allergy_Or_Bath : MonoBehaviour
         if(LiquidColor.liquid.consumption >= 3) 
         {
             StatusGameobjectsVariables.statusGameobject.modificacion[indexModBath].modificacion = true;
+            activador.enabled = false;
             this.enabled = false;
         }
     }
     void AllergyDrink()
     {
         StatusGameobjectsVariables.statusGameobject.modificacion[indexModAllergy].modificacion = true;
+        activador.enabled = false;
     }
     void ChangeGlass()
     {

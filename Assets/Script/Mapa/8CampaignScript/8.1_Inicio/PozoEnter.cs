@@ -16,6 +16,7 @@ public class PozoEnter : MonoBehaviour
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) 
         {
             PozoCuerda();
+            activador.enabled = false;
             this.enabled = false;
         }
     }
@@ -32,6 +33,7 @@ public class PozoEnter : MonoBehaviour
             PozoCuerda();
             //Mod
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+            activador.enabled = false;
         }
     }
     void PozoCuerda()

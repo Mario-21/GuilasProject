@@ -17,6 +17,7 @@ public class GoBoneCin : MonoBehaviour
         activador = GetComponent<ActivarModificador>();
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
+            activador.enabled = false;
             this.enabled = false;
         }
     }

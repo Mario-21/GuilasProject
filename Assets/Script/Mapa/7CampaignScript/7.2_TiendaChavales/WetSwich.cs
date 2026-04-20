@@ -53,6 +53,7 @@ public class WetSwich : MonoBehaviour
         StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
         ceiiling.onCeilingFan = false;
         ceiiling.enabled = false;
+        activar.enabled = false;
     }
     void SoldierTakeDamageWet()
     {

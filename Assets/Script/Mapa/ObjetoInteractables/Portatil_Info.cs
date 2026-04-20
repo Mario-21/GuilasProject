@@ -23,7 +23,7 @@ public class Portatil_Info : MonoBehaviour
     public Image downloadBar;
     //public SpriteRenderer screenLight;
     public GameObject contorno;
-
+    public float velocidadBarra;
     //Estas 3 variables me dan igual
     bool infoCompiled;
     bool active;
@@ -123,7 +123,7 @@ public class Portatil_Info : MonoBehaviour
                 {
                     //Deja de verse la exclamacion y comienza a visualizar se el progreso de la descargar
                     contorno.SetActive(true);
-                    downloadBar.fillAmount += 0.01f;
+                    downloadBar.fillAmount += velocidadBarra * Time.deltaTime;
                     iconItem.enabled = false;
                     iconItem.iconoZone.SetActive(false);
 

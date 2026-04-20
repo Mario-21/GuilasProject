@@ -22,6 +22,7 @@ public class PasswordNotebook : MonoBehaviour
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
             notebookRevealPass.SetActive(true);
+            activar.enabled = false;
         }
     }
     void Update()
@@ -60,6 +61,7 @@ public class PasswordNotebook : MonoBehaviour
         {
             notebookRevealPass.SetActive(true);
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+            activar.enabled = false;
         }
     }
 }

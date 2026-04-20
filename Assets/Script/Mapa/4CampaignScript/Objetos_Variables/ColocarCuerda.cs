@@ -29,6 +29,7 @@ public class ColocarCuerda : MonoBehaviour
         colocarItem.SetActive(true);
         //Se desactiva para que no puedas a volver a realizar la acción y no te quite uses a los objetos si tienen más de un uso
         this.enabled = false;
+        activar.enabled = false;
 
     }
 }

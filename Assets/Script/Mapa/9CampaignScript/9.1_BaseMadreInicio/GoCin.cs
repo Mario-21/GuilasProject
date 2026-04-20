@@ -16,6 +16,7 @@ public class GoCin : MonoBehaviour
         activador = GetComponent<ActivarModificador>();
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
+            activador.enabled = false;
             this.enabled = false;
         }
     }
@@ -33,6 +34,7 @@ public class GoCin : MonoBehaviour
             EstructuraNiveles.nivel = sceneCin;
             AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+            activador.enabled = false;
             playerMov.BloquearMovPlayer();
         }
     }
