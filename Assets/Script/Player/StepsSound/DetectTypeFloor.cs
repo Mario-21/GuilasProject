@@ -155,7 +155,7 @@ public class DetectTypeFloor : MonoBehaviour
             }
         }
     }
-    private void OnTriggerStay2D(Collider2D collision)
+    void OnTriggerStay2D(Collider2D collision)
     {
         
         if (playerControl.onGround)

@@ -18,14 +18,14 @@ public class JugadorMovimiento : MonoBehaviour
 
     [Header("Base Player Data")]
     public float velocidadBase;
-    [SerializeField] private float aceleracionBase;
+    public float aceleracionBase;
     [SerializeField] private float speedBase;
 
     [Header("Datos Movimiento")]
     public float velocidad;
-    public float aceleracion;
+    [SerializeField] float aceleracion;
     [SerializeField] private float speed;
-    [SerializeField] private float groundLinearDrag;
+    public float groundLinearDrag;
     public float horizontalMov;
 
     bool cambiarDireccion => (rb.velocity.x > 0 && horizontalMov < 0) || (rb.velocity.x < 0 && horizontalMov > 0);
