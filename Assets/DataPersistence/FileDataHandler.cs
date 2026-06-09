@@ -12,7 +12,7 @@ public class FileDataHandler
 
     private bool useEncryptionSave = false;
     private bool useEncryptionLoad   = false;
-    private readonly string encryptionCodeWord = "racimo";
+    public static readonly string encryptionCodeWord = "racimo";
 
     public FileDataHandler (string dataDirPath, string dataFileName, bool useEncryptionSave,bool useEncryptionLoad)
     {
@@ -54,6 +54,7 @@ public class FileDataHandler
         }
         return loadedData;
     }
+
     public void Save(GameData data)
     {
         //Usar mejor Path.Combine debido se adapta mejor a diferentes sistemas operativos
@@ -86,7 +87,73 @@ public class FileDataHandler
             Debug.LogError("Error al intentar al intentar guardar el archivo" + fullPath + "\n" + e);
         }
     }
-    private string EncryptDecrypt(string data)
+
+    public ItemDataLanguage LoadItem()
+    {
+        //Usar mejor Path.Combine debido se adapta mejor a diferentes sistemas operativos
+        string fullPath = Path.Combine(dataDirPath, dataFileName);
+        ItemDataLanguage loadedData = null;
+        //Revisa si existe un archivo que cargar
+        if (File.Exists(fullPath))
+        {
+            try
+            {
+                string dataToStore = "";
+                using (FileStream stream = new FileStream(fullPath, FileMode.Open))
+                {
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        dataToStore = reader.ReadToEnd();
+                    }
+
+                }
+                if (useEncryptionLoad)
+                {
+                    dataToStore = EncryptDecrypt(dataToStore);
+                }
+                //Deserealizar los datos del archivo en json para pasar a un objeto en C#
+                loadedData = JsonUtility.FromJson<ItemDataLanguage>(dataToStore);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Error al cargar los archivos desde: " + fullPath + "\n" + e);
+            }
+        }
+        return loadedData;
+    }
+    public void SaveItem (ItemDataLanguage itemData)
+    {
+        //Usar mejor Path.Combine debido se adapta mejor a diferentes sistemas operativos
+        string fullPath = Path.Combine(dataDirPath, dataFileName);
+        try
+        {
+            //Crea un archivo en el directorio asignado si no hay uno existente
+            Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
+
+            //Transforma C# gamedata objeto en Json
+            string dataToStore = JsonUtility.ToJson(itemData, true);
+
+            if (useEncryptionSave)
+            {
+                dataToStore = EncryptDecrypt(dataToStore);
+            }
+
+            //Escribe los datos serializados en el archivo
+            using (FileStream stream = new FileStream(fullPath, FileMode.Create))
+            {
+                using (StreamWriter writer = new StreamWriter(stream))
+                {
+                    writer.Write(dataToStore);
+                }
+
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Error al intentar al intentar guardar el archivo" + fullPath + "\n" + e);
+        }
+    }
+    public static string EncryptDecrypt(string data)
     {
         string modifiedData = "";
         for (int i = 0; i < data.Length; i++)
@@ -95,6 +162,7 @@ public class FileDataHandler
         }
         return modifiedData;
     }
+
 }
 public class FileDataHandlerNoEncrypt
 {
@@ -165,4 +233,138 @@ public class FileDataHandlerNoEncrypt
         }
     }
 
+
+    
+    //Guardar Idioma
+    public LanguageData LoadLanguage()
+    {
+        //Usar mejor Path.Combine debido se adapta mejor a diferentes sistemas operativos
+        string fullPath = Path.Combine(dataDirPathNoEncrypt, dataFileNameNoEncrypt);
+        LanguageData loadedData = null;
+        //Revisa si existe un archivo que cargar
+        if (File.Exists(fullPath))
+        {
+            try
+            {
+                string dataToStore = "";
+                using (FileStream stream = new FileStream(fullPath, FileMode.Open))
+                {
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        dataToStore = reader.ReadToEnd();
+                    }
+
+                }
+
+                //Deserealizar los datos del archivo en json para pasar a un objeto en C#
+                loadedData = JsonUtility.FromJson<LanguageData>(dataToStore);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Error al cargar los archivos desde: " + fullPath + "\n" + e);
+            }
+        }
+        return loadedData;
+    }
+    public void SaveLanguage(LanguageData languageSelect)
+    {
+        //Usar mejor Path.Combine debido se adapta mejor a diferentes sistemas operativos
+        string fullPath = Path.Combine(dataDirPathNoEncrypt, dataFileNameNoEncrypt);
+        try
+        {
+            //Crea un archivo en el directorio asignado si no hay uno existente
+            Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
+
+            //Transforma C# gamedata objeto en Json
+            string dataToStore = JsonUtility.ToJson(languageSelect, true);
+
+            //Escribe los datos serializados en el archivo
+            using (FileStream stream = new FileStream(fullPath, FileMode.Create))
+            {
+                using (StreamWriter writer = new StreamWriter(stream))
+                {
+                    writer.Write(dataToStore);
+                }
+
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Error al intentar al intentar guardar el archivo" + fullPath + "\n" + e);
+        }
+    }
+
+
+
+}
+public class FileDataHandlerLanguage
+{
+    private string dataDirPathLanguage = "";
+
+    private string dataFileNameLanguage = "";
+
+    public FileDataHandlerLanguage(string dataDirPathLanguage, string dataFileNameLanguage)
+    {
+        this.dataDirPathLanguage = dataDirPathLanguage;
+        this.dataFileNameLanguage = dataFileNameLanguage;
+    }
+
+    //Guardar Idioma
+    public LanguageData LoadLanguage()
+    {
+        //Usar mejor Path.Combine debido se adapta mejor a diferentes sistemas operativos
+        string fullPath = Path.Combine(dataDirPathLanguage, dataFileNameLanguage);
+        LanguageData loadedData = null;
+        //Revisa si existe un archivo que cargar
+        if (File.Exists(fullPath))
+        {
+            try
+            {
+                string dataToStore = "";
+                using (FileStream stream = new FileStream(fullPath, FileMode.Open))
+                {
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        dataToStore = reader.ReadToEnd();
+                    }
+
+                }
+
+                //Deserealizar los datos del archivo en json para pasar a un objeto en C#
+                loadedData = JsonUtility.FromJson<LanguageData>(dataToStore);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Error al cargar los archivos desde: " + fullPath + "\n" + e);
+            }
+        }
+        return loadedData;
+    }
+    public void SaveLanguage(LanguageData languageSelect)
+    {
+        //Usar mejor Path.Combine debido se adapta mejor a diferentes sistemas operativos
+        string fullPath = Path.Combine(dataDirPathLanguage, dataFileNameLanguage);
+        try
+        {
+            //Crea un archivo en el directorio asignado si no hay uno existente
+            Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
+
+            //Transforma C# gamedata objeto en Json
+            string dataToStore = JsonUtility.ToJson(languageSelect, true);
+
+            //Escribe los datos serializados en el archivo
+            using (FileStream stream = new FileStream(fullPath, FileMode.Create))
+            {
+                using (StreamWriter writer = new StreamWriter(stream))
+                {
+                    writer.Write(dataToStore);
+                }
+
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Error al intentar al intentar guardar el archivo" + fullPath + "\n" + e);
+        }
+    }
 }

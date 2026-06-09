@@ -47,9 +47,8 @@ public class AudioMenu : MonoBehaviour, IDataPersistenceNoCrypted
         noEncryptedGameData.itemsVolume = this.sfxItems;
         noEncryptedGameData.enemyVolume = this.sfxEnemy;
         noEncryptedGameData.playerVolume = this.sfxPlayer;
-    }
-    private void Start()
-    {
+
+        Debug.Log("Audio Guardado");
     }
     private void Awake()
     {
@@ -77,6 +76,9 @@ public class AudioMenu : MonoBehaviour, IDataPersistenceNoCrypted
         sfxItemsBus = RuntimeManager.GetBus("bus:/SFX");
         sfxEnemyBus = RuntimeManager.GetBus("bus:/Enemy_SFX");
         sfxPlayerBus = RuntimeManager.GetBus("bus:/Player_SFX");
+
+        Debug.Log("Don Ramon Espinar de la Torre");
+
     }
     private void Update()
     {

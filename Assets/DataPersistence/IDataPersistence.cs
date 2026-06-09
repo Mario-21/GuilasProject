@@ -15,3 +15,15 @@ public interface IDataPersistenceNoCrypted
     void SavaDataNoCrypted(ref NoEncryptedGameData noEncryptedGameData);
 
 }
+public interface IDataLanguage
+{
+    void LoadDataLanguage(LanguageData languageData);
+
+    void SaveDataLanguage(ref LanguageData languageData);
+}
+public interface IDataItemName
+{
+    void LoadDataItemName(ItemDataLanguage itemDataLanguage);
+
+    void SaveDataItemName(ref ItemDataLanguage itemDataLanguage);
+}

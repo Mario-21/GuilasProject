@@ -25,6 +25,49 @@ public class GameData
 }
 
 [System.Serializable]
+public class ItemDataLanguage
+{
+    public SerializableDictionary<string, string> spanishItemsName;
+    public SerializableDictionary<string, string> englishItemsName;
+
+    public SerializableDictionary<string, IdiomasItems> itemsName;
+
+    public ItemDataLanguage()
+    {
+        spanishItemsName = new SerializableDictionary<string, string>();
+
+        englishItemsName = new SerializableDictionary<string, string>();
+
+        //List<IdiomasItems> idiomas = new List<IdiomasItems>();
+
+        itemsName = new SerializableDictionary<string, IdiomasItems>();
+
+        //itemsName["hello World"] = new List<string>(("hello world").Split(' '));
+    }
+}
+[System.Serializable]
+public class IdiomasItems
+{
+    public string spanish;
+    public string english;
+}
+[System.Serializable]
+public class ListAllItemsLanguage
+{
+    public List<string> listaTodosObjetosEspañol;
+    public List<string> listAllItemsEnglish;
+}
+[System.Serializable]
+public class LanguageData
+{
+    public string language;
+    public LanguageData()
+    {
+        this.language = "English";
+    }
+}
+
+[System.Serializable]
 public class NoEncryptedGameData
 {
     [Header("Opciones de Sonido")]
@@ -35,14 +78,8 @@ public class NoEncryptedGameData
     public float enemyVolume;
     public float playerVolume;
 
-    public enum Idioma
-    {
-        Español,
-        English,
-        Aleman
-    }
     [Header("Idioma")]
-    public Idioma idioma;
+    public string idioma;
     public NoEncryptedGameData()
     {
         //Volumen data
@@ -53,6 +90,6 @@ public class NoEncryptedGameData
         this.enemyVolume = 1;
         this.playerVolume = 1;
 
-        idioma = Idioma.Aleman;
+        this.idioma = "English";
     }
 }
