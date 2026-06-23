@@ -39,11 +39,17 @@ public class ArmaController : MonoBehaviour, IDataPersistence
 
 
     Camera pruebaCamera;
+
+    //Si le doy a referencua puedo apreciar la purga que voy a hacer
     public void LoadData (GameData data)
     {
+
+        //REVISAR SI GUARDA LA MUNICIÓN CON EL SAVEDATA SINO TENDRE QUE COLOCARLA COMO LO DEMÁS MANUALMENTE.
+
         //Colocar un bool para que me deje cargar la munición una sola vez al inicio de cada nivel
         //Este bool solo se colocara en true al inicio de cada nivel para que establezca la munición solo al inicio
         //Tras establecerla pasara a usar el método que existia antes de una ListaPlayer haciendo de puente
+        /*
         if (!StatusGameobjectsVariables.statusGameobject.modificacion[indexModCargarAmmoData].modificacion) 
         {
             Debug.Log("Eye Liener");
@@ -51,20 +57,24 @@ public class ArmaController : MonoBehaviour, IDataPersistence
             //Establece la munición con la que empiezas el nivel y la que va a ir utilizando para viajar entre escenas.
             ListDataPlayer.listDataPlayer.ammoPlayerNow = data.ammoActual;
             StatusGameobjectsVariables.statusGameobject.modificacion[indexModCargarAmmoData].modificacion = true;
-        }
+        }*/
     }
     public void SaveData(ref GameData data)
     {
         //Esto solo ocurre al final
-        data.ammoActual = this.municion;
+        //data.ammoActual = this.municion;
     }
     private void Awake()
     {
+
         pistola = GetComponent<SpriteRenderer>();
         pruebaCamera = GameObject.FindGameObjectWithTag("CameraDisparo").GetComponent<Camera>();
+        //No puedo esto va antes que la carga
+        //municion = GameDataNoDestroy.instance.gameData.ammoActual;
     }
     void Start()
     {
+        municion = ListDataPlayer.listDataPlayer.ammoPlayerNow;
         //Establecer la municion Total con la inicial;
         municionTotal = municion;
         //Si cierro Unity y el lunes esto no funciona, habrá que cambiarlo para que solo ejecute una vez 

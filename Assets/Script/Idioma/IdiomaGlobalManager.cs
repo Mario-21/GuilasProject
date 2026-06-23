@@ -6,11 +6,6 @@ using System;
 public class IdiomaGlobalManager : MonoBehaviour, IDataPersistenceNoCrypted
 {
     public static IdiomaGlobalManager instanciaIdioma;
-    public enum TodosIdiomas
-    {
-        Español,
-        English
-    }
 
     public string idiomaActual;
 
@@ -19,6 +14,9 @@ public class IdiomaGlobalManager : MonoBehaviour, IDataPersistenceNoCrypted
     public static string readFromFilePathEspañol;
     public static string readFromFilePathInglesComplete;
     public static string readFromFilePathIngles;
+    //Ruta de las Pantallas de Carga
+    public static string rutaPantallaCargaSpanish;
+    public static string rutaLoadScreenEnglish;
     [Header("Nombre Archivos Objetos Idiomas")]
     public string nombre_Archivo = "Lista_Objetos.txt";
     public string name_Archive = "List_Items.txt";
@@ -37,6 +35,7 @@ public class IdiomaGlobalManager : MonoBehaviour, IDataPersistenceNoCrypted
             Destroy(gameObject);
         }
         RutasIdiomasObjetos();
+        RutaIdiomaPantallaCarga();
     }
     public void LoadDataNoCrypted(NoEncryptedGameData noEncryptedGameData)
     {
@@ -66,13 +65,19 @@ public class IdiomaGlobalManager : MonoBehaviour, IDataPersistenceNoCrypted
     {
         new AlmacenarIdiomas(idiomaSeleccionado);
     }
-    public void RutasIdiomasObjetos()
+    void RutasIdiomasObjetos()
     {
         readFromFilePathEspañolCompleto = Application.dataPath + "/Idiomas/Español/Objetos/Lista_Objetos.txt";
         readFromFilePathEspañol = Application.dataPath + "/Idiomas/Español/Objetos/";
         readFromFilePathInglesComplete = Application.dataPath + "/Idiomas/Ingles/Items/List_Items.txt";
         readFromFilePathIngles = Application.dataPath + "/Idiomas/Ingles/Items/";
     }
+    void RutaIdiomaPantallaCarga()
+    {
+        rutaPantallaCargaSpanish = Application.dataPath + "/Idiomas/Español/Pantalla_Carga/";
+        rutaLoadScreenEnglish = Application.dataPath + "/Idiomas/Ingles/LoadScreen/";
+    }
+
 
     void DesencriptaObjetos(string path, string nameArchivo, List<string> listObjetos)
     {

@@ -21,9 +21,9 @@ public class LiquidColor : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    private void Start()
+    public void ResetearLiquid()
     {
-        //Establece el tipo de bebida que has seleccionado
-        //selectedDrink = drink;
+        selectedDrink = 0;
+        consumption = 0;
     }
 }

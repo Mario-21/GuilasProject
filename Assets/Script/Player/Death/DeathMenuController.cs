@@ -29,8 +29,11 @@ public class DeathMenuController : MonoBehaviour
         EstructuraNiveles.nivel = mainMenuScene;
         //Restablece las posiciones del inventario
         InventoryManager.instanciaInventory.indexInventoryPosition = 0;
+
         //Restablece las notas
-        MostrarTextObjectives.indexLine = 0;
+        //Esto te da igual dado que en cuanto salgas se va a destruir, ya no permanece como una variable static
+        //MostrarTextObjectives.indexLine = 0;
+
         //Destruye todas las listas 
         for (int e = 0; e < ListDestroyEndLevel.levelList.levelListDestroy.Count; e++)
         {
@@ -57,11 +60,15 @@ public class DeathMenuController : MonoBehaviour
         //3.Cambiar la ejecucion de StartSceneLevelCampaign
         EstructuraNiveles.nivel = StartSceneLevelCampaign.infoActualCampaign.firstActualSceneCampaign;
         //Restablece las notas
-        MostrarTextObjectives.indexLine = 0;
+        ObjectivesLevels.instanceObjectivesLevel.indexLine = 0;
         //Restablece las posiciones del inventario
         InventoryManager.instanciaInventory.indexInventoryPosition = 0;
+
         //Destruir las listas no se si funcionara debido a que no se si entrara en conflicto con lo demás
         //Destruir listas(?)
+        //Ya no puedo destruirlas debo limpiarlas
+
+        /*
         for (int e = 0; e < ListDestroyEndLevel.levelList.levelListDestroy.Count; e++)
         {
             Destroy(ListDestroyEndLevel.levelList.levelListDestroy[e].gameObject);
@@ -69,8 +76,41 @@ public class DeathMenuController : MonoBehaviour
 
         }
         Destroy(ListDestroyEndLevel.levelList.gameObject);
+        */
+
+        //Limpiar Todas las listas de los niveles
+        ////Resetear AmmoRecovery en el nivel
+        AmmoRecoveryList.ammoFromLevel.ResetearAmmo();
+        //Resetear Items en el nivel
+        SaveScene.instancia.ResetearItemNivel();
+        //Resetear UI Items en el nivel
+        if (ListaItemsUI.listaItemsUI != null) ListaItemsUI.listaItemsUI.ResetearItemUI(); Debug.Log("ListaUI Reseteada");
+        //Resetear Variables en el nivel.
+        StatusGameobjectsVariables.statusGameobject.ResetearVariable();
+        //Resetear DataPlayer en el nivel
+        ListDataPlayer.listDataPlayer.ResetearDataPlayer();
+        //Resetear soldados en el nivel
+        if (SoldierActiveInScene.instancia != null) SoldierActiveInScene.instancia.ResetearStatusSoldier();
+        /*
+        //Listas Especiales
+        //Resetear DataAgua del nivel 12
+        ListWaters.listWaters.ResetearAgua();
+        //Resetear Turnos del nivel 11
+        TurnosWorked.extras.ResetearTurnoWorker();
+        //Resetear Timer del nivel 6
+        NoviceSoldier.noviceDeathLife.ResetearTimeSoldier();
+        //Resetear Ropa cesto del nivel 7
+        ClotheData.clotheInfo.ResetearClothe();
+        //Resetear Liquidos del nivel 7
+        LiquidColor.liquid.ResetearLiquid();
+        */
+
+
         //Poder Restablecer el menu
         PauseMenu.openTries = 0;
+        //Mirar estado Reliquia para resetear
+        //La condición del número la realizo para los posibles niveles donde no haya ninguna reliquia 
+        if(ListaReliquias.instancia.numReliquiaNivel >= 0) GameDataNoDestroy.instance.CambiarGuardadoReliquia(ListaReliquias.instancia.numReliquiaNivel, ListDataPlayer.listDataPlayer.reliquiaObtenida);
     }
     public void Reanudar()
     {

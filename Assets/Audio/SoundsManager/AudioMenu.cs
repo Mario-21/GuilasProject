@@ -77,8 +77,6 @@ public class AudioMenu : MonoBehaviour, IDataPersistenceNoCrypted
         sfxEnemyBus = RuntimeManager.GetBus("bus:/Enemy_SFX");
         sfxPlayerBus = RuntimeManager.GetBus("bus:/Player_SFX");
 
-        Debug.Log("Don Ramon Espinar de la Torre");
-
     }
     private void Update()
     {

@@ -19,4 +19,11 @@ public class ListaItemsUI : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public void ResetearItemUI()
+    {
+        for(int i = 0; i < listaAllItemUI.Count; i++)
+        {
+            listaAllItemUI[i].itemUICatch = false;
+        }
+    }
 }

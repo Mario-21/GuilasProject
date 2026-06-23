@@ -68,7 +68,8 @@ public class EscribirPantallaCargaNiveles : MonoBehaviour
         public EscribirPantallaSolo(string rutaIdioma,string rutaTexto, Text textoUI, float velocidadLetra, bool letrasInvisibles)
         {
             this.textPantallasCarga = textoUI;
-            textoDelDocumento = Application.dataPath + "/Textos/Text_PantallaCarga/" + rutaIdioma + "/" + rutaTexto + ".txt";
+            textoDelDocumento = Path.Combine(rutaIdioma, rutaTexto); //Application.dataPath + "/Idiomas/" + rutaIdioma + "/" + rutaTexto + ".txt"; //<---------------- hay que cambiar la ruta
+            Debug.Log(textoDelDocumento);
             textoUI.text = File.ReadAllText(textoDelDocumento);
             this.contenidoTextPantallaCarga = textoUI.text;
             this.timePerCharacter = velocidadLetra;

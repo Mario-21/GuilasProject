@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class ViajarEscenaManualmente : MonoBehaviour
 {
+    [Tooltip("EL nombre de Escena solo sirve con anim desactivado")]
     public string nombreEscena;
+    public bool anim;
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -16,7 +18,14 @@ public class ViajarEscenaManualmente : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene(nombreEscena);
+            if (anim)
+            {
+                AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
+            }
+            else
+            {
+                SceneManager.LoadScene(nombreEscena);
+            }
         }
     }
 }

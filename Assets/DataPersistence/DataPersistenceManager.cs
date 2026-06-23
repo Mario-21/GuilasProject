@@ -11,6 +11,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     [SerializeField] private bool useEncryptionSave;
     [SerializeField] private bool useEncryptionLoad;
+    [SerializeField] private bool guardarGameData;
 
 
     public GameData gameData;
@@ -19,7 +20,8 @@ public class DataPersistenceManager : MonoBehaviour
     public static DataPersistenceManager instance { get; private set; }
     [Header("File Item Game")]
     public ListAllItemsLanguage listItemLanguage;
-
+    [Header("File LoadScreen")]
+    public InfoTodasPantallasCargar InfoTodasPantallasCagar;
     [Header("File No Encrypt")]
     [SerializeField] private string fileNameNoEncrypt;
 
@@ -55,9 +57,9 @@ public class DataPersistenceManager : MonoBehaviour
     void Start()
     {
         //Crypted Items
-        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName,useEncryptionSave,useEncryptionLoad);
-        this.dataPersistencesObjects = FindAllDataPersistenceObjects();
-        LoadGame();
+        //this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName,useEncryptionSave,useEncryptionLoad);
+        //this.dataPersistencesObjects = FindAllDataPersistenceObjects();
+        //LoadGame();
         //No Crypted Items
         this.dataHandlerNoEncrypt = new FileDataHandlerNoEncrypt(Application.persistentDataPath, fileNameNoEncrypt);
         this.dataPersistencesObjectsNoCrypted = FindAllDataPersistenceObjectsNoCrypted();
@@ -71,9 +73,10 @@ public class DataPersistenceManager : MonoBehaviour
         this.dataHandlerItemName = new FileDataHandler(pathDataHandlerItemName, fileDictionaryItem, useEncryptionSave, useEncryptionLoad);
         this.dataPersistenceObjectsName = FindAllDataPersistanceItemsName();
         LoadItemDataLanguage();
-
+        
 
     }
+    /*
     public void NewGame()
     {
         this.gameData = new GameData();
@@ -105,6 +108,7 @@ public class DataPersistenceManager : MonoBehaviour
         }
         dataHandler.Save(this.gameData);
     }
+    */
     public void NewGameNoEncrypt()
     {
         this.gamedataNoEncrypt = new NoEncryptedGameData();
@@ -173,6 +177,7 @@ public class DataPersistenceManager : MonoBehaviour
     public void NewItemDataLanguage()
     {
         this.itemDataLanguage = new ItemDataLanguage();
+        EscribirTodoDictionary();
     }
     public void LoadItemDataLanguage()
     {
@@ -202,11 +207,26 @@ public class DataPersistenceManager : MonoBehaviour
         dataHandlerItemName.SaveItem(this.itemDataLanguage);
     }
 
+    void EscribirTodoDictionary()
+    {
+
+        for (int i = 0; i < listItemLanguage.listaDataObjetosTodosIdiomas.Count; i++)
+        {
+            IdiomasItems idiomasListaObjetos = new IdiomasItems();
+            idiomasListaObjetos.spanish = listItemLanguage.listaDataObjetosTodosIdiomas[i].nombresObjetosIdiomas.spanish;
+            idiomasListaObjetos.english = listItemLanguage.listaDataObjetosTodosIdiomas[i].nombresObjetosIdiomas.english;
+
+            string itemID = listItemLanguage.listaDataObjetosTodosIdiomas[i].idObjeto;
+
+            itemDataLanguage.itemsName.Add(itemID, idiomasListaObjetos);
+        }
+    }
+
     //NOTA: ESTO ES UNA MERA PRUEBA COMO EN EL TUTORIAL SEGUIDO.
     //POSTERIOR AL TUTORIAL ESTE VOID HABRÁ QUE QUITARLO DADO QUE YO NO QUIERO QUE AQUÍ ME GUARDE LOS DATOS, SINO A LA HORA DE PASARTE UN NIVEL
     void OnApplicationQuit()
     {
-        //SaveGame();
+        //if(guardarGameData)SaveGame();
         SaveGameNoEncrypt();
         SaveItemDataLanguage();
         //SaveLanguage();

@@ -19,4 +19,8 @@ public class ClotheData : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public void ResetearClothe() 
+    {
+        numCloth = 0;
+    }
 }

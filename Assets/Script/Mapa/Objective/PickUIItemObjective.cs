@@ -5,51 +5,33 @@ using UnityEngine;
 public class PickUIItemObjective : MonoBehaviour
 {
     public int indexMod;
-    public List<int> indexItemsUI;
-
-    public int itemPicksLimit;
-    int itemsPicks;
+    [Header("Index Item UI")]
+    public int indexItemUI;
     [Header("What's Task")]
     public int taskWho;
     void Start()
     {
-        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) WhoTaskIAmPickItemsUI();
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
+        {
+            ObjectivesLevels.instanceObjectivesLevel.TaskObjectiveComplete(taskWho);
+            this.enabled = false;
+        }
     }
     void Update()
     {
         PickItemsUIObjective();
-        CompleteTaskItemUI();
-        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) WhoTaskIAmPickItemsUI();
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) 
+        {
+            ObjectivesLevels.instanceObjectivesLevel.TaskObjectiveComplete(taskWho);
+            this.enabled = false;
+        }
     }
     void PickItemsUIObjective()
     {
         //Copiar el TaskWhoIAm();
-        for (int i = 0; i < indexItemsUI.Count; i++)
-        {
-            if (ListaItemsUI.listaItemsUI.listaAllItemUI[indexItemsUI[i]].itemUICatch)
-            {
-                itemsPicks++;
-                indexItemsUI.Remove(indexItemsUI[i]);
-            }
-        }
-    }
-    void CompleteTaskItemUI()
-    {
-        if (itemsPicks >= itemPicksLimit)
+        if (ListaItemsUI.listaItemsUI.listaAllItemUI[indexItemUI].itemUICatch)
         {
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
-        }
-    }
-    void WhoTaskIAmPickItemsUI()
-    {
-        if (MostrarTextObjectives.indexLine == taskWho)
-        {
-            MostrarTextObjectives.indexLine++;
-            this.enabled = false;
-        }
-        else if (MostrarTextObjectives.indexLine > taskWho)
-        {
-            this.enabled = false;
         }
     }
 }

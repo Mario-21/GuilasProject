@@ -45,7 +45,7 @@ public class PruebaIdiomaManager : MonoBehaviour
         if (activarDictionary)
         {
             //objetosDatos.TryGetValue(idBuscada, out nombreBuscado);
-            DataPersistenceManager.instance.itemDataLanguage.spanishItemsName.TryGetValue(idBuscada, out nombreBuscado);
+            //DataPersistenceManager.instance.itemDataLanguage.spanishItemsName.TryGetValue(idBuscada, out nombreBuscado);
         }
         if (addDataItemsGlobal)
         {

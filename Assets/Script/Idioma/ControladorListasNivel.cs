@@ -6,35 +6,61 @@ public class ControladorListasNivel : MonoBehaviour
 {
     //O hacer una instancia o el nombre statico
 
-    public string nombreSiguienteNivel; 
-    public int indexLista;
+    public static string nombreSiguienteNivel;
+    public string archivoNivelPantallaCarga;
+    public GameObject asignacionObjetosDictionary;
+    public GameObject asignacionDataPlayer;
 
-    public List<InformacionNivel> infoNiveles;
+    int indexListInfoNivel;
+    public List<InfoNivel> informacionNiveles;
     void Start()
     {
-        for(int i = 0; i < infoNiveles.Count; i++)
+        for(int i = 0; i < informacionNiveles.Count; i++)
         {
-            if(infoNiveles[i].nivelNombre == nombreSiguienteNivel)
+            if(informacionNiveles[i].nivelNombre == nombreSiguienteNivel)
             {
-                indexLista = i;
-                EstructuraNiveles.nivel = infoNiveles[i].nivelIndex;
-                StartCoroutine(SpawneoListaObjetosNivel(infoNiveles, indexLista));
+                indexListInfoNivel = i;
+                ListaReliquias.instancia.numReliquiaNivel = informacionNiveles[i].numReliquia;
+                //EscribirPantallaCargaNiveles es un mera referencia para acordarme de los datos que tengo que obtener
+                //EscribirPantallaCargaNiveles.EscribirTextoStatic(idiomaSelecionado.ToString(), nameArchivo, textoUICarga, velocidadLetra, letraInvisible);
+                EstructuraNiveles.nivel = informacionNiveles[i].scenaNivel;
+                StartCoroutine(SpawneoListaObjetosNivel(informacionNiveles));
+                switch (IdiomaGlobalManager.instanciaIdioma.idiomaActual)
+                {
+                    case "Español":
+                        archivoNivelPantallaCarga = informacionNiveles[i].archiveSpanish;
+                        break;
+                    case "English":
+                        archivoNivelPantallaCarga = informacionNiveles[i].archiveEnglish;
+                        break;
+                }
                 break;
             }
         }
     }
-    IEnumerator SpawneoListaObjetosNivel(List<InformacionNivel> listaInfoNiveles, int indexLista)
+    IEnumerator SpawneoListaObjetosNivel(List<InfoNivel> listaInfoNivel)
     {
-        Instantiate(infoNiveles[indexLista].saveDataNivel);
+        Instantiate(asignacionDataPlayer);
+        Instantiate(listaInfoNivel[indexListInfoNivel].listaObjetosNivel);
+        Instantiate(listaInfoNivel[indexListInfoNivel].listaObjectives);
         yield return new WaitForSeconds(0.2f);
-        Instantiate(infoNiveles[indexLista].asignacionNombreObjetoNivel);
+        Instantiate(asignacionObjetosDictionary);
     }
 }
-public class InformacionNivel
+[System.Serializable]
+public class InfoNivel
 {
+    [Header("Nombre Nivel")]
     public string nivelNombre;
-    public int nivelIndex;
-
-    public GameObject saveDataNivel;
-    public GameObject asignacionNombreObjetoNivel;
+    [Header("Index Escena Nivel")]
+    public int scenaNivel;
+    [Header("Numero de la Reliquia en Nivel")]
+    public int numReliquia;
+    [Header("Nombre Archivos Pantallas Carga")]
+    public string archiveSpanish;
+    public string archiveEnglish;
+    [Header("Lista Objetivos")]
+    public GameObject listaObjectives;
+    [Header("Lista Objetos Nivel")]
+    public GameObject listaObjetosNivel;
 }

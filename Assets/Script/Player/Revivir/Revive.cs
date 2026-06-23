@@ -37,7 +37,7 @@ public class Revive : MonoBehaviour
     {
         vidaPlayerStartLevel = ListDataPlayer.listDataPlayer.vidaPlayerNow;
         //Establecer notes iniciales
-        noteStart = MostrarTextObjectives.indexLine;
+        noteStart = ObjectivesLevels.instanceObjectivesLevel.indexLine;
 
         //Establecer Posicion inicial de inventario
         inventoryPosStart = InventoryManager.instanciaInventory.indexInventoryPosition;
@@ -153,6 +153,12 @@ public class Revive : MonoBehaviour
             if (ListaReliquias.instancia.listaReliquiasTotal[w].reliquiaObtenida != reliquiaStartLevel[w])
             {
                 ListaReliquias.instancia.listaReliquiasTotal[w].reliquiaObtenida = reliquiaStartLevel[w];
+                if (GameDataNoDestroy.instance.gameData.reliquiasCollected.ContainsKey(ListaReliquias.instancia.listaReliquiasTotal[w].idReliquia))
+                {
+                    GameDataNoDestroy.instance.gameData.reliquiasCollected.Remove(ListaReliquias.instancia.listaReliquiasTotal[w].idReliquia);
+                    //GameDataNoDestroy.instance.gameData.nivelesComplete.Add(idReliquia, reliquiaRecogida);
+                }
+                GameDataNoDestroy.instance.gameData.reliquiasCollected.Add(ListaReliquias.instancia.listaReliquiasTotal[w].idReliquia, reliquiaStartLevel[w]);
             }
         }
     }
@@ -213,7 +219,7 @@ public class Revive : MonoBehaviour
     }
     public void ResetearNote()
     {
-        MostrarTextObjectives.indexLine = noteStart;
+        ObjectivesLevels.instanceObjectivesLevel.indexLine = noteStart;
     }
     public void ResetearVida()
     {

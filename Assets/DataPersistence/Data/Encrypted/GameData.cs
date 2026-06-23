@@ -27,22 +27,10 @@ public class GameData
 [System.Serializable]
 public class ItemDataLanguage
 {
-    public SerializableDictionary<string, string> spanishItemsName;
-    public SerializableDictionary<string, string> englishItemsName;
-
     public SerializableDictionary<string, IdiomasItems> itemsName;
-
     public ItemDataLanguage()
     {
-        spanishItemsName = new SerializableDictionary<string, string>();
-
-        englishItemsName = new SerializableDictionary<string, string>();
-
-        //List<IdiomasItems> idiomas = new List<IdiomasItems>();
-
         itemsName = new SerializableDictionary<string, IdiomasItems>();
-
-        //itemsName["hello World"] = new List<string>(("hello world").Split(' '));
     }
 }
 [System.Serializable]
@@ -54,10 +42,29 @@ public class IdiomasItems
 [System.Serializable]
 public class ListAllItemsLanguage
 {
-    public List<string> listaTodosObjetosEspañol;
-    public List<string> listAllItemsEnglish;
+    [HideInInspector] public List<string> listaTodosObjetosEspañol;
+    [HideInInspector] public List<string> listAllItemsEnglish;
+
+    public List<ListaDataObjetosTodosIdiomas> listaDataObjetosTodosIdiomas;
 }
 [System.Serializable]
+public class ListaDataObjetosTodosIdiomas
+{
+    public string idObjeto;
+    public IdiomasItems nombresObjetosIdiomas;
+}
+[System.Serializable]
+public class InfoTodasPantallasCargar
+{
+    public List<ListaPantallasCarga> infoTodasPantallasCarga;
+}
+[System.Serializable]
+public class ListaPantallasCarga
+{
+    public string nombrePantallaCarga;
+    [TextArea(1, 10)]
+    public string textoPantallaCarga;
+}
 public class LanguageData
 {
     public string language;

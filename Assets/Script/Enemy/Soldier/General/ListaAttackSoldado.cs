@@ -13,6 +13,7 @@ public class ListaAttackSoldado : MonoBehaviour
     int soldierInAttack;
     int soldierInWarning;
 
+
     private void Awake()
     {
         if (ListaAttackSoldado.modeSoldiers == null)
@@ -24,7 +25,7 @@ public class ListaAttackSoldado : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
+        
     }
     public void AllActiveAttack()
     {

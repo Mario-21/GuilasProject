@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class NewObjectiveTerminal : MonoBehaviour
 {
+    //ESte script es el antiguo, el obsoleto de los portatiles terminales.
+
+
     public int indexMod;
 
     Portatil_Info terminal;
@@ -18,7 +21,7 @@ public class NewObjectiveTerminal : MonoBehaviour
         //Al completar la Task, desactiva el script
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
-            TaskWhoIAmTerminal();
+            ObjectivesLevels.instanceObjectivesLevel.TaskObjectiveComplete(taskWho);//TaskWhoIAmTerminal();
         }
     }
 
@@ -34,17 +37,17 @@ public class NewObjectiveTerminal : MonoBehaviour
         }
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
-            TaskWhoIAmTerminal();
+            ObjectivesLevels.instanceObjectivesLevel.TaskObjectiveComplete(taskWho);//TaskWhoIAmTerminal();
         }
     }
     public void TaskWhoIAmTerminal()
     {
-        if (MostrarTextObjectives.indexLine == taskWho)
+        if (ObjectivesLevels.instanceObjectivesLevel.indexLine == taskWho)
         {
-            MostrarTextObjectives.indexLine++;
+            ObjectivesLevels.instanceObjectivesLevel.indexLine++;
             this.enabled = false;
         }
-        else if (MostrarTextObjectives.indexLine > taskWho)
+        else if (ObjectivesLevels.instanceObjectivesLevel.indexLine > taskWho)
         {
             this.enabled = false;
         }

@@ -15,26 +15,34 @@ public class CompletarNivel : MonoBehaviour, IDataPersistence
 
     [Header("Información del Siguiente Nivel")]
     public int siguienteNivel;
+    public string nombreSiguienteNivel;
     [SerializeField] BloquearMovimientoPlayer blockPlayer;
 
 
     public void LoadData(GameData gameData)
     {
+        /*
         gameData.nivelesComplete.TryGetValue(idNivel, out triggerPasarNivel);
-        if (triggerPasarNivel)
-        {
-            Debug.Log("Este Nivel ya ha sido pasado");
-        }
+        if (triggerPasarNivel) Debug.Log("Este Nivel ya ha sido pasado");
+        */
     }
 
     public void SaveData(ref GameData gameData)
     {
+        /*
         if (gameData.nivelesComplete.ContainsKey(idNivel))
         {
             //Ahora ya se pueden ver las Keys
             gameData.nivelesComplete.Remove(idNivel);
         }
         gameData.nivelesComplete.Add(idNivel, triggerPasarNivel);
+        Debug.Log("Te has pasado el nivel " + idNivel);
+        */
+    }
+    private void Start()
+    {
+        GameDataNoDestroy.instance.gameData.nivelesComplete.TryGetValue(idNivel, out triggerPasarNivel);
+        if (triggerPasarNivel) Debug.Log("Este Nivel ya ha sido pasado");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -45,8 +53,11 @@ public class CompletarNivel : MonoBehaviour, IDataPersistence
             /* /////////////////////////////////// */
             //Cuando acabes un nivel, te reestablecera la posibilidad de volver a cargar tu munición ya que la DataPlayer se elimina, n
             //blockPlayer.pistol.ammoData = true;
+            GameDataNoDestroy.instance.gameData.ammoActual = blockPlayer.pistol.municion;
             //Guardar GameData
-            DataPersistenceManager.instance.SaveGame();
+            GuardarNivel();
+            //Lo reescribe en la data para que luego cuando inicies de nuevo el juego pueda reestablecer los últimos datos con los que te quedaste
+            GameDataNoDestroy.instance.SaveGame();
             //Bloqueamos las acciones del Jugador
             blockPlayer.BloquearMovPlayer();
             //Limpiamos los sonidos para cambiar de zona
@@ -54,6 +65,7 @@ public class CompletarNivel : MonoBehaviour, IDataPersistence
             MusicAmbienceManager.instance.CleanAmbienceMusic();
             //Colocamos a que nivel te diriges
             EstructuraNiveles.nivel = siguienteNivel;
+            ControladorListasNivel.nombreSiguienteNivel = nombreSiguienteNivel;
             //Llamamos al "Fundido a negro".
             AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
             //Reestablecemos los checkpoints
@@ -61,17 +73,28 @@ public class CompletarNivel : MonoBehaviour, IDataPersistence
             //Limpiamos el inventario
             InventoryManager.instanciaInventory.indexInventoryPosition = 0;
             //Limpiamos todos los objetivos
-            MostrarTextObjectives.indexLine = 0;
+            //Ya no es necesario, ya que forma parte de las listas que se destruyen
+            //MostrarTextObjectives.indexLine = 0;
 
             //Destruye las listas del nivel
             for(int e = 0; e < ListDestroyEndLevel.levelList.levelListDestroy.Count; e++)
             {
                 Destroy(ListDestroyEndLevel.levelList.levelListDestroy[e].gameObject);
-                Debug.Log("La Lista " + ListDestroyEndLevel.levelList.levelListDestroy[e].name + " ha sido eliminada");
+                //Debug.Log("La Lista " + ListDestroyEndLevel.levelList.levelListDestroy[e].name + " ha sido eliminada");
                 
             }
             Destroy(ListDestroyEndLevel.levelList.gameObject);
         }
 
+    }
+    void GuardarNivel()
+    {
+        if (GameDataNoDestroy.instance.gameData.nivelesComplete.ContainsKey(idNivel))
+        {
+            //Ahora ya se pueden ver las Keys
+            GameDataNoDestroy.instance.gameData.nivelesComplete.Remove(idNivel);
+        }
+        GameDataNoDestroy.instance.gameData.nivelesComplete.Add(idNivel, triggerPasarNivel);
+        Debug.Log("Te has pasado el nivel " + idNivel);
     }
 }

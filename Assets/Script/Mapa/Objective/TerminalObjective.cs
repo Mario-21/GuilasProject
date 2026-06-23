@@ -18,18 +18,8 @@ public class TerminalObjective : MonoBehaviour
     {
         if (completarPortatiles.numActualTerminales >= completarPortatiles.numTotalTerminales)
         {
-            TaskWhoIAmTerminal();
-        }
-    }
-    void TaskWhoIAmTerminal()
-    {
-        if (MostrarTextObjectives.indexLine == taskWho)
-        {
-            MostrarTextObjectives.indexLine++;
-            this.enabled = false;
-        }
-        else if (MostrarTextObjectives.indexLine > taskWho)
-        {
+            //TaskWhoIAmTerminal();
+            ObjectivesLevels.instanceObjectivesLevel.TaskObjectiveComplete(taskWho);
             this.enabled = false;
         }
     }

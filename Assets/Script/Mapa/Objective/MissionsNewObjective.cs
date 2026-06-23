@@ -5,6 +5,10 @@ using UnityEngine;
 public class MissionsNewObjective : MonoBehaviour
 {
 
+    //a ver, este lo tengo en duda, dado que casi prefiero más hacer objetivos individuales o formularlos de tal manera para que englobe varios,
+    //a realmente hacer uno con muchos objetivos, porque en caso de, por ejemplo, necesitar una pausar porque a medias de la mision debes pillas 
+    //un objeto, esta secuencia se rompe y debo crear otra.
+
     public int indexMod;
     public List<int> indexMissions;
 
@@ -14,15 +18,22 @@ public class MissionsNewObjective : MonoBehaviour
     public int taskWho;
     void Start()
     {
-        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) WhoTaskMissionComplete();
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
+        {
+            ObjectivesLevels.instanceObjectivesLevel.TaskObjectiveComplete(taskWho);
+            this.enabled = false;
+        }
     }
-
     // Update is called once per frame
     void Update()
     {
         MissionsObjective();
         MissionsCompleteTask();
-        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) WhoTaskMissionComplete();
+        if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion) 
+        {
+            ObjectivesLevels.instanceObjectivesLevel.TaskObjectiveComplete(taskWho);
+            this.enabled = false;
+        }
     }
     void MissionsObjective()
     {
@@ -41,18 +52,6 @@ public class MissionsNewObjective : MonoBehaviour
         if (missionsComplete >= missionsLimit)
         {
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
-        }
-    }
-    void WhoTaskMissionComplete()
-    {
-        if (MostrarTextObjectives.indexLine == taskWho)
-        {
-            MostrarTextObjectives.indexLine++;
-            this.enabled = false;
-        }
-        else if (MostrarTextObjectives.indexLine > taskWho)
-        {
-            this.enabled = false;
         }
     }
 }

@@ -12,14 +12,16 @@ public class TriggerNewObjective : MonoBehaviour
     {
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
-            TaskWhoIAmTrigger();
+            ObjectivesLevels.instanceObjectivesLevel.TaskObjectiveComplete(taskWho);//TaskWhoIAmTrigger();
+            this.enabled = false;
         }
     }
     private void Update()
     {
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
-            TaskWhoIAmTrigger();
+            ObjectivesLevels.instanceObjectivesLevel.TaskObjectiveComplete(taskWho);//TaskWhoIAmTrigger();
+            this.enabled = false;
         }
     }
 
@@ -33,18 +35,6 @@ public class TriggerNewObjective : MonoBehaviour
                 //Salta la animacion de la nueva nota.
                 StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
             }
-        }
-    }
-    public void TaskWhoIAmTrigger()
-    {
-        if (MostrarTextObjectives.indexLine == taskWho)
-        {
-            MostrarTextObjectives.indexLine++;
-            this.enabled = false;
-        }
-        else if (MostrarTextObjectives.indexLine > taskWho)
-        {
-            this.enabled = false;
         }
     }
 }

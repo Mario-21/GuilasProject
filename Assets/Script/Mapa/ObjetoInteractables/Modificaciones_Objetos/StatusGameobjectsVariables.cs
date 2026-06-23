@@ -19,4 +19,11 @@ public class StatusGameobjectsVariables : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public void ResetearVariable()
+    {
+        for(int i = 0; i < modificacion.Count; i++)
+        {
+            modificacion[i].modificacion = false;
+        }
+    }
 }

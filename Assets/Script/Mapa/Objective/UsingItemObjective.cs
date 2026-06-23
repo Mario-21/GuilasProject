@@ -22,7 +22,9 @@ public class UsingItemObjective : MonoBehaviour
         {
             //TaskWhoIAm() solo funcionara cuando el numero se ha igual, por tanto, en cuanto sea superior no lo desactivara
             //para eso existe esta condicion
-            TaskWhoIAmItem();
+            //TaskWhoIAmItem();
+            ObjectivesLevels.instanceObjectivesLevel.TaskObjectiveComplete(taskWho);
+            this.enabled = false;
         }
     }
 
@@ -36,21 +38,8 @@ public class UsingItemObjective : MonoBehaviour
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion)
         {
             //Esto se hace por si dos Task coinciden en la misma escena, de esta manera no inhabilitara el script hasta que llegue su Task
-            TaskWhoIAmItem();
-        }
-    }
-
-    //Esto se hace para comprobar si no has completado una Task previamente, identificando su posicion en la lista se le permitira aumnetar y asi no desestructurara 
-    //la lista de objectivos.
-    public void TaskWhoIAmItem()
-    {
-        if(MostrarTextObjectives.indexLine == taskWho)
-        {
-            MostrarTextObjectives.indexLine++;
-            this.enabled = false;
-        }
-        else if (MostrarTextObjectives.indexLine > taskWho)
-        {
+            //TaskWhoIAmItem();
+            ObjectivesLevels.instanceObjectivesLevel.TaskObjectiveComplete(taskWho);
             this.enabled = false;
         }
     }

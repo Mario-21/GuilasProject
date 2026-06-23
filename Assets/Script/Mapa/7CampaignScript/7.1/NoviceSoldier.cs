@@ -53,4 +53,8 @@ public class NoviceSoldier : MonoBehaviour
             StatusGameobjectsVariables.statusGameobject.modificacion[indexExceedTime].modificacion = false;
         }
     }
+    public void ResetearTimeSoldier()
+    {
+        timeNoviceDeath = 0;
+    }
 }

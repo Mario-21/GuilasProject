@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class ListaReliquias : MonoBehaviour
 {
+
     public static ListaReliquias instancia;
 
+    public int numReliquiaNivel;
     public List<Reliquias> listaReliquiasTotal;
 
     private void Awake()

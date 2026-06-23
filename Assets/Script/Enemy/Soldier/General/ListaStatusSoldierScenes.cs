@@ -6,7 +6,7 @@ using UnityEngine;
 public class ListaStatusSoldierScenes
 {
     // Start is called before the first frame update
-    public string SoldierName;
+    public string soldierName;
     public int statusVida;
     public bool berserkerStatus;
     [HideInInspector]public bool warningSoldier;

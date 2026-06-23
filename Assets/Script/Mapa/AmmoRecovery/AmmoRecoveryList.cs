@@ -19,4 +19,11 @@ public class AmmoRecoveryList : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public void ResetearAmmo()
+    {
+        for (int i = 0; i < ammo.Count; i++)
+        {
+            ammo[i] = false;
+        }
+    }
 }

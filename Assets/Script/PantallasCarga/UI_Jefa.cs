@@ -11,22 +11,15 @@ public class UI_Jefa : MonoBehaviour
     public string nameArchivo;
     public float velocidadLetra;
     public bool letraInvisible;
-    int vacio;
-    public enum idioma
-    {
-        Español,
-        Ingles
-    }
-    public idioma idiomaSelecionado;
 
-    public string idiomaActual;
+    public ControladorListasNivel controladorListas;
 
     void Start()
     {
-
-        
+        controladorListas = FindObjectOfType<ControladorListasNivel>();
         //textPantalla.EscribirTexto(nameArchivo, textoUICarga, velocidadLetra, letraInvisible);
-        EscribirPantallaCargaNiveles.EscribirTextoStatic(idiomaSelecionado.ToString(), nameArchivo, textoUICarga, velocidadLetra, letraInvisible);
+        //EscribirPantallaCarga();
+        Invoke("EscribirPantallaCarga", 0.5f);
         //Debug.Log(Application.dataPath + "/Textos/Text_PantallaCarga/" + idiomaSelecionado + "/" + nameArchivo + ".txt");
         /*
         if(idiomaActual == idiomaSelecionado.ToString())
@@ -37,9 +30,16 @@ public class UI_Jefa : MonoBehaviour
         
 
     }
-    public void IdiomaSelecionador(string dospados)
+    void EscribirPantallaCarga()
     {
-        Debug.Log("Pagudo " + dospados);
+        switch (IdiomaGlobalManager.instanciaIdioma.idiomaActual)
+        {
+            case "Español":
+                EscribirPantallaCargaNiveles.EscribirTextoStatic(IdiomaGlobalManager.rutaPantallaCargaSpanish, controladorListas.archivoNivelPantallaCarga, textoUICarga, velocidadLetra, letraInvisible);
+                break;
+            case "English":
+                EscribirPantallaCargaNiveles.EscribirTextoStatic(IdiomaGlobalManager.rutaLoadScreenEnglish, controladorListas.archivoNivelPantallaCarga, textoUICarga, velocidadLetra, letraInvisible);
+                break;
+        }
     }
-
 }
