@@ -190,6 +190,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ViajeRapido
       objectReference: {fileID: 0}
+    - target: {fileID: 9091955371590678094, guid: ef59ad72552ec3b4d9210c6a413e876f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9091955371590678095, guid: ef59ad72552ec3b4d9210c6a413e876f,
         type: 3}
       propertyPath: anim
@@ -3052,7 +3057,7 @@ GameObject:
   - component: {fileID: 715855240}
   - component: {fileID: 715855239}
   m_Layer: 0
-  m_Name: Jeafa
+  m_Name: Jefa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3075,6 +3080,7 @@ MonoBehaviour:
   nameArchivo: Pantalla_1
   velocidadLetra: 0.05
   letraInvisible: 1
+  tiempoEsperaLimite: 1
   controladorListas: {fileID: 2198047528607573762}
 --- !u!4 &715855240
 Transform:
@@ -10701,9 +10707,569 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
         type: 3}
+      propertyPath: informacionNiveles.Array.size
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[9].scenaNivel
+      value: 73
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[10].scenaNivel
+      value: 73
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[11].scenaNivel
+      value: 73
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[12].scenaNivel
+      value: 84
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[13].scenaNivel
+      value: 84
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[14].scenaNivel
+      value: 84
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[15].scenaNivel
+      value: 84
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[16].scenaNivel
+      value: 104
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[17].scenaNivel
+      value: 104
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[18].scenaNivel
+      value: 104
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[19].scenaNivel
+      value: 104
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[20].scenaNivel
+      value: 104
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[21].scenaNivel
+      value: 122
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[22].scenaNivel
+      value: 137
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[23].scenaNivel
+      value: 146
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[9].nivelNombre
+      value: Nivel_9M0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[9].numReliquia
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[10].nivelNombre
+      value: Nivel_9M1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[10].numReliquia
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[11].nivelNombre
+      value: Nivel_9M2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[11].numReliquia
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[12].nivelNombre
+      value: Nivel_10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[12].numReliquia
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[13].nivelNombre
+      value: Nivel_10M0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[13].numReliquia
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[14].nivelNombre
+      value: Nivel_10M1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[14].numReliquia
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[15].nivelNombre
+      value: Nivel_10M2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[15].numReliquia
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[16].nivelNombre
+      value: Nivel_11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[16].numReliquia
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[17].nivelNombre
+      value: Nivel_11M0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[17].numReliquia
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[18].nivelNombre
+      value: Nivel_11M1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[18].numReliquia
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[19].nivelNombre
+      value: Nivel_11M2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[19].numReliquia
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[20].nivelNombre
+      value: Nivel_11M3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[20].numReliquia
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[21].nivelNombre
+      value: Nivel_12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[21].numReliquia
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[22].nivelNombre
+      value: Nivel_13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[22].numReliquia
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[23].nivelNombre
+      value: Nivel_14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[23].numReliquia
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
       propertyPath: informacionNiveles.Array.data[0].archiveSpanish
       value: Pantalla_1.txt
       objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[9].archiveEnglish
+      value: Screen_9_0Mission.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[9].archiveSpanish
+      value: Pantalla_9_0Mision.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[10].archiveEnglish
+      value: Screen_9_1Mission.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[10].archiveSpanish
+      value: Pantalla_9_1Mision.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[11].archiveEnglish
+      value: Screen_9_2Mission.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[11].archiveSpanish
+      value: Pantalla_9_2Mision.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[12].archiveEnglish
+      value: Screen_10.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[12].archiveSpanish
+      value: Pantalla_10.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[13].archiveEnglish
+      value: Screen_10_0Mission.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[13].archiveSpanish
+      value: Pantalla_10_0Mision.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[14].archiveEnglish
+      value: Screen_10_1Mission.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[14].archiveSpanish
+      value: Pantalla_10_1Mision.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[15].archiveEnglish
+      value: Screen_10_2Mission.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[15].archiveSpanish
+      value: Pantalla_10_2Mision.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[16].archiveEnglish
+      value: Screen_11.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[16].archiveSpanish
+      value: Pantalla_11.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[17].archiveEnglish
+      value: Screen_11_0Mission.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[17].archiveSpanish
+      value: Pantalla_11_0Mision.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[18].archiveEnglish
+      value: Screen_11_1Mission.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[18].archiveSpanish
+      value: Pantalla_11_1Mision.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[19].archiveEnglish
+      value: Screen_11_2Mission.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[19].archiveSpanish
+      value: Pantalla_11_2Mision.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[20].archiveEnglish
+      value: Screen_11_3Mission.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[20].archiveSpanish
+      value: Pantalla_11_3Mision.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[21].archiveEnglish
+      value: Screen_12.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[21].archiveSpanish
+      value: Pantalla_12.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[22].archiveEnglish
+      value: Screen_13.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[22].archiveSpanish
+      value: Pantalla_13.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[23].archiveEnglish
+      value: Screen_14.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[23].archiveSpanish
+      value: Pantalla_14.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[9].listaObjectives
+      value: 
+      objectReference: {fileID: 6776050895364776592, guid: 22976b1ea66ee544098263d0f7debab4,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[10].listaObjectives
+      value: 
+      objectReference: {fileID: 6776050895364776592, guid: 22976b1ea66ee544098263d0f7debab4,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[11].listaObjectives
+      value: 
+      objectReference: {fileID: 6776050895364776592, guid: 22976b1ea66ee544098263d0f7debab4,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[12].listaObjectives
+      value: 
+      objectReference: {fileID: 1022782349051069166, guid: 05913ba29ff40da4baa356290919d681,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[13].listaObjectives
+      value: 
+      objectReference: {fileID: 1022782349051069166, guid: 05913ba29ff40da4baa356290919d681,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[14].listaObjectives
+      value: 
+      objectReference: {fileID: 1022782349051069166, guid: 05913ba29ff40da4baa356290919d681,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[15].listaObjectives
+      value: 
+      objectReference: {fileID: 1022782349051069166, guid: 05913ba29ff40da4baa356290919d681,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[16].listaObjectives
+      value: 
+      objectReference: {fileID: 7407279303521955311, guid: edef6c593f5bfac43a52acc93b5c492d,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[17].listaObjectives
+      value: 
+      objectReference: {fileID: 7407279303521955311, guid: edef6c593f5bfac43a52acc93b5c492d,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[18].listaObjectives
+      value: 
+      objectReference: {fileID: 7407279303521955311, guid: edef6c593f5bfac43a52acc93b5c492d,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[19].listaObjectives
+      value: 
+      objectReference: {fileID: 7407279303521955311, guid: edef6c593f5bfac43a52acc93b5c492d,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[20].listaObjectives
+      value: 
+      objectReference: {fileID: 7407279303521955311, guid: edef6c593f5bfac43a52acc93b5c492d,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[21].listaObjectives
+      value: 
+      objectReference: {fileID: 6664317148001606017, guid: 1e20cdc60d817144ab0c4cf837d8cf1b,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[22].listaObjectives
+      value: 
+      objectReference: {fileID: 4337832948022510303, guid: 9329169dd5a8f434d8b3dca898a743c1,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[23].listaObjectives
+      value: 
+      objectReference: {fileID: 7082417483433677918, guid: 794f0fc73069dc84daefdc33b545bcba,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[9].listaObjetosNivel
+      value: 
+      objectReference: {fileID: 6064119857180800852, guid: cce60a38301e9d54ab2be7d2d979cf82,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[10].listaObjetosNivel
+      value: 
+      objectReference: {fileID: 6064119857180800852, guid: cce60a38301e9d54ab2be7d2d979cf82,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[11].listaObjetosNivel
+      value: 
+      objectReference: {fileID: 6064119857180800852, guid: cce60a38301e9d54ab2be7d2d979cf82,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[12].listaObjetosNivel
+      value: 
+      objectReference: {fileID: 7155933663189735127, guid: 4dc0dc7fb5212e640abb850b13542584,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[13].listaObjetosNivel
+      value: 
+      objectReference: {fileID: 7155933663189735127, guid: 4dc0dc7fb5212e640abb850b13542584,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[14].listaObjetosNivel
+      value: 
+      objectReference: {fileID: 7155933663189735127, guid: 4dc0dc7fb5212e640abb850b13542584,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[15].listaObjetosNivel
+      value: 
+      objectReference: {fileID: 7155933663189735127, guid: 4dc0dc7fb5212e640abb850b13542584,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[16].listaObjetosNivel
+      value: 
+      objectReference: {fileID: 1483041408891614956, guid: 7fe709197c31f184b831c975523f379f,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[17].listaObjetosNivel
+      value: 
+      objectReference: {fileID: 1483041408891614956, guid: 7fe709197c31f184b831c975523f379f,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[18].listaObjetosNivel
+      value: 
+      objectReference: {fileID: 1483041408891614956, guid: 7fe709197c31f184b831c975523f379f,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[19].listaObjetosNivel
+      value: 
+      objectReference: {fileID: 1483041408891614956, guid: 7fe709197c31f184b831c975523f379f,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[20].listaObjetosNivel
+      value: 
+      objectReference: {fileID: 1483041408891614956, guid: 7fe709197c31f184b831c975523f379f,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[21].listaObjetosNivel
+      value: 
+      objectReference: {fileID: 1533037624981053498, guid: e4d4f977dcf31234fb11d53bd51d6ccb,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[22].listaObjetosNivel
+      value: 
+      objectReference: {fileID: 5290837550814396867, guid: fc42ff73005cbaa459d6eb2e9fde26ee,
+        type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[23].listaObjetosNivel
+      value: 
+      objectReference: {fileID: 6405881826048064048, guid: 925e95b24ce7aab409175303b08598c8,
+        type: 3}
     - target: {fileID: 2198047528400783157, guid: fd990f733c1868c4c9aaae84c5699099,
         type: 3}
       propertyPath: m_Name

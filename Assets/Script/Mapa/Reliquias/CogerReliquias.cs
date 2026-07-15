@@ -17,6 +17,7 @@ public class CogerReliquias : MonoBehaviour
 
     private void Start()
     {
+        
         GameDataNoDestroy.instance.gameData.reliquiasCollected.TryGetValue(idReliquia, out ListaReliquias.instancia.listaReliquiasTotal[ListaReliquias.instancia.numReliquiaNivel].reliquiaObtenida);
         boxCollider2DReliquia = GetComponent<BoxCollider2D>();
         reliquiaSprite = GetComponent<SpriteRenderer>();

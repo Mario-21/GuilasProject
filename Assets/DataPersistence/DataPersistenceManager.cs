@@ -7,16 +7,15 @@ public class DataPersistenceManager : MonoBehaviour
 {
     [Header("File Storage Config")]
     //Solo faltaria colocarle un nombre
-    [SerializeField] private string fileName;
+    //[SerializeField] private string fileName;
 
     [SerializeField] private bool useEncryptionSave;
     [SerializeField] private bool useEncryptionLoad;
-    [SerializeField] private bool guardarGameData;
+    //[SerializeField] private bool guardarGameData;
 
-
-    public GameData gameData;
-    private List<IDataPersistence> dataPersistencesObjects;
-    private FileDataHandler dataHandler;
+    //public GameData gameData;
+    //private List<IDataPersistence> dataPersistencesObjects;
+    //private FileDataHandler dataHandler;
     public static DataPersistenceManager instance { get; private set; }
     [Header("File Item Game")]
     public ListAllItemsLanguage listItemLanguage;

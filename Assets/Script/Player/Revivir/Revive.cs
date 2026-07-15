@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Revive : MonoBehaviour
 {
+    public static Revive instanceRevive;
+
     [Header("Variables Nivel")]
     public List<bool> variablesStartLevel;
     [Header("Items Nivel")]
@@ -28,9 +31,27 @@ public class Revive : MonoBehaviour
     public float vidaPlayerStartLevel;
     [Header("Note Nivel")]
     public int noteStart;
+    [Header("Liquid Nivel")]
+    public int selectedDrinkStart;
+    public int consumptionStart;
+    [Header("Clothe Nivel")]
+    public int numClotheStart;
+    [Header("TurnosWork Nivel")]
+    public int turnoStart;
+    public int valorGeneradorStart;
+    public float barraGenerator;
+    [Header("WaterLevel Nivel")]
+    public List<int> waterStart;
+    [Header("Missions Nivel")]
+    public int numMissionsSuccessStart;
+    public List<MainMission> missionsStart;
+    [Header("Tutoriales Nivel")]
+    public List<TutoInfo> tutosNivelStart;
+    public Queue<GameObject> colaTutorialesStart;
 
     private void Awake()
     {
+        instanceRevive = this;
         mainWeaponPlayer = FindObjectOfType<ArmaController>();
     }
     void Start()
@@ -76,7 +97,7 @@ public class Revive : MonoBehaviour
             vidaSoldados[h].statusVida = SoldierActiveInScene.instancia.soldiersStatus[h].statusVida;
             vidaSoldados[h].berserkerStatus = SoldierActiveInScene.instancia.soldiersStatus[h].berserkerStatus;
         }
-        //Terminales Level
+        //Terminales Level [Hay que eliminarla]
         if(TotalTerminales.terminalesTotales != null)
         {
             for (int k = 0; k < terminalesStartLevel.Count; k++)
@@ -109,14 +130,75 @@ public class Revive : MonoBehaviour
                 }
             }
         }
+        //Liquid Level
+        if(LiquidColor.liquid != null)
+        {
+            selectedDrinkStart = LiquidColor.liquid.selectedDrink;
+            consumptionStart = LiquidColor.liquid.consumption;
+        }
+        //Clothe Level
+        if(ClotheData.clotheInfo != null)
+        {
+            numClotheStart = ClotheData.clotheInfo.numCloth;
+        }
+        //Turnos Level
+        if (TurnosWorked.extras != null) 
+        {
+            turnoStart = TurnosWorked.extras.turnosWork;
+            valorGeneradorStart = TurnosWorked.extras.valorGenerador;
+            barraGenerator = GeneradorEscavacion_B.barraGenNumber;
+        }
+        //Water Level
+        if(ListWaters.listWaters != null)
+        {
+            for (int e = 0; e < waterStart.Count; e++)
+            {
+                waterStart[e] = ListWaters.listWaters.infoAguas[e].porcentajeAgua;
+            }
+        }
+        //Missions Level
+        if (ListMissions.instanceMissions != null)
+        {
+            numMissionsSuccessStart = ListMissions.instanceMissions.numMissionsSuccess;
+            for (int i = 0; i < missionsStart.Count; i++)
+            {
+                missionsStart[i].success = ListMissions.instanceMissions.missionsLevel[i].success;
+            }
+        }
+        //Tutoriales Level
+        if (ControlerTutoriales.instanciaTutoriales != null)
+        {
+            for (int i = 0; i < tutosNivelStart.Count; i++)
+            {
+                tutosNivelStart[i].tutoDesbloqueado = ControlerTutoriales.instanciaTutoriales.infoTutoNivel[i].tutoDesbloqueado;
+            }
+            colaTutorialesStart = new Queue<GameObject>();
+            if (ControlerTutoriales.instanciaTutoriales.colaTutoriales.Count > 0)
+            {
+                foreach(GameObject objectQueue in ControlerTutoriales.instanciaTutoriales.colaTutoriales)
+                {
+                    colaTutorialesStart.Enqueue(objectQueue);
+                    Debug.Log("La cola tiene este nuevo elemento " + objectQueue);
+                }
+            }
+        }
+
     }
     private void Update()
     {
+        Debug.Log("Cola Start " + colaTutorialesStart.Count);
         if (!establecerAmmoInicial)
         {
             ListDataPlayer.listDataPlayer.ammoPlayerStartScene = ListDataPlayer.listDataPlayer.ammoPlayerNow;
             establecerAmmoInicial = true;
         }
+    }
+    public void Damio(GameObject dor)
+    {
+        if(dor != null)
+        {
+            Debug.Log("Frieme unas croquetas");
+        } 
     }
     public void ResetearVariablesZona()
     {
@@ -224,6 +306,86 @@ public class Revive : MonoBehaviour
     public void ResetearVida()
     {
         ListDataPlayer.listDataPlayer.vidaPlayerNow = vidaPlayerStartLevel;
+    }
+    public void ReviveLiquid()
+    {
+        LiquidColor.liquid.selectedDrink = selectedDrinkStart;
+        LiquidColor.liquid.consumption = consumptionStart;
+    }
+    public void ReviveClothe()
+    {
+        ClotheData.clotheInfo.numCloth = numClotheStart;
+    }
+    public void ReviveTurns()
+    {
+        TurnosWorked.extras.turnosWork = turnoStart;
+        TurnosWorked.extras.valorGenerador = valorGeneradorStart;
+        GeneradorEscavacion_B.barraGenNumber = barraGenerator;
+    }
+    public void ReviveWater()
+    {
+        for (int w = 0; w < waterStart.Count; w++)
+        {
+            if (ListWaters.listWaters.infoAguas[w].porcentajeAgua != waterStart[w])
+            {
+                ListWaters.listWaters.infoAguas[w].porcentajeAgua = waterStart[w];
+            }
+        }
+    }
+    public void ReviveMissions()
+    {
+        ListMissions.instanceMissions.numMissionsSuccess = numMissionsSuccessStart;
+        for (int i = 0; i < missionsStart.Count; i++)
+        {
+            if (ListMissions.instanceMissions.missionsLevel[i].success != missionsStart[i].success)
+            {
+                ListMissions.instanceMissions.missionsLevel[i].success = missionsStart[i].success;
+				
+				//Por la primera condición ya se deduce que el algo ha sido cambiado, y por tanto, hay que  restaurarlo
+				
+				if (!ListMissions.instanceMissions.missionsLevelInicial[i].success)
+                {
+                    if (GameDataNoDestroy.instance.gameData.missionsComplete.ContainsKey(missionsStart[i].idMission))
+                    {
+                        GameDataNoDestroy.instance.gameData.missionsComplete.Remove(missionsStart[i].idMission);
+
+                    }
+                    GameDataNoDestroy.instance.gameData.missionsComplete.Add(missionsStart[i].idMission, missionsStart[i].success);
+
+                }
+
+            }
+
+        }
+    }   
+    public void RevivirTutoriales()
+    {
+        for (int i = 0; i < tutosNivelStart.Count; i++)
+        {
+            if (ControlerTutoriales.instanciaTutoriales.infoTutoNivel[i].tutoDesbloqueado != tutosNivelStart[i].tutoDesbloqueado)
+            {
+                ControlerTutoriales.instanciaTutoriales.infoTutoNivel[i].tutoDesbloqueado = tutosNivelStart[i].tutoDesbloqueado;
+
+                if (!ControlerTutoriales.instanciaTutoriales.infoTutoNivel[i].tutoDesbloqueado)
+                {
+                    if (GameDataNoDestroy.instance.gameData.tutorialesCollected.ContainsKey(tutosNivelStart[i].idTuto))
+                    {
+                        GameDataNoDestroy.instance.gameData.tutorialesCollected.Remove(tutosNivelStart[i].idTuto);
+                    }
+                    GameDataNoDestroy.instance.gameData.tutorialesCollected.Add(tutosNivelStart[i].idTuto, tutosNivelStart[i].tutoDesbloqueado);
+                }
+            }
+
+        }
+        ControlerTutoriales.instanciaTutoriales.colaTutoriales.Clear(); 
+        if (colaTutorialesStart.Count > 0)
+        {
+            foreach (GameObject objectQueue in colaTutorialesStart)
+            {
+                ControlerTutoriales.instanciaTutoriales.colaTutoriales.Enqueue(objectQueue);
+                Debug.Log("La cola tiene este nuevo elemento " + objectQueue);
+            }
+        }
     }
 
 }

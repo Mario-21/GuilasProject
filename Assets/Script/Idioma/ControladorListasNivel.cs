@@ -24,6 +24,7 @@ public class ControladorListasNivel : MonoBehaviour
                 //EscribirPantallaCargaNiveles es un mera referencia para acordarme de los datos que tengo que obtener
                 //EscribirPantallaCargaNiveles.EscribirTextoStatic(idiomaSelecionado.ToString(), nameArchivo, textoUICarga, velocidadLetra, letraInvisible);
                 EstructuraNiveles.nivel = informacionNiveles[i].scenaNivel;
+                CheckPointController.numeroCheckPoint = informacionNiveles[i].spawnInicial;
                 StartCoroutine(SpawneoListaObjetosNivel(informacionNiveles));
                 switch (IdiomaGlobalManager.instanciaIdioma.idiomaActual)
                 {
@@ -54,6 +55,7 @@ public class InfoNivel
     public string nivelNombre;
     [Header("Index Escena Nivel")]
     public int scenaNivel;
+    public int spawnInicial;
     [Header("Numero de la Reliquia en Nivel")]
     public int numReliquia;
     [Header("Nombre Archivos Pantallas Carga")]

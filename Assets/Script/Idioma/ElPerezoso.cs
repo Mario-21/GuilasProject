@@ -94,4 +94,19 @@ public class ElPerezoso : MonoBehaviour
             Debug.Log(pantallaCargaCompletaEnglish);
         }
     }
+    [ContextMenu("Crea Automaticamente los archivos txt de los tutoriales")]
+    void CrearArchivosTutorialesAuto()
+    {
+        for (int i = 1; i < sizePantallaCarga; i++)
+        {
+            string pantallaCargaCompletaEspañol = "Tutorial_" + i + ".txt";
+            string rutaSpanishPantallaCarga = Application.dataPath + "/Idiomas/Español/Tutoriales/";
+            CrearArchivosTextoAuto(rutaSpanishPantallaCarga, pantallaCargaCompletaEspañol, i);
+            Debug.Log(pantallaCargaCompletaEspañol);
+            string pantallaCargaCompletaEnglish = "Tutorial_" + i + ".txt";
+            string rutaEnglishLoadScreen = Application.dataPath + "/Idiomas/Ingles/Tutorials/";
+            CrearArchivosTextoAuto(rutaEnglishLoadScreen, pantallaCargaCompletaEnglish, i);
+            Debug.Log(pantallaCargaCompletaEnglish);
+        }
+    }
 }

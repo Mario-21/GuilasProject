@@ -11,7 +11,7 @@ public class TakeMainItems : MonoBehaviour
     void Start()
     {
         player = GetComponent<PlayerHere>();
-        if (ListMissions.listaMissions.missionsMap[indexItemMision].success)
+        if (ListMissions.instanceMissions.missionsLevel[indexItemMision].success)
         {
             this.gameObject.SetActive(false);
         }
@@ -30,7 +30,7 @@ public class TakeMainItems : MonoBehaviour
             {
                 AudioManager.instancia.PlayOneShot(sfxMainItem);
                 this.gameObject.SetActive(false);
-                ListMissions.listaMissions.missionsMap[indexItemMision].success = true;
+                ListMissions.instanceMissions.missionsLevel[indexItemMision].success = true;
             }
         }
     }

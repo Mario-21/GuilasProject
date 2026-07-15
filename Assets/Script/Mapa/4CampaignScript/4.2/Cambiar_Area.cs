@@ -18,13 +18,13 @@ public class Cambiar_Area: MonoBehaviour
     bool entrarCamino;
 
 
-    BloquearMovimientoPlayer bloqPlayer;
+    //BloquearMovimientoPlayer bloqPlayer;
     ZonaChangeSound zonaChangeSound;
 
     private void Start()
     {
         zonaChangeSound = GetComponent<ZonaChangeSound>();
-        bloqPlayer = FindObjectOfType<BloquearMovimientoPlayer>();
+        //bloqPlayer = FindObjectOfType<BloquearMovimientoPlayer>();
     }
     private void Update()
     {
@@ -34,7 +34,8 @@ public class Cambiar_Area: MonoBehaviour
     {
         ListDataPlayer.listDataPlayer.orientacionPlayer = orientacionNext;
         zonaChangeSound.CambiarZonaSound();
-        bloqPlayer.BloquearMovPlayer();
+        //bloqPlayer.BloquearMovPlayer();
+        BloquearMovimientoPlayer.instanceBloqPlayerMov.BloquearMovPlayer();
         EstructuraNiveles.nivel = siguienteEscena;
         AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
         if (usarCheckpoint) CheckPointController.numeroCheckPoint = checkPoint;
@@ -43,11 +44,11 @@ public class Cambiar_Area: MonoBehaviour
     {
         if (!escaleraSubir)
         {
-            bloqPlayer.playerRB.gravityScale = gravedad;
+            BloquearMovimientoPlayer.instanceBloqPlayerMov.playerRB.gravityScale = gravedad;
         }
         else
         {
-            bloqPlayer.playerRB.gravityScale = -gravedad;
+            BloquearMovimientoPlayer.instanceBloqPlayerMov.playerRB.gravityScale = -gravedad;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

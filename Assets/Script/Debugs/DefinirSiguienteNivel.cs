@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+  
 public class DefinirSiguienteNivel : MonoBehaviour
 {
     [Tooltip("Con este nombre podrás saber a que nivel te diriges, haciendo que en la siguiente pantalla de carga se administren todos los objetos del nivel")]

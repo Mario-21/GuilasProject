@@ -67,7 +67,6 @@ public class ArmaController : MonoBehaviour, IDataPersistence
     private void Awake()
     {
 
-        pistola = GetComponent<SpriteRenderer>();
         pruebaCamera = GameObject.FindGameObjectWithTag("CameraDisparo").GetComponent<Camera>();
         //No puedo esto va antes que la carga
         //municion = GameDataNoDestroy.instance.gameData.ammoActual;

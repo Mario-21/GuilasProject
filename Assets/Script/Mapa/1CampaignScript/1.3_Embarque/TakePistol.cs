@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class TakePistol : MonoBehaviour
 {
@@ -9,8 +10,9 @@ public class TakePistol : MonoBehaviour
     [Header("Pistol Data")]
     [SerializeField] SpriteRenderer pistolRender;
     [SerializeField] ArmaController pistola;
-    [SerializeField] GameObject pistolBackPack;
+    [SerializeField] GameObject pistolMochila;
 
+    [SerializeField] EventReference sonidoRecogerArma;
 
     SpawnItemIcon pistolItem;
     PlayerHere player;
@@ -28,12 +30,14 @@ public class TakePistol : MonoBehaviour
     }
     void CatchPistol()
     {
-        if (Input.GetButtonDown("Action"))
+        if (Input.GetButtonDown("Take"))
         {
-            //Habilitar y mostrar arma
+            //Habilitar arma, mostrar arma
             pistolRender.enabled = true;
             pistola.enabled = true;
-            pistolBackPack.SetActive(false);
+            pistolMochila.SetActive(false);
+            //Audio Recoger Arma
+            AudioManager.instancia.PlayOneShot(sonidoRecogerArma);
             //Spawnea el icono para indicar que has cogido el arma
             pistolItem.SpawnIcon();
             //La variable se activa

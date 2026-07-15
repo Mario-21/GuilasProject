@@ -137,10 +137,6 @@ GameObject:
   - component: {fileID: 848285}
   - component: {fileID: 848284}
   - component: {fileID: 848288}
-  - component: {fileID: 848289}
-  - component: {fileID: 848290}
-  - component: {fileID: 848291}
-  - component: {fileID: 848295}
   - component: {fileID: 848293}
   - component: {fileID: 848294}
   - component: {fileID: 848292}
@@ -246,46 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e541361d93cd0bd4c946d77aa0682151, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  revivirScene: {fileID: 0}
   transicionPause: {fileID: 848292}
---- !u!114 &848289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 848283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9c114385e60d5944869b98c9a96e27b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  reviveLiquid: {fileID: 0}
---- !u!114 &848290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 848283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9e90444fa31ff643a5cd9724ea02af4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &848291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 848283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89495e427e93d8f4ba70faf6a6ba3d1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  reviveTurnos: {fileID: 0}
 --- !u!95 &848292
 Animator:
   serializedVersion: 5
@@ -334,18 +291,6 @@ MonoBehaviour:
   animDeath: {fileID: 848292}
   mainMenuScene: 0
   out_MenuPausa: 0
---- !u!114 &848295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 848283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55f1d5899baf7bd489bdd8b15a52a86d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &475410665
 GameObject:
   m_ObjectHideFlags: 0
@@ -1100,68 +1045,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 848288}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: ButtonResetVariables
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 848288}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: ButtonResetItems
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 848288}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: ButtonResetReliquias
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 848288}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: ButtonResetEnemies
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 848288}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: ButtonResetTerminales
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 848288}
         m_TargetAssemblyTypeName: ButtonRevive, Assembly-CSharp
-        m_MethodName: ButtonResetAmmoPlayer
+        m_MethodName: ButtonReviveScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1181,126 +1066,6 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: DeathMenu
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 848289}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: LiquidReviveButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 848289}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: LiquidReviveButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 848290}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: ClothesReviveButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 848291}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: TurnosReviveButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 848288}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: ButtonResetAmmo
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 848288}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: ButtonResetearUiItems
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 848295}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: ButtonResetWater
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 848288}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: ButtonResetearPosInventory
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 848288}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: ButtonResetearNote
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 848288}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: ButtonResetearVida
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1415687103

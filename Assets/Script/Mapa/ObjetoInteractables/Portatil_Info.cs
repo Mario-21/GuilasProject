@@ -9,7 +9,6 @@ using FMOD.Studio;
 public class Portatil_Info : MonoBehaviour
 {
     public int indexMod;
-
     [Header("See Player")]
     [SerializeField] OcultacionByWeapon playerOcultar;
     [SerializeField] ArmaController armaPlayer;

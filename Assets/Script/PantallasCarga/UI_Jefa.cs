@@ -11,6 +11,8 @@ public class UI_Jefa : MonoBehaviour
     public string nameArchivo;
     public float velocidadLetra;
     public bool letraInvisible;
+    public float tiempoEsperaLimite = 1;
+    public float tiempoEspera;
 
     public ControladorListasNivel controladorListas;
 
@@ -29,6 +31,20 @@ public class UI_Jefa : MonoBehaviour
         //IdiomaSelecionador(idiomaSelecionado.ToString());
         
 
+    }
+    private void Update()
+    {
+        if(textPantalla.escribirPantallaSolo.Count <= 0)
+        {
+            tiempoEspera += Time.deltaTime;
+            if(tiempoEspera >= tiempoEsperaLimite)
+            {
+                if (Input.GetButtonDown("Jump"))
+                {
+                    AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
+                }
+            }
+        }
     }
     void EscribirPantallaCarga()
     {

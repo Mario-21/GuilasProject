@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class MainMission
+public class MainMission_2
 {
     public string nameMission;
     public bool success;

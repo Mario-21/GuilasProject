@@ -20,7 +20,9 @@ public class IdiomaGlobalManager : MonoBehaviour, IDataPersistenceNoCrypted
     [Header("Nombre Archivos Objetos Idiomas")]
     public string nombre_Archivo = "Lista_Objetos.txt";
     public string name_Archive = "List_Items.txt";
-
+    //Ruta de los Tutoriales
+    public string rutaTutorialSpanish;
+    public string routeTutorialEnglish;
     private void Awake()
     {
         //instanciaIdioma = this;
@@ -36,6 +38,7 @@ public class IdiomaGlobalManager : MonoBehaviour, IDataPersistenceNoCrypted
         }
         RutasIdiomasObjetos();
         RutaIdiomaPantallaCarga();
+        RutaIdiomaTutoriales();
     }
     public void LoadDataNoCrypted(NoEncryptedGameData noEncryptedGameData)
     {
@@ -76,6 +79,11 @@ public class IdiomaGlobalManager : MonoBehaviour, IDataPersistenceNoCrypted
     {
         rutaPantallaCargaSpanish = Application.dataPath + "/Idiomas/Español/Pantalla_Carga/";
         rutaLoadScreenEnglish = Application.dataPath + "/Idiomas/Ingles/LoadScreen/";
+    }
+    void RutaIdiomaTutoriales()
+    {
+        rutaTutorialSpanish = Application.dataPath + "/Idiomas/Español/Tutoriales/";
+        routeTutorialEnglish = Application.dataPath + "/Idiomas/Ingles/Tutorials/";
     }
 
 

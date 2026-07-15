@@ -7,15 +7,10 @@ public class CompletarNivel : MonoBehaviour, IDataPersistence
     [Header("Datos del Nivel")]
     [SerializeField] private string idNivel;
     [SerializeField] private bool triggerPasarNivel;
-    [ContextMenu("Generar ID del Nivel")]
-    private void GenerateGuid()
-    {
-        idNivel = System.Guid.NewGuid().ToString();
-    }
-
     [Header("Información del Siguiente Nivel")]
     public int siguienteNivel;
-    public string nombreSiguienteNivel;
+    public string definicionSiguienteNivel;
+    [SerializeField] bool hayMisiones;
     [SerializeField] BloquearMovimientoPlayer blockPlayer;
 
 
@@ -65,7 +60,16 @@ public class CompletarNivel : MonoBehaviour, IDataPersistence
             MusicAmbienceManager.instance.CleanAmbienceMusic();
             //Colocamos a que nivel te diriges
             EstructuraNiveles.nivel = siguienteNivel;
-            ControladorListasNivel.nombreSiguienteNivel = nombreSiguienteNivel;
+            //Si no hay misiones en el nivel normal, pues que simplemente coloque la defición del mismo Script
+            if (!hayMisiones)
+            {
+                ControladorListasNivel.nombreSiguienteNivel = definicionSiguienteNivel;
+            }
+            //En caso de si existir misiones, que pase directamente a la ListMissions y que allí te establezca la definición en base al número de misiones completadas
+            else
+            {
+                ListMissions.instanceMissions.MisionesCompletasPantallaCarga();
+            }
             //Llamamos al "Fundido a negro".
             AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
             //Reestablecemos los checkpoints

@@ -13,14 +13,23 @@ public class GameData
 
     public SerializableDictionary<string, bool> nivelesComplete;
 
+    public SerializableDictionary<string, bool> missionsComplete;
+
+    public SerializableDictionary<string, bool> tutorialesCollected;
+
+    //Añadir el apartado de missiones
     public GameData()
     {
+
         this.ammoActual = 10;
         
         reliquiasCollected = new SerializableDictionary<string, bool>();
 
         nivelesComplete = new SerializableDictionary<string, bool>();
 
+        missionsComplete = new SerializableDictionary<string, bool>();
+
+        tutorialesCollected = new SerializableDictionary<string, bool>();
     }
 }
 

@@ -18,7 +18,7 @@ public class VidaPlayer : MonoBehaviour
     public bool youWantDied;
     public int deathScene;
     int once;
-    BloquearMovimientoPlayer bloquear;
+    //BloquearMovimientoPlayer bloquear;
     [Header("Recovery ammo")]
     public B8Arma b8Weapon;
     public ChangeWeapon changeWeapon;
@@ -43,7 +43,8 @@ public class VidaPlayer : MonoBehaviour
     void Start()
     {
         //SceneManager.LoadSceneAsync(scenaTutorial, LoadSceneMode.Additive);
-        bloquear = FindObjectOfType<BloquearMovimientoPlayer>();
+        //No hace falta 
+        //bloquear = FindObjectOfType<BloquearMovimientoPlayer>();
         vidaActual = ListDataPlayer.listDataPlayer.vidaPlayerNow;
         vidaDiferencia = vidaActual;
     }
@@ -81,7 +82,7 @@ public class VidaPlayer : MonoBehaviour
                 //Limpia los audios
                 AudioManager.instancia.CleanUp();
                 Debug.Log("Te moriste");
-                bloquear.DeathPlayer();
+                BloquearMovimientoPlayer.instanceBloqPlayerMov.DeathPlayer();
                 switch (tipoAnimacion)
                 {
                     case TipoAnimacion.Antiguo:

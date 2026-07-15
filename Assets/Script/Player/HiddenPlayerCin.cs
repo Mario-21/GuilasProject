@@ -11,7 +11,7 @@ public class HiddenPlayerCin : MonoBehaviour
     public List<SpriteRenderer> listaCuerpo;
 
     //Informacion del escondite y estado del player
-    [HideInInspector] public bool ocultoPlayerCin;
+    [HideInInspector]public bool ocultoPlayerCin;
     [HideInInspector]public GameObject particlesHidden;
     [HideInInspector]public EventReference hiddenSound;
 
@@ -48,6 +48,7 @@ public class HiddenPlayerCin : MonoBehaviour
         }
         cuerpoPlayerCin.layer = ocultar;
         cuerpoPlayerCin.tag = "Escondite";
+        
         //Que el icono desaparezca al yo cambiar el bool en la cinematica
         //iconoZone.SetActive(false);
 

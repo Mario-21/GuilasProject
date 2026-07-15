@@ -5,6 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class BloquearMovimientoPlayer : MonoBehaviour
 {
+    public static BloquearMovimientoPlayer instanceBloqPlayerMov;
+
     [Header("Elementos Player")]
     public JugadorMovimiento player;
     public VidaPlayer vidaPlayer;
@@ -24,6 +26,8 @@ public class BloquearMovimientoPlayer : MonoBehaviour
 
     private void Awake()
     {
+        instanceBloqPlayerMov = this;
+
         inventory = FindObjectOfType<Inventory>();
         pausaMenu = FindObjectOfType<PauseControler>();
         itemCreate = FindObjectOfType<CreateObject>();

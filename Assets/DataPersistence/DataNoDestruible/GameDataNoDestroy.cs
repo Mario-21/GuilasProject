@@ -83,7 +83,7 @@ public class GameDataNoDestroy : MonoBehaviour
     }
     private void OnApplicationQuit()
     {
-        //SaveGame();
+        if(guardarGameData)SaveGame();
     }
     //No va a funcionar, porque no los va a buscar inicialmente, necesitas que esto busque constantemente los scripts con los que se asocia la carga
     private List<IDataPersistence> FindAllDataPersistenceObjects()

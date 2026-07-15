@@ -8,7 +8,7 @@ public class EscribirPantallaCargaNiveles : MonoBehaviour
 {
     private static EscribirPantallaCargaNiveles instanciaEscribirPantalla;
 
-    private List<EscribirPantallaSolo> escribirPantallaSolo;
+    [HideInInspector] public List<EscribirPantallaSolo> escribirPantallaSolo;
 
     private void Awake()
     {
@@ -35,6 +35,7 @@ public class EscribirPantallaCargaNiveles : MonoBehaviour
     }
     private void Update()
     {
+        Debug.Log(escribirPantallaSolo.Count);
         for (int i = 0; i < escribirPantallaSolo.Count; i++)
         {
            bool destruirInstancia = escribirPantallaSolo[i].Update();
@@ -57,9 +58,9 @@ public class EscribirPantallaCargaNiveles : MonoBehaviour
         string textoDelDocumento;
         [Header("Texto UI")]
         Text textPantallasCarga;
-        string contenidoTextPantallaCarga;
+        [HideInInspector] public string contenidoTextPantallaCarga;
         [Header("Velocidad Letra")]
-        private int indexLetras;
+        [HideInInspector] public int indexLetras;
         private float velocidadLetras;
         private bool letrasInvisibles;
         [Header("Tiempo en pantalla Textos")]
@@ -78,9 +79,34 @@ public class EscribirPantallaCargaNiveles : MonoBehaviour
         }
         public bool Update()
         {
+            if (indexLetras < contenidoTextPantallaCarga.Length)
+            {
+                if (Input.GetButtonDown("Jump"))
+                {
+                    if (textPantallasCarga != null) textPantallasCarga.text = contenidoTextPantallaCarga;
+                    indexLetras = contenidoTextPantallaCarga.Length;
+                }
+            }
+            /*
+            if(indexLetras < contenidoTextPantallaCarga.Length)
+            {
+                Debug.Log("Texto en pantalla terminado de mostrar");
+                if (Input.GetButtonDown("Jump"))
+                {
+                    AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
+                }
+            }
+            else
+            {
+                if (Input.GetButtonDown("Jump"))
+                {
+                    if (textPantallasCarga != null) textPantallasCarga.text = contenidoTextPantallaCarga;
+                    indexLetras = contenidoTextPantallaCarga.Length;
+                }
+            }*/
             //Si hay algo escrito en el texto
-            
-                timer -= Time.deltaTime;
+
+            timer -= Time.deltaTime;
                 while (timer < 0f)
                 {
                     //Aparece la siguiente letra
@@ -107,16 +133,8 @@ public class EscribirPantallaCargaNiveles : MonoBehaviour
                         textPantallasCarga.text = texto;
                     }
 
-                }
-            return false;
-            
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                if (textPantallasCarga != null) textPantallasCarga.text = contenidoTextPantallaCarga;
-                indexLetras = contenidoTextPantallaCarga.Length;
-
-                Debug.Log("He presionado la K y ha aparecido el texto directamente");
             }
+            return false;
         }
     }
 }
