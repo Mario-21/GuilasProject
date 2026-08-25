@@ -16,11 +16,14 @@ public class TakePistol : MonoBehaviour
 
     SpawnItemIcon pistolItem;
     PlayerHere player;
+    BoxCollider2D boxCollider2D;
+    
 
     private void Awake()
     {
         pistolItem = GetComponent<SpawnItemIcon>();
         player = GetComponent<PlayerHere>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -42,6 +45,8 @@ public class TakePistol : MonoBehaviour
             pistolItem.SpawnIcon();
             //La variable se activa
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+            //Desactiva el collider
+            boxCollider2D.enabled = false;
         }
     }
 

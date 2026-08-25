@@ -27,3 +27,9 @@ public interface IDataItemName
 
     void SaveDataItemName(ref ItemDataLanguage itemDataLanguage);
 }
+public interface IDataInterfaceText
+{
+    void LoadDataInterfaceText(InterfaceText interfaceDataText);
+
+    void SaveDataInterfaceText(ref InterfaceText interfaceDataText);
+}

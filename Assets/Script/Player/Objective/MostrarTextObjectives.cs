@@ -19,6 +19,9 @@ public class MostrarTextObjectives : MonoBehaviour
     public Text lines;
     Animator animObjective;
     bool objective;
+
+    string idiomaGuardado;
+    int actualizarIndex;
     private void Awake()
     {
         animObjective = GetComponent<Animator>();
@@ -45,7 +48,11 @@ public class MostrarTextObjectives : MonoBehaviour
     }
     private void Update()
     {
-        EstablecerIdiomaObjetivos();
+        //EstablecerIdiomaObjetivos();
+        if(idiomaGuardado != IdiomaGlobalManager.instanciaIdioma.idiomaActual || actualizarIndex != ObjectivesLevels.instanceObjectivesLevel.indexLine)
+        {
+            EstablecerIdiomaObjetivo_2();
+        }
         ObjectiveTask();
         ObjectiveMostrar();
         //LimitTask();
@@ -80,14 +87,20 @@ public class MostrarTextObjectives : MonoBehaviour
     }
     void EstablecerIdiomaObjetivos()
     {
-        switch (IdiomaGlobalManager.instanciaIdioma.idiomaActual)
+        IdiomaGlobalManager.instanciaIdioma.SelectorTextoIdioma(ref idiomaGuardado, lines,
+            ObjectivesLevels.instanceObjectivesLevel.objectiveSpanish[ObjectivesLevels.instanceObjectivesLevel.indexLine],
+            ObjectivesLevels.instanceObjectivesLevel.objectiveEnglish[ObjectivesLevels.instanceObjectivesLevel.indexLine]);
+    }
+    void EstablecerIdiomaObjetivo_2()
+    {
+        if (DataPersistenceManager.instance.interfaceDataText.objectiveText.TryGetValue(IdiomaGlobalManager.instanciaIdioma.idiomaActual, out SerializableDictionary<string, string> secondDictionary))
         {
-            case "Español":
-                lines.text = ObjectivesLevels.instanceObjectivesLevel.objectiveSpanish[ObjectivesLevels.instanceObjectivesLevel.indexLine];
-                break;
-            case "English":
-                lines.text = ObjectivesLevels.instanceObjectivesLevel.objectiveEnglish[ObjectivesLevels.instanceObjectivesLevel.indexLine];
-                break;
+            if (secondDictionary.TryGetValue(ObjectivesLevels.instanceObjectivesLevel.idObjetivos + ObjectivesLevels.instanceObjectivesLevel.indexLine, out string resultadoTraducido))
+            {
+                lines.text = resultadoTraducido;
+                idiomaGuardado = IdiomaGlobalManager.instanciaIdioma.idiomaActual;
+                actualizarIndex = ObjectivesLevels.instanceObjectivesLevel.indexLine;
+            }
         }
     }
     void LimitTask()

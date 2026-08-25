@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.EventSystems;
 public class SaveButton : MonoBehaviour
 {
     public int indexButton;
@@ -12,16 +12,9 @@ public class SaveButton : MonoBehaviour
     public int usosLimitados;
     [HideInInspector] public int usos;
     [Header("Boton Data")]
-    Image imageButton;
-    Button button;
-    Text textButton;
-
-    private void Awake()
-    {
-        imageButton = GetComponent<Image>();
-        button = GetComponent<Button>();
-        textButton = GetComponentInChildren<Text>();
-    }
+    [SerializeReference] Image imageButton;
+    [SerializeField] Button button;
+    public EventTrigger eventButtonTrigger;
     void Start()
     {
         CallButtonAppear();
@@ -52,8 +45,8 @@ public class SaveButton : MonoBehaviour
     {
         //Inactive the button
         imageButton.color = new Color(1f, 1f, 1f, 0.25f);
-        textButton.color = new Color(0f, 0f, 0f, 0.5f);
         button.enabled = false;
+        eventButtonTrigger.enabled = false;
     }
     public void HabilitarUsos()
     {
@@ -62,12 +55,11 @@ public class SaveButton : MonoBehaviour
         {
             imageButton = GetComponent<Image>();
             button = GetComponent<Button>();
-            textButton = GetComponentInChildren<Text>();
         }
         //Habilitar boton
         imageButton.color = new Color(1f, 1f, 1f, 1f);
-        textButton.color = new Color(0f, 0f, 0f, 1f);
         button.enabled = true;
+        eventButtonTrigger.enabled = true;
     }
     
 

@@ -30,6 +30,7 @@ public class GameData
         missionsComplete = new SerializableDictionary<string, bool>();
 
         tutorialesCollected = new SerializableDictionary<string, bool>();
+
     }
 }
 
@@ -41,6 +42,26 @@ public class ItemDataLanguage
     {
         itemsName = new SerializableDictionary<string, IdiomasItems>();
     }
+}
+[System.Serializable]
+public class DictionaryInDictionary
+{
+    public SerializableDictionary<string, IdiomasItems> dictionarySupreme = new SerializableDictionary<string, IdiomasItems>();
+}
+[System.Serializable]
+public class InterfaceText
+{
+    public SerializableDictionary<string, SerializableDictionary<string, string>> interfaceText;
+    public SerializableDictionary<string, SerializableDictionary<string, string>> objectiveText;
+    public SerializableDictionary<string, SerializableDictionary<string, string>> tutorialesText;
+
+    public InterfaceText()
+    {
+        interfaceText = new SerializableDictionary<string, SerializableDictionary<string, string>>();
+        objectiveText = new SerializableDictionary<string, SerializableDictionary<string, string>>();
+        tutorialesText = new SerializableDictionary<string, SerializableDictionary<string, string>>();
+    }
+
 }
 [System.Serializable]
 public class IdiomasItems

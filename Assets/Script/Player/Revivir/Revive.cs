@@ -187,6 +187,7 @@ public class Revive : MonoBehaviour
     private void Update()
     {
         Debug.Log("Cola Start " + colaTutorialesStart.Count);
+        Debug.Log("Cola ControlerTutoriales " + ControlerTutoriales.instanciaTutoriales.colaTutoriales.Count);
         if (!establecerAmmoInicial)
         {
             ListDataPlayer.listDataPlayer.ammoPlayerStartScene = ListDataPlayer.listDataPlayer.ammoPlayerNow;

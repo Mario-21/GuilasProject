@@ -6,11 +6,15 @@ using System.IO;
 public class TutorialesDeath : MonoBehaviour
 {
 
+    public string idTextoTutorial;
+
     public string archivoTutorialNombre;
     public string archiveTutorialName;
 
     public string spanishContent;
     public string englishContent;
+
+    string idiomaGuardado;
 
     public Text textTutorial;
 
@@ -20,6 +24,8 @@ public class TutorialesDeath : MonoBehaviour
 
     public float timeLiveLimit;
     float timeLive;
+
+
 
     private void Start()
     {
@@ -35,7 +41,10 @@ public class TutorialesDeath : MonoBehaviour
     }
     private void Update()
     {
-        EstablecerTextoIdioma();
+        //EstablecerTextoIdioma
+        //IdiomaGlobalManager.instanciaIdioma.SelectorTextoIdioma(ref idiomaGuardado, textTutorial, spanishContent, englishContent);
+        //if (idiomaGuardado != IdiomaGlobalManager.instanciaIdioma.idiomaActual) TextoTraducido();
+        IdiomaGlobalManager.instanciaIdioma.EstablecerTextosIdiomas(DataPersistenceManager.instance.interfaceDataText.tutorialesText, idTextoTutorial, textTutorial, ref idiomaGuardado);
 
         if(timeLive >= timeLiveLimit)
         {
@@ -51,20 +60,5 @@ public class TutorialesDeath : MonoBehaviour
     {
         ControlerTutoriales.instanciaTutoriales.colaTutoriales.Dequeue();
         Destroy(this.gameObject);
-    }
-    public void EstablecerTextoIdioma()
-    {
-        //Aquí hay que añadir que cuando el tiempo de spawn llegue a 0, adicionalmente lo quite de la queue del ControlerTutoriales, porque sino, dicha
-        //queue quedará como vacía
-
-        switch (IdiomaGlobalManager.instanciaIdioma.idiomaActual) //--------->colocar un void general que pida un text +string Español + string Ingles.
-        {
-			case "Español":
-			textTutorial.text = spanishContent;
-            break;
-			case "English":
-			textTutorial.text = englishContent;
-            break;
-        }
     }
 }

@@ -274,51 +274,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &372057051
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 372057053}
-  - component: {fileID: 372057052}
-  m_Layer: 0
-  m_Name: ComprobarDatosData
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &372057052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 372057051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb66e1f83264f2e4382fd4244a0125f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Image: {fileID: 1369933520}
-  m_Sprite: {fileID: 21300000, guid: ade6ad82d807f5b4dbc92c7283afdbea, type: 3}
---- !u!4 &372057053
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 372057051}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 935, y: 335.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 19
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &404210790
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,7 +325,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &404210793
 MonoBehaviour:
@@ -385,6 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sizePantallaCarga: 20
+  dataFileName: 
 --- !u!1 &437399498 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3777612823600928494, guid: 0e3ded30a9fa6a4418c739a19af552e3,
@@ -595,6 +551,81 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &600706573
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 600706574}
+  - component: {fileID: 600706576}
+  - component: {fileID: 600706575}
+  m_Layer: 5
+  m_Name: Call
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &600706574
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600706573}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1128142216}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -908.8, y: -493.39996}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &600706575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600706573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: e35dfb5839230444d8a278d86468373f, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &600706576
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600706573}
+  m_CullTransparentMesh: 1
 --- !u!20 &622823794 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 6164014975807930736, guid: 9f2b93efe42cbb741b6bda5d3609372b,
@@ -936,6 +967,81 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b712a2823c413214799dac2d16f608d3, type: 3}
+--- !u!1 &941594786
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 941594787}
+  - component: {fileID: 941594789}
+  - component: {fileID: 941594788}
+  m_Layer: 5
+  m_Name: Knob
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &941594787
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941594786}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1128142216}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -910, y: -490}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &941594788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941594786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &941594789
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941594786}
+  m_CullTransparentMesh: 1
 --- !u!1001 &967042925
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -952,6 +1058,11 @@ PrefabInstance:
         type: 3}
       propertyPath: fileNameLanguage
       value: language.data
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671312700532875728, guid: 0ea01f537fbdb864cb4b7e093cd2c999,
+        type: 3}
+      propertyPath: fileNameInterface
+      value: interfaceText.data
       objectReference: {fileID: 0}
     - target: {fileID: 2671312700532875728, guid: 0ea01f537fbdb864cb4b7e093cd2c999,
         type: 3}
@@ -4032,7 +4143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe34aebc41c9d0c4aade196a1181bd54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  siguienteNivelNombre: Nivel_1
+  siguienteNivelNombre: Nivel_5
 --- !u!4 &1079280534
 Transform:
   m_ObjectHideFlags: 0
@@ -5229,6 +5340,215 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 089b4c19fd82c584bb612b1ad64c31f3, type: 3}
+--- !u!1 &2034244985
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2034244987}
+  - component: {fileID: 2034244986}
+  - component: {fileID: 2034244988}
+  - component: {fileID: 2034244989}
+  m_Layer: 0
+  m_Name: Perezoso
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &2034244986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034244985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83c012dcdb6bbd2429d4c74bc53c5888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sizePantallaCarga: 14
+  dataFileName: interfaceText.data
+--- !u!4 &2034244987
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034244985}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -19.19076, y: -3.8108845, z: 0.009256363}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2034244988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034244985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb66e1f83264f2e4382fd4244a0125f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IDObjetivos: Aa_ObjetivoNivel1_
+  indexObjetivos: 0
+--- !u!114 &2034244989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034244985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a28793563c960d449b785dcf073f28ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objetivoLimit: 25
+  nombreIdiomaEstablecer: "Espa\xF1ol"
+  nombreIndividual: 
+  nombreTraduccionIndividual: 
+  "id_TextoPeque\xF1os":
+  - b86f09a7_MoveText
+  - d6459607_LadderText
+  - 418f143b_VisionText
+  - c4f5d7cd_WeaponText
+  - c4f5d7cd_WeaponExtText
+  - 650f0e9f_InventoryUseItemText
+  - a890a120_ChangeWeaponText
+  - 4b18408e_FlashlightText
+  - 83a689cb_HackearText
+  - 83a689cb_HackearExtText
+  - ffa17b95_HiddenText
+  - 813dd696_InteractText
+  - 5903bd8d_LaundryText
+  - 88d76b9a_AmmoText
+  - 2b277354_ItemsText
+  - dcb453a3_EquipmentText
+  - d9bb06ff_ObjectivesText
+  - cb9ceda0_Soldiers1Text
+  - fc0b3c12_EnviromentText
+  - c4d20032_CraftText
+  - 7f32a443_Soldiers2Text
+  - ef66fc7a_WeigthText
+  - c4ccb304_PhotoText
+  - 8c6413a3_CallText
+  "nombre_TraduccionTextoPeque\xF1os":
+  - Presiona "A/D" para moverte Izquierda/Derecha y "Espacio" para saltar.
+  - Presiona "W/S" para subir/bajar de la escalera.
+  - "Presiona \"V\" para ver el rango de visi\xF3n enemigo."
+  - Presiona "Q" para sacar el arma y "Click Izq." para disparar.
+  - "Presiona \"Q\" para sacar el arma y \"Click Izq.\" para disparar.\r\nRecuerda,
+    disparar te hace entrar en modo \"sospecha\" lo que te hace m\xE1s receptivo
+    de ser detectado por los soldados."
+  - Presiona "I" para abrir el inventario y eligir el objeto que quieras usar.
+  - Presiona "C" para cambiar entre armas
+  - Presiona "R" para encender el mechero.
+  - "Mant\xE9n \"E\" para piratear el terminal"
+  - "Mant\xE9n \"E\" para piratear el terminal\r\n\xA1Cuidado! Mientras pireteas
+    ser\xE1s marcado como \"Sospechoso\""
+  - Presiona "Click Derecho" para esconderte.
+  - Presiona "E" para interactuar.
+  - Presiona "R" para recoger la ropa.
+  - "Recoger Vulture Soda te permite recuperar munici\xF3n y vida."
+  - Presiona "F" para recoger objetos.
+  - Presiona "T" para desequipar un objeto.
+  - "Mant\xE9n \"Tab\" para ver tus objetivos."
+  - "Hay 3 tipos de Soldados:\r\nPasivos: Los soldados no te har\xE1n nada a menos
+    que llames su atenci\xF3n.\r\nDetectores: Entrar en su rango visi\xF3n provocar\xE1
+    que te eche de la zona en la que te encuentres. Por lo dem\xE1s, funcionan igual
+    que los pasivos.\r\nActivos: Son agresivos. Te atacar\xE1n y seguir\xE1n inmediatamente.\r\n\r\nNota:
+    Cualquier uniforme diferente a estos, significa que son pasivos."
+  - "Vigila tu entorno. En ocasiones podr\xE1s disparar a objetos rotos para tomar
+    ventaja de ciertas situaciones."
+  - "Usa el banco de trabajo para combinar objetos, cuando tengas todos los objetos
+    necesarios, mant\xE9n \"E\" para construir uno nuevo."
+  - "Los soldados se componen de tres modos:\r\nNormal: Los soldados cumplen con
+    su rutina como si nada pasase.\r\nB\xFAsqueda: Al entrar en el rango de detecci\xF3n,
+    el enemigo romper\xE1 el patron para ir a buscarte.\r\nAtaque: Si te acercas
+    mucho m\xE1s al rango el enemigo te atacar\xE1 y perseguir\xE1.\r\n\r\nNota:
+    Una vez el soldado entra en modo Ataque, podr\xE1n alertar y reportarte a sus
+    aliados."
+  - Puedes usar tu propio peso para romper algunos objetos con rupturas.
+  - "Presiona \"E\" para tomar una foto y avanzar en la investigaci\xF3n."
+  - Llamada
+  name_TraductionSmallText:
+  - Press "A/D" to move left/right and "Space" to jump.
+  - Press "W/S" to climb up/down the ladder.
+  - Press "V" to show enemy detection range.
+  - Press "Q" to draw your weapon and "Left Click" to shoot.
+  - 'Press "Q" to draw your weapon and "Left Click" to shoot.
+
+    Be careful! Shooting
+    will mark you as "Suspect". In this mode, soldiers are more likely to detect
+    you.'
+  - Press "I" to open your inventory and choose an item to use it.
+  - Press "C" to switch between your weapons
+  - Press "R" to turn on the lighter.
+  - Hold "E" to hack the terminal
+  - 'Hold "E" to hack the terminal
+
+    Be careful! While hacking a terminal, you
+    will marked as "Suspect"'
+  - Press "Right Click" to hide.
+  - Press "E" to interact.
+  - Press "R" to pick up the clothes.
+  - Take a Vulture Soda to recover ammo and health.
+  - Press "F" to pick up items.
+  - Press "T" to unequip item.
+  - Hold "Tab" to see your objectives.
+  - 'There are three types of Soldiers:
+
+    Recluit/ Passive: A passive enemy.This
+    enemies don''t do anything, unless you do something that call her atention.
+
+    Major
+    Recluit/ Detector: A detector enemy. If you enter in detection range of this
+    enemies, they will kick you out can get out from the area.For the rest, they
+    behave like a Recruit.
+
+    Sergeant/ Active:An agressive enemy. Once they see
+    you , they will immediately attack.
+
+
+
+    Note: Any other uniform on an enemy
+    ALWAYS means they are passive.'
+  - Watch your enviroment. Sometimes you can shoot broken objects to your advantage.
+  - Use the workbrench to combine items, once you meet all requirement, hold "E"
+    to craft a new item.
+  - 'The soldiers have three modes:
+
+    Undetected/Normal: Soldiers follow their
+    normal patrol routine.
+
+    Search: If you enter their detection range, they
+    will break their routine and begin searching for you.
+
+    Attack: if you get
+    too close inside their detection range, they immediately attack and pursue you.
+
+
+
+    Note:
+    Once a soldier enters in Attack mode, they can alert and report you to all allies.'
+  - You can use your own weight to break some objects with fissures.
+  - Press "E" to take a picture of the enemy base and advance the investigation.
+  - Call
+  "nombreEspa\xF1ol": 
+  nombreEnglish: 
+  nombreMainDictionary: 
+  idPrimerDictionary: 
+  idSegundoDictionary: 
 --- !u!1001 &8901320821464743744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5246,10 +5566,15 @@ PrefabInstance:
       propertyPath: guardarGameData
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8901320821114391282, guid: 6afc4aef984de8d4dac8bfd20d83e752,
+        type: 3}
+      propertyPath: gameData.listPruebas.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8901320821114391283, guid: 6afc4aef984de8d4dac8bfd20d83e752,
         type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 8901320821114391283, guid: 6afc4aef984de8d4dac8bfd20d83e752,
         type: 3}

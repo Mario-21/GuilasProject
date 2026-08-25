@@ -10,6 +10,9 @@ public class ObjectivesLevels : MonoBehaviour
 
     public int indexLine;
 
+    [Header("ID Objetivos Archivos")]
+    public string idObjetivos;
+
     [Header("Nombres Objetivos Archivos")]
     public string fileNameSpanish;
     public string fileNameEnglish;
@@ -17,6 +20,7 @@ public class ObjectivesLevels : MonoBehaviour
     [Header("Listas Objetivos Idiomas")]
     public List<string> objectiveSpanish;
     public List<string> objectiveEnglish;
+
 
     private void Awake()
     {
@@ -32,12 +36,15 @@ public class ObjectivesLevels : MonoBehaviour
     }
     void Start()
     {
+        Debug.Log(idObjetivos + indexLine);
+        /*
         indexLine = 0;
         string readFromFilePathEspañol = Application.dataPath + "/Idiomas/Español/Objetivos/" + fileNameSpanish + ".txt";
         objectiveSpanish = File.ReadAllLines(readFromFilePathEspañol).ToList();
 
         string readFromLinePathEnglish = Application.dataPath + "/Idiomas/Ingles/Objectives/" + fileNameEnglish + ".txt";
         objectiveEnglish = File.ReadAllLines(readFromLinePathEnglish).ToList();
+        */
     }
     public void TaskObjectiveComplete(int taskWho)
     {

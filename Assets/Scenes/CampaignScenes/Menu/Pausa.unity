@@ -707,7 +707,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1328976965}
         m_TargetAssemblyTypeName: DisplayTutorial, Assembly-CSharp
-        m_MethodName: SelectTutorial
+        m_MethodName: SelectorTutorialIdTexto
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -840,7 +840,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 378697590}
         m_TargetAssemblyTypeName: DisplayTutorial, Assembly-CSharp
-        m_MethodName: SelectTutorial
+        m_MethodName: SelectorTutorialIdTexto
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -899,6 +899,7 @@ GameObject:
   - component: {fileID: 24802813}
   - component: {fileID: 24802815}
   - component: {fileID: 24802814}
+  - component: {fileID: 24802816}
   m_Layer: 5
   m_Name: ItemSFXText
   m_TagString: Untagged
@@ -949,7 +950,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 61
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 61
     m_Alignment: 0
@@ -967,6 +968,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24802812}
   m_CullTransparentMesh: 0
+--- !u!114 &24802816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24802812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 006c_SonidoObjetos
 --- !u!1 &25977056
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,6 +1107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idTutorial: 4b18408e-Flashlight
+  idTutorialText: 4b18408e_FlashlightText
   textoTutorial: {fileID: 927393269}
   imageScreen: {fileID: 1246204026}
   imageTutorial: {fileID: 21300000, guid: de662977d220c6c4e8a237d10ba4716b, type: 3}
@@ -1151,6 +1166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idTutorial: b86f09a7-Move
+  idTutorialText: b86f09a7_MoveText
   textoTutorial: {fileID: 927393269}
   imageScreen: {fileID: 1246204026}
   imageTutorial: {fileID: 21300000, guid: 7d7135e3541ac734da5e003ac3188c2b, type: 3}
@@ -1260,6 +1276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idTutorial: 88d76b9a-Ammo
+  idTutorialText: 88d76b9a_AmmoText
   textoTutorial: {fileID: 927393269}
   imageScreen: {fileID: 1246204026}
   imageTutorial: {fileID: 21300000, guid: a711b611d1ce69348a41ac46b00fae9c, type: 3}
@@ -1318,6 +1335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idTutorial: c4ccb304-Photo
+  idTutorialText: c4ccb304_PhotoText
   textoTutorial: {fileID: 927393269}
   imageScreen: {fileID: 1246204026}
   imageTutorial: {fileID: 21300000, guid: c7b550119d60e2f40948edeea5bf5f6d, type: 3}
@@ -1407,7 +1425,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 91456567}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 522776029}
+        m_TargetAssemblyTypeName: DisplayTutorial, Assembly-CSharp
+        m_MethodName: SelectorTutorialIdTexto
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &91456567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1744,7 +1774,7 @@ RectTransform:
   m_Children:
   - {fileID: 1622646466}
   m_Father: {fileID: 1373762419}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2179,6 +2209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idTutorial: dcb453a3-Clothes
+  idTutorialText: dcb453a3_EquipmentText
   textoTutorial: {fileID: 927393269}
   imageScreen: {fileID: 1246204026}
   imageTutorial: {fileID: 21300000, guid: 40bdc0b8d0b3cab4eb40902f87bbae16, type: 3}
@@ -2197,6 +2228,7 @@ GameObject:
   - component: {fileID: 259812762}
   - component: {fileID: 259812764}
   - component: {fileID: 259812763}
+  - component: {fileID: 259812765}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -2265,6 +2297,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259812761}
   m_CullTransparentMesh: 1
+--- !u!114 &259812765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259812761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 008m_TutorialRecoger
 --- !u!1 &294606638
 GameObject:
   m_ObjectHideFlags: 0
@@ -2350,7 +2395,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1771624491}
         m_TargetAssemblyTypeName: DisplayTutorial, Assembly-CSharp
-        m_MethodName: SelectTutorial
+        m_MethodName: SelectorTutorialIdTexto
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2676,7 +2721,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 322845724}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2034649594}
+        m_TargetAssemblyTypeName: DisplayTutorial, Assembly-CSharp
+        m_MethodName: SelectorTutorialIdTexto
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &322845724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2726,6 +2783,7 @@ GameObject:
   - component: {fileID: 337099907}
   - component: {fileID: 337099909}
   - component: {fileID: 337099908}
+  - component: {fileID: 337099910}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -2794,6 +2852,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 337099906}
   m_CullTransparentMesh: 1
+--- !u!114 &337099910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337099906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 008o_TutorialObjetivos
 --- !u!1 &354455841
 GameObject:
   m_ObjectHideFlags: 0
@@ -2879,7 +2950,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 47694570}
         m_TargetAssemblyTypeName: DisplayTutorial, Assembly-CSharp
-        m_MethodName: SelectTutorial
+        m_MethodName: SelectorTutorialIdTexto
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2978,6 +3049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idTutorial: 8c6413a3-Call
+  idTutorialText: 8c6413a3_CallText
   textoTutorial: {fileID: 927393269}
   imageScreen: {fileID: 1246204026}
   imageTutorial: {fileID: 21300000, guid: e35dfb5839230444d8a278d86468373f, type: 3}
@@ -3036,6 +3108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idTutorial: 418f143b-Vision
+  idTutorialText: 418f143b_VisionText
   textoTutorial: {fileID: 927393269}
   imageScreen: {fileID: 1246204026}
   imageTutorial: {fileID: 21300000, guid: e8c99e3cdb90f004ea5961ea3e85c3eb, type: 3}
@@ -3254,6 +3327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idTutorial: 650f0e9f-InventoryUseItem
+  idTutorialText: 650f0e9f_InventoryUseItemText
   textoTutorial: {fileID: 927393269}
   imageScreen: {fileID: 1246204026}
   imageTutorial: {fileID: 21300000, guid: 9c2f5a2e84118594b9897901341c4d66, type: 3}
@@ -3272,6 +3346,7 @@ GameObject:
   - component: {fileID: 428481360}
   - component: {fileID: 428481362}
   - component: {fileID: 428481361}
+  - component: {fileID: 428481363}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -3340,6 +3415,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 428481359}
   m_CullTransparentMesh: 1
+--- !u!114 &428481363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428481359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 008b_TutorialEscalera
 --- !u!1 &449870463
 GameObject:
   m_ObjectHideFlags: 0
@@ -3351,6 +3439,7 @@ GameObject:
   - component: {fileID: 449870464}
   - component: {fileID: 449870466}
   - component: {fileID: 449870465}
+  - component: {fileID: 449870467}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -3419,6 +3508,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 449870463}
   m_CullTransparentMesh: 1
+--- !u!114 &449870467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449870463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 008q_TutorialEntornoDestruir
 --- !u!1 &475410665
 GameObject:
   m_ObjectHideFlags: 0
@@ -3430,6 +3532,7 @@ GameObject:
   - component: {fileID: 475410666}
   - component: {fileID: 475410668}
   - component: {fileID: 475410667}
+  - component: {fileID: 475410669}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -3498,6 +3601,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 475410665}
   m_CullTransparentMesh: 0
+--- !u!114 &475410669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475410665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 022_UltimoCheckpoint
 --- !u!1 &507296995
 GameObject:
   m_ObjectHideFlags: 0
@@ -3745,6 +3861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idTutorial: cb9ceda0-Soldiers1
+  idTutorialText: cb9ceda0_Soldiers1Text
   textoTutorial: {fileID: 927393269}
   imageScreen: {fileID: 1246204026}
   imageTutorial: {fileID: 21300000, guid: f2ac684c3ae0f28478b158f4b8a5a806, type: 3}
@@ -3764,7 +3881,7 @@ GameObject:
   - component: {fileID: 522809843}
   - component: {fileID: 522809842}
   m_Layer: 5
-  m_Name: Image Tutorial_1
+  m_Name: Texto Tutorial_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3782,7 +3899,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1373762419}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4336,7 +4453,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 594804014}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 28497316}
+        m_TargetAssemblyTypeName: DisplayTutorial, Assembly-CSharp
+        m_MethodName: SelectorTutorialIdTexto
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &594804014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4386,6 +4515,7 @@ GameObject:
   - component: {fileID: 607539302}
   - component: {fileID: 607539304}
   - component: {fileID: 607539303}
+  - component: {fileID: 607539305}
   m_Layer: 5
   m_Name: Pausa Titulo
   m_TagString: Untagged
@@ -4454,6 +4584,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 607539301}
   m_CullTransparentMesh: 0
+--- !u!114 &607539305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607539301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 020_Pausa
 --- !u!1 &635956315
 GameObject:
   m_ObjectHideFlags: 0
@@ -4828,6 +4971,7 @@ GameObject:
   - component: {fileID: 652933034}
   - component: {fileID: 652933036}
   - component: {fileID: 652933035}
+  - component: {fileID: 652933037}
   m_Layer: 5
   m_Name: PlayerSFXText
   m_TagString: Untagged
@@ -4878,7 +5022,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 61
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 61
     m_Alignment: 0
@@ -4896,6 +5040,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 652933033}
   m_CullTransparentMesh: 0
+--- !u!114 &652933037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652933033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 006e_SonidoJugador
 --- !u!1 &662931073
 GameObject:
   m_ObjectHideFlags: 0
@@ -5033,6 +5190,7 @@ GameObject:
   - component: {fileID: 694549248}
   - component: {fileID: 694549250}
   - component: {fileID: 694549249}
+  - component: {fileID: 694549251}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -5101,6 +5259,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694549247}
   m_CullTransparentMesh: 1
+--- !u!114 &694549251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694549247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 008h_TutorialOcultarse
 --- !u!1 &698834865
 GameObject:
   m_ObjectHideFlags: 0
@@ -5580,6 +5751,7 @@ GameObject:
   - component: {fileID: 731777513}
   - component: {fileID: 731777515}
   - component: {fileID: 731777514}
+  - component: {fileID: 731777516}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -5648,6 +5820,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 731777512}
   m_CullTransparentMesh: 1
+--- !u!114 &731777516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731777512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 008n_TutorialEquipamiento
 --- !u!1 &731786864
 GameObject:
   m_ObjectHideFlags: 0
@@ -5955,7 +6140,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 743789039}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1993966625}
+        m_TargetAssemblyTypeName: DisplayTutorial, Assembly-CSharp
+        m_MethodName: SelectorTutorialIdTexto
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &743789039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6112,7 +6309,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 789925525}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1368172247}
+        m_TargetAssemblyTypeName: DisplayTutorial, Assembly-CSharp
+        m_MethodName: SelectorTutorialIdTexto
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &789925525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6162,6 +6371,7 @@ GameObject:
   - component: {fileID: 802036299}
   - component: {fileID: 802036301}
   - component: {fileID: 802036300}
+  - component: {fileID: 802036302}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -6230,6 +6440,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 802036298}
   m_CullTransparentMesh: 1
+--- !u!114 &802036302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802036298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 008w_TutorialFotos
 --- !u!1 &809689888
 GameObject:
   m_ObjectHideFlags: 0
@@ -6315,7 +6538,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1194056099}
         m_TargetAssemblyTypeName: DisplayTutorial, Assembly-CSharp
-        m_MethodName: SelectTutorial
+        m_MethodName: SelectorTutorialIdTexto
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6374,6 +6597,7 @@ GameObject:
   - component: {fileID: 817659271}
   - component: {fileID: 817659273}
   - component: {fileID: 817659272}
+  - component: {fileID: 817659274}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -6442,6 +6666,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 817659270}
   m_CullTransparentMesh: 1
+--- !u!114 &817659274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817659270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 008d_TutorialArma
 --- !u!1 &836879689
 GameObject:
   m_ObjectHideFlags: 0
@@ -6936,6 +7173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idTutorial: a890a120-ChangeWeapon
+  idTutorialText: a890a120_ChangeWeaponText
   textoTutorial: {fileID: 927393269}
   imageScreen: {fileID: 1246204026}
   imageTutorial: {fileID: 21300000, guid: 105e6a6c17921a04d8cd0478d4df4747, type: 3}
@@ -7025,7 +7263,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 904302491}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 74430894}
+        m_TargetAssemblyTypeName: DisplayTutorial, Assembly-CSharp
+        m_MethodName: SelectorTutorialIdTexto
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &904302491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7115,6 +7365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idTutorial: d9bb06ff-Objectives
+  idTutorialText: d9bb06ff_ObjectivesText
   textoTutorial: {fileID: 927393269}
   imageScreen: {fileID: 1246204026}
   imageTutorial: {fileID: 21300000, guid: be40e2b8c369c4a4fa745c40a60a3c62, type: 3}
@@ -7152,7 +7403,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1373762419}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7942,7 +8193,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 926288874}
         m_TargetAssemblyTypeName: DisplayTutorial, Assembly-CSharp
-        m_MethodName: SelectTutorial
+        m_MethodName: SelectorTutorialIdTexto
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8139,6 +8390,7 @@ GameObject:
   - component: {fileID: 1089965270}
   - component: {fileID: 1089965272}
   - component: {fileID: 1089965271}
+  - component: {fileID: 1089965273}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -8207,6 +8459,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1089965269}
   m_CullTransparentMesh: 1
+--- !u!114 &1089965273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089965269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 008p_TutorialTiposSoldados
 --- !u!1 &1091503436
 GameObject:
   m_ObjectHideFlags: 0
@@ -8258,6 +8523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idTutorial: c4f5d7cd-Weapon
+  idTutorialText: c4f5d7cd_WeaponExtText
   textoTutorial: {fileID: 927393269}
   imageScreen: {fileID: 1246204026}
   imageTutorial: {fileID: 21300000, guid: 84bfa6d742bb0974e8356dcdf7ff61a7, type: 3}
@@ -8276,6 +8542,7 @@ GameObject:
   - component: {fileID: 1106480458}
   - component: {fileID: 1106480460}
   - component: {fileID: 1106480459}
+  - component: {fileID: 1106480461}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -8344,6 +8611,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106480457}
   m_CullTransparentMesh: 1
+--- !u!114 &1106480461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106480457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 008j_TutorialCesto
 --- !u!1 &1107739749
 GameObject:
   m_ObjectHideFlags: 0
@@ -8625,6 +8905,7 @@ GameObject:
   - component: {fileID: 1132472532}
   - component: {fileID: 1132472534}
   - component: {fileID: 1132472533}
+  - component: {fileID: 1132472535}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -8693,6 +8974,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1132472531}
   m_CullTransparentMesh: 1
+--- !u!114 &1132472535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132472531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 008l_TutorialMunicion
 --- !u!1 &1142313870
 GameObject:
   m_ObjectHideFlags: 0
@@ -8775,7 +9069,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1142313873}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1292961149}
+        m_TargetAssemblyTypeName: DisplayTutorial, Assembly-CSharp
+        m_MethodName: SelectorTutorialIdTexto
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1142313873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9290,6 +9596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idTutorial: ffa17b95-Hidden
+  idTutorialText: ffa17b95_HiddenText
   textoTutorial: {fileID: 927393269}
   imageScreen: {fileID: 1246204026}
   imageTutorial: {fileID: 21300000, guid: 6e79ea4d85db567439d49fc8d490e0d0, type: 3}
@@ -9348,6 +9655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idTutorial: c4d20032-Craft
+  idTutorialText: c4d20032_CraftText
   textoTutorial: {fileID: 927393269}
   imageScreen: {fileID: 1246204026}
   imageTutorial: {fileID: 21300000, guid: 59f5428127bd2a848b51fb4d60ec8af4, type: 3}
@@ -9515,7 +9823,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 424679636}
         m_TargetAssemblyTypeName: DisplayTutorial, Assembly-CSharp
-        m_MethodName: SelectTutorial
+        m_MethodName: SelectorTutorialIdTexto
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9574,6 +9882,7 @@ GameObject:
   - component: {fileID: 1212146007}
   - component: {fileID: 1212146009}
   - component: {fileID: 1212146008}
+  - component: {fileID: 1212146010}
   m_Layer: 5
   m_Name: AmbienceText
   m_TagString: Untagged
@@ -9624,7 +9933,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 61
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 61
     m_Alignment: 0
@@ -9642,6 +9951,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1212146006}
   m_CullTransparentMesh: 0
+--- !u!114 &1212146010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212146006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 006b_SonidoAmbiental
 --- !u!1 &1219417978
 GameObject:
   m_ObjectHideFlags: 0
@@ -9817,17 +10139,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246204024}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1373762419}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 293.85, y: 93.428}
-  m_SizeDelta: {x: 1198.1, y: 619.46}
+  m_AnchoredPosition: {x: 295, y: 135.06}
+  m_SizeDelta: {x: 1160.6, y: 649.88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1246204026
 MonoBehaviour:
@@ -9849,9 +10171,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 178e8bcfb3220db448ffc1ca0b4dbcda, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f74e3b1bf64ff6840ac810ea3bcfab9d, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -10184,12 +10506,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idTutorial: 2b277354-Items
+  idTutorialText: 2b277354_ItemsText
   textoTutorial: {fileID: 927393269}
   imageScreen: {fileID: 1246204026}
   imageTutorial: {fileID: 21300000, guid: b7781e0b6cf3e0c4682935dc4c86dcfb, type: 3}
   botonLock: {fileID: 1184940381}
   botonUnlock: {fileID: 1142313870}
-  nombreSpanish: Tutorial RecogerItem.txt
+  nombreSpanish: Tutorial_RecogerItem.txt
   nameEnglish: Tutorial_TakeItem.txt
 --- !u!1 &1300937864
 GameObject:
@@ -10394,7 +10717,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1303150440}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1715016539}
+        m_TargetAssemblyTypeName: DisplayTutorial, Assembly-CSharp
+        m_MethodName: SelectorTutorialIdTexto
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1303150440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10444,6 +10779,7 @@ GameObject:
   - component: {fileID: 1310185867}
   - component: {fileID: 1310185869}
   - component: {fileID: 1310185868}
+  - component: {fileID: 1310185870}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -10512,6 +10848,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1310185866}
   m_CullTransparentMesh: 1
+--- !u!114 &1310185870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310185866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 008i_TutorialInteractuar
 --- !u!1 &1328976963
 GameObject:
   m_ObjectHideFlags: 0
@@ -10563,6 +10912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idTutorial: 83a689cb-Hackear
+  idTutorialText: 83a689cb_HackearExtText
   textoTutorial: {fileID: 927393269}
   imageScreen: {fileID: 1246204026}
   imageTutorial: {fileID: 21300000, guid: e24e861e192d5c841a0cfcfb2856121e, type: 3}
@@ -10777,6 +11127,7 @@ GameObject:
   - component: {fileID: 1346394206}
   - component: {fileID: 1346394208}
   - component: {fileID: 1346394207}
+  - component: {fileID: 1346394209}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -10836,7 +11187,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Patica
+  m_Text: 'Patica '
 --- !u!222 &1346394208
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10845,6 +11196,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1346394205}
   m_CullTransparentMesh: 1
+--- !u!114 &1346394209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346394205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 008j_TutorialCesto
 --- !u!1 &1348368579
 GameObject:
   m_ObjectHideFlags: 0
@@ -10856,6 +11220,7 @@ GameObject:
   - component: {fileID: 1348368580}
   - component: {fileID: 1348368582}
   - component: {fileID: 1348368581}
+  - component: {fileID: 1348368583}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -10924,6 +11289,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1348368579}
   m_CullTransparentMesh: 1
+--- !u!114 &1348368583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348368579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 008s_TutorialConstruir
 --- !u!1 &1350668382
 GameObject:
   m_ObjectHideFlags: 0
@@ -11010,6 +11388,7 @@ GameObject:
   - component: {fileID: 1355788349}
   - component: {fileID: 1355788351}
   - component: {fileID: 1355788350}
+  - component: {fileID: 1355788352}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -11078,6 +11457,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1355788348}
   m_CullTransparentMesh: 0
+--- !u!114 &1355788352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355788348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 021_Continuar
 --- !u!1 &1360998731
 GameObject:
   m_ObjectHideFlags: 0
@@ -11213,7 +11605,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1091503438}
         m_TargetAssemblyTypeName: DisplayTutorial, Assembly-CSharp
-        m_MethodName: SelectTutorial
+        m_MethodName: SelectorTutorialIdTexto
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11312,6 +11704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idTutorial: ef66fc7a-Weigth
+  idTutorialText: ef66fc7a_WeigthText
   textoTutorial: {fileID: 927393269}
   imageScreen: {fileID: 1246204026}
   imageTutorial: {fileID: 21300000, guid: 21f67fdb687c7604589da70b0bfc4175, type: 3}
@@ -11351,6 +11744,7 @@ RectTransform:
   m_Children:
   - {fileID: 1743596763}
   - {fileID: 729875460}
+  - {fileID: 1555067722}
   - {fileID: 1246204025}
   - {fileID: 522809841}
   - {fileID: 927393268}
@@ -11435,6 +11829,7 @@ GameObject:
   - component: {fileID: 1390426489}
   - component: {fileID: 1390426491}
   - component: {fileID: 1390426490}
+  - component: {fileID: 1390426492}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -11503,6 +11898,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1390426488}
   m_CullTransparentMesh: 1
+--- !u!114 &1390426492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390426488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 008v_TutorialLlamadaSoldados
 --- !u!1 &1415687100
 GameObject:
   m_ObjectHideFlags: 0
@@ -12191,6 +12599,7 @@ GameObject:
   - component: {fileID: 1491309706}
   - component: {fileID: 1491309708}
   - component: {fileID: 1491309707}
+  - component: {fileID: 1491309709}
   m_Layer: 5
   m_Name: EnemySFXText
   m_TagString: Untagged
@@ -12241,7 +12650,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 61
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 61
     m_Alignment: 0
@@ -12259,6 +12668,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1491309705}
   m_CullTransparentMesh: 0
+--- !u!114 &1491309709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491309705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 006d_SonidoEnemigos
 --- !u!1 &1500559112
 GameObject:
   m_ObjectHideFlags: 0
@@ -12420,6 +12842,7 @@ GameObject:
   - component: {fileID: 1514135146}
   - component: {fileID: 1514135148}
   - component: {fileID: 1514135147}
+  - component: {fileID: 1514135149}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -12488,6 +12911,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1514135145}
   m_CullTransparentMesh: 1
+--- !u!114 &1514135149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514135145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 008c_TutorialVision
 --- !u!1 &1520775585
 GameObject:
   m_ObjectHideFlags: 0
@@ -12903,6 +13339,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1541904414}
   m_CullTransparentMesh: 0
+--- !u!1 &1555067721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1555067722}
+  - component: {fileID: 1555067724}
+  - component: {fileID: 1555067723}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1555067722
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555067721}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1373762419}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 295, y: 135.06}
+  m_SizeDelta: {x: 1160.6, y: 649.88}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1555067723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555067721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: f74e3b1bf64ff6840ac810ea3bcfab9d, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1555067724
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555067721}
+  m_CullTransparentMesh: 1
 --- !u!1 &1568452108
 GameObject:
   m_ObjectHideFlags: 0
@@ -12914,6 +13425,7 @@ GameObject:
   - component: {fileID: 1568452109}
   - component: {fileID: 1568452111}
   - component: {fileID: 1568452110}
+  - component: {fileID: 1568452112}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -12982,6 +13494,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1568452108}
   m_CullTransparentMesh: 0
+--- !u!114 &1568452112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568452108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 008_Tutoriales
 --- !u!1 &1571361524
 GameObject:
   m_ObjectHideFlags: 0
@@ -13064,7 +13589,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1571361527}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 234750631}
+        m_TargetAssemblyTypeName: DisplayTutorial, Assembly-CSharp
+        m_MethodName: SelectorTutorialIdTexto
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1571361527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13417,6 +13954,7 @@ GameObject:
   - component: {fileID: 1631025655}
   - component: {fileID: 1631025657}
   - component: {fileID: 1631025656}
+  - component: {fileID: 1631025658}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -13485,6 +14023,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1631025654}
   m_CullTransparentMesh: 1
+--- !u!114 &1631025658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631025654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 008g_TutorialPiratear
 --- !u!1 &1636432905
 GameObject:
   m_ObjectHideFlags: 0
@@ -13611,6 +14162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idTutorial: d6459607-Ladder
+  idTutorialText: d6459607_LadderText
   textoTutorial: {fileID: 927393269}
   imageScreen: {fileID: 1246204026}
   imageTutorial: {fileID: 21300000, guid: a0610d1558dc2b44ca09797fa4c841f9, type: 3}
@@ -13975,6 +14527,7 @@ GameObject:
   - component: {fileID: 1694474839}
   - component: {fileID: 1694474841}
   - component: {fileID: 1694474840}
+  - component: {fileID: 1694474842}
   m_Layer: 5
   m_Name: Volume Control Titulo
   m_TagString: Untagged
@@ -14043,6 +14596,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1694474838}
   m_CullTransparentMesh: 0
+--- !u!114 &1694474842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694474838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 006_Sonido
 --- !u!1 &1695557466
 GameObject:
   m_ObjectHideFlags: 0
@@ -14169,6 +14735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idTutorial: fc0b3c12-Enviroment
+  idTutorialText: fc0b3c12_EnviromentText
   textoTutorial: {fileID: 927393269}
   imageScreen: {fileID: 1246204026}
   imageTutorial: {fileID: 9033961708659372118, guid: ba9052d841400f545b1bae7390d46537,
@@ -14638,6 +15205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idTutorial: 813dd696-Interact
+  idTutorialText: 813dd696_InteractText
   textoTutorial: {fileID: 927393269}
   imageScreen: {fileID: 1246204026}
   imageTutorial: {fileID: 21300000, guid: 430d9f347925dd940ae06ac3724108ce, type: 3}
@@ -14864,6 +15432,7 @@ GameObject:
   - component: {fileID: 1799452787}
   - component: {fileID: 1799452789}
   - component: {fileID: 1799452788}
+  - component: {fileID: 1799452790}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -14932,6 +15501,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1799452786}
   m_CullTransparentMesh: 1
+--- !u!114 &1799452790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799452786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 008e_TutorialInventarioObjeto
 --- !u!1 &1804329812
 GameObject:
   m_ObjectHideFlags: 0
@@ -15214,6 +15796,7 @@ GameObject:
   - component: {fileID: 1821379414}
   - component: {fileID: 1821379416}
   - component: {fileID: 1821379415}
+  - component: {fileID: 1821379417}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -15282,6 +15865,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1821379413}
   m_CullTransparentMesh: 1
+--- !u!114 &1821379417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821379413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 008f_TutorialCambiarArma
 --- !u!1 &1831070232
 GameObject:
   m_ObjectHideFlags: 0
@@ -15344,6 +15940,7 @@ GameObject:
   - component: {fileID: 1833265369}
   - component: {fileID: 1833265371}
   - component: {fileID: 1833265370}
+  - component: {fileID: 1833265372}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -15412,6 +16009,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1833265368}
   m_CullTransparentMesh: 1
+--- !u!114 &1833265372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833265368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 008t_TutorialEstatusSoldados
 --- !u!1 &1838961183
 GameObject:
   m_ObjectHideFlags: 0
@@ -15644,7 +16254,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 895746808}
         m_TargetAssemblyTypeName: DisplayTutorial, Assembly-CSharp
-        m_MethodName: SelectTutorial
+        m_MethodName: SelectorTutorialIdTexto
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15703,6 +16313,7 @@ GameObject:
   - component: {fileID: 1867550721}
   - component: {fileID: 1867550723}
   - component: {fileID: 1867550722}
+  - component: {fileID: 1867550724}
   m_Layer: 5
   m_Name: MasterText
   m_TagString: Untagged
@@ -15753,7 +16364,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 61
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 61
     m_Alignment: 0
@@ -15771,6 +16382,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1867550720}
   m_CullTransparentMesh: 0
+--- !u!114 &1867550724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867550720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 006a_SonidoMaestro
 --- !u!1 &1879417578
 GameObject:
   m_ObjectHideFlags: 0
@@ -15782,6 +16406,7 @@ GameObject:
   - component: {fileID: 1879417579}
   - component: {fileID: 1879417581}
   - component: {fileID: 1879417580}
+  - component: {fileID: 1879417582}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -15850,6 +16475,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1879417578}
   m_CullTransparentMesh: 0
+--- !u!114 &1879417582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879417578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 019_Salir
 --- !u!1 &1882594854
 GameObject:
   m_ObjectHideFlags: 0
@@ -15932,7 +16570,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1882594857}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 369390422}
+        m_TargetAssemblyTypeName: DisplayTutorial, Assembly-CSharp
+        m_MethodName: SelectorTutorialIdTexto
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1882594857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16048,6 +16698,7 @@ GameObject:
   - component: {fileID: 1897554530}
   - component: {fileID: 1897554532}
   - component: {fileID: 1897554531}
+  - component: {fileID: 1897554533}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -16116,6 +16767,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897554529}
   m_CullTransparentMesh: 1
+--- !u!114 &1897554533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897554529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 008a_TutorialMovimiento
 --- !u!1 &1933207001
 GameObject:
   m_ObjectHideFlags: 0
@@ -16580,7 +17244,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1989879009}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1194539937}
+        m_TargetAssemblyTypeName: DisplayTutorial, Assembly-CSharp
+        m_MethodName: SelectorTutorialIdTexto
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1989879009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16670,6 +17346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idTutorial: 7f32a443-Soldiers2
+  idTutorialText: 7f32a443_Soldiers2Text
   textoTutorial: {fileID: 927393269}
   imageScreen: {fileID: 1246204026}
   imageTutorial: {fileID: 21300000, guid: 41ed1167c54e96d4086879cc1c0eb7ab, type: 3}
@@ -17075,6 +17752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idTutorial: 5903bd8d-Laundry
+  idTutorialText: 5903bd8d_LaundryText
   textoTutorial: {fileID: 927393269}
   imageScreen: {fileID: 1246204026}
   imageTutorial: {fileID: 21300000, guid: ebe932734a0e99942bbf1ac61d8a3510, type: 3}
@@ -17164,7 +17842,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2045594185}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 73727344}
+        m_TargetAssemblyTypeName: DisplayTutorial, Assembly-CSharp
+        m_MethodName: SelectorTutorialIdTexto
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2045594185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17366,7 +18056,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1643560598}
         m_TargetAssemblyTypeName: DisplayTutorial, Assembly-CSharp
-        m_MethodName: SelectTutorial
+        m_MethodName: SelectorTutorialIdTexto
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17558,6 +18248,7 @@ GameObject:
   - component: {fileID: 2078416235}
   - component: {fileID: 2078416237}
   - component: {fileID: 2078416236}
+  - component: {fileID: 2078416238}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -17626,6 +18317,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2078416234}
   m_CullTransparentMesh: 0
+--- !u!114 &2078416238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078416234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 023_Reiniciar
 --- !u!1 &2104172422
 GameObject:
   m_ObjectHideFlags: 0
@@ -17712,6 +18416,7 @@ GameObject:
   - component: {fileID: 2130417495}
   - component: {fileID: 2130417497}
   - component: {fileID: 2130417496}
+  - component: {fileID: 2130417498}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -17780,6 +18485,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2130417494}
   m_CullTransparentMesh: 1
+--- !u!114 &2130417498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130417494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21012f6c3bea82e4eb2b227851f09d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTextoMinus: 008u_TutorialEntornoDestruir2
 --- !u!1 &2136158514
 GameObject:
   m_ObjectHideFlags: 0

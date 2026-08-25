@@ -11,22 +11,10 @@ public class ObjetosUITexto : MonoBehaviour
     [SerializeField] string nombreEspañol;
     [Header("Nombre Ingles")]
     [SerializeField] string nombreIngles;
-    void Start()
-    {
-            
-    }
 
-    // Update is called once per frame
+    string idiomaGuardado;
     void Update()
     {
-        switch (IdiomaGlobalManager.instanciaIdioma.idiomaActual)
-        {
-            case "Español":
-                textoObjeto.text = nombreEspañol;
-                break;
-            case "English":
-                textoObjeto.text = nombreIngles;
-                break;
-        }
+        IdiomaGlobalManager.instanciaIdioma.SelectorTextoIdioma(ref idiomaGuardado, textoObjeto, nombreEspañol, nombreIngles);
     }
 }

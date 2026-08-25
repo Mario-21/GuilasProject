@@ -17,6 +17,8 @@ public class CogerObjeto : MonoBehaviour
     [SerializeField] EventReference soundItem;
 
     PlayerHere dentroDeZona;
+
+    public RectTransform transformRectItemr;
     private void Awake()
     {
         feedbackItem = GetComponent<SpawnItemIcon>();
@@ -27,6 +29,8 @@ public class CogerObjeto : MonoBehaviour
     private void Start()
     {
         if(SaveScene.instancia.listaItemsNivelGuardar[objetoARecoger].objetoObtenido) objectCatch.SetActive(false);
+        transformRectItemr = objetcButtonInventory.GetComponent<RectTransform>();
+        Debug.Log(objetcButtonInventory.GetComponent<RectTransform>().localPosition);
     }
     private void Update()
     {

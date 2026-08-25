@@ -6,6 +6,7 @@ using System.IO;
 public class DisplayTutorial : MonoBehaviour
 {
 	public string idTutorial;
+	public string idTutorialText;
 	public Text textoTutorial;
 	bool desbloqueado;
 
@@ -22,6 +23,8 @@ public class DisplayTutorial : MonoBehaviour
 	string contentSpanish;
 	public string nameEnglish;
 	string contentEnglish;
+
+	string idiomaGuardado;
 
 	//Quizas meteré dentro del GameNoDestroy todos los textos relacionados, paracido a lo que hago con los nombres Items de GameData
 	// Start is called before the first frame update
@@ -55,15 +58,26 @@ public class DisplayTutorial : MonoBehaviour
 	{
 		//Establece la imagen referente del tutorial
 		imageScreen.sprite = imageTutorial;
-		
-		switch (IdiomaGlobalManager.instanciaIdioma.idiomaActual)
+
+		IdiomaGlobalManager.instanciaIdioma.SelectorTextoIdioma(ref idiomaGuardado, textoTutorial, contentSpanish, contentEnglish);
+	}
+	public void SelectorTutorialIdTexto()
+	{
+		//Establece la imagen referente del tutorial
+		imageScreen.sprite = imageTutorial;
+
+		IdiomaGlobalManager.instanciaIdioma.EstablecerTextosIdiomas(DataPersistenceManager.instance.interfaceDataText.tutorialesText, idTutorialText, textoTutorial, ref idiomaGuardado);
+	}
+	//void TextoTraducido(InterfaceText textData)
+	void TextoTraducido()
+	{
+		if (DataPersistenceManager.instance.interfaceDataText.tutorialesText.TryGetValue(IdiomaGlobalManager.instanciaIdioma.idiomaActual, out SerializableDictionary<string, string> secondDictionary))
 		{
-			case "Español":
-				textoTutorial.text = contentSpanish;
-				break;
-			case "English":
-				textoTutorial.text = contentEnglish;
-				break;
+			if (secondDictionary.TryGetValue(idTutorialText, out string resultadoTraducido))
+			{
+				textoTutorial.text = resultadoTraducido;
+				idiomaGuardado = IdiomaGlobalManager.instanciaIdioma.idiomaActual;
+			}
 		}
 	}
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.IO;
 using System;
 public class IdiomaGlobalManager : MonoBehaviour, IDataPersistenceNoCrypted
@@ -50,24 +51,16 @@ public class IdiomaGlobalManager : MonoBehaviour, IDataPersistenceNoCrypted
         noEncryptedGameData.idioma = this.idiomaActual;
         Debug.Log("Idioma Guardado");
     }
-    private void Start()
-    {
-        //FileDataHandler.DesencriptaObjetos(readFromFilePathEspañol, nombre_Archivo, DataPersistenceManager.instance.listItemLanguage.listaTodosObjetosEspañol);
-        DesencriptaObjetos(readFromFilePathIngles, name_Archive, DataPersistenceManager.instance.listItemLanguage.listAllItemsEnglish);
-        DesencriptaObjetos(readFromFilePathEspañol,nombre_Archivo, DataPersistenceManager.instance.listItemLanguage.listaTodosObjetosEspañol);
-
-        //FileDataHandler.DesencriptaObjetos(readFromFilePathIngles, name_Archive, DataPersistenceManager.instance.listItemLanguage.listAllItemsEnglish);
-    }
     private void Update()
     {
         Debug.Log("Hola, esto IdiomaGlobalManager y has seleccionado el idioma " + idiomaActual);
-        
     }
-
+/*
     public static void EstablecerIdiomaStatic(string idiomaSeleccionado)
     {
         new AlmacenarIdiomas(idiomaSeleccionado);
     }
+*/
     void RutasIdiomasObjetos()
     {
         readFromFilePathEspañolCompleto = Application.dataPath + "/Idiomas/Español/Objetos/Lista_Objetos.txt";
@@ -86,45 +79,52 @@ public class IdiomaGlobalManager : MonoBehaviour, IDataPersistenceNoCrypted
         routeTutorialEnglish = Application.dataPath + "/Idiomas/Ingles/Tutorials/";
     }
 
-
-    void DesencriptaObjetos(string path, string nameArchivo, List<string> listObjetos)
+    public void SelectorTextoIdioma(ref string idiomaGuardado, Text textItems, string spanishContent, string englishContent)
     {
-        string fullPath = Path.Combine(path, nameArchivo);
-
-        if (File.Exists(fullPath))
+        if (idiomaActual != idiomaGuardado) 
         {
-            Debug.Log("Existo,por tanto, no tengo que hacer nada");
-            File.WriteAllText(fullPath, FileDataHandler.EncryptDecrypt(File.ReadAllText(fullPath)));
-        }
-        else
-        {
-            try
+            switch (idiomaActual)
             {
-                Debug.Log("Soy el " + path + " y estoy siendo creado");
-                Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
-                using (FileStream stream = new FileStream(fullPath, FileMode.Create))
+                case "Español":
+                    textItems.text = spanishContent;
+                    idiomaGuardado = idiomaActual;
+                    break;
+                case "English":
+                    textItems.text = englishContent;
+                    idiomaGuardado = idiomaActual;
+                    break;
+            }
+
+        }
+    }
+    public void SelectorTextoIdiomaConstante(Text textItems, string spanishContent, string englishContent)
+    {
+        switch (idiomaActual)
+        {
+            case "Español":
+                textItems.text = spanishContent;
+                break;
+            case "English":
+                textItems.text = englishContent;
+                break;
+        }
+    }
+
+    public void EstablecerTextosIdiomas(SerializableDictionary<string, SerializableDictionary<string, string>> interfaceData, string id, Text texto, ref string idiomaGuardado)
+    {
+        if(idiomaActual != idiomaGuardado)
+        {
+            if (interfaceData.TryGetValue(idiomaActual, out SerializableDictionary<string, string> secondDictionary))
+            {
+                if (secondDictionary.TryGetValue(id, out string resultadoTraducido))
                 {
-                    using (StreamWriter writer = new StreamWriter(stream))
-                    {
-                        for (int e = 0; e < listObjetos.Count; e++)
-                        {
-                            writer.WriteLine(listObjetos[e]);
-                        }
-                    }
+                    texto.text = resultadoTraducido;
+                    idiomaGuardado = idiomaActual;
                 }
             }
-            catch (Exception e)
-            {
-                Debug.LogError("Error al intentar crear el archivo" + fullPath + "\n" + e);
-            }
         }
     }
-
-    private void OnApplicationQuit()
-    {
-        DesencriptaObjetos(readFromFilePathIngles, name_Archive, DataPersistenceManager.instance.listItemLanguage.listAllItemsEnglish);
-        DesencriptaObjetos(readFromFilePathEspañol, nombre_Archivo, DataPersistenceManager.instance.listItemLanguage.listaTodosObjetosEspañol);
-    }
+    /*
     public class AlmacenarIdiomas 
     {
         public string idiomaActual;
@@ -134,5 +134,5 @@ public class IdiomaGlobalManager : MonoBehaviour, IDataPersistenceNoCrypted
             this.idiomaActual = idiomaSeleccionado;
             Debug.Log("Hola, esto IdiomaGlobalManager y has seleccionado el idioma " + idiomaActual);
         }
-    }
+    }*/
 }

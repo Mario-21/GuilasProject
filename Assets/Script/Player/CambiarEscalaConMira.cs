@@ -6,9 +6,12 @@ public class CambiarEscalaConMira : MonoBehaviour
 {
     public Transform miraVersion2;
     public Transform centroDelPersonaje;
-    public static Vector2 calculo;
-    public float calculoX;
+    Vector2 calculo;
+    float calculoX;
     public GameObject player;
+    [Header("Armas")]
+    [SerializeField] B8Arma b8Arma;
+    [SerializeField] ArmaController arma;
     void Start()
     {
         
@@ -16,16 +19,18 @@ public class CambiarEscalaConMira : MonoBehaviour
 
     void Update()
     {
-        
-        calculo = new Vector2(miraVersion2.position.x - centroDelPersonaje.position.x, miraVersion2.position.y - centroDelPersonaje.position.y);
-        if(calculo.x < 0)
+        if(b8Arma.activarB8 || arma.activarDisparo)
         {
-            player.transform.localScale = new Vector3(-1, 1, 1);
+            calculo = new Vector2(miraVersion2.position.x - centroDelPersonaje.position.x, miraVersion2.position.y - centroDelPersonaje.position.y);
+            if (calculo.x < 0)
+            {
+                player.transform.localScale = new Vector3(-1, 1, 1);
+            }
+            if (calculo.x > 0)
+            {
+                player.transform.localScale = new Vector3(1, 1, 1);
+            }
+            calculoX = calculo.x;
         }
-        if (calculo.x > 0)
-        {
-            player.transform.localScale = new Vector3(1, 1, 1);
-        }
-        calculoX = calculo.x;
     }
 }

@@ -36,11 +36,15 @@ public class DataPersistenceManager : MonoBehaviour
     [Header("Dictionary Item Language")]
     [SerializeField] private string fileDictionaryItem;
 
-
-
     public ItemDataLanguage itemDataLanguage;
     private List<IDataItemName> dataPersistenceObjectsName;
     private FileDataHandler dataHandlerItemName;
+    [Header("File Interface Text")]
+    [SerializeField] private string fileNameInterface;
+
+    public InterfaceText interfaceDataText;
+    [HideInInspector] public FileDataHandlerNoEncrypt dataHandlerInterfaceText;
+
     void Awake()
     {
         
@@ -72,42 +76,15 @@ public class DataPersistenceManager : MonoBehaviour
         this.dataHandlerItemName = new FileDataHandler(pathDataHandlerItemName, fileDictionaryItem, useEncryptionSave, useEncryptionLoad);
         this.dataPersistenceObjectsName = FindAllDataPersistanceItemsName();
         LoadItemDataLanguage();
+
+        this.dataHandlerInterfaceText = new FileDataHandlerNoEncrypt(Application.persistentDataPath, fileNameInterface);
+        dataHandlerInterfaceText.LoadInterfaceText(ref interfaceDataText);
+
+        
+
         
 
     }
-    /*
-    public void NewGame()
-    {
-        this.gameData = new GameData();
-    }
-    public void LoadGame()
-    {
-        //Carga el archivo de la respectiva carpeta data handler
-        this.gameData = dataHandler.Load();
-        //Si no hay datos crea unos nuevos
-        if(this.gameData == null)
-        {
-            Debug.Log("no hay archivos. Creando unos nuevos predeterminados");
-            NewGame();
-        }
-        //Cargar todos los archivos necesarios 
-        foreach(IDataPersistence dataPersistenceObj in dataPersistencesObjects)
-        {
-            dataPersistenceObj.LoadData(gameData);
-        }
-    }
-    public void SaveGame()
-    {
-        //Guarda los datos en una carpeta usando un data handler
-        //Pasar los datos a otros script
-        foreach (IDataPersistence dataPersistenceObj in dataPersistencesObjects)
-        {
-            dataPersistenceObj.SaveData(ref gameData);
-            Debug.Log("Guardado con SaveData");
-        }
-        dataHandler.Save(this.gameData);
-    }
-    */
     public void NewGameNoEncrypt()
     {
         this.gamedataNoEncrypt = new NoEncryptedGameData();

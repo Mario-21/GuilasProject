@@ -18,16 +18,29 @@ public class SpawnTutoGame : MonoBehaviour
     {
         //Primero revisamos si ya se ha dado desbloqueado el tutorial o no ---------> Ya no hace falta
         //GameDataNoDestroy.instance.gameData.tutorialesCollected.TryGetValue(idTutorial, out ControlerTutoriales.instanciaTutoriales.infoTutoNivel[indexTuto].tutoDesbloqueado);
-
+        /*
         if (ControlerTutoriales.instanciaTutoriales.infoTutoNivel[indexTuto].tutoDesbloqueado)
         {
             colliderTuto.enabled = false;
+        }
+        */
+        for(int i = 0; i < ControlerTutoriales.instanciaTutoriales.infoTutoNivel.Count; i++)
+        {
+            if(ControlerTutoriales.instanciaTutoriales.infoTutoNivel[i].idTuto == idTutorial)
+            {
+                if (ControlerTutoriales.instanciaTutoriales.infoTutoNivel[i].tutoDesbloqueado)
+                {
+                    colliderTuto.enabled = false;
+                    break;
+                }
+            }
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            Debug.Log("El player ha entradeo al tutorial");
             //Llamar desde aqui a tu TutorialDeath, asi al morir sabe que variable debe colocar en verdadero.
             //Instantiate(tutoIndicado);
             ControlerTutoriales.instanciaTutoriales.colaTutoriales.Enqueue(tutoIndicado);

@@ -234,7 +234,7 @@ public class FileDataHandlerNoEncrypt
     }
 
 
-    
+
     //Guardar Idioma
     public LanguageData LoadLanguage()
     {
@@ -294,27 +294,12 @@ public class FileDataHandlerNoEncrypt
         }
     }
 
+    //Cargar Interface Text
 
-
-}
-public class FileDataHandlerLanguage
-{
-    private string dataDirPathLanguage = "";
-
-    private string dataFileNameLanguage = "";
-
-    public FileDataHandlerLanguage(string dataDirPathLanguage, string dataFileNameLanguage)
+    public void LoadInterfaceText(ref InterfaceText interfaceText)
     {
-        this.dataDirPathLanguage = dataDirPathLanguage;
-        this.dataFileNameLanguage = dataFileNameLanguage;
-    }
-
-    //Guardar Idioma
-    public LanguageData LoadLanguage()
-    {
-        //Usar mejor Path.Combine debido se adapta mejor a diferentes sistemas operativos
-        string fullPath = Path.Combine(dataDirPathLanguage, dataFileNameLanguage);
-        LanguageData loadedData = null;
+        string fullPath = Path.Combine(dataDirPathNoEncrypt, dataFileNameNoEncrypt);
+        interfaceText = null;
         //Revisa si existe un archivo que cargar
         if (File.Exists(fullPath))
         {
@@ -329,42 +314,87 @@ public class FileDataHandlerLanguage
                     }
 
                 }
-
                 //Deserealizar los datos del archivo en json para pasar a un objeto en C#
-                loadedData = JsonUtility.FromJson<LanguageData>(dataToStore);
+                interfaceText = JsonUtility.FromJson<InterfaceText>(dataToStore);
             }
             catch (Exception e)
             {
                 Debug.LogError("Error al cargar los archivos desde: " + fullPath + "\n" + e);
             }
         }
-        return loadedData;
+
+
+
     }
-    public void SaveLanguage(LanguageData languageSelect)
+    public class FileDataHandlerLanguage
     {
-        //Usar mejor Path.Combine debido se adapta mejor a diferentes sistemas operativos
-        string fullPath = Path.Combine(dataDirPathLanguage, dataFileNameLanguage);
-        try
+        private string dataDirPathLanguage = "";
+
+        private string dataFileNameLanguage = "";
+
+        public FileDataHandlerLanguage(string dataDirPathLanguage, string dataFileNameLanguage)
         {
-            //Crea un archivo en el directorio asignado si no hay uno existente
-            Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
-
-            //Transforma C# gamedata objeto en Json
-            string dataToStore = JsonUtility.ToJson(languageSelect, true);
-
-            //Escribe los datos serializados en el archivo
-            using (FileStream stream = new FileStream(fullPath, FileMode.Create))
-            {
-                using (StreamWriter writer = new StreamWriter(stream))
-                {
-                    writer.Write(dataToStore);
-                }
-
-            }
+            this.dataDirPathLanguage = dataDirPathLanguage;
+            this.dataFileNameLanguage = dataFileNameLanguage;
         }
-        catch (Exception e)
+
+        //Guardar Idioma
+        public LanguageData LoadLanguage()
         {
-            Debug.LogError("Error al intentar al intentar guardar el archivo" + fullPath + "\n" + e);
+            //Usar mejor Path.Combine debido se adapta mejor a diferentes sistemas operativos
+            string fullPath = Path.Combine(dataDirPathLanguage, dataFileNameLanguage);
+            LanguageData loadedData = null;
+            //Revisa si existe un archivo que cargar
+            if (File.Exists(fullPath))
+            {
+                try
+                {
+                    string dataToStore = "";
+                    using (FileStream stream = new FileStream(fullPath, FileMode.Open))
+                    {
+                        using (StreamReader reader = new StreamReader(stream))
+                        {
+                            dataToStore = reader.ReadToEnd();
+                        }
+
+                    }
+
+                    //Deserealizar los datos del archivo en json para pasar a un objeto en C#
+                    loadedData = JsonUtility.FromJson<LanguageData>(dataToStore);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError("Error al cargar los archivos desde: " + fullPath + "\n" + e);
+                }
+            }
+            return loadedData;
+        }
+        public void SaveLanguage(LanguageData languageSelect)
+        {
+            //Usar mejor Path.Combine debido se adapta mejor a diferentes sistemas operativos
+            string fullPath = Path.Combine(dataDirPathLanguage, dataFileNameLanguage);
+            try
+            {
+                //Crea un archivo en el directorio asignado si no hay uno existente
+                Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
+
+                //Transforma C# gamedata objeto en Json
+                string dataToStore = JsonUtility.ToJson(languageSelect, true);
+
+                //Escribe los datos serializados en el archivo
+                using (FileStream stream = new FileStream(fullPath, FileMode.Create))
+                {
+                    using (StreamWriter writer = new StreamWriter(stream))
+                    {
+                        writer.Write(dataToStore);
+                    }
+
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Error al intentar al intentar guardar el archivo" + fullPath + "\n" + e);
+            }
         }
     }
 }
