@@ -27,6 +27,7 @@ public class RocksFall : MonoBehaviour
     public float timeRocksFallEnds;
     [Header("Camera Shake")]
     [SerializeField] CinemachineVirtualCamera cmCamera_1;
+    [SerializeField] float cameraShake = 1;
 
     //Transform randomSpawn;
 
@@ -59,7 +60,7 @@ public class RocksFall : MonoBehaviour
                 onceRumblingSFX++;
             }
             //ShaKe Camera
-            cmCamera_1.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 1;
+            cmCamera_1.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = cameraShake;
             //Time Duration
             timeRocksFall += Time.deltaTime;
             //Time Spawn

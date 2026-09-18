@@ -153,6 +153,7 @@ public class FMODEvent : MonoBehaviour
     public static FMODEvent instancia;
     public void Awake()
     {
+        
         if(FMODEvent.instancia == null)
         {
             FMODEvent.instancia = this;

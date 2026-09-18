@@ -18,7 +18,7 @@ public class CogerObjeto : MonoBehaviour
 
     PlayerHere dentroDeZona;
 
-    public RectTransform transformRectItemr;
+    RectTransform transformRectItemr;
     private void Awake()
     {
         feedbackItem = GetComponent<SpawnItemIcon>();

@@ -84,8 +84,11 @@ public class PisoAscensor : MonoBehaviour
     public void DeleteNum()
     {
         AudioManager.instancia.PlayOneShot(FMODEvent.instancia.retrocerder_UI);
-        textAscensor.text = textAscensor.text.Remove(textAscensor.text.Length - 1);
-        cifrasAscensor--;
+        if (textAscensor.text.Length > 0)
+        {
+            textAscensor.text = textAscensor.text.Remove(textAscensor.text.Length - 1);
+            cifrasAscensor--;
+        }
     }
 
     #endregion

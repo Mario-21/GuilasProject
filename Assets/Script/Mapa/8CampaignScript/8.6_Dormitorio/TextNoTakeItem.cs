@@ -15,6 +15,8 @@ public class TextNoTakeItem : MonoBehaviour
     bool showT;
     void Start()
     {
+        //Cuando presiones el boton de accion con las condiciones requeridas incumplidas, aparecera un Cambio de Area, esta te echara de la zona a la vez que reproduce un audio del soldado y levanta la mano
+        //acusandote.
         player = GetComponent<PlayerHere>();
         if (StatusGameobjectsVariables.statusGameobject.modificacion[indexSleep].modificacion) this.enabled = false;
     }
@@ -27,7 +29,7 @@ public class TextNoTakeItem : MonoBehaviour
     {
         if(!basketMask.putMask && diarySoldier.vida >= 1)
         {
-            if (player.playerImHere && Input.GetKeyDown(KeyCode.T))
+            if (player.playerImHere && Input.GetButtonDown("Take"))
             {
                 text.alpha = 1;
                 timeText = 0;
