@@ -623,8 +623,12 @@ MonoBehaviour:
   waterAltTotal: {fileID: 0}
   boton: {fileID: 4614571739268889520}
   cascada: {fileID: 4614571739805126620}
+  botonValvula: {fileID: 4614571738655173320}
   timeLimitValvula: 3
   timeValvula: 0
+  iconoZone: {fileID: 0}
+  iconeZoneSprite: {fileID: 0}
+  icon: {fileID: 21300000, guid: 85d1780f4dd4b8f41ae2a7f9b0e9b694, type: 3}
   valvulaOn: 0
 --- !u!1 &4614571738842053144
 GameObject:
@@ -1085,7 +1089,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4614571739791318371
 Transform:
   m_ObjectHideFlags: 0
@@ -1178,8 +1182,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4614571739805126620}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.29700017, y: -6.9101005, z: 0}
-  m_LocalScale: {x: 2.7161, y: 5.119008, z: 1}
+  m_LocalPosition: {x: 0, y: -6.9101005, z: 0}
+  m_LocalScale: {x: 0.252616, y: 5.119008, z: 1}
   m_Children:
   - {fileID: 4614571739122700845}
   - {fileID: 4614571739791318371}
@@ -1236,7 +1240,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 1
+  m_MaskInteraction: 2
   m_SpriteSortPoint: 0
 --- !u!61 &4614571739805126617
 BoxCollider2D:
@@ -1251,7 +1255,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.10667728, y: 0}
+  m_Offset: {x: -0.014542311, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1262,7 +1266,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.18176273, y: 2.25}
+  m_Size: {x: 2.0103397, y: 2.25}
   m_EdgeRadius: 0
 --- !u!114 &4614571739805126622
 MonoBehaviour:
@@ -1281,6 +1285,7 @@ MonoBehaviour:
   coldownDamage: 0
   damagePoison: 15
   "countDa\xF1o": 0
+  "da\xF1oPoison": 0
 --- !u!114 &4614571739805126623
 MonoBehaviour:
   m_ObjectHideFlags: 0

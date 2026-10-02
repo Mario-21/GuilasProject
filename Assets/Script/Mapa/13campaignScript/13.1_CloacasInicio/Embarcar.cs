@@ -80,6 +80,7 @@ public class Embarcar : MonoBehaviour
             buttonBarco.UsosGastados();
             //Colocar la Camera
             mainCamera.Follow = barca.transform;
+            mainCamera.PreviousStateIsValid = false;
             //Llamar de nuevo a la Transicion
             AnimationHud.detectar_echar.SetBool("Transicion", false);
             //Apagar el putBarco

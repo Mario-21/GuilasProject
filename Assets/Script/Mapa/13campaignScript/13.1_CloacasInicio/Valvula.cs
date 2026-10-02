@@ -15,9 +15,17 @@ public class Valvula : MonoBehaviour
     [Header("Tuberia Data")]
     [SerializeField] SpriteRenderer boton;
     public GameObject cascada;
+    [Header("Valvula Data")]
+    [SerializeField] SpriteRenderer botonValvula;
     [Header("Time Valvula")]
     public float timeLimitValvula;
     public float timeValvula;
+    [Header("Icono Usar Valvulas")]
+    public GameObject iconoZone;
+    [SerializeField] SpriteRenderer iconeZoneSprite;
+    [SerializeField] Sprite icon;
+
+    bool iconSee;
 
     PlayerHere player;
 
@@ -30,7 +38,7 @@ public class Valvula : MonoBehaviour
     void Start()
     {
         //Calcular cuanta agua tiene puede llenar una valvula
-        aguaRestar = (porcentajeAgua * waterAltTotal.alturaTotal) / 100;
+        PorcentajeAguaCalculoInicial();
         //Saber si la valvula se ha quedado activa o inactiva 
         valvulaOn = StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion;
         //Feedback visual que muestra si ya se ha usado la valvula 
@@ -47,6 +55,11 @@ public class Valvula : MonoBehaviour
         //StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = valvulaOn;
         if (player.playerImHere && !valvulaOn)
         {
+            if (iconSee)
+            {
+                iconeZoneSprite.sprite = icon;
+                iconoZone.SetActive(true);
+            }
             if (Input.GetButtonDown("Action") && !valvulaTime)
             {
                 AudioManager.instancia.PlayOneShot(FMODEvent.instancia.valvula);
@@ -66,11 +79,13 @@ public class Valvula : MonoBehaviour
         {
             //Gastas el uso de la Valvula
             boton.color = Color.red;
+            botonValvula.color = Color.red;
         }
         else
         {
             //Puedes usar la Valvula
             boton.color = Color.green;
+            botonValvula.color = Color.green;
         }
     }
     void TrasnsicionValvula()
@@ -89,16 +104,20 @@ public class Valvula : MonoBehaviour
             //Calcula cuanto sube el agua si el drenaje esta cerrado
             if (!StatusGameobjectsVariables.statusGameobject.modificacion[indexDrenar].modificacion) 
             {
+                //Desactiva el icono
+                iconSee = false;
+                iconoZone.SetActive(false);
+                StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
                 //StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
                 //Si el porcentaje es superior a 100 no quieres que te calcule nada, debido a que a habido un bug
                 //en el que si te mueves a la vez que le das a la valvula, por alguna razón, el agua se desborda,
                 //haciendo que te golpeé
-                if(waterAltTotal.porcentajeAgua < 100) CalculoDeAguas();
+                if (waterAltTotal.porcentajeAgua < 100) CalculoDeAguas();
             }
             //Puedes volver a moverte
             bloqPlayer.HabilitarMovPlayer();
 
-            StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
+            //StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
 
         }
         else
@@ -119,5 +138,26 @@ public class Valvula : MonoBehaviour
         //Suma el porcentaje del agua tras activar la valvula
         waterAltTotal.porcentajeAgua += (int)porcentajeAgua;
         ListWaters.listWaters.infoAguas[waterAltTotal.indexWater].porcentajeAgua += (int)porcentajeAgua;
+    }
+    [ContextMenu("Recalcula el porcentaje de agua")]
+    void PorcentajeAguaCalculoInicial()
+    {
+        aguaRestar = (porcentajeAgua * waterAltTotal.alturaTotal) / 100;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (!valvulaOn) iconSee = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            iconSee = false;
+            iconoZone.SetActive(false);
+        }
     }
 }

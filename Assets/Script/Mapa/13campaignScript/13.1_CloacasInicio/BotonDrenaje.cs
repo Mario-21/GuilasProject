@@ -129,6 +129,8 @@ public class BotonDrenaje : MonoBehaviour
         for (int e = 0; e < valvulas.Count; e++)
         {
             valvulas[e].valvulaOn = false;
+            //Cuando vayas a abrir la rejilla de drenaje, también debes resetear sus variables, para evitar que al entrar de nuevo a la zona inhabilite el uso de las valvulas
+            StatusGameobjectsVariables.statusGameobject.modificacion[valvulas[e].indexMod].modificacion = false;
         }
     }
     void DrenajeTransition()

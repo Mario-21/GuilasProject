@@ -73,6 +73,7 @@ public class Desembarcar : MonoBehaviour
             barcaButton.HabilitarUsos();
             //Camera Player
             mainCamera.Follow = player.transform;
+            mainCamera.PreviousStateIsValid = false;
             //Guarda la pala
             //Llamar Transicion
             AnimationHud.detectar_echar.SetBool("Transicion", false);

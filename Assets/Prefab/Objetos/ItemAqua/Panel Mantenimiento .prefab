@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 3995840133332932511}
   - component: {fileID: 3995840133332932509}
   - component: {fileID: 1557262758001460470}
+  - component: {fileID: 1395722751448371243}
   m_Layer: 0
   m_Name: 'Panel Mantenimiento '
   m_TagString: Untagged
@@ -115,6 +116,7 @@ Transform:
   m_Children:
   - {fileID: 3995840134180983706}
   - {fileID: 3995840133027095539}
+  - {fileID: 4499113507509329542}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -233,6 +235,21 @@ MonoBehaviour:
       Data3: -1311366758
       Data4: 1737057160
     Path: event:/SFX/Objetos_Interactivos/Cloacas/Mantenimiento/Lever_Mantenimiento
+--- !u!114 &1395722751448371243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995840133332932480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b1cab5607c8a6744a7c5650b1c631fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indexMod: 1
+  itemsNow:
+  - {fileID: 7947284207551122729}
 --- !u!1 &3995840134180983707
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,3 +332,76 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &7947284207551122729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4499113507509329542}
+  - component: {fileID: 6423254699826248891}
+  - component: {fileID: 423729408650175713}
+  m_Layer: 0
+  m_Name: Trigger Icono
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4499113507509329542
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7947284207551122729}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3995840133332932482}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6423254699826248891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7947284207551122729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96636188c7a74d04581c32c14d1d5de2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconoZone: {fileID: 0}
+  iconeZoneSprite: {fileID: 0}
+  icon: {fileID: 21300000, guid: 85d1780f4dd4b8f41ae2a7f9b0e9b694, type: 3}
+--- !u!61 &423729408650175713
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7947284207551122729}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.029598355, y: -0.26088417}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.125, y: 1.325}
+    newSize: {x: 0.64, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.2909613, y: 2.1207812}
+  m_EdgeRadius: 0
