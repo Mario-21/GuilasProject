@@ -1,3 +1,5 @@
+🇪🇸
+
 > Guilas's Project 🚧
 
 **Estado del proyecto**: En desarrollo activo (Work In Progress).
@@ -8,7 +10,12 @@ reminiscente de las aventuras "Point&Click".
 Pero eso no es todo: puedes hayar la solución a un problema de diferentes formas, no existe una única posibilidad.
 
 >⭐ Características Principales:
-  > 🚶 Resolución 
+  > 🧩 Resolución libre en los puzles. Puedes resolver de varias formas un mismo problema.
+  > 🥷 ¡Escóndete, corre  y llama la atención de los enemigos!, para poder continuar tu camino.
+  >
 
 > 📘 Historia:
- 
+
+🇬🇧
+
+
