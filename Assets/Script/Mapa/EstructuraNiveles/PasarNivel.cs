@@ -5,18 +5,16 @@ using UnityEngine;
 public class PasarNivel : MonoBehaviour
 {
     EstructuraNiveles cambiarZona = new EstructuraNiveles();
-    int nivelDirigir;
-    private void Update()
-    {
-        nivelDirigir = EstructuraNiveles.nivel;
-        
-    }
 
     public void CambiarZona()
     {
+        int nivelDirigir = EstructuraNiveles.nivel;
+
+
         cambiarZona.PasarNivelAnimacion(nivelDirigir);
         Time.timeScale = 1;
-        //Debug.Log("NivelDirigir es" + " " + nivelDirigir);
+
+        Debug.Log("Cargando el nivel real número: " + nivelDirigir);
     }
 
 }

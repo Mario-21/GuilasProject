@@ -64,6 +64,9 @@ public class DataPersistenceManager : MonoBehaviour
         //this.dataPersistencesObjects = FindAllDataPersistenceObjects();
         //LoadGame();
         //No Crypted Items
+
+        //-------------------------------------------------------------------------------------------------------------
+
         this.dataHandlerNoEncrypt = new FileDataHandlerNoEncrypt(Application.persistentDataPath, fileNameNoEncrypt);
         this.dataPersistencesObjectsNoCrypted = FindAllDataPersistenceObjectsNoCrypted();
         LoadGameNoEncrypt();
@@ -107,9 +110,15 @@ public class DataPersistenceManager : MonoBehaviour
     }
     public void SaveGameNoEncrypt()
     {
+        // Validación de seguridad para evitar NullReferenceException
+        if (dataPersistencesObjectsNoCrypted == null)
+        {
+            Debug.LogWarning("No se puede guardar: dataPersistencesObjectsNoCrypted es nulo.");
+            return;
+        }
         //Guarda los datos en una carpeta usando un data handler
         //Pasar los datos a otros script
-        
+
         foreach (IDataPersistenceNoCrypted dataPersistenceObjNoEnc in dataPersistencesObjectsNoCrypted)
         {
             dataPersistenceObjNoEnc.SavaDataNoCrypted(ref gamedataNoEncrypt);
@@ -174,8 +183,10 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void SaveItemDataLanguage()
     {
+
         //Guarda los datos en una carpeta usando un data handler
         //Pasar los datos a otros script
+
         foreach (IDataItemName dataPersistenceObj in dataPersistenceObjectsName)
         {
             dataPersistenceObj.SaveDataItemName(ref itemDataLanguage);

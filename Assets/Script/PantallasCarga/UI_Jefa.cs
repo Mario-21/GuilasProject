@@ -16,6 +16,10 @@ public class UI_Jefa : MonoBehaviour
 
     public ControladorListasNivel controladorListas;
 
+    private void Awake()
+    {
+        
+    }
     void Start()
     {
         controladorListas = FindObjectOfType<ControladorListasNivel>();

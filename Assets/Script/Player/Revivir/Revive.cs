@@ -84,19 +84,44 @@ public class Revive : MonoBehaviour
             }
         }
         //Reliquias Level
-        for(int i = 0; i < reliquiaStartLevel.Count; i++)
+        if (ListaReliquias.instancia != null && ListaReliquias.instancia.listaReliquiasTotal != null)
+        {
+            for (int i = 0; i < reliquiaStartLevel.Count; i++)
+            {
+                // Validación: Comprobamos que el índice 'i' exista en la lista externa
+                if (i < ListaReliquias.instancia.listaReliquiasTotal.Count && ListaReliquias.instancia.listaReliquiasTotal[i].reliquiaObtenida)
+                {
+                    reliquiaStartLevel[i] = true;
+                }
+            }
+        }
+        /*
+        for (int i = 0; i < reliquiaStartLevel.Count; i++)
         {
             if (ListaReliquias.instancia.listaReliquiasTotal[i].reliquiaObtenida)
             {
                 reliquiaStartLevel[i] = true;
             }
-        }
+        }*/
         //Soldados Level
-        for(int h = 0; h < vidaSoldados.Count; h++)
+        if (SoldierActiveInScene.instancia != null && SoldierActiveInScene.instancia.soldiersStatus != null)
         {
-            vidaSoldados[h].statusVida = SoldierActiveInScene.instancia.soldiersStatus[h].statusVida;
-            vidaSoldados[h].berserkerStatus = SoldierActiveInScene.instancia.soldiersStatus[h].berserkerStatus;
+            for (int h = 0; h < vidaSoldados.Count; h++)
+            {
+                //vidaSoldados[h].statusVida = SoldierActiveInScene.instancia.soldiersStatus[h].statusVida;
+                //vidaSoldados[h].berserkerStatus = SoldierActiveInScene.instancia.soldiersStatus[h].berserkerStatus;
+                if (h < SoldierActiveInScene.instancia.soldiersStatus.Count)
+                {
+                    vidaSoldados[h].statusVida = SoldierActiveInScene.instancia.soldiersStatus[h].statusVida;
+                    vidaSoldados[h].berserkerStatus = SoldierActiveInScene.instancia.soldiersStatus[h].berserkerStatus;
+                }
+                else
+                {
+                    Debug.LogWarning($"Revive.cs: El soldado en el índice {h} no se ha encontrado en SoldierActiveInScene de la Build.");
+                }
+            }
         }
+
         //Terminales Level [Hay que eliminarla]
         if(TotalTerminales.terminalesTotales != null)
         {
@@ -157,6 +182,24 @@ public class Revive : MonoBehaviour
             }
         }
         //Missions Level
+        if (ListMissions.instanceMissions != null && ListMissions.instanceMissions.missionsLevel != null)
+        {
+            numMissionsSuccessStart = ListMissions.instanceMissions.numMissionsSuccess;
+            for (int i = 0; i < missionsStart.Count; i++)
+            {
+                // ¡PROTECCIÓN PARA LA LÍNEA 190!: Comprobamos que el índice 'i' exista en la lista de la Build
+                if (i < ListMissions.instanceMissions.missionsLevel.Count)
+                {
+                    missionsStart[i].success = ListMissions.instanceMissions.missionsLevel[i].success;
+                }
+                else
+                {
+                    Debug.LogWarning($"Revive.cs: La misión en el índice {i} no se ha encontrado en ListMissions en esta Build.");
+                }
+            }
+        }
+
+        /*
         if (ListMissions.instanceMissions != null)
         {
             numMissionsSuccessStart = ListMissions.instanceMissions.numMissionsSuccess;
@@ -165,6 +208,7 @@ public class Revive : MonoBehaviour
                 missionsStart[i].success = ListMissions.instanceMissions.missionsLevel[i].success;
             }
         }
+        */
         //Tutoriales Level
         if (ControlerTutoriales.instanciaTutoriales != null)
         {
@@ -186,8 +230,8 @@ public class Revive : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log("Cola Start " + colaTutorialesStart.Count);
-        Debug.Log("Cola ControlerTutoriales " + ControlerTutoriales.instanciaTutoriales.colaTutoriales.Count);
+        //Debug.Log("Cola Start " + colaTutorialesStart.Count);
+        //Debug.Log("Cola ControlerTutoriales " + ControlerTutoriales.instanciaTutoriales.colaTutoriales.Count);
         if (!establecerAmmoInicial)
         {
             ListDataPlayer.listDataPlayer.ammoPlayerStartScene = ListDataPlayer.listDataPlayer.ammoPlayerNow;

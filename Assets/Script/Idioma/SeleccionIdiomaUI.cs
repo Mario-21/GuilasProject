@@ -12,6 +12,12 @@ public class SeleccionIdiomaUI : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        // Validación de seguridad por si acaso
+        if (IdiomaGlobalManager.instanciaIdioma == null)
+        {
+            Debug.LogWarning("IdiomaGlobalManager.instanciaIdioma es nulo en el Start de la UI.");
+            return;
+        }
         //dataPersistenceManager = FindObjectOfType<DataPersistenceManager>().GetComponent<DataPersistenceManager>();
 
         switch (IdiomaGlobalManager.instanciaIdioma.idiomaActual)
@@ -28,6 +34,7 @@ public class SeleccionIdiomaUI : MonoBehaviour
     {
         //IdiomaGlobalManager.EstablecerIdiomaStatic(IdiomaGlobalManager.todosIdiomas.ToString());
         //Debug.Log("El Idioma establecido es " + IdiomaGlobalManager.todosIdiomas.ToString());
+        if (IdiomaGlobalManager.instanciaIdioma == null) return;
 
         switch (dD.value)
         {

@@ -29,13 +29,40 @@ public class TutorialesDeath : MonoBehaviour
 
     private void Start()
     {
+        string archivoSpanishConExtension = archivoTutorialNombre + ".txt";
+        string archivoEnglishConExtension = archiveTutorialName + ".txt";
+
+        string rutaCompletaTutoSpanish = Path.Combine(IdiomaGlobalManager.instanciaIdioma.rutaTutorialSpanish, archivoSpanishConExtension);
+        string routeCompleteTutoEnglish = Path.Combine(IdiomaGlobalManager.instanciaIdioma.routeTutorialEnglish, archivoEnglishConExtension);
+        // 3. Verificamos que los archivos existan antes de leerlos para evitar que colapse la Build
+        if (File.Exists(rutaCompletaTutoSpanish))
+        {
+            spanishContent = File.ReadAllText(rutaCompletaTutoSpanish);
+        }
+        else
+        {
+            Debug.LogError("No se encontró el tutorial en español en la ruta: " + rutaCompletaTutoSpanish);
+            spanishContent = "Error: Tutorial no encontrado.";
+        }
+
+        if (File.Exists(routeCompleteTutoEnglish))
+        {
+            englishContent = File.ReadAllText(routeCompleteTutoEnglish);
+        }
+        else
+        {
+            Debug.LogError("No se encontró el tutorial en inglés en la ruta: " + routeCompleteTutoEnglish);
+            englishContent = "Error: Tutorial not found.";
+        }
+
         //Ruta Tutorial Español
+        /*
         string rutaCompletaTutoSpanish = IdiomaGlobalManager.instanciaIdioma.rutaTutorialSpanish + archivoTutorialNombre + ".txt";
         spanishContent = File.ReadAllText(rutaCompletaTutoSpanish);
         //Ruta Tutorial English
         string routeCompleteTutoEnglish = IdiomaGlobalManager.instanciaIdioma.routeTutorialEnglish + archiveTutorialName + ".txt";
         englishContent = File.ReadAllText(routeCompleteTutoEnglish);
-
+        */
 
         tutorialAnim = GetComponent<Animator>();
     }

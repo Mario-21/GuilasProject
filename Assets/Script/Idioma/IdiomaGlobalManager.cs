@@ -63,20 +63,35 @@ public class IdiomaGlobalManager : MonoBehaviour, IDataPersistenceNoCrypted
 */
     void RutasIdiomasObjetos()
     {
+        /*
         readFromFilePathEspañolCompleto = Application.dataPath + "/Idiomas/Español/Objetos/Lista_Objetos.txt";
         readFromFilePathEspañol = Application.dataPath + "/Idiomas/Español/Objetos/";
         readFromFilePathInglesComplete = Application.dataPath + "/Idiomas/Ingles/Items/List_Items.txt";
         readFromFilePathIngles = Application.dataPath + "/Idiomas/Ingles/Items/";
+        */
+        readFromFilePathEspañol = Path.Combine(Application.streamingAssetsPath, "Idiomas", "Español", "Objetos");
+        readFromFilePathEspañolCompleto = Path.Combine(readFromFilePathEspañol, "Lista_Objetos.txt");
+
+        readFromFilePathIngles = Path.Combine(Application.streamingAssetsPath, "Idiomas", "Ingles", "Items");
+        readFromFilePathInglesComplete = Path.Combine(readFromFilePathIngles, "List_Items.txt");
     }
     void RutaIdiomaPantallaCarga()
     {
+        /*
         rutaPantallaCargaSpanish = Application.dataPath + "/Idiomas/Español/Pantalla_Carga/";
         rutaLoadScreenEnglish = Application.dataPath + "/Idiomas/Ingles/LoadScreen/";
+        */
+        rutaPantallaCargaSpanish = Path.Combine(Application.streamingAssetsPath, "Idiomas", "Español", "Pantalla_Carga");
+        rutaLoadScreenEnglish = Path.Combine(Application.streamingAssetsPath, "Idiomas", "Ingles", "LoadScreen");
     }
     void RutaIdiomaTutoriales()
     {
+        /*
         rutaTutorialSpanish = Application.dataPath + "/Idiomas/Español/Tutoriales/";
         routeTutorialEnglish = Application.dataPath + "/Idiomas/Ingles/Tutorials/";
+        */
+        rutaTutorialSpanish = Path.Combine(Application.streamingAssetsPath, "Idiomas", "Español", "Tutoriales");
+        routeTutorialEnglish = Path.Combine(Application.streamingAssetsPath, "Idiomas", "Ingles", "Tutorials");
     }
 
     public void SelectorTextoIdioma(ref string idiomaGuardado, Text textItems, string spanishContent, string englishContent)

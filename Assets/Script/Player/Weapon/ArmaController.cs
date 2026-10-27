@@ -7,7 +7,6 @@ public class ArmaController : MonoBehaviour, IDataPersistence
 {
     [Header("Info Weapon")]
     public Transform raySpawn;
-    public GameObject bala;
     public Transform mira;
     public Transform brazo;
     public bool activarDisparo;

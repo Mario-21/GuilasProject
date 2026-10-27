@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ControladorListasNivel : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class ControladorListasNivel : MonoBehaviour
     public GameObject asignacionObjetosDictionary;
     public GameObject asignacionDataPlayer;
 
+    [SerializeField] Text texto;
     int indexListInfoNivel;
     public List<InfoNivel> informacionNiveles;
     void Start()
@@ -38,6 +40,7 @@ public class ControladorListasNivel : MonoBehaviour
                 break;
             }
         }
+        texto.text = nombreSiguienteNivel + " La escena del nivel es " + EstructuraNiveles.nivel;
     }
     IEnumerator SpawneoListaObjetosNivel(List<InfoNivel> listaInfoNivel)
     {
@@ -47,6 +50,7 @@ public class ControladorListasNivel : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         Instantiate(asignacionObjetosDictionary);
     }
+
 }
 [System.Serializable]
 public class InfoNivel
