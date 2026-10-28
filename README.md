@@ -37,8 +37,8 @@ And that's not all: you can solve a problem in differents ways. There isn't just
 
 <h3>⭐Main Features:</h3>
 
-- ** 🧩 Free resolution:** Solve puzzles and problems through multiple approaches.
-- ** 🥷 Stealth mechanics:** Hide, run, call your enemies attention to continue your path!
+- **🧩 Free resolution:** Solve puzzles and problems through multiple approaches.
+- **🥷 Stealth mechanics:** Hide, run, call your enemies attention to continue your path!
 - **🗺️ Interactive Environment:** Watch and pay attention to the scenery to find the truth behind the story.
 
 <h3>📘 Story:</h3>
