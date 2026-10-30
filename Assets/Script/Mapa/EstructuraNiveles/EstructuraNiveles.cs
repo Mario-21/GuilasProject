@@ -7,17 +7,14 @@ using UnityEngine.SceneManagement;
 public class EstructuraNiveles
 {
     public static int nivel;
-
-
-    public void Nivel_1(bool objetivoCompletado, GameObject salidaNivel)
-    {
-        if (objetivoCompletado)
-        {
-            salidaNivel.SetActive(true);
-        }
-    }
+    public static string nombreNivel;
     public void PasarNivelAnimacion(int indexNivel)
     {
         SceneManager.LoadScene(indexNivel);
+    }
+    public void PasarNivelNombreAnimacion(string nombre)
+    {
+        //Es probable que necesite un ref, me suena mucho que al hacer algo así los nombre no los pillaba bien o algo
+        SceneManager.LoadScene(nombre);
     }
 }

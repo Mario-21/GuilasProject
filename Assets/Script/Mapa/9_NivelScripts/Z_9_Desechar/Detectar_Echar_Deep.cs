@@ -13,6 +13,7 @@ public class Detectar_Echar_Deep : MonoBehaviour
     [SerializeField] SoldierDeepLife soldadoDeepLife;
     [Header("Scene")]
     public int sceneReload;
+    public string nombreSiguienteEscenaRecargar;
     public int spawn;
 
     bool evento;
@@ -62,6 +63,7 @@ public class Detectar_Echar_Deep : MonoBehaviour
                 //Apaga al soldado
                 soldadoDeep.enabled = false;
                 EstructuraNiveles.nivel = sceneReload;
+                EstructuraNiveles.nombreNivel = nombreSiguienteEscenaRecargar;
                 if (!balaInside) detectScene = SecuenceDetect.showDialogo;
                 break;
             case SecuenceDetect.showDialogo:

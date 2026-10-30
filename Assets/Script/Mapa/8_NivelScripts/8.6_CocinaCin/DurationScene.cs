@@ -6,6 +6,7 @@ public class DurationScene : MonoBehaviour
 {
     public int indexMod;
     public int scene;
+    public string nombreSiguienteEscena;
     public int checkpoint;
 
     float timeScene;
@@ -21,6 +22,7 @@ public class DurationScene : MonoBehaviour
         {
             CheckPointController.numeroCheckPoint = checkpoint;
             EstructuraNiveles.nivel = scene;
+            EstructuraNiveles.nombreNivel = nombreSiguienteEscena;
             AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
         }

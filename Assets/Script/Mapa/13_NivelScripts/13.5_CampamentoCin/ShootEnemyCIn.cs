@@ -23,6 +23,7 @@ public class ShootEnemyCIn : MonoBehaviour
     [Header("Data Next Scene")]
     public int checkpoint;
     public int nextScene;
+    public string nombreSiguienteEscena;
     [Header("SFX Shoot End")]
     [SerializeField] EventReference shoot_End;
     [SerializeField] EventReference flesh_End;
@@ -93,6 +94,7 @@ public class ShootEnemyCIn : MonoBehaviour
                     //Establece la data para la siguiente escena
                     CheckPointController.numeroCheckPoint = checkpoint;
                     EstructuraNiveles.nivel = nextScene;
+                    EstructuraNiveles.nombreNivel = nombreSiguienteEscena;
                     AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
                     actualSecuence = SecuenceShootEnemy.Default;
                 }

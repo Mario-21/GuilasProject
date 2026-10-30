@@ -12,7 +12,9 @@ public class CaveScene : MonoBehaviour
     public int indexMinusTime;
     [Header("Niveles")]
     public int nivelDeath;
+    public string nombreEscenaMuerte;
     public int nivelInfarmary;
+    public string nombreEscenaEnfermeria;
     [Header("Checkpoints")]
     public int checkpointDeath;
     public int checkpointInfarmary;
@@ -84,6 +86,7 @@ public class CaveScene : MonoBehaviour
                 dialogo++;
                 CheckPointController.numeroCheckPoint = checkpointDeath;
                 EstructuraNiveles.nivel = nivelDeath;
+                EstructuraNiveles.nombreNivel = nombreEscenaMuerte;
             }
         }
         else if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMinusTime].modificacion)
@@ -94,32 +97,9 @@ public class CaveScene : MonoBehaviour
                 dialogo++;
                 CheckPointController.numeroCheckPoint = checkpointInfarmary;
                 EstructuraNiveles.nivel = nivelInfarmary;
+                EstructuraNiveles.nombreNivel = nombreEscenaEnfermeria;
             }
         }
-        /*
-        if (caveEnemy)
-        {
-            if (StatusGameobjectsVariables.statusGameobject.modificacion[indexExceedTime].modificacion)
-            {
-                if(dialogo < 1)
-                {
-                    Instantiate(globoDialogoDeath, globoUbi.position, Quaternion.identity);
-                    dialogo++;
-                    CheckPointController.numeroCheckPoint = checkpointDeath;
-                    EstructuraNiveles.nivel = nivelDeath;
-                }
-            }
-            else if (StatusGameobjectsVariables.statusGameobject.modificacion[indexMinusTime].modificacion) 
-            {
-                if (dialogo < 1)
-                {
-                    Instantiate(globoDialogoInfarmary, globoUbi.position, Quaternion.identity);
-                    dialogo++;
-                    CheckPointController.numeroCheckPoint = checkpointInfarmary;
-                    EstructuraNiveles.nivel = nivelInfarmary;
-                }
-            }
-        }*/
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

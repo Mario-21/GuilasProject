@@ -54,6 +54,16 @@ public class PisoAscensor : MonoBehaviour
         bloqPlayer.BloquearMovPlayer();
         mainCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = magnitudAscensor;
     }
+    public void GoPisoNombre(string nombrePiso)
+    {
+        Debug.Log("Escena Piso");
+        AudioManager.instancia.PlayOneShot(FMODEvent.instancia.buttonAscensor_UI);
+        AudioManager.instancia.PlayOneShot(FMODEvent.instancia.ascensorAction);
+        EstructuraNiveles.nombreNivel = nombrePiso;
+        AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
+        bloqPlayer.BloquearMovPlayer();
+        mainCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = magnitudAscensor;
+    }
     public void SpawnPiso (int spawn)
     {
         Debug.Log("Spawn Piso");

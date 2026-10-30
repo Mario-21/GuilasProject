@@ -1238,6 +1238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   siguienteEscena: 0
+  nombreSiguienteEscena: Main_Menu 1
   nameAnimVar: Opciones
   transtion: {fileID: 652633573}
   sfx:
@@ -6260,6 +6261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   siguienteEscena: 0
+  nombreSiguienteEscena: Main_Menu 1
   nameAnimVar: TCampaign
   transtion: {fileID: 652633573}
   sfx:
@@ -9837,7 +9839,6 @@ RectTransform:
   - {fileID: 1484545507}
   - {fileID: 1287119239}
   - {fileID: 1004771185}
-  - {fileID: 1887687785}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10283,153 +10284,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1887624241}
   m_CullTransparentMesh: 0
---- !u!1 &1887687784
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1887687785}
-  - component: {fileID: 1887687789}
-  - component: {fileID: 1887687788}
-  - component: {fileID: 1887687787}
-  - component: {fileID: 1887687786}
-  m_Layer: 5
-  m_Name: Nivel_14
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1887687785
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1887687784}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
-  m_Children:
-  - {fileID: 2145809980}
-  m_Father: {fileID: 1835764067}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -684, y: -15}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1887687786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1887687784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfec1bf3a2a0765459462546592c6ea6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  escenaPantallaCarga: 146
---- !u!114 &1887687787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1887687784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1887687788}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1887687786}
-        m_TargetAssemblyTypeName: SelectorNiveles, Assembly-CSharp
-        m_MethodName: NivelDefinicion
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Nivel_14
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1887687788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1887687784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1887687789
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1887687784}
-  m_CullTransparentMesh: 1
 --- !u!1001 &1922573655
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11039,6 +10893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goScene: 163
+  nombreEscena: Collection_Menu
   nameAnimVar: Detectar_Echar
   transtion: {fileID: 1978811125}
   sfx:
@@ -11158,89 +11013,6 @@ MonoBehaviour:
       Data3: 260779666
       Data4: -357936225
     Path: event:/SFX/UI/Botones/Main_Menu/Documentations_Cajones
---- !u!1 &2145809979
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2145809980}
-  - component: {fileID: 2145809982}
-  - component: {fileID: 2145809981}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2145809980
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2145809979}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1887687785}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2145809981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2145809979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'Nivel_14
-
-
-
-'
---- !u!222 &2145809982
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2145809979}
-  m_CullTransparentMesh: 1
 --- !u!1001 &2198047528607573761
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11736,10 +11508,60 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
         type: 3}
+      propertyPath: informacionNiveles.Array.data[0].nombreNivelEscena
+      value: 1.1_TorrePetrol
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[1].nombreNivelEscena
+      value: 2.1_Mini-Campamento
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[2].nombreNivelEscena
+      value: 3.1_MiniVilla
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[3].nombreNivelEscena
+      value: 4.1_AldeaCorrupta
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[4].nombreNivelEscena
+      value: 5.1_EntradaBaseCave
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[5].nombreNivelEscena
+      value: 6.1_Main
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[6].nombreNivelEscena
+      value: 7.1_Inicio
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[7].nombreNivelEscena
+      value: 8.1_BaseMadre Inicio
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[8].nombreNivelEscena
+      value: 9.1_Inicio
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
       propertyPath: informacionNiveles.Array.data[9].listaObjetosNivel
       value: 
       objectReference: {fileID: 6064119857180800852, guid: cce60a38301e9d54ab2be7d2d979cf82,
         type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[9].nombreNivelEscena
+      value: 9.1_Inicio
+      objectReference: {fileID: 0}
     - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
         type: 3}
       propertyPath: informacionNiveles.Array.data[10].listaObjetosNivel
@@ -11748,10 +11570,20 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
         type: 3}
+      propertyPath: informacionNiveles.Array.data[10].nombreNivelEscena
+      value: 9.1_Inicio
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
       propertyPath: informacionNiveles.Array.data[11].listaObjetosNivel
       value: 
       objectReference: {fileID: 6064119857180800852, guid: cce60a38301e9d54ab2be7d2d979cf82,
         type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[11].nombreNivelEscena
+      value: 9.1_Inicio
+      objectReference: {fileID: 0}
     - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
         type: 3}
       propertyPath: informacionNiveles.Array.data[12].listaObjetosNivel
@@ -11760,10 +11592,20 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
         type: 3}
+      propertyPath: informacionNiveles.Array.data[12].nombreNivelEscena
+      value: 10.1_ZonaInicial
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
       propertyPath: informacionNiveles.Array.data[13].listaObjetosNivel
       value: 
       objectReference: {fileID: 7155933663189735127, guid: 4dc0dc7fb5212e640abb850b13542584,
         type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[13].nombreNivelEscena
+      value: 10.1_ZonaInicial
+      objectReference: {fileID: 0}
     - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
         type: 3}
       propertyPath: informacionNiveles.Array.data[14].listaObjetosNivel
@@ -11772,10 +11614,20 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
         type: 3}
+      propertyPath: informacionNiveles.Array.data[14].nombreNivelEscena
+      value: 10.1_ZonaInicial
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
       propertyPath: informacionNiveles.Array.data[15].listaObjetosNivel
       value: 
       objectReference: {fileID: 7155933663189735127, guid: 4dc0dc7fb5212e640abb850b13542584,
         type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[15].nombreNivelEscena
+      value: 10.1_ZonaInicial
+      objectReference: {fileID: 0}
     - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
         type: 3}
       propertyPath: informacionNiveles.Array.data[16].listaObjetosNivel
@@ -11784,10 +11636,20 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
         type: 3}
+      propertyPath: informacionNiveles.Array.data[16].nombreNivelEscena
+      value: 11.1_EntradaExcavacion
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
       propertyPath: informacionNiveles.Array.data[17].listaObjetosNivel
       value: 
       objectReference: {fileID: 1483041408891614956, guid: 7fe709197c31f184b831c975523f379f,
         type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[17].nombreNivelEscena
+      value: 11.1_EntradaExcavacion
+      objectReference: {fileID: 0}
     - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
         type: 3}
       propertyPath: informacionNiveles.Array.data[18].listaObjetosNivel
@@ -11796,10 +11658,20 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
         type: 3}
+      propertyPath: informacionNiveles.Array.data[18].nombreNivelEscena
+      value: 11.1_EntradaExcavacion
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
       propertyPath: informacionNiveles.Array.data[19].listaObjetosNivel
       value: 
       objectReference: {fileID: 1483041408891614956, guid: 7fe709197c31f184b831c975523f379f,
         type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[19].nombreNivelEscena
+      value: 11.1_EntradaExcavacion
+      objectReference: {fileID: 0}
     - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
         type: 3}
       propertyPath: informacionNiveles.Array.data[20].listaObjetosNivel
@@ -11808,10 +11680,20 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
         type: 3}
+      propertyPath: informacionNiveles.Array.data[20].nombreNivelEscena
+      value: 11.1_EntradaExcavacion
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
       propertyPath: informacionNiveles.Array.data[21].listaObjetosNivel
       value: 
       objectReference: {fileID: 1533037624981053498, guid: e4d4f977dcf31234fb11d53bd51d6ccb,
         type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[21].nombreNivelEscena
+      value: 12.1_CloacasInicio
+      objectReference: {fileID: 0}
     - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
         type: 3}
       propertyPath: informacionNiveles.Array.data[22].listaObjetosNivel
@@ -11820,10 +11702,20 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
         type: 3}
+      propertyPath: informacionNiveles.Array.data[22].nombreNivelEscena
+      value: 13.1_InicioSalidaCloacas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
       propertyPath: informacionNiveles.Array.data[23].listaObjetosNivel
       value: 
       objectReference: {fileID: 6405881826048064048, guid: 925e95b24ce7aab409175303b08598c8,
         type: 3}
+    - target: {fileID: 2198047528400783156, guid: fd990f733c1868c4c9aaae84c5699099,
+        type: 3}
+      propertyPath: informacionNiveles.Array.data[23].nombreNivelEscena
+      value: 14.1_CampamentoCostero
+      objectReference: {fileID: 0}
     - target: {fileID: 2198047528400783157, guid: fd990f733c1868c4c9aaae84c5699099,
         type: 3}
       propertyPath: m_Name

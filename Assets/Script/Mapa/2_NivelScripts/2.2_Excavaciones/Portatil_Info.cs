@@ -34,8 +34,6 @@ public class Portatil_Info : MonoBehaviour
     public SpriteRenderer pantallaPortatil;
     public Sprite pantallaPortatilCompleta;
 
-    EstructuraNiveles nivelCompletado = new EstructuraNiveles();
-
     PlayerHere playerInTerminal;
 
     EventInstance teclearTerminalSound;
@@ -78,37 +76,6 @@ public class Portatil_Info : MonoBehaviour
         
         //NOTA
         //quiza el desactivar el script hay que cambiar lo mas adelantea por SceneManager.GetActiveScene().buildIndex < entreNiveles[1]
-    }
-    void CollectAllInfo()
-    {
-        if (TotalTerminales.terminalesTotales.terminalesActivados >= numeroDeTerminalesTotales) 
-        {
-            infoCompiled = true;
-            TotalTerminales.terminalesTotales.carga = infoCompiled;
-            infoCompiled = true;
-
-        }
-        if (infoCompiled) nivelCompletado.Nivel_1(infoCompiled, zonaCompletarNivel);
-
-    }
-
-    void ActiveYourTerminal()
-    {
-        /*
-        if (active) 
-        { 
-            screenLight.color = Color.green; 
-            this.enabled = false;
-        };
-        */
-    }
-
-    void CanHacking()
-    {
-        if(playerInTerminal.playerImHere && downloadBar.fillAmount < 1 && !active)
-        {
-
-        }
     }
     void HackingTerminal()
     {

@@ -7,6 +7,7 @@ public class GoCin : MonoBehaviour
     public int indexMod;
     public int spawn;
     public int sceneCin;
+    public string nombreSiguienteEscenaCin;
 
     ActivarModificador activador;
     BloquearMovimientoPlayer playerMov;
@@ -32,6 +33,7 @@ public class GoCin : MonoBehaviour
         {
             CheckPointController.numeroCheckPoint = spawn;
             EstructuraNiveles.nivel = sceneCin;
+            EstructuraNiveles.nombreNivel = nombreSiguienteEscenaCin;
             AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
             activador.enabled = false;

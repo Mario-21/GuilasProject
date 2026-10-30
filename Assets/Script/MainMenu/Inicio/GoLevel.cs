@@ -7,6 +7,7 @@ public class GoLevel : MonoBehaviour
 {
     SpriteRenderer sprite;
     public int goScene;
+    public string nombreEscena;
     [Header("Transicion Animacion")]
     public string nameAnimVar;
     public Animator transtion;
@@ -38,6 +39,7 @@ public class GoLevel : MonoBehaviour
             OutMenuButtons.colliderButtonsStatus = false;
             sprite.color = Color.yellow;
             EstructuraNiveles.nivel = goScene;
+            EstructuraNiveles.nombreNivel = nombreEscena;
         }
     }
 }

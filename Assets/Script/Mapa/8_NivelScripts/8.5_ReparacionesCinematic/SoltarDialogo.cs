@@ -17,6 +17,7 @@ public class SoltarDialogo : MonoBehaviour
     int dialogoContador;
     [Header("Datos Escena")]
     public int returnScene;
+    public string nombreSiguienteEscenaVolver;
     public int checkpoint;
     public float timeEscena;
     public float timeEscenaLimite;
@@ -53,6 +54,7 @@ public class SoltarDialogo : MonoBehaviour
         if(indexOpcional)StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
         CheckPointController.numeroCheckPoint = checkpoint;
         EstructuraNiveles.nivel = returnScene;
+        EstructuraNiveles.nombreNivel = nombreSiguienteEscenaVolver;
         AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
     }
     private void OnTriggerEnter2D(Collider2D collision)

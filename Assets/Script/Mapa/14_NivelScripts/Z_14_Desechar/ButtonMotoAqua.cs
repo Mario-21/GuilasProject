@@ -11,6 +11,7 @@ public class ButtonMotoAqua : MonoBehaviour
 
     [Header("Escena y Spawn")]
     public int siguienteEscena;
+    public string nombreSiguienteEscena;
     public int checkpointSpanwScene;
     [Header("Player")]
     [SerializeField] GameObject playerCuerpo;
@@ -76,6 +77,7 @@ public class ButtonMotoAqua : MonoBehaviour
         //Cambiar Zona
         CheckPointController.numeroCheckPoint = checkpointSpanwScene;
         EstructuraNiveles.nivel = siguienteEscena;
+        EstructuraNiveles.nombreNivel = nombreSiguienteEscena;
         AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
 
     }

@@ -8,6 +8,7 @@ public class NoviceDeathScene : MonoBehaviour
     public int indexMod;
     [Header("Return Scene")]
     public int nextScene;
+    public string nombreSiguienteEscena;
     [Header("Checkpoint")]
     public int checkpoint;
     [Header("Soldados Cinematic")]
@@ -42,6 +43,7 @@ public class NoviceDeathScene : MonoBehaviour
         {
             case SceneNovice.First:
                 EstructuraNiveles.nivel = nextScene;
+                EstructuraNiveles.nombreNivel = nombreSiguienteEscena;
                 CheckPointController.numeroCheckPoint = checkpoint;
                 StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
                 timeScene += Time.deltaTime;

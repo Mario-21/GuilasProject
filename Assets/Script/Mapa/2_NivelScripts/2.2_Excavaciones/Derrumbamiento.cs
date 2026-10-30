@@ -11,6 +11,7 @@ public class Derrumbamiento : MonoBehaviour
 
     [Header("Next Scene")]
     public int nextLevel;
+    public string nombreSiguienteNivel;
     public int checkpoint;
     [Tooltip("SpawnFuturos es el objeto que hace aparecer los trigger para los spawn en la siguiente escena")]
     public GameObject spawnsFuturos;
@@ -85,6 +86,7 @@ public class Derrumbamiento : MonoBehaviour
 
         //Asign the level
         EstructuraNiveles.nivel = nextLevel;
+        EstructuraNiveles.nombreNivel = nombreSiguienteNivel;
         CheckPointController.numeroCheckPoint = checkpoint;
 
         //Comienza el <<Rumbling>>

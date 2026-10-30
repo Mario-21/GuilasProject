@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class SelectorNiveles : MonoBehaviour
 {
     public int escenaPantallaCarga;
+    public string nombreEscenaPantallaCarga;
     private void Start()
     {
         
@@ -12,6 +13,7 @@ public class SelectorNiveles : MonoBehaviour
     public void NivelDefinicion(string nombreNivel)
     {
         EstructuraNiveles.nivel = escenaPantallaCarga;
+        EstructuraNiveles.nombreNivel = nombreEscenaPantallaCarga;
         ControladorListasNivel.nombreSiguienteNivel = nombreNivel;
         AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
     }

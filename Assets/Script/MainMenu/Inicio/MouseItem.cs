@@ -7,7 +7,8 @@ using FMODUnity;
 public class MouseItem : MonoBehaviour
 {
     SpriteRenderer sprite;
-    [SerializeField] int siguienteEscena;
+    public int siguienteEscena;
+    public string nombreSiguienteEscena;
     [Header("Transicion Animacion")]
     public string nameAnimVar;
     public Animator transtion;
@@ -35,6 +36,7 @@ public class MouseItem : MonoBehaviour
         {
             Debug.Log("Mouse Fire");
             EstructuraNiveles.nivel = siguienteEscena;
+            EstructuraNiveles.nombreNivel = nombreSiguienteEscena;
             AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
             //Calls_Transition calls = new Calls_Transition();
             //calls.Call(transtion, nameAnimVar);

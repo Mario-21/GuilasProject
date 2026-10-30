@@ -14,7 +14,8 @@ public class ElevatorCoche : MonoBehaviour
     [SerializeField] EventReference sfxImpactCar;
     [Header("Cinematic")]
     [SerializeField] GameObject cutItemCin;
-    [SerializeField] int cinematic;
+    public int cinematic;
+    public string nombreSiguienteEscenaCin;
     [Header("Iconos")]
     IconItem icono;
     void Start()
@@ -49,6 +50,7 @@ public class ElevatorCoche : MonoBehaviour
         {
             AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
             EstructuraNiveles.nivel = cinematic;
+            EstructuraNiveles.nombreNivel = nombreSiguienteEscenaCin;
         }
     }
     void CorteEscena()

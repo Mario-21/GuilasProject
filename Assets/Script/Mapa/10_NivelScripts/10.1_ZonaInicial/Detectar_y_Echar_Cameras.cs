@@ -12,6 +12,7 @@ public class Detectar_y_Echar_Cameras : MonoBehaviour
     [SerializeField] BloquearMovimientoPlayer player;
     [Header("Scene")]
     public int sceneReload;
+    public string nombreEscenaRecarga;
     public int spawn;
 
     bool evento;
@@ -56,6 +57,7 @@ public class Detectar_y_Echar_Cameras : MonoBehaviour
                 menuPlayer.inventory.SetActive(false);
                 //Colocar Nivel
                 EstructuraNiveles.nivel = sceneReload;
+                EstructuraNiveles.nombreNivel = nombreEscenaRecarga;
                 detectScene = SecuenceDetect.showDialogo;
                 break;
             case SecuenceDetect.showDialogo:

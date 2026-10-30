@@ -33,6 +33,16 @@ public class Elevator_Automatic_Asig : MonoBehaviour
         bloqPlayer.BloquearMovPlayer();
         mainCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = magnitudAscensor;
     }
+    void GoPisoNombreAuto(string pisoNombreEscena)
+    {
+        Debug.Log("Escena Piso");
+        AudioManager.instancia.PlayOneShot(FMODEvent.instancia.buttonAscensor_UI);
+        AudioManager.instancia.PlayOneShot(FMODEvent.instancia.ascensorAction);
+        EstructuraNiveles.nombreNivel = pisoNombreEscena;
+        AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
+        bloqPlayer.BloquearMovPlayer();
+        mainCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = magnitudAscensor;
+    }
     void SpawnPisoAuto(int spawn)
     {
         Debug.Log("Spawn Piso");
@@ -45,21 +55,25 @@ public class Elevator_Automatic_Asig : MonoBehaviour
             case Pisos_Ascensor.Piso_0:
                 Debug.Log("Te diriges al piso " + informacion_Pisos[0].nombrePiso);
                 GoPisoAuto(informacion_Pisos[0].escenaDelPiso);
+                GoPisoNombreAuto(informacion_Pisos[0].nombreEscenaPiso);
                 SpawnPisoAuto(informacion_Pisos[0].spawnPiso);
                 break;
             case Pisos_Ascensor.Piso_1:
                 Debug.Log("Te diriges al piso " + informacion_Pisos[1].nombrePiso);
                 GoPisoAuto(informacion_Pisos[1].escenaDelPiso);
+                GoPisoNombreAuto(informacion_Pisos[1].nombreEscenaPiso);
                 SpawnPisoAuto(informacion_Pisos[1].spawnPiso);
                 break;
             case Pisos_Ascensor.Piso_2:
                 Debug.Log("Te diriges al piso " + informacion_Pisos[2].nombrePiso);
                 GoPisoAuto(informacion_Pisos[2].escenaDelPiso);
+                GoPisoNombreAuto(informacion_Pisos[2].nombreEscenaPiso);
                 SpawnPisoAuto(informacion_Pisos[2].spawnPiso);
                 break;
             case Pisos_Ascensor.Piso_3:
                 Debug.Log("Te diriges al piso " + informacion_Pisos[3].nombrePiso);
                 GoPisoAuto(informacion_Pisos[3].escenaDelPiso);
+                GoPisoNombreAuto(informacion_Pisos[3].nombreEscenaPiso);
                 SpawnPisoAuto(informacion_Pisos[3].spawnPiso);
                 break;
 

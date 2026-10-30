@@ -19,6 +19,7 @@ public class ListCampaign : MonoBehaviour
     public int maxRange;
     [Header("Lista Campaigns")]
     public int indexCampaign;
+    public string nombreEscenaCampaign;
     public int nivelesCompletados;
     public List<InfoMenuCampaign> listaCampaign;
     private void OnDisable()

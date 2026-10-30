@@ -8,6 +8,7 @@ public class OnCinematic : MonoBehaviour
     [SerializeField] Stairs_Hidden playerHiddenComp;
 
     public int sceneCatching;
+    public string nombreEscenaCin;
     bool enabledEscaleraMano;
     public bool segundosTriggersPlayer;
     float timeEnabled;
@@ -29,6 +30,7 @@ public class OnCinematic : MonoBehaviour
                 enabledEscaleraMano = true;
                 AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
                 EstructuraNiveles.nivel = sceneCatching;
+                EstructuraNiveles.nombreNivel = nombreEscenaCin;
             }
         }
         if (enabledEscaleraMano)

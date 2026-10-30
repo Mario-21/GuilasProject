@@ -26,6 +26,7 @@ public class ControladorListasNivel : MonoBehaviour
                 //EscribirPantallaCargaNiveles es un mera referencia para acordarme de los datos que tengo que obtener
                 //EscribirPantallaCargaNiveles.EscribirTextoStatic(idiomaSelecionado.ToString(), nameArchivo, textoUICarga, velocidadLetra, letraInvisible);
                 EstructuraNiveles.nivel = informacionNiveles[i].scenaNivel;
+                EstructuraNiveles.nombreNivel = informacionNiveles[i].nombreNivelEscena;
                 CheckPointController.numeroCheckPoint = informacionNiveles[i].spawnInicial;
                 StartCoroutine(SpawneoListaObjetosNivel(informacionNiveles));
                 switch (IdiomaGlobalManager.instanciaIdioma.idiomaActual)
@@ -40,7 +41,7 @@ public class ControladorListasNivel : MonoBehaviour
                 break;
             }
         }
-        texto.text = nombreSiguienteNivel + " La escena del nivel es " + EstructuraNiveles.nivel;
+        texto.text = nombreSiguienteNivel + " La escena del nivel es " + EstructuraNiveles.nivel + " y el nombre de la escena es " + EstructuraNiveles.nombreNivel;
     }
     IEnumerator SpawneoListaObjetosNivel(List<InfoNivel> listaInfoNivel)
     {
@@ -59,6 +60,7 @@ public class InfoNivel
     public string nivelNombre;
     [Header("Index Escena Nivel")]
     public int scenaNivel;
+    public string nombreNivelEscena;
     public int spawnInicial;
     [Header("Numero de la Reliquia en Nivel")]
     public int numReliquia;

@@ -7,6 +7,7 @@ public class IdentifyLevelActually : MonoBehaviour
 {
     void Start()
     {
-        EstructuraNiveles.nivel = SceneManager.GetActiveScene().buildIndex;   
+        EstructuraNiveles.nivel = SceneManager.GetActiveScene().buildIndex;
+        EstructuraNiveles.nombreNivel = SceneManager.GetActiveScene().name;
     }
 }

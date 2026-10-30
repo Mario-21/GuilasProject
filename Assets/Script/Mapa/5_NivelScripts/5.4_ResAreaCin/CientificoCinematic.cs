@@ -9,6 +9,7 @@ public class CientificoCinematic : MonoBehaviour
     [Header("Regresar Escena Anterior")]
     public int checkpointSpawn;
     public int siguienteEscena;
+    public string nombreSiguienteEscena;
     [Header("Scientific Data Scene")]
     [SerializeField] SoldadoNormal scientific;
     [Header("Actions in Scene")]
@@ -68,6 +69,7 @@ public class CientificoCinematic : MonoBehaviour
                 //Regresas a la escena en la que estabas
                 CheckPointController.numeroCheckPoint = checkpointSpawn;
                 EstructuraNiveles.nivel = siguienteEscena;
+                EstructuraNiveles.nombreNivel = nombreSiguienteEscena;
                 AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
                 break;
         }

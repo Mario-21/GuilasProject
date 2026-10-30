@@ -8,6 +8,7 @@ public class CambiarAreaTutorial : MonoBehaviour
     public string definirTutorial;
     [Header("Datos Siguiente Escena")]
     public int siguienteEscena;
+    public string nombreSiguienteEscena;
     public int checkPoint;
     public bool usarCheckpoint;
     [Header("Orientacion Siguiente Nivel")]
@@ -34,6 +35,7 @@ public class CambiarAreaTutorial : MonoBehaviour
         //bloqPlayer.BloquearMovPlayer();
         BloquearMovimientoPlayer.instanceBloqPlayerMov.BloquearMovPlayer();
         EstructuraNiveles.nivel = siguienteEscena;
+        EstructuraNiveles.nombreNivel = nombreSiguienteEscena;
         AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
         if (usarCheckpoint) CheckPointController.numeroCheckPoint = checkPoint;
 

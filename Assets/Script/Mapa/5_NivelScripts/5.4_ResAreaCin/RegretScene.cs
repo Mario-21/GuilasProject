@@ -8,6 +8,7 @@ public class RegretScene : MonoBehaviour
     public int indexMod;
     public int spawn;
     public int nextScene;
+    public string nombreSiguienteEscena;
     bool regret;
 
     [Header("Sound Effect Action")]
@@ -23,6 +24,7 @@ public class RegretScene : MonoBehaviour
         {
             CheckPointController.numeroCheckPoint = spawn;
             EstructuraNiveles.nivel = nextScene;
+            EstructuraNiveles.nombreNivel = nombreSiguienteEscena;
             AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
         }

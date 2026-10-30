@@ -8,6 +8,7 @@ public class BoneCin : MonoBehaviour
     [SerializeField] Transform boneSoldier;
     [SerializeField] ParticleSystem boneLlamar;
     public int levelOriginal;
+    public string nombreSiguienteEscenaOriginal;
     public int checkpoint;
     enum BoneCinematic
     {
@@ -51,6 +52,7 @@ public class BoneCin : MonoBehaviour
                 {
                     CheckPointController.numeroCheckPoint = checkpoint;
                     EstructuraNiveles.nivel = levelOriginal;
+                    EstructuraNiveles.nombreNivel = nombreSiguienteEscenaOriginal;
                     AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
                 }
                 break;

@@ -21,6 +21,7 @@ public class PelucaTrigger : MonoBehaviour
     float enemyTalk;
     [Header("Out Scene")]
     public int nextScene;
+    public string nombreSiguienteEscena;
     public int checkPoint;
 
     bool stopPlayer;
@@ -88,6 +89,7 @@ public class PelucaTrigger : MonoBehaviour
                         reproduceAudio++; 
                     }
                     EstructuraNiveles.nivel = nextScene;
+                    EstructuraNiveles.nombreNivel = nombreSiguienteEscena;
                     AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
                     CheckPointController.numeroCheckPoint = checkPoint;
                 }

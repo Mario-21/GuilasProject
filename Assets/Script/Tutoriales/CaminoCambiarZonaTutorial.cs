@@ -9,6 +9,7 @@ public class CaminoCambiarZonaTutorial : MonoBehaviour
     public string definirTutorial;
     [Header("Escena y Spawn")]
     public int siguienteEscena;
+    public string nombreSiguienteEscena;
     public int checkpointSpanwScene;
     [Header("Icon")]
     [SerializeField] GameObject iconoZone;
@@ -52,6 +53,7 @@ public class CaminoCambiarZonaTutorial : MonoBehaviour
                 //Cambiar Zona
                 CheckPointController.numeroCheckPoint = checkpointSpanwScene;
                 EstructuraNiveles.nivel = siguienteEscena;
+                EstructuraNiveles.nombreNivel = nombreSiguienteEscena;
                 AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
                 iconoZone.SetActive(false);
                 //Define qur pantalla de carga aparecera en la siguiente escena.

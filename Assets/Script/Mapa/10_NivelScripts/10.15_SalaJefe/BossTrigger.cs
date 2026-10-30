@@ -12,6 +12,7 @@ public class BossTrigger : MonoBehaviour
     public float waitBoss;
     [Header("Scena Boss")]
     public int scenaBoss;
+    public string nombreEscenaJefe;
     public int spawnBoss;
     [Header("Ascensor")]
     [SerializeField] Camino_CambiarZona ascensor;
@@ -44,6 +45,7 @@ public class BossTrigger : MonoBehaviour
                 ascensor.enabled = false;
                 CheckPointController.numeroCheckPoint = spawnBoss;
                 EstructuraNiveles.nivel = scenaBoss;
+                EstructuraNiveles.nombreNivel = nombreEscenaJefe;
                 AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
             }
         }

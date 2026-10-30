@@ -10,6 +10,7 @@ public class Camino_CambiarZona : MonoBehaviour
     ScientificRoomOpen lockDoor;
     [Header("Escena y Spawn")]
     public int siguienteEscena;
+    public string nombreSiguienteEscena;
     public int checkpointSpanwScene;
     [Header("Icon")]
     [SerializeField] GameObject iconoZone;
@@ -55,6 +56,7 @@ public class Camino_CambiarZona : MonoBehaviour
                 //Cambiar Zona
                 CheckPointController.numeroCheckPoint = checkpointSpanwScene;
                 EstructuraNiveles.nivel = siguienteEscena;
+                EstructuraNiveles.nombreNivel = nombreSiguienteEscena;
                 AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
                 iconoZone.SetActive(false);
                 if (locker) lockDoor.OpenScientificRoom();

@@ -8,6 +8,7 @@ public class InfoMenuCampaign
     public string tituloNivel;
     public string idNivel;
     public int nivelScene;
+    public string nombreEscena;
     public Sprite imagenNivel;
     public bool onReliquia;
     public string idReliquia;

@@ -6,6 +6,7 @@ using UnityEngine;
 public class InfoPisos
 {
     public string nombrePiso;
+    public string nombreEscenaPiso;
     public int escenaDelPiso;
     public int spawnPiso;
 }

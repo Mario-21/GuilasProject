@@ -13,6 +13,7 @@ public class DeathMenuController : MonoBehaviour
     public Animator animDeath;
     [Header("Death Exit")]
     public int mainMenuScene;
+    public string nombreMenuEscena;
     [Header("Reanudar Gameplay")]
     public int out_MenuPausa;
 
@@ -27,6 +28,7 @@ public class DeathMenuController : MonoBehaviour
         CheckPointController.numeroCheckPoint = 0;
         //Regresa al menu principal
         EstructuraNiveles.nivel = mainMenuScene;
+        EstructuraNiveles.nombreNivel = nombreMenuEscena;
         //Restablece las posiciones del inventario
         InventoryManager.instanciaInventory.indexInventoryPosition = 0;
         //Eliminar reliquia en caso de no haberla pillado antes
@@ -73,6 +75,7 @@ public class DeathMenuController : MonoBehaviour
         //2.Hacer que esto se destruya aparte dado que no se modifica y permanecera statico
         //3.Cambiar la ejecucion de StartSceneLevelCampaign
         EstructuraNiveles.nivel = StartSceneLevelCampaign.infoActualCampaign.firstActualSceneCampaign;
+        EstructuraNiveles.nombreNivel = StartSceneLevelCampaign.infoActualCampaign.nombrePrimeraEscenaNivel;
         //Restablece las notas
         ObjectivesLevels.instanceObjectivesLevel.indexLine = 0;
         //Restablece las posiciones del inventario

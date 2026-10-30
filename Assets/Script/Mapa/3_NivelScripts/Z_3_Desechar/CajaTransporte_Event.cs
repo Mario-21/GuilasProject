@@ -13,6 +13,7 @@ public class CajaTransporte_Event : MonoBehaviour
     bool onBox;
 
     public int escena_Cinematic;
+    public string nombreEscenaCinematic;
 
     void Update()
     {
@@ -27,7 +28,7 @@ public class CajaTransporte_Event : MonoBehaviour
             tiempoNecesarioStartEvent += Time.deltaTime;
             if (tiempoNecesarioStartEvent >= 1) 
             {
-                Debug.Log("El Evento ha comenzado"); EstructuraNiveles.nivel = escena_Cinematic;
+                Debug.Log("El Evento ha comenzado"); EstructuraNiveles.nivel = escena_Cinematic; EstructuraNiveles.nombreNivel = nombreEscenaCinematic;
                 AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
             }
         }

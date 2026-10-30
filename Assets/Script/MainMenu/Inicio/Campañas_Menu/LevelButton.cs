@@ -11,6 +11,7 @@ public class LevelButton : MonoBehaviour
         CheckPointController.numeroCheckPoint = 0;
         //Nivel al que te diriges
         EstructuraNiveles.nivel = mainCampaign.listaCampaign[mainCampaign.indexCampaign].nivelScene;
+        EstructuraNiveles.nombreNivel = mainCampaign.listaCampaign[mainCampaign.indexCampaign].nombreEscena;
         //Llama la Animacion
         AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
         //level = nivelasia;

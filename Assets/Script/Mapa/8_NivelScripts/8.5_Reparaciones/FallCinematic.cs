@@ -8,6 +8,7 @@ public class FallCinematic : MonoBehaviour
     
     public int indexMod;
     public int sceneCin;
+    public string nombreSiguienteEscenaCin;
 
     [SerializeField] BloquearMovimientoPlayer playerMov;
 
@@ -19,6 +20,7 @@ public class FallCinematic : MonoBehaviour
             //Cambiar al Update
             AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
             EstructuraNiveles.nivel = sceneCin;
+            EstructuraNiveles.nombreNivel = nombreSiguienteEscenaCin;
             playerMov.BloquearMovPlayer();
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
         }

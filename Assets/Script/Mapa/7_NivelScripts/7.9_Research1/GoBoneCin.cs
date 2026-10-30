@@ -7,6 +7,7 @@ public class GoBoneCin : MonoBehaviour
     [Header("Cinematic Info")]
     public int indexMod;
     public int cinematicLevel;
+    public string nombreSiguienteEscenaCin;
     [SerializeField] BloquearMovimientoPlayer bloqPlayer;
     [Header ("Conditions Play Cinematic")]
     [SerializeField] SoldierLife boneSoldier;
@@ -34,6 +35,7 @@ public class GoBoneCin : MonoBehaviour
         {
             bloqPlayer.BloquearMovPlayer();
             EstructuraNiveles.nivel = cinematicLevel;
+            EstructuraNiveles.nombreNivel = nombreSiguienteEscenaCin;
             AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
             StatusGameobjectsVariables.statusGameobject.modificacion[indexMod].modificacion = true;
         }

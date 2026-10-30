@@ -16,6 +16,7 @@ public class Detectar_y_Echar : MonoBehaviour
     public GameObject brazoAccion;
     [Header("Scene")]
     public int sceneReload;
+    public string escenaNombreRecarga;
     public int spawn;
 
     bool evento;
@@ -93,6 +94,7 @@ public class Detectar_y_Echar : MonoBehaviour
                 else if (ScaleWithDistance().x > 0) soldier.transform.localScale = new Vector3(1f, 1f, 1f);
                 //Colocar Nivel
                 EstructuraNiveles.nivel = sceneReload;
+                EstructuraNiveles.nombreNivel = escenaNombreRecarga;
                 if (!balaInside) detectScene = SecuenceDetect.showDialogo;
                 break;
             case SecuenceDetect.showDialogo:

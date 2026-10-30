@@ -9,6 +9,7 @@ public class CameraShake : MonoBehaviour
     public CinemachineVirtualCamera cineMachineCamera;
 
     public int zonaModificada;
+    public string nombreSiguienteScenaShake;
     private void Awake()
     {
 
@@ -21,5 +22,6 @@ public class CameraShake : MonoBehaviour
         cineMachinePerlin.m_AmplitudeGain = 1f;
 
         EstructuraNiveles.nivel = zonaModificada;
+        EstructuraNiveles.nombreNivel = nombreSiguienteScenaShake;
     }
 }

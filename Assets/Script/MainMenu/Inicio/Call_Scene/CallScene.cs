@@ -5,6 +5,7 @@ using UnityEngine;
 public class CallScene : MonoBehaviour
 {
     public int scene;
+    public string nombreEscena;
     [Header("Transicion Animacion")]
     public string nameAnimVar;
     public Animator transtion;
@@ -14,5 +15,6 @@ public class CallScene : MonoBehaviour
         calls.Call(transtion, nameAnimVar);
         //Desactivar colliders para que no se pueda volver a presionar el bton
         EstructuraNiveles.nivel = scene;
+        EstructuraNiveles.nombreNivel = nombreEscena;
     }
 }

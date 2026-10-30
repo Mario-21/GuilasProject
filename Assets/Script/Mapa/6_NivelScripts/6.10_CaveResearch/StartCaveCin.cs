@@ -9,6 +9,7 @@ public class StartCaveCin : MonoBehaviour
     [Header("Cinematic")]
     [SerializeField] BloquearMovimientoPlayer bloqPlayer;
     public int cinematicCaveLevel;
+    public string nombreEscenaCinematicCueva;
     bool playerOnCin;
     void Start()
     {
@@ -26,6 +27,7 @@ public class StartCaveCin : MonoBehaviour
         {
             bloqPlayer.BloquearMovPlayer();
             EstructuraNiveles.nivel = cinematicCaveLevel;
+            EstructuraNiveles.nombreNivel = nombreEscenaCinematicCueva;
             AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
 
         }

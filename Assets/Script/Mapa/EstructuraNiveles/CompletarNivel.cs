@@ -9,6 +9,7 @@ public class CompletarNivel : MonoBehaviour, IDataPersistence
     [SerializeField] private bool triggerPasarNivel;
     [Header("Información del Siguiente Nivel")]
     public int siguienteNivel;
+    public string nombreSiguienteEscenaNivel;
     public string definicionSiguienteNivel;
     [SerializeField] bool hayMisiones;
     [SerializeField] BloquearMovimientoPlayer blockPlayer;
@@ -60,6 +61,7 @@ public class CompletarNivel : MonoBehaviour, IDataPersistence
             MusicAmbienceManager.instance.CleanAmbienceMusic();
             //Colocamos a que nivel te diriges
             EstructuraNiveles.nivel = siguienteNivel;
+            EstructuraNiveles.nombreNivel = nombreSiguienteEscenaNivel;
             //Si no hay misiones en el nivel normal, pues que simplemente coloque la defición del mismo Script
             if (!hayMisiones)
             {

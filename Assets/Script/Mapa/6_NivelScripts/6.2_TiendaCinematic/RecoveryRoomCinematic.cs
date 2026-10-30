@@ -7,6 +7,7 @@ public class RecoveryRoomCinematic : MonoBehaviour
 {
     public int indexMod;
     public int returnScene;
+    public string nombreSiguienteEscenaVolver;
     public int checkpoint;
     /*)
     [Header("Soldado Normal Spawn")]
@@ -103,6 +104,7 @@ public class RecoveryRoomCinematic : MonoBehaviour
                 {
                     CheckPointController.numeroCheckPoint = checkpoint;
                     EstructuraNiveles.nivel = returnScene;
+                    EstructuraNiveles.nombreNivel = nombreSiguienteEscenaVolver;
                     AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
                 }
                 break;

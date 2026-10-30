@@ -27,6 +27,7 @@ public class BeginCinematic_1 : MonoBehaviour
     CinematicPhases cinematicScenes;
 
     public int volverEscena;
+    public string nombreVolverEscena;
     private void Awake()
     {
         cinematicScenes = CinematicPhases.normal;
@@ -53,6 +54,7 @@ public class BeginCinematic_1 : MonoBehaviour
                 if (!polipasto.mov) 
                 {
                     EstructuraNiveles.nivel = volverEscena;
+                    EstructuraNiveles.nombreNivel = nombreVolverEscena;
                     AnimationHud.detectar_echar.SetTrigger("Detectar_Echar"); cinematicScenes = CinematicPhases.normal; 
                 }
                 break;

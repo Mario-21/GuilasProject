@@ -17,7 +17,8 @@ public class ButtonMadre : MonoBehaviour
     [Header("Datos Resetear Zona")]
     [SerializeField] BloquearMovimientoPlayer bloqPlayer;
     [SerializeField] int spawnPanelMadre;
-    [SerializeField] int escenaGeneradorMadre;
+    public int escenaGeneradorMadre;
+    public string nombreEscenaGeneradorMadre;
     private void Awake()
     {
         buttonSprite = GetComponent<SpriteRenderer>();
@@ -52,6 +53,7 @@ public class ButtonMadre : MonoBehaviour
             //Cambiar Zona
             CheckPointController.numeroCheckPoint = spawnPanelMadre;
             EstructuraNiveles.nivel = escenaGeneradorMadre;
+            EstructuraNiveles.nombreNivel = nombreEscenaGeneradorMadre;
             AnimationHud.detectar_echar.SetTrigger("Detectar_Echar");
         }
     }
